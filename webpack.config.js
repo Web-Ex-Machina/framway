@@ -1,0 +1,81 @@
+/*
+* This file was generated with webpack-create-config version 1.0.0
+* please run the following command to install dependencies
+* npm install --save-dev webpack babel-loader babel-core babel-preset-es2015 style-loader css-loader
+* or with yarn
+* yarn add webpack babel-loader babel-core babel-preset-es2015 style-loader css-loader
+*/
+
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const webpack = require('webpack'); //to access built-in plugins
+const path = require('path');
+
+module.exports = {
+    entry: {
+        vendor : './vendor', // split vendors from app's file, in order to optimize the building process
+        framway : './src'
+    },
+    output: {
+        filename: '[name].js',
+        path: path.resolve(__dirname, './build'),
+    },
+    module: {
+        rules: [
+            {
+                test: /\.js$/, // watch for js files
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',  // transpile es6 javascript to es5
+                    options: {
+                        presets: ['es2015',],
+                    },
+                },
+            },
+            {
+                test: /\.s?css$/,  // will watch either for css or scss files
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: [
+                        {loader: "css-loader",
+                            options:{
+                                sourceMap:true, // enable sourcemap
+                                minimize: true, // minimize css
+                                module: true,  // enable use of imported css as js object
+                                localIdentName: '[local]', // used to keep the right name of a css class instead of a hash
+                            }
+                        },
+                        {loader: "autoprefixer-loader"},
+                        {loader: "sass-loader", options:{sourceMap:true}},
+                        {loader: "sass-resources-loader", options:{ // import every resource sass in each file that need it
+                            resources: ['./src/scss/_mixins.scss','./src/scss/_vars.scss','./src/scss/_config.scss']
+                        }},
+                    ],
+                })
+            }
+        ],
+    },
+    devtool: 'source-map',
+    resolveLoader:{
+        alias:{
+            'html': 'mustache-loader!html-loader?interpolate'
+        }
+    },
+    plugins: [
+        new ExtractTextPlugin("[name].css"),
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery", // enable $ and jQuery as global variables
+            Tether: 'tether',
+            tether: 'tether' // enable tether as global variable (required by bootstrap 4)
+        })
+        // new HtmlWebpackPlugin({
+        //     title: 'Framway\'s home',
+        //     template: './src/index.html',
+        //     filename: '../index.html',
+        //     chunks: ['vendor', 'framway'],
+        //     chunksSortMode: 'manual',
+        // })
+    ]
+};

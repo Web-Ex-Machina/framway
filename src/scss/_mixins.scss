@@ -1,0 +1,370 @@
+/*---------------------------------------- UTILITY FUNCTIONS -------------------------------------------- */
+
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+
+@mixin color-react($bg){
+  color: $btn-font-color;
+  @if lightness($bg) > 60{
+    color: darken($btn-font-color, lightness($bg));
+  }
+  @if $bg == transparent{
+    color: darken($btn-font-color, 100);
+  }
+};
+
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+@function webkitAlign($align) {
+  @if $align == space-around{
+    $align : distribute;
+  }
+  @if $align == space-between{
+    $align : justify;
+  }
+  @return str-replace($align, 'flex-', '');
+}
+
+
+@function brightness($color) {
+  @return ((red($color) * .299) + (green($color) * .587) + (blue($color) * .114));
+}
+
+
+@function contrast($color1, $color2) {
+  $contrast : brightness($color1) - brightness($color2);
+  $target: 100;
+  $adjustement : 10;
+  @if ( $color1 == transparent and $color2 != transparent){
+    @return $color2;
+  }
+  @if ( $contrast > -$target and $contrast < $target and $color2 != transparent){
+    // do this if contrast is not enough. if color2 is transparent, do nothing
+    @if ( $contrast > 0 ){
+      // color1 is slightly brighter than color2
+      @if brightness($color1) < $target - abs($contrast){
+        // do this if we can lighten color1 enough to contrast with color2
+        // adjust color1 to have a minimum contrast of $target with color 2
+        @return scale-color($color1, $lightness: $target - abs($contrast));
+      }
+      @else{
+        // do this if we can't lighten color1 enough to contrast with color2
+        // decrease color1's brightness, compare the new contrast and return
+        @return contrast(scale-color($color1,$lightness: -$adjustement), $color2);
+      }
+    }
+    @else if ( $contrast < 0 ){
+      // color2 is slightly darker than color2
+      @if brightness($color1) > abs($contrast){
+        // do this if we can darken color1 enough to contrast with color2
+        // adjust color1 to have a minimum contrast of -$target with color 2
+        @return scale-color($color1, $lightness: -$target + abs($contrast))
+      }
+      @else{
+        // do this if we can't darken color1 enough to contrast with color2
+        // increase color1's brightness, compare the new contrast and return
+        @return contrast(scale-color($color1,$lightness: $adjustement), $color2);
+      }
+    }
+    @else{
+      // do this if color1 and color2 are equally contrasted
+      @if(brightness($color1) <= 127) {
+        // color1 is naturally dark, so we need to lighten it
+        // increase color1's brightness, compare the new contrast and return
+        @return contrast(scale-color($color1,$lightness: $adjustement), $color2);
+      }
+      @else{
+        // color1 is naturally light, so we need to darken it
+        // decrease color1's brightness, compare the new contrast and return
+        @return contrast(scale-color($color1,$lightness: -$adjustement), $color2);
+      }
+    }
+  }
+  @else{
+    // contrast is enough
+    // don't do anything, use color1
+    @return $color1
+  }
+}
+
+
+/*---------------------------------------- RESPONSIVE FUNCTIONS -------------------------------------------- */
+@mixin media-max($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin media-min($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin media-mm($breakpointMin,$breakpointMax) {
+  @media (min-width: $breakpointMin) and (max-width: $breakpointMax) {
+    @content;
+  }
+}
+
+
+/*---------------------------------------- FLEX FUNCTIONS -------------------------------------------- */
+
+@mixin flex-container($direction : '', $wrap : '', $justify : '', $align : '')
+{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+
+  @if $direction != '' {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: $direction;
+    -ms-flex-direction: $direction;
+    flex-direction: $direction;
+  }
+  @if $wrap != '' {
+    -webkit-flex-wrap: $wrap;
+    -ms-flex-wrap: $wrap;
+    flex-wrap: $wrap;
+  }
+  @if $justify != '' {
+    -webkit-box-pack: webkitAlign($justify);
+    -ms-flex-pack: webkitAlign($justify);
+    justify-content: $justify;
+  }
+  @if $align != '' {
+    -webkit-box-align: webkitAlign($align);
+    -ms-flex-align: webkitAlign($align);
+    -ms-grid-row-align: $align;
+    align-items: $align;
+  }
+}
+
+@mixin flex-direction($dir : row)
+{
+  $strWebkit : horizontal;
+  @if $dir == column{
+    $strWebkit : vertical;
+  }
+  -webkit-box-orient: $strWebkit;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: $dir;
+  flex-direction: $dir;
+}
+
+@mixin flex-grow($number : 1)
+{
+  -webkit-box-flex: $number;
+  -ms-flex-positive: $number;
+  flex-grow: $number;
+}
+
+@mixin align-items($align : flex-start)
+{
+
+  -webkit-box-align: webkitAlign($align);
+  -ms-flex-align: webkitAlign($align);
+  -ms-grid-row-align: $align;
+  align-items: $align;
+}
+
+@mixin align-self($align : flex-start)
+{
+  -ms-flex-item-align: webkitAlign($align);
+  align-self: $align;
+}
+
+@mixin flex-wrap($wrap : wrap)
+{
+  -webkit-flex-wrap: $wrap;
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+
+@mixin justify-content($justify : flex-start)
+{
+  -webkit-box-pack: webkitAlign($justify);
+  -ms-flex-pack: webkitAlign($justify);
+  justify-content: $justify;
+}
+
+@mixin flex-basis($basis : 0){
+  -ms-flex-preferred-size: $basis;
+  flex-basis: $basis;
+}
+
+@mixin flex-shrink($shrink : 1){
+  -ms-flex-negative: $shrink;
+  flex-shrink: $shrink;
+}
+
+@mixin order($order : 0)
+{
+  -webkit-box-ordinal-group: $order + 1;
+  -ms-flex-order: $order;
+  order: $order;
+}
+
+/*---------------------------------------- ELLIPSIS FUNCTIONS -------------------------------------------- */
+
+/// applique un ellipsis multiligne sur un block
+/// $font-size -> taille de la police
+/// $line-height -> taille d'une ligne
+/// $lines-to-show -> nombre de lignes apparentes
+///
+@mixin multi-ellipsis($font-size: 1em, $line-height: 1, $lines-to-show: 1)
+{
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  max-width: 100%;
+  height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
+  font-size: $font-size;
+  line-height: $line-height;
+  -webkit-line-clamp: $lines-to-show;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/// applique un ellipsis sur une seule ligne
+@mixin ellipsis()
+{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  max-width: 100%;
+}
+
+/*---------------------------------------- TRANSITIONS FUNCTIONS -------------------------------------------- */
+
+@mixin transition($transition...) {
+    -moz-transition:    $transition;
+    -o-transition:      $transition;
+    -webkit-transition: $transition;
+    transition:         $transition;
+}
+
+
+/*---------------------------------------- TRANSFORM FUNCTIONS -------------------------------------------- */
+
+@mixin rotate($degrees:0) {
+    -webkit-transform: rotate(#{$degrees}deg);
+       -moz-transform: rotate(#{$degrees}deg);
+        -ms-transform: rotate(#{$degrees}deg);
+         -o-transform: rotate(#{$degrees}deg);
+            transform: rotate(#{$degrees}deg);
+}
+
+@mixin rotate3d($x:0,$y:0,$z:0,$degrees:0) {
+    -webkit-transform: rotate3d($x,$y,$z,#{$degrees}deg);
+       -moz-transform: rotate3d($x,$y,$z,#{$degrees}deg);
+        -ms-transform: rotate3d($x,$y,$z,#{$degrees}deg);
+         -o-transform: rotate3d($x,$y,$z,#{$degrees}deg);
+            transform: rotate3d($x,$y,$z,#{$degrees}deg);
+}
+
+@mixin translate($x: 0, $y: 0) {
+    -webkit-transform: translate($x, $y);
+       -moz-transform: translate($x, $y);
+        -ms-transform: translate($x, $y);
+         -o-transform: translate($x, $y);
+            transform: translate($x, $y);
+}
+
+@mixin rotate-translate($degrees: 0, $x: 0, $y: 0) {
+    -webkit-transform: rotate(#{$degrees}deg) translate($x, $y);
+       -moz-transform: rotate(#{$degrees}deg) translate($x, $y);
+        -ms-transform: rotate(#{$degrees}deg) translate($x, $y);
+         -o-transform: rotate(#{$degrees}deg) translate($x, $y);
+            transform: rotate(#{$degrees}deg) translate($x, $y);
+}
+
+@mixin translate-rotate($degrees: 0, $x: 0, $y: 0) {
+    -webkit-transform: translate($x, $y) rotate(#{$degrees}deg);
+       -moz-transform: translate($x, $y) rotate(#{$degrees}deg);
+        -ms-transform: translate($x, $y) rotate(#{$degrees}deg);
+         -o-transform: translate($x, $y) rotate(#{$degrees}deg);
+            transform: translate($x, $y) rotate(#{$degrees}deg);
+}
+
+@mixin transform-origin($x: 50%, $y: 50%, $z: 0) {
+    -webkit-transform-origin: $x $y $z;
+       -moz-transform-origin: $x $y $z;
+        -ms-transform-origin: $x $y $z;
+         -o-transform-origin: $x $y $z;
+            transform-origin: $x $y $z;
+}
+
+@mixin transform($transform) {
+    -webkit-transform: $transform;
+       -moz-transform: $transform;
+        -ms-transform: $transform;
+         -o-transform: $transform;
+            transform: $transform;
+}
+
+
+/*----------------------------------------- SHADOWS FUNCTIONS ---------------------------------------------- */
+@mixin box-shadow($shadow) {
+    -webkit-box-shadow: $shadow;
+            box-shadow: $shadow;
+}
+
+
+/*---------------------------------------- ANIMATIONS FUNCTIONS -------------------------------------------- */
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @-o-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+@mixin animation($name, $duration: 1s, $loop: infinite, $easing: linear) {
+    -webkit-animation: $name $duration $loop;
+       -moz-animation: $name $duration $loop;
+         -o-animation: $name $duration $loop;
+            animation: $name $duration $loop;
+
+    -webkit-animation-timing-function: $easing;
+       -moz-animation-timing-function: $easing;
+         -o-animation-timing-function: $easing;
+            animation-timing-function: $easing;
+}
+
+@mixin animation-delay($delay) {
+    -webkit-animation-delay: $delay;
+       -moz-animation-delay: $delay;
+         -o-animation-delay: $delay;
+            animation-delay: $delay;
+}
+
+@mixin box-sizing($sizing: border-box) {
+    -webkit-box-sizing: $sizing;
+       -moz-box-sizing: $sizing;
+            box-sizing: $sizing;
+}
+
