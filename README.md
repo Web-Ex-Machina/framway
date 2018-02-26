@@ -55,15 +55,17 @@ Within the download archive you'll find the following directories and files, log
 
 The `css` and `js` files provided in the `build` folder are compiled and minified files that you can use in your project.
 
-Note: `vendor` and `framway` files are splitted to allow faster building in development process and better cache management in production environement. This can be changed by modifying the `webpack.config.js` file, as well a the splitting between `css` and `js` type files
+**Note**: `vendor` and `framway` files are splitted to allow faster building in development process and better cache management in production environement. This can be changed by modifying the `webpack.config.js` file, as well as the splitting between `css` and `js` type files
 
 ## Dependencies
+
+The following dependencies are by default installed and wrapped in the `index.js` file in the `vendor` folder, then compiled into the `build` one. If you won't use webpack to bundle your assets and prefer importing then manually, **don't** add the vendor files from the `build` folder to your project.
 
 - **Bootstrap**. Framway acts as an overlay of Bootstrap and that's why it's considered as a dependency. Anyway, you can totally get rid of it and use the framway on its own, despite we don't recommend it.
 
 - **Font Awesome**. Same as Bootstrap. Not mandatory, but recommended because it's awesome.
 
-- **jQuery**. Framway use javascript and jQuery to run some of its components, as well as core features.
+- **jQuery**. Framway uses javascript and jQuery to run some of its components, as well as core features.
 
 ## Copyright and license
 
