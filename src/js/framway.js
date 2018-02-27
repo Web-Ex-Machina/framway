@@ -56,6 +56,11 @@ Framway.prototype.clearLogs = function(){
 
 $(function () {
   console.log(app);
+  $('body').on('click','pre .copy',function(e){
+    var elem = $(this).parent().clone();
+    elem.find('.copy').remove();
+    utils.copyToClipboard(elem.get(0));
+  })
 });
 
 global.utils = require('../js/utils.js');

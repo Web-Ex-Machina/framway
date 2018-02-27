@@ -1,17 +1,27 @@
-<h1>Framway's config & guideline</h1>
-<div class="tabs ">
-  <div class="tabs__nav">
-    <button class="btn">Config</button>
-    <button class="btn">Guideline</button>
+<nav>
+  <ul>
+    <li><a href="#framway__config">Config</a></li>
+    <li>
+      <a href="#framway__styling">Styling</a>
+      {{{styling.nav}}}
+    </li>
+    <li>
+      <a href="#framway__components">Components</a>
+      {{{components.nav}}}
+    </li>
+  </ul>
+</nav>
+<div class="content container-fluid p-x-x2 p-top">
+  <h1>Framway's config & guideline</h1>
+  <div class="item" id="framway__config">
+    <div class="row">
+      {{{config}}}
+    </div>
   </div>
-  <div class="tabs__content">
-    <div class="tab" id="framway__config">
-      <div class="row">
-        {{{config}}}
-      </div>
-    </div>
-    <div class="tab" id="framway__guideline">
-        {{{guideline}}}
-    </div>
+  <div class="item" id="framway__styling">
+      {{{styling.content}}}
+  </div>
+  <div class="item" id="framway__components">
+      {{{components.content}}}
   </div>
 </div>

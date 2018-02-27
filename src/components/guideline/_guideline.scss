@@ -1,0 +1,9 @@
+#guideline{height: 100vh;  @include flex-container();}
+#guideline nav{background: #666; padding: $spacing $spacing $spacing $spacing/2;}
+#guideline nav a{text-decoration: none; &.active{text-decoration: underline;}}
+#guideline .content{height: 100vh;width: 100%; overflow: auto;}
+
+#guideline .content .item{ padding: $spacing 0 $spacing;
+  &:not(.active){display: none;}
+  &>.item{padding: 0;}
+}

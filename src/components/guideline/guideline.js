@@ -1,4 +1,5 @@
 if($('#guideline').length){
+  require('./_guideline.scss');
   var config = require('../../scss/_config.scss');
   $.each(config,function(key,value){
     if(value[0] == '(' && value[value.length - 1] == ")"){
@@ -11,81 +12,121 @@ if($('#guideline').length){
       config[key] = JSON.parse(objValue);
     }
   });
-  var config_html = buildConfig(config,'global');
-  var guideline_html = buildGuideline();
+  var configHtml = buildConfig(config,'global');
+  var stylingHtml = buildStyling();
+  var componentsHtml = buildComponents();
 
-  var html = require('mustache-loader!html-loader?interpolate!./templates/index.html')({config: config_html,guideline: guideline_html });
+  var html = require('mustache-loader!html-loader?interpolate!./templates/index.html')({
+    config: configHtml,
+    styling: stylingHtml,
+    components: componentsHtml,
+  });
   $('#guideline').append(html);
 
   // Building functions
-  function buildGuideline(){
-    var template = require('mustache-loader?noShortcut!html-loader?interpolate!./templates/guideline.html');
-    var nav = '';
-    var content = '';
+  function buildComponents(){
+    var components = {nav : '', content : ''};
+    components.nav += '<ul>';
+    $.each(app.components,function(index,component){
+      try{
+        components.content += '<div class="item row" id="framway__components-'+component+'">'
+                           + '<div class="col-12 col-md-6">'
+                           + require('html-loader?interpolate!../'+component+'/sample.html')
+                           + '</div>'
+                           + '<div class="col-12 col-md-6">'
+                           + '<pre><code class="language-html"><button class="copy">Copy</button>'
+                           + require('html-loader!../'+component+'/sample.html').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+                           + '</code></pre>'
+                           + '</div>'
+                           + '</div>'
+        components.nav += '<li><a href="#framway__components-'+component+'">'+component+'</a></li>';
+      } catch(e){
+
+      }
+    });
+    components.nav += '</ul>';
+
+    if(app.components.length == 0)
+      components.content = 'No components loaded';
+    return components;
+  }
+
+  function buildStyling(){
+    var styling = {nav : '', content : ''};
     var objConfig;
 
+    styling.nav += '<ul>';
     // TEXTS
     objConfig = {'Default': 'texts'};
     if(config['enable-bg'] == 'true') objConfig['Backgrounded'] = 'texts_bg';
     if(config['enable-bd'] == 'true') objConfig['Bordered'] = 'texts_bd';
-    nav += '<button class="btn">TEXTS</button> ';
-    content += '<div class="tab">'
-            + buildTabs(objConfig)
-            + '</div>';
+    styling.nav += '<li><a href="#framway__styling-text">Texts</a></li>';
+    styling.content += '<div class="item active" id="framway__styling-text">'
+                      + '<h2 class="ft-i">Texts</h2>'
+                      + buildTabs(objConfig)
+                      +  '</div>';
+
     // TITLES
     objConfig = {'Default': 'titles','With separators' : 'titles_sep',};
     if(config['enable-bg'] == 'true') objConfig['Backgrounded'] = 'titles_bg';
-    nav += '<button class="btn">TITLES</button> ';
-    content += '<div class="tab">'
-            + buildTabs(objConfig)
-            + '</div>';
+    styling.nav += '<li><a href="#framway__styling-titles">Titles</a></li>';
+    styling.content += '<div class="item" id="framway__styling-titles">'
+                      + '<h2 class="ft-i">Titles</h2>'
+                      + buildTabs(objConfig)
+                      + '</div>';
     // BUTTONS
     objConfig = {'Default': 'buttons', 'Colored' : 'buttons_colors',};
-    nav += '<button class="btn ">BUTTONS</button> ';
-    content += '<div class="tab">'
-            + buildTabs(objConfig)
-            + '</div>';
+    styling.nav += '<li><a href="#framway__styling-buttons">Buttons</a></li>';
+    styling.content += '<div class="item" id="framway__styling-buttons">'
+                      + '<h2 class="ft-i">Buttons</h2>'
+                      + buildTabs(objConfig)
+                      + '</div>';
     // INPUTS
     objConfig = {'Type text': 'inputs', 'Type text extra' : 'inputs_texts', 'Others' : 'inputs_others'};
     if(config['enable-bg'] == 'true') objConfig['Backgrounded'] = 'inputs_bg';
-    nav += '<button class="btn">INPUTS</button> ';
-    content += '<div class="tab">'
-            + buildTabs(objConfig)
-            + '</div>';
+    styling.nav += '<li><a href="#framway__styling-inputs">Inputs</a></li>';
+    styling.content += '<div class="item" id="framway__styling-inputs">'
+                      + '<h2 class="ft-i">Inputs</h2>'
+                      + buildTabs(objConfig)
+                      + '</div>';
     // BACKGROUNDS
     if(config['enable-bg'] == 'true'){
-      nav += '<button class="btn">BACKGROUNDS</button> ';
-      content += '<div class="tab">'
+      styling.nav += '<li><a href="#framway__styling-backgrounds">Backgrounds</a></li>';
+      styling.content += '<div class="item" id="framway__styling-backgrounds">'
+                        + '<h2 class="ft-i">Backgrounds</h2>';
       $.each(config.colors,function(key,value){
-        content += require('mustache-loader!html-loader?interpolate!./templates/guideline_backgrounds.html')({color: key});
+        styling.content += require('mustache-loader!html-loader?interpolate!./templates/styling_backgrounds.html')({color: key});
       })
-      content += '</div>';
+      styling.content += '</div>';
     }
     // BORDERS
     if(config['enable-bd'] == 'true'){
       objConfig = {'Default': 'borders', 'Colored' : 'borders_colors',};
-      nav += '<button class="btn">BORDERS</button> ';
-      content += '<div class="tab">'
-              + buildTabs(objConfig)
-              + '</div>';
+      styling.nav += '<li><a href="#framway__styling-borders">Borders</a></li>';
+      styling.content += '<div class="item" id="framway__styling-borders">'
+                        + '<h2 class="ft-i">Borders</h2>'
+                        + buildTabs(objConfig)
+                        + '</div>';
     }
 
-    return template.render({},{nav: nav,content: content});
+    styling.nav += '</ul>';
+
+    return styling;
   }
 
   function buildTabs(tabsConfig){
-    var template = require('mustache-loader?noShortcut!html-loader?interpolate!./templates/guideline.html');
+    var template = require('mustache-loader?noShortcut!html-loader?interpolate!./templates/tabs.html');
     var nav = '';
     var content = '';
 
     $.each(tabsConfig,function(title,templateName){
       nav += '<button class="btn-sm btn-bg-greystronger">'+title+'</button> ';
       if(title.toLowerCase() != "bordered" && title.toLowerCase() != "backgrounded" && title.toLowerCase() != "colored")
-        content += require('mustache-loader!html-loader?interpolate!./templates/guideline_'+templateName+'.html')();
+        content += require('mustache-loader!html-loader?interpolate!./templates/styling_'+templateName+'.html')();
       else{
         content += '<div class="tab">';
         $.each(config.colors,function(key,value){
-          content += require('mustache-loader!html-loader?interpolate!./templates/guideline_'+templateName+'.html')({color: key});
+          content += require('mustache-loader!html-loader?interpolate!./templates/styling_'+templateName+'.html')({color: key});
         })
         content += '</div>';
       }
@@ -115,6 +156,23 @@ if($('#guideline').length){
     return template.render({title: title},{rows: rows})+htmlStack; // return the initial template filled with his rows PLUS the stack we get by processing recursively the config
   }
 }
+
+$(function () {
+  $('#guideline nav a').bind('click',function(e){
+    e.preventDefault();
+    var target = $(this).addClass('active').attr('href');
+    $('#guideline nav a').not(this).removeClass('active');
+    $('#guideline .content .item').removeClass('active');
+
+    $('#guideline .content .item'+target).addClass('active').find('.item').addClass('active');
+    if(target.split('-').length > 1){
+      $.each(target.split('-'),function(index,tgt){
+        $('#guideline .content .item#'+tgt.replace('#','')).addClass('active');
+      })
+    }
+  });
+  $('#guideline nav a').last().trigger('click');
+});
 
 
 
