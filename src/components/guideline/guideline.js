@@ -171,7 +171,7 @@ $(function () {
       })
     }
   });
-  $('#guideline nav a').last().trigger('click');
+  $('#guideline nav a').first().trigger('click');
 });
 
 
