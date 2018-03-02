@@ -1,5 +1,5 @@
 if($('#guideline').length){
-  require('./_guideline.scss');
+  // require('./_guideline.scss');
   var config = require('../../scss/_config.scss');
   $.each(config,function(key,value){
     if(value[0] == '(' && value[value.length - 1] == ")"){
@@ -30,6 +30,7 @@ if($('#guideline').length){
     $.each(app.components,function(index,component){
       try{
         components.content += '<div class="item row" id="framway__components-'+component+'">'
+                           + '<h2 class="ft-i col-12 sep-bottom">'+component+'</h2>'
                            + '<div class="col-12 col-md-6">'
                            + require('html-loader?interpolate!../'+component+'/sample.html')
                            + '</div>'
@@ -62,7 +63,7 @@ if($('#guideline').length){
     if(config['enable-bd'] == 'true') objConfig['Bordered'] = 'texts_bd';
     styling.nav += '<li><a href="#framway__styling-text">Texts</a></li>';
     styling.content += '<div class="item active" id="framway__styling-text">'
-                      + '<h2 class="ft-i">Texts</h2>'
+                      + '<h2 class="ft-i sep-bottom">Texts</h2>'
                       + buildTabs(objConfig)
                       +  '</div>';
 
@@ -71,14 +72,14 @@ if($('#guideline').length){
     if(config['enable-bg'] == 'true') objConfig['Backgrounded'] = 'titles_bg';
     styling.nav += '<li><a href="#framway__styling-titles">Titles</a></li>';
     styling.content += '<div class="item" id="framway__styling-titles">'
-                      + '<h2 class="ft-i">Titles</h2>'
+                      + '<h2 class="ft-i sep-bottom">Titles</h2>'
                       + buildTabs(objConfig)
                       + '</div>';
     // BUTTONS
     objConfig = {'Default': 'buttons', 'Colored' : 'buttons_colors',};
     styling.nav += '<li><a href="#framway__styling-buttons">Buttons</a></li>';
     styling.content += '<div class="item" id="framway__styling-buttons">'
-                      + '<h2 class="ft-i">Buttons</h2>'
+                      + '<h2 class="ft-i sep-bottom">Buttons</h2>'
                       + buildTabs(objConfig)
                       + '</div>';
     // INPUTS
@@ -86,14 +87,14 @@ if($('#guideline').length){
     if(config['enable-bg'] == 'true') objConfig['Backgrounded'] = 'inputs_bg';
     styling.nav += '<li><a href="#framway__styling-inputs">Inputs</a></li>';
     styling.content += '<div class="item" id="framway__styling-inputs">'
-                      + '<h2 class="ft-i">Inputs</h2>'
+                      + '<h2 class="ft-i sep-bottom">Inputs</h2>'
                       + buildTabs(objConfig)
                       + '</div>';
     // BACKGROUNDS
     if(config['enable-bg'] == 'true'){
       styling.nav += '<li><a href="#framway__styling-backgrounds">Backgrounds</a></li>';
       styling.content += '<div class="item" id="framway__styling-backgrounds">'
-                        + '<h2 class="ft-i">Backgrounds</h2>';
+                        + '<h2 class="ft-i sep-bottom">Backgrounds</h2>';
       $.each(config.colors,function(key,value){
         styling.content += require('mustache-loader!html-loader?interpolate!./templates/styling_backgrounds.html')({color: key});
       })
@@ -104,7 +105,7 @@ if($('#guideline').length){
       objConfig = {'Default': 'borders', 'Colored' : 'borders_colors',};
       styling.nav += '<li><a href="#framway__styling-borders">Borders</a></li>';
       styling.content += '<div class="item" id="framway__styling-borders">'
-                        + '<h2 class="ft-i">Borders</h2>'
+                        + '<h2 class="ft-i sep-bottom">Borders</h2>'
                         + buildTabs(objConfig)
                         + '</div>';
     }

@@ -1,4 +1,4 @@
-require('./_tabs.scss');
+// require('./_tabs.scss');
 $.fn.Tabs = function Tabs(){
   $(this).each(function(){
     var tabs = {

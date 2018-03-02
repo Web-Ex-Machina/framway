@@ -176,9 +176,9 @@ ul.tags>li{padding: 3px 8px 5px; background: btn(background); color: btn(font-co
   *[class*='bg-']{@extend .p-all;}
   *[class*='bg-']>*:last-child{margin-bottom:0;}
   @each $key, $value in $colors{
-    .bg-#{$key}{background-color: $value; }
-    *[class~="bg-#{$key}"],
-    *[class|="bg-#{$key}"]{color: body(font-color); color: contrast(body(font-color), $value);}
+    .bg-#{$key}{background-color: $value; color: body(font-color); color: contrast(body(font-color), $value);}
+    // *[class~="bg-#{$key}"],
+    // *[class|="bg-#{$key}"]{color: body(font-color); color: contrast(body(font-color), $value);}
     @for $index from 1 through 10{
       /* OPACITY */
       .bg-#{$key}-o-#{$index}#{0}{background-color: rgba($value, $index * 0.1);}
@@ -206,7 +206,10 @@ ul.tags>li{padding: 3px 8px 5px; background: btn(background); color: btn(font-co
 
     /* titles */
     @for $index from 0 through 6{
-      .bg-#{$key} h#{$index}, .bg-#{$key} .h#{$index}{color: contrast(body(title-font-color),$value);}
+      h#{$index}.bg-#{$key},
+      .h#{$index}.bg-#{$key},
+      .bg-#{$key} h#{$index},
+      .bg-#{$key} .h#{$index}{color: contrast(body(title-font-color),$value);}
     }
 
     /* links */

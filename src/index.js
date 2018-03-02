@@ -5,4 +5,3 @@ app.loadComponents([
   'tabs',
   'guideline',
 ]);
-

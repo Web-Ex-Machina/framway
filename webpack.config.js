@@ -8,6 +8,7 @@
 
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var LiveReloadPlugin = require('webpack-livereload-plugin');
 
 const webpack = require('webpack'); //to access built-in plugins
 const path = require('path');
@@ -57,12 +58,10 @@ module.exports = {
         ],
     },
     devtool: 'source-map',
-    resolveLoader:{
-        alias:{
-            'html': 'mustache-loader!html-loader?interpolate'
-        }
+    devServer: {
     },
     plugins: [
+        new LiveReloadPlugin(),
         new ExtractTextPlugin("[name].css"),
         new webpack.ProvidePlugin({
             $: "jquery",
