@@ -24,7 +24,7 @@ The project is powered by [webpack](https://webpack.js.org/) so you'll need [npm
 #### Install dependencies and run
     npm install
     npm run watch
-The npm script `watch` will launch webpack in watch mode, which compile the files when changes has been made. You can use the `index.html` file at the root directory to watch and test out your changes.
+The npm script `watch` will launch webpack in watch mode, which compile the files when changes has been made. You can use the `index.html` file in the `build` folder to watch and test out your changes.
 
 ## What's included
 
@@ -32,24 +32,28 @@ Within the download archive you'll find the following directories and files, log
 
     framway/
     ├── build/
-    │   ├── framway.css
-    │   ├── framway.css.map
-    │   ├── framway.js
-    │   ├── framway.js.map
-    │   ├── vendor.css
-    │   ├── vendor.css.map
-    │   ├── vendor.js
-    │   └── vendor.js.map
+    │   ├── css/
+    │   │   ├── framway.css
+    │   │   ├── framway.css.map
+    │   │   ├── vendor.css
+    │   │   └── vendor.css.map
+    │   ├── js/
+    │   │   ├── framway.js
+    │   │   ├── framway.js.map
+    │   │   ├── vendor.js
+    │   │   └── vendor.js.map
+    │   ├── img/
+    │   └── index.html
     ├── src/
     │   ├── components/
     │   ├── css/
     │   ├── img/
     │   ├── js/
     │   ├── scss/
+    │   ├── index.html
     │   └── index.js
     ├── vendor/
     │   └── index.js
-    ├── index.html
     ├── package.json
     └── webpack.config.js
 

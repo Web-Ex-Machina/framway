@@ -19,7 +19,7 @@ module.exports = {
         framway : './src'
     },
     output: {
-        filename: '[name].js',
+        filename: 'js/[name].js',
         path: path.resolve(__dirname, './build'),
     },
     module: {
@@ -53,7 +53,17 @@ module.exports = {
                             resources: ['./src/scss/_mixins.scss','./src/scss/_vars.scss','./src/scss/_config.scss']
                         }},
                     ],
+                    publicPath: '../'
                 })
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: 'img/[name].[ext]'
+                    }
+                }]
             }
         ],
     },
@@ -62,19 +72,21 @@ module.exports = {
     },
     plugins: [
         new LiveReloadPlugin(),
-        new ExtractTextPlugin("[name].css"),
+        new ExtractTextPlugin({
+            filename : "css/[name].css",
+        }),
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery", // enable $ and jQuery as global variables
             Tether: 'tether',
             tether: 'tether' // enable tether as global variable (required by bootstrap 4)
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Framway\'s home',
+            template: './src/index.html',
+            filename: './index.html',
+            chunks: ['vendor', 'framway'],
+            chunksSortMode: 'manual',
         })
-        // new HtmlWebpackPlugin({
-        //     title: 'Framway\'s home',
-        //     template: './src/index.html',
-        //     filename: '../index.html',
-        //     chunks: ['vendor', 'framway'],
-        //     chunksSortMode: 'manual',
-        // })
     ]
 };

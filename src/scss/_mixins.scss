@@ -98,6 +98,15 @@
   }
 }
 
+@mixin filter($filter) {
+  -webkit-filter: $filter;
+  -moz-filter: $filter;
+  -ms-filter: $filter;
+  -o-filter: $filter;
+  filter: $filter;
+}
+
+
 
 /*---------------------------------------- RESPONSIVE FUNCTIONS -------------------------------------------- */
 @mixin media-max($breakpoint) {

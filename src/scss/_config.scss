@@ -1,8 +1,8 @@
 
 /* Primary vars */
 $spacing: 30px;
-$radius: 3px;
-$border-size : 3px;
+$radius: 2px;
+$border-size : 2px;
 
 $colors: (
   'blue': #004C79,
@@ -52,7 +52,8 @@ $input: (
   'font-color': color(greystronger),
   'border-color': color(greystronger),
   'border-size': $border-size,
-  'placeholder-font-color': color(greylight),
+  'placeholder-font-color': color(grey),
+  'radius': true,
 );
 @function input($property) {@return map-get($input, '#{$property}'); }
 

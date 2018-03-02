@@ -42,7 +42,7 @@ if($('#guideline').length){
                            + '</div>'
         components.nav += '<li><a href="#framway__components-'+component+'">'+component+'</a></li>';
       } catch(e){
-
+        app.log('Failed to display the '+component+' component sample.\n'+e);
       }
     });
     components.nav += '</ul>';
@@ -172,7 +172,8 @@ $(function () {
       })
     }
   });
-  $('#guideline nav a').first().trigger('click');
+  // $('#guideline nav a').first().trigger('click');
+  $('#guideline nav a').last().trigger('click');
 });
 
 

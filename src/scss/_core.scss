@@ -13,7 +13,7 @@ p{margin-bottom: $spacing;}
 
 table{table-layout: fixed;}
 iframe{max-width:100%;}
-img{max-width: none; height: auto;}
+img{max-width: 100%; height: auto;}
 
 pre{background: color(blacklight); color: color(white); padding: $spacing/2; border-radius: $radius; font-size: 0.8em;}
 pre code{display: block; position: relative;}
@@ -327,6 +327,9 @@ ul.tags>li{padding: 3px 8px 5px; background: btn(background); color: btn(font-co
   font-size: 1em;
   line-height: 1.5em;
   border-radius: 0;
+  @if btn(radius) == true{
+    border-radius: $radius;
+  }
   outline: none;
   border: btn(border-size) solid btn(background);
   background-color: btn(background);
@@ -353,7 +356,6 @@ ul.tags>li{padding: 3px 8px 5px; background: btn(background); color: btn(font-co
     border-color: $value;
     @if $value != transparent{color: $value; }
     @else{color: contrast(btn(font-color),$value); }
-    border-radius: 0;
     background-color: transparent;
     &:hover,&:active,&.active{
       background: $value;
@@ -369,7 +371,6 @@ ul.tags>li{padding: 3px 8px 5px; background: btn(background); color: btn(font-co
   }
   .btn-bg-#{$key}{
     border-color: $value;
-    border-radius: 0;
     background-color: $value;
     color: contrast(btn(font-color),$value);
     &:hover,&:focus,&:active,&.active{
@@ -442,6 +443,9 @@ button,
   color: contrast(input(font-color),input(background));
   border: 0;
   border: input(border-size) solid input(border-color);
+  @if input(radius) == true{
+    border-radius: $radius;
+  }
   outline: none;
   width: 100%;
   margin-bottom: $spacing;
