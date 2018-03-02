@@ -15,7 +15,7 @@ table{table-layout: fixed;}
 iframe{max-width:100%;}
 img{max-width: 100%; height: auto;}
 
-pre{background: color(blacklight); color: color(white); padding: $spacing/2; border-radius: $radius; font-size: 0.8em;}
+pre{background: color(blacklight); color: color(white); padding: $spacing/2; border-radius: $radius; font-size: 0.8em; margin-bottom: $spacing;}
 pre code{display: block; position: relative;}
 pre .copy{position: absolute; right: 0; @extend .btn-sm;}
 

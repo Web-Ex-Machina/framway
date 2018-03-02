@@ -31,10 +31,10 @@ if($('#guideline').length){
       try{
         components.content += '<div class="item row" id="framway__components-'+component+'">'
                            + '<h2 class="ft-i col-12 sep-bottom">'+component+'</h2>'
-                           + '<div class="col-12 col-md-6">'
+                           + '<div class="col-12 ">'
                            + require('html-loader?interpolate!../'+component+'/sample.html')
                            + '</div>'
-                           + '<div class="col-12 col-md-6">'
+                           + '<div class="col-12 ">'
                            + '<pre><code class="language-html"><button class="copy">Copy</button>'
                            + require('html-loader!../'+component+'/sample.html').replace(/</g,'&lt;').replace(/>/g,'&gt;')
                            + '</code></pre>'

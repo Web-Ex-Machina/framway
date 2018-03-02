@@ -1,1 +1,1 @@
-#guideline:before{ content:""; display: block; @include size(100vw,100vh); background: url('./../img/san_francisco_tramway.jpg'); position: absolute; top: 0; left: 0; z-index: -1; opacity: 0.3; @include filter(blur(2px)) }
+#guideline:before{ content:""; display: block; @include size(100vw,100vh); background: url('./../img/san_francisco_tramway.jpg') center center no-repeat; background-size: cover; position: absolute; top: 0; left: 0; z-index: -1; opacity: 0.3; @include filter(blur(2px)) }
