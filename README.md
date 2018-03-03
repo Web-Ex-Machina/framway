@@ -69,6 +69,8 @@ The following dependencies are by default installed and wrapped in the `index.js
 
 - **Font Awesome**. Same as Bootstrap. Not mandatory, but recommended because it's awesome.
 
+- **Toastr**. Used to display clean and simple notifications.
+
 - **jQuery**. Framway uses javascript and jQuery to run some of its components, as well as core features.
 
 ## Copyright and license

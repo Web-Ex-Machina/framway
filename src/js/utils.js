@@ -92,10 +92,21 @@ function Utils(){
     return results;
   };
 
+  /**
+   * return a key of an objetc from a value
+   * @param  {Object} obj
+   * @param  {[type]} value
+   * @return {String}
+   */
   utils.getObjKeyByValue = function(obj,value){
     return Object.keys(obj).find(key => obj[key] === value);
   };
 
+  /**
+   * Copy the content of the element provided to the clipboard
+   * @param  {DOM element} elem
+   * @return {Boolean}
+   */
   utils.copyToClipboard = function(elem) {
     // create hidden text element, if it doesn't already exist
     var targetId = "_hiddenCopyText_";
@@ -154,6 +165,35 @@ function Utils(){
   $.fn.isChecked = function () {
     if ($(this).is(':checked')) return 1;else return 0;
   };
+
+  // NOTIFICATIONS SETUP
+  global.notif = require('toastr');
+  var toastrDefault = {"newestOnTop": false, "closeButton": true, "timeOut": 0, "extendedTimeOut": 0, "showMethod": "slideDown", "positionClass": "toast-bottom-left", "progressBar": false };
+  var toastrTimeOut = {"newestOnTop": false, "closeButton": true, "timeOut": 5000, "extendedTimeOut": 1000, "showMethod": "slideDown", "positionClass": "toast-bottom-left", "progressBar": true };
+  notif.options = toastrDefault;
+
+  global.notif_fade = {
+    error : function(str){
+      notif.options = toastrTimeOut;
+      notif.error(str);
+      notif.options = toastrDefault;
+    },
+    success : function(str){
+      notif.options = toastrTimeOut;
+      notif.success(str);
+      notif.options = toastrDefault;
+    },
+    warning : function(str){
+      notif.options = toastrTimeOut;
+      notif.warning(str);
+      notif.options = toastrDefault;
+    },
+    info : function(str){
+      notif.options = toastrTimeOut;
+      notif.info(str);
+      notif.options = toastrDefault;
+    },
+  }
 
   global.viewport = utils.getDimensions();
   return utils;

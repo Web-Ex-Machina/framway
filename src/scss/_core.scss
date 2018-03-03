@@ -394,13 +394,13 @@ input[type="submit"].btn-lg, input[type="button"].btn-lg, button.btn-lg{@extend 
 
 input[type="submit"],
 input[type="button"],
-button,
+button:not([class*="toast"]),
 *[class*="btn"]{@extend .btn;}
 
 @if btn(extend) != '' {
   input[type="submit"]:not([class*="btn-bg"]):not([class*="btn-bd"]),
   input[type="button"]:not([class*="btn-bg"]):not([class*="btn-bd"]),
-  button:not([class*="btn-bg"]):not([class*="btn-bd"]),
+  button:not([class*="btn-bg"]):not([class*="btn-bd"]):not([class*="toast"]),
   *[class*="btn"]:not([class*="btn-bg"]):not([class*="btn-bd"]){@extend #{btn(extend)} !optional;}
 }
 

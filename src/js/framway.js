@@ -58,7 +58,8 @@ $(function () {
   $('body').on('click','pre .copy',function(e){
     var elem = $(this).parent().clone();
     elem.find('.copy').remove();
-    utils.copyToClipboard(elem.get(0));
+    if(utils.copyToClipboard(elem.get(0)))
+      notif_fade.success('Copied to clipboard !');
   })
 });
 
