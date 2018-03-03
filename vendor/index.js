@@ -8,3 +8,7 @@ import fabrands from '@fortawesome/fontawesome-free-brands';
 // import bs_reboot from 'bootstrap/scss/bootstrap-reboot.scss';
 // import bs_grid from 'bootstrap/scss/bootstrap-grid.scss';
 import bs_style from 'bootstrap/scss/bootstrap.scss';
+
+
+import objectFitImages from 'object-fit-images';
+objectFitImages();

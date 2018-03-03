@@ -38,6 +38,7 @@
     "@fortawesome/fontawesome-free-solid": "^5.0.7",
     "bootstrap": "^4.0.0-alpha.6",
     "jquery": "^3.2.1",
+    "object-fit-images": "^3.2.3",
     "tether": "^1.4.3"
   }
 }

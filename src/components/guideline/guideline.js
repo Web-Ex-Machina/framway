@@ -145,7 +145,7 @@ if($('#guideline').length){
       if(typeof value != 'object'){
         var str = '<span>'+key+' :</span><span>'+value+'</span>';
         if(value.indexOf('#') != -1)
-          str = '<span>'+key+' :</span><span class="bd-'+getKeyByValue(config.colors, value)+'-bottom-5 p-bottom-0">'+value+'</span>';
+          str = '<span>'+key+' :</span><span class="bd-'+utils.getObjKeyByValue(config.colors, value)+'-bottom-5 p-bottom-0">'+value+'</span>';
         rows += require('mustache-loader!html-loader?interpolate!./templates/config_row.html')({str: str});
       }
       else
@@ -176,10 +176,4 @@ $(function () {
   $('#guideline nav a').last().trigger('click');
 });
 
-
-
-// TODO --> MOVE THIS TO THE UTILS JS FILE
-function getKeyByValue(object, value) {
-  return Object.keys(object).find(key => object[key] === value);
-}
 

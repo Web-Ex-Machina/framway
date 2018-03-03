@@ -90,7 +90,11 @@ function Utils(){
         results[strGroup][alias] = value;
     });
     return results;
-  }
+  };
+
+  utils.getObjKeyByValue = function(obj,value){
+    return Object.keys(obj).find(key => obj[key] === value);
+  };
 
   utils.copyToClipboard = function(elem) {
     // create hidden text element, if it doesn't already exist
@@ -161,6 +165,5 @@ $(function () {
     viewport = utils.getDimensions();
   });
 });
-
 
 module.exports = new Utils();

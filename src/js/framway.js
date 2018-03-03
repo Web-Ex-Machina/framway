@@ -55,7 +55,6 @@ Framway.prototype.clearLogs = function(){
 };
 
 $(function () {
-  console.log(app);
   $('body').on('click','pre .copy',function(e){
     var elem = $(this).parent().clone();
     elem.find('.copy').remove();
@@ -63,5 +62,6 @@ $(function () {
   })
 });
 
+require('../js/polyfills.js');
 global.utils = require('../js/utils.js');
 global.app = new Framway();
