@@ -34,19 +34,14 @@ Within the download archive you'll find the following directories and files, log
     ├── build/
     │   ├── css/
     │   │   ├── framway.css
-    │   │   ├── framway.css.map
-    │   │   ├── vendor.css
-    │   │   └── vendor.css.map
+    │   │   └── vendor.css
     │   ├── js/
     │   │   ├── framway.js
-    │   │   ├── framway.js.map
-    │   │   ├── vendor.js
-    │   │   └── vendor.js.map
+    │   │   └── vendor.js
     │   ├── img/
     │   └── index.html
     ├── src/
     │   ├── components/
-    │   ├── css/
     │   ├── img/
     │   ├── js/
     │   ├── scss/
@@ -69,7 +64,7 @@ The following dependencies are by default installed and wrapped in the `index.js
 
 - **Font Awesome**. Same as Bootstrap. Not mandatory, but recommended because it's awesome.
 
-- **Toastr**. Used to display clean and simple notifications.
+- **Toastr**. Used to display clean and simple notifications. (can be disabled in framway's configuration)
 
 - **jQuery**. Framway uses javascript and jQuery to run some of its components, as well as core features.
 

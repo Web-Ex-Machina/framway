@@ -1,5 +1,6 @@
 // require('./_tabs.scss');
 $.fn.Tabs = function Tabs(){
+  app._tabs = app._tabs || [];
   $(this).each(function(){
     var tabs = {
       $el : $(this),
@@ -23,6 +24,8 @@ $.fn.Tabs = function Tabs(){
       tabs.nav.buttons.first().trigger('click');
     else
       tabs.nav.buttons.filter('.active').trigger('click');
+
+    app._tabs.push(tabs);
   });
 };
 $(function () {

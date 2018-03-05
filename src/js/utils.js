@@ -166,34 +166,68 @@ function Utils(){
     if ($(this).is(':checked')) return 1;else return 0;
   };
 
+
   // NOTIFICATIONS SETUP
-  global.notif = require('toastr');
+  global.toastr = require('toastr');
   var toastrDefault = {"newestOnTop": false, "closeButton": true, "timeOut": 0, "extendedTimeOut": 0, "showMethod": "slideDown", "positionClass": "toast-bottom-left", "progressBar": false };
   var toastrTimeOut = {"newestOnTop": false, "closeButton": true, "timeOut": 5000, "extendedTimeOut": 1000, "showMethod": "slideDown", "positionClass": "toast-bottom-left", "progressBar": true };
-  notif.options = toastrDefault;
+  toastr.options = toastrDefault;
 
-  global.notif_fade = {
+  /**
+   * display a common notification
+   * @type {Object}
+   */
+  global.notif = {
     error : function(str){
-      notif.options = toastrTimeOut;
-      notif.error(str);
-      notif.options = toastrDefault;
+      if(app.useNotif)
+        toastr.error(str);
     },
     success : function(str){
-      notif.options = toastrTimeOut;
-      notif.success(str);
-      notif.options = toastrDefault;
+      if(app.useNotif)
+        toastr.success(str);
     },
     warning : function(str){
-      notif.options = toastrTimeOut;
-      notif.warning(str);
-      notif.options = toastrDefault;
+      if(app.useNotif)
+        toastr.warning(str);
     },
     info : function(str){
-      notif.options = toastrTimeOut;
-      notif.info(str);
-      notif.options = toastrDefault;
+      if(app.useNotif)
+        toastr.info(str);
     },
-  }
+  };
+  /**
+   * display a notification that will fade past time
+   */
+  global.notif_fade = {
+    error : function(str){
+      if(app.useNotif){
+        toastr.options = toastrTimeOut;
+        toastr.error(str);
+        toastr.options = toastrDefault;
+      }
+    },
+    success : function(str){
+      if(app.useNotif){
+        toastr.options = toastrTimeOut;
+        toastr.success(str);
+        toastr.options = toastrDefault;
+      }
+    },
+    warning : function(str){
+      if(app.useNotif){
+        toastr.options = toastrTimeOut;
+        toastr.warning(str);
+        toastr.options = toastrDefault;
+      }
+    },
+    info : function(str){
+      if(app.useNotif){
+        toastr.options = toastrTimeOut;
+        toastr.info(str);
+        toastr.options = toastrDefault;
+      }
+    },
+  };
 
   global.viewport = utils.getDimensions();
   return utils;

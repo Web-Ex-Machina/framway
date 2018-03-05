@@ -1,6 +1,7 @@
 function Framway(){
   var framway = this;
   framway.components = [];
+  framway.useNotif = true;
   framway.$debug = $('<div id="debug"></div>').appendTo($('body'));
 
   return framway;
@@ -60,7 +61,7 @@ $(function () {
     elem.find('.copy').remove();
     if(utils.copyToClipboard(elem.get(0)))
       notif_fade.success('Copied to clipboard !');
-  })
+  });
 });
 
 require('../js/polyfills.js');
