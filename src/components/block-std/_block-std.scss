@@ -1,0 +1,6 @@
+.block-std{ @extend
+  .bg-white,
+  .m-bottom,
+  .p-all !optional;
+  &>*:last-child{margin-bottom: 0;}
+}

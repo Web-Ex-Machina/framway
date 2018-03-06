@@ -4,6 +4,7 @@ require('./js/framway.js');
 app.loadComponents([
   'tabs',
   'foldingbox',
+  'block-std',
   'guideline',
 ]);
 

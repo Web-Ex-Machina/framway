@@ -129,19 +129,19 @@
 
 /*---------------------------------------- RESPONSIVE FUNCTIONS -------------------------------------------- */
 @mixin media-max($breakpoint) {
-  @media (max-width: $breakpoint) {
+  @media (max-width: breakpoint($breakpoint)) {
     @content;
   }
 }
 
 @mixin media-min($breakpoint) {
-  @media (min-width: $breakpoint) {
+  @media (min-width: breakpoint($breakpoint)) {
     @content;
   }
 }
 
 @mixin media-mm($breakpointMin,$breakpointMax) {
-  @media (min-width: $breakpointMin) and (max-width: $breakpointMax) {
+  @media (min-width: breakpoint($breakpointMin)) and (max-width: breakpoint($breakpointMax)) {
     @content;
   }
 }
