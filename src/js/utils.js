@@ -1,5 +1,22 @@
 function Utils(){
   var utils = this;
+
+  utils.addHtmlHook = function(selector,callback){
+    utils.htmlHooks = utils.htmlHooks || [];
+    utils.htmlHooks.push(callback);
+    $.each(utils.htmlHooks,function(index,hook){
+
+      var OldHtml = $.fn.html;
+      $.fn.html = function () {
+        var EnhancedHtml = OldHtml.apply(this, arguments);
+        if (arguments.length && EnhancedHtml.find(selector).length) {
+          hook();
+        }
+        return EnhancedHtml;
+      }
+    });
+  }
+
   /**
    * return a object containing the viewport width and height
    * @return {Object}

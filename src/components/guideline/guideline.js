@@ -21,6 +21,15 @@ if($('#guideline').length){
     styling: stylingHtml,
     components: componentsHtml,
   });
+
+  html = $($.parseHTML(html));
+  html.find('.editor textarea').each(function(index,editor){
+    $(editor).bind('keyup change',function(e){
+      var val = $(this).val();
+      $(this).closest('.item').find('.editor-target').html(val);
+    });
+  });
+
   $('#guideline').append(html);
 
   // Building functions
@@ -31,13 +40,16 @@ if($('#guideline').length){
       try{
         components.content += '<div class="item row" id="framway__components-'+component+'">'
                            + '<h2 class="ft-i col-12 sep-bottom">'+component+'</h2>'
-                           + '<div class="col-12 ">'
+                           + '<div class="col-12 editor-target">'
                            + require('html-loader?interpolate!../'+component+'/sample.html')
                            + '</div>'
                            + '<div class="col-12 ">'
-                           + '<pre><code class="language-html"><button class="copy">Copy</button>'
-                           + require('html-loader!../'+component+'/sample.html').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-                           + '</code></pre>'
+                           + '<div class="editor"><button class="copy">Copy</button>'
+                           + '<textarea name="" id="">'+require('html-loader!../'+component+'/sample.html').replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</textarea>'
+                           + '</div>'
+                           // + '<pre><code class="language-html"><button class="copy">Copy</button>'
+                           // + require('html-loader!../'+component+'/sample.html').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+                           // + '</code></pre>'
                            + '</div>'
                            + '</div>'
         components.nav += '<li><a href="#framway__components-'+component+'">'+component+'</a></li>';
@@ -171,7 +183,21 @@ $(function () {
         $('#guideline .content .item#'+tgt.replace('#','')).addClass('active');
       })
     }
+
+    $('.editor textarea').trigger('change');
   });
+
+  $('.editor textarea').bind('keyup change',function(e){
+    this.style.height = "auto";
+    this.style.height = (this.scrollHeight + 10) + "px";
+  });
+
+  $('body').on('click','.editor .copy',function(e){
+    var elem = $(this).parent().find('textarea').get(0);
+    if(utils.copyToClipboard(elem))
+      notif_fade.success('Copied to clipboard !');
+  });
+
   // $('#guideline nav a').first().trigger('click');
   $('#guideline nav a').last().trigger('click');
 });

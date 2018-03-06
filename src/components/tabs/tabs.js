@@ -30,6 +30,11 @@ $.fn.Tabs = function Tabs(){
 };
 $(function () {
   $('.tabs,tabs').Tabs();
+
+  utils.addHtmlHook('.tabs,tabs', function(){
+    app._tabs = [];
+    $('.tabs,tabs').Tabs();
+  });
 });
 
 // module.exports = $.fn.Tabs;

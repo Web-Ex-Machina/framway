@@ -18,7 +18,7 @@ $.fn.Foldingbox = function Foldingbox(){
           var $clone = $(item).children('.foldingbox__item__content').clone().css({
             'transition':'none',
             'opacity':'1',
-            // 'visibility':'hidden'
+            'visibility':'hidden'
           }).appendTo('body');
           if($clone.height() > heightBox)
             heightBox = $clone.height() + (parseInt($(item).css('padding-top'))*2);
@@ -37,4 +37,9 @@ $.fn.Foldingbox = function Foldingbox(){
 
 $(function () {
   $('.foldingbox').Foldingbox();
+
+  utils.addHtmlHook('.foldingbox', function(){
+    app._foldingboxes = [];
+    $('.foldingbox').Foldingbox();
+  });
 });
