@@ -24,9 +24,19 @@ if($('#guideline').length){
 
   html = $($.parseHTML(html));
   html.find('.editor textarea').each(function(index,editor){
-    $(editor).bind('keyup change',function(e){
-      var val = $(this).val();
-      $(this).closest('.item').find('.editor-target').html(val);
+    var editorText = $(editor).val();
+    var timerEdit,timerEditValue;
+    $(editor).bind('keyup change',function(e,forced){
+      timerEditValue = 500;
+      if(forced) timerEditValue = 0;
+      clearTimeout(timerEdit);
+      timerEdit = setTimeout(function(){
+        var val = $(editor).val();
+        if(val != editorText || forced){
+          editorText = val;
+          $(editor).closest('.item').find('.editor-target').html(val);
+        }
+      },timerEditValue);
     });
   });
 
@@ -183,8 +193,7 @@ $(function () {
         $('#guideline .content .item#'+tgt.replace('#','')).addClass('active');
       })
     }
-
-    $('.editor textarea').trigger('change');
+    $('#guideline .content .item'+target).find('.editor textarea').trigger('change',true);
   });
 
   $('.editor textarea').bind('keyup change',function(e){
@@ -201,5 +210,3 @@ $(function () {
   // $('#guideline nav a').first().trigger('click');
   $('#guideline nav a').last().trigger('click');
 });
-
-

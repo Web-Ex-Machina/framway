@@ -1,0 +1,62 @@
+$colorBrick: color(orange);
+$sizePlot : 4em;
+$heightStud: 24;
+$sizeBorder : 3;
+
+.scene{perspective: 2000px;}
+.grid{ transform-style: preserve-3d;  @include flex-container(row,wrap,center,flex-end); @include size(100%, 100%);
+  // transform:rotateX(-25deg) rotateY(-45deg);
+  transform:rotateX(-25.45deg) rotateY(-45deg) translateX(5px) translateY(10px) translateZ(15px);
+  --transform-text: rotateX(-25.45deg) rotateY(-45deg) translateX(5px) translateY(10px) translateZ(15px);
+  &.debug{background: rgba(green,0.3);}
+}
+.brick{ @include flex-container(row,wrap); transform-style: preserve-3d; @include size($sizePlot,$sizePlot * 1.4); position: absolute;
+  & *{outline: 1px solid transparent; background-color: $colorBrick;}
+  &.debug *{background-color: rgba($colorBrick,0.5);}
+  & .side{color: contrast(color(white), $colorBrick); }
+}
+
+@each $key, $value in $colors{
+  .brick[color="#{$key}"]{
+    & *{background-color: $value;}
+    &.debug *{background-color: rgba($value,0.5);}
+    & .side{color: contrast(color(white), $value); }
+  }
+}
+
+.brick .side{ position: absolute; width: 100%; height: 100%; padding: 0 !important; @extend .bd-white-#{$sizeBorder} !optional; @include flex-container(row,wrap,center,center); transform-style: preserve-3d; backface-visibility: hidden; text-align: center;
+  &.top{ transform: translateY(-50%) rotateX(90deg); height: 100%; @include flex-container(row,wrap,center,center);  transform-style: preserve-3d;  } // top
+  &.right{ transform: translateX(-50%) rotateY(90deg); left: 100%; } // right
+  &.left{ transform: translateX(-50%) rotateY(-90deg); } // left
+  &.front{ transform: rotateY(-90deg) translateX(-100%); top: #{$sizeBorder * -1}px; left: #{$sizeBorder * -1}px;  transform-origin: top left; } // front
+  &.back{ transform: rotateY(90deg) translateX(100%); top: #{$sizeBorder * -1}px; right: #{$sizeBorder * -1}px; transform-origin: top right; } // back
+}
+
+.stud{position: relative; transform-style: preserve-3d; width: $sizePlot; height: $sizePlot; }
+.strip{@include size(60%); border-radius: 100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto;
+  @for $i from 1 to $heightStud+1 {
+    &:nth-child(#{$i}) {
+      transform: translateZ(#{$i}px);
+      @if $i < $sizeBorder or $i > ($heightStud - $sizeBorder){
+        border: #{$sizeBorder}px solid white;
+      }
+    }
+  }
+}
+
+// $sizeStud : $sizePlot / 1.8;
+// $stripWidth: $sizeStud * sin(7.5deg) * 1.2;
+// .stud{position: relative; transform-style: preserve-3d; width: $sizePlot; height: $sizePlot;
+//   &:before{content: ""; @include size($sizeStud + 0.08em); border-radius: 100%;  border: #{$sizeBorder}px solid white; position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto; background-color: inherit;
+//     transform: translateZ($sizeStud/2.2);
+//   }
+// }
+// .strip{position: absolute;  @include size($stripWidth,$sizeStud/2.2 + 0.08em); top: 0; bottom: 0; left: 0; right: 0; margin: auto; border-top: #{$sizeBorder}px solid white; border-bottom: #{$sizeBorder}px solid white;
+//   $elements: 24;
+//   @for $i from 1 to $elements+1 {
+//     &:nth-child(#{$i}) {
+//       transform: rotateX(90deg) rotateY(#{$i*15}deg) translateZ($sizeStud/2) translateY(50%);
+//     }
+//   }
+// }
+

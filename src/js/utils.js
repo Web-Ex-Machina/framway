@@ -1,21 +1,75 @@
 function Utils(){
   var utils = this;
 
+  /**
+   * Add a function callback to most of the jQuery dom modification functions, based on a selector.@async
+   * When an element mathcing the selector is added to the dom, it fires the related callback
+   * @param {String}   selector
+   * @param {Function} callback [if the callback has a parameter called "item", the added element will be passed as param to the callback]
+   */
   utils.addHtmlHook = function(selector,callback){
-    utils.htmlHooks = utils.htmlHooks || [];
-    utils.htmlHooks.push(callback);
-    $.each(utils.htmlHooks,function(index,hook){
 
-      var OldHtml = $.fn.html;
-      $.fn.html = function () {
-        var EnhancedHtml = OldHtml.apply(this, arguments);
-        if (arguments.length && EnhancedHtml.find(selector).length) {
-          hook();
-        }
-        return EnhancedHtml;
+    // update html()
+    var OldHtml = $.fn.html;
+    $.fn.html = function () {
+      var EnhancedHtml = OldHtml.apply(this, arguments);
+      if (typeof EnhancedHtml != "string" && arguments.length && EnhancedHtml.find(selector).length) {
+        if(utils.getParameters(callback).indexOf('item') != -1)
+          callback(EnhancedHtml.find(selector));
+        else
+          callback();
       }
-    });
+      return EnhancedHtml;
+    }
   }
+
+  /**
+   * Build a string for css transforms, combining the existent properties of an element and the new string provided
+   * @param  {jQuery} el  [can be a jQuery object or a Dom element]
+   * @param  {String} str [expect a valid css transform string]
+   * @return {String}
+   */
+  utils.mergeTransforms = function(el,str){
+    try{el = el.get(0);} catch(e){}
+
+    var baseTransform = String(el.style.transform).split(' ');
+    var targetTransform = str.split(' ');
+    var objTransform = {};
+    $.each(baseTransform,function(index,value){
+        var key = value.replace(/\((.+?)\)/,'');
+        objTransform[key] = value.replace(key,'');
+    });
+    $.each(targetTransform,function(index,value){
+        var key = value.replace(/\((.+?)\)/,'');
+        objTransform[key] = value.replace(key,'');
+    });
+    var strResult = '';
+    $.each(objTransform,function(key,value){
+        strResult += key+value+' ';
+    })
+    if($(el).hasClass('grid')){
+      console.log(el);
+      console.log('base : '+baseTransform);
+      console.log('target : '+targetTransform);
+      console.log('result : '+strResult);
+    }
+    return strResult;
+  }
+
+  /**
+   * return an array of a function's parameters. Works only if the parameters don't have defaults values
+   * @param  {Function} fn
+   * @return {Array}
+   */
+  utils.getParameters = function(fn){
+    var fnStr = fn.toString().replace(STRIP_COMMENTS, '');
+    var result = fnStr.slice(fnStr.indexOf('(')+1, fnStr.indexOf(')')).match(ARGUMENT_NAMES);
+    if(result === null)
+       result = [];
+    return result;
+  };
+  var STRIP_COMMENTS = /(\/\/.*$)|(\/\*[\s\S]*?\*\/)|(\s*=[^,\)]*(('(?:\\'|[^'\r\n])*')|("(?:\\"|[^"\r\n])*"))|(\s*=[^,\)]*))/mg;
+  var ARGUMENT_NAMES = /([^\s,]+)/g;
 
   /**
    * return a object containing the viewport width and height

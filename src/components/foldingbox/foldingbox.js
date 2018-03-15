@@ -20,8 +20,8 @@ $.fn.Foldingbox = function Foldingbox(){
             'opacity':'1',
             'visibility':'hidden'
           }).appendTo('body');
-          if($clone.height() > heightBox)
-            heightBox = $clone.height() + (parseInt($(item).css('padding-top'))*2);
+          if($clone.outerHeight() > heightBox)
+            heightBox = $clone.outerHeight() + (parseInt($(item).css('padding-top'))*2);
           $clone.remove();
         });
       }
@@ -37,9 +37,8 @@ $.fn.Foldingbox = function Foldingbox(){
 
 $(function () {
   $('.foldingbox').Foldingbox();
-
-  utils.addHtmlHook('.foldingbox', function(){
-    app._foldingboxes = [];
-    $('.foldingbox').Foldingbox();
+  utils.addHtmlHook('.foldingbox', function(item){
+    console.log("foldingbox added to dom");
+    item.Foldingbox();
   });
 });
