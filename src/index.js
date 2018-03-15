@@ -5,8 +5,8 @@ app.loadComponents([
   'tabs',
   'foldingbox',
   'block-std',
-  'brick',
   'FWslider',
+  'brick',
   'guideline',
 ]);
 

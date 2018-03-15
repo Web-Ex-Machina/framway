@@ -51,57 +51,6 @@ $.fn.Brick = function Brick(){
     if($(this).parent('.grid').parent('.scene').length){
       // add a bit of spacing to scene, to avoid clipping with other elements
       $(this).parent('.grid').parent('.scene').css('padding',$(this).outerHeight() + 'px 0');
-
-      // var matrix = $(this).parent('.grid').css('transform');
-      // var arrMatrix = $(this).parent('.grid').css('transform').replace(/^\w*\(/, '').replace(')', '').split(/\s*,\s*/);
-      // console.log(arrMatrix);
-      // if(arrMatrix.length == 16){
-      //   var matrix = [];
-      //   arrMatrix.map(function(item, i){
-      //     if(i==0 || i == 4 || i == 8 || i == 12){
-      //       var arr = [arrMatrix[i],arrMatrix[i+1],arrMatrix[i+2],arrMatrix[i+3]];
-      //       matrix.push(arr);
-      //     }
-      //   });
-      //   console.log(matrix);
-      // }
-      // $(this).parent('.grid').css('transform',utils.mergeTransforms($(this).parent('.grid'),'rotateX('+$(this).parent('.grid').parent('.scene').height() * -0.025 +'deg)'));
-
-      // $(this).parent('.grid').css('transform',$(this).parent('.grid').css('transform') );
-      // console.log($(this).parent('.grid').css('--transform-text'));
-      var _getTransform = function($element) {
-          var matrix = $element.css('transform'),
-              translateX = 0,
-              translateY = 0,
-              rotateX = 0,
-              rotateY = 0,
-              rotateZ = 0;
-
-          if (matrix !== 'none') {
-              // do some magic
-              var values = matrix.split('(')[1].split(')')[0].split(','),
-                  pi = Math.PI,
-                  sinB = parseFloat(values[8]),
-                  rotateY = Math.asin(sinB) * 180 / pi || 0,
-                  cosB = Math.cos(rotateY * pi / 180),
-                  matrixVal10 = parseFloat(values[9]),
-                  rotateX = Math.asin(-matrixVal10 / cosB) * 180 / pi || 0,
-                  matrixVal1 = parseFloat(values[0]),
-                  rotateZ = Math.acos(matrixVal1 / cosB) * 180 / pi || 0
-                  translateX = matrix[12] || matrix[4],
-                  translateY = matrix[13] || matrix[5];
-              // console.log(values);
-          }
-
-          return {
-              rotateX: +rotateX.toFixed(2),
-              rotateY: +rotateY.toFixed(2),
-              rotateZ: +rotateZ.toFixed(2),
-              translateX: +translateX,
-              translateY: +translateY,
-          };
-      }
-      // console.log(_getTransform($(this).parent('.grid')));
     }
   }
 };

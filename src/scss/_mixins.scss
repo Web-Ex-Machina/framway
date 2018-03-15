@@ -125,6 +125,32 @@
   }
 }
 
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+    content: $content;
+    display: $display;
+    position: $pos;
+}
+
+@mixin responsive-ratio($x,$y, $pseudo: false) {
+    $padding: unquote( ( $y / $x ) * 100 + '%' );
+    @if $pseudo {
+        &:before {
+            @include pseudo($pos: relative);
+            width: 100%;
+            padding-top: $padding;
+        }
+    } @else {
+        padding-top: $padding;
+    }
+}
+
+@mixin input-placeholder {
+    &.placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; }
+}
 
 
 /*---------------------------------------- RESPONSIVE FUNCTIONS -------------------------------------------- */
@@ -344,6 +370,9 @@
         -ms-transform: $transform;
          -o-transform: $transform;
             transform: $transform;
+    @if(str-index(#{&},':before') == null and str-index(#{&},':after') == null){
+      content: quote($transform);
+    }
 }
 
 

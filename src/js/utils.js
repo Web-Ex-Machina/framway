@@ -31,8 +31,8 @@ function Utils(){
    */
   utils.mergeTransforms = function(el,str){
     try{el = el.get(0);} catch(e){}
-
-    var baseTransform = String(el.style.transform).split(' ');
+    var strTransform = el.style.transform || $(el).css('content').replace(/"/g,'');
+    var baseTransform = String(strTransform).split(' ');
     var targetTransform = str.split(' ');
     var objTransform = {};
     $.each(baseTransform,function(index,value){
