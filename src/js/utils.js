@@ -23,6 +23,15 @@ function Utils(){
     }
   }
 
+  // apply prefixed event handlers
+  utils.prefixedEvent = function(element, type, callback) {
+    var pfx = ["webkit", "moz", "MS", "o", ""];
+    for (var p = 0; p < pfx.length; p++) {
+      if (!pfx[p]) type = type.toLowerCase();
+      element.addEventListener(pfx[p]+type, callback, false);
+    }
+  }
+
   /**
    * Build a string for css transforms, combining the existent properties of an element and the new string provided
    * @param  {jQuery} el  [can be a jQuery object or a Dom element]
@@ -35,10 +44,12 @@ function Utils(){
     var baseTransform = String(strTransform).split(' ');
     var targetTransform = str.split(' ');
     var objTransform = {};
-    $.each(baseTransform,function(index,value){
-        var key = value.replace(/\((.+?)\)/,'');
-        objTransform[key] = value.replace(key,'');
-    });
+    if(baseTransform[0] != "none"){
+      $.each(baseTransform,function(index,value){
+          var key = value.replace(/\((.+?)\)/,'');
+          objTransform[key] = value.replace(key,'');
+      });
+    }
     $.each(targetTransform,function(index,value){
         var key = value.replace(/\((.+?)\)/,'');
         objTransform[key] = value.replace(key,'');
@@ -310,5 +321,7 @@ $(function () {
     viewport = utils.getDimensions();
   });
 });
+
+
 
 module.exports = new Utils();

@@ -1,0 +1,30 @@
+set name=componentName
+
+rem creating the component structure ---------------------------------------------------------
+cd src/components
+mkdir "%name%"
+cd "%name%"
+type NUL > "_%name%.scss"
+type NUL > "%name%.js"
+type NUL > sample.html
+
+rem writing the call in main scss file ---------------------------------------------------------
+cd ../../scss
+@echo off
+setlocal enabledelayedexpansion
+set num = 0
+
+for /f "tokens=*" %%a in (framway.scss) do (
+if !num! lss 3 echo %%a >>output.txt
+if !num! equ 3 (
+  echo @import '../components/%name%/%name%';
+  echo %%a
+) >>output.txt
+if !num! gtr 3 echo %%a >>output.txt
+set /a num+=1
+)
+
+type output.txt > framway.scss
+del output.txt
+
+exit

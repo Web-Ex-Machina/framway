@@ -6,32 +6,66 @@ $sizeBorder : 3;
 .scene{perspective: 2000px;}
 .grid{ transform-style: preserve-3d;  @include flex-container(row,wrap,center,flex-end); @include size(100%, 100%);
   @include transform(rotateX(-25deg) rotateY(-45deg));
+  & *:not(.strip){will-change: transform;}
   &.debug{background: rgba(green,0.3);}
+  &.animate>.wrapper{animation: spin 1s ease 1;}
 }
-.brick{ @include flex-container(row,wrap); transform-style: preserve-3d; @include size($sizePlot,$sizePlot * 1.4); position: absolute;
+.grid>.wrapper{transform-style: preserve-3d;@include size(100%, 100%); @include flex-container(row,wrap,center,flex-end);}
+
+.brick{ @include flex-container(row,wrap); transform-style: preserve-3d; @include size($sizePlot,$sizePlot * 1.4); position: absolute; transition: opacity 0.4s; opacity: 1;
   & *{outline: 1px solid transparent; background-color: $colorBrick;}
+  .debug & *,
   &.debug *{background-color: rgba($colorBrick,0.5);}
   & .side{color: contrast(color(white), $colorBrick); }
+  // &[text-mode="vertical"] .side{ text-orientation: upright; writing-mode: vertical-lr; font-size: 0.6em;} // BUG IE EDGE
+  &.animate .wrapper{animation: spin 1s ease 1;}
 }
+.brick .wrapper{ @include flex-container(row,wrap); transform-style: preserve-3d; @include size(100%); position: absolute; }
 
 @each $key, $value in $colors{
   .brick[color="#{$key}"]{
     & *{background-color: $value;}
+    .debug & *,
     &.debug *{background-color: rgba($value,0.5);}
     & .side{color: contrast(color(white), $value); }
   }
 }
 
-.brick .side{ position: absolute; width: 100%; height: 100%; padding: 0 !important; @extend .bd-white-#{$sizeBorder} !optional; @include flex-container(row,wrap,center,center); transform-style: preserve-3d; backface-visibility: hidden; text-align: center;
+.side{ position: absolute; width: 100%; height: 100%; padding: 0 !important; @extend .bd-white-#{$sizeBorder} !optional; @include flex-container(row,wrap,center,center); transform-style: preserve-3d; backface-visibility: hidden; text-align: center;
   &.top{ @include transform( translateY(-50%) rotateX(90deg)); height: 100%; @include flex-container(row,wrap,center,center);  transform-style: preserve-3d;  } // top
   &.right{ @include transform( translateX(-50%) rotateY(90deg)); left: 100%; } // right
-  &.left{ @include transform( translateX(-50%) rotateY(-90deg)); } // left
   &.front{ @include transform( rotateY(-90deg) translateX(-100%)); top: #{$sizeBorder * -1}px; left: #{$sizeBorder * -1}px;  transform-origin: top left; } // front
+  &.left{ @include transform( translateX(-50%) rotateY(-90deg)); } // left
   &.back{ @include transform( rotateY(90deg) translateX(100%)); top: #{$sizeBorder * -1}px; right: #{$sizeBorder * -1}px; transform-origin: top right; } // back
+  .cover &.top,
+  &.left, &.back{opacity: 0;}
+  .debug &,
+  .animate &{opacity: 1 !important;}
 }
 
-.stud{position: relative; transform-style: preserve-3d; width: $sizePlot; height: $sizePlot; }
+.stud{position: relative; transform-style: preserve-3d; width: $sizePlot; height: $sizePlot;
+  // TENTATIVE 1 : illusion 2D -fail
+  // outline: 1px solid red;
+  // &:before, &:after{content:""; background-color: inherit; @include size(60%); position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto; z-index: 1; }
+  // &:before{border-radius: 100%; border: #{$sizeBorder}px solid white; margin-top: -#{$heightStud}px; margin-left: -#{$heightStud}px; border-bottom-width: #{$sizeBorder*2}px; border-right-width: #{$sizeBorder*2}px;}
+  // &:after{border-radius: 0% 60% 60% 0%; height: 60%; width: calc(60% + #{$heightStud}px); transform: translateX(-#{$heightStud / 2}px) translateY(-#{$heightStud / 2}px) rotate(45deg); z-index: -1; border-right: #{$sizeBorder*2}px solid white; z-index: 0;}
+  // .debug &,.animate &{
+  //   &:before, &:after{display: none;}
+  // }
+  // TENTATIVE 2 : illusion 3D -fail
+  // &:before{content:""; background-color: inherit; @include size(60%, 60%); position: absolute; top: 50%; left: 50%; margin: auto; z-index: 1; border-left: 3px solid white; }
+  // &:before{transform: translate(-50%,-50%) rotateY(-90deg) rotateX(45deg);}
+  // .debug &,.animate &{
+  //   &:before{display: none;}
+  // }
+}
 .strip{@include size(60%); border-radius: 100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto;
+  // TENTATIVE 2 : illusion 3D -fail
+  // visibility: hidden;
+  // &:nth-last-child(-n+#{$sizeBorder}){visibility: visible;}
+  // &:nth-child(-n+#{$sizeBorder}){visibility: visible;}
+  // .debug &,
+  // .animate &{visibility: visible;}
   @for $i from 1 to $heightStud+1 {
     &:nth-child(#{$i}) {
       @include transform( translateZ(#{$i}px));
@@ -42,6 +76,7 @@ $sizeBorder : 3;
   }
 }
 
+// TENTATIVE CYLINDRE 3D - trop gourmang
 // $sizeStud : $sizePlot / 1.8;
 // $stripWidth: $sizeStud * sin(7.5deg) * 1.2;
 // .stud{position: relative; transform-style: preserve-3d; width: $sizePlot; height: $sizePlot;
@@ -58,3 +93,8 @@ $sizeBorder : 3;
 //   }
 // }
 
+
+@keyframes spin {
+    from {transform:rotateY(0deg);}
+    to {transform:rotateY(360deg);}
+}

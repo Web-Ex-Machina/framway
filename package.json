@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "webpack --progress --colors --watch",
-    "serve": "webpack-dev-server --open"
+    "watch": "webpack --progress --colors --watch"
   },
   "author": "Web ex Machina",
   "license": "ISC",

@@ -1,11 +1,5 @@
-/* Core variables and mixins */
-// @import 'mixins';
-// @import 'vars';
-// @import 'config';
-
 /* Core css */
 @import 'core';
-
 /* Components */
 @import '../components/tabs/tabs';
 @import '../components/foldingbox/foldingbox';
@@ -13,6 +7,5 @@
 @import '../components/brick/brick';
 @import '../components/guideline/guideline';
 @import '../components/FWslider/FWslider';
-
 /* Themes */
 @import './themes/user';

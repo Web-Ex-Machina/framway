@@ -37,22 +37,67 @@ $.fn.Brick = function Brick(){
     $brick.find('.stud').css({'width': (100 / dim.rows) + '%', 'height': (100 / dim.cols) + '%', });
 
     // brick placement
-    $brick.css('transform', utils.mergeTransforms(this,'translateZ('+ unitWidth*pos.y+'px) translateY('+unitHeight*pos.z*-1+'px) translateX('+unitWidth*pos.x+'px)'));
+    if(dim.cols % 2 == 1)
+      pos.y = +pos.y + 0.5;
+    if(dim.rows % 2 == 1)
+      pos.x = +pos.x + 0.5;
+
+    var tZ = unitWidth*pos.y;
+    var tY = unitHeight*pos.z*-1;
+    var tX = unitWidth*pos.x;
+
+    $brick.css('transform', utils.mergeTransforms(this,'translateZ('+ tZ +'px) translateY('+tY+'px) translateX('+tX+'px)'));
+
+    // brick events listeners
+    this.addEventListener("animationstart",brickAnimListener,false);
+    this.addEventListener("animationiteration", brickAnimListener, false);
+    this.addEventListener("animationend", brickAnimListener, false);
+
+    utils.prefixedEvent(this, "animationstart", brickAnimListener);
+    utils.prefixedEvent(this, "animationiteration", brickAnimListener);
+    utils.prefixedEvent(this, "animationend", brickAnimListener);
+
+    $(this).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', brickAnimListener);
   });
 
   // grid dimensionning
-  if($(this).parent('.grid').length){
+  if($(this).closest('.grid').length){
+    $(this).closest('.grid').wrapInner('<div class="wrapper"></div>'); // wrap the grid content so we can animate it separatly
+
     var arrZ = $(this).map(function(){
       return $(this).attr('z');
     }).toArray();
     var nbLayers = Math.max.apply(null,arrZ) + 1; // count one more for layer "0"
-    $(this).parent('.grid').height(nbLayers * $(this).outerHeight());
+    $(this).closest('.grid').height(nbLayers * $(this).outerHeight());
 
-    if($(this).parent('.grid').parent('.scene').length){
-      // add a bit of spacing to scene, to avoid clipping with other elements
-      $(this).parent('.grid').parent('.scene').css('padding',$(this).outerHeight() + 'px 0');
-    }
+    // grid events listeners
+    $(this).closest('.grid').each(function(index,grid){
+      grid.addEventListener("animationstart",gridAnimListener,false);
+      grid.addEventListener("animationiteration", gridAnimListener, false);
+      grid.addEventListener("animationend", gridAnimListener, false);
+
+      utils.prefixedEvent(grid, "animationstart", gridAnimListener);
+      utils.prefixedEvent(grid, "animationiteration", gridAnimListener);
+      utils.prefixedEvent(grid, "animationend", gridAnimListener);
+
+      $(grid).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', gridAnimListener);
+    });
   }
+
+  // scene dimensionning
+  if($(this).closest('.scene').length){// add a bit of spacing to scene, to avoid clipping with other elements
+    $(this).closest('.scene').css('padding',$(this).outerHeight() + 'px 0');
+  }
+
+  // events
+  $(this).on('click',function(){
+    $(this).toggleClass('animate');
+  });
+
+  $(this).closest('.grid').on('click',function(){
+    // $(this).addClass('animate');
+  });
+  return this;
 };
 
 $(function () {
@@ -62,3 +107,18 @@ $(function () {
     item.Brick();
   });
 });
+
+
+function brickAnimListener(e){
+  if(e.type == "animationend"){
+    console.log('Brick animation end');
+    $(this).removeClass('animate');
+  }
+}
+
+function gridAnimListener(e){
+  if(e.type == "animationend"){
+    console.log('Grid animation end');
+    $(this).removeClass('animate');
+  }
+}
