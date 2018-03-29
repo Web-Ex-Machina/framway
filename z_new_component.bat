@@ -1,4 +1,4 @@
-set name=goto
+set name=sliderFW
 
 rem creating the component structure ---------------------------------------------------------
 cd src/components

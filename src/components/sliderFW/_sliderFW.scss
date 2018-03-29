@@ -1,0 +1,17 @@
+.sliderFW{margin-bottom: $spacing;}
+.sliderFW__container{position: relative; overflow: hidden;  width: 100%; height: 400px;}
+.sliderFW__rail{position: absolute; left:0; min-width: 100%; @include flex-container(); @include transition(all 0.8s);}
+.sliderFW__item{@include size(100%); position: relative; @include flex-shrink(0); }
+.sliderFW__item__bg{ @include size(100%); position: absolute; top: 0; left: 0; z-index: -1;
+  &>img{@include object-fit(cover); @include size(100%);}
+}
+.sliderFW__item__content{padding: $spacing;}
+
+.sliderFW__nav{@include flex-container(row,wrap,center); position: absolute; bottom: 0; width: 100%;
+  background-color: black;
+}
+.sliderFW__nav__item{display: inline-block; @include size(45px); position: relative; cursor: pointer;
+  &:before{content:"";position: absolute; top: 50%; left: 50%; @include transform(translate(-50%,-50%)); @include size(0.8rem); border-radius: 100%; background-color: color(greylight); @include transition(background-color 0.2s);}
+  &:hover:before,
+  &.active:before{background-color: color(greystrong); @include box-shadow(unquote('inset 0 2px 0 -1px rgba(255,255,255,0.5), inset 0 -2px 0 -1px rgba(0,0,0,0.3), 0 0 0 1px '+color(greystrong)))}
+}

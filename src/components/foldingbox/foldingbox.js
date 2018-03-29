@@ -10,7 +10,7 @@ var Foldingbox = function Foldingbox(item){
   var foldingbox = this;
   foldingbox.$el = $(item);
   foldingbox.break =$(item).data('break');
-  foldingbox.title ={$el : $(this).children('.foldingbox__title'), text: $(item).children('.foldingbox__title').html()};
+  foldingbox.title ={$el : $(item).children('.foldingbox__title'), text: $(item).children('.foldingbox__title').html()};
   foldingbox.content = {$el : $(item).find('.foldingbox__container'),};
   foldingbox.content.items = foldingbox.content.$el.children('.foldingbox__item');
 
@@ -56,7 +56,6 @@ Foldingbox.prototype.resize = function() {
   timerResize = setTimeout(function(){
     foldingbox.setHeight();
     if(typeof foldingbox.break == "number"){
-      console.log(foldingbox.$el.width() , foldingbox.break);
       if(foldingbox.$el.width() <= foldingbox.break)
         foldingbox.$el.addClass('break');
       else

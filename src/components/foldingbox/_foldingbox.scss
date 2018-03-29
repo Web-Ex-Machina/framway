@@ -44,7 +44,7 @@
 .foldingbox__title{position: absolute; top: 50%; left: 50%; @include translate(-50%, -50%); @include transition(all 0.6s); pointer-events:none; text-align: center; background: rgba(color(white),0.8); padding: 0.4em 1.4em 0.6em; z-index: 1;}
 .foldingbox__title>*{margin: 0; padding: 0;}
 .foldingbox__container{@include flex-container(row,wrap); position: relative; height: 100%; overflow: hidden;}
-.foldingbox__item{@include flex-grow(); overflow: hidden; width: 0; position: relative; @include transition(all 1s); @include box-shadow(5px 0px 5px rgba(#000, 0.1)); padding: $spacing;
+.foldingbox__item{@include flex-grow(); overflow: hidden; width: 0; position: relative; @include transition(all 1s); @include box-shadow(5px 0px 5px rgba(#000, 0.1)); padding: $spacing; transform: translate3d(0,0,0); transform-style: preserve-3d;
   &:hover{width: 70%;}
   &:hover .foldingbox__item__content{opacity: 1;}
   &:hover .foldingbox__item__bg:after{background: rgba(color(white),0.6);}
