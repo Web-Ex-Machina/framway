@@ -41,6 +41,7 @@ $.fn.FWslider = function FWslider(){
     $(window).resize(setHeight);
     setHeight();
 
+
     // console.log(slider);
     app._FWsliders.push(slider);
   });

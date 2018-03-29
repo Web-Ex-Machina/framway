@@ -10,6 +10,9 @@ import fasolid from '@fortawesome/fontawesome-free-solid';
 import faregular from '@fortawesome/fontawesome-free-regular';
 import fabrands from '@fortawesome/fontawesome-free-brands';
 
+// PROMISES
+import "native-promise-only";
+
 // OBJECTFITIMAGES
 import objectFitImages from 'object-fit-images';
 objectFitImages();

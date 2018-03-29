@@ -35,6 +35,11 @@
     & .foldingbox__title{@include media-max(xxs){position: relative; @include transform(none); left: auto; top: auto; margin-bottom: .5rem;}}
     & .foldingbox__item{@include media-max(xxs){width: 100%;}}
   }
+  &.break{
+    &:hover .foldingbox__title{opacity:1;}
+    & .foldingbox__title{position: relative; @include transform(none); left: auto; top: auto; margin-bottom: .5rem;}
+    & .foldingbox__item{width: 100%;}
+  }
 }
 .foldingbox__title{position: absolute; top: 50%; left: 50%; @include translate(-50%, -50%); @include transition(all 0.6s); pointer-events:none; text-align: center; background: rgba(color(white),0.8); padding: 0.4em 1.4em 0.6em; z-index: 1;}
 .foldingbox__title>*{margin: 0; padding: 0;}

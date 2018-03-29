@@ -1,44 +1,79 @@
-$.fn.Foldingbox = function Foldingbox(){
-  app._foldingboxes = app._foldingboxes || [];
+$.fn.foldingbox = function foldingbox(){
+  app._foldingbox = app._foldingbox || [];
   $(this).each(function(){
-    var foldingbox = {
-      $el : $(this),
-      title: {$el : $(this).children('.foldingbox__title'), text: $(this).children('.foldingbox__title').html()},
-      content : {$el : $(this).find('.foldingbox__container'),},
-    };
-    foldingbox.content.items = foldingbox.content.$el.children('.foldingbox__item');
-
-    var setHeight = function(){
-      var heightBox = 0;
-      if(foldingbox.$el.attr('data-height') && foldingbox.$el.attr('data-height') != ""){
-        heightBox = foldingbox.$el.attr('data-height');
-      }
-      else{
-        foldingbox.content.items.each(function(index,item){
-          var $clone = $(item).children('.foldingbox__item__content').clone().css({
-            'transition':'none',
-            'opacity':'1',
-            'visibility':'hidden'
-          }).appendTo('body');
-          if($clone.outerHeight() > heightBox)
-            heightBox = $clone.outerHeight() + (parseInt($(item).css('padding-top'))*2);
-          $clone.remove();
-        });
-      }
-      foldingbox.content.items.height(heightBox);
-    };
-
-    $(window).resize(setHeight);
-    setHeight();
-
-    app._foldingboxes.push(foldingbox);
+    app._foldingbox.push(new Foldingbox(this));
   });
+  $(window).trigger('resize');
+};
+
+var Foldingbox = function Foldingbox(item){
+  var foldingbox = this;
+  foldingbox.$el = $(item);
+  foldingbox.break =$(item).data('break');
+  foldingbox.title ={$el : $(this).children('.foldingbox__title'), text: $(item).children('.foldingbox__title').html()};
+  foldingbox.content = {$el : $(item).find('.foldingbox__container'),};
+  foldingbox.content.items = foldingbox.content.$el.children('.foldingbox__item');
+
+  foldingbox.setHeight();
+
+  foldingbox.$el.on('destroyed',function(){
+    app._foldingbox.splice(app._foldingbox.indexOf(foldingbox),1);
+    foldingbox = undefined;
+  });
+
+  return foldingbox;
+}
+
+Foldingbox.prototype.setHeight = function() {
+  var heightBox = 0;
+  if(this.$el.data('height') && this.$el.data('height') != ""){
+    heightBox = this.$el.data('height');
+  }
+  else{
+    this.content.items.each(function(index,item){
+      var $clone = $(item).children('.foldingbox__item__content').clone().css({
+        'transition':'none',
+        'opacity':'1',
+        'visibility':'hidden'
+      }).appendTo('body');
+      if($clone.outerHeight() > heightBox)
+        heightBox = $clone.outerHeight() + (parseInt($(item).css('padding-top'))*2);
+      $clone.remove();
+    });
+  }
+  this.content.items.height(heightBox);
+  return this;
+};
+
+Foldingbox.prototype.destroy = function() {
+  this.$el.remove();
+};
+
+var timerResize;
+Foldingbox.prototype.resize = function() {
+  var foldingbox = this;
+  clearTimeout(timerResize);
+  timerResize = setTimeout(function(){
+    foldingbox.setHeight();
+    if(typeof foldingbox.break == "number"){
+      console.log(foldingbox.$el.width() , foldingbox.break);
+      if(foldingbox.$el.width() <= foldingbox.break)
+        foldingbox.$el.addClass('break');
+      else
+        foldingbox.$el.removeClass('break');
+    }
+  },300);
 };
 
 $(function () {
-  $('.foldingbox').Foldingbox();
+  $('.foldingbox').foldingbox();
   utils.addHtmlHook('.foldingbox', function(item){
-    console.log("foldingbox added to dom");
-    item.Foldingbox();
+    item.foldingbox();
+  });
+
+  $(window).resize(function(){
+    $.each(app._foldingbox, function(){
+      this.resize();
+    });
   });
 });

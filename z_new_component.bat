@@ -1,4 +1,4 @@
-set name=componentName
+set name=goto
 
 rem creating the component structure ---------------------------------------------------------
 cd src/components

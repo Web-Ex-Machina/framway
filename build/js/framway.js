@@ -10449,17 +10449,22 @@ webpackContext.id = 6;
 "use strict";
 
 
+__webpack_require__(96); // importing hammer.js
+__webpack_require__(97); // importing jquery-mousewheel
+
 __webpack_require__(18);
 __webpack_require__(19);
 
-app.loadComponents(['tabs', 'foldingbox', 'block-std', 'FWslider', 'brick', 'guideline']);
+app.loadComponents(['tabs', 'block-std', 'goto', 'FWslider', 'foldingbox',
+// 'brick',
+'guideline']);
 
 /***/ }),
 /* 18 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"radius":"2px","spacing":"30px","border-size":"2px","colors":"(\"blue\": #004C79, \"green\": #5cb85c, \"orange\": #DC6053, \"darkblue\": #0a1d29, \"gold\": #edbe5f, \"black\": #000000, \"blacklight\": #111414, \"blacklighter\": #222222, \"greystronger\": #424041, \"greystrong\": #535052, \"grey\": #7A7778, \"greylight\": #DDDDDD, \"greylighter\": #EEEEEE, \"white\": #ffffff, \"none\": transparent)","breakpoints":"(\"xl\": 1400px, \"lg\": 1200px, \"md\": 992px, \"sm\": 768px, \"xs\": 620px, \"xxs\": 520px)","body":"(\"background\": #ffffff, \"font-color\": #424041, \"font-size\": 20px, \"title-font-color\": #111414)","header":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","footer":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","input":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #424041, \"border-size\": 2px, \"placeholder-font-color\": #7A7778, \"radius\": true)","input-focus":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #424041)","input-valid":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #5cb85c)","input-invalid":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #DC6053)","link":"(\"font-color\": #DC6053, \"font-color-hover\": #DC6053, \"font-color-focus\": #DC6053)","btn":"btn","enable-bg":"true","enable-bg-extended":"false","enable-bd":"true","disabled":"disabled","copy":"copy","no-events":"no-events","no-overflow":"no-overflow","hidden":"hidden","invisible":"invisible","ellipsis":"ellipsis","center":"center","center-block":"center-block","fl-left":"fl-left","float-left":"float-left","fl-right":"fl-right","float-right":"float-right","clear":"clear","clear-left":"clear-left","clear-right":"clear-right","clear-after":"clear-after","clear-before":"clear-before","clear-no":"clear-no","text-right":"text-right","txt-right":"txt-right","text-left":"text-left","txt-left":"txt-left","text-center":"text-center","txt-center":"txt-center","ft-light":"ft-light","ft-normal":"ft-normal","ft-bold":"ft-bold","ft-bolder":"ft-bolder","ft-i":"ft-i","ft-b":"ft-b","ft-u":"ft-u","ft-u-no":"ft-u-no","ft-upper":"ft-upper","ft-lower":"ft-lower","ft-0-em":"ft-0-em","ft-0-rem":"ft-0-rem","ft-0-1-em":"ft-0-1-em","ft-0-1-rem":"ft-0-1-rem","ft-0-2-em":"ft-0-2-em","ft-0-2-rem":"ft-0-2-rem","ft-0-3-em":"ft-0-3-em","ft-0-3-rem":"ft-0-3-rem","ft-0-4-em":"ft-0-4-em","ft-0-4-rem":"ft-0-4-rem","ft-0-5-em":"ft-0-5-em","ft-0-5-rem":"ft-0-5-rem","ft-0-6-em":"ft-0-6-em","ft-0-6-rem":"ft-0-6-rem","ft-0-7-em":"ft-0-7-em","ft-0-7-rem":"ft-0-7-rem","ft-0-8-em":"ft-0-8-em","ft-0-8-rem":"ft-0-8-rem","ft-0-9-em":"ft-0-9-em","ft-0-9-rem":"ft-0-9-rem","ft-minus-10":"ft-minus-10","ft-plus-10":"ft-plus-10","ft-1-em":"ft-1-em","ft-1-rem":"ft-1-rem","ft-1-1-em":"ft-1-1-em","ft-1-1-rem":"ft-1-1-rem","ft-1-2-em":"ft-1-2-em","ft-1-2-rem":"ft-1-2-rem","ft-1-3-em":"ft-1-3-em","ft-1-3-rem":"ft-1-3-rem","ft-1-4-em":"ft-1-4-em","ft-1-4-rem":"ft-1-4-rem","ft-1-5-em":"ft-1-5-em","ft-1-5-rem":"ft-1-5-rem","ft-1-6-em":"ft-1-6-em","ft-1-6-rem":"ft-1-6-rem","ft-1-7-em":"ft-1-7-em","ft-1-7-rem":"ft-1-7-rem","ft-1-8-em":"ft-1-8-em","ft-1-8-rem":"ft-1-8-rem","ft-1-9-em":"ft-1-9-em","ft-1-9-rem":"ft-1-9-rem","ft-minus-20":"ft-minus-20","ft-plus-20":"ft-plus-20","ft-2-em":"ft-2-em","ft-2-rem":"ft-2-rem","ft-2-1-em":"ft-2-1-em","ft-2-1-rem":"ft-2-1-rem","ft-2-2-em":"ft-2-2-em","ft-2-2-rem":"ft-2-2-rem","ft-2-3-em":"ft-2-3-em","ft-2-3-rem":"ft-2-3-rem","ft-2-4-em":"ft-2-4-em","ft-2-4-rem":"ft-2-4-rem","ft-2-5-em":"ft-2-5-em","ft-2-5-rem":"ft-2-5-rem","ft-2-6-em":"ft-2-6-em","ft-2-6-rem":"ft-2-6-rem","ft-2-7-em":"ft-2-7-em","ft-2-7-rem":"ft-2-7-rem","ft-2-8-em":"ft-2-8-em","ft-2-8-rem":"ft-2-8-rem","ft-2-9-em":"ft-2-9-em","ft-2-9-rem":"ft-2-9-rem","ft-minus-30":"ft-minus-30","ft-plus-30":"ft-plus-30","ft-3-em":"ft-3-em","ft-3-rem":"ft-3-rem","ft-3-1-em":"ft-3-1-em","ft-3-1-rem":"ft-3-1-rem","ft-3-2-em":"ft-3-2-em","ft-3-2-rem":"ft-3-2-rem","ft-3-3-em":"ft-3-3-em","ft-3-3-rem":"ft-3-3-rem","ft-3-4-em":"ft-3-4-em","ft-3-4-rem":"ft-3-4-rem","ft-3-5-em":"ft-3-5-em","ft-3-5-rem":"ft-3-5-rem","ft-3-6-em":"ft-3-6-em","ft-3-6-rem":"ft-3-6-rem","ft-3-7-em":"ft-3-7-em","ft-3-7-rem":"ft-3-7-rem","ft-3-8-em":"ft-3-8-em","ft-3-8-rem":"ft-3-8-rem","ft-3-9-em":"ft-3-9-em","ft-3-9-rem":"ft-3-9-rem","ft-minus-40":"ft-minus-40","ft-plus-40":"ft-plus-40","ft-4-em":"ft-4-em","ft-4-rem":"ft-4-rem","ft-4-1-em":"ft-4-1-em","ft-4-1-rem":"ft-4-1-rem","ft-4-2-em":"ft-4-2-em","ft-4-2-rem":"ft-4-2-rem","ft-4-3-em":"ft-4-3-em","ft-4-3-rem":"ft-4-3-rem","ft-4-4-em":"ft-4-4-em","ft-4-4-rem":"ft-4-4-rem","ft-4-5-em":"ft-4-5-em","ft-4-5-rem":"ft-4-5-rem","ft-4-6-em":"ft-4-6-em","ft-4-6-rem":"ft-4-6-rem","ft-4-7-em":"ft-4-7-em","ft-4-7-rem":"ft-4-7-rem","ft-4-8-em":"ft-4-8-em","ft-4-8-rem":"ft-4-8-rem","ft-4-9-em":"ft-4-9-em","ft-4-9-rem":"ft-4-9-rem","ft-minus-50":"ft-minus-50","ft-plus-50":"ft-plus-50","ft-5-em":"ft-5-em","ft-5-rem":"ft-5-rem","ft-5-1-em":"ft-5-1-em","ft-5-1-rem":"ft-5-1-rem","ft-5-2-em":"ft-5-2-em","ft-5-2-rem":"ft-5-2-rem","ft-5-3-em":"ft-5-3-em","ft-5-3-rem":"ft-5-3-rem","ft-5-4-em":"ft-5-4-em","ft-5-4-rem":"ft-5-4-rem","ft-5-5-em":"ft-5-5-em","ft-5-5-rem":"ft-5-5-rem","ft-5-6-em":"ft-5-6-em","ft-5-6-rem":"ft-5-6-rem","ft-5-7-em":"ft-5-7-em","ft-5-7-rem":"ft-5-7-rem","ft-5-8-em":"ft-5-8-em","ft-5-8-rem":"ft-5-8-rem","ft-5-9-em":"ft-5-9-em","ft-5-9-rem":"ft-5-9-rem","ft-minus-60":"ft-minus-60","ft-plus-60":"ft-plus-60","ft-6-em":"ft-6-em","ft-6-rem":"ft-6-rem","ft-6-1-em":"ft-6-1-em","ft-6-1-rem":"ft-6-1-rem","ft-6-2-em":"ft-6-2-em","ft-6-2-rem":"ft-6-2-rem","ft-6-3-em":"ft-6-3-em","ft-6-3-rem":"ft-6-3-rem","ft-6-4-em":"ft-6-4-em","ft-6-4-rem":"ft-6-4-rem","ft-6-5-em":"ft-6-5-em","ft-6-5-rem":"ft-6-5-rem","ft-6-6-em":"ft-6-6-em","ft-6-6-rem":"ft-6-6-rem","ft-6-7-em":"ft-6-7-em","ft-6-7-rem":"ft-6-7-rem","ft-6-8-em":"ft-6-8-em","ft-6-8-rem":"ft-6-8-rem","ft-6-9-em":"ft-6-9-em","ft-6-9-rem":"ft-6-9-rem","ft-minus-70":"ft-minus-70","ft-plus-70":"ft-plus-70","ft-7-em":"ft-7-em","ft-7-rem":"ft-7-rem","ft-7-1-em":"ft-7-1-em","ft-7-1-rem":"ft-7-1-rem","ft-7-2-em":"ft-7-2-em","ft-7-2-rem":"ft-7-2-rem","ft-7-3-em":"ft-7-3-em","ft-7-3-rem":"ft-7-3-rem","ft-7-4-em":"ft-7-4-em","ft-7-4-rem":"ft-7-4-rem","ft-7-5-em":"ft-7-5-em","ft-7-5-rem":"ft-7-5-rem","ft-7-6-em":"ft-7-6-em","ft-7-6-rem":"ft-7-6-rem","ft-7-7-em":"ft-7-7-em","ft-7-7-rem":"ft-7-7-rem","ft-7-8-em":"ft-7-8-em","ft-7-8-rem":"ft-7-8-rem","ft-7-9-em":"ft-7-9-em","ft-7-9-rem":"ft-7-9-rem","ft-minus-80":"ft-minus-80","ft-plus-80":"ft-plus-80","ft-8-em":"ft-8-em","ft-8-rem":"ft-8-rem","ft-8-1-em":"ft-8-1-em","ft-8-1-rem":"ft-8-1-rem","ft-8-2-em":"ft-8-2-em","ft-8-2-rem":"ft-8-2-rem","ft-8-3-em":"ft-8-3-em","ft-8-3-rem":"ft-8-3-rem","ft-8-4-em":"ft-8-4-em","ft-8-4-rem":"ft-8-4-rem","ft-8-5-em":"ft-8-5-em","ft-8-5-rem":"ft-8-5-rem","ft-8-6-em":"ft-8-6-em","ft-8-6-rem":"ft-8-6-rem","ft-8-7-em":"ft-8-7-em","ft-8-7-rem":"ft-8-7-rem","ft-8-8-em":"ft-8-8-em","ft-8-8-rem":"ft-8-8-rem","ft-8-9-em":"ft-8-9-em","ft-8-9-rem":"ft-8-9-rem","ft-minus-90":"ft-minus-90","ft-plus-90":"ft-plus-90","ft-9-em":"ft-9-em","ft-9-rem":"ft-9-rem","ft-9-1-em":"ft-9-1-em","ft-9-1-rem":"ft-9-1-rem","ft-9-2-em":"ft-9-2-em","ft-9-2-rem":"ft-9-2-rem","ft-9-3-em":"ft-9-3-em","ft-9-3-rem":"ft-9-3-rem","ft-9-4-em":"ft-9-4-em","ft-9-4-rem":"ft-9-4-rem","ft-9-5-em":"ft-9-5-em","ft-9-5-rem":"ft-9-5-rem","ft-9-6-em":"ft-9-6-em","ft-9-6-rem":"ft-9-6-rem","ft-9-7-em":"ft-9-7-em","ft-9-7-rem":"ft-9-7-rem","ft-9-8-em":"ft-9-8-em","ft-9-8-rem":"ft-9-8-rem","ft-9-9-em":"ft-9-9-em","ft-9-9-rem":"ft-9-9-rem","ft-minus-100":"ft-minus-100","ft-plus-100":"ft-plus-100","ft-10-em":"ft-10-em","ft-10-rem":"ft-10-rem","ft-10-1-em":"ft-10-1-em","ft-10-1-rem":"ft-10-1-rem","ft-10-2-em":"ft-10-2-em","ft-10-2-rem":"ft-10-2-rem","ft-10-3-em":"ft-10-3-em","ft-10-3-rem":"ft-10-3-rem","ft-10-4-em":"ft-10-4-em","ft-10-4-rem":"ft-10-4-rem","ft-10-5-em":"ft-10-5-em","ft-10-5-rem":"ft-10-5-rem","ft-10-6-em":"ft-10-6-em","ft-10-6-rem":"ft-10-6-rem","ft-10-7-em":"ft-10-7-em","ft-10-7-rem":"ft-10-7-rem","ft-10-8-em":"ft-10-8-em","ft-10-8-rem":"ft-10-8-rem","ft-10-9-em":"ft-10-9-em","ft-10-9-rem":"ft-10-9-rem","ft-blue":"ft-blue","ft-green":"ft-green","ft-orange":"ft-orange","ft-darkblue":"ft-darkblue","ft-gold":"ft-gold","ft-black":"ft-black","ft-blacklight":"ft-blacklight","ft-blacklighter":"ft-blacklighter","ft-greystronger":"ft-greystronger","ft-greystrong":"ft-greystrong","ft-grey":"ft-grey","ft-greylight":"ft-greylight","ft-greylighter":"ft-greylighter","ft-white":"ft-white","ft-none":"ft-none","rad":"rad","tags":"tags","rad-all":"rad-all","rad-top-left":"rad-top-left","rad-top":"rad-top","rad-left":"rad-left","rad-top-right":"rad-top-right","rad-right":"rad-right","rad-bottom-left":"rad-bottom-left","rad-bottom":"rad-bottom","rad-bottom-right":"rad-bottom-right","m-all":"m-all","m-all-0":"m-all-0","m-all-x2":"m-all-x2","p-all":"p-all","bd-blue":"bd-blue","bd-blue-0":"bd-blue-0","bd-blue-1":"bd-blue-1","bd-blue-2":"bd-blue-2","bd-blue-3":"bd-blue-3","bd-blue-4":"bd-blue-4","bd-blue-5":"bd-blue-5","bd-blue-6":"bd-blue-6","bd-blue-7":"bd-blue-7","bd-blue-8":"bd-blue-8","bd-blue-9":"bd-blue-9","bd-blue-10":"bd-blue-10","bd-green":"bd-green","bd-green-0":"bd-green-0","bd-green-1":"bd-green-1","bd-green-2":"bd-green-2","bd-green-3":"bd-green-3","bd-green-4":"bd-green-4","bd-green-5":"bd-green-5","bd-green-6":"bd-green-6","bd-green-7":"bd-green-7","bd-green-8":"bd-green-8","bd-green-9":"bd-green-9","bd-green-10":"bd-green-10","bd-orange":"bd-orange","bd-orange-0":"bd-orange-0","bd-orange-1":"bd-orange-1","bd-orange-2":"bd-orange-2","bd-orange-3":"bd-orange-3","bd-orange-4":"bd-orange-4","bd-orange-5":"bd-orange-5","bd-orange-6":"bd-orange-6","bd-orange-7":"bd-orange-7","bd-orange-8":"bd-orange-8","bd-orange-9":"bd-orange-9","bd-orange-10":"bd-orange-10","bd-darkblue":"bd-darkblue","bd-darkblue-0":"bd-darkblue-0","bd-darkblue-1":"bd-darkblue-1","bd-darkblue-2":"bd-darkblue-2","bd-darkblue-3":"bd-darkblue-3","bd-darkblue-4":"bd-darkblue-4","bd-darkblue-5":"bd-darkblue-5","bd-darkblue-6":"bd-darkblue-6","bd-darkblue-7":"bd-darkblue-7","bd-darkblue-8":"bd-darkblue-8","bd-darkblue-9":"bd-darkblue-9","bd-darkblue-10":"bd-darkblue-10","bd-gold":"bd-gold","bd-gold-0":"bd-gold-0","bd-gold-1":"bd-gold-1","bd-gold-2":"bd-gold-2","bd-gold-3":"bd-gold-3","bd-gold-4":"bd-gold-4","bd-gold-5":"bd-gold-5","bd-gold-6":"bd-gold-6","bd-gold-7":"bd-gold-7","bd-gold-8":"bd-gold-8","bd-gold-9":"bd-gold-9","bd-gold-10":"bd-gold-10","bd-black":"bd-black","bd-black-0":"bd-black-0","bd-black-1":"bd-black-1","bd-black-2":"bd-black-2","bd-black-3":"bd-black-3","bd-black-4":"bd-black-4","bd-black-5":"bd-black-5","bd-black-6":"bd-black-6","bd-black-7":"bd-black-7","bd-black-8":"bd-black-8","bd-black-9":"bd-black-9","bd-black-10":"bd-black-10","bd-blacklight":"bd-blacklight","bd-blacklight-0":"bd-blacklight-0","bd-blacklight-1":"bd-blacklight-1","bd-blacklight-2":"bd-blacklight-2","bd-blacklight-3":"bd-blacklight-3","bd-blacklight-4":"bd-blacklight-4","bd-blacklight-5":"bd-blacklight-5","bd-blacklight-6":"bd-blacklight-6","bd-blacklight-7":"bd-blacklight-7","bd-blacklight-8":"bd-blacklight-8","bd-blacklight-9":"bd-blacklight-9","bd-blacklight-10":"bd-blacklight-10","bd-blacklighter":"bd-blacklighter","bd-blacklighter-0":"bd-blacklighter-0","bd-blacklighter-1":"bd-blacklighter-1","bd-blacklighter-2":"bd-blacklighter-2","bd-blacklighter-3":"bd-blacklighter-3","bd-blacklighter-4":"bd-blacklighter-4","bd-blacklighter-5":"bd-blacklighter-5","bd-blacklighter-6":"bd-blacklighter-6","bd-blacklighter-7":"bd-blacklighter-7","bd-blacklighter-8":"bd-blacklighter-8","bd-blacklighter-9":"bd-blacklighter-9","bd-blacklighter-10":"bd-blacklighter-10","bd-greystronger":"bd-greystronger","bd-greystronger-0":"bd-greystronger-0","bd-greystronger-1":"bd-greystronger-1","bd-greystronger-2":"bd-greystronger-2","bd-greystronger-3":"bd-greystronger-3","bd-greystronger-4":"bd-greystronger-4","bd-greystronger-5":"bd-greystronger-5","bd-greystronger-6":"bd-greystronger-6","bd-greystronger-7":"bd-greystronger-7","bd-greystronger-8":"bd-greystronger-8","bd-greystronger-9":"bd-greystronger-9","bd-greystronger-10":"bd-greystronger-10","bd-greystrong":"bd-greystrong","bd-greystrong-0":"bd-greystrong-0","bd-greystrong-1":"bd-greystrong-1","bd-greystrong-2":"bd-greystrong-2","bd-greystrong-3":"bd-greystrong-3","bd-greystrong-4":"bd-greystrong-4","bd-greystrong-5":"bd-greystrong-5","bd-greystrong-6":"bd-greystrong-6","bd-greystrong-7":"bd-greystrong-7","bd-greystrong-8":"bd-greystrong-8","bd-greystrong-9":"bd-greystrong-9","bd-greystrong-10":"bd-greystrong-10","bd-grey":"bd-grey","bd-grey-0":"bd-grey-0","bd-grey-1":"bd-grey-1","bd-grey-2":"bd-grey-2","bd-grey-3":"bd-grey-3","bd-grey-4":"bd-grey-4","bd-grey-5":"bd-grey-5","bd-grey-6":"bd-grey-6","bd-grey-7":"bd-grey-7","bd-grey-8":"bd-grey-8","bd-grey-9":"bd-grey-9","bd-grey-10":"bd-grey-10","bd-greylight":"bd-greylight","bd-greylight-0":"bd-greylight-0","bd-greylight-1":"bd-greylight-1","bd-greylight-2":"bd-greylight-2","bd-greylight-3":"bd-greylight-3","bd-greylight-4":"bd-greylight-4","bd-greylight-5":"bd-greylight-5","bd-greylight-6":"bd-greylight-6","bd-greylight-7":"bd-greylight-7","bd-greylight-8":"bd-greylight-8","bd-greylight-9":"bd-greylight-9","bd-greylight-10":"bd-greylight-10","bd-greylighter":"bd-greylighter","bd-greylighter-0":"bd-greylighter-0","bd-greylighter-1":"bd-greylighter-1","bd-greylighter-2":"bd-greylighter-2","bd-greylighter-3":"bd-greylighter-3","bd-greylighter-4":"bd-greylighter-4","bd-greylighter-5":"bd-greylighter-5","bd-greylighter-6":"bd-greylighter-6","bd-greylighter-7":"bd-greylighter-7","bd-greylighter-8":"bd-greylighter-8","bd-greylighter-9":"bd-greylighter-9","bd-greylighter-10":"bd-greylighter-10","bd-white":"bd-white","bd-white-0":"bd-white-0","bd-white-1":"bd-white-1","bd-white-2":"bd-white-2","bd-white-3":"bd-white-3","side":"side","bd-white-4":"bd-white-4","bd-white-5":"bd-white-5","bd-white-6":"bd-white-6","bd-white-7":"bd-white-7","bd-white-8":"bd-white-8","bd-white-9":"bd-white-9","bd-white-10":"bd-white-10","bd-none":"bd-none","bd-none-0":"bd-none-0","bd-none-1":"bd-none-1","bd-none-2":"bd-none-2","bd-none-3":"bd-none-3","bd-none-4":"bd-none-4","bd-none-5":"bd-none-5","bd-none-6":"bd-none-6","bd-none-7":"bd-none-7","bd-none-8":"bd-none-8","bd-none-9":"bd-none-9","bd-none-10":"bd-none-10","block-std":"block-std","p-all-0":"p-all-0","p-all-x2":"p-all-x2","m-top":"m-top","m-y":"m-y","m-top-0":"m-top-0","m-y-0":"m-y-0","m-top-x2":"m-top-x2","m-y-x2":"m-y-x2","p-top":"p-top","p-y":"p-y","bd-blue-top":"bd-blue-top","bd-blue-top-0":"bd-blue-top-0","bd-blue-top-1":"bd-blue-top-1","bd-blue-top-2":"bd-blue-top-2","bd-blue-top-3":"bd-blue-top-3","bd-blue-top-4":"bd-blue-top-4","bd-blue-top-5":"bd-blue-top-5","bd-blue-top-6":"bd-blue-top-6","bd-blue-top-7":"bd-blue-top-7","bd-blue-top-8":"bd-blue-top-8","bd-blue-top-9":"bd-blue-top-9","bd-blue-top-10":"bd-blue-top-10","bd-green-top":"bd-green-top","bd-green-top-0":"bd-green-top-0","bd-green-top-1":"bd-green-top-1","bd-green-top-2":"bd-green-top-2","bd-green-top-3":"bd-green-top-3","bd-green-top-4":"bd-green-top-4","bd-green-top-5":"bd-green-top-5","bd-green-top-6":"bd-green-top-6","bd-green-top-7":"bd-green-top-7","bd-green-top-8":"bd-green-top-8","bd-green-top-9":"bd-green-top-9","bd-green-top-10":"bd-green-top-10","bd-orange-top":"bd-orange-top","bd-orange-top-0":"bd-orange-top-0","bd-orange-top-1":"bd-orange-top-1","bd-orange-top-2":"bd-orange-top-2","bd-orange-top-3":"bd-orange-top-3","bd-orange-top-4":"bd-orange-top-4","bd-orange-top-5":"bd-orange-top-5","bd-orange-top-6":"bd-orange-top-6","bd-orange-top-7":"bd-orange-top-7","bd-orange-top-8":"bd-orange-top-8","bd-orange-top-9":"bd-orange-top-9","bd-orange-top-10":"bd-orange-top-10","bd-darkblue-top":"bd-darkblue-top","bd-darkblue-top-0":"bd-darkblue-top-0","bd-darkblue-top-1":"bd-darkblue-top-1","bd-darkblue-top-2":"bd-darkblue-top-2","bd-darkblue-top-3":"bd-darkblue-top-3","bd-darkblue-top-4":"bd-darkblue-top-4","bd-darkblue-top-5":"bd-darkblue-top-5","bd-darkblue-top-6":"bd-darkblue-top-6","bd-darkblue-top-7":"bd-darkblue-top-7","bd-darkblue-top-8":"bd-darkblue-top-8","bd-darkblue-top-9":"bd-darkblue-top-9","bd-darkblue-top-10":"bd-darkblue-top-10","bd-gold-top":"bd-gold-top","bd-gold-top-0":"bd-gold-top-0","bd-gold-top-1":"bd-gold-top-1","bd-gold-top-2":"bd-gold-top-2","bd-gold-top-3":"bd-gold-top-3","bd-gold-top-4":"bd-gold-top-4","bd-gold-top-5":"bd-gold-top-5","bd-gold-top-6":"bd-gold-top-6","bd-gold-top-7":"bd-gold-top-7","bd-gold-top-8":"bd-gold-top-8","bd-gold-top-9":"bd-gold-top-9","bd-gold-top-10":"bd-gold-top-10","bd-black-top":"bd-black-top","bd-black-top-0":"bd-black-top-0","bd-black-top-1":"bd-black-top-1","bd-black-top-2":"bd-black-top-2","bd-black-top-3":"bd-black-top-3","bd-black-top-4":"bd-black-top-4","bd-black-top-5":"bd-black-top-5","bd-black-top-6":"bd-black-top-6","bd-black-top-7":"bd-black-top-7","bd-black-top-8":"bd-black-top-8","bd-black-top-9":"bd-black-top-9","bd-black-top-10":"bd-black-top-10","bd-blacklight-top":"bd-blacklight-top","bd-blacklight-top-0":"bd-blacklight-top-0","bd-blacklight-top-1":"bd-blacklight-top-1","bd-blacklight-top-2":"bd-blacklight-top-2","bd-blacklight-top-3":"bd-blacklight-top-3","bd-blacklight-top-4":"bd-blacklight-top-4","bd-blacklight-top-5":"bd-blacklight-top-5","bd-blacklight-top-6":"bd-blacklight-top-6","bd-blacklight-top-7":"bd-blacklight-top-7","bd-blacklight-top-8":"bd-blacklight-top-8","bd-blacklight-top-9":"bd-blacklight-top-9","bd-blacklight-top-10":"bd-blacklight-top-10","bd-blacklighter-top":"bd-blacklighter-top","bd-blacklighter-top-0":"bd-blacklighter-top-0","bd-blacklighter-top-1":"bd-blacklighter-top-1","bd-blacklighter-top-2":"bd-blacklighter-top-2","bd-blacklighter-top-3":"bd-blacklighter-top-3","bd-blacklighter-top-4":"bd-blacklighter-top-4","bd-blacklighter-top-5":"bd-blacklighter-top-5","bd-blacklighter-top-6":"bd-blacklighter-top-6","bd-blacklighter-top-7":"bd-blacklighter-top-7","bd-blacklighter-top-8":"bd-blacklighter-top-8","bd-blacklighter-top-9":"bd-blacklighter-top-9","bd-blacklighter-top-10":"bd-blacklighter-top-10","bd-greystronger-top":"bd-greystronger-top","bd-greystronger-top-0":"bd-greystronger-top-0","bd-greystronger-top-1":"bd-greystronger-top-1","bd-greystronger-top-2":"bd-greystronger-top-2","bd-greystronger-top-3":"bd-greystronger-top-3","bd-greystronger-top-4":"bd-greystronger-top-4","bd-greystronger-top-5":"bd-greystronger-top-5","bd-greystronger-top-6":"bd-greystronger-top-6","bd-greystronger-top-7":"bd-greystronger-top-7","bd-greystronger-top-8":"bd-greystronger-top-8","bd-greystronger-top-9":"bd-greystronger-top-9","bd-greystronger-top-10":"bd-greystronger-top-10","bd-greystrong-top":"bd-greystrong-top","bd-greystrong-top-0":"bd-greystrong-top-0","bd-greystrong-top-1":"bd-greystrong-top-1","bd-greystrong-top-2":"bd-greystrong-top-2","bd-greystrong-top-3":"bd-greystrong-top-3","bd-greystrong-top-4":"bd-greystrong-top-4","bd-greystrong-top-5":"bd-greystrong-top-5","bd-greystrong-top-6":"bd-greystrong-top-6","bd-greystrong-top-7":"bd-greystrong-top-7","bd-greystrong-top-8":"bd-greystrong-top-8","bd-greystrong-top-9":"bd-greystrong-top-9","bd-greystrong-top-10":"bd-greystrong-top-10","bd-grey-top":"bd-grey-top","bd-grey-top-0":"bd-grey-top-0","bd-grey-top-1":"bd-grey-top-1","bd-grey-top-2":"bd-grey-top-2","bd-grey-top-3":"bd-grey-top-3","bd-grey-top-4":"bd-grey-top-4","bd-grey-top-5":"bd-grey-top-5","bd-grey-top-6":"bd-grey-top-6","bd-grey-top-7":"bd-grey-top-7","bd-grey-top-8":"bd-grey-top-8","bd-grey-top-9":"bd-grey-top-9","bd-grey-top-10":"bd-grey-top-10","bd-greylight-top":"bd-greylight-top","bd-greylight-top-0":"bd-greylight-top-0","bd-greylight-top-1":"bd-greylight-top-1","bd-greylight-top-2":"bd-greylight-top-2","bd-greylight-top-3":"bd-greylight-top-3","bd-greylight-top-4":"bd-greylight-top-4","bd-greylight-top-5":"bd-greylight-top-5","bd-greylight-top-6":"bd-greylight-top-6","bd-greylight-top-7":"bd-greylight-top-7","bd-greylight-top-8":"bd-greylight-top-8","bd-greylight-top-9":"bd-greylight-top-9","bd-greylight-top-10":"bd-greylight-top-10","bd-greylighter-top":"bd-greylighter-top","bd-greylighter-top-0":"bd-greylighter-top-0","bd-greylighter-top-1":"bd-greylighter-top-1","bd-greylighter-top-2":"bd-greylighter-top-2","bd-greylighter-top-3":"bd-greylighter-top-3","bd-greylighter-top-4":"bd-greylighter-top-4","bd-greylighter-top-5":"bd-greylighter-top-5","bd-greylighter-top-6":"bd-greylighter-top-6","bd-greylighter-top-7":"bd-greylighter-top-7","bd-greylighter-top-8":"bd-greylighter-top-8","bd-greylighter-top-9":"bd-greylighter-top-9","bd-greylighter-top-10":"bd-greylighter-top-10","bd-white-top":"bd-white-top","bd-white-top-0":"bd-white-top-0","bd-white-top-1":"bd-white-top-1","bd-white-top-2":"bd-white-top-2","bd-white-top-3":"bd-white-top-3","bd-white-top-4":"bd-white-top-4","bd-white-top-5":"bd-white-top-5","bd-white-top-6":"bd-white-top-6","bd-white-top-7":"bd-white-top-7","bd-white-top-8":"bd-white-top-8","bd-white-top-9":"bd-white-top-9","bd-white-top-10":"bd-white-top-10","bd-none-top":"bd-none-top","bd-none-top-0":"bd-none-top-0","bd-none-top-1":"bd-none-top-1","bd-none-top-2":"bd-none-top-2","bd-none-top-3":"bd-none-top-3","bd-none-top-4":"bd-none-top-4","bd-none-top-5":"bd-none-top-5","bd-none-top-6":"bd-none-top-6","bd-none-top-7":"bd-none-top-7","bd-none-top-8":"bd-none-top-8","bd-none-top-9":"bd-none-top-9","bd-none-top-10":"bd-none-top-10","p-top-0":"p-top-0","p-y-0":"p-y-0","p-top-x2":"p-top-x2","p-y-x2":"p-y-x2","m-right":"m-right","m-x":"m-x","m-right-0":"m-right-0","m-x-0":"m-x-0","m-right-x2":"m-right-x2","m-x-x2":"m-x-x2","p-right":"p-right","p-x":"p-x","bd-blue-right":"bd-blue-right","bd-blue-right-0":"bd-blue-right-0","bd-blue-right-1":"bd-blue-right-1","bd-blue-right-2":"bd-blue-right-2","bd-blue-right-3":"bd-blue-right-3","bd-blue-right-4":"bd-blue-right-4","bd-blue-right-5":"bd-blue-right-5","bd-blue-right-6":"bd-blue-right-6","bd-blue-right-7":"bd-blue-right-7","bd-blue-right-8":"bd-blue-right-8","bd-blue-right-9":"bd-blue-right-9","bd-blue-right-10":"bd-blue-right-10","bd-green-right":"bd-green-right","bd-green-right-0":"bd-green-right-0","bd-green-right-1":"bd-green-right-1","bd-green-right-2":"bd-green-right-2","bd-green-right-3":"bd-green-right-3","bd-green-right-4":"bd-green-right-4","bd-green-right-5":"bd-green-right-5","bd-green-right-6":"bd-green-right-6","bd-green-right-7":"bd-green-right-7","bd-green-right-8":"bd-green-right-8","bd-green-right-9":"bd-green-right-9","bd-green-right-10":"bd-green-right-10","bd-orange-right":"bd-orange-right","bd-orange-right-0":"bd-orange-right-0","bd-orange-right-1":"bd-orange-right-1","bd-orange-right-2":"bd-orange-right-2","bd-orange-right-3":"bd-orange-right-3","bd-orange-right-4":"bd-orange-right-4","bd-orange-right-5":"bd-orange-right-5","bd-orange-right-6":"bd-orange-right-6","bd-orange-right-7":"bd-orange-right-7","bd-orange-right-8":"bd-orange-right-8","bd-orange-right-9":"bd-orange-right-9","bd-orange-right-10":"bd-orange-right-10","bd-darkblue-right":"bd-darkblue-right","bd-darkblue-right-0":"bd-darkblue-right-0","bd-darkblue-right-1":"bd-darkblue-right-1","bd-darkblue-right-2":"bd-darkblue-right-2","bd-darkblue-right-3":"bd-darkblue-right-3","bd-darkblue-right-4":"bd-darkblue-right-4","bd-darkblue-right-5":"bd-darkblue-right-5","bd-darkblue-right-6":"bd-darkblue-right-6","bd-darkblue-right-7":"bd-darkblue-right-7","bd-darkblue-right-8":"bd-darkblue-right-8","bd-darkblue-right-9":"bd-darkblue-right-9","bd-darkblue-right-10":"bd-darkblue-right-10","bd-gold-right":"bd-gold-right","bd-gold-right-0":"bd-gold-right-0","bd-gold-right-1":"bd-gold-right-1","bd-gold-right-2":"bd-gold-right-2","bd-gold-right-3":"bd-gold-right-3","bd-gold-right-4":"bd-gold-right-4","bd-gold-right-5":"bd-gold-right-5","bd-gold-right-6":"bd-gold-right-6","bd-gold-right-7":"bd-gold-right-7","bd-gold-right-8":"bd-gold-right-8","bd-gold-right-9":"bd-gold-right-9","bd-gold-right-10":"bd-gold-right-10","bd-black-right":"bd-black-right","bd-black-right-0":"bd-black-right-0","bd-black-right-1":"bd-black-right-1","bd-black-right-2":"bd-black-right-2","bd-black-right-3":"bd-black-right-3","bd-black-right-4":"bd-black-right-4","bd-black-right-5":"bd-black-right-5","bd-black-right-6":"bd-black-right-6","bd-black-right-7":"bd-black-right-7","bd-black-right-8":"bd-black-right-8","bd-black-right-9":"bd-black-right-9","bd-black-right-10":"bd-black-right-10","bd-blacklight-right":"bd-blacklight-right","bd-blacklight-right-0":"bd-blacklight-right-0","bd-blacklight-right-1":"bd-blacklight-right-1","bd-blacklight-right-2":"bd-blacklight-right-2","bd-blacklight-right-3":"bd-blacklight-right-3","bd-blacklight-right-4":"bd-blacklight-right-4","bd-blacklight-right-5":"bd-blacklight-right-5","bd-blacklight-right-6":"bd-blacklight-right-6","bd-blacklight-right-7":"bd-blacklight-right-7","bd-blacklight-right-8":"bd-blacklight-right-8","bd-blacklight-right-9":"bd-blacklight-right-9","bd-blacklight-right-10":"bd-blacklight-right-10","bd-blacklighter-right":"bd-blacklighter-right","bd-blacklighter-right-0":"bd-blacklighter-right-0","bd-blacklighter-right-1":"bd-blacklighter-right-1","bd-blacklighter-right-2":"bd-blacklighter-right-2","bd-blacklighter-right-3":"bd-blacklighter-right-3","bd-blacklighter-right-4":"bd-blacklighter-right-4","bd-blacklighter-right-5":"bd-blacklighter-right-5","bd-blacklighter-right-6":"bd-blacklighter-right-6","bd-blacklighter-right-7":"bd-blacklighter-right-7","bd-blacklighter-right-8":"bd-blacklighter-right-8","bd-blacklighter-right-9":"bd-blacklighter-right-9","bd-blacklighter-right-10":"bd-blacklighter-right-10","bd-greystronger-right":"bd-greystronger-right","bd-greystronger-right-0":"bd-greystronger-right-0","bd-greystronger-right-1":"bd-greystronger-right-1","bd-greystronger-right-2":"bd-greystronger-right-2","bd-greystronger-right-3":"bd-greystronger-right-3","bd-greystronger-right-4":"bd-greystronger-right-4","bd-greystronger-right-5":"bd-greystronger-right-5","bd-greystronger-right-6":"bd-greystronger-right-6","bd-greystronger-right-7":"bd-greystronger-right-7","bd-greystronger-right-8":"bd-greystronger-right-8","bd-greystronger-right-9":"bd-greystronger-right-9","bd-greystronger-right-10":"bd-greystronger-right-10","bd-greystrong-right":"bd-greystrong-right","bd-greystrong-right-0":"bd-greystrong-right-0","bd-greystrong-right-1":"bd-greystrong-right-1","bd-greystrong-right-2":"bd-greystrong-right-2","bd-greystrong-right-3":"bd-greystrong-right-3","bd-greystrong-right-4":"bd-greystrong-right-4","bd-greystrong-right-5":"bd-greystrong-right-5","bd-greystrong-right-6":"bd-greystrong-right-6","bd-greystrong-right-7":"bd-greystrong-right-7","bd-greystrong-right-8":"bd-greystrong-right-8","bd-greystrong-right-9":"bd-greystrong-right-9","bd-greystrong-right-10":"bd-greystrong-right-10","bd-grey-right":"bd-grey-right","bd-grey-right-0":"bd-grey-right-0","bd-grey-right-1":"bd-grey-right-1","bd-grey-right-2":"bd-grey-right-2","bd-grey-right-3":"bd-grey-right-3","bd-grey-right-4":"bd-grey-right-4","bd-grey-right-5":"bd-grey-right-5","bd-grey-right-6":"bd-grey-right-6","bd-grey-right-7":"bd-grey-right-7","bd-grey-right-8":"bd-grey-right-8","bd-grey-right-9":"bd-grey-right-9","bd-grey-right-10":"bd-grey-right-10","bd-greylight-right":"bd-greylight-right","bd-greylight-right-0":"bd-greylight-right-0","bd-greylight-right-1":"bd-greylight-right-1","bd-greylight-right-2":"bd-greylight-right-2","bd-greylight-right-3":"bd-greylight-right-3","bd-greylight-right-4":"bd-greylight-right-4","bd-greylight-right-5":"bd-greylight-right-5","bd-greylight-right-6":"bd-greylight-right-6","bd-greylight-right-7":"bd-greylight-right-7","bd-greylight-right-8":"bd-greylight-right-8","bd-greylight-right-9":"bd-greylight-right-9","bd-greylight-right-10":"bd-greylight-right-10","bd-greylighter-right":"bd-greylighter-right","bd-greylighter-right-0":"bd-greylighter-right-0","bd-greylighter-right-1":"bd-greylighter-right-1","bd-greylighter-right-2":"bd-greylighter-right-2","bd-greylighter-right-3":"bd-greylighter-right-3","bd-greylighter-right-4":"bd-greylighter-right-4","bd-greylighter-right-5":"bd-greylighter-right-5","bd-greylighter-right-6":"bd-greylighter-right-6","bd-greylighter-right-7":"bd-greylighter-right-7","bd-greylighter-right-8":"bd-greylighter-right-8","bd-greylighter-right-9":"bd-greylighter-right-9","bd-greylighter-right-10":"bd-greylighter-right-10","bd-white-right":"bd-white-right","bd-white-right-0":"bd-white-right-0","bd-white-right-1":"bd-white-right-1","bd-white-right-2":"bd-white-right-2","bd-white-right-3":"bd-white-right-3","bd-white-right-4":"bd-white-right-4","bd-white-right-5":"bd-white-right-5","bd-white-right-6":"bd-white-right-6","bd-white-right-7":"bd-white-right-7","bd-white-right-8":"bd-white-right-8","bd-white-right-9":"bd-white-right-9","bd-white-right-10":"bd-white-right-10","bd-none-right":"bd-none-right","bd-none-right-0":"bd-none-right-0","bd-none-right-1":"bd-none-right-1","bd-none-right-2":"bd-none-right-2","bd-none-right-3":"bd-none-right-3","bd-none-right-4":"bd-none-right-4","bd-none-right-5":"bd-none-right-5","bd-none-right-6":"bd-none-right-6","bd-none-right-7":"bd-none-right-7","bd-none-right-8":"bd-none-right-8","bd-none-right-9":"bd-none-right-9","bd-none-right-10":"bd-none-right-10","p-right-0":"p-right-0","p-x-0":"p-x-0","p-right-x2":"p-right-x2","p-x-x2":"p-x-x2","m-bottom":"m-bottom","m-bottom-0":"m-bottom-0","m-bottom-x2":"m-bottom-x2","p-bottom":"p-bottom","bd-blue-bottom":"bd-blue-bottom","bd-blue-bottom-0":"bd-blue-bottom-0","bd-blue-bottom-1":"bd-blue-bottom-1","bd-blue-bottom-2":"bd-blue-bottom-2","bd-blue-bottom-3":"bd-blue-bottom-3","bd-blue-bottom-4":"bd-blue-bottom-4","bd-blue-bottom-5":"bd-blue-bottom-5","bd-blue-bottom-6":"bd-blue-bottom-6","bd-blue-bottom-7":"bd-blue-bottom-7","bd-blue-bottom-8":"bd-blue-bottom-8","bd-blue-bottom-9":"bd-blue-bottom-9","bd-blue-bottom-10":"bd-blue-bottom-10","bd-green-bottom":"bd-green-bottom","bd-green-bottom-0":"bd-green-bottom-0","bd-green-bottom-1":"bd-green-bottom-1","bd-green-bottom-2":"bd-green-bottom-2","bd-green-bottom-3":"bd-green-bottom-3","bd-green-bottom-4":"bd-green-bottom-4","bd-green-bottom-5":"bd-green-bottom-5","bd-green-bottom-6":"bd-green-bottom-6","bd-green-bottom-7":"bd-green-bottom-7","bd-green-bottom-8":"bd-green-bottom-8","bd-green-bottom-9":"bd-green-bottom-9","bd-green-bottom-10":"bd-green-bottom-10","bd-orange-bottom":"bd-orange-bottom","bd-orange-bottom-0":"bd-orange-bottom-0","bd-orange-bottom-1":"bd-orange-bottom-1","bd-orange-bottom-2":"bd-orange-bottom-2","bd-orange-bottom-3":"bd-orange-bottom-3","bd-orange-bottom-4":"bd-orange-bottom-4","bd-orange-bottom-5":"bd-orange-bottom-5","bd-orange-bottom-6":"bd-orange-bottom-6","bd-orange-bottom-7":"bd-orange-bottom-7","bd-orange-bottom-8":"bd-orange-bottom-8","bd-orange-bottom-9":"bd-orange-bottom-9","bd-orange-bottom-10":"bd-orange-bottom-10","bd-darkblue-bottom":"bd-darkblue-bottom","bd-darkblue-bottom-0":"bd-darkblue-bottom-0","bd-darkblue-bottom-1":"bd-darkblue-bottom-1","bd-darkblue-bottom-2":"bd-darkblue-bottom-2","bd-darkblue-bottom-3":"bd-darkblue-bottom-3","bd-darkblue-bottom-4":"bd-darkblue-bottom-4","bd-darkblue-bottom-5":"bd-darkblue-bottom-5","bd-darkblue-bottom-6":"bd-darkblue-bottom-6","bd-darkblue-bottom-7":"bd-darkblue-bottom-7","bd-darkblue-bottom-8":"bd-darkblue-bottom-8","bd-darkblue-bottom-9":"bd-darkblue-bottom-9","bd-darkblue-bottom-10":"bd-darkblue-bottom-10","bd-gold-bottom":"bd-gold-bottom","bd-gold-bottom-0":"bd-gold-bottom-0","bd-gold-bottom-1":"bd-gold-bottom-1","bd-gold-bottom-2":"bd-gold-bottom-2","bd-gold-bottom-3":"bd-gold-bottom-3","bd-gold-bottom-4":"bd-gold-bottom-4","bd-gold-bottom-5":"bd-gold-bottom-5","bd-gold-bottom-6":"bd-gold-bottom-6","bd-gold-bottom-7":"bd-gold-bottom-7","bd-gold-bottom-8":"bd-gold-bottom-8","bd-gold-bottom-9":"bd-gold-bottom-9","bd-gold-bottom-10":"bd-gold-bottom-10","bd-black-bottom":"bd-black-bottom","bd-black-bottom-0":"bd-black-bottom-0","bd-black-bottom-1":"bd-black-bottom-1","bd-black-bottom-2":"bd-black-bottom-2","bd-black-bottom-3":"bd-black-bottom-3","bd-black-bottom-4":"bd-black-bottom-4","bd-black-bottom-5":"bd-black-bottom-5","bd-black-bottom-6":"bd-black-bottom-6","bd-black-bottom-7":"bd-black-bottom-7","bd-black-bottom-8":"bd-black-bottom-8","bd-black-bottom-9":"bd-black-bottom-9","bd-black-bottom-10":"bd-black-bottom-10","bd-blacklight-bottom":"bd-blacklight-bottom","bd-blacklight-bottom-0":"bd-blacklight-bottom-0","bd-blacklight-bottom-1":"bd-blacklight-bottom-1","bd-blacklight-bottom-2":"bd-blacklight-bottom-2","bd-blacklight-bottom-3":"bd-blacklight-bottom-3","bd-blacklight-bottom-4":"bd-blacklight-bottom-4","bd-blacklight-bottom-5":"bd-blacklight-bottom-5","bd-blacklight-bottom-6":"bd-blacklight-bottom-6","bd-blacklight-bottom-7":"bd-blacklight-bottom-7","bd-blacklight-bottom-8":"bd-blacklight-bottom-8","bd-blacklight-bottom-9":"bd-blacklight-bottom-9","bd-blacklight-bottom-10":"bd-blacklight-bottom-10","bd-blacklighter-bottom":"bd-blacklighter-bottom","bd-blacklighter-bottom-0":"bd-blacklighter-bottom-0","bd-blacklighter-bottom-1":"bd-blacklighter-bottom-1","bd-blacklighter-bottom-2":"bd-blacklighter-bottom-2","bd-blacklighter-bottom-3":"bd-blacklighter-bottom-3","bd-blacklighter-bottom-4":"bd-blacklighter-bottom-4","bd-blacklighter-bottom-5":"bd-blacklighter-bottom-5","bd-blacklighter-bottom-6":"bd-blacklighter-bottom-6","bd-blacklighter-bottom-7":"bd-blacklighter-bottom-7","bd-blacklighter-bottom-8":"bd-blacklighter-bottom-8","bd-blacklighter-bottom-9":"bd-blacklighter-bottom-9","bd-blacklighter-bottom-10":"bd-blacklighter-bottom-10","bd-greystronger-bottom":"bd-greystronger-bottom","bd-greystronger-bottom-0":"bd-greystronger-bottom-0","bd-greystronger-bottom-1":"bd-greystronger-bottom-1","bd-greystronger-bottom-2":"bd-greystronger-bottom-2","bd-greystronger-bottom-3":"bd-greystronger-bottom-3","bd-greystronger-bottom-4":"bd-greystronger-bottom-4","bd-greystronger-bottom-5":"bd-greystronger-bottom-5","bd-greystronger-bottom-6":"bd-greystronger-bottom-6","bd-greystronger-bottom-7":"bd-greystronger-bottom-7","bd-greystronger-bottom-8":"bd-greystronger-bottom-8","bd-greystronger-bottom-9":"bd-greystronger-bottom-9","bd-greystronger-bottom-10":"bd-greystronger-bottom-10","bd-greystrong-bottom":"bd-greystrong-bottom","bd-greystrong-bottom-0":"bd-greystrong-bottom-0","bd-greystrong-bottom-1":"bd-greystrong-bottom-1","bd-greystrong-bottom-2":"bd-greystrong-bottom-2","bd-greystrong-bottom-3":"bd-greystrong-bottom-3","bd-greystrong-bottom-4":"bd-greystrong-bottom-4","bd-greystrong-bottom-5":"bd-greystrong-bottom-5","bd-greystrong-bottom-6":"bd-greystrong-bottom-6","bd-greystrong-bottom-7":"bd-greystrong-bottom-7","bd-greystrong-bottom-8":"bd-greystrong-bottom-8","bd-greystrong-bottom-9":"bd-greystrong-bottom-9","bd-greystrong-bottom-10":"bd-greystrong-bottom-10","bd-grey-bottom":"bd-grey-bottom","bd-grey-bottom-0":"bd-grey-bottom-0","bd-grey-bottom-1":"bd-grey-bottom-1","bd-grey-bottom-2":"bd-grey-bottom-2","bd-grey-bottom-3":"bd-grey-bottom-3","bd-grey-bottom-4":"bd-grey-bottom-4","bd-grey-bottom-5":"bd-grey-bottom-5","bd-grey-bottom-6":"bd-grey-bottom-6","bd-grey-bottom-7":"bd-grey-bottom-7","bd-grey-bottom-8":"bd-grey-bottom-8","bd-grey-bottom-9":"bd-grey-bottom-9","bd-grey-bottom-10":"bd-grey-bottom-10","bd-greylight-bottom":"bd-greylight-bottom","bd-greylight-bottom-0":"bd-greylight-bottom-0","bd-greylight-bottom-1":"bd-greylight-bottom-1","bd-greylight-bottom-2":"bd-greylight-bottom-2","bd-greylight-bottom-3":"bd-greylight-bottom-3","bd-greylight-bottom-4":"bd-greylight-bottom-4","bd-greylight-bottom-5":"bd-greylight-bottom-5","bd-greylight-bottom-6":"bd-greylight-bottom-6","bd-greylight-bottom-7":"bd-greylight-bottom-7","bd-greylight-bottom-8":"bd-greylight-bottom-8","bd-greylight-bottom-9":"bd-greylight-bottom-9","bd-greylight-bottom-10":"bd-greylight-bottom-10","bd-greylighter-bottom":"bd-greylighter-bottom","bd-greylighter-bottom-0":"bd-greylighter-bottom-0","bd-greylighter-bottom-1":"bd-greylighter-bottom-1","bd-greylighter-bottom-2":"bd-greylighter-bottom-2","bd-greylighter-bottom-3":"bd-greylighter-bottom-3","bd-greylighter-bottom-4":"bd-greylighter-bottom-4","bd-greylighter-bottom-5":"bd-greylighter-bottom-5","bd-greylighter-bottom-6":"bd-greylighter-bottom-6","bd-greylighter-bottom-7":"bd-greylighter-bottom-7","bd-greylighter-bottom-8":"bd-greylighter-bottom-8","bd-greylighter-bottom-9":"bd-greylighter-bottom-9","bd-greylighter-bottom-10":"bd-greylighter-bottom-10","bd-white-bottom":"bd-white-bottom","bd-white-bottom-0":"bd-white-bottom-0","bd-white-bottom-1":"bd-white-bottom-1","bd-white-bottom-2":"bd-white-bottom-2","bd-white-bottom-3":"bd-white-bottom-3","bd-white-bottom-4":"bd-white-bottom-4","bd-white-bottom-5":"bd-white-bottom-5","bd-white-bottom-6":"bd-white-bottom-6","bd-white-bottom-7":"bd-white-bottom-7","bd-white-bottom-8":"bd-white-bottom-8","bd-white-bottom-9":"bd-white-bottom-9","bd-white-bottom-10":"bd-white-bottom-10","bd-none-bottom":"bd-none-bottom","bd-none-bottom-0":"bd-none-bottom-0","bd-none-bottom-1":"bd-none-bottom-1","bd-none-bottom-2":"bd-none-bottom-2","bd-none-bottom-3":"bd-none-bottom-3","bd-none-bottom-4":"bd-none-bottom-4","bd-none-bottom-5":"bd-none-bottom-5","bd-none-bottom-6":"bd-none-bottom-6","bd-none-bottom-7":"bd-none-bottom-7","bd-none-bottom-8":"bd-none-bottom-8","bd-none-bottom-9":"bd-none-bottom-9","bd-none-bottom-10":"bd-none-bottom-10","p-bottom-0":"p-bottom-0","p-bottom-x2":"p-bottom-x2","m-left":"m-left","m-left-0":"m-left-0","m-left-x2":"m-left-x2","p-left":"p-left","bd-blue-left":"bd-blue-left","bd-blue-left-0":"bd-blue-left-0","bd-blue-left-1":"bd-blue-left-1","bd-blue-left-2":"bd-blue-left-2","bd-blue-left-3":"bd-blue-left-3","bd-blue-left-4":"bd-blue-left-4","bd-blue-left-5":"bd-blue-left-5","bd-blue-left-6":"bd-blue-left-6","bd-blue-left-7":"bd-blue-left-7","bd-blue-left-8":"bd-blue-left-8","bd-blue-left-9":"bd-blue-left-9","bd-blue-left-10":"bd-blue-left-10","bd-green-left":"bd-green-left","bd-green-left-0":"bd-green-left-0","bd-green-left-1":"bd-green-left-1","bd-green-left-2":"bd-green-left-2","bd-green-left-3":"bd-green-left-3","bd-green-left-4":"bd-green-left-4","bd-green-left-5":"bd-green-left-5","bd-green-left-6":"bd-green-left-6","bd-green-left-7":"bd-green-left-7","bd-green-left-8":"bd-green-left-8","bd-green-left-9":"bd-green-left-9","bd-green-left-10":"bd-green-left-10","bd-orange-left":"bd-orange-left","bd-orange-left-0":"bd-orange-left-0","bd-orange-left-1":"bd-orange-left-1","bd-orange-left-2":"bd-orange-left-2","bd-orange-left-3":"bd-orange-left-3","bd-orange-left-4":"bd-orange-left-4","bd-orange-left-5":"bd-orange-left-5","bd-orange-left-6":"bd-orange-left-6","bd-orange-left-7":"bd-orange-left-7","bd-orange-left-8":"bd-orange-left-8","bd-orange-left-9":"bd-orange-left-9","bd-orange-left-10":"bd-orange-left-10","bd-darkblue-left":"bd-darkblue-left","bd-darkblue-left-0":"bd-darkblue-left-0","bd-darkblue-left-1":"bd-darkblue-left-1","bd-darkblue-left-2":"bd-darkblue-left-2","bd-darkblue-left-3":"bd-darkblue-left-3","bd-darkblue-left-4":"bd-darkblue-left-4","bd-darkblue-left-5":"bd-darkblue-left-5","bd-darkblue-left-6":"bd-darkblue-left-6","bd-darkblue-left-7":"bd-darkblue-left-7","bd-darkblue-left-8":"bd-darkblue-left-8","bd-darkblue-left-9":"bd-darkblue-left-9","bd-darkblue-left-10":"bd-darkblue-left-10","bd-gold-left":"bd-gold-left","bd-gold-left-0":"bd-gold-left-0","bd-gold-left-1":"bd-gold-left-1","bd-gold-left-2":"bd-gold-left-2","bd-gold-left-3":"bd-gold-left-3","bd-gold-left-4":"bd-gold-left-4","bd-gold-left-5":"bd-gold-left-5","bd-gold-left-6":"bd-gold-left-6","bd-gold-left-7":"bd-gold-left-7","bd-gold-left-8":"bd-gold-left-8","bd-gold-left-9":"bd-gold-left-9","bd-gold-left-10":"bd-gold-left-10","bd-black-left":"bd-black-left","bd-black-left-0":"bd-black-left-0","bd-black-left-1":"bd-black-left-1","bd-black-left-2":"bd-black-left-2","bd-black-left-3":"bd-black-left-3","bd-black-left-4":"bd-black-left-4","bd-black-left-5":"bd-black-left-5","bd-black-left-6":"bd-black-left-6","bd-black-left-7":"bd-black-left-7","bd-black-left-8":"bd-black-left-8","bd-black-left-9":"bd-black-left-9","bd-black-left-10":"bd-black-left-10","bd-blacklight-left":"bd-blacklight-left","bd-blacklight-left-0":"bd-blacklight-left-0","bd-blacklight-left-1":"bd-blacklight-left-1","bd-blacklight-left-2":"bd-blacklight-left-2","bd-blacklight-left-3":"bd-blacklight-left-3","bd-blacklight-left-4":"bd-blacklight-left-4","bd-blacklight-left-5":"bd-blacklight-left-5","bd-blacklight-left-6":"bd-blacklight-left-6","bd-blacklight-left-7":"bd-blacklight-left-7","bd-blacklight-left-8":"bd-blacklight-left-8","bd-blacklight-left-9":"bd-blacklight-left-9","bd-blacklight-left-10":"bd-blacklight-left-10","bd-blacklighter-left":"bd-blacklighter-left","bd-blacklighter-left-0":"bd-blacklighter-left-0","bd-blacklighter-left-1":"bd-blacklighter-left-1","bd-blacklighter-left-2":"bd-blacklighter-left-2","bd-blacklighter-left-3":"bd-blacklighter-left-3","bd-blacklighter-left-4":"bd-blacklighter-left-4","bd-blacklighter-left-5":"bd-blacklighter-left-5","bd-blacklighter-left-6":"bd-blacklighter-left-6","bd-blacklighter-left-7":"bd-blacklighter-left-7","bd-blacklighter-left-8":"bd-blacklighter-left-8","bd-blacklighter-left-9":"bd-blacklighter-left-9","bd-blacklighter-left-10":"bd-blacklighter-left-10","bd-greystronger-left":"bd-greystronger-left","bd-greystronger-left-0":"bd-greystronger-left-0","bd-greystronger-left-1":"bd-greystronger-left-1","bd-greystronger-left-2":"bd-greystronger-left-2","bd-greystronger-left-3":"bd-greystronger-left-3","bd-greystronger-left-4":"bd-greystronger-left-4","bd-greystronger-left-5":"bd-greystronger-left-5","bd-greystronger-left-6":"bd-greystronger-left-6","bd-greystronger-left-7":"bd-greystronger-left-7","bd-greystronger-left-8":"bd-greystronger-left-8","bd-greystronger-left-9":"bd-greystronger-left-9","bd-greystronger-left-10":"bd-greystronger-left-10","bd-greystrong-left":"bd-greystrong-left","bd-greystrong-left-0":"bd-greystrong-left-0","bd-greystrong-left-1":"bd-greystrong-left-1","bd-greystrong-left-2":"bd-greystrong-left-2","bd-greystrong-left-3":"bd-greystrong-left-3","bd-greystrong-left-4":"bd-greystrong-left-4","bd-greystrong-left-5":"bd-greystrong-left-5","bd-greystrong-left-6":"bd-greystrong-left-6","bd-greystrong-left-7":"bd-greystrong-left-7","bd-greystrong-left-8":"bd-greystrong-left-8","bd-greystrong-left-9":"bd-greystrong-left-9","bd-greystrong-left-10":"bd-greystrong-left-10","bd-grey-left":"bd-grey-left","bd-grey-left-0":"bd-grey-left-0","bd-grey-left-1":"bd-grey-left-1","bd-grey-left-2":"bd-grey-left-2","bd-grey-left-3":"bd-grey-left-3","bd-grey-left-4":"bd-grey-left-4","bd-grey-left-5":"bd-grey-left-5","bd-grey-left-6":"bd-grey-left-6","bd-grey-left-7":"bd-grey-left-7","bd-grey-left-8":"bd-grey-left-8","bd-grey-left-9":"bd-grey-left-9","bd-grey-left-10":"bd-grey-left-10","bd-greylight-left":"bd-greylight-left","bd-greylight-left-0":"bd-greylight-left-0","bd-greylight-left-1":"bd-greylight-left-1","bd-greylight-left-2":"bd-greylight-left-2","bd-greylight-left-3":"bd-greylight-left-3","bd-greylight-left-4":"bd-greylight-left-4","bd-greylight-left-5":"bd-greylight-left-5","bd-greylight-left-6":"bd-greylight-left-6","bd-greylight-left-7":"bd-greylight-left-7","bd-greylight-left-8":"bd-greylight-left-8","bd-greylight-left-9":"bd-greylight-left-9","bd-greylight-left-10":"bd-greylight-left-10","bd-greylighter-left":"bd-greylighter-left","bd-greylighter-left-0":"bd-greylighter-left-0","bd-greylighter-left-1":"bd-greylighter-left-1","bd-greylighter-left-2":"bd-greylighter-left-2","bd-greylighter-left-3":"bd-greylighter-left-3","bd-greylighter-left-4":"bd-greylighter-left-4","bd-greylighter-left-5":"bd-greylighter-left-5","bd-greylighter-left-6":"bd-greylighter-left-6","bd-greylighter-left-7":"bd-greylighter-left-7","bd-greylighter-left-8":"bd-greylighter-left-8","bd-greylighter-left-9":"bd-greylighter-left-9","bd-greylighter-left-10":"bd-greylighter-left-10","bd-white-left":"bd-white-left","bd-white-left-0":"bd-white-left-0","bd-white-left-1":"bd-white-left-1","bd-white-left-2":"bd-white-left-2","bd-white-left-3":"bd-white-left-3","bd-white-left-4":"bd-white-left-4","bd-white-left-5":"bd-white-left-5","bd-white-left-6":"bd-white-left-6","bd-white-left-7":"bd-white-left-7","bd-white-left-8":"bd-white-left-8","bd-white-left-9":"bd-white-left-9","bd-white-left-10":"bd-white-left-10","bd-none-left":"bd-none-left","bd-none-left-0":"bd-none-left-0","bd-none-left-1":"bd-none-left-1","bd-none-left-2":"bd-none-left-2","bd-none-left-3":"bd-none-left-3","bd-none-left-4":"bd-none-left-4","bd-none-left-5":"bd-none-left-5","bd-none-left-6":"bd-none-left-6","bd-none-left-7":"bd-none-left-7","bd-none-left-8":"bd-none-left-8","bd-none-left-9":"bd-none-left-9","bd-none-left-10":"bd-none-left-10","p-left-0":"p-left-0","p-left-x2":"p-left-x2","h0":"h0","sep-bottom":"sep-bottom","sep-top":"sep-top","sep-right":"sep-right","sep-left":"sep-left","h1":"h1","h2":"h2","h3":"h3","h4":"h4","h5":"h5","h6":"h6","sep":"sep","reset":"reset","bg-blue":"bg-blue","bg-blue-o-10":"bg-blue-o-10","bg-blue-o-20":"bg-blue-o-20","bg-blue-o-30":"bg-blue-o-30","bg-blue-o-40":"bg-blue-o-40","bg-blue-o-50":"bg-blue-o-50","bg-blue-o-60":"bg-blue-o-60","bg-blue-o-70":"bg-blue-o-70","bg-blue-o-80":"bg-blue-o-80","bg-blue-o-90":"bg-blue-o-90","bg-blue-o-100":"bg-blue-o-100","text":"text","email":"email","password":"password","tel":"tel","url":"url","date":"date","range":"range","number":"number","focus":"focus","active":"active","checkbox":"checkbox","radio":"radio","bg-green":"bg-green","bg-green-o-10":"bg-green-o-10","bg-green-o-20":"bg-green-o-20","bg-green-o-30":"bg-green-o-30","bg-green-o-40":"bg-green-o-40","bg-green-o-50":"bg-green-o-50","bg-green-o-60":"bg-green-o-60","bg-green-o-70":"bg-green-o-70","bg-green-o-80":"bg-green-o-80","bg-green-o-90":"bg-green-o-90","bg-green-o-100":"bg-green-o-100","bg-orange":"bg-orange","bg-orange-o-10":"bg-orange-o-10","bg-orange-o-20":"bg-orange-o-20","bg-orange-o-30":"bg-orange-o-30","bg-orange-o-40":"bg-orange-o-40","bg-orange-o-50":"bg-orange-o-50","bg-orange-o-60":"bg-orange-o-60","bg-orange-o-70":"bg-orange-o-70","bg-orange-o-80":"bg-orange-o-80","bg-orange-o-90":"bg-orange-o-90","bg-orange-o-100":"bg-orange-o-100","bg-darkblue":"bg-darkblue","bg-darkblue-o-10":"bg-darkblue-o-10","bg-darkblue-o-20":"bg-darkblue-o-20","bg-darkblue-o-30":"bg-darkblue-o-30","bg-darkblue-o-40":"bg-darkblue-o-40","bg-darkblue-o-50":"bg-darkblue-o-50","bg-darkblue-o-60":"bg-darkblue-o-60","bg-darkblue-o-70":"bg-darkblue-o-70","bg-darkblue-o-80":"bg-darkblue-o-80","bg-darkblue-o-90":"bg-darkblue-o-90","bg-darkblue-o-100":"bg-darkblue-o-100","bg-gold":"bg-gold","bg-gold-o-10":"bg-gold-o-10","bg-gold-o-20":"bg-gold-o-20","bg-gold-o-30":"bg-gold-o-30","bg-gold-o-40":"bg-gold-o-40","bg-gold-o-50":"bg-gold-o-50","bg-gold-o-60":"bg-gold-o-60","bg-gold-o-70":"bg-gold-o-70","bg-gold-o-80":"bg-gold-o-80","bg-gold-o-90":"bg-gold-o-90","bg-gold-o-100":"bg-gold-o-100","bg-black":"bg-black","bg-black-o-10":"bg-black-o-10","bg-black-o-20":"bg-black-o-20","bg-black-o-30":"bg-black-o-30","bg-black-o-40":"bg-black-o-40","bg-black-o-50":"bg-black-o-50","bg-black-o-60":"bg-black-o-60","bg-black-o-70":"bg-black-o-70","bg-black-o-80":"bg-black-o-80","bg-black-o-90":"bg-black-o-90","bg-black-o-100":"bg-black-o-100","bg-blacklight":"bg-blacklight","bg-blacklight-o-10":"bg-blacklight-o-10","bg-blacklight-o-20":"bg-blacklight-o-20","bg-blacklight-o-30":"bg-blacklight-o-30","bg-blacklight-o-40":"bg-blacklight-o-40","bg-blacklight-o-50":"bg-blacklight-o-50","bg-blacklight-o-60":"bg-blacklight-o-60","bg-blacklight-o-70":"bg-blacklight-o-70","bg-blacklight-o-80":"bg-blacklight-o-80","bg-blacklight-o-90":"bg-blacklight-o-90","bg-blacklight-o-100":"bg-blacklight-o-100","bg-blacklighter":"bg-blacklighter","bg-blacklighter-o-10":"bg-blacklighter-o-10","bg-blacklighter-o-20":"bg-blacklighter-o-20","bg-blacklighter-o-30":"bg-blacklighter-o-30","bg-blacklighter-o-40":"bg-blacklighter-o-40","bg-blacklighter-o-50":"bg-blacklighter-o-50","bg-blacklighter-o-60":"bg-blacklighter-o-60","bg-blacklighter-o-70":"bg-blacklighter-o-70","bg-blacklighter-o-80":"bg-blacklighter-o-80","bg-blacklighter-o-90":"bg-blacklighter-o-90","bg-blacklighter-o-100":"bg-blacklighter-o-100","bg-greystronger":"bg-greystronger","bg-greystronger-o-10":"bg-greystronger-o-10","bg-greystronger-o-20":"bg-greystronger-o-20","bg-greystronger-o-30":"bg-greystronger-o-30","bg-greystronger-o-40":"bg-greystronger-o-40","bg-greystronger-o-50":"bg-greystronger-o-50","bg-greystronger-o-60":"bg-greystronger-o-60","bg-greystronger-o-70":"bg-greystronger-o-70","bg-greystronger-o-80":"bg-greystronger-o-80","bg-greystronger-o-90":"bg-greystronger-o-90","bg-greystronger-o-100":"bg-greystronger-o-100","bg-greystrong":"bg-greystrong","bg-greystrong-o-10":"bg-greystrong-o-10","bg-greystrong-o-20":"bg-greystrong-o-20","bg-greystrong-o-30":"bg-greystrong-o-30","bg-greystrong-o-40":"bg-greystrong-o-40","bg-greystrong-o-50":"bg-greystrong-o-50","bg-greystrong-o-60":"bg-greystrong-o-60","bg-greystrong-o-70":"bg-greystrong-o-70","bg-greystrong-o-80":"bg-greystrong-o-80","bg-greystrong-o-90":"bg-greystrong-o-90","bg-greystrong-o-100":"bg-greystrong-o-100","bg-grey":"bg-grey","bg-grey-o-10":"bg-grey-o-10","bg-grey-o-20":"bg-grey-o-20","bg-grey-o-30":"bg-grey-o-30","bg-grey-o-40":"bg-grey-o-40","bg-grey-o-50":"bg-grey-o-50","bg-grey-o-60":"bg-grey-o-60","bg-grey-o-70":"bg-grey-o-70","bg-grey-o-80":"bg-grey-o-80","bg-grey-o-90":"bg-grey-o-90","bg-grey-o-100":"bg-grey-o-100","bg-greylight":"bg-greylight","bg-greylight-o-10":"bg-greylight-o-10","bg-greylight-o-20":"bg-greylight-o-20","bg-greylight-o-30":"bg-greylight-o-30","bg-greylight-o-40":"bg-greylight-o-40","bg-greylight-o-50":"bg-greylight-o-50","bg-greylight-o-60":"bg-greylight-o-60","bg-greylight-o-70":"bg-greylight-o-70","bg-greylight-o-80":"bg-greylight-o-80","bg-greylight-o-90":"bg-greylight-o-90","bg-greylight-o-100":"bg-greylight-o-100","bg-greylighter":"bg-greylighter","bg-greylighter-o-10":"bg-greylighter-o-10","bg-greylighter-o-20":"bg-greylighter-o-20","bg-greylighter-o-30":"bg-greylighter-o-30","bg-greylighter-o-40":"bg-greylighter-o-40","bg-greylighter-o-50":"bg-greylighter-o-50","bg-greylighter-o-60":"bg-greylighter-o-60","bg-greylighter-o-70":"bg-greylighter-o-70","bg-greylighter-o-80":"bg-greylighter-o-80","bg-greylighter-o-90":"bg-greylighter-o-90","bg-greylighter-o-100":"bg-greylighter-o-100","bg-white":"bg-white","bg-white-o-10":"bg-white-o-10","bg-white-o-20":"bg-white-o-20","bg-white-o-30":"bg-white-o-30","bg-white-o-40":"bg-white-o-40","bg-white-o-50":"bg-white-o-50","bg-white-o-60":"bg-white-o-60","bg-white-o-70":"bg-white-o-70","bg-white-o-80":"bg-white-o-80","bg-white-o-90":"bg-white-o-90","bg-white-o-100":"bg-white-o-100","bg-none":"bg-none","bg-none-o-10":"bg-none-o-10","bg-none-o-20":"bg-none-o-20","bg-none-o-30":"bg-none-o-30","bg-none-o-40":"bg-none-o-40","bg-none-o-50":"bg-none-o-50","bg-none-o-60":"bg-none-o-60","bg-none-o-70":"bg-none-o-70","bg-none-o-80":"bg-none-o-80","bg-none-o-90":"bg-none-o-90","bg-none-o-100":"bg-none-o-100","btn-sm":"btn-sm","editor":"editor","btn-lg":"btn-lg","btn-bd-blue":"btn-bd-blue","btn-bg-blue":"btn-bg-blue","btn-bd-green":"btn-bd-green","btn-bg-green":"btn-bg-green","btn-bd-orange":"btn-bd-orange","btn-bg-orange":"btn-bg-orange","btn-bd-darkblue":"btn-bd-darkblue","btn-bg-darkblue":"btn-bg-darkblue","btn-bd-gold":"btn-bd-gold","btn-bg-gold":"btn-bg-gold","btn-bd-black":"btn-bd-black","btn-bg-black":"btn-bg-black","btn-bd-blacklight":"btn-bd-blacklight","btn-bg-blacklight":"btn-bg-blacklight","btn-bd-blacklighter":"btn-bd-blacklighter","btn-bg-blacklighter":"btn-bg-blacklighter","btn-bd-greystronger":"btn-bd-greystronger","btn-bg-greystronger":"btn-bg-greystronger","btn-bd-greystrong":"btn-bd-greystrong","btn-bg-greystrong":"btn-bg-greystrong","btn-bd-grey":"btn-bd-grey","btn-bg-grey":"btn-bg-grey","btn-bd-greylight":"btn-bd-greylight","btn-bg-greylight":"btn-bg-greylight","btn-bd-greylighter":"btn-bd-greylighter","btn-bg-greylighter":"btn-bg-greylighter","btn-bd-white":"btn-bd-white","btn-bg-white":"btn-bg-white","btn-bd-none":"btn-bd-none","btn-bg-none":"btn-bg-none","flex":"flex","flex-grow-0":"flex-grow-0","flex-grow-1":"flex-grow-1","flex-grow-2":"flex-grow-2","flex-grow-3":"flex-grow-3","flex-grow-4":"flex-grow-4","flex-grow-5":"flex-grow-5","flex-grow-6":"flex-grow-6","flex-grow-7":"flex-grow-7","flex-grow-8":"flex-grow-8","flex-grow-9":"flex-grow-9","flex-grow-10":"flex-grow-10","nofill":"nofill","form-group":"form-group","tabs":"tabs","tabs__nav":"tabs__nav","tabs__content":"tabs__content","tab":"tab","foldingbox":"foldingbox","foldingbox__title":"foldingbox__title","foldingbox__item":"foldingbox__item","foldingbox__container":"foldingbox__container","foldingbox__item__content":"foldingbox__item__content","foldingbox__item__bg":"foldingbox__item__bg","scene":"scene","grid":"grid","strip":"strip","debug":"debug","animate":"animate","wrapper":"wrapper","spin":"spin","brick":"brick","top":"top","right":"right","front":"front","left":"left","back":"back","cover":"cover","stud":"stud","guideline":"guideline","content":"content","item":"item","FWslider":"FWslider","FWslider__container":"FWslider__container","FWslider__rail":"FWslider__rail","FWslider__item":"FWslider__item","FWslider__item__bg":"FWslider__item__bg","FWslider__item__content":"FWslider__item__content","FWslider__nav":"FWslider__nav","FWslider__nav__item":"FWslider__nav__item","toast-container":"toast-container"};
+module.exports = {"radius":"2px","spacing":"30px","border-size":"2px","colors":"(\"blue\": #004C79, \"green\": #5cb85c, \"orange\": #DC6053, \"darkblue\": #0a1d29, \"gold\": #edbe5f, \"black\": #000000, \"blacklight\": #111414, \"blacklighter\": #222222, \"greystronger\": #424041, \"greystrong\": #535052, \"grey\": #7A7778, \"greylight\": #DDDDDD, \"greylighter\": #EEEEEE, \"white\": #ffffff, \"none\": transparent)","breakpoints":"(\"xl\": 1400px, \"lg\": 1200px, \"md\": 992px, \"sm\": 768px, \"xs\": 620px, \"xxs\": 520px)","body":"(\"background\": #ffffff, \"font-color\": #424041, \"font-size\": 20px, \"title-font-color\": #111414)","header":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","footer":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","input":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #424041, \"border-size\": 2px, \"placeholder-font-color\": #7A7778, \"radius\": true)","input-focus":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #424041)","input-valid":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #5cb85c)","input-invalid":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #DC6053)","link":"(\"font-color\": #DC6053, \"font-color-hover\": #DC6053, \"font-color-focus\": #DC6053)","btn":"btn","enable-bg":"true","enable-bg-extended":"false","enable-bd":"true","disabled":"disabled","copy":"copy","no-events":"no-events","no-overflow":"no-overflow","hidden":"hidden","invisible":"invisible","ellipsis":"ellipsis","center":"center","center-block":"center-block","fl-left":"fl-left","float-left":"float-left","fl-right":"fl-right","float-right":"float-right","clear":"clear","clear-left":"clear-left","clear-right":"clear-right","clear-after":"clear-after","clear-before":"clear-before","clear-no":"clear-no","text-right":"text-right","txt-right":"txt-right","text-left":"text-left","txt-left":"txt-left","text-center":"text-center","txt-center":"txt-center","ft-light":"ft-light","ft-normal":"ft-normal","ft-bold":"ft-bold","ft-bolder":"ft-bolder","ft-i":"ft-i","ft-b":"ft-b","ft-u":"ft-u","ft-u-no":"ft-u-no","ft-upper":"ft-upper","ft-lower":"ft-lower","ft-0-em":"ft-0-em","ft-0-rem":"ft-0-rem","ft-0-1-em":"ft-0-1-em","ft-0-1-rem":"ft-0-1-rem","ft-0-2-em":"ft-0-2-em","ft-0-2-rem":"ft-0-2-rem","ft-0-3-em":"ft-0-3-em","ft-0-3-rem":"ft-0-3-rem","ft-0-4-em":"ft-0-4-em","ft-0-4-rem":"ft-0-4-rem","ft-0-5-em":"ft-0-5-em","ft-0-5-rem":"ft-0-5-rem","ft-0-6-em":"ft-0-6-em","ft-0-6-rem":"ft-0-6-rem","ft-0-7-em":"ft-0-7-em","ft-0-7-rem":"ft-0-7-rem","ft-0-8-em":"ft-0-8-em","ft-0-8-rem":"ft-0-8-rem","ft-0-9-em":"ft-0-9-em","ft-0-9-rem":"ft-0-9-rem","ft-minus-10":"ft-minus-10","ft-plus-10":"ft-plus-10","ft-1-em":"ft-1-em","ft-1-rem":"ft-1-rem","ft-1-1-em":"ft-1-1-em","ft-1-1-rem":"ft-1-1-rem","ft-1-2-em":"ft-1-2-em","ft-1-2-rem":"ft-1-2-rem","ft-1-3-em":"ft-1-3-em","ft-1-3-rem":"ft-1-3-rem","ft-1-4-em":"ft-1-4-em","ft-1-4-rem":"ft-1-4-rem","ft-1-5-em":"ft-1-5-em","ft-1-5-rem":"ft-1-5-rem","ft-1-6-em":"ft-1-6-em","ft-1-6-rem":"ft-1-6-rem","ft-1-7-em":"ft-1-7-em","ft-1-7-rem":"ft-1-7-rem","ft-1-8-em":"ft-1-8-em","ft-1-8-rem":"ft-1-8-rem","ft-1-9-em":"ft-1-9-em","ft-1-9-rem":"ft-1-9-rem","ft-minus-20":"ft-minus-20","ft-plus-20":"ft-plus-20","ft-2-em":"ft-2-em","ft-2-rem":"ft-2-rem","ft-2-1-em":"ft-2-1-em","ft-2-1-rem":"ft-2-1-rem","ft-2-2-em":"ft-2-2-em","ft-2-2-rem":"ft-2-2-rem","ft-2-3-em":"ft-2-3-em","ft-2-3-rem":"ft-2-3-rem","ft-2-4-em":"ft-2-4-em","ft-2-4-rem":"ft-2-4-rem","ft-2-5-em":"ft-2-5-em","ft-2-5-rem":"ft-2-5-rem","ft-2-6-em":"ft-2-6-em","ft-2-6-rem":"ft-2-6-rem","ft-2-7-em":"ft-2-7-em","ft-2-7-rem":"ft-2-7-rem","ft-2-8-em":"ft-2-8-em","ft-2-8-rem":"ft-2-8-rem","ft-2-9-em":"ft-2-9-em","ft-2-9-rem":"ft-2-9-rem","ft-minus-30":"ft-minus-30","ft-plus-30":"ft-plus-30","ft-3-em":"ft-3-em","ft-3-rem":"ft-3-rem","ft-3-1-em":"ft-3-1-em","ft-3-1-rem":"ft-3-1-rem","ft-3-2-em":"ft-3-2-em","ft-3-2-rem":"ft-3-2-rem","ft-3-3-em":"ft-3-3-em","ft-3-3-rem":"ft-3-3-rem","ft-3-4-em":"ft-3-4-em","ft-3-4-rem":"ft-3-4-rem","ft-3-5-em":"ft-3-5-em","ft-3-5-rem":"ft-3-5-rem","ft-3-6-em":"ft-3-6-em","ft-3-6-rem":"ft-3-6-rem","ft-3-7-em":"ft-3-7-em","ft-3-7-rem":"ft-3-7-rem","ft-3-8-em":"ft-3-8-em","ft-3-8-rem":"ft-3-8-rem","ft-3-9-em":"ft-3-9-em","ft-3-9-rem":"ft-3-9-rem","ft-minus-40":"ft-minus-40","ft-plus-40":"ft-plus-40","ft-4-em":"ft-4-em","ft-4-rem":"ft-4-rem","ft-4-1-em":"ft-4-1-em","ft-4-1-rem":"ft-4-1-rem","ft-4-2-em":"ft-4-2-em","ft-4-2-rem":"ft-4-2-rem","ft-4-3-em":"ft-4-3-em","ft-4-3-rem":"ft-4-3-rem","ft-4-4-em":"ft-4-4-em","ft-4-4-rem":"ft-4-4-rem","ft-4-5-em":"ft-4-5-em","ft-4-5-rem":"ft-4-5-rem","ft-4-6-em":"ft-4-6-em","ft-4-6-rem":"ft-4-6-rem","ft-4-7-em":"ft-4-7-em","ft-4-7-rem":"ft-4-7-rem","ft-4-8-em":"ft-4-8-em","ft-4-8-rem":"ft-4-8-rem","ft-4-9-em":"ft-4-9-em","ft-4-9-rem":"ft-4-9-rem","ft-minus-50":"ft-minus-50","ft-plus-50":"ft-plus-50","ft-5-em":"ft-5-em","ft-5-rem":"ft-5-rem","ft-5-1-em":"ft-5-1-em","ft-5-1-rem":"ft-5-1-rem","ft-5-2-em":"ft-5-2-em","ft-5-2-rem":"ft-5-2-rem","ft-5-3-em":"ft-5-3-em","ft-5-3-rem":"ft-5-3-rem","ft-5-4-em":"ft-5-4-em","ft-5-4-rem":"ft-5-4-rem","ft-5-5-em":"ft-5-5-em","ft-5-5-rem":"ft-5-5-rem","ft-5-6-em":"ft-5-6-em","ft-5-6-rem":"ft-5-6-rem","ft-5-7-em":"ft-5-7-em","ft-5-7-rem":"ft-5-7-rem","ft-5-8-em":"ft-5-8-em","ft-5-8-rem":"ft-5-8-rem","ft-5-9-em":"ft-5-9-em","ft-5-9-rem":"ft-5-9-rem","ft-minus-60":"ft-minus-60","ft-plus-60":"ft-plus-60","ft-6-em":"ft-6-em","ft-6-rem":"ft-6-rem","ft-6-1-em":"ft-6-1-em","ft-6-1-rem":"ft-6-1-rem","ft-6-2-em":"ft-6-2-em","ft-6-2-rem":"ft-6-2-rem","ft-6-3-em":"ft-6-3-em","ft-6-3-rem":"ft-6-3-rem","ft-6-4-em":"ft-6-4-em","ft-6-4-rem":"ft-6-4-rem","ft-6-5-em":"ft-6-5-em","ft-6-5-rem":"ft-6-5-rem","ft-6-6-em":"ft-6-6-em","ft-6-6-rem":"ft-6-6-rem","ft-6-7-em":"ft-6-7-em","ft-6-7-rem":"ft-6-7-rem","ft-6-8-em":"ft-6-8-em","ft-6-8-rem":"ft-6-8-rem","ft-6-9-em":"ft-6-9-em","ft-6-9-rem":"ft-6-9-rem","ft-minus-70":"ft-minus-70","ft-plus-70":"ft-plus-70","ft-7-em":"ft-7-em","ft-7-rem":"ft-7-rem","ft-7-1-em":"ft-7-1-em","ft-7-1-rem":"ft-7-1-rem","ft-7-2-em":"ft-7-2-em","ft-7-2-rem":"ft-7-2-rem","ft-7-3-em":"ft-7-3-em","ft-7-3-rem":"ft-7-3-rem","ft-7-4-em":"ft-7-4-em","ft-7-4-rem":"ft-7-4-rem","ft-7-5-em":"ft-7-5-em","ft-7-5-rem":"ft-7-5-rem","ft-7-6-em":"ft-7-6-em","ft-7-6-rem":"ft-7-6-rem","ft-7-7-em":"ft-7-7-em","ft-7-7-rem":"ft-7-7-rem","ft-7-8-em":"ft-7-8-em","ft-7-8-rem":"ft-7-8-rem","ft-7-9-em":"ft-7-9-em","ft-7-9-rem":"ft-7-9-rem","ft-minus-80":"ft-minus-80","ft-plus-80":"ft-plus-80","ft-8-em":"ft-8-em","ft-8-rem":"ft-8-rem","ft-8-1-em":"ft-8-1-em","ft-8-1-rem":"ft-8-1-rem","ft-8-2-em":"ft-8-2-em","ft-8-2-rem":"ft-8-2-rem","ft-8-3-em":"ft-8-3-em","ft-8-3-rem":"ft-8-3-rem","ft-8-4-em":"ft-8-4-em","ft-8-4-rem":"ft-8-4-rem","ft-8-5-em":"ft-8-5-em","ft-8-5-rem":"ft-8-5-rem","ft-8-6-em":"ft-8-6-em","ft-8-6-rem":"ft-8-6-rem","ft-8-7-em":"ft-8-7-em","ft-8-7-rem":"ft-8-7-rem","ft-8-8-em":"ft-8-8-em","ft-8-8-rem":"ft-8-8-rem","ft-8-9-em":"ft-8-9-em","ft-8-9-rem":"ft-8-9-rem","ft-minus-90":"ft-minus-90","ft-plus-90":"ft-plus-90","ft-9-em":"ft-9-em","ft-9-rem":"ft-9-rem","ft-9-1-em":"ft-9-1-em","ft-9-1-rem":"ft-9-1-rem","ft-9-2-em":"ft-9-2-em","ft-9-2-rem":"ft-9-2-rem","ft-9-3-em":"ft-9-3-em","ft-9-3-rem":"ft-9-3-rem","ft-9-4-em":"ft-9-4-em","ft-9-4-rem":"ft-9-4-rem","ft-9-5-em":"ft-9-5-em","ft-9-5-rem":"ft-9-5-rem","ft-9-6-em":"ft-9-6-em","ft-9-6-rem":"ft-9-6-rem","ft-9-7-em":"ft-9-7-em","ft-9-7-rem":"ft-9-7-rem","ft-9-8-em":"ft-9-8-em","ft-9-8-rem":"ft-9-8-rem","ft-9-9-em":"ft-9-9-em","ft-9-9-rem":"ft-9-9-rem","ft-minus-100":"ft-minus-100","ft-plus-100":"ft-plus-100","ft-10-em":"ft-10-em","ft-10-rem":"ft-10-rem","ft-10-1-em":"ft-10-1-em","ft-10-1-rem":"ft-10-1-rem","ft-10-2-em":"ft-10-2-em","ft-10-2-rem":"ft-10-2-rem","ft-10-3-em":"ft-10-3-em","ft-10-3-rem":"ft-10-3-rem","ft-10-4-em":"ft-10-4-em","ft-10-4-rem":"ft-10-4-rem","ft-10-5-em":"ft-10-5-em","ft-10-5-rem":"ft-10-5-rem","ft-10-6-em":"ft-10-6-em","ft-10-6-rem":"ft-10-6-rem","ft-10-7-em":"ft-10-7-em","ft-10-7-rem":"ft-10-7-rem","ft-10-8-em":"ft-10-8-em","ft-10-8-rem":"ft-10-8-rem","ft-10-9-em":"ft-10-9-em","ft-10-9-rem":"ft-10-9-rem","ft-blue":"ft-blue","ft-green":"ft-green","ft-orange":"ft-orange","ft-darkblue":"ft-darkblue","ft-gold":"ft-gold","ft-black":"ft-black","ft-blacklight":"ft-blacklight","ft-blacklighter":"ft-blacklighter","ft-greystronger":"ft-greystronger","ft-greystrong":"ft-greystrong","ft-grey":"ft-grey","ft-greylight":"ft-greylight","ft-greylighter":"ft-greylighter","ft-white":"ft-white","ft-none":"ft-none","rad":"rad","tags":"tags","rad-all":"rad-all","rad-top-left":"rad-top-left","rad-top":"rad-top","rad-left":"rad-left","rad-top-right":"rad-top-right","rad-right":"rad-right","rad-bottom-left":"rad-bottom-left","rad-bottom":"rad-bottom","rad-bottom-right":"rad-bottom-right","m-all":"m-all","m-all-0":"m-all-0","m-all-x2":"m-all-x2","p-all":"p-all","bd-blue":"bd-blue","bd-blue-0":"bd-blue-0","bd-blue-1":"bd-blue-1","bd-blue-2":"bd-blue-2","bd-blue-3":"bd-blue-3","bd-blue-4":"bd-blue-4","bd-blue-5":"bd-blue-5","bd-blue-6":"bd-blue-6","bd-blue-7":"bd-blue-7","bd-blue-8":"bd-blue-8","bd-blue-9":"bd-blue-9","bd-blue-10":"bd-blue-10","bd-green":"bd-green","bd-green-0":"bd-green-0","bd-green-1":"bd-green-1","bd-green-2":"bd-green-2","bd-green-3":"bd-green-3","bd-green-4":"bd-green-4","bd-green-5":"bd-green-5","bd-green-6":"bd-green-6","bd-green-7":"bd-green-7","bd-green-8":"bd-green-8","bd-green-9":"bd-green-9","bd-green-10":"bd-green-10","bd-orange":"bd-orange","bd-orange-0":"bd-orange-0","bd-orange-1":"bd-orange-1","bd-orange-2":"bd-orange-2","bd-orange-3":"bd-orange-3","bd-orange-4":"bd-orange-4","bd-orange-5":"bd-orange-5","bd-orange-6":"bd-orange-6","bd-orange-7":"bd-orange-7","bd-orange-8":"bd-orange-8","bd-orange-9":"bd-orange-9","bd-orange-10":"bd-orange-10","bd-darkblue":"bd-darkblue","bd-darkblue-0":"bd-darkblue-0","bd-darkblue-1":"bd-darkblue-1","bd-darkblue-2":"bd-darkblue-2","bd-darkblue-3":"bd-darkblue-3","bd-darkblue-4":"bd-darkblue-4","bd-darkblue-5":"bd-darkblue-5","bd-darkblue-6":"bd-darkblue-6","bd-darkblue-7":"bd-darkblue-7","bd-darkblue-8":"bd-darkblue-8","bd-darkblue-9":"bd-darkblue-9","bd-darkblue-10":"bd-darkblue-10","bd-gold":"bd-gold","bd-gold-0":"bd-gold-0","bd-gold-1":"bd-gold-1","bd-gold-2":"bd-gold-2","bd-gold-3":"bd-gold-3","bd-gold-4":"bd-gold-4","bd-gold-5":"bd-gold-5","bd-gold-6":"bd-gold-6","bd-gold-7":"bd-gold-7","bd-gold-8":"bd-gold-8","bd-gold-9":"bd-gold-9","bd-gold-10":"bd-gold-10","bd-black":"bd-black","bd-black-0":"bd-black-0","bd-black-1":"bd-black-1","bd-black-2":"bd-black-2","bd-black-3":"bd-black-3","bd-black-4":"bd-black-4","bd-black-5":"bd-black-5","bd-black-6":"bd-black-6","bd-black-7":"bd-black-7","bd-black-8":"bd-black-8","bd-black-9":"bd-black-9","bd-black-10":"bd-black-10","bd-blacklight":"bd-blacklight","bd-blacklight-0":"bd-blacklight-0","bd-blacklight-1":"bd-blacklight-1","bd-blacklight-2":"bd-blacklight-2","bd-blacklight-3":"bd-blacklight-3","bd-blacklight-4":"bd-blacklight-4","bd-blacklight-5":"bd-blacklight-5","bd-blacklight-6":"bd-blacklight-6","bd-blacklight-7":"bd-blacklight-7","bd-blacklight-8":"bd-blacklight-8","bd-blacklight-9":"bd-blacklight-9","bd-blacklight-10":"bd-blacklight-10","bd-blacklighter":"bd-blacklighter","bd-blacklighter-0":"bd-blacklighter-0","bd-blacklighter-1":"bd-blacklighter-1","bd-blacklighter-2":"bd-blacklighter-2","bd-blacklighter-3":"bd-blacklighter-3","bd-blacklighter-4":"bd-blacklighter-4","bd-blacklighter-5":"bd-blacklighter-5","bd-blacklighter-6":"bd-blacklighter-6","bd-blacklighter-7":"bd-blacklighter-7","bd-blacklighter-8":"bd-blacklighter-8","bd-blacklighter-9":"bd-blacklighter-9","bd-blacklighter-10":"bd-blacklighter-10","bd-greystronger":"bd-greystronger","bd-greystronger-0":"bd-greystronger-0","bd-greystronger-1":"bd-greystronger-1","bd-greystronger-2":"bd-greystronger-2","bd-greystronger-3":"bd-greystronger-3","bd-greystronger-4":"bd-greystronger-4","bd-greystronger-5":"bd-greystronger-5","bd-greystronger-6":"bd-greystronger-6","bd-greystronger-7":"bd-greystronger-7","bd-greystronger-8":"bd-greystronger-8","bd-greystronger-9":"bd-greystronger-9","bd-greystronger-10":"bd-greystronger-10","bd-greystrong":"bd-greystrong","bd-greystrong-0":"bd-greystrong-0","bd-greystrong-1":"bd-greystrong-1","bd-greystrong-2":"bd-greystrong-2","bd-greystrong-3":"bd-greystrong-3","bd-greystrong-4":"bd-greystrong-4","bd-greystrong-5":"bd-greystrong-5","bd-greystrong-6":"bd-greystrong-6","bd-greystrong-7":"bd-greystrong-7","bd-greystrong-8":"bd-greystrong-8","bd-greystrong-9":"bd-greystrong-9","bd-greystrong-10":"bd-greystrong-10","bd-grey":"bd-grey","bd-grey-0":"bd-grey-0","bd-grey-1":"bd-grey-1","bd-grey-2":"bd-grey-2","bd-grey-3":"bd-grey-3","bd-grey-4":"bd-grey-4","bd-grey-5":"bd-grey-5","bd-grey-6":"bd-grey-6","bd-grey-7":"bd-grey-7","bd-grey-8":"bd-grey-8","bd-grey-9":"bd-grey-9","bd-grey-10":"bd-grey-10","bd-greylight":"bd-greylight","bd-greylight-0":"bd-greylight-0","bd-greylight-1":"bd-greylight-1","bd-greylight-2":"bd-greylight-2","bd-greylight-3":"bd-greylight-3","bd-greylight-4":"bd-greylight-4","bd-greylight-5":"bd-greylight-5","bd-greylight-6":"bd-greylight-6","bd-greylight-7":"bd-greylight-7","bd-greylight-8":"bd-greylight-8","bd-greylight-9":"bd-greylight-9","bd-greylight-10":"bd-greylight-10","bd-greylighter":"bd-greylighter","bd-greylighter-0":"bd-greylighter-0","bd-greylighter-1":"bd-greylighter-1","bd-greylighter-2":"bd-greylighter-2","bd-greylighter-3":"bd-greylighter-3","bd-greylighter-4":"bd-greylighter-4","bd-greylighter-5":"bd-greylighter-5","bd-greylighter-6":"bd-greylighter-6","bd-greylighter-7":"bd-greylighter-7","bd-greylighter-8":"bd-greylighter-8","bd-greylighter-9":"bd-greylighter-9","bd-greylighter-10":"bd-greylighter-10","bd-white":"bd-white","bd-white-0":"bd-white-0","bd-white-1":"bd-white-1","bd-white-2":"bd-white-2","bd-white-3":"bd-white-3","side":"side","bd-white-4":"bd-white-4","bd-white-5":"bd-white-5","bd-white-6":"bd-white-6","bd-white-7":"bd-white-7","bd-white-8":"bd-white-8","bd-white-9":"bd-white-9","bd-white-10":"bd-white-10","bd-none":"bd-none","bd-none-0":"bd-none-0","bd-none-1":"bd-none-1","bd-none-2":"bd-none-2","bd-none-3":"bd-none-3","bd-none-4":"bd-none-4","bd-none-5":"bd-none-5","bd-none-6":"bd-none-6","bd-none-7":"bd-none-7","bd-none-8":"bd-none-8","bd-none-9":"bd-none-9","bd-none-10":"bd-none-10","block-std":"block-std","p-all-0":"p-all-0","p-all-x2":"p-all-x2","m-top":"m-top","m-y":"m-y","m-top-0":"m-top-0","m-y-0":"m-y-0","m-top-x2":"m-top-x2","m-y-x2":"m-y-x2","p-top":"p-top","p-y":"p-y","bd-blue-top":"bd-blue-top","bd-blue-top-0":"bd-blue-top-0","bd-blue-top-1":"bd-blue-top-1","bd-blue-top-2":"bd-blue-top-2","bd-blue-top-3":"bd-blue-top-3","bd-blue-top-4":"bd-blue-top-4","bd-blue-top-5":"bd-blue-top-5","bd-blue-top-6":"bd-blue-top-6","bd-blue-top-7":"bd-blue-top-7","bd-blue-top-8":"bd-blue-top-8","bd-blue-top-9":"bd-blue-top-9","bd-blue-top-10":"bd-blue-top-10","bd-green-top":"bd-green-top","bd-green-top-0":"bd-green-top-0","bd-green-top-1":"bd-green-top-1","bd-green-top-2":"bd-green-top-2","bd-green-top-3":"bd-green-top-3","bd-green-top-4":"bd-green-top-4","bd-green-top-5":"bd-green-top-5","bd-green-top-6":"bd-green-top-6","bd-green-top-7":"bd-green-top-7","bd-green-top-8":"bd-green-top-8","bd-green-top-9":"bd-green-top-9","bd-green-top-10":"bd-green-top-10","bd-orange-top":"bd-orange-top","bd-orange-top-0":"bd-orange-top-0","bd-orange-top-1":"bd-orange-top-1","bd-orange-top-2":"bd-orange-top-2","bd-orange-top-3":"bd-orange-top-3","bd-orange-top-4":"bd-orange-top-4","bd-orange-top-5":"bd-orange-top-5","bd-orange-top-6":"bd-orange-top-6","bd-orange-top-7":"bd-orange-top-7","bd-orange-top-8":"bd-orange-top-8","bd-orange-top-9":"bd-orange-top-9","bd-orange-top-10":"bd-orange-top-10","bd-darkblue-top":"bd-darkblue-top","bd-darkblue-top-0":"bd-darkblue-top-0","bd-darkblue-top-1":"bd-darkblue-top-1","bd-darkblue-top-2":"bd-darkblue-top-2","bd-darkblue-top-3":"bd-darkblue-top-3","bd-darkblue-top-4":"bd-darkblue-top-4","bd-darkblue-top-5":"bd-darkblue-top-5","bd-darkblue-top-6":"bd-darkblue-top-6","bd-darkblue-top-7":"bd-darkblue-top-7","bd-darkblue-top-8":"bd-darkblue-top-8","bd-darkblue-top-9":"bd-darkblue-top-9","bd-darkblue-top-10":"bd-darkblue-top-10","bd-gold-top":"bd-gold-top","bd-gold-top-0":"bd-gold-top-0","bd-gold-top-1":"bd-gold-top-1","bd-gold-top-2":"bd-gold-top-2","bd-gold-top-3":"bd-gold-top-3","bd-gold-top-4":"bd-gold-top-4","bd-gold-top-5":"bd-gold-top-5","bd-gold-top-6":"bd-gold-top-6","bd-gold-top-7":"bd-gold-top-7","bd-gold-top-8":"bd-gold-top-8","bd-gold-top-9":"bd-gold-top-9","bd-gold-top-10":"bd-gold-top-10","bd-black-top":"bd-black-top","bd-black-top-0":"bd-black-top-0","bd-black-top-1":"bd-black-top-1","bd-black-top-2":"bd-black-top-2","bd-black-top-3":"bd-black-top-3","bd-black-top-4":"bd-black-top-4","bd-black-top-5":"bd-black-top-5","bd-black-top-6":"bd-black-top-6","bd-black-top-7":"bd-black-top-7","bd-black-top-8":"bd-black-top-8","bd-black-top-9":"bd-black-top-9","bd-black-top-10":"bd-black-top-10","bd-blacklight-top":"bd-blacklight-top","bd-blacklight-top-0":"bd-blacklight-top-0","bd-blacklight-top-1":"bd-blacklight-top-1","bd-blacklight-top-2":"bd-blacklight-top-2","bd-blacklight-top-3":"bd-blacklight-top-3","bd-blacklight-top-4":"bd-blacklight-top-4","bd-blacklight-top-5":"bd-blacklight-top-5","bd-blacklight-top-6":"bd-blacklight-top-6","bd-blacklight-top-7":"bd-blacklight-top-7","bd-blacklight-top-8":"bd-blacklight-top-8","bd-blacklight-top-9":"bd-blacklight-top-9","bd-blacklight-top-10":"bd-blacklight-top-10","bd-blacklighter-top":"bd-blacklighter-top","bd-blacklighter-top-0":"bd-blacklighter-top-0","bd-blacklighter-top-1":"bd-blacklighter-top-1","bd-blacklighter-top-2":"bd-blacklighter-top-2","bd-blacklighter-top-3":"bd-blacklighter-top-3","bd-blacklighter-top-4":"bd-blacklighter-top-4","bd-blacklighter-top-5":"bd-blacklighter-top-5","bd-blacklighter-top-6":"bd-blacklighter-top-6","bd-blacklighter-top-7":"bd-blacklighter-top-7","bd-blacklighter-top-8":"bd-blacklighter-top-8","bd-blacklighter-top-9":"bd-blacklighter-top-9","bd-blacklighter-top-10":"bd-blacklighter-top-10","bd-greystronger-top":"bd-greystronger-top","bd-greystronger-top-0":"bd-greystronger-top-0","bd-greystronger-top-1":"bd-greystronger-top-1","bd-greystronger-top-2":"bd-greystronger-top-2","bd-greystronger-top-3":"bd-greystronger-top-3","bd-greystronger-top-4":"bd-greystronger-top-4","bd-greystronger-top-5":"bd-greystronger-top-5","bd-greystronger-top-6":"bd-greystronger-top-6","bd-greystronger-top-7":"bd-greystronger-top-7","bd-greystronger-top-8":"bd-greystronger-top-8","bd-greystronger-top-9":"bd-greystronger-top-9","bd-greystronger-top-10":"bd-greystronger-top-10","bd-greystrong-top":"bd-greystrong-top","bd-greystrong-top-0":"bd-greystrong-top-0","bd-greystrong-top-1":"bd-greystrong-top-1","bd-greystrong-top-2":"bd-greystrong-top-2","bd-greystrong-top-3":"bd-greystrong-top-3","bd-greystrong-top-4":"bd-greystrong-top-4","bd-greystrong-top-5":"bd-greystrong-top-5","bd-greystrong-top-6":"bd-greystrong-top-6","bd-greystrong-top-7":"bd-greystrong-top-7","bd-greystrong-top-8":"bd-greystrong-top-8","bd-greystrong-top-9":"bd-greystrong-top-9","bd-greystrong-top-10":"bd-greystrong-top-10","bd-grey-top":"bd-grey-top","bd-grey-top-0":"bd-grey-top-0","bd-grey-top-1":"bd-grey-top-1","bd-grey-top-2":"bd-grey-top-2","bd-grey-top-3":"bd-grey-top-3","bd-grey-top-4":"bd-grey-top-4","bd-grey-top-5":"bd-grey-top-5","bd-grey-top-6":"bd-grey-top-6","bd-grey-top-7":"bd-grey-top-7","bd-grey-top-8":"bd-grey-top-8","bd-grey-top-9":"bd-grey-top-9","bd-grey-top-10":"bd-grey-top-10","bd-greylight-top":"bd-greylight-top","bd-greylight-top-0":"bd-greylight-top-0","bd-greylight-top-1":"bd-greylight-top-1","bd-greylight-top-2":"bd-greylight-top-2","bd-greylight-top-3":"bd-greylight-top-3","bd-greylight-top-4":"bd-greylight-top-4","bd-greylight-top-5":"bd-greylight-top-5","bd-greylight-top-6":"bd-greylight-top-6","bd-greylight-top-7":"bd-greylight-top-7","bd-greylight-top-8":"bd-greylight-top-8","bd-greylight-top-9":"bd-greylight-top-9","bd-greylight-top-10":"bd-greylight-top-10","bd-greylighter-top":"bd-greylighter-top","bd-greylighter-top-0":"bd-greylighter-top-0","bd-greylighter-top-1":"bd-greylighter-top-1","bd-greylighter-top-2":"bd-greylighter-top-2","bd-greylighter-top-3":"bd-greylighter-top-3","bd-greylighter-top-4":"bd-greylighter-top-4","bd-greylighter-top-5":"bd-greylighter-top-5","bd-greylighter-top-6":"bd-greylighter-top-6","bd-greylighter-top-7":"bd-greylighter-top-7","bd-greylighter-top-8":"bd-greylighter-top-8","bd-greylighter-top-9":"bd-greylighter-top-9","bd-greylighter-top-10":"bd-greylighter-top-10","bd-white-top":"bd-white-top","bd-white-top-0":"bd-white-top-0","bd-white-top-1":"bd-white-top-1","bd-white-top-2":"bd-white-top-2","bd-white-top-3":"bd-white-top-3","bd-white-top-4":"bd-white-top-4","bd-white-top-5":"bd-white-top-5","bd-white-top-6":"bd-white-top-6","bd-white-top-7":"bd-white-top-7","bd-white-top-8":"bd-white-top-8","bd-white-top-9":"bd-white-top-9","bd-white-top-10":"bd-white-top-10","bd-none-top":"bd-none-top","bd-none-top-0":"bd-none-top-0","bd-none-top-1":"bd-none-top-1","bd-none-top-2":"bd-none-top-2","bd-none-top-3":"bd-none-top-3","bd-none-top-4":"bd-none-top-4","bd-none-top-5":"bd-none-top-5","bd-none-top-6":"bd-none-top-6","bd-none-top-7":"bd-none-top-7","bd-none-top-8":"bd-none-top-8","bd-none-top-9":"bd-none-top-9","bd-none-top-10":"bd-none-top-10","p-top-0":"p-top-0","p-y-0":"p-y-0","p-top-x2":"p-top-x2","p-y-x2":"p-y-x2","m-right":"m-right","m-x":"m-x","m-right-0":"m-right-0","m-x-0":"m-x-0","m-right-x2":"m-right-x2","m-x-x2":"m-x-x2","p-right":"p-right","p-x":"p-x","bd-blue-right":"bd-blue-right","bd-blue-right-0":"bd-blue-right-0","bd-blue-right-1":"bd-blue-right-1","bd-blue-right-2":"bd-blue-right-2","bd-blue-right-3":"bd-blue-right-3","bd-blue-right-4":"bd-blue-right-4","bd-blue-right-5":"bd-blue-right-5","bd-blue-right-6":"bd-blue-right-6","bd-blue-right-7":"bd-blue-right-7","bd-blue-right-8":"bd-blue-right-8","bd-blue-right-9":"bd-blue-right-9","bd-blue-right-10":"bd-blue-right-10","bd-green-right":"bd-green-right","bd-green-right-0":"bd-green-right-0","bd-green-right-1":"bd-green-right-1","bd-green-right-2":"bd-green-right-2","bd-green-right-3":"bd-green-right-3","bd-green-right-4":"bd-green-right-4","bd-green-right-5":"bd-green-right-5","bd-green-right-6":"bd-green-right-6","bd-green-right-7":"bd-green-right-7","bd-green-right-8":"bd-green-right-8","bd-green-right-9":"bd-green-right-9","bd-green-right-10":"bd-green-right-10","bd-orange-right":"bd-orange-right","bd-orange-right-0":"bd-orange-right-0","bd-orange-right-1":"bd-orange-right-1","bd-orange-right-2":"bd-orange-right-2","bd-orange-right-3":"bd-orange-right-3","bd-orange-right-4":"bd-orange-right-4","bd-orange-right-5":"bd-orange-right-5","bd-orange-right-6":"bd-orange-right-6","bd-orange-right-7":"bd-orange-right-7","bd-orange-right-8":"bd-orange-right-8","bd-orange-right-9":"bd-orange-right-9","bd-orange-right-10":"bd-orange-right-10","bd-darkblue-right":"bd-darkblue-right","bd-darkblue-right-0":"bd-darkblue-right-0","bd-darkblue-right-1":"bd-darkblue-right-1","bd-darkblue-right-2":"bd-darkblue-right-2","bd-darkblue-right-3":"bd-darkblue-right-3","bd-darkblue-right-4":"bd-darkblue-right-4","bd-darkblue-right-5":"bd-darkblue-right-5","bd-darkblue-right-6":"bd-darkblue-right-6","bd-darkblue-right-7":"bd-darkblue-right-7","bd-darkblue-right-8":"bd-darkblue-right-8","bd-darkblue-right-9":"bd-darkblue-right-9","bd-darkblue-right-10":"bd-darkblue-right-10","bd-gold-right":"bd-gold-right","bd-gold-right-0":"bd-gold-right-0","bd-gold-right-1":"bd-gold-right-1","bd-gold-right-2":"bd-gold-right-2","bd-gold-right-3":"bd-gold-right-3","bd-gold-right-4":"bd-gold-right-4","bd-gold-right-5":"bd-gold-right-5","bd-gold-right-6":"bd-gold-right-6","bd-gold-right-7":"bd-gold-right-7","bd-gold-right-8":"bd-gold-right-8","bd-gold-right-9":"bd-gold-right-9","bd-gold-right-10":"bd-gold-right-10","bd-black-right":"bd-black-right","bd-black-right-0":"bd-black-right-0","bd-black-right-1":"bd-black-right-1","bd-black-right-2":"bd-black-right-2","bd-black-right-3":"bd-black-right-3","bd-black-right-4":"bd-black-right-4","bd-black-right-5":"bd-black-right-5","bd-black-right-6":"bd-black-right-6","bd-black-right-7":"bd-black-right-7","bd-black-right-8":"bd-black-right-8","bd-black-right-9":"bd-black-right-9","bd-black-right-10":"bd-black-right-10","bd-blacklight-right":"bd-blacklight-right","bd-blacklight-right-0":"bd-blacklight-right-0","bd-blacklight-right-1":"bd-blacklight-right-1","bd-blacklight-right-2":"bd-blacklight-right-2","bd-blacklight-right-3":"bd-blacklight-right-3","bd-blacklight-right-4":"bd-blacklight-right-4","bd-blacklight-right-5":"bd-blacklight-right-5","bd-blacklight-right-6":"bd-blacklight-right-6","bd-blacklight-right-7":"bd-blacklight-right-7","bd-blacklight-right-8":"bd-blacklight-right-8","bd-blacklight-right-9":"bd-blacklight-right-9","bd-blacklight-right-10":"bd-blacklight-right-10","bd-blacklighter-right":"bd-blacklighter-right","bd-blacklighter-right-0":"bd-blacklighter-right-0","bd-blacklighter-right-1":"bd-blacklighter-right-1","bd-blacklighter-right-2":"bd-blacklighter-right-2","bd-blacklighter-right-3":"bd-blacklighter-right-3","bd-blacklighter-right-4":"bd-blacklighter-right-4","bd-blacklighter-right-5":"bd-blacklighter-right-5","bd-blacklighter-right-6":"bd-blacklighter-right-6","bd-blacklighter-right-7":"bd-blacklighter-right-7","bd-blacklighter-right-8":"bd-blacklighter-right-8","bd-blacklighter-right-9":"bd-blacklighter-right-9","bd-blacklighter-right-10":"bd-blacklighter-right-10","bd-greystronger-right":"bd-greystronger-right","bd-greystronger-right-0":"bd-greystronger-right-0","bd-greystronger-right-1":"bd-greystronger-right-1","bd-greystronger-right-2":"bd-greystronger-right-2","bd-greystronger-right-3":"bd-greystronger-right-3","bd-greystronger-right-4":"bd-greystronger-right-4","bd-greystronger-right-5":"bd-greystronger-right-5","bd-greystronger-right-6":"bd-greystronger-right-6","bd-greystronger-right-7":"bd-greystronger-right-7","bd-greystronger-right-8":"bd-greystronger-right-8","bd-greystronger-right-9":"bd-greystronger-right-9","bd-greystronger-right-10":"bd-greystronger-right-10","bd-greystrong-right":"bd-greystrong-right","bd-greystrong-right-0":"bd-greystrong-right-0","bd-greystrong-right-1":"bd-greystrong-right-1","bd-greystrong-right-2":"bd-greystrong-right-2","bd-greystrong-right-3":"bd-greystrong-right-3","bd-greystrong-right-4":"bd-greystrong-right-4","bd-greystrong-right-5":"bd-greystrong-right-5","bd-greystrong-right-6":"bd-greystrong-right-6","bd-greystrong-right-7":"bd-greystrong-right-7","bd-greystrong-right-8":"bd-greystrong-right-8","bd-greystrong-right-9":"bd-greystrong-right-9","bd-greystrong-right-10":"bd-greystrong-right-10","bd-grey-right":"bd-grey-right","bd-grey-right-0":"bd-grey-right-0","bd-grey-right-1":"bd-grey-right-1","bd-grey-right-2":"bd-grey-right-2","bd-grey-right-3":"bd-grey-right-3","bd-grey-right-4":"bd-grey-right-4","bd-grey-right-5":"bd-grey-right-5","bd-grey-right-6":"bd-grey-right-6","bd-grey-right-7":"bd-grey-right-7","bd-grey-right-8":"bd-grey-right-8","bd-grey-right-9":"bd-grey-right-9","bd-grey-right-10":"bd-grey-right-10","bd-greylight-right":"bd-greylight-right","bd-greylight-right-0":"bd-greylight-right-0","bd-greylight-right-1":"bd-greylight-right-1","bd-greylight-right-2":"bd-greylight-right-2","bd-greylight-right-3":"bd-greylight-right-3","bd-greylight-right-4":"bd-greylight-right-4","bd-greylight-right-5":"bd-greylight-right-5","bd-greylight-right-6":"bd-greylight-right-6","bd-greylight-right-7":"bd-greylight-right-7","bd-greylight-right-8":"bd-greylight-right-8","bd-greylight-right-9":"bd-greylight-right-9","bd-greylight-right-10":"bd-greylight-right-10","bd-greylighter-right":"bd-greylighter-right","bd-greylighter-right-0":"bd-greylighter-right-0","bd-greylighter-right-1":"bd-greylighter-right-1","bd-greylighter-right-2":"bd-greylighter-right-2","bd-greylighter-right-3":"bd-greylighter-right-3","bd-greylighter-right-4":"bd-greylighter-right-4","bd-greylighter-right-5":"bd-greylighter-right-5","bd-greylighter-right-6":"bd-greylighter-right-6","bd-greylighter-right-7":"bd-greylighter-right-7","bd-greylighter-right-8":"bd-greylighter-right-8","bd-greylighter-right-9":"bd-greylighter-right-9","bd-greylighter-right-10":"bd-greylighter-right-10","bd-white-right":"bd-white-right","bd-white-right-0":"bd-white-right-0","bd-white-right-1":"bd-white-right-1","bd-white-right-2":"bd-white-right-2","bd-white-right-3":"bd-white-right-3","bd-white-right-4":"bd-white-right-4","bd-white-right-5":"bd-white-right-5","bd-white-right-6":"bd-white-right-6","bd-white-right-7":"bd-white-right-7","bd-white-right-8":"bd-white-right-8","bd-white-right-9":"bd-white-right-9","bd-white-right-10":"bd-white-right-10","bd-none-right":"bd-none-right","bd-none-right-0":"bd-none-right-0","bd-none-right-1":"bd-none-right-1","bd-none-right-2":"bd-none-right-2","bd-none-right-3":"bd-none-right-3","bd-none-right-4":"bd-none-right-4","bd-none-right-5":"bd-none-right-5","bd-none-right-6":"bd-none-right-6","bd-none-right-7":"bd-none-right-7","bd-none-right-8":"bd-none-right-8","bd-none-right-9":"bd-none-right-9","bd-none-right-10":"bd-none-right-10","p-right-0":"p-right-0","p-x-0":"p-x-0","p-right-x2":"p-right-x2","p-x-x2":"p-x-x2","m-bottom":"m-bottom","m-bottom-0":"m-bottom-0","m-bottom-x2":"m-bottom-x2","p-bottom":"p-bottom","bd-blue-bottom":"bd-blue-bottom","bd-blue-bottom-0":"bd-blue-bottom-0","bd-blue-bottom-1":"bd-blue-bottom-1","bd-blue-bottom-2":"bd-blue-bottom-2","bd-blue-bottom-3":"bd-blue-bottom-3","bd-blue-bottom-4":"bd-blue-bottom-4","bd-blue-bottom-5":"bd-blue-bottom-5","bd-blue-bottom-6":"bd-blue-bottom-6","bd-blue-bottom-7":"bd-blue-bottom-7","bd-blue-bottom-8":"bd-blue-bottom-8","bd-blue-bottom-9":"bd-blue-bottom-9","bd-blue-bottom-10":"bd-blue-bottom-10","bd-green-bottom":"bd-green-bottom","bd-green-bottom-0":"bd-green-bottom-0","bd-green-bottom-1":"bd-green-bottom-1","bd-green-bottom-2":"bd-green-bottom-2","bd-green-bottom-3":"bd-green-bottom-3","bd-green-bottom-4":"bd-green-bottom-4","bd-green-bottom-5":"bd-green-bottom-5","bd-green-bottom-6":"bd-green-bottom-6","bd-green-bottom-7":"bd-green-bottom-7","bd-green-bottom-8":"bd-green-bottom-8","bd-green-bottom-9":"bd-green-bottom-9","bd-green-bottom-10":"bd-green-bottom-10","bd-orange-bottom":"bd-orange-bottom","bd-orange-bottom-0":"bd-orange-bottom-0","bd-orange-bottom-1":"bd-orange-bottom-1","bd-orange-bottom-2":"bd-orange-bottom-2","bd-orange-bottom-3":"bd-orange-bottom-3","bd-orange-bottom-4":"bd-orange-bottom-4","bd-orange-bottom-5":"bd-orange-bottom-5","bd-orange-bottom-6":"bd-orange-bottom-6","bd-orange-bottom-7":"bd-orange-bottom-7","bd-orange-bottom-8":"bd-orange-bottom-8","bd-orange-bottom-9":"bd-orange-bottom-9","bd-orange-bottom-10":"bd-orange-bottom-10","bd-darkblue-bottom":"bd-darkblue-bottom","bd-darkblue-bottom-0":"bd-darkblue-bottom-0","bd-darkblue-bottom-1":"bd-darkblue-bottom-1","bd-darkblue-bottom-2":"bd-darkblue-bottom-2","bd-darkblue-bottom-3":"bd-darkblue-bottom-3","bd-darkblue-bottom-4":"bd-darkblue-bottom-4","bd-darkblue-bottom-5":"bd-darkblue-bottom-5","bd-darkblue-bottom-6":"bd-darkblue-bottom-6","bd-darkblue-bottom-7":"bd-darkblue-bottom-7","bd-darkblue-bottom-8":"bd-darkblue-bottom-8","bd-darkblue-bottom-9":"bd-darkblue-bottom-9","bd-darkblue-bottom-10":"bd-darkblue-bottom-10","bd-gold-bottom":"bd-gold-bottom","bd-gold-bottom-0":"bd-gold-bottom-0","bd-gold-bottom-1":"bd-gold-bottom-1","bd-gold-bottom-2":"bd-gold-bottom-2","bd-gold-bottom-3":"bd-gold-bottom-3","bd-gold-bottom-4":"bd-gold-bottom-4","bd-gold-bottom-5":"bd-gold-bottom-5","bd-gold-bottom-6":"bd-gold-bottom-6","bd-gold-bottom-7":"bd-gold-bottom-7","bd-gold-bottom-8":"bd-gold-bottom-8","bd-gold-bottom-9":"bd-gold-bottom-9","bd-gold-bottom-10":"bd-gold-bottom-10","bd-black-bottom":"bd-black-bottom","bd-black-bottom-0":"bd-black-bottom-0","bd-black-bottom-1":"bd-black-bottom-1","bd-black-bottom-2":"bd-black-bottom-2","bd-black-bottom-3":"bd-black-bottom-3","bd-black-bottom-4":"bd-black-bottom-4","bd-black-bottom-5":"bd-black-bottom-5","bd-black-bottom-6":"bd-black-bottom-6","bd-black-bottom-7":"bd-black-bottom-7","bd-black-bottom-8":"bd-black-bottom-8","bd-black-bottom-9":"bd-black-bottom-9","bd-black-bottom-10":"bd-black-bottom-10","bd-blacklight-bottom":"bd-blacklight-bottom","bd-blacklight-bottom-0":"bd-blacklight-bottom-0","bd-blacklight-bottom-1":"bd-blacklight-bottom-1","bd-blacklight-bottom-2":"bd-blacklight-bottom-2","bd-blacklight-bottom-3":"bd-blacklight-bottom-3","bd-blacklight-bottom-4":"bd-blacklight-bottom-4","bd-blacklight-bottom-5":"bd-blacklight-bottom-5","bd-blacklight-bottom-6":"bd-blacklight-bottom-6","bd-blacklight-bottom-7":"bd-blacklight-bottom-7","bd-blacklight-bottom-8":"bd-blacklight-bottom-8","bd-blacklight-bottom-9":"bd-blacklight-bottom-9","bd-blacklight-bottom-10":"bd-blacklight-bottom-10","bd-blacklighter-bottom":"bd-blacklighter-bottom","bd-blacklighter-bottom-0":"bd-blacklighter-bottom-0","bd-blacklighter-bottom-1":"bd-blacklighter-bottom-1","bd-blacklighter-bottom-2":"bd-blacklighter-bottom-2","bd-blacklighter-bottom-3":"bd-blacklighter-bottom-3","bd-blacklighter-bottom-4":"bd-blacklighter-bottom-4","bd-blacklighter-bottom-5":"bd-blacklighter-bottom-5","bd-blacklighter-bottom-6":"bd-blacklighter-bottom-6","bd-blacklighter-bottom-7":"bd-blacklighter-bottom-7","bd-blacklighter-bottom-8":"bd-blacklighter-bottom-8","bd-blacklighter-bottom-9":"bd-blacklighter-bottom-9","bd-blacklighter-bottom-10":"bd-blacklighter-bottom-10","bd-greystronger-bottom":"bd-greystronger-bottom","bd-greystronger-bottom-0":"bd-greystronger-bottom-0","bd-greystronger-bottom-1":"bd-greystronger-bottom-1","bd-greystronger-bottom-2":"bd-greystronger-bottom-2","bd-greystronger-bottom-3":"bd-greystronger-bottom-3","bd-greystronger-bottom-4":"bd-greystronger-bottom-4","bd-greystronger-bottom-5":"bd-greystronger-bottom-5","bd-greystronger-bottom-6":"bd-greystronger-bottom-6","bd-greystronger-bottom-7":"bd-greystronger-bottom-7","bd-greystronger-bottom-8":"bd-greystronger-bottom-8","bd-greystronger-bottom-9":"bd-greystronger-bottom-9","bd-greystronger-bottom-10":"bd-greystronger-bottom-10","bd-greystrong-bottom":"bd-greystrong-bottom","bd-greystrong-bottom-0":"bd-greystrong-bottom-0","bd-greystrong-bottom-1":"bd-greystrong-bottom-1","bd-greystrong-bottom-2":"bd-greystrong-bottom-2","bd-greystrong-bottom-3":"bd-greystrong-bottom-3","bd-greystrong-bottom-4":"bd-greystrong-bottom-4","bd-greystrong-bottom-5":"bd-greystrong-bottom-5","bd-greystrong-bottom-6":"bd-greystrong-bottom-6","bd-greystrong-bottom-7":"bd-greystrong-bottom-7","bd-greystrong-bottom-8":"bd-greystrong-bottom-8","bd-greystrong-bottom-9":"bd-greystrong-bottom-9","bd-greystrong-bottom-10":"bd-greystrong-bottom-10","bd-grey-bottom":"bd-grey-bottom","bd-grey-bottom-0":"bd-grey-bottom-0","bd-grey-bottom-1":"bd-grey-bottom-1","bd-grey-bottom-2":"bd-grey-bottom-2","bd-grey-bottom-3":"bd-grey-bottom-3","bd-grey-bottom-4":"bd-grey-bottom-4","bd-grey-bottom-5":"bd-grey-bottom-5","bd-grey-bottom-6":"bd-grey-bottom-6","bd-grey-bottom-7":"bd-grey-bottom-7","bd-grey-bottom-8":"bd-grey-bottom-8","bd-grey-bottom-9":"bd-grey-bottom-9","bd-grey-bottom-10":"bd-grey-bottom-10","bd-greylight-bottom":"bd-greylight-bottom","bd-greylight-bottom-0":"bd-greylight-bottom-0","bd-greylight-bottom-1":"bd-greylight-bottom-1","bd-greylight-bottom-2":"bd-greylight-bottom-2","bd-greylight-bottom-3":"bd-greylight-bottom-3","bd-greylight-bottom-4":"bd-greylight-bottom-4","bd-greylight-bottom-5":"bd-greylight-bottom-5","bd-greylight-bottom-6":"bd-greylight-bottom-6","bd-greylight-bottom-7":"bd-greylight-bottom-7","bd-greylight-bottom-8":"bd-greylight-bottom-8","bd-greylight-bottom-9":"bd-greylight-bottom-9","bd-greylight-bottom-10":"bd-greylight-bottom-10","bd-greylighter-bottom":"bd-greylighter-bottom","bd-greylighter-bottom-0":"bd-greylighter-bottom-0","bd-greylighter-bottom-1":"bd-greylighter-bottom-1","bd-greylighter-bottom-2":"bd-greylighter-bottom-2","bd-greylighter-bottom-3":"bd-greylighter-bottom-3","bd-greylighter-bottom-4":"bd-greylighter-bottom-4","bd-greylighter-bottom-5":"bd-greylighter-bottom-5","bd-greylighter-bottom-6":"bd-greylighter-bottom-6","bd-greylighter-bottom-7":"bd-greylighter-bottom-7","bd-greylighter-bottom-8":"bd-greylighter-bottom-8","bd-greylighter-bottom-9":"bd-greylighter-bottom-9","bd-greylighter-bottom-10":"bd-greylighter-bottom-10","bd-white-bottom":"bd-white-bottom","bd-white-bottom-0":"bd-white-bottom-0","bd-white-bottom-1":"bd-white-bottom-1","bd-white-bottom-2":"bd-white-bottom-2","bd-white-bottom-3":"bd-white-bottom-3","bd-white-bottom-4":"bd-white-bottom-4","bd-white-bottom-5":"bd-white-bottom-5","bd-white-bottom-6":"bd-white-bottom-6","bd-white-bottom-7":"bd-white-bottom-7","bd-white-bottom-8":"bd-white-bottom-8","bd-white-bottom-9":"bd-white-bottom-9","bd-white-bottom-10":"bd-white-bottom-10","bd-none-bottom":"bd-none-bottom","bd-none-bottom-0":"bd-none-bottom-0","bd-none-bottom-1":"bd-none-bottom-1","bd-none-bottom-2":"bd-none-bottom-2","bd-none-bottom-3":"bd-none-bottom-3","bd-none-bottom-4":"bd-none-bottom-4","bd-none-bottom-5":"bd-none-bottom-5","bd-none-bottom-6":"bd-none-bottom-6","bd-none-bottom-7":"bd-none-bottom-7","bd-none-bottom-8":"bd-none-bottom-8","bd-none-bottom-9":"bd-none-bottom-9","bd-none-bottom-10":"bd-none-bottom-10","p-bottom-0":"p-bottom-0","p-bottom-x2":"p-bottom-x2","m-left":"m-left","m-left-0":"m-left-0","m-left-x2":"m-left-x2","p-left":"p-left","bd-blue-left":"bd-blue-left","bd-blue-left-0":"bd-blue-left-0","bd-blue-left-1":"bd-blue-left-1","bd-blue-left-2":"bd-blue-left-2","bd-blue-left-3":"bd-blue-left-3","bd-blue-left-4":"bd-blue-left-4","bd-blue-left-5":"bd-blue-left-5","bd-blue-left-6":"bd-blue-left-6","bd-blue-left-7":"bd-blue-left-7","bd-blue-left-8":"bd-blue-left-8","bd-blue-left-9":"bd-blue-left-9","bd-blue-left-10":"bd-blue-left-10","bd-green-left":"bd-green-left","bd-green-left-0":"bd-green-left-0","bd-green-left-1":"bd-green-left-1","bd-green-left-2":"bd-green-left-2","bd-green-left-3":"bd-green-left-3","bd-green-left-4":"bd-green-left-4","bd-green-left-5":"bd-green-left-5","bd-green-left-6":"bd-green-left-6","bd-green-left-7":"bd-green-left-7","bd-green-left-8":"bd-green-left-8","bd-green-left-9":"bd-green-left-9","bd-green-left-10":"bd-green-left-10","bd-orange-left":"bd-orange-left","bd-orange-left-0":"bd-orange-left-0","bd-orange-left-1":"bd-orange-left-1","bd-orange-left-2":"bd-orange-left-2","bd-orange-left-3":"bd-orange-left-3","bd-orange-left-4":"bd-orange-left-4","bd-orange-left-5":"bd-orange-left-5","bd-orange-left-6":"bd-orange-left-6","bd-orange-left-7":"bd-orange-left-7","bd-orange-left-8":"bd-orange-left-8","bd-orange-left-9":"bd-orange-left-9","bd-orange-left-10":"bd-orange-left-10","bd-darkblue-left":"bd-darkblue-left","bd-darkblue-left-0":"bd-darkblue-left-0","bd-darkblue-left-1":"bd-darkblue-left-1","bd-darkblue-left-2":"bd-darkblue-left-2","bd-darkblue-left-3":"bd-darkblue-left-3","bd-darkblue-left-4":"bd-darkblue-left-4","bd-darkblue-left-5":"bd-darkblue-left-5","bd-darkblue-left-6":"bd-darkblue-left-6","bd-darkblue-left-7":"bd-darkblue-left-7","bd-darkblue-left-8":"bd-darkblue-left-8","bd-darkblue-left-9":"bd-darkblue-left-9","bd-darkblue-left-10":"bd-darkblue-left-10","bd-gold-left":"bd-gold-left","bd-gold-left-0":"bd-gold-left-0","bd-gold-left-1":"bd-gold-left-1","bd-gold-left-2":"bd-gold-left-2","bd-gold-left-3":"bd-gold-left-3","bd-gold-left-4":"bd-gold-left-4","bd-gold-left-5":"bd-gold-left-5","bd-gold-left-6":"bd-gold-left-6","bd-gold-left-7":"bd-gold-left-7","bd-gold-left-8":"bd-gold-left-8","bd-gold-left-9":"bd-gold-left-9","bd-gold-left-10":"bd-gold-left-10","bd-black-left":"bd-black-left","bd-black-left-0":"bd-black-left-0","bd-black-left-1":"bd-black-left-1","bd-black-left-2":"bd-black-left-2","bd-black-left-3":"bd-black-left-3","bd-black-left-4":"bd-black-left-4","bd-black-left-5":"bd-black-left-5","bd-black-left-6":"bd-black-left-6","bd-black-left-7":"bd-black-left-7","bd-black-left-8":"bd-black-left-8","bd-black-left-9":"bd-black-left-9","bd-black-left-10":"bd-black-left-10","bd-blacklight-left":"bd-blacklight-left","bd-blacklight-left-0":"bd-blacklight-left-0","bd-blacklight-left-1":"bd-blacklight-left-1","bd-blacklight-left-2":"bd-blacklight-left-2","bd-blacklight-left-3":"bd-blacklight-left-3","bd-blacklight-left-4":"bd-blacklight-left-4","bd-blacklight-left-5":"bd-blacklight-left-5","bd-blacklight-left-6":"bd-blacklight-left-6","bd-blacklight-left-7":"bd-blacklight-left-7","bd-blacklight-left-8":"bd-blacklight-left-8","bd-blacklight-left-9":"bd-blacklight-left-9","bd-blacklight-left-10":"bd-blacklight-left-10","bd-blacklighter-left":"bd-blacklighter-left","bd-blacklighter-left-0":"bd-blacklighter-left-0","bd-blacklighter-left-1":"bd-blacklighter-left-1","bd-blacklighter-left-2":"bd-blacklighter-left-2","bd-blacklighter-left-3":"bd-blacklighter-left-3","bd-blacklighter-left-4":"bd-blacklighter-left-4","bd-blacklighter-left-5":"bd-blacklighter-left-5","bd-blacklighter-left-6":"bd-blacklighter-left-6","bd-blacklighter-left-7":"bd-blacklighter-left-7","bd-blacklighter-left-8":"bd-blacklighter-left-8","bd-blacklighter-left-9":"bd-blacklighter-left-9","bd-blacklighter-left-10":"bd-blacklighter-left-10","bd-greystronger-left":"bd-greystronger-left","bd-greystronger-left-0":"bd-greystronger-left-0","bd-greystronger-left-1":"bd-greystronger-left-1","bd-greystronger-left-2":"bd-greystronger-left-2","bd-greystronger-left-3":"bd-greystronger-left-3","bd-greystronger-left-4":"bd-greystronger-left-4","bd-greystronger-left-5":"bd-greystronger-left-5","bd-greystronger-left-6":"bd-greystronger-left-6","bd-greystronger-left-7":"bd-greystronger-left-7","bd-greystronger-left-8":"bd-greystronger-left-8","bd-greystronger-left-9":"bd-greystronger-left-9","bd-greystronger-left-10":"bd-greystronger-left-10","bd-greystrong-left":"bd-greystrong-left","bd-greystrong-left-0":"bd-greystrong-left-0","bd-greystrong-left-1":"bd-greystrong-left-1","bd-greystrong-left-2":"bd-greystrong-left-2","bd-greystrong-left-3":"bd-greystrong-left-3","bd-greystrong-left-4":"bd-greystrong-left-4","bd-greystrong-left-5":"bd-greystrong-left-5","bd-greystrong-left-6":"bd-greystrong-left-6","bd-greystrong-left-7":"bd-greystrong-left-7","bd-greystrong-left-8":"bd-greystrong-left-8","bd-greystrong-left-9":"bd-greystrong-left-9","bd-greystrong-left-10":"bd-greystrong-left-10","bd-grey-left":"bd-grey-left","bd-grey-left-0":"bd-grey-left-0","bd-grey-left-1":"bd-grey-left-1","bd-grey-left-2":"bd-grey-left-2","bd-grey-left-3":"bd-grey-left-3","bd-grey-left-4":"bd-grey-left-4","bd-grey-left-5":"bd-grey-left-5","bd-grey-left-6":"bd-grey-left-6","bd-grey-left-7":"bd-grey-left-7","bd-grey-left-8":"bd-grey-left-8","bd-grey-left-9":"bd-grey-left-9","bd-grey-left-10":"bd-grey-left-10","bd-greylight-left":"bd-greylight-left","bd-greylight-left-0":"bd-greylight-left-0","bd-greylight-left-1":"bd-greylight-left-1","bd-greylight-left-2":"bd-greylight-left-2","bd-greylight-left-3":"bd-greylight-left-3","bd-greylight-left-4":"bd-greylight-left-4","bd-greylight-left-5":"bd-greylight-left-5","bd-greylight-left-6":"bd-greylight-left-6","bd-greylight-left-7":"bd-greylight-left-7","bd-greylight-left-8":"bd-greylight-left-8","bd-greylight-left-9":"bd-greylight-left-9","bd-greylight-left-10":"bd-greylight-left-10","bd-greylighter-left":"bd-greylighter-left","bd-greylighter-left-0":"bd-greylighter-left-0","bd-greylighter-left-1":"bd-greylighter-left-1","bd-greylighter-left-2":"bd-greylighter-left-2","bd-greylighter-left-3":"bd-greylighter-left-3","bd-greylighter-left-4":"bd-greylighter-left-4","bd-greylighter-left-5":"bd-greylighter-left-5","bd-greylighter-left-6":"bd-greylighter-left-6","bd-greylighter-left-7":"bd-greylighter-left-7","bd-greylighter-left-8":"bd-greylighter-left-8","bd-greylighter-left-9":"bd-greylighter-left-9","bd-greylighter-left-10":"bd-greylighter-left-10","bd-white-left":"bd-white-left","bd-white-left-0":"bd-white-left-0","bd-white-left-1":"bd-white-left-1","bd-white-left-2":"bd-white-left-2","bd-white-left-3":"bd-white-left-3","bd-white-left-4":"bd-white-left-4","bd-white-left-5":"bd-white-left-5","bd-white-left-6":"bd-white-left-6","bd-white-left-7":"bd-white-left-7","bd-white-left-8":"bd-white-left-8","bd-white-left-9":"bd-white-left-9","bd-white-left-10":"bd-white-left-10","bd-none-left":"bd-none-left","bd-none-left-0":"bd-none-left-0","bd-none-left-1":"bd-none-left-1","bd-none-left-2":"bd-none-left-2","bd-none-left-3":"bd-none-left-3","bd-none-left-4":"bd-none-left-4","bd-none-left-5":"bd-none-left-5","bd-none-left-6":"bd-none-left-6","bd-none-left-7":"bd-none-left-7","bd-none-left-8":"bd-none-left-8","bd-none-left-9":"bd-none-left-9","bd-none-left-10":"bd-none-left-10","p-left-0":"p-left-0","p-left-x2":"p-left-x2","h0":"h0","sep-bottom":"sep-bottom","sep-top":"sep-top","sep-right":"sep-right","sep-left":"sep-left","h1":"h1","h2":"h2","h3":"h3","h4":"h4","h5":"h5","h6":"h6","sep":"sep","reset":"reset","bg-blue":"bg-blue","bg-blue-o-10":"bg-blue-o-10","bg-blue-o-20":"bg-blue-o-20","bg-blue-o-30":"bg-blue-o-30","bg-blue-o-40":"bg-blue-o-40","bg-blue-o-50":"bg-blue-o-50","bg-blue-o-60":"bg-blue-o-60","bg-blue-o-70":"bg-blue-o-70","bg-blue-o-80":"bg-blue-o-80","bg-blue-o-90":"bg-blue-o-90","bg-blue-o-100":"bg-blue-o-100","text":"text","email":"email","password":"password","tel":"tel","url":"url","date":"date","range":"range","number":"number","focus":"focus","active":"active","checkbox":"checkbox","radio":"radio","bg-green":"bg-green","bg-green-o-10":"bg-green-o-10","bg-green-o-20":"bg-green-o-20","bg-green-o-30":"bg-green-o-30","bg-green-o-40":"bg-green-o-40","bg-green-o-50":"bg-green-o-50","bg-green-o-60":"bg-green-o-60","bg-green-o-70":"bg-green-o-70","bg-green-o-80":"bg-green-o-80","bg-green-o-90":"bg-green-o-90","bg-green-o-100":"bg-green-o-100","bg-orange":"bg-orange","bg-orange-o-10":"bg-orange-o-10","bg-orange-o-20":"bg-orange-o-20","bg-orange-o-30":"bg-orange-o-30","bg-orange-o-40":"bg-orange-o-40","bg-orange-o-50":"bg-orange-o-50","bg-orange-o-60":"bg-orange-o-60","bg-orange-o-70":"bg-orange-o-70","bg-orange-o-80":"bg-orange-o-80","bg-orange-o-90":"bg-orange-o-90","bg-orange-o-100":"bg-orange-o-100","bg-darkblue":"bg-darkblue","bg-darkblue-o-10":"bg-darkblue-o-10","bg-darkblue-o-20":"bg-darkblue-o-20","bg-darkblue-o-30":"bg-darkblue-o-30","bg-darkblue-o-40":"bg-darkblue-o-40","bg-darkblue-o-50":"bg-darkblue-o-50","bg-darkblue-o-60":"bg-darkblue-o-60","bg-darkblue-o-70":"bg-darkblue-o-70","bg-darkblue-o-80":"bg-darkblue-o-80","bg-darkblue-o-90":"bg-darkblue-o-90","bg-darkblue-o-100":"bg-darkblue-o-100","bg-gold":"bg-gold","bg-gold-o-10":"bg-gold-o-10","bg-gold-o-20":"bg-gold-o-20","bg-gold-o-30":"bg-gold-o-30","bg-gold-o-40":"bg-gold-o-40","bg-gold-o-50":"bg-gold-o-50","bg-gold-o-60":"bg-gold-o-60","bg-gold-o-70":"bg-gold-o-70","bg-gold-o-80":"bg-gold-o-80","bg-gold-o-90":"bg-gold-o-90","bg-gold-o-100":"bg-gold-o-100","bg-black":"bg-black","bg-black-o-10":"bg-black-o-10","bg-black-o-20":"bg-black-o-20","bg-black-o-30":"bg-black-o-30","bg-black-o-40":"bg-black-o-40","bg-black-o-50":"bg-black-o-50","bg-black-o-60":"bg-black-o-60","bg-black-o-70":"bg-black-o-70","bg-black-o-80":"bg-black-o-80","bg-black-o-90":"bg-black-o-90","bg-black-o-100":"bg-black-o-100","bg-blacklight":"bg-blacklight","bg-blacklight-o-10":"bg-blacklight-o-10","bg-blacklight-o-20":"bg-blacklight-o-20","bg-blacklight-o-30":"bg-blacklight-o-30","bg-blacklight-o-40":"bg-blacklight-o-40","bg-blacklight-o-50":"bg-blacklight-o-50","bg-blacklight-o-60":"bg-blacklight-o-60","bg-blacklight-o-70":"bg-blacklight-o-70","bg-blacklight-o-80":"bg-blacklight-o-80","bg-blacklight-o-90":"bg-blacklight-o-90","bg-blacklight-o-100":"bg-blacklight-o-100","bg-blacklighter":"bg-blacklighter","bg-blacklighter-o-10":"bg-blacklighter-o-10","bg-blacklighter-o-20":"bg-blacklighter-o-20","bg-blacklighter-o-30":"bg-blacklighter-o-30","bg-blacklighter-o-40":"bg-blacklighter-o-40","bg-blacklighter-o-50":"bg-blacklighter-o-50","bg-blacklighter-o-60":"bg-blacklighter-o-60","bg-blacklighter-o-70":"bg-blacklighter-o-70","bg-blacklighter-o-80":"bg-blacklighter-o-80","bg-blacklighter-o-90":"bg-blacklighter-o-90","bg-blacklighter-o-100":"bg-blacklighter-o-100","bg-greystronger":"bg-greystronger","bg-greystronger-o-10":"bg-greystronger-o-10","bg-greystronger-o-20":"bg-greystronger-o-20","bg-greystronger-o-30":"bg-greystronger-o-30","bg-greystronger-o-40":"bg-greystronger-o-40","bg-greystronger-o-50":"bg-greystronger-o-50","bg-greystronger-o-60":"bg-greystronger-o-60","bg-greystronger-o-70":"bg-greystronger-o-70","bg-greystronger-o-80":"bg-greystronger-o-80","bg-greystronger-o-90":"bg-greystronger-o-90","bg-greystronger-o-100":"bg-greystronger-o-100","bg-greystrong":"bg-greystrong","bg-greystrong-o-10":"bg-greystrong-o-10","bg-greystrong-o-20":"bg-greystrong-o-20","bg-greystrong-o-30":"bg-greystrong-o-30","bg-greystrong-o-40":"bg-greystrong-o-40","bg-greystrong-o-50":"bg-greystrong-o-50","bg-greystrong-o-60":"bg-greystrong-o-60","bg-greystrong-o-70":"bg-greystrong-o-70","bg-greystrong-o-80":"bg-greystrong-o-80","bg-greystrong-o-90":"bg-greystrong-o-90","bg-greystrong-o-100":"bg-greystrong-o-100","bg-grey":"bg-grey","bg-grey-o-10":"bg-grey-o-10","bg-grey-o-20":"bg-grey-o-20","bg-grey-o-30":"bg-grey-o-30","bg-grey-o-40":"bg-grey-o-40","bg-grey-o-50":"bg-grey-o-50","bg-grey-o-60":"bg-grey-o-60","bg-grey-o-70":"bg-grey-o-70","bg-grey-o-80":"bg-grey-o-80","bg-grey-o-90":"bg-grey-o-90","bg-grey-o-100":"bg-grey-o-100","bg-greylight":"bg-greylight","bg-greylight-o-10":"bg-greylight-o-10","bg-greylight-o-20":"bg-greylight-o-20","bg-greylight-o-30":"bg-greylight-o-30","bg-greylight-o-40":"bg-greylight-o-40","bg-greylight-o-50":"bg-greylight-o-50","bg-greylight-o-60":"bg-greylight-o-60","bg-greylight-o-70":"bg-greylight-o-70","bg-greylight-o-80":"bg-greylight-o-80","bg-greylight-o-90":"bg-greylight-o-90","bg-greylight-o-100":"bg-greylight-o-100","bg-greylighter":"bg-greylighter","bg-greylighter-o-10":"bg-greylighter-o-10","bg-greylighter-o-20":"bg-greylighter-o-20","bg-greylighter-o-30":"bg-greylighter-o-30","bg-greylighter-o-40":"bg-greylighter-o-40","bg-greylighter-o-50":"bg-greylighter-o-50","bg-greylighter-o-60":"bg-greylighter-o-60","bg-greylighter-o-70":"bg-greylighter-o-70","bg-greylighter-o-80":"bg-greylighter-o-80","bg-greylighter-o-90":"bg-greylighter-o-90","bg-greylighter-o-100":"bg-greylighter-o-100","bg-white":"bg-white","bg-white-o-10":"bg-white-o-10","bg-white-o-20":"bg-white-o-20","bg-white-o-30":"bg-white-o-30","bg-white-o-40":"bg-white-o-40","bg-white-o-50":"bg-white-o-50","bg-white-o-60":"bg-white-o-60","bg-white-o-70":"bg-white-o-70","bg-white-o-80":"bg-white-o-80","bg-white-o-90":"bg-white-o-90","bg-white-o-100":"bg-white-o-100","bg-none":"bg-none","bg-none-o-10":"bg-none-o-10","bg-none-o-20":"bg-none-o-20","bg-none-o-30":"bg-none-o-30","bg-none-o-40":"bg-none-o-40","bg-none-o-50":"bg-none-o-50","bg-none-o-60":"bg-none-o-60","bg-none-o-70":"bg-none-o-70","bg-none-o-80":"bg-none-o-80","bg-none-o-90":"bg-none-o-90","bg-none-o-100":"bg-none-o-100","btn-sm":"btn-sm","editor":"editor","btn-lg":"btn-lg","btn-bd-blue":"btn-bd-blue","btn-bg-blue":"btn-bg-blue","btn-bd-green":"btn-bd-green","btn-bg-green":"btn-bg-green","btn-bd-orange":"btn-bd-orange","btn-bg-orange":"btn-bg-orange","btn-bd-darkblue":"btn-bd-darkblue","btn-bg-darkblue":"btn-bg-darkblue","btn-bd-gold":"btn-bd-gold","btn-bg-gold":"btn-bg-gold","btn-bd-black":"btn-bd-black","btn-bg-black":"btn-bg-black","btn-bd-blacklight":"btn-bd-blacklight","btn-bg-blacklight":"btn-bg-blacklight","btn-bd-blacklighter":"btn-bd-blacklighter","btn-bg-blacklighter":"btn-bg-blacklighter","btn-bd-greystronger":"btn-bd-greystronger","btn-bg-greystronger":"btn-bg-greystronger","btn-bd-greystrong":"btn-bd-greystrong","btn-bg-greystrong":"btn-bg-greystrong","btn-bd-grey":"btn-bd-grey","btn-bg-grey":"btn-bg-grey","btn-bd-greylight":"btn-bd-greylight","btn-bg-greylight":"btn-bg-greylight","btn-bd-greylighter":"btn-bd-greylighter","btn-bg-greylighter":"btn-bg-greylighter","btn-bd-white":"btn-bd-white","btn-bg-white":"btn-bg-white","btn-bd-none":"btn-bd-none","btn-bg-none":"btn-bg-none","flex":"flex","flex-grow-0":"flex-grow-0","flex-grow-1":"flex-grow-1","flex-grow-2":"flex-grow-2","flex-grow-3":"flex-grow-3","flex-grow-4":"flex-grow-4","flex-grow-5":"flex-grow-5","flex-grow-6":"flex-grow-6","flex-grow-7":"flex-grow-7","flex-grow-8":"flex-grow-8","flex-grow-9":"flex-grow-9","flex-grow-10":"flex-grow-10","nofill":"nofill","form-group":"form-group","scene":"scene","grid":"grid","strip":"strip","debug":"debug","animate":"animate","wrapper":"wrapper","spin":"spin","brick":"brick","top":"top","right":"right","front":"front","left":"left","back":"back","cover":"cover","stud":"stud","tabs":"tabs","tabs__nav":"tabs__nav","tabs__content":"tabs__content","tab":"tab","foldingbox":"foldingbox","foldingbox__title":"foldingbox__title","foldingbox__item":"foldingbox__item","break":"break","foldingbox__container":"foldingbox__container","foldingbox__item__content":"foldingbox__item__content","foldingbox__item__bg":"foldingbox__item__bg","guideline":"guideline","content":"content","item":"item","FWslider":"FWslider","FWslider__container":"FWslider__container","FWslider__rail":"FWslider__rail","FWslider__item":"FWslider__item","FWslider__item__bg":"FWslider__item__bg","FWslider__item__content":"FWslider__item__content","FWslider__nav":"FWslider__nav","FWslider__nav__item":"FWslider__nav__item","toast-container":"toast-container"};
 
 /***/ }),
 /* 19 */
@@ -10547,6 +10552,7 @@ var map = {
 	"./block-std/block-std.js": 22,
 	"./brick/brick.js": 23,
 	"./foldingbox/foldingbox.js": 26,
+	"./goto/goto.js": 98,
 	"./guideline/guideline.js": 27,
 	"./tabs/tabs.js": 80
 };
@@ -10784,46 +10790,78 @@ module.exports = "<div class=\"wrapper\">\n  <div class=\"side top\"></div>\n  <
 "use strict";
 /* WEBPACK VAR INJECTION */(function($) {
 
-$.fn.Foldingbox = function Foldingbox() {
-  app._foldingboxes = app._foldingboxes || [];
+$.fn.foldingbox = function foldingbox() {
+  app._foldingbox = app._foldingbox || [];
   $(this).each(function () {
-    var foldingbox = {
-      $el: $(this),
-      title: { $el: $(this).children('.foldingbox__title'), text: $(this).children('.foldingbox__title').html() },
-      content: { $el: $(this).find('.foldingbox__container') }
-    };
-    foldingbox.content.items = foldingbox.content.$el.children('.foldingbox__item');
-
-    var setHeight = function setHeight() {
-      var heightBox = 0;
-      if (foldingbox.$el.attr('data-height') && foldingbox.$el.attr('data-height') != "") {
-        heightBox = foldingbox.$el.attr('data-height');
-      } else {
-        foldingbox.content.items.each(function (index, item) {
-          var $clone = $(item).children('.foldingbox__item__content').clone().css({
-            'transition': 'none',
-            'opacity': '1',
-            'visibility': 'hidden'
-          }).appendTo('body');
-          if ($clone.outerHeight() > heightBox) heightBox = $clone.outerHeight() + parseInt($(item).css('padding-top')) * 2;
-          $clone.remove();
-        });
-      }
-      foldingbox.content.items.height(heightBox);
-    };
-
-    $(window).resize(setHeight);
-    setHeight();
-
-    app._foldingboxes.push(foldingbox);
+    app._foldingbox.push(new Foldingbox(this));
   });
+  $(window).trigger('resize');
+};
+
+var Foldingbox = function Foldingbox(item) {
+  var foldingbox = this;
+  foldingbox.$el = $(item);
+  foldingbox.break = $(item).data('break');
+  foldingbox.title = { $el: $(this).children('.foldingbox__title'), text: $(item).children('.foldingbox__title').html() };
+  foldingbox.content = { $el: $(item).find('.foldingbox__container') };
+  foldingbox.content.items = foldingbox.content.$el.children('.foldingbox__item');
+
+  foldingbox.setHeight();
+
+  foldingbox.$el.on('destroyed', function () {
+    app._foldingbox.splice(app._foldingbox.indexOf(foldingbox), 1);
+    foldingbox = undefined;
+  });
+
+  return foldingbox;
+};
+
+Foldingbox.prototype.setHeight = function () {
+  var heightBox = 0;
+  if (this.$el.data('height') && this.$el.data('height') != "") {
+    heightBox = this.$el.data('height');
+  } else {
+    this.content.items.each(function (index, item) {
+      var $clone = $(item).children('.foldingbox__item__content').clone().css({
+        'transition': 'none',
+        'opacity': '1',
+        'visibility': 'hidden'
+      }).appendTo('body');
+      if ($clone.outerHeight() > heightBox) heightBox = $clone.outerHeight() + parseInt($(item).css('padding-top')) * 2;
+      $clone.remove();
+    });
+  }
+  this.content.items.height(heightBox);
+  return this;
+};
+
+Foldingbox.prototype.destroy = function () {
+  this.$el.remove();
+};
+
+var timerResize;
+Foldingbox.prototype.resize = function () {
+  var foldingbox = this;
+  clearTimeout(timerResize);
+  timerResize = setTimeout(function () {
+    foldingbox.setHeight();
+    if (typeof foldingbox.break == "number") {
+      console.log(foldingbox.$el.width(), foldingbox.break);
+      if (foldingbox.$el.width() <= foldingbox.break) foldingbox.$el.addClass('break');else foldingbox.$el.removeClass('break');
+    }
+  }, 300);
 };
 
 $(function () {
-  $('.foldingbox').Foldingbox();
+  $('.foldingbox').foldingbox();
   utils.addHtmlHook('.foldingbox', function (item) {
-    console.log("foldingbox added to dom");
-    item.Foldingbox();
+    item.foldingbox();
+  });
+
+  $(window).resize(function () {
+    $.each(app._foldingbox, function () {
+      this.resize();
+    });
   });
 });
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
@@ -11028,6 +11066,7 @@ var map = {
 	"./block-std/sample.html": 30,
 	"./brick/sample.html": 31,
 	"./foldingbox/sample.html": 32,
+	"./goto/sample.html": 99,
 	"./tabs/sample.html": 33
 };
 function webpackContext(req) {
@@ -11062,13 +11101,13 @@ module.exports = "<div class=\"block-std\">\n  <p>\n    Lorem ipsum dolor sit am
 /* 31 */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <div class=\"scene\">\n  <div class=\"grid\">\n    <div class=\"brick\" rows=\"3\" cols=\"5\" color=\"blacklight\" z=\"1\" x=\"0\" y=\"0\" text=\"Text sample\"></div>\n    <div class=\"brick\" rows=\"2\" cols=\"3\" color=\"blacklighter\" z=\"2\" x=\"-0\" y=\"-1\"></div>\n    <div class=\"brick\" rows=\"1\" cols=\"1\" color=\"greystronger\" z=\"3\" x=\"0\" y=\"-2\"></div>\n    <div class=\"brick\" rows=\"3\" cols=\"2\" color=\"blue\" z=\"2\" x=\"0\" y=\"2\"></div>\n  </div>\n</div> -->\n\n\n<div class=\"scene\">\n  <div class=\"grid\">\n    <div class=\"brick\" rows=\"4\" cols=\"4\" color=\"blacklight\" z=\"0\" x=\"0\" y=\"0\" text=\"SMARTGEAR\"></div>\n\n    <div class=\"brick cover\" rows=\"2\" cols=\"3\" color=\"blue\" z=\"1\" x=\"-1\" y=\"0\" text=\"\"></div>\n    <div class=\"brick cover\" rows=\"4\" cols=\"1\" color=\"green\" z=\"1\" x=\"0\" y=\"-2\" text=\"\" text-mode=\"vertical\"></div>\n    <div class=\"brick cover\" rows=\"1\" cols=\"1\" color=\"orange\" z=\"1\" x=\"0\" y=\"1\" text=\"\"></div>\n    <div class=\"brick\" rows=\"2\" cols=\"2\" color=\"gold\" z=\"1\" x=\"1\" y=\"0\" text=\"\"></div>\n\n    <div class=\"brick\" rows=\"2\" cols=\"2\" color=\"blue\" z=\"2\" x=\"-1\" y=\"-1\" text=\"\"></div>\n    <div class=\"brick\" rows=\"3\" cols=\"2\" color=\"darkblue\" z=\"2\" x=\"0\" y=\"1\" text=\"\"></div>\n    <div class=\"brick\" rows=\"1\" cols=\"2\" color=\"orange\" z=\"2\" x=\"-2\" y=\"1\" text=\"\"></div>\n    <div class=\"brick\" rows=\"2\" cols=\"1\" color=\"blacklighter\" z=\"2\" x=\"1\" y=\"-2\" text=\"\"></div>\n  </div>\n</div>\n<div class=\"scene\">\n  <div class=\"grid \">\n    <div class=\"brick debug\" rows=\"4\" cols=\"4\" color=\"blacklight\" z=\"0\" x=\"0\" y=\"0\" text=\"SMARTGEAR\"></div>\n  </div>\n</div>";
+module.exports = "<div class=\"scene\">\n  <div class=\"grid\">\n    <div class=\"brick\" rows=\"3\" cols=\"5\" color=\"blacklight\" z=\"1\" x=\"0\" y=\"0\" text=\"Text sample\"></div>\n    <div class=\"brick\" rows=\"2\" cols=\"3\" color=\"blacklighter\" z=\"2\" x=\"-0\" y=\"-1\"></div>\n    <div class=\"brick\" rows=\"1\" cols=\"1\" color=\"greystronger\" z=\"3\" x=\"0\" y=\"-2\"></div>\n    <div class=\"brick\" rows=\"3\" cols=\"2\" color=\"blue\" z=\"2\" x=\"0\" y=\"2\"></div>\n  </div>\n</div>";
 
 /***/ }),
 /* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div class=\"foldingbox\" data-height=\"\" data-break=\"\">\n  <div class=\"foldingbox__title\">\n    <h2>LOREM IPSUM DOLOR</h2>\n  </div>\n  <div class=\"foldingbox__container\">\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(1) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>Lorem ipsum dolor sit amet</p>\n        <button>Lorem</button>\n      </div>\n    </div>\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(1) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n        </p>\n        <button>Lorem</button>\n      </div>\n    </div>\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(1) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>Lorem ipsum dolor sit amet</p>\n        <button>Lorem</button>\n      </div>\n    </div>\n  </div>\n</div>";
+module.exports = "<div class=\"foldingbox\" data-height=\"\" data-break=\"600\">\n  <div class=\"foldingbox__title\">\n    <h2>LOREM IPSUM DOLOR</h2>\n  </div>\n  <div class=\"foldingbox__container\">\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(1) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>Lorem ipsum dolor sit amet</p>\n        <button>Lorem</button>\n      </div>\n    </div>\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(1) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n        </p>\n        <button>Lorem</button>\n      </div>\n    </div>\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(1) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>Lorem ipsum dolor sit amet</p>\n        <button>Lorem</button>\n      </div>\n    </div>\n  </div>\n</div>";
 
 /***/ }),
 /* 33 */
@@ -11085,6 +11124,7 @@ var map = {
 	"./block-std/sample.html": 36,
 	"./brick/sample.html": 37,
 	"./foldingbox/sample.html": 38,
+	"./goto/sample.html": 100,
 	"./tabs/sample.html": 39
 };
 function webpackContext(req) {
@@ -11119,13 +11159,13 @@ module.exports = "<div class=\"block-std\">\r\n  <p>\r\n    Lorem ipsum dolor si
 /* 37 */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <div class=\"scene\">\r\n  <div class=\"grid\">\r\n    <div class=\"brick\" rows=\"3\" cols=\"5\" color=\"blacklight\" z=\"1\" x=\"0\" y=\"0\" text=\"Text sample\"></div>\r\n    <div class=\"brick\" rows=\"2\" cols=\"3\" color=\"blacklighter\" z=\"2\" x=\"-0\" y=\"-1\"></div>\r\n    <div class=\"brick\" rows=\"1\" cols=\"1\" color=\"greystronger\" z=\"3\" x=\"0\" y=\"-2\"></div>\r\n    <div class=\"brick\" rows=\"3\" cols=\"2\" color=\"blue\" z=\"2\" x=\"0\" y=\"2\"></div>\r\n  </div>\r\n</div> -->\r\n\r\n\r\n<div class=\"scene\">\r\n  <div class=\"grid\">\r\n    <div class=\"brick\" rows=\"4\" cols=\"4\" color=\"blacklight\" z=\"0\" x=\"0\" y=\"0\" text=\"SMARTGEAR\"></div>\r\n\r\n    <div class=\"brick cover\" rows=\"2\" cols=\"3\" color=\"blue\" z=\"1\" x=\"-1\" y=\"0\" text=\"\"></div>\r\n    <div class=\"brick cover\" rows=\"4\" cols=\"1\" color=\"green\" z=\"1\" x=\"0\" y=\"-2\" text=\"\" text-mode=\"vertical\"></div>\r\n    <div class=\"brick cover\" rows=\"1\" cols=\"1\" color=\"orange\" z=\"1\" x=\"0\" y=\"1\" text=\"\"></div>\r\n    <div class=\"brick\" rows=\"2\" cols=\"2\" color=\"gold\" z=\"1\" x=\"1\" y=\"0\" text=\"\"></div>\r\n\r\n    <div class=\"brick\" rows=\"2\" cols=\"2\" color=\"blue\" z=\"2\" x=\"-1\" y=\"-1\" text=\"\"></div>\r\n    <div class=\"brick\" rows=\"3\" cols=\"2\" color=\"darkblue\" z=\"2\" x=\"0\" y=\"1\" text=\"\"></div>\r\n    <div class=\"brick\" rows=\"1\" cols=\"2\" color=\"orange\" z=\"2\" x=\"-2\" y=\"1\" text=\"\"></div>\r\n    <div class=\"brick\" rows=\"2\" cols=\"1\" color=\"blacklighter\" z=\"2\" x=\"1\" y=\"-2\" text=\"\"></div>\r\n  </div>\r\n</div>\r\n<div class=\"scene\">\r\n  <div class=\"grid \">\r\n    <div class=\"brick debug\" rows=\"4\" cols=\"4\" color=\"blacklight\" z=\"0\" x=\"0\" y=\"0\" text=\"SMARTGEAR\"></div>\r\n  </div>\r\n</div>";
+module.exports = "<div class=\"scene\">\r\n  <div class=\"grid\">\r\n    <div class=\"brick\" rows=\"3\" cols=\"5\" color=\"blacklight\" z=\"1\" x=\"0\" y=\"0\" text=\"Text sample\"></div>\r\n    <div class=\"brick\" rows=\"2\" cols=\"3\" color=\"blacklighter\" z=\"2\" x=\"-0\" y=\"-1\"></div>\r\n    <div class=\"brick\" rows=\"1\" cols=\"1\" color=\"greystronger\" z=\"3\" x=\"0\" y=\"-2\"></div>\r\n    <div class=\"brick\" rows=\"3\" cols=\"2\" color=\"blue\" z=\"2\" x=\"0\" y=\"2\"></div>\r\n  </div>\r\n</div>";
 
 /***/ }),
 /* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div class=\"foldingbox\" data-height=\"\" data-break=\"\">\r\n  <div class=\"foldingbox__title\">\r\n    <h2>LOREM IPSUM DOLOR</h2>\r\n  </div>\r\n  <div class=\"foldingbox__container\">\r\n    <div class=\"foldingbox__item\">\r\n      <div class=\"foldingbox__item__bg\">\r\n        <img src=\"" + __webpack_require__(1) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"foldingbox__item__content\">\r\n        <h3>Lorem ipsum</h3>\r\n        <p>Lorem ipsum dolor sit amet</p>\r\n        <button>Lorem</button>\r\n      </div>\r\n    </div>\r\n    <div class=\"foldingbox__item\">\r\n      <div class=\"foldingbox__item__bg\">\r\n        <img src=\"" + __webpack_require__(1) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"foldingbox__item__content\">\r\n        <h3>Lorem ipsum</h3>\r\n        <p>\r\n            Lorem ipsum dolor sit amet<br>\r\n            Lorem ipsum dolor sit amet<br>\r\n            Lorem ipsum dolor sit amet<br>\r\n            Lorem ipsum dolor sit amet<br>\r\n        </p>\r\n        <button>Lorem</button>\r\n      </div>\r\n    </div>\r\n    <div class=\"foldingbox__item\">\r\n      <div class=\"foldingbox__item__bg\">\r\n        <img src=\"" + __webpack_require__(1) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"foldingbox__item__content\">\r\n        <h3>Lorem ipsum</h3>\r\n        <p>Lorem ipsum dolor sit amet</p>\r\n        <button>Lorem</button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>";
+module.exports = "<div class=\"foldingbox\" data-height=\"\" data-break=\"600\">\r\n  <div class=\"foldingbox__title\">\r\n    <h2>LOREM IPSUM DOLOR</h2>\r\n  </div>\r\n  <div class=\"foldingbox__container\">\r\n    <div class=\"foldingbox__item\">\r\n      <div class=\"foldingbox__item__bg\">\r\n        <img src=\"" + __webpack_require__(1) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"foldingbox__item__content\">\r\n        <h3>Lorem ipsum</h3>\r\n        <p>Lorem ipsum dolor sit amet</p>\r\n        <button>Lorem</button>\r\n      </div>\r\n    </div>\r\n    <div class=\"foldingbox__item\">\r\n      <div class=\"foldingbox__item__bg\">\r\n        <img src=\"" + __webpack_require__(1) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"foldingbox__item__content\">\r\n        <h3>Lorem ipsum</h3>\r\n        <p>\r\n            Lorem ipsum dolor sit amet<br>\r\n            Lorem ipsum dolor sit amet<br>\r\n            Lorem ipsum dolor sit amet<br>\r\n            Lorem ipsum dolor sit amet<br>\r\n        </p>\r\n        <button>Lorem</button>\r\n      </div>\r\n    </div>\r\n    <div class=\"foldingbox__item\">\r\n      <div class=\"foldingbox__item__bg\">\r\n        <img src=\"" + __webpack_require__(1) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"foldingbox__item__content\">\r\n        <h3>Lorem ipsum</h3>\r\n        <p>Lorem ipsum dolor sit amet</p>\r\n        <button>Lorem</button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>";
 
 /***/ }),
 /* 39 */
@@ -12394,12 +12434,6 @@ function Utils() {
     $.each(objTransform, function (key, value) {
       strResult += key + value + ' ';
     });
-    if ($(el).hasClass('grid')) {
-      console.log(el);
-      console.log('base : ' + baseTransform);
-      console.log('target : ' + targetTransform);
-      console.log('result : ' + strResult);
-    }
     return strResult;
   };
 
@@ -12509,7 +12543,7 @@ function Utils() {
   };
 
   /**
-   * return a key of an objetc from a value
+   * return a key of an object from a value
    * @param  {Object} obj
    * @param  {[type]} value
    * @return {String}
@@ -12575,15 +12609,6 @@ function Utils() {
     return succeed;
   };
 
-  /**
-   * check the state of a checkbox
-   * @return {Boolean}
-   *  TODO : real test
-   */
-  $.fn.isChecked = function () {
-    if ($(this).is(':checked')) return 1;else return 0;
-  };
-
   // NOTIFICATIONS SETUP
   global.toastr = __webpack_require__(83);
   var toastrDefault = { "newestOnTop": false, "closeButton": true, "timeOut": 0, "extendedTimeOut": 0, "showMethod": "slideDown", "positionClass": "toast-bottom-left", "progressBar": false };
@@ -12645,6 +12670,34 @@ function Utils() {
   global.viewport = utils.getDimensions();
   return utils;
 }
+
+// check end of scrolling
+$.fn.scrollEnd = function (callback, timeout) {
+  $(this).scroll(function () {
+    var $this = $(this);
+    if ($this.data('scrollTimeout')) {
+      clearTimeout($this.data('scrollTimeout'));
+    }
+    $this.data('scrollTimeout', setTimeout(callback, timeout));
+  });
+};
+
+/**
+ * check the state of a checkbox
+ * @return {Boolean}
+ *  TODO : real test
+ */
+$.fn.isChecked = function () {
+  if ($(this).is(':checked')) return 1;else return 0;
+};
+
+$.event.special.destroyed = {
+  remove: function remove(o) {
+    if (o.handler) {
+      o.handler();
+    }
+  }
+};
 
 $(function () {
   $(window).resize(function () {
@@ -13140,6 +13193,2942 @@ module.exports = function() {
 	throw new Error("define cannot be used indirect");
 };
 
+
+/***/ }),
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */,
+/* 91 */,
+/* 92 */,
+/* 93 */,
+/* 94 */,
+/* 95 */,
+/* 96 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_RESULT__;/*! Hammer.JS - v2.0.7 - 2016-04-22
+ * http://hammerjs.github.io/
+ *
+ * Copyright (c) 2016 Jorik Tangelder;
+ * Licensed under the MIT license */
+(function(window, document, exportName, undefined) {
+  'use strict';
+
+var VENDOR_PREFIXES = ['', 'webkit', 'Moz', 'MS', 'ms', 'o'];
+var TEST_ELEMENT = document.createElement('div');
+
+var TYPE_FUNCTION = 'function';
+
+var round = Math.round;
+var abs = Math.abs;
+var now = Date.now;
+
+/**
+ * set a timeout with a given scope
+ * @param {Function} fn
+ * @param {Number} timeout
+ * @param {Object} context
+ * @returns {number}
+ */
+function setTimeoutContext(fn, timeout, context) {
+    return setTimeout(bindFn(fn, context), timeout);
+}
+
+/**
+ * if the argument is an array, we want to execute the fn on each entry
+ * if it aint an array we don't want to do a thing.
+ * this is used by all the methods that accept a single and array argument.
+ * @param {*|Array} arg
+ * @param {String} fn
+ * @param {Object} [context]
+ * @returns {Boolean}
+ */
+function invokeArrayArg(arg, fn, context) {
+    if (Array.isArray(arg)) {
+        each(arg, context[fn], context);
+        return true;
+    }
+    return false;
+}
+
+/**
+ * walk objects and arrays
+ * @param {Object} obj
+ * @param {Function} iterator
+ * @param {Object} context
+ */
+function each(obj, iterator, context) {
+    var i;
+
+    if (!obj) {
+        return;
+    }
+
+    if (obj.forEach) {
+        obj.forEach(iterator, context);
+    } else if (obj.length !== undefined) {
+        i = 0;
+        while (i < obj.length) {
+            iterator.call(context, obj[i], i, obj);
+            i++;
+        }
+    } else {
+        for (i in obj) {
+            obj.hasOwnProperty(i) && iterator.call(context, obj[i], i, obj);
+        }
+    }
+}
+
+/**
+ * wrap a method with a deprecation warning and stack trace
+ * @param {Function} method
+ * @param {String} name
+ * @param {String} message
+ * @returns {Function} A new function wrapping the supplied method.
+ */
+function deprecate(method, name, message) {
+    var deprecationMessage = 'DEPRECATED METHOD: ' + name + '\n' + message + ' AT \n';
+    return function() {
+        var e = new Error('get-stack-trace');
+        var stack = e && e.stack ? e.stack.replace(/^[^\(]+?[\n$]/gm, '')
+            .replace(/^\s+at\s+/gm, '')
+            .replace(/^Object.<anonymous>\s*\(/gm, '{anonymous}()@') : 'Unknown Stack Trace';
+
+        var log = window.console && (window.console.warn || window.console.log);
+        if (log) {
+            log.call(window.console, deprecationMessage, stack);
+        }
+        return method.apply(this, arguments);
+    };
+}
+
+/**
+ * extend object.
+ * means that properties in dest will be overwritten by the ones in src.
+ * @param {Object} target
+ * @param {...Object} objects_to_assign
+ * @returns {Object} target
+ */
+var assign;
+if (typeof Object.assign !== 'function') {
+    assign = function assign(target) {
+        if (target === undefined || target === null) {
+            throw new TypeError('Cannot convert undefined or null to object');
+        }
+
+        var output = Object(target);
+        for (var index = 1; index < arguments.length; index++) {
+            var source = arguments[index];
+            if (source !== undefined && source !== null) {
+                for (var nextKey in source) {
+                    if (source.hasOwnProperty(nextKey)) {
+                        output[nextKey] = source[nextKey];
+                    }
+                }
+            }
+        }
+        return output;
+    };
+} else {
+    assign = Object.assign;
+}
+
+/**
+ * extend object.
+ * means that properties in dest will be overwritten by the ones in src.
+ * @param {Object} dest
+ * @param {Object} src
+ * @param {Boolean} [merge=false]
+ * @returns {Object} dest
+ */
+var extend = deprecate(function extend(dest, src, merge) {
+    var keys = Object.keys(src);
+    var i = 0;
+    while (i < keys.length) {
+        if (!merge || (merge && dest[keys[i]] === undefined)) {
+            dest[keys[i]] = src[keys[i]];
+        }
+        i++;
+    }
+    return dest;
+}, 'extend', 'Use `assign`.');
+
+/**
+ * merge the values from src in the dest.
+ * means that properties that exist in dest will not be overwritten by src
+ * @param {Object} dest
+ * @param {Object} src
+ * @returns {Object} dest
+ */
+var merge = deprecate(function merge(dest, src) {
+    return extend(dest, src, true);
+}, 'merge', 'Use `assign`.');
+
+/**
+ * simple class inheritance
+ * @param {Function} child
+ * @param {Function} base
+ * @param {Object} [properties]
+ */
+function inherit(child, base, properties) {
+    var baseP = base.prototype,
+        childP;
+
+    childP = child.prototype = Object.create(baseP);
+    childP.constructor = child;
+    childP._super = baseP;
+
+    if (properties) {
+        assign(childP, properties);
+    }
+}
+
+/**
+ * simple function bind
+ * @param {Function} fn
+ * @param {Object} context
+ * @returns {Function}
+ */
+function bindFn(fn, context) {
+    return function boundFn() {
+        return fn.apply(context, arguments);
+    };
+}
+
+/**
+ * let a boolean value also be a function that must return a boolean
+ * this first item in args will be used as the context
+ * @param {Boolean|Function} val
+ * @param {Array} [args]
+ * @returns {Boolean}
+ */
+function boolOrFn(val, args) {
+    if (typeof val == TYPE_FUNCTION) {
+        return val.apply(args ? args[0] || undefined : undefined, args);
+    }
+    return val;
+}
+
+/**
+ * use the val2 when val1 is undefined
+ * @param {*} val1
+ * @param {*} val2
+ * @returns {*}
+ */
+function ifUndefined(val1, val2) {
+    return (val1 === undefined) ? val2 : val1;
+}
+
+/**
+ * addEventListener with multiple events at once
+ * @param {EventTarget} target
+ * @param {String} types
+ * @param {Function} handler
+ */
+function addEventListeners(target, types, handler) {
+    each(splitStr(types), function(type) {
+        target.addEventListener(type, handler, false);
+    });
+}
+
+/**
+ * removeEventListener with multiple events at once
+ * @param {EventTarget} target
+ * @param {String} types
+ * @param {Function} handler
+ */
+function removeEventListeners(target, types, handler) {
+    each(splitStr(types), function(type) {
+        target.removeEventListener(type, handler, false);
+    });
+}
+
+/**
+ * find if a node is in the given parent
+ * @method hasParent
+ * @param {HTMLElement} node
+ * @param {HTMLElement} parent
+ * @return {Boolean} found
+ */
+function hasParent(node, parent) {
+    while (node) {
+        if (node == parent) {
+            return true;
+        }
+        node = node.parentNode;
+    }
+    return false;
+}
+
+/**
+ * small indexOf wrapper
+ * @param {String} str
+ * @param {String} find
+ * @returns {Boolean} found
+ */
+function inStr(str, find) {
+    return str.indexOf(find) > -1;
+}
+
+/**
+ * split string on whitespace
+ * @param {String} str
+ * @returns {Array} words
+ */
+function splitStr(str) {
+    return str.trim().split(/\s+/g);
+}
+
+/**
+ * find if a array contains the object using indexOf or a simple polyFill
+ * @param {Array} src
+ * @param {String} find
+ * @param {String} [findByKey]
+ * @return {Boolean|Number} false when not found, or the index
+ */
+function inArray(src, find, findByKey) {
+    if (src.indexOf && !findByKey) {
+        return src.indexOf(find);
+    } else {
+        var i = 0;
+        while (i < src.length) {
+            if ((findByKey && src[i][findByKey] == find) || (!findByKey && src[i] === find)) {
+                return i;
+            }
+            i++;
+        }
+        return -1;
+    }
+}
+
+/**
+ * convert array-like objects to real arrays
+ * @param {Object} obj
+ * @returns {Array}
+ */
+function toArray(obj) {
+    return Array.prototype.slice.call(obj, 0);
+}
+
+/**
+ * unique array with objects based on a key (like 'id') or just by the array's value
+ * @param {Array} src [{id:1},{id:2},{id:1}]
+ * @param {String} [key]
+ * @param {Boolean} [sort=False]
+ * @returns {Array} [{id:1},{id:2}]
+ */
+function uniqueArray(src, key, sort) {
+    var results = [];
+    var values = [];
+    var i = 0;
+
+    while (i < src.length) {
+        var val = key ? src[i][key] : src[i];
+        if (inArray(values, val) < 0) {
+            results.push(src[i]);
+        }
+        values[i] = val;
+        i++;
+    }
+
+    if (sort) {
+        if (!key) {
+            results = results.sort();
+        } else {
+            results = results.sort(function sortUniqueArray(a, b) {
+                return a[key] > b[key];
+            });
+        }
+    }
+
+    return results;
+}
+
+/**
+ * get the prefixed property
+ * @param {Object} obj
+ * @param {String} property
+ * @returns {String|Undefined} prefixed
+ */
+function prefixed(obj, property) {
+    var prefix, prop;
+    var camelProp = property[0].toUpperCase() + property.slice(1);
+
+    var i = 0;
+    while (i < VENDOR_PREFIXES.length) {
+        prefix = VENDOR_PREFIXES[i];
+        prop = (prefix) ? prefix + camelProp : property;
+
+        if (prop in obj) {
+            return prop;
+        }
+        i++;
+    }
+    return undefined;
+}
+
+/**
+ * get a unique id
+ * @returns {number} uniqueId
+ */
+var _uniqueId = 1;
+function uniqueId() {
+    return _uniqueId++;
+}
+
+/**
+ * get the window object of an element
+ * @param {HTMLElement} element
+ * @returns {DocumentView|Window}
+ */
+function getWindowForElement(element) {
+    var doc = element.ownerDocument || element;
+    return (doc.defaultView || doc.parentWindow || window);
+}
+
+var MOBILE_REGEX = /mobile|tablet|ip(ad|hone|od)|android/i;
+
+var SUPPORT_TOUCH = ('ontouchstart' in window);
+var SUPPORT_POINTER_EVENTS = prefixed(window, 'PointerEvent') !== undefined;
+var SUPPORT_ONLY_TOUCH = SUPPORT_TOUCH && MOBILE_REGEX.test(navigator.userAgent);
+
+var INPUT_TYPE_TOUCH = 'touch';
+var INPUT_TYPE_PEN = 'pen';
+var INPUT_TYPE_MOUSE = 'mouse';
+var INPUT_TYPE_KINECT = 'kinect';
+
+var COMPUTE_INTERVAL = 25;
+
+var INPUT_START = 1;
+var INPUT_MOVE = 2;
+var INPUT_END = 4;
+var INPUT_CANCEL = 8;
+
+var DIRECTION_NONE = 1;
+var DIRECTION_LEFT = 2;
+var DIRECTION_RIGHT = 4;
+var DIRECTION_UP = 8;
+var DIRECTION_DOWN = 16;
+
+var DIRECTION_HORIZONTAL = DIRECTION_LEFT | DIRECTION_RIGHT;
+var DIRECTION_VERTICAL = DIRECTION_UP | DIRECTION_DOWN;
+var DIRECTION_ALL = DIRECTION_HORIZONTAL | DIRECTION_VERTICAL;
+
+var PROPS_XY = ['x', 'y'];
+var PROPS_CLIENT_XY = ['clientX', 'clientY'];
+
+/**
+ * create new input type manager
+ * @param {Manager} manager
+ * @param {Function} callback
+ * @returns {Input}
+ * @constructor
+ */
+function Input(manager, callback) {
+    var self = this;
+    this.manager = manager;
+    this.callback = callback;
+    this.element = manager.element;
+    this.target = manager.options.inputTarget;
+
+    // smaller wrapper around the handler, for the scope and the enabled state of the manager,
+    // so when disabled the input events are completely bypassed.
+    this.domHandler = function(ev) {
+        if (boolOrFn(manager.options.enable, [manager])) {
+            self.handler(ev);
+        }
+    };
+
+    this.init();
+
+}
+
+Input.prototype = {
+    /**
+     * should handle the inputEvent data and trigger the callback
+     * @virtual
+     */
+    handler: function() { },
+
+    /**
+     * bind the events
+     */
+    init: function() {
+        this.evEl && addEventListeners(this.element, this.evEl, this.domHandler);
+        this.evTarget && addEventListeners(this.target, this.evTarget, this.domHandler);
+        this.evWin && addEventListeners(getWindowForElement(this.element), this.evWin, this.domHandler);
+    },
+
+    /**
+     * unbind the events
+     */
+    destroy: function() {
+        this.evEl && removeEventListeners(this.element, this.evEl, this.domHandler);
+        this.evTarget && removeEventListeners(this.target, this.evTarget, this.domHandler);
+        this.evWin && removeEventListeners(getWindowForElement(this.element), this.evWin, this.domHandler);
+    }
+};
+
+/**
+ * create new input type manager
+ * called by the Manager constructor
+ * @param {Hammer} manager
+ * @returns {Input}
+ */
+function createInputInstance(manager) {
+    var Type;
+    var inputClass = manager.options.inputClass;
+
+    if (inputClass) {
+        Type = inputClass;
+    } else if (SUPPORT_POINTER_EVENTS) {
+        Type = PointerEventInput;
+    } else if (SUPPORT_ONLY_TOUCH) {
+        Type = TouchInput;
+    } else if (!SUPPORT_TOUCH) {
+        Type = MouseInput;
+    } else {
+        Type = TouchMouseInput;
+    }
+    return new (Type)(manager, inputHandler);
+}
+
+/**
+ * handle input events
+ * @param {Manager} manager
+ * @param {String} eventType
+ * @param {Object} input
+ */
+function inputHandler(manager, eventType, input) {
+    var pointersLen = input.pointers.length;
+    var changedPointersLen = input.changedPointers.length;
+    var isFirst = (eventType & INPUT_START && (pointersLen - changedPointersLen === 0));
+    var isFinal = (eventType & (INPUT_END | INPUT_CANCEL) && (pointersLen - changedPointersLen === 0));
+
+    input.isFirst = !!isFirst;
+    input.isFinal = !!isFinal;
+
+    if (isFirst) {
+        manager.session = {};
+    }
+
+    // source event is the normalized value of the domEvents
+    // like 'touchstart, mouseup, pointerdown'
+    input.eventType = eventType;
+
+    // compute scale, rotation etc
+    computeInputData(manager, input);
+
+    // emit secret event
+    manager.emit('hammer.input', input);
+
+    manager.recognize(input);
+    manager.session.prevInput = input;
+}
+
+/**
+ * extend the data with some usable properties like scale, rotate, velocity etc
+ * @param {Object} manager
+ * @param {Object} input
+ */
+function computeInputData(manager, input) {
+    var session = manager.session;
+    var pointers = input.pointers;
+    var pointersLength = pointers.length;
+
+    // store the first input to calculate the distance and direction
+    if (!session.firstInput) {
+        session.firstInput = simpleCloneInputData(input);
+    }
+
+    // to compute scale and rotation we need to store the multiple touches
+    if (pointersLength > 1 && !session.firstMultiple) {
+        session.firstMultiple = simpleCloneInputData(input);
+    } else if (pointersLength === 1) {
+        session.firstMultiple = false;
+    }
+
+    var firstInput = session.firstInput;
+    var firstMultiple = session.firstMultiple;
+    var offsetCenter = firstMultiple ? firstMultiple.center : firstInput.center;
+
+    var center = input.center = getCenter(pointers);
+    input.timeStamp = now();
+    input.deltaTime = input.timeStamp - firstInput.timeStamp;
+
+    input.angle = getAngle(offsetCenter, center);
+    input.distance = getDistance(offsetCenter, center);
+
+    computeDeltaXY(session, input);
+    input.offsetDirection = getDirection(input.deltaX, input.deltaY);
+
+    var overallVelocity = getVelocity(input.deltaTime, input.deltaX, input.deltaY);
+    input.overallVelocityX = overallVelocity.x;
+    input.overallVelocityY = overallVelocity.y;
+    input.overallVelocity = (abs(overallVelocity.x) > abs(overallVelocity.y)) ? overallVelocity.x : overallVelocity.y;
+
+    input.scale = firstMultiple ? getScale(firstMultiple.pointers, pointers) : 1;
+    input.rotation = firstMultiple ? getRotation(firstMultiple.pointers, pointers) : 0;
+
+    input.maxPointers = !session.prevInput ? input.pointers.length : ((input.pointers.length >
+        session.prevInput.maxPointers) ? input.pointers.length : session.prevInput.maxPointers);
+
+    computeIntervalInputData(session, input);
+
+    // find the correct target
+    var target = manager.element;
+    if (hasParent(input.srcEvent.target, target)) {
+        target = input.srcEvent.target;
+    }
+    input.target = target;
+}
+
+function computeDeltaXY(session, input) {
+    var center = input.center;
+    var offset = session.offsetDelta || {};
+    var prevDelta = session.prevDelta || {};
+    var prevInput = session.prevInput || {};
+
+    if (input.eventType === INPUT_START || prevInput.eventType === INPUT_END) {
+        prevDelta = session.prevDelta = {
+            x: prevInput.deltaX || 0,
+            y: prevInput.deltaY || 0
+        };
+
+        offset = session.offsetDelta = {
+            x: center.x,
+            y: center.y
+        };
+    }
+
+    input.deltaX = prevDelta.x + (center.x - offset.x);
+    input.deltaY = prevDelta.y + (center.y - offset.y);
+}
+
+/**
+ * velocity is calculated every x ms
+ * @param {Object} session
+ * @param {Object} input
+ */
+function computeIntervalInputData(session, input) {
+    var last = session.lastInterval || input,
+        deltaTime = input.timeStamp - last.timeStamp,
+        velocity, velocityX, velocityY, direction;
+
+    if (input.eventType != INPUT_CANCEL && (deltaTime > COMPUTE_INTERVAL || last.velocity === undefined)) {
+        var deltaX = input.deltaX - last.deltaX;
+        var deltaY = input.deltaY - last.deltaY;
+
+        var v = getVelocity(deltaTime, deltaX, deltaY);
+        velocityX = v.x;
+        velocityY = v.y;
+        velocity = (abs(v.x) > abs(v.y)) ? v.x : v.y;
+        direction = getDirection(deltaX, deltaY);
+
+        session.lastInterval = input;
+    } else {
+        // use latest velocity info if it doesn't overtake a minimum period
+        velocity = last.velocity;
+        velocityX = last.velocityX;
+        velocityY = last.velocityY;
+        direction = last.direction;
+    }
+
+    input.velocity = velocity;
+    input.velocityX = velocityX;
+    input.velocityY = velocityY;
+    input.direction = direction;
+}
+
+/**
+ * create a simple clone from the input used for storage of firstInput and firstMultiple
+ * @param {Object} input
+ * @returns {Object} clonedInputData
+ */
+function simpleCloneInputData(input) {
+    // make a simple copy of the pointers because we will get a reference if we don't
+    // we only need clientXY for the calculations
+    var pointers = [];
+    var i = 0;
+    while (i < input.pointers.length) {
+        pointers[i] = {
+            clientX: round(input.pointers[i].clientX),
+            clientY: round(input.pointers[i].clientY)
+        };
+        i++;
+    }
+
+    return {
+        timeStamp: now(),
+        pointers: pointers,
+        center: getCenter(pointers),
+        deltaX: input.deltaX,
+        deltaY: input.deltaY
+    };
+}
+
+/**
+ * get the center of all the pointers
+ * @param {Array} pointers
+ * @return {Object} center contains `x` and `y` properties
+ */
+function getCenter(pointers) {
+    var pointersLength = pointers.length;
+
+    // no need to loop when only one touch
+    if (pointersLength === 1) {
+        return {
+            x: round(pointers[0].clientX),
+            y: round(pointers[0].clientY)
+        };
+    }
+
+    var x = 0, y = 0, i = 0;
+    while (i < pointersLength) {
+        x += pointers[i].clientX;
+        y += pointers[i].clientY;
+        i++;
+    }
+
+    return {
+        x: round(x / pointersLength),
+        y: round(y / pointersLength)
+    };
+}
+
+/**
+ * calculate the velocity between two points. unit is in px per ms.
+ * @param {Number} deltaTime
+ * @param {Number} x
+ * @param {Number} y
+ * @return {Object} velocity `x` and `y`
+ */
+function getVelocity(deltaTime, x, y) {
+    return {
+        x: x / deltaTime || 0,
+        y: y / deltaTime || 0
+    };
+}
+
+/**
+ * get the direction between two points
+ * @param {Number} x
+ * @param {Number} y
+ * @return {Number} direction
+ */
+function getDirection(x, y) {
+    if (x === y) {
+        return DIRECTION_NONE;
+    }
+
+    if (abs(x) >= abs(y)) {
+        return x < 0 ? DIRECTION_LEFT : DIRECTION_RIGHT;
+    }
+    return y < 0 ? DIRECTION_UP : DIRECTION_DOWN;
+}
+
+/**
+ * calculate the absolute distance between two points
+ * @param {Object} p1 {x, y}
+ * @param {Object} p2 {x, y}
+ * @param {Array} [props] containing x and y keys
+ * @return {Number} distance
+ */
+function getDistance(p1, p2, props) {
+    if (!props) {
+        props = PROPS_XY;
+    }
+    var x = p2[props[0]] - p1[props[0]],
+        y = p2[props[1]] - p1[props[1]];
+
+    return Math.sqrt((x * x) + (y * y));
+}
+
+/**
+ * calculate the angle between two coordinates
+ * @param {Object} p1
+ * @param {Object} p2
+ * @param {Array} [props] containing x and y keys
+ * @return {Number} angle
+ */
+function getAngle(p1, p2, props) {
+    if (!props) {
+        props = PROPS_XY;
+    }
+    var x = p2[props[0]] - p1[props[0]],
+        y = p2[props[1]] - p1[props[1]];
+    return Math.atan2(y, x) * 180 / Math.PI;
+}
+
+/**
+ * calculate the rotation degrees between two pointersets
+ * @param {Array} start array of pointers
+ * @param {Array} end array of pointers
+ * @return {Number} rotation
+ */
+function getRotation(start, end) {
+    return getAngle(end[1], end[0], PROPS_CLIENT_XY) + getAngle(start[1], start[0], PROPS_CLIENT_XY);
+}
+
+/**
+ * calculate the scale factor between two pointersets
+ * no scale is 1, and goes down to 0 when pinched together, and bigger when pinched out
+ * @param {Array} start array of pointers
+ * @param {Array} end array of pointers
+ * @return {Number} scale
+ */
+function getScale(start, end) {
+    return getDistance(end[0], end[1], PROPS_CLIENT_XY) / getDistance(start[0], start[1], PROPS_CLIENT_XY);
+}
+
+var MOUSE_INPUT_MAP = {
+    mousedown: INPUT_START,
+    mousemove: INPUT_MOVE,
+    mouseup: INPUT_END
+};
+
+var MOUSE_ELEMENT_EVENTS = 'mousedown';
+var MOUSE_WINDOW_EVENTS = 'mousemove mouseup';
+
+/**
+ * Mouse events input
+ * @constructor
+ * @extends Input
+ */
+function MouseInput() {
+    this.evEl = MOUSE_ELEMENT_EVENTS;
+    this.evWin = MOUSE_WINDOW_EVENTS;
+
+    this.pressed = false; // mousedown state
+
+    Input.apply(this, arguments);
+}
+
+inherit(MouseInput, Input, {
+    /**
+     * handle mouse events
+     * @param {Object} ev
+     */
+    handler: function MEhandler(ev) {
+        var eventType = MOUSE_INPUT_MAP[ev.type];
+
+        // on start we want to have the left mouse button down
+        if (eventType & INPUT_START && ev.button === 0) {
+            this.pressed = true;
+        }
+
+        if (eventType & INPUT_MOVE && ev.which !== 1) {
+            eventType = INPUT_END;
+        }
+
+        // mouse must be down
+        if (!this.pressed) {
+            return;
+        }
+
+        if (eventType & INPUT_END) {
+            this.pressed = false;
+        }
+
+        this.callback(this.manager, eventType, {
+            pointers: [ev],
+            changedPointers: [ev],
+            pointerType: INPUT_TYPE_MOUSE,
+            srcEvent: ev
+        });
+    }
+});
+
+var POINTER_INPUT_MAP = {
+    pointerdown: INPUT_START,
+    pointermove: INPUT_MOVE,
+    pointerup: INPUT_END,
+    pointercancel: INPUT_CANCEL,
+    pointerout: INPUT_CANCEL
+};
+
+// in IE10 the pointer types is defined as an enum
+var IE10_POINTER_TYPE_ENUM = {
+    2: INPUT_TYPE_TOUCH,
+    3: INPUT_TYPE_PEN,
+    4: INPUT_TYPE_MOUSE,
+    5: INPUT_TYPE_KINECT // see https://twitter.com/jacobrossi/status/480596438489890816
+};
+
+var POINTER_ELEMENT_EVENTS = 'pointerdown';
+var POINTER_WINDOW_EVENTS = 'pointermove pointerup pointercancel';
+
+// IE10 has prefixed support, and case-sensitive
+if (window.MSPointerEvent && !window.PointerEvent) {
+    POINTER_ELEMENT_EVENTS = 'MSPointerDown';
+    POINTER_WINDOW_EVENTS = 'MSPointerMove MSPointerUp MSPointerCancel';
+}
+
+/**
+ * Pointer events input
+ * @constructor
+ * @extends Input
+ */
+function PointerEventInput() {
+    this.evEl = POINTER_ELEMENT_EVENTS;
+    this.evWin = POINTER_WINDOW_EVENTS;
+
+    Input.apply(this, arguments);
+
+    this.store = (this.manager.session.pointerEvents = []);
+}
+
+inherit(PointerEventInput, Input, {
+    /**
+     * handle mouse events
+     * @param {Object} ev
+     */
+    handler: function PEhandler(ev) {
+        var store = this.store;
+        var removePointer = false;
+
+        var eventTypeNormalized = ev.type.toLowerCase().replace('ms', '');
+        var eventType = POINTER_INPUT_MAP[eventTypeNormalized];
+        var pointerType = IE10_POINTER_TYPE_ENUM[ev.pointerType] || ev.pointerType;
+
+        var isTouch = (pointerType == INPUT_TYPE_TOUCH);
+
+        // get index of the event in the store
+        var storeIndex = inArray(store, ev.pointerId, 'pointerId');
+
+        // start and mouse must be down
+        if (eventType & INPUT_START && (ev.button === 0 || isTouch)) {
+            if (storeIndex < 0) {
+                store.push(ev);
+                storeIndex = store.length - 1;
+            }
+        } else if (eventType & (INPUT_END | INPUT_CANCEL)) {
+            removePointer = true;
+        }
+
+        // it not found, so the pointer hasn't been down (so it's probably a hover)
+        if (storeIndex < 0) {
+            return;
+        }
+
+        // update the event in the store
+        store[storeIndex] = ev;
+
+        this.callback(this.manager, eventType, {
+            pointers: store,
+            changedPointers: [ev],
+            pointerType: pointerType,
+            srcEvent: ev
+        });
+
+        if (removePointer) {
+            // remove from the store
+            store.splice(storeIndex, 1);
+        }
+    }
+});
+
+var SINGLE_TOUCH_INPUT_MAP = {
+    touchstart: INPUT_START,
+    touchmove: INPUT_MOVE,
+    touchend: INPUT_END,
+    touchcancel: INPUT_CANCEL
+};
+
+var SINGLE_TOUCH_TARGET_EVENTS = 'touchstart';
+var SINGLE_TOUCH_WINDOW_EVENTS = 'touchstart touchmove touchend touchcancel';
+
+/**
+ * Touch events input
+ * @constructor
+ * @extends Input
+ */
+function SingleTouchInput() {
+    this.evTarget = SINGLE_TOUCH_TARGET_EVENTS;
+    this.evWin = SINGLE_TOUCH_WINDOW_EVENTS;
+    this.started = false;
+
+    Input.apply(this, arguments);
+}
+
+inherit(SingleTouchInput, Input, {
+    handler: function TEhandler(ev) {
+        var type = SINGLE_TOUCH_INPUT_MAP[ev.type];
+
+        // should we handle the touch events?
+        if (type === INPUT_START) {
+            this.started = true;
+        }
+
+        if (!this.started) {
+            return;
+        }
+
+        var touches = normalizeSingleTouches.call(this, ev, type);
+
+        // when done, reset the started state
+        if (type & (INPUT_END | INPUT_CANCEL) && touches[0].length - touches[1].length === 0) {
+            this.started = false;
+        }
+
+        this.callback(this.manager, type, {
+            pointers: touches[0],
+            changedPointers: touches[1],
+            pointerType: INPUT_TYPE_TOUCH,
+            srcEvent: ev
+        });
+    }
+});
+
+/**
+ * @this {TouchInput}
+ * @param {Object} ev
+ * @param {Number} type flag
+ * @returns {undefined|Array} [all, changed]
+ */
+function normalizeSingleTouches(ev, type) {
+    var all = toArray(ev.touches);
+    var changed = toArray(ev.changedTouches);
+
+    if (type & (INPUT_END | INPUT_CANCEL)) {
+        all = uniqueArray(all.concat(changed), 'identifier', true);
+    }
+
+    return [all, changed];
+}
+
+var TOUCH_INPUT_MAP = {
+    touchstart: INPUT_START,
+    touchmove: INPUT_MOVE,
+    touchend: INPUT_END,
+    touchcancel: INPUT_CANCEL
+};
+
+var TOUCH_TARGET_EVENTS = 'touchstart touchmove touchend touchcancel';
+
+/**
+ * Multi-user touch events input
+ * @constructor
+ * @extends Input
+ */
+function TouchInput() {
+    this.evTarget = TOUCH_TARGET_EVENTS;
+    this.targetIds = {};
+
+    Input.apply(this, arguments);
+}
+
+inherit(TouchInput, Input, {
+    handler: function MTEhandler(ev) {
+        var type = TOUCH_INPUT_MAP[ev.type];
+        var touches = getTouches.call(this, ev, type);
+        if (!touches) {
+            return;
+        }
+
+        this.callback(this.manager, type, {
+            pointers: touches[0],
+            changedPointers: touches[1],
+            pointerType: INPUT_TYPE_TOUCH,
+            srcEvent: ev
+        });
+    }
+});
+
+/**
+ * @this {TouchInput}
+ * @param {Object} ev
+ * @param {Number} type flag
+ * @returns {undefined|Array} [all, changed]
+ */
+function getTouches(ev, type) {
+    var allTouches = toArray(ev.touches);
+    var targetIds = this.targetIds;
+
+    // when there is only one touch, the process can be simplified
+    if (type & (INPUT_START | INPUT_MOVE) && allTouches.length === 1) {
+        targetIds[allTouches[0].identifier] = true;
+        return [allTouches, allTouches];
+    }
+
+    var i,
+        targetTouches,
+        changedTouches = toArray(ev.changedTouches),
+        changedTargetTouches = [],
+        target = this.target;
+
+    // get target touches from touches
+    targetTouches = allTouches.filter(function(touch) {
+        return hasParent(touch.target, target);
+    });
+
+    // collect touches
+    if (type === INPUT_START) {
+        i = 0;
+        while (i < targetTouches.length) {
+            targetIds[targetTouches[i].identifier] = true;
+            i++;
+        }
+    }
+
+    // filter changed touches to only contain touches that exist in the collected target ids
+    i = 0;
+    while (i < changedTouches.length) {
+        if (targetIds[changedTouches[i].identifier]) {
+            changedTargetTouches.push(changedTouches[i]);
+        }
+
+        // cleanup removed touches
+        if (type & (INPUT_END | INPUT_CANCEL)) {
+            delete targetIds[changedTouches[i].identifier];
+        }
+        i++;
+    }
+
+    if (!changedTargetTouches.length) {
+        return;
+    }
+
+    return [
+        // merge targetTouches with changedTargetTouches so it contains ALL touches, including 'end' and 'cancel'
+        uniqueArray(targetTouches.concat(changedTargetTouches), 'identifier', true),
+        changedTargetTouches
+    ];
+}
+
+/**
+ * Combined touch and mouse input
+ *
+ * Touch has a higher priority then mouse, and while touching no mouse events are allowed.
+ * This because touch devices also emit mouse events while doing a touch.
+ *
+ * @constructor
+ * @extends Input
+ */
+
+var DEDUP_TIMEOUT = 2500;
+var DEDUP_DISTANCE = 25;
+
+function TouchMouseInput() {
+    Input.apply(this, arguments);
+
+    var handler = bindFn(this.handler, this);
+    this.touch = new TouchInput(this.manager, handler);
+    this.mouse = new MouseInput(this.manager, handler);
+
+    this.primaryTouch = null;
+    this.lastTouches = [];
+}
+
+inherit(TouchMouseInput, Input, {
+    /**
+     * handle mouse and touch events
+     * @param {Hammer} manager
+     * @param {String} inputEvent
+     * @param {Object} inputData
+     */
+    handler: function TMEhandler(manager, inputEvent, inputData) {
+        var isTouch = (inputData.pointerType == INPUT_TYPE_TOUCH),
+            isMouse = (inputData.pointerType == INPUT_TYPE_MOUSE);
+
+        if (isMouse && inputData.sourceCapabilities && inputData.sourceCapabilities.firesTouchEvents) {
+            return;
+        }
+
+        // when we're in a touch event, record touches to  de-dupe synthetic mouse event
+        if (isTouch) {
+            recordTouches.call(this, inputEvent, inputData);
+        } else if (isMouse && isSyntheticEvent.call(this, inputData)) {
+            return;
+        }
+
+        this.callback(manager, inputEvent, inputData);
+    },
+
+    /**
+     * remove the event listeners
+     */
+    destroy: function destroy() {
+        this.touch.destroy();
+        this.mouse.destroy();
+    }
+});
+
+function recordTouches(eventType, eventData) {
+    if (eventType & INPUT_START) {
+        this.primaryTouch = eventData.changedPointers[0].identifier;
+        setLastTouch.call(this, eventData);
+    } else if (eventType & (INPUT_END | INPUT_CANCEL)) {
+        setLastTouch.call(this, eventData);
+    }
+}
+
+function setLastTouch(eventData) {
+    var touch = eventData.changedPointers[0];
+
+    if (touch.identifier === this.primaryTouch) {
+        var lastTouch = {x: touch.clientX, y: touch.clientY};
+        this.lastTouches.push(lastTouch);
+        var lts = this.lastTouches;
+        var removeLastTouch = function() {
+            var i = lts.indexOf(lastTouch);
+            if (i > -1) {
+                lts.splice(i, 1);
+            }
+        };
+        setTimeout(removeLastTouch, DEDUP_TIMEOUT);
+    }
+}
+
+function isSyntheticEvent(eventData) {
+    var x = eventData.srcEvent.clientX, y = eventData.srcEvent.clientY;
+    for (var i = 0; i < this.lastTouches.length; i++) {
+        var t = this.lastTouches[i];
+        var dx = Math.abs(x - t.x), dy = Math.abs(y - t.y);
+        if (dx <= DEDUP_DISTANCE && dy <= DEDUP_DISTANCE) {
+            return true;
+        }
+    }
+    return false;
+}
+
+var PREFIXED_TOUCH_ACTION = prefixed(TEST_ELEMENT.style, 'touchAction');
+var NATIVE_TOUCH_ACTION = PREFIXED_TOUCH_ACTION !== undefined;
+
+// magical touchAction value
+var TOUCH_ACTION_COMPUTE = 'compute';
+var TOUCH_ACTION_AUTO = 'auto';
+var TOUCH_ACTION_MANIPULATION = 'manipulation'; // not implemented
+var TOUCH_ACTION_NONE = 'none';
+var TOUCH_ACTION_PAN_X = 'pan-x';
+var TOUCH_ACTION_PAN_Y = 'pan-y';
+var TOUCH_ACTION_MAP = getTouchActionProps();
+
+/**
+ * Touch Action
+ * sets the touchAction property or uses the js alternative
+ * @param {Manager} manager
+ * @param {String} value
+ * @constructor
+ */
+function TouchAction(manager, value) {
+    this.manager = manager;
+    this.set(value);
+}
+
+TouchAction.prototype = {
+    /**
+     * set the touchAction value on the element or enable the polyfill
+     * @param {String} value
+     */
+    set: function(value) {
+        // find out the touch-action by the event handlers
+        if (value == TOUCH_ACTION_COMPUTE) {
+            value = this.compute();
+        }
+
+        if (NATIVE_TOUCH_ACTION && this.manager.element.style && TOUCH_ACTION_MAP[value]) {
+            this.manager.element.style[PREFIXED_TOUCH_ACTION] = value;
+        }
+        this.actions = value.toLowerCase().trim();
+    },
+
+    /**
+     * just re-set the touchAction value
+     */
+    update: function() {
+        this.set(this.manager.options.touchAction);
+    },
+
+    /**
+     * compute the value for the touchAction property based on the recognizer's settings
+     * @returns {String} value
+     */
+    compute: function() {
+        var actions = [];
+        each(this.manager.recognizers, function(recognizer) {
+            if (boolOrFn(recognizer.options.enable, [recognizer])) {
+                actions = actions.concat(recognizer.getTouchAction());
+            }
+        });
+        return cleanTouchActions(actions.join(' '));
+    },
+
+    /**
+     * this method is called on each input cycle and provides the preventing of the browser behavior
+     * @param {Object} input
+     */
+    preventDefaults: function(input) {
+        var srcEvent = input.srcEvent;
+        var direction = input.offsetDirection;
+
+        // if the touch action did prevented once this session
+        if (this.manager.session.prevented) {
+            srcEvent.preventDefault();
+            return;
+        }
+
+        var actions = this.actions;
+        var hasNone = inStr(actions, TOUCH_ACTION_NONE) && !TOUCH_ACTION_MAP[TOUCH_ACTION_NONE];
+        var hasPanY = inStr(actions, TOUCH_ACTION_PAN_Y) && !TOUCH_ACTION_MAP[TOUCH_ACTION_PAN_Y];
+        var hasPanX = inStr(actions, TOUCH_ACTION_PAN_X) && !TOUCH_ACTION_MAP[TOUCH_ACTION_PAN_X];
+
+        if (hasNone) {
+            //do not prevent defaults if this is a tap gesture
+
+            var isTapPointer = input.pointers.length === 1;
+            var isTapMovement = input.distance < 2;
+            var isTapTouchTime = input.deltaTime < 250;
+
+            if (isTapPointer && isTapMovement && isTapTouchTime) {
+                return;
+            }
+        }
+
+        if (hasPanX && hasPanY) {
+            // `pan-x pan-y` means browser handles all scrolling/panning, do not prevent
+            return;
+        }
+
+        if (hasNone ||
+            (hasPanY && direction & DIRECTION_HORIZONTAL) ||
+            (hasPanX && direction & DIRECTION_VERTICAL)) {
+            return this.preventSrc(srcEvent);
+        }
+    },
+
+    /**
+     * call preventDefault to prevent the browser's default behavior (scrolling in most cases)
+     * @param {Object} srcEvent
+     */
+    preventSrc: function(srcEvent) {
+        this.manager.session.prevented = true;
+        srcEvent.preventDefault();
+    }
+};
+
+/**
+ * when the touchActions are collected they are not a valid value, so we need to clean things up. *
+ * @param {String} actions
+ * @returns {*}
+ */
+function cleanTouchActions(actions) {
+    // none
+    if (inStr(actions, TOUCH_ACTION_NONE)) {
+        return TOUCH_ACTION_NONE;
+    }
+
+    var hasPanX = inStr(actions, TOUCH_ACTION_PAN_X);
+    var hasPanY = inStr(actions, TOUCH_ACTION_PAN_Y);
+
+    // if both pan-x and pan-y are set (different recognizers
+    // for different directions, e.g. horizontal pan but vertical swipe?)
+    // we need none (as otherwise with pan-x pan-y combined none of these
+    // recognizers will work, since the browser would handle all panning
+    if (hasPanX && hasPanY) {
+        return TOUCH_ACTION_NONE;
+    }
+
+    // pan-x OR pan-y
+    if (hasPanX || hasPanY) {
+        return hasPanX ? TOUCH_ACTION_PAN_X : TOUCH_ACTION_PAN_Y;
+    }
+
+    // manipulation
+    if (inStr(actions, TOUCH_ACTION_MANIPULATION)) {
+        return TOUCH_ACTION_MANIPULATION;
+    }
+
+    return TOUCH_ACTION_AUTO;
+}
+
+function getTouchActionProps() {
+    if (!NATIVE_TOUCH_ACTION) {
+        return false;
+    }
+    var touchMap = {};
+    var cssSupports = window.CSS && window.CSS.supports;
+    ['auto', 'manipulation', 'pan-y', 'pan-x', 'pan-x pan-y', 'none'].forEach(function(val) {
+
+        // If css.supports is not supported but there is native touch-action assume it supports
+        // all values. This is the case for IE 10 and 11.
+        touchMap[val] = cssSupports ? window.CSS.supports('touch-action', val) : true;
+    });
+    return touchMap;
+}
+
+/**
+ * Recognizer flow explained; *
+ * All recognizers have the initial state of POSSIBLE when a input session starts.
+ * The definition of a input session is from the first input until the last input, with all it's movement in it. *
+ * Example session for mouse-input: mousedown -> mousemove -> mouseup
+ *
+ * On each recognizing cycle (see Manager.recognize) the .recognize() method is executed
+ * which determines with state it should be.
+ *
+ * If the recognizer has the state FAILED, CANCELLED or RECOGNIZED (equals ENDED), it is reset to
+ * POSSIBLE to give it another change on the next cycle.
+ *
+ *               Possible
+ *                  |
+ *            +-----+---------------+
+ *            |                     |
+ *      +-----+-----+               |
+ *      |           |               |
+ *   Failed      Cancelled          |
+ *                          +-------+------+
+ *                          |              |
+ *                      Recognized       Began
+ *                                         |
+ *                                      Changed
+ *                                         |
+ *                                  Ended/Recognized
+ */
+var STATE_POSSIBLE = 1;
+var STATE_BEGAN = 2;
+var STATE_CHANGED = 4;
+var STATE_ENDED = 8;
+var STATE_RECOGNIZED = STATE_ENDED;
+var STATE_CANCELLED = 16;
+var STATE_FAILED = 32;
+
+/**
+ * Recognizer
+ * Every recognizer needs to extend from this class.
+ * @constructor
+ * @param {Object} options
+ */
+function Recognizer(options) {
+    this.options = assign({}, this.defaults, options || {});
+
+    this.id = uniqueId();
+
+    this.manager = null;
+
+    // default is enable true
+    this.options.enable = ifUndefined(this.options.enable, true);
+
+    this.state = STATE_POSSIBLE;
+
+    this.simultaneous = {};
+    this.requireFail = [];
+}
+
+Recognizer.prototype = {
+    /**
+     * @virtual
+     * @type {Object}
+     */
+    defaults: {},
+
+    /**
+     * set options
+     * @param {Object} options
+     * @return {Recognizer}
+     */
+    set: function(options) {
+        assign(this.options, options);
+
+        // also update the touchAction, in case something changed about the directions/enabled state
+        this.manager && this.manager.touchAction.update();
+        return this;
+    },
+
+    /**
+     * recognize simultaneous with an other recognizer.
+     * @param {Recognizer} otherRecognizer
+     * @returns {Recognizer} this
+     */
+    recognizeWith: function(otherRecognizer) {
+        if (invokeArrayArg(otherRecognizer, 'recognizeWith', this)) {
+            return this;
+        }
+
+        var simultaneous = this.simultaneous;
+        otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
+        if (!simultaneous[otherRecognizer.id]) {
+            simultaneous[otherRecognizer.id] = otherRecognizer;
+            otherRecognizer.recognizeWith(this);
+        }
+        return this;
+    },
+
+    /**
+     * drop the simultaneous link. it doesnt remove the link on the other recognizer.
+     * @param {Recognizer} otherRecognizer
+     * @returns {Recognizer} this
+     */
+    dropRecognizeWith: function(otherRecognizer) {
+        if (invokeArrayArg(otherRecognizer, 'dropRecognizeWith', this)) {
+            return this;
+        }
+
+        otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
+        delete this.simultaneous[otherRecognizer.id];
+        return this;
+    },
+
+    /**
+     * recognizer can only run when an other is failing
+     * @param {Recognizer} otherRecognizer
+     * @returns {Recognizer} this
+     */
+    requireFailure: function(otherRecognizer) {
+        if (invokeArrayArg(otherRecognizer, 'requireFailure', this)) {
+            return this;
+        }
+
+        var requireFail = this.requireFail;
+        otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
+        if (inArray(requireFail, otherRecognizer) === -1) {
+            requireFail.push(otherRecognizer);
+            otherRecognizer.requireFailure(this);
+        }
+        return this;
+    },
+
+    /**
+     * drop the requireFailure link. it does not remove the link on the other recognizer.
+     * @param {Recognizer} otherRecognizer
+     * @returns {Recognizer} this
+     */
+    dropRequireFailure: function(otherRecognizer) {
+        if (invokeArrayArg(otherRecognizer, 'dropRequireFailure', this)) {
+            return this;
+        }
+
+        otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
+        var index = inArray(this.requireFail, otherRecognizer);
+        if (index > -1) {
+            this.requireFail.splice(index, 1);
+        }
+        return this;
+    },
+
+    /**
+     * has require failures boolean
+     * @returns {boolean}
+     */
+    hasRequireFailures: function() {
+        return this.requireFail.length > 0;
+    },
+
+    /**
+     * if the recognizer can recognize simultaneous with an other recognizer
+     * @param {Recognizer} otherRecognizer
+     * @returns {Boolean}
+     */
+    canRecognizeWith: function(otherRecognizer) {
+        return !!this.simultaneous[otherRecognizer.id];
+    },
+
+    /**
+     * You should use `tryEmit` instead of `emit` directly to check
+     * that all the needed recognizers has failed before emitting.
+     * @param {Object} input
+     */
+    emit: function(input) {
+        var self = this;
+        var state = this.state;
+
+        function emit(event) {
+            self.manager.emit(event, input);
+        }
+
+        // 'panstart' and 'panmove'
+        if (state < STATE_ENDED) {
+            emit(self.options.event + stateStr(state));
+        }
+
+        emit(self.options.event); // simple 'eventName' events
+
+        if (input.additionalEvent) { // additional event(panleft, panright, pinchin, pinchout...)
+            emit(input.additionalEvent);
+        }
+
+        // panend and pancancel
+        if (state >= STATE_ENDED) {
+            emit(self.options.event + stateStr(state));
+        }
+    },
+
+    /**
+     * Check that all the require failure recognizers has failed,
+     * if true, it emits a gesture event,
+     * otherwise, setup the state to FAILED.
+     * @param {Object} input
+     */
+    tryEmit: function(input) {
+        if (this.canEmit()) {
+            return this.emit(input);
+        }
+        // it's failing anyway
+        this.state = STATE_FAILED;
+    },
+
+    /**
+     * can we emit?
+     * @returns {boolean}
+     */
+    canEmit: function() {
+        var i = 0;
+        while (i < this.requireFail.length) {
+            if (!(this.requireFail[i].state & (STATE_FAILED | STATE_POSSIBLE))) {
+                return false;
+            }
+            i++;
+        }
+        return true;
+    },
+
+    /**
+     * update the recognizer
+     * @param {Object} inputData
+     */
+    recognize: function(inputData) {
+        // make a new copy of the inputData
+        // so we can change the inputData without messing up the other recognizers
+        var inputDataClone = assign({}, inputData);
+
+        // is is enabled and allow recognizing?
+        if (!boolOrFn(this.options.enable, [this, inputDataClone])) {
+            this.reset();
+            this.state = STATE_FAILED;
+            return;
+        }
+
+        // reset when we've reached the end
+        if (this.state & (STATE_RECOGNIZED | STATE_CANCELLED | STATE_FAILED)) {
+            this.state = STATE_POSSIBLE;
+        }
+
+        this.state = this.process(inputDataClone);
+
+        // the recognizer has recognized a gesture
+        // so trigger an event
+        if (this.state & (STATE_BEGAN | STATE_CHANGED | STATE_ENDED | STATE_CANCELLED)) {
+            this.tryEmit(inputDataClone);
+        }
+    },
+
+    /**
+     * return the state of the recognizer
+     * the actual recognizing happens in this method
+     * @virtual
+     * @param {Object} inputData
+     * @returns {Const} STATE
+     */
+    process: function(inputData) { }, // jshint ignore:line
+
+    /**
+     * return the preferred touch-action
+     * @virtual
+     * @returns {Array}
+     */
+    getTouchAction: function() { },
+
+    /**
+     * called when the gesture isn't allowed to recognize
+     * like when another is being recognized or it is disabled
+     * @virtual
+     */
+    reset: function() { }
+};
+
+/**
+ * get a usable string, used as event postfix
+ * @param {Const} state
+ * @returns {String} state
+ */
+function stateStr(state) {
+    if (state & STATE_CANCELLED) {
+        return 'cancel';
+    } else if (state & STATE_ENDED) {
+        return 'end';
+    } else if (state & STATE_CHANGED) {
+        return 'move';
+    } else if (state & STATE_BEGAN) {
+        return 'start';
+    }
+    return '';
+}
+
+/**
+ * direction cons to string
+ * @param {Const} direction
+ * @returns {String}
+ */
+function directionStr(direction) {
+    if (direction == DIRECTION_DOWN) {
+        return 'down';
+    } else if (direction == DIRECTION_UP) {
+        return 'up';
+    } else if (direction == DIRECTION_LEFT) {
+        return 'left';
+    } else if (direction == DIRECTION_RIGHT) {
+        return 'right';
+    }
+    return '';
+}
+
+/**
+ * get a recognizer by name if it is bound to a manager
+ * @param {Recognizer|String} otherRecognizer
+ * @param {Recognizer} recognizer
+ * @returns {Recognizer}
+ */
+function getRecognizerByNameIfManager(otherRecognizer, recognizer) {
+    var manager = recognizer.manager;
+    if (manager) {
+        return manager.get(otherRecognizer);
+    }
+    return otherRecognizer;
+}
+
+/**
+ * This recognizer is just used as a base for the simple attribute recognizers.
+ * @constructor
+ * @extends Recognizer
+ */
+function AttrRecognizer() {
+    Recognizer.apply(this, arguments);
+}
+
+inherit(AttrRecognizer, Recognizer, {
+    /**
+     * @namespace
+     * @memberof AttrRecognizer
+     */
+    defaults: {
+        /**
+         * @type {Number}
+         * @default 1
+         */
+        pointers: 1
+    },
+
+    /**
+     * Used to check if it the recognizer receives valid input, like input.distance > 10.
+     * @memberof AttrRecognizer
+     * @param {Object} input
+     * @returns {Boolean} recognized
+     */
+    attrTest: function(input) {
+        var optionPointers = this.options.pointers;
+        return optionPointers === 0 || input.pointers.length === optionPointers;
+    },
+
+    /**
+     * Process the input and return the state for the recognizer
+     * @memberof AttrRecognizer
+     * @param {Object} input
+     * @returns {*} State
+     */
+    process: function(input) {
+        var state = this.state;
+        var eventType = input.eventType;
+
+        var isRecognized = state & (STATE_BEGAN | STATE_CHANGED);
+        var isValid = this.attrTest(input);
+
+        // on cancel input and we've recognized before, return STATE_CANCELLED
+        if (isRecognized && (eventType & INPUT_CANCEL || !isValid)) {
+            return state | STATE_CANCELLED;
+        } else if (isRecognized || isValid) {
+            if (eventType & INPUT_END) {
+                return state | STATE_ENDED;
+            } else if (!(state & STATE_BEGAN)) {
+                return STATE_BEGAN;
+            }
+            return state | STATE_CHANGED;
+        }
+        return STATE_FAILED;
+    }
+});
+
+/**
+ * Pan
+ * Recognized when the pointer is down and moved in the allowed direction.
+ * @constructor
+ * @extends AttrRecognizer
+ */
+function PanRecognizer() {
+    AttrRecognizer.apply(this, arguments);
+
+    this.pX = null;
+    this.pY = null;
+}
+
+inherit(PanRecognizer, AttrRecognizer, {
+    /**
+     * @namespace
+     * @memberof PanRecognizer
+     */
+    defaults: {
+        event: 'pan',
+        threshold: 10,
+        pointers: 1,
+        direction: DIRECTION_ALL
+    },
+
+    getTouchAction: function() {
+        var direction = this.options.direction;
+        var actions = [];
+        if (direction & DIRECTION_HORIZONTAL) {
+            actions.push(TOUCH_ACTION_PAN_Y);
+        }
+        if (direction & DIRECTION_VERTICAL) {
+            actions.push(TOUCH_ACTION_PAN_X);
+        }
+        return actions;
+    },
+
+    directionTest: function(input) {
+        var options = this.options;
+        var hasMoved = true;
+        var distance = input.distance;
+        var direction = input.direction;
+        var x = input.deltaX;
+        var y = input.deltaY;
+
+        // lock to axis?
+        if (!(direction & options.direction)) {
+            if (options.direction & DIRECTION_HORIZONTAL) {
+                direction = (x === 0) ? DIRECTION_NONE : (x < 0) ? DIRECTION_LEFT : DIRECTION_RIGHT;
+                hasMoved = x != this.pX;
+                distance = Math.abs(input.deltaX);
+            } else {
+                direction = (y === 0) ? DIRECTION_NONE : (y < 0) ? DIRECTION_UP : DIRECTION_DOWN;
+                hasMoved = y != this.pY;
+                distance = Math.abs(input.deltaY);
+            }
+        }
+        input.direction = direction;
+        return hasMoved && distance > options.threshold && direction & options.direction;
+    },
+
+    attrTest: function(input) {
+        return AttrRecognizer.prototype.attrTest.call(this, input) &&
+            (this.state & STATE_BEGAN || (!(this.state & STATE_BEGAN) && this.directionTest(input)));
+    },
+
+    emit: function(input) {
+
+        this.pX = input.deltaX;
+        this.pY = input.deltaY;
+
+        var direction = directionStr(input.direction);
+
+        if (direction) {
+            input.additionalEvent = this.options.event + direction;
+        }
+        this._super.emit.call(this, input);
+    }
+});
+
+/**
+ * Pinch
+ * Recognized when two or more pointers are moving toward (zoom-in) or away from each other (zoom-out).
+ * @constructor
+ * @extends AttrRecognizer
+ */
+function PinchRecognizer() {
+    AttrRecognizer.apply(this, arguments);
+}
+
+inherit(PinchRecognizer, AttrRecognizer, {
+    /**
+     * @namespace
+     * @memberof PinchRecognizer
+     */
+    defaults: {
+        event: 'pinch',
+        threshold: 0,
+        pointers: 2
+    },
+
+    getTouchAction: function() {
+        return [TOUCH_ACTION_NONE];
+    },
+
+    attrTest: function(input) {
+        return this._super.attrTest.call(this, input) &&
+            (Math.abs(input.scale - 1) > this.options.threshold || this.state & STATE_BEGAN);
+    },
+
+    emit: function(input) {
+        if (input.scale !== 1) {
+            var inOut = input.scale < 1 ? 'in' : 'out';
+            input.additionalEvent = this.options.event + inOut;
+        }
+        this._super.emit.call(this, input);
+    }
+});
+
+/**
+ * Press
+ * Recognized when the pointer is down for x ms without any movement.
+ * @constructor
+ * @extends Recognizer
+ */
+function PressRecognizer() {
+    Recognizer.apply(this, arguments);
+
+    this._timer = null;
+    this._input = null;
+}
+
+inherit(PressRecognizer, Recognizer, {
+    /**
+     * @namespace
+     * @memberof PressRecognizer
+     */
+    defaults: {
+        event: 'press',
+        pointers: 1,
+        time: 251, // minimal time of the pointer to be pressed
+        threshold: 9 // a minimal movement is ok, but keep it low
+    },
+
+    getTouchAction: function() {
+        return [TOUCH_ACTION_AUTO];
+    },
+
+    process: function(input) {
+        var options = this.options;
+        var validPointers = input.pointers.length === options.pointers;
+        var validMovement = input.distance < options.threshold;
+        var validTime = input.deltaTime > options.time;
+
+        this._input = input;
+
+        // we only allow little movement
+        // and we've reached an end event, so a tap is possible
+        if (!validMovement || !validPointers || (input.eventType & (INPUT_END | INPUT_CANCEL) && !validTime)) {
+            this.reset();
+        } else if (input.eventType & INPUT_START) {
+            this.reset();
+            this._timer = setTimeoutContext(function() {
+                this.state = STATE_RECOGNIZED;
+                this.tryEmit();
+            }, options.time, this);
+        } else if (input.eventType & INPUT_END) {
+            return STATE_RECOGNIZED;
+        }
+        return STATE_FAILED;
+    },
+
+    reset: function() {
+        clearTimeout(this._timer);
+    },
+
+    emit: function(input) {
+        if (this.state !== STATE_RECOGNIZED) {
+            return;
+        }
+
+        if (input && (input.eventType & INPUT_END)) {
+            this.manager.emit(this.options.event + 'up', input);
+        } else {
+            this._input.timeStamp = now();
+            this.manager.emit(this.options.event, this._input);
+        }
+    }
+});
+
+/**
+ * Rotate
+ * Recognized when two or more pointer are moving in a circular motion.
+ * @constructor
+ * @extends AttrRecognizer
+ */
+function RotateRecognizer() {
+    AttrRecognizer.apply(this, arguments);
+}
+
+inherit(RotateRecognizer, AttrRecognizer, {
+    /**
+     * @namespace
+     * @memberof RotateRecognizer
+     */
+    defaults: {
+        event: 'rotate',
+        threshold: 0,
+        pointers: 2
+    },
+
+    getTouchAction: function() {
+        return [TOUCH_ACTION_NONE];
+    },
+
+    attrTest: function(input) {
+        return this._super.attrTest.call(this, input) &&
+            (Math.abs(input.rotation) > this.options.threshold || this.state & STATE_BEGAN);
+    }
+});
+
+/**
+ * Swipe
+ * Recognized when the pointer is moving fast (velocity), with enough distance in the allowed direction.
+ * @constructor
+ * @extends AttrRecognizer
+ */
+function SwipeRecognizer() {
+    AttrRecognizer.apply(this, arguments);
+}
+
+inherit(SwipeRecognizer, AttrRecognizer, {
+    /**
+     * @namespace
+     * @memberof SwipeRecognizer
+     */
+    defaults: {
+        event: 'swipe',
+        threshold: 10,
+        velocity: 0.3,
+        direction: DIRECTION_HORIZONTAL | DIRECTION_VERTICAL,
+        pointers: 1
+    },
+
+    getTouchAction: function() {
+        return PanRecognizer.prototype.getTouchAction.call(this);
+    },
+
+    attrTest: function(input) {
+        var direction = this.options.direction;
+        var velocity;
+
+        if (direction & (DIRECTION_HORIZONTAL | DIRECTION_VERTICAL)) {
+            velocity = input.overallVelocity;
+        } else if (direction & DIRECTION_HORIZONTAL) {
+            velocity = input.overallVelocityX;
+        } else if (direction & DIRECTION_VERTICAL) {
+            velocity = input.overallVelocityY;
+        }
+
+        return this._super.attrTest.call(this, input) &&
+            direction & input.offsetDirection &&
+            input.distance > this.options.threshold &&
+            input.maxPointers == this.options.pointers &&
+            abs(velocity) > this.options.velocity && input.eventType & INPUT_END;
+    },
+
+    emit: function(input) {
+        var direction = directionStr(input.offsetDirection);
+        if (direction) {
+            this.manager.emit(this.options.event + direction, input);
+        }
+
+        this.manager.emit(this.options.event, input);
+    }
+});
+
+/**
+ * A tap is ecognized when the pointer is doing a small tap/click. Multiple taps are recognized if they occur
+ * between the given interval and position. The delay option can be used to recognize multi-taps without firing
+ * a single tap.
+ *
+ * The eventData from the emitted event contains the property `tapCount`, which contains the amount of
+ * multi-taps being recognized.
+ * @constructor
+ * @extends Recognizer
+ */
+function TapRecognizer() {
+    Recognizer.apply(this, arguments);
+
+    // previous time and center,
+    // used for tap counting
+    this.pTime = false;
+    this.pCenter = false;
+
+    this._timer = null;
+    this._input = null;
+    this.count = 0;
+}
+
+inherit(TapRecognizer, Recognizer, {
+    /**
+     * @namespace
+     * @memberof PinchRecognizer
+     */
+    defaults: {
+        event: 'tap',
+        pointers: 1,
+        taps: 1,
+        interval: 300, // max time between the multi-tap taps
+        time: 250, // max time of the pointer to be down (like finger on the screen)
+        threshold: 9, // a minimal movement is ok, but keep it low
+        posThreshold: 10 // a multi-tap can be a bit off the initial position
+    },
+
+    getTouchAction: function() {
+        return [TOUCH_ACTION_MANIPULATION];
+    },
+
+    process: function(input) {
+        var options = this.options;
+
+        var validPointers = input.pointers.length === options.pointers;
+        var validMovement = input.distance < options.threshold;
+        var validTouchTime = input.deltaTime < options.time;
+
+        this.reset();
+
+        if ((input.eventType & INPUT_START) && (this.count === 0)) {
+            return this.failTimeout();
+        }
+
+        // we only allow little movement
+        // and we've reached an end event, so a tap is possible
+        if (validMovement && validTouchTime && validPointers) {
+            if (input.eventType != INPUT_END) {
+                return this.failTimeout();
+            }
+
+            var validInterval = this.pTime ? (input.timeStamp - this.pTime < options.interval) : true;
+            var validMultiTap = !this.pCenter || getDistance(this.pCenter, input.center) < options.posThreshold;
+
+            this.pTime = input.timeStamp;
+            this.pCenter = input.center;
+
+            if (!validMultiTap || !validInterval) {
+                this.count = 1;
+            } else {
+                this.count += 1;
+            }
+
+            this._input = input;
+
+            // if tap count matches we have recognized it,
+            // else it has began recognizing...
+            var tapCount = this.count % options.taps;
+            if (tapCount === 0) {
+                // no failing requirements, immediately trigger the tap event
+                // or wait as long as the multitap interval to trigger
+                if (!this.hasRequireFailures()) {
+                    return STATE_RECOGNIZED;
+                } else {
+                    this._timer = setTimeoutContext(function() {
+                        this.state = STATE_RECOGNIZED;
+                        this.tryEmit();
+                    }, options.interval, this);
+                    return STATE_BEGAN;
+                }
+            }
+        }
+        return STATE_FAILED;
+    },
+
+    failTimeout: function() {
+        this._timer = setTimeoutContext(function() {
+            this.state = STATE_FAILED;
+        }, this.options.interval, this);
+        return STATE_FAILED;
+    },
+
+    reset: function() {
+        clearTimeout(this._timer);
+    },
+
+    emit: function() {
+        if (this.state == STATE_RECOGNIZED) {
+            this._input.tapCount = this.count;
+            this.manager.emit(this.options.event, this._input);
+        }
+    }
+});
+
+/**
+ * Simple way to create a manager with a default set of recognizers.
+ * @param {HTMLElement} element
+ * @param {Object} [options]
+ * @constructor
+ */
+function Hammer(element, options) {
+    options = options || {};
+    options.recognizers = ifUndefined(options.recognizers, Hammer.defaults.preset);
+    return new Manager(element, options);
+}
+
+/**
+ * @const {string}
+ */
+Hammer.VERSION = '2.0.7';
+
+/**
+ * default settings
+ * @namespace
+ */
+Hammer.defaults = {
+    /**
+     * set if DOM events are being triggered.
+     * But this is slower and unused by simple implementations, so disabled by default.
+     * @type {Boolean}
+     * @default false
+     */
+    domEvents: false,
+
+    /**
+     * The value for the touchAction property/fallback.
+     * When set to `compute` it will magically set the correct value based on the added recognizers.
+     * @type {String}
+     * @default compute
+     */
+    touchAction: TOUCH_ACTION_COMPUTE,
+
+    /**
+     * @type {Boolean}
+     * @default true
+     */
+    enable: true,
+
+    /**
+     * EXPERIMENTAL FEATURE -- can be removed/changed
+     * Change the parent input target element.
+     * If Null, then it is being set the to main element.
+     * @type {Null|EventTarget}
+     * @default null
+     */
+    inputTarget: null,
+
+    /**
+     * force an input class
+     * @type {Null|Function}
+     * @default null
+     */
+    inputClass: null,
+
+    /**
+     * Default recognizer setup when calling `Hammer()`
+     * When creating a new Manager these will be skipped.
+     * @type {Array}
+     */
+    preset: [
+        // RecognizerClass, options, [recognizeWith, ...], [requireFailure, ...]
+        [RotateRecognizer, {enable: false}],
+        [PinchRecognizer, {enable: false}, ['rotate']],
+        [SwipeRecognizer, {direction: DIRECTION_HORIZONTAL}],
+        [PanRecognizer, {direction: DIRECTION_HORIZONTAL}, ['swipe']],
+        [TapRecognizer],
+        [TapRecognizer, {event: 'doubletap', taps: 2}, ['tap']],
+        [PressRecognizer]
+    ],
+
+    /**
+     * Some CSS properties can be used to improve the working of Hammer.
+     * Add them to this method and they will be set when creating a new Manager.
+     * @namespace
+     */
+    cssProps: {
+        /**
+         * Disables text selection to improve the dragging gesture. Mainly for desktop browsers.
+         * @type {String}
+         * @default 'none'
+         */
+        userSelect: 'none',
+
+        /**
+         * Disable the Windows Phone grippers when pressing an element.
+         * @type {String}
+         * @default 'none'
+         */
+        touchSelect: 'none',
+
+        /**
+         * Disables the default callout shown when you touch and hold a touch target.
+         * On iOS, when you touch and hold a touch target such as a link, Safari displays
+         * a callout containing information about the link. This property allows you to disable that callout.
+         * @type {String}
+         * @default 'none'
+         */
+        touchCallout: 'none',
+
+        /**
+         * Specifies whether zooming is enabled. Used by IE10>
+         * @type {String}
+         * @default 'none'
+         */
+        contentZooming: 'none',
+
+        /**
+         * Specifies that an entire element should be draggable instead of its contents. Mainly for desktop browsers.
+         * @type {String}
+         * @default 'none'
+         */
+        userDrag: 'none',
+
+        /**
+         * Overrides the highlight color shown when the user taps a link or a JavaScript
+         * clickable element in iOS. This property obeys the alpha value, if specified.
+         * @type {String}
+         * @default 'rgba(0,0,0,0)'
+         */
+        tapHighlightColor: 'rgba(0,0,0,0)'
+    }
+};
+
+var STOP = 1;
+var FORCED_STOP = 2;
+
+/**
+ * Manager
+ * @param {HTMLElement} element
+ * @param {Object} [options]
+ * @constructor
+ */
+function Manager(element, options) {
+    this.options = assign({}, Hammer.defaults, options || {});
+
+    this.options.inputTarget = this.options.inputTarget || element;
+
+    this.handlers = {};
+    this.session = {};
+    this.recognizers = [];
+    this.oldCssProps = {};
+
+    this.element = element;
+    this.input = createInputInstance(this);
+    this.touchAction = new TouchAction(this, this.options.touchAction);
+
+    toggleCssProps(this, true);
+
+    each(this.options.recognizers, function(item) {
+        var recognizer = this.add(new (item[0])(item[1]));
+        item[2] && recognizer.recognizeWith(item[2]);
+        item[3] && recognizer.requireFailure(item[3]);
+    }, this);
+}
+
+Manager.prototype = {
+    /**
+     * set options
+     * @param {Object} options
+     * @returns {Manager}
+     */
+    set: function(options) {
+        assign(this.options, options);
+
+        // Options that need a little more setup
+        if (options.touchAction) {
+            this.touchAction.update();
+        }
+        if (options.inputTarget) {
+            // Clean up existing event listeners and reinitialize
+            this.input.destroy();
+            this.input.target = options.inputTarget;
+            this.input.init();
+        }
+        return this;
+    },
+
+    /**
+     * stop recognizing for this session.
+     * This session will be discarded, when a new [input]start event is fired.
+     * When forced, the recognizer cycle is stopped immediately.
+     * @param {Boolean} [force]
+     */
+    stop: function(force) {
+        this.session.stopped = force ? FORCED_STOP : STOP;
+    },
+
+    /**
+     * run the recognizers!
+     * called by the inputHandler function on every movement of the pointers (touches)
+     * it walks through all the recognizers and tries to detect the gesture that is being made
+     * @param {Object} inputData
+     */
+    recognize: function(inputData) {
+        var session = this.session;
+        if (session.stopped) {
+            return;
+        }
+
+        // run the touch-action polyfill
+        this.touchAction.preventDefaults(inputData);
+
+        var recognizer;
+        var recognizers = this.recognizers;
+
+        // this holds the recognizer that is being recognized.
+        // so the recognizer's state needs to be BEGAN, CHANGED, ENDED or RECOGNIZED
+        // if no recognizer is detecting a thing, it is set to `null`
+        var curRecognizer = session.curRecognizer;
+
+        // reset when the last recognizer is recognized
+        // or when we're in a new session
+        if (!curRecognizer || (curRecognizer && curRecognizer.state & STATE_RECOGNIZED)) {
+            curRecognizer = session.curRecognizer = null;
+        }
+
+        var i = 0;
+        while (i < recognizers.length) {
+            recognizer = recognizers[i];
+
+            // find out if we are allowed try to recognize the input for this one.
+            // 1.   allow if the session is NOT forced stopped (see the .stop() method)
+            // 2.   allow if we still haven't recognized a gesture in this session, or the this recognizer is the one
+            //      that is being recognized.
+            // 3.   allow if the recognizer is allowed to run simultaneous with the current recognized recognizer.
+            //      this can be setup with the `recognizeWith()` method on the recognizer.
+            if (session.stopped !== FORCED_STOP && ( // 1
+                    !curRecognizer || recognizer == curRecognizer || // 2
+                    recognizer.canRecognizeWith(curRecognizer))) { // 3
+                recognizer.recognize(inputData);
+            } else {
+                recognizer.reset();
+            }
+
+            // if the recognizer has been recognizing the input as a valid gesture, we want to store this one as the
+            // current active recognizer. but only if we don't already have an active recognizer
+            if (!curRecognizer && recognizer.state & (STATE_BEGAN | STATE_CHANGED | STATE_ENDED)) {
+                curRecognizer = session.curRecognizer = recognizer;
+            }
+            i++;
+        }
+    },
+
+    /**
+     * get a recognizer by its event name.
+     * @param {Recognizer|String} recognizer
+     * @returns {Recognizer|Null}
+     */
+    get: function(recognizer) {
+        if (recognizer instanceof Recognizer) {
+            return recognizer;
+        }
+
+        var recognizers = this.recognizers;
+        for (var i = 0; i < recognizers.length; i++) {
+            if (recognizers[i].options.event == recognizer) {
+                return recognizers[i];
+            }
+        }
+        return null;
+    },
+
+    /**
+     * add a recognizer to the manager
+     * existing recognizers with the same event name will be removed
+     * @param {Recognizer} recognizer
+     * @returns {Recognizer|Manager}
+     */
+    add: function(recognizer) {
+        if (invokeArrayArg(recognizer, 'add', this)) {
+            return this;
+        }
+
+        // remove existing
+        var existing = this.get(recognizer.options.event);
+        if (existing) {
+            this.remove(existing);
+        }
+
+        this.recognizers.push(recognizer);
+        recognizer.manager = this;
+
+        this.touchAction.update();
+        return recognizer;
+    },
+
+    /**
+     * remove a recognizer by name or instance
+     * @param {Recognizer|String} recognizer
+     * @returns {Manager}
+     */
+    remove: function(recognizer) {
+        if (invokeArrayArg(recognizer, 'remove', this)) {
+            return this;
+        }
+
+        recognizer = this.get(recognizer);
+
+        // let's make sure this recognizer exists
+        if (recognizer) {
+            var recognizers = this.recognizers;
+            var index = inArray(recognizers, recognizer);
+
+            if (index !== -1) {
+                recognizers.splice(index, 1);
+                this.touchAction.update();
+            }
+        }
+
+        return this;
+    },
+
+    /**
+     * bind event
+     * @param {String} events
+     * @param {Function} handler
+     * @returns {EventEmitter} this
+     */
+    on: function(events, handler) {
+        if (events === undefined) {
+            return;
+        }
+        if (handler === undefined) {
+            return;
+        }
+
+        var handlers = this.handlers;
+        each(splitStr(events), function(event) {
+            handlers[event] = handlers[event] || [];
+            handlers[event].push(handler);
+        });
+        return this;
+    },
+
+    /**
+     * unbind event, leave emit blank to remove all handlers
+     * @param {String} events
+     * @param {Function} [handler]
+     * @returns {EventEmitter} this
+     */
+    off: function(events, handler) {
+        if (events === undefined) {
+            return;
+        }
+
+        var handlers = this.handlers;
+        each(splitStr(events), function(event) {
+            if (!handler) {
+                delete handlers[event];
+            } else {
+                handlers[event] && handlers[event].splice(inArray(handlers[event], handler), 1);
+            }
+        });
+        return this;
+    },
+
+    /**
+     * emit event to the listeners
+     * @param {String} event
+     * @param {Object} data
+     */
+    emit: function(event, data) {
+        // we also want to trigger dom events
+        if (this.options.domEvents) {
+            triggerDomEvent(event, data);
+        }
+
+        // no handlers, so skip it all
+        var handlers = this.handlers[event] && this.handlers[event].slice();
+        if (!handlers || !handlers.length) {
+            return;
+        }
+
+        data.type = event;
+        data.preventDefault = function() {
+            data.srcEvent.preventDefault();
+        };
+
+        var i = 0;
+        while (i < handlers.length) {
+            handlers[i](data);
+            i++;
+        }
+    },
+
+    /**
+     * destroy the manager and unbinds all events
+     * it doesn't unbind dom events, that is the user own responsibility
+     */
+    destroy: function() {
+        this.element && toggleCssProps(this, false);
+
+        this.handlers = {};
+        this.session = {};
+        this.input.destroy();
+        this.element = null;
+    }
+};
+
+/**
+ * add/remove the css properties as defined in manager.options.cssProps
+ * @param {Manager} manager
+ * @param {Boolean} add
+ */
+function toggleCssProps(manager, add) {
+    var element = manager.element;
+    if (!element.style) {
+        return;
+    }
+    var prop;
+    each(manager.options.cssProps, function(value, name) {
+        prop = prefixed(element.style, name);
+        if (add) {
+            manager.oldCssProps[prop] = element.style[prop];
+            element.style[prop] = value;
+        } else {
+            element.style[prop] = manager.oldCssProps[prop] || '';
+        }
+    });
+    if (!add) {
+        manager.oldCssProps = {};
+    }
+}
+
+/**
+ * trigger dom event
+ * @param {String} event
+ * @param {Object} data
+ */
+function triggerDomEvent(event, data) {
+    var gestureEvent = document.createEvent('Event');
+    gestureEvent.initEvent(event, true, true);
+    gestureEvent.gesture = data;
+    data.target.dispatchEvent(gestureEvent);
+}
+
+assign(Hammer, {
+    INPUT_START: INPUT_START,
+    INPUT_MOVE: INPUT_MOVE,
+    INPUT_END: INPUT_END,
+    INPUT_CANCEL: INPUT_CANCEL,
+
+    STATE_POSSIBLE: STATE_POSSIBLE,
+    STATE_BEGAN: STATE_BEGAN,
+    STATE_CHANGED: STATE_CHANGED,
+    STATE_ENDED: STATE_ENDED,
+    STATE_RECOGNIZED: STATE_RECOGNIZED,
+    STATE_CANCELLED: STATE_CANCELLED,
+    STATE_FAILED: STATE_FAILED,
+
+    DIRECTION_NONE: DIRECTION_NONE,
+    DIRECTION_LEFT: DIRECTION_LEFT,
+    DIRECTION_RIGHT: DIRECTION_RIGHT,
+    DIRECTION_UP: DIRECTION_UP,
+    DIRECTION_DOWN: DIRECTION_DOWN,
+    DIRECTION_HORIZONTAL: DIRECTION_HORIZONTAL,
+    DIRECTION_VERTICAL: DIRECTION_VERTICAL,
+    DIRECTION_ALL: DIRECTION_ALL,
+
+    Manager: Manager,
+    Input: Input,
+    TouchAction: TouchAction,
+
+    TouchInput: TouchInput,
+    MouseInput: MouseInput,
+    PointerEventInput: PointerEventInput,
+    TouchMouseInput: TouchMouseInput,
+    SingleTouchInput: SingleTouchInput,
+
+    Recognizer: Recognizer,
+    AttrRecognizer: AttrRecognizer,
+    Tap: TapRecognizer,
+    Pan: PanRecognizer,
+    Swipe: SwipeRecognizer,
+    Pinch: PinchRecognizer,
+    Rotate: RotateRecognizer,
+    Press: PressRecognizer,
+
+    on: addEventListeners,
+    off: removeEventListeners,
+    each: each,
+    merge: merge,
+    extend: extend,
+    assign: assign,
+    inherit: inherit,
+    bindFn: bindFn,
+    prefixed: prefixed
+});
+
+// this prevents errors when Hammer is loaded in the presence of an AMD
+//  style loader but by script tag, not by the loader.
+var freeGlobal = (typeof window !== 'undefined' ? window : (typeof self !== 'undefined' ? self : {})); // jshint ignore:line
+freeGlobal.Hammer = Hammer;
+
+if (true) {
+    !(__WEBPACK_AMD_DEFINE_RESULT__ = (function() {
+        return Hammer;
+    }).call(exports, __webpack_require__, exports, module),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+} else if (typeof module != 'undefined' && module.exports) {
+    module.exports = Hammer;
+} else {
+    window[exportName] = Hammer;
+}
+
+})(window, document, 'Hammer');
+
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+ * jQuery Mousewheel 3.1.13
+ *
+ * Copyright jQuery Foundation and other contributors
+ * Released under the MIT license
+ * http://jquery.org/license
+ */
+
+(function (factory) {
+    if ( true ) {
+        // AMD. Register as an anonymous module.
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(2)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+    } else if (typeof exports === 'object') {
+        // Node/CommonJS style for Browserify
+        module.exports = factory;
+    } else {
+        // Browser globals
+        factory(jQuery);
+    }
+}(function ($) {
+
+    var toFix  = ['wheel', 'mousewheel', 'DOMMouseScroll', 'MozMousePixelScroll'],
+        toBind = ( 'onwheel' in document || document.documentMode >= 9 ) ?
+                    ['wheel'] : ['mousewheel', 'DomMouseScroll', 'MozMousePixelScroll'],
+        slice  = Array.prototype.slice,
+        nullLowestDeltaTimeout, lowestDelta;
+
+    if ( $.event.fixHooks ) {
+        for ( var i = toFix.length; i; ) {
+            $.event.fixHooks[ toFix[--i] ] = $.event.mouseHooks;
+        }
+    }
+
+    var special = $.event.special.mousewheel = {
+        version: '3.1.12',
+
+        setup: function() {
+            if ( this.addEventListener ) {
+                for ( var i = toBind.length; i; ) {
+                    this.addEventListener( toBind[--i], handler, false );
+                }
+            } else {
+                this.onmousewheel = handler;
+            }
+            // Store the line height and page height for this particular element
+            $.data(this, 'mousewheel-line-height', special.getLineHeight(this));
+            $.data(this, 'mousewheel-page-height', special.getPageHeight(this));
+        },
+
+        teardown: function() {
+            if ( this.removeEventListener ) {
+                for ( var i = toBind.length; i; ) {
+                    this.removeEventListener( toBind[--i], handler, false );
+                }
+            } else {
+                this.onmousewheel = null;
+            }
+            // Clean up the data we added to the element
+            $.removeData(this, 'mousewheel-line-height');
+            $.removeData(this, 'mousewheel-page-height');
+        },
+
+        getLineHeight: function(elem) {
+            var $elem = $(elem),
+                $parent = $elem['offsetParent' in $.fn ? 'offsetParent' : 'parent']();
+            if (!$parent.length) {
+                $parent = $('body');
+            }
+            return parseInt($parent.css('fontSize'), 10) || parseInt($elem.css('fontSize'), 10) || 16;
+        },
+
+        getPageHeight: function(elem) {
+            return $(elem).height();
+        },
+
+        settings: {
+            adjustOldDeltas: true, // see shouldAdjustOldDeltas() below
+            normalizeOffset: true  // calls getBoundingClientRect for each event
+        }
+    };
+
+    $.fn.extend({
+        mousewheel: function(fn) {
+            return fn ? this.bind('mousewheel', fn) : this.trigger('mousewheel');
+        },
+
+        unmousewheel: function(fn) {
+            return this.unbind('mousewheel', fn);
+        }
+    });
+
+
+    function handler(event) {
+        var orgEvent   = event || window.event,
+            args       = slice.call(arguments, 1),
+            delta      = 0,
+            deltaX     = 0,
+            deltaY     = 0,
+            absDelta   = 0,
+            offsetX    = 0,
+            offsetY    = 0;
+        event = $.event.fix(orgEvent);
+        event.type = 'mousewheel';
+
+        // Old school scrollwheel delta
+        if ( 'detail'      in orgEvent ) { deltaY = orgEvent.detail * -1;      }
+        if ( 'wheelDelta'  in orgEvent ) { deltaY = orgEvent.wheelDelta;       }
+        if ( 'wheelDeltaY' in orgEvent ) { deltaY = orgEvent.wheelDeltaY;      }
+        if ( 'wheelDeltaX' in orgEvent ) { deltaX = orgEvent.wheelDeltaX * -1; }
+
+        // Firefox < 17 horizontal scrolling related to DOMMouseScroll event
+        if ( 'axis' in orgEvent && orgEvent.axis === orgEvent.HORIZONTAL_AXIS ) {
+            deltaX = deltaY * -1;
+            deltaY = 0;
+        }
+
+        // Set delta to be deltaY or deltaX if deltaY is 0 for backwards compatabilitiy
+        delta = deltaY === 0 ? deltaX : deltaY;
+
+        // New school wheel delta (wheel event)
+        if ( 'deltaY' in orgEvent ) {
+            deltaY = orgEvent.deltaY * -1;
+            delta  = deltaY;
+        }
+        if ( 'deltaX' in orgEvent ) {
+            deltaX = orgEvent.deltaX;
+            if ( deltaY === 0 ) { delta  = deltaX * -1; }
+        }
+
+        // No change actually happened, no reason to go any further
+        if ( deltaY === 0 && deltaX === 0 ) { return; }
+
+        // Need to convert lines and pages to pixels if we aren't already in pixels
+        // There are three delta modes:
+        //   * deltaMode 0 is by pixels, nothing to do
+        //   * deltaMode 1 is by lines
+        //   * deltaMode 2 is by pages
+        if ( orgEvent.deltaMode === 1 ) {
+            var lineHeight = $.data(this, 'mousewheel-line-height');
+            delta  *= lineHeight;
+            deltaY *= lineHeight;
+            deltaX *= lineHeight;
+        } else if ( orgEvent.deltaMode === 2 ) {
+            var pageHeight = $.data(this, 'mousewheel-page-height');
+            delta  *= pageHeight;
+            deltaY *= pageHeight;
+            deltaX *= pageHeight;
+        }
+
+        // Store lowest absolute delta to normalize the delta values
+        absDelta = Math.max( Math.abs(deltaY), Math.abs(deltaX) );
+
+        if ( !lowestDelta || absDelta < lowestDelta ) {
+            lowestDelta = absDelta;
+
+            // Adjust older deltas if necessary
+            if ( shouldAdjustOldDeltas(orgEvent, absDelta) ) {
+                lowestDelta /= 40;
+            }
+        }
+
+        // Adjust older deltas if necessary
+        if ( shouldAdjustOldDeltas(orgEvent, absDelta) ) {
+            // Divide all the things by 40!
+            delta  /= 40;
+            deltaX /= 40;
+            deltaY /= 40;
+        }
+
+        // Get a whole, normalized value for the deltas
+        delta  = Math[ delta  >= 1 ? 'floor' : 'ceil' ](delta  / lowestDelta);
+        deltaX = Math[ deltaX >= 1 ? 'floor' : 'ceil' ](deltaX / lowestDelta);
+        deltaY = Math[ deltaY >= 1 ? 'floor' : 'ceil' ](deltaY / lowestDelta);
+
+        // Normalise offsetX and offsetY properties
+        if ( special.settings.normalizeOffset && this.getBoundingClientRect ) {
+            var boundingRect = this.getBoundingClientRect();
+            offsetX = event.clientX - boundingRect.left;
+            offsetY = event.clientY - boundingRect.top;
+        }
+
+        // Add information to the event object
+        event.deltaX = deltaX;
+        event.deltaY = deltaY;
+        event.deltaFactor = lowestDelta;
+        event.offsetX = offsetX;
+        event.offsetY = offsetY;
+        // Go ahead and set deltaMode to 0 since we converted to pixels
+        // Although this is a little odd since we overwrite the deltaX/Y
+        // properties with normalized deltas.
+        event.deltaMode = 0;
+
+        // Add event and delta to the front of the arguments
+        args.unshift(event, delta, deltaX, deltaY);
+
+        // Clearout lowestDelta after sometime to better
+        // handle multiple device types that give different
+        // a different lowestDelta
+        // Ex: trackpad = 3 and mouse wheel = 120
+        if (nullLowestDeltaTimeout) { clearTimeout(nullLowestDeltaTimeout); }
+        nullLowestDeltaTimeout = setTimeout(nullLowestDelta, 200);
+
+        return ($.event.dispatch || $.event.handle).apply(this, args);
+    }
+
+    function nullLowestDelta() {
+        lowestDelta = null;
+    }
+
+    function shouldAdjustOldDeltas(orgEvent, absDelta) {
+        // If this is an older event and the delta is divisable by 120,
+        // then we are assuming that the browser is treating this as an
+        // older mouse wheel event and that we should divide the deltas
+        // by 40 to try and get a more usable deltaFactor.
+        // Side note, this actually impacts the reported scroll distance
+        // in older browsers and can cause scrolling to be slower than native.
+        // Turn this off by setting $.event.special.mousewheel.settings.adjustOldDeltas to false.
+        return special.settings.adjustOldDeltas && orgEvent.type === 'mousewheel' && absDelta % 120 === 0;
+    }
+
+}));
+
+
+/***/ }),
+/* 98 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+$(function () {
+    $('body').on('click', '.goto', function (event) {
+        event.preventDefault();
+        var target = $(this).data('goto').split(',');
+        if (target.length == 1) target = target[0];else {
+            $.each(target, function (index, item) {
+                if ($('#' + item).length) {
+                    target = item;
+                    return false;
+                }
+            });
+        }
+        if ($('#' + target).length) {
+            var scrollValue = $('#' + target).offset().top - $('header').outerHeight();
+
+            $('body,html').animate({
+                scrollTop: scrollValue
+            }, 600).promise().then(function () {
+                window.location.hash = '#' + target;
+                window.location.replace(window.location);
+            });
+        }
+    });
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+
+/***/ }),
+/* 99 */
+/***/ (function(module, exports) {
+
+module.exports = "<button class=\"goto\" data-goto=\"anchorID_1,anchorID_2,anchorID_3\">\n  Click me, I'll take you to a special place\n</button>";
+
+/***/ }),
+/* 100 */
+/***/ (function(module, exports) {
+
+module.exports = "<button class=\"goto\" data-goto=\"anchorID_1,anchorID_2,anchorID_3\">\r\n  Click me, I'll take you to a special place\r\n</button>";
 
 /***/ })
 /******/ ]);

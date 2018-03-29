@@ -1,10 +1,10 @@
 /* Core css */
 @import 'core';
 /* Components */
+@import '../components/brick/brick';
 @import '../components/tabs/tabs';
 @import '../components/foldingbox/foldingbox';
 @import '../components/block-std/block-std';
-@import '../components/brick/brick';
 @import '../components/guideline/guideline';
 @import '../components/FWslider/FWslider';
 /* Themes */

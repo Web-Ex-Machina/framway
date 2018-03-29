@@ -58,12 +58,6 @@ function Utils(){
     $.each(objTransform,function(key,value){
         strResult += key+value+' ';
     })
-    if($(el).hasClass('grid')){
-      console.log(el);
-      console.log('base : '+baseTransform);
-      console.log('target : '+targetTransform);
-      console.log('result : '+strResult);
-    }
     return strResult;
   }
 
@@ -175,7 +169,7 @@ function Utils(){
   };
 
   /**
-   * return a key of an objetc from a value
+   * return a key of an object from a value
    * @param  {Object} obj
    * @param  {[type]} value
    * @return {String}
@@ -238,15 +232,6 @@ function Utils(){
     }
     return succeed;
   }
-
-  /**
-   * check the state of a checkbox
-   * @return {Boolean}
-   *  TODO : real test
-   */
-  $.fn.isChecked = function () {
-    if ($(this).is(':checked')) return 1;else return 0;
-  };
 
 
   // NOTIFICATIONS SETUP
@@ -313,6 +298,34 @@ function Utils(){
 
   global.viewport = utils.getDimensions();
   return utils;
+}
+
+// check end of scrolling
+$.fn.scrollEnd = function (callback, timeout) {
+    $(this).scroll(function () {
+        var $this = $(this);
+        if ($this.data('scrollTimeout')) {
+            clearTimeout($this.data('scrollTimeout'));
+        }
+        $this.data('scrollTimeout', setTimeout(callback, timeout));
+    });
+};
+
+/**
+ * check the state of a checkbox
+ * @return {Boolean}
+ *  TODO : real test
+ */
+$.fn.isChecked = function () {
+  if ($(this).is(':checked')) return 1;else return 0;
+};
+
+$.event.special.destroyed = {
+  remove: function(o) {
+    if (o.handler) {
+      o.handler()
+    }
+  }
 }
 
 
