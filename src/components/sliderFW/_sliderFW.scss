@@ -1,17 +1,53 @@
 .sliderFW{margin-bottom: $spacing;}
 .sliderFW__container{position: relative; overflow: hidden;  width: 100%; height: 400px;}
-.sliderFW__rail{position: absolute; left:0; min-width: 100%; @include flex-container(); @include transition(all 0.8s);}
-.sliderFW__item{@include size(100%); position: relative; @include flex-shrink(0); }
-.sliderFW__item__bg{ @include size(100%); position: absolute; top: 0; left: 0; z-index: -1;
-  &>img{@include object-fit(cover); @include size(100%);}
+.sliderFW__rail{position: absolute; left:0; min-width: 100%; top: 0;@include flex-container(); @include transition(all 0.8s); bottom: 45px;
+  .nav--inner &{bottom: 0;}
+  .nav--top &{bottom: 0; top: 45px;}
+  .nav--top.nav--inner &{bottom: 0; top: 0;}
 }
-.sliderFW__item__content{padding: $spacing;}
+.sliderFW__item{@include size(100%); position: relative; @include flex-shrink(0); cursor: grab;}
+.sliderFW__item__bg{ @include size(100%); position: absolute; top: 0; left: 0; z-index: -1;
+  & img{@include object-fit(cover); @include size(100%);}
+}
+.sliderFW__item__content{padding: $spacing; background-color: rgba(white,0.4); height: 100%; @include flex-container(column,nowrap,flex-end);max-width: 100%; position: absolute; left: 5em; margin-right: 5em;
+  .content__text--top &{@include justify-content(flex-start);}
+  .content__text--center &{@include justify-content(center);}
+  .content--right &{left: auto; right: 5em; margin-right: auto; margin-left: 5em;
+    @include media-max(md){right: 0; margin-left: 0;}
+  }
+  .content--center &{left: 50%; transform: translateX(-50%); margin: auto;
+    @include media-max(md){left: 0; right: 0; transform: none;}
+  }
+  @include media-max(md){left: 0; margin-right: 0;}
+}
+.sliderFW__item__blur{position: absolute; top: 0; left: 5em; bottom: 0; filter: blur(8px); overflow: hidden;
+  .content--noblur &{display: none;}
+  .content--right &{left: auto; right: 5em;
+    @include media-max(md){right: 0; margin-left: 0;}
+  }
+  .content--center &{left: 50%; transform: translateX(-50%);
+    @include media-max(md){left: 0; right: 0; transform: none;}
+  }
+  & img{max-width: none; left: -5em; position: absolute;
+    .content--right &{left: auto; right: -5em;
+      @include media-max(md){right: 0; margin-left: 0;}
+    }
+    .content--center &{left: 50%; transform: translateX(-50%);
+      @include media-max(md){left: 0; right: 0; transform: none;}
+    }
+    @include media-max(md){left: 0;}
+  }
+  @include media-max(md){left: 0; margin-right: 0;}
+}
 
 .sliderFW__nav{@include flex-container(row,wrap,center); position: absolute; bottom: 0; width: 100%;
-  background-color: black;
+  .nav--left &{@include justify-content(flex-start);}
+  .nav--right &{@include justify-content(flex-end);}
+  .nav--bottom &{bottom: 0; top: auto;}
+  .nav--top &{bottom: auto; top: 0;}
 }
 .sliderFW__nav__item{display: inline-block; @include size(45px); position: relative; cursor: pointer;
-  &:before{content:"";position: absolute; top: 50%; left: 50%; @include transform(translate(-50%,-50%)); @include size(0.8rem); border-radius: 100%; background-color: color(greylight); @include transition(background-color 0.2s);}
+  &:before{content:"";position: absolute; top: 50%; left: 50%; @include transform(translate(-50%,-50%)); @include size(0.8rem); border-radius: 100%; background-color: color(greylight); @include transition(background-color 0.2s); box-shadow: 0px 0px 4px color(greystrong);}
   &:hover:before,
   &.active:before{background-color: color(greystrong); @include box-shadow(unquote('inset 0 2px 0 -1px rgba(255,255,255,0.5), inset 0 -2px 0 -1px rgba(0,0,0,0.3), 0 0 0 1px '+color(greystrong)))}
 }

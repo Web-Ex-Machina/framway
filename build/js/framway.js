@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 17);
+/******/ 	return __webpack_require__(__webpack_require__.s = 20);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -84,20 +84,14 @@
 
 // This file is for use with Node.js. See dist/ for browser files.
 
-var Hogan = __webpack_require__(41);
-Hogan.Template = __webpack_require__(42).Template;
+var Hogan = __webpack_require__(48);
+Hogan.Template = __webpack_require__(49).Template;
 Hogan.template = Hogan.Template;
 module.exports = Hogan;
 
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "img/tramway_lego.jpg";
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10357,6 +10351,12 @@ return jQuery;
 
 
 /***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "img/tramway_lego.jpg";
+
+/***/ }),
 /* 3 */,
 /* 4 */
 /***/ (function(module, exports) {
@@ -10388,7 +10388,7 @@ module.exports = g;
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var result = __webpack_require__(40)
+var result = __webpack_require__(47)
 var H = __webpack_require__(0);
 window.Hogan = H;
 module.exports = function() {
@@ -10401,20 +10401,20 @@ return T.render.apply(T, arguments); };
 
 var map = {
 	"./styling_backgrounds.html": 5,
-	"./styling_borders.html": 45,
-	"./styling_borders_colors.html": 47,
-	"./styling_buttons.html": 49,
-	"./styling_buttons_colors.html": 51,
-	"./styling_inputs.html": 53,
-	"./styling_inputs_bg.html": 55,
-	"./styling_inputs_others.html": 57,
-	"./styling_inputs_texts.html": 59,
-	"./styling_texts.html": 61,
-	"./styling_texts_bd.html": 63,
-	"./styling_texts_bg.html": 65,
-	"./styling_titles.html": 67,
-	"./styling_titles_bg.html": 69,
-	"./styling_titles_sep.html": 71
+	"./styling_borders.html": 52,
+	"./styling_borders_colors.html": 54,
+	"./styling_buttons.html": 56,
+	"./styling_buttons_colors.html": 58,
+	"./styling_inputs.html": 60,
+	"./styling_inputs_bg.html": 62,
+	"./styling_inputs_others.html": 64,
+	"./styling_inputs_texts.html": 66,
+	"./styling_texts.html": 68,
+	"./styling_texts_bd.html": 70,
+	"./styling_texts_bg.html": 72,
+	"./styling_titles.html": 74,
+	"./styling_titles_bg.html": 76,
+	"./styling_titles_sep.html": 78
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -10443,2698 +10443,29 @@ webpackContext.id = 6;
 /* 14 */,
 /* 15 */,
 /* 16 */,
-/* 17 */
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(96); // importing hammer.js
-__webpack_require__(97); // importing jquery-mousewheel
+__webpack_require__(21); // importing hammer.js
+__webpack_require__(22); // importing jquery-mousewheel
 
-__webpack_require__(18);
-__webpack_require__(19);
+__webpack_require__(23);
+__webpack_require__(24);
 
 app.loadComponents(['tabs', 'block-std', 'goto', 'foldingbox', 'sliderFW',
 // 'brick',
 'guideline']);
 
-/***/ }),
-/* 18 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-module.exports = {"radius":"2px","spacing":"30px","border-size":"2px","colors":"(\"blue\": #004C79, \"green\": #5cb85c, \"orange\": #DC6053, \"darkblue\": #0a1d29, \"gold\": #edbe5f, \"black\": #000000, \"blacklight\": #111414, \"blacklighter\": #222222, \"greystronger\": #424041, \"greystrong\": #535052, \"grey\": #7A7778, \"greylight\": #DDDDDD, \"greylighter\": #EEEEEE, \"white\": #ffffff, \"none\": transparent)","breakpoints":"(\"xl\": 1400px, \"lg\": 1200px, \"md\": 992px, \"sm\": 768px, \"xs\": 620px, \"xxs\": 520px)","body":"(\"background\": #ffffff, \"font-color\": #424041, \"font-size\": 20px, \"title-font-color\": #111414)","header":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","footer":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","input":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #424041, \"border-size\": 2px, \"placeholder-font-color\": #7A7778, \"radius\": true)","input-focus":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #424041)","input-valid":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #5cb85c)","input-invalid":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #DC6053)","link":"(\"font-color\": #DC6053, \"font-color-hover\": #DC6053, \"font-color-focus\": #DC6053)","btn":"btn","enable-bg":"true","enable-bg-extended":"false","enable-bd":"true","disabled":"disabled","copy":"copy","no-events":"no-events","no-overflow":"no-overflow","hidden":"hidden","invisible":"invisible","ellipsis":"ellipsis","center":"center","center-block":"center-block","fl-left":"fl-left","float-left":"float-left","fl-right":"fl-right","float-right":"float-right","clear":"clear","clear-left":"clear-left","clear-right":"clear-right","clear-after":"clear-after","clear-before":"clear-before","clear-no":"clear-no","text-right":"text-right","txt-right":"txt-right","text-left":"text-left","txt-left":"txt-left","text-center":"text-center","txt-center":"txt-center","ft-light":"ft-light","ft-normal":"ft-normal","ft-bold":"ft-bold","ft-bolder":"ft-bolder","ft-i":"ft-i","ft-b":"ft-b","ft-u":"ft-u","ft-u-no":"ft-u-no","ft-upper":"ft-upper","ft-lower":"ft-lower","ft-0-em":"ft-0-em","ft-0-rem":"ft-0-rem","ft-0-1-em":"ft-0-1-em","ft-0-1-rem":"ft-0-1-rem","ft-0-2-em":"ft-0-2-em","ft-0-2-rem":"ft-0-2-rem","ft-0-3-em":"ft-0-3-em","ft-0-3-rem":"ft-0-3-rem","ft-0-4-em":"ft-0-4-em","ft-0-4-rem":"ft-0-4-rem","ft-0-5-em":"ft-0-5-em","ft-0-5-rem":"ft-0-5-rem","ft-0-6-em":"ft-0-6-em","ft-0-6-rem":"ft-0-6-rem","ft-0-7-em":"ft-0-7-em","ft-0-7-rem":"ft-0-7-rem","ft-0-8-em":"ft-0-8-em","ft-0-8-rem":"ft-0-8-rem","ft-0-9-em":"ft-0-9-em","ft-0-9-rem":"ft-0-9-rem","ft-minus-10":"ft-minus-10","ft-plus-10":"ft-plus-10","ft-1-em":"ft-1-em","ft-1-rem":"ft-1-rem","ft-1-1-em":"ft-1-1-em","ft-1-1-rem":"ft-1-1-rem","ft-1-2-em":"ft-1-2-em","ft-1-2-rem":"ft-1-2-rem","ft-1-3-em":"ft-1-3-em","ft-1-3-rem":"ft-1-3-rem","ft-1-4-em":"ft-1-4-em","ft-1-4-rem":"ft-1-4-rem","ft-1-5-em":"ft-1-5-em","ft-1-5-rem":"ft-1-5-rem","ft-1-6-em":"ft-1-6-em","ft-1-6-rem":"ft-1-6-rem","ft-1-7-em":"ft-1-7-em","ft-1-7-rem":"ft-1-7-rem","ft-1-8-em":"ft-1-8-em","ft-1-8-rem":"ft-1-8-rem","ft-1-9-em":"ft-1-9-em","ft-1-9-rem":"ft-1-9-rem","ft-minus-20":"ft-minus-20","ft-plus-20":"ft-plus-20","ft-2-em":"ft-2-em","ft-2-rem":"ft-2-rem","ft-2-1-em":"ft-2-1-em","ft-2-1-rem":"ft-2-1-rem","ft-2-2-em":"ft-2-2-em","ft-2-2-rem":"ft-2-2-rem","ft-2-3-em":"ft-2-3-em","ft-2-3-rem":"ft-2-3-rem","ft-2-4-em":"ft-2-4-em","ft-2-4-rem":"ft-2-4-rem","ft-2-5-em":"ft-2-5-em","ft-2-5-rem":"ft-2-5-rem","ft-2-6-em":"ft-2-6-em","ft-2-6-rem":"ft-2-6-rem","ft-2-7-em":"ft-2-7-em","ft-2-7-rem":"ft-2-7-rem","ft-2-8-em":"ft-2-8-em","ft-2-8-rem":"ft-2-8-rem","ft-2-9-em":"ft-2-9-em","ft-2-9-rem":"ft-2-9-rem","ft-minus-30":"ft-minus-30","ft-plus-30":"ft-plus-30","ft-3-em":"ft-3-em","ft-3-rem":"ft-3-rem","ft-3-1-em":"ft-3-1-em","ft-3-1-rem":"ft-3-1-rem","ft-3-2-em":"ft-3-2-em","ft-3-2-rem":"ft-3-2-rem","ft-3-3-em":"ft-3-3-em","ft-3-3-rem":"ft-3-3-rem","ft-3-4-em":"ft-3-4-em","ft-3-4-rem":"ft-3-4-rem","ft-3-5-em":"ft-3-5-em","ft-3-5-rem":"ft-3-5-rem","ft-3-6-em":"ft-3-6-em","ft-3-6-rem":"ft-3-6-rem","ft-3-7-em":"ft-3-7-em","ft-3-7-rem":"ft-3-7-rem","ft-3-8-em":"ft-3-8-em","ft-3-8-rem":"ft-3-8-rem","ft-3-9-em":"ft-3-9-em","ft-3-9-rem":"ft-3-9-rem","ft-minus-40":"ft-minus-40","ft-plus-40":"ft-plus-40","ft-4-em":"ft-4-em","ft-4-rem":"ft-4-rem","ft-4-1-em":"ft-4-1-em","ft-4-1-rem":"ft-4-1-rem","ft-4-2-em":"ft-4-2-em","ft-4-2-rem":"ft-4-2-rem","ft-4-3-em":"ft-4-3-em","ft-4-3-rem":"ft-4-3-rem","ft-4-4-em":"ft-4-4-em","ft-4-4-rem":"ft-4-4-rem","ft-4-5-em":"ft-4-5-em","ft-4-5-rem":"ft-4-5-rem","ft-4-6-em":"ft-4-6-em","ft-4-6-rem":"ft-4-6-rem","ft-4-7-em":"ft-4-7-em","ft-4-7-rem":"ft-4-7-rem","ft-4-8-em":"ft-4-8-em","ft-4-8-rem":"ft-4-8-rem","ft-4-9-em":"ft-4-9-em","ft-4-9-rem":"ft-4-9-rem","ft-minus-50":"ft-minus-50","ft-plus-50":"ft-plus-50","ft-5-em":"ft-5-em","ft-5-rem":"ft-5-rem","ft-5-1-em":"ft-5-1-em","ft-5-1-rem":"ft-5-1-rem","ft-5-2-em":"ft-5-2-em","ft-5-2-rem":"ft-5-2-rem","ft-5-3-em":"ft-5-3-em","ft-5-3-rem":"ft-5-3-rem","ft-5-4-em":"ft-5-4-em","ft-5-4-rem":"ft-5-4-rem","ft-5-5-em":"ft-5-5-em","ft-5-5-rem":"ft-5-5-rem","ft-5-6-em":"ft-5-6-em","ft-5-6-rem":"ft-5-6-rem","ft-5-7-em":"ft-5-7-em","ft-5-7-rem":"ft-5-7-rem","ft-5-8-em":"ft-5-8-em","ft-5-8-rem":"ft-5-8-rem","ft-5-9-em":"ft-5-9-em","ft-5-9-rem":"ft-5-9-rem","ft-minus-60":"ft-minus-60","ft-plus-60":"ft-plus-60","ft-6-em":"ft-6-em","ft-6-rem":"ft-6-rem","ft-6-1-em":"ft-6-1-em","ft-6-1-rem":"ft-6-1-rem","ft-6-2-em":"ft-6-2-em","ft-6-2-rem":"ft-6-2-rem","ft-6-3-em":"ft-6-3-em","ft-6-3-rem":"ft-6-3-rem","ft-6-4-em":"ft-6-4-em","ft-6-4-rem":"ft-6-4-rem","ft-6-5-em":"ft-6-5-em","ft-6-5-rem":"ft-6-5-rem","ft-6-6-em":"ft-6-6-em","ft-6-6-rem":"ft-6-6-rem","ft-6-7-em":"ft-6-7-em","ft-6-7-rem":"ft-6-7-rem","ft-6-8-em":"ft-6-8-em","ft-6-8-rem":"ft-6-8-rem","ft-6-9-em":"ft-6-9-em","ft-6-9-rem":"ft-6-9-rem","ft-minus-70":"ft-minus-70","ft-plus-70":"ft-plus-70","ft-7-em":"ft-7-em","ft-7-rem":"ft-7-rem","ft-7-1-em":"ft-7-1-em","ft-7-1-rem":"ft-7-1-rem","ft-7-2-em":"ft-7-2-em","ft-7-2-rem":"ft-7-2-rem","ft-7-3-em":"ft-7-3-em","ft-7-3-rem":"ft-7-3-rem","ft-7-4-em":"ft-7-4-em","ft-7-4-rem":"ft-7-4-rem","ft-7-5-em":"ft-7-5-em","ft-7-5-rem":"ft-7-5-rem","ft-7-6-em":"ft-7-6-em","ft-7-6-rem":"ft-7-6-rem","ft-7-7-em":"ft-7-7-em","ft-7-7-rem":"ft-7-7-rem","ft-7-8-em":"ft-7-8-em","ft-7-8-rem":"ft-7-8-rem","ft-7-9-em":"ft-7-9-em","ft-7-9-rem":"ft-7-9-rem","ft-minus-80":"ft-minus-80","ft-plus-80":"ft-plus-80","ft-8-em":"ft-8-em","ft-8-rem":"ft-8-rem","ft-8-1-em":"ft-8-1-em","ft-8-1-rem":"ft-8-1-rem","ft-8-2-em":"ft-8-2-em","ft-8-2-rem":"ft-8-2-rem","ft-8-3-em":"ft-8-3-em","ft-8-3-rem":"ft-8-3-rem","ft-8-4-em":"ft-8-4-em","ft-8-4-rem":"ft-8-4-rem","ft-8-5-em":"ft-8-5-em","ft-8-5-rem":"ft-8-5-rem","ft-8-6-em":"ft-8-6-em","ft-8-6-rem":"ft-8-6-rem","ft-8-7-em":"ft-8-7-em","ft-8-7-rem":"ft-8-7-rem","ft-8-8-em":"ft-8-8-em","ft-8-8-rem":"ft-8-8-rem","ft-8-9-em":"ft-8-9-em","ft-8-9-rem":"ft-8-9-rem","ft-minus-90":"ft-minus-90","ft-plus-90":"ft-plus-90","ft-9-em":"ft-9-em","ft-9-rem":"ft-9-rem","ft-9-1-em":"ft-9-1-em","ft-9-1-rem":"ft-9-1-rem","ft-9-2-em":"ft-9-2-em","ft-9-2-rem":"ft-9-2-rem","ft-9-3-em":"ft-9-3-em","ft-9-3-rem":"ft-9-3-rem","ft-9-4-em":"ft-9-4-em","ft-9-4-rem":"ft-9-4-rem","ft-9-5-em":"ft-9-5-em","ft-9-5-rem":"ft-9-5-rem","ft-9-6-em":"ft-9-6-em","ft-9-6-rem":"ft-9-6-rem","ft-9-7-em":"ft-9-7-em","ft-9-7-rem":"ft-9-7-rem","ft-9-8-em":"ft-9-8-em","ft-9-8-rem":"ft-9-8-rem","ft-9-9-em":"ft-9-9-em","ft-9-9-rem":"ft-9-9-rem","ft-minus-100":"ft-minus-100","ft-plus-100":"ft-plus-100","ft-10-em":"ft-10-em","ft-10-rem":"ft-10-rem","ft-10-1-em":"ft-10-1-em","ft-10-1-rem":"ft-10-1-rem","ft-10-2-em":"ft-10-2-em","ft-10-2-rem":"ft-10-2-rem","ft-10-3-em":"ft-10-3-em","ft-10-3-rem":"ft-10-3-rem","ft-10-4-em":"ft-10-4-em","ft-10-4-rem":"ft-10-4-rem","ft-10-5-em":"ft-10-5-em","ft-10-5-rem":"ft-10-5-rem","ft-10-6-em":"ft-10-6-em","ft-10-6-rem":"ft-10-6-rem","ft-10-7-em":"ft-10-7-em","ft-10-7-rem":"ft-10-7-rem","ft-10-8-em":"ft-10-8-em","ft-10-8-rem":"ft-10-8-rem","ft-10-9-em":"ft-10-9-em","ft-10-9-rem":"ft-10-9-rem","ft-blue":"ft-blue","ft-green":"ft-green","ft-orange":"ft-orange","ft-darkblue":"ft-darkblue","ft-gold":"ft-gold","ft-black":"ft-black","ft-blacklight":"ft-blacklight","ft-blacklighter":"ft-blacklighter","ft-greystronger":"ft-greystronger","ft-greystrong":"ft-greystrong","ft-grey":"ft-grey","ft-greylight":"ft-greylight","ft-greylighter":"ft-greylighter","ft-white":"ft-white","ft-none":"ft-none","rad":"rad","tags":"tags","rad-all":"rad-all","rad-top-left":"rad-top-left","rad-top":"rad-top","rad-left":"rad-left","rad-top-right":"rad-top-right","rad-right":"rad-right","rad-bottom-left":"rad-bottom-left","rad-bottom":"rad-bottom","rad-bottom-right":"rad-bottom-right","m-all":"m-all","m-all-0":"m-all-0","m-all-x2":"m-all-x2","p-all":"p-all","bd-blue":"bd-blue","bd-blue-0":"bd-blue-0","bd-blue-1":"bd-blue-1","bd-blue-2":"bd-blue-2","bd-blue-3":"bd-blue-3","bd-blue-4":"bd-blue-4","bd-blue-5":"bd-blue-5","bd-blue-6":"bd-blue-6","bd-blue-7":"bd-blue-7","bd-blue-8":"bd-blue-8","bd-blue-9":"bd-blue-9","bd-blue-10":"bd-blue-10","bd-green":"bd-green","bd-green-0":"bd-green-0","bd-green-1":"bd-green-1","bd-green-2":"bd-green-2","bd-green-3":"bd-green-3","bd-green-4":"bd-green-4","bd-green-5":"bd-green-5","bd-green-6":"bd-green-6","bd-green-7":"bd-green-7","bd-green-8":"bd-green-8","bd-green-9":"bd-green-9","bd-green-10":"bd-green-10","bd-orange":"bd-orange","bd-orange-0":"bd-orange-0","bd-orange-1":"bd-orange-1","bd-orange-2":"bd-orange-2","bd-orange-3":"bd-orange-3","bd-orange-4":"bd-orange-4","bd-orange-5":"bd-orange-5","bd-orange-6":"bd-orange-6","bd-orange-7":"bd-orange-7","bd-orange-8":"bd-orange-8","bd-orange-9":"bd-orange-9","bd-orange-10":"bd-orange-10","bd-darkblue":"bd-darkblue","bd-darkblue-0":"bd-darkblue-0","bd-darkblue-1":"bd-darkblue-1","bd-darkblue-2":"bd-darkblue-2","bd-darkblue-3":"bd-darkblue-3","bd-darkblue-4":"bd-darkblue-4","bd-darkblue-5":"bd-darkblue-5","bd-darkblue-6":"bd-darkblue-6","bd-darkblue-7":"bd-darkblue-7","bd-darkblue-8":"bd-darkblue-8","bd-darkblue-9":"bd-darkblue-9","bd-darkblue-10":"bd-darkblue-10","bd-gold":"bd-gold","bd-gold-0":"bd-gold-0","bd-gold-1":"bd-gold-1","bd-gold-2":"bd-gold-2","bd-gold-3":"bd-gold-3","bd-gold-4":"bd-gold-4","bd-gold-5":"bd-gold-5","bd-gold-6":"bd-gold-6","bd-gold-7":"bd-gold-7","bd-gold-8":"bd-gold-8","bd-gold-9":"bd-gold-9","bd-gold-10":"bd-gold-10","bd-black":"bd-black","bd-black-0":"bd-black-0","bd-black-1":"bd-black-1","bd-black-2":"bd-black-2","bd-black-3":"bd-black-3","bd-black-4":"bd-black-4","bd-black-5":"bd-black-5","bd-black-6":"bd-black-6","bd-black-7":"bd-black-7","bd-black-8":"bd-black-8","bd-black-9":"bd-black-9","bd-black-10":"bd-black-10","bd-blacklight":"bd-blacklight","bd-blacklight-0":"bd-blacklight-0","bd-blacklight-1":"bd-blacklight-1","bd-blacklight-2":"bd-blacklight-2","bd-blacklight-3":"bd-blacklight-3","bd-blacklight-4":"bd-blacklight-4","bd-blacklight-5":"bd-blacklight-5","bd-blacklight-6":"bd-blacklight-6","bd-blacklight-7":"bd-blacklight-7","bd-blacklight-8":"bd-blacklight-8","bd-blacklight-9":"bd-blacklight-9","bd-blacklight-10":"bd-blacklight-10","bd-blacklighter":"bd-blacklighter","bd-blacklighter-0":"bd-blacklighter-0","bd-blacklighter-1":"bd-blacklighter-1","bd-blacklighter-2":"bd-blacklighter-2","bd-blacklighter-3":"bd-blacklighter-3","bd-blacklighter-4":"bd-blacklighter-4","bd-blacklighter-5":"bd-blacklighter-5","bd-blacklighter-6":"bd-blacklighter-6","bd-blacklighter-7":"bd-blacklighter-7","bd-blacklighter-8":"bd-blacklighter-8","bd-blacklighter-9":"bd-blacklighter-9","bd-blacklighter-10":"bd-blacklighter-10","bd-greystronger":"bd-greystronger","bd-greystronger-0":"bd-greystronger-0","bd-greystronger-1":"bd-greystronger-1","bd-greystronger-2":"bd-greystronger-2","bd-greystronger-3":"bd-greystronger-3","bd-greystronger-4":"bd-greystronger-4","bd-greystronger-5":"bd-greystronger-5","bd-greystronger-6":"bd-greystronger-6","bd-greystronger-7":"bd-greystronger-7","bd-greystronger-8":"bd-greystronger-8","bd-greystronger-9":"bd-greystronger-9","bd-greystronger-10":"bd-greystronger-10","bd-greystrong":"bd-greystrong","bd-greystrong-0":"bd-greystrong-0","bd-greystrong-1":"bd-greystrong-1","bd-greystrong-2":"bd-greystrong-2","bd-greystrong-3":"bd-greystrong-3","bd-greystrong-4":"bd-greystrong-4","bd-greystrong-5":"bd-greystrong-5","bd-greystrong-6":"bd-greystrong-6","bd-greystrong-7":"bd-greystrong-7","bd-greystrong-8":"bd-greystrong-8","bd-greystrong-9":"bd-greystrong-9","bd-greystrong-10":"bd-greystrong-10","bd-grey":"bd-grey","bd-grey-0":"bd-grey-0","bd-grey-1":"bd-grey-1","bd-grey-2":"bd-grey-2","bd-grey-3":"bd-grey-3","bd-grey-4":"bd-grey-4","bd-grey-5":"bd-grey-5","bd-grey-6":"bd-grey-6","bd-grey-7":"bd-grey-7","bd-grey-8":"bd-grey-8","bd-grey-9":"bd-grey-9","bd-grey-10":"bd-grey-10","bd-greylight":"bd-greylight","bd-greylight-0":"bd-greylight-0","bd-greylight-1":"bd-greylight-1","bd-greylight-2":"bd-greylight-2","bd-greylight-3":"bd-greylight-3","bd-greylight-4":"bd-greylight-4","bd-greylight-5":"bd-greylight-5","bd-greylight-6":"bd-greylight-6","bd-greylight-7":"bd-greylight-7","bd-greylight-8":"bd-greylight-8","bd-greylight-9":"bd-greylight-9","bd-greylight-10":"bd-greylight-10","bd-greylighter":"bd-greylighter","bd-greylighter-0":"bd-greylighter-0","bd-greylighter-1":"bd-greylighter-1","bd-greylighter-2":"bd-greylighter-2","bd-greylighter-3":"bd-greylighter-3","bd-greylighter-4":"bd-greylighter-4","bd-greylighter-5":"bd-greylighter-5","bd-greylighter-6":"bd-greylighter-6","bd-greylighter-7":"bd-greylighter-7","bd-greylighter-8":"bd-greylighter-8","bd-greylighter-9":"bd-greylighter-9","bd-greylighter-10":"bd-greylighter-10","bd-white":"bd-white","bd-white-0":"bd-white-0","bd-white-1":"bd-white-1","bd-white-2":"bd-white-2","bd-white-3":"bd-white-3","side":"side","bd-white-4":"bd-white-4","bd-white-5":"bd-white-5","bd-white-6":"bd-white-6","bd-white-7":"bd-white-7","bd-white-8":"bd-white-8","bd-white-9":"bd-white-9","bd-white-10":"bd-white-10","bd-none":"bd-none","bd-none-0":"bd-none-0","bd-none-1":"bd-none-1","bd-none-2":"bd-none-2","bd-none-3":"bd-none-3","bd-none-4":"bd-none-4","bd-none-5":"bd-none-5","bd-none-6":"bd-none-6","bd-none-7":"bd-none-7","bd-none-8":"bd-none-8","bd-none-9":"bd-none-9","bd-none-10":"bd-none-10","block-std":"block-std","p-all-0":"p-all-0","p-all-x2":"p-all-x2","m-top":"m-top","m-y":"m-y","m-top-0":"m-top-0","m-y-0":"m-y-0","m-top-x2":"m-top-x2","m-y-x2":"m-y-x2","p-top":"p-top","p-y":"p-y","bd-blue-top":"bd-blue-top","bd-blue-top-0":"bd-blue-top-0","bd-blue-top-1":"bd-blue-top-1","bd-blue-top-2":"bd-blue-top-2","bd-blue-top-3":"bd-blue-top-3","bd-blue-top-4":"bd-blue-top-4","bd-blue-top-5":"bd-blue-top-5","bd-blue-top-6":"bd-blue-top-6","bd-blue-top-7":"bd-blue-top-7","bd-blue-top-8":"bd-blue-top-8","bd-blue-top-9":"bd-blue-top-9","bd-blue-top-10":"bd-blue-top-10","bd-green-top":"bd-green-top","bd-green-top-0":"bd-green-top-0","bd-green-top-1":"bd-green-top-1","bd-green-top-2":"bd-green-top-2","bd-green-top-3":"bd-green-top-3","bd-green-top-4":"bd-green-top-4","bd-green-top-5":"bd-green-top-5","bd-green-top-6":"bd-green-top-6","bd-green-top-7":"bd-green-top-7","bd-green-top-8":"bd-green-top-8","bd-green-top-9":"bd-green-top-9","bd-green-top-10":"bd-green-top-10","bd-orange-top":"bd-orange-top","bd-orange-top-0":"bd-orange-top-0","bd-orange-top-1":"bd-orange-top-1","bd-orange-top-2":"bd-orange-top-2","bd-orange-top-3":"bd-orange-top-3","bd-orange-top-4":"bd-orange-top-4","bd-orange-top-5":"bd-orange-top-5","bd-orange-top-6":"bd-orange-top-6","bd-orange-top-7":"bd-orange-top-7","bd-orange-top-8":"bd-orange-top-8","bd-orange-top-9":"bd-orange-top-9","bd-orange-top-10":"bd-orange-top-10","bd-darkblue-top":"bd-darkblue-top","bd-darkblue-top-0":"bd-darkblue-top-0","bd-darkblue-top-1":"bd-darkblue-top-1","bd-darkblue-top-2":"bd-darkblue-top-2","bd-darkblue-top-3":"bd-darkblue-top-3","bd-darkblue-top-4":"bd-darkblue-top-4","bd-darkblue-top-5":"bd-darkblue-top-5","bd-darkblue-top-6":"bd-darkblue-top-6","bd-darkblue-top-7":"bd-darkblue-top-7","bd-darkblue-top-8":"bd-darkblue-top-8","bd-darkblue-top-9":"bd-darkblue-top-9","bd-darkblue-top-10":"bd-darkblue-top-10","bd-gold-top":"bd-gold-top","bd-gold-top-0":"bd-gold-top-0","bd-gold-top-1":"bd-gold-top-1","bd-gold-top-2":"bd-gold-top-2","bd-gold-top-3":"bd-gold-top-3","bd-gold-top-4":"bd-gold-top-4","bd-gold-top-5":"bd-gold-top-5","bd-gold-top-6":"bd-gold-top-6","bd-gold-top-7":"bd-gold-top-7","bd-gold-top-8":"bd-gold-top-8","bd-gold-top-9":"bd-gold-top-9","bd-gold-top-10":"bd-gold-top-10","bd-black-top":"bd-black-top","bd-black-top-0":"bd-black-top-0","bd-black-top-1":"bd-black-top-1","bd-black-top-2":"bd-black-top-2","bd-black-top-3":"bd-black-top-3","bd-black-top-4":"bd-black-top-4","bd-black-top-5":"bd-black-top-5","bd-black-top-6":"bd-black-top-6","bd-black-top-7":"bd-black-top-7","bd-black-top-8":"bd-black-top-8","bd-black-top-9":"bd-black-top-9","bd-black-top-10":"bd-black-top-10","bd-blacklight-top":"bd-blacklight-top","bd-blacklight-top-0":"bd-blacklight-top-0","bd-blacklight-top-1":"bd-blacklight-top-1","bd-blacklight-top-2":"bd-blacklight-top-2","bd-blacklight-top-3":"bd-blacklight-top-3","bd-blacklight-top-4":"bd-blacklight-top-4","bd-blacklight-top-5":"bd-blacklight-top-5","bd-blacklight-top-6":"bd-blacklight-top-6","bd-blacklight-top-7":"bd-blacklight-top-7","bd-blacklight-top-8":"bd-blacklight-top-8","bd-blacklight-top-9":"bd-blacklight-top-9","bd-blacklight-top-10":"bd-blacklight-top-10","bd-blacklighter-top":"bd-blacklighter-top","bd-blacklighter-top-0":"bd-blacklighter-top-0","bd-blacklighter-top-1":"bd-blacklighter-top-1","bd-blacklighter-top-2":"bd-blacklighter-top-2","bd-blacklighter-top-3":"bd-blacklighter-top-3","bd-blacklighter-top-4":"bd-blacklighter-top-4","bd-blacklighter-top-5":"bd-blacklighter-top-5","bd-blacklighter-top-6":"bd-blacklighter-top-6","bd-blacklighter-top-7":"bd-blacklighter-top-7","bd-blacklighter-top-8":"bd-blacklighter-top-8","bd-blacklighter-top-9":"bd-blacklighter-top-9","bd-blacklighter-top-10":"bd-blacklighter-top-10","bd-greystronger-top":"bd-greystronger-top","bd-greystronger-top-0":"bd-greystronger-top-0","bd-greystronger-top-1":"bd-greystronger-top-1","bd-greystronger-top-2":"bd-greystronger-top-2","bd-greystronger-top-3":"bd-greystronger-top-3","bd-greystronger-top-4":"bd-greystronger-top-4","bd-greystronger-top-5":"bd-greystronger-top-5","bd-greystronger-top-6":"bd-greystronger-top-6","bd-greystronger-top-7":"bd-greystronger-top-7","bd-greystronger-top-8":"bd-greystronger-top-8","bd-greystronger-top-9":"bd-greystronger-top-9","bd-greystronger-top-10":"bd-greystronger-top-10","bd-greystrong-top":"bd-greystrong-top","bd-greystrong-top-0":"bd-greystrong-top-0","bd-greystrong-top-1":"bd-greystrong-top-1","bd-greystrong-top-2":"bd-greystrong-top-2","bd-greystrong-top-3":"bd-greystrong-top-3","bd-greystrong-top-4":"bd-greystrong-top-4","bd-greystrong-top-5":"bd-greystrong-top-5","bd-greystrong-top-6":"bd-greystrong-top-6","bd-greystrong-top-7":"bd-greystrong-top-7","bd-greystrong-top-8":"bd-greystrong-top-8","bd-greystrong-top-9":"bd-greystrong-top-9","bd-greystrong-top-10":"bd-greystrong-top-10","bd-grey-top":"bd-grey-top","bd-grey-top-0":"bd-grey-top-0","bd-grey-top-1":"bd-grey-top-1","bd-grey-top-2":"bd-grey-top-2","bd-grey-top-3":"bd-grey-top-3","bd-grey-top-4":"bd-grey-top-4","bd-grey-top-5":"bd-grey-top-5","bd-grey-top-6":"bd-grey-top-6","bd-grey-top-7":"bd-grey-top-7","bd-grey-top-8":"bd-grey-top-8","bd-grey-top-9":"bd-grey-top-9","bd-grey-top-10":"bd-grey-top-10","bd-greylight-top":"bd-greylight-top","bd-greylight-top-0":"bd-greylight-top-0","bd-greylight-top-1":"bd-greylight-top-1","bd-greylight-top-2":"bd-greylight-top-2","bd-greylight-top-3":"bd-greylight-top-3","bd-greylight-top-4":"bd-greylight-top-4","bd-greylight-top-5":"bd-greylight-top-5","bd-greylight-top-6":"bd-greylight-top-6","bd-greylight-top-7":"bd-greylight-top-7","bd-greylight-top-8":"bd-greylight-top-8","bd-greylight-top-9":"bd-greylight-top-9","bd-greylight-top-10":"bd-greylight-top-10","bd-greylighter-top":"bd-greylighter-top","bd-greylighter-top-0":"bd-greylighter-top-0","bd-greylighter-top-1":"bd-greylighter-top-1","bd-greylighter-top-2":"bd-greylighter-top-2","bd-greylighter-top-3":"bd-greylighter-top-3","bd-greylighter-top-4":"bd-greylighter-top-4","bd-greylighter-top-5":"bd-greylighter-top-5","bd-greylighter-top-6":"bd-greylighter-top-6","bd-greylighter-top-7":"bd-greylighter-top-7","bd-greylighter-top-8":"bd-greylighter-top-8","bd-greylighter-top-9":"bd-greylighter-top-9","bd-greylighter-top-10":"bd-greylighter-top-10","bd-white-top":"bd-white-top","bd-white-top-0":"bd-white-top-0","bd-white-top-1":"bd-white-top-1","bd-white-top-2":"bd-white-top-2","bd-white-top-3":"bd-white-top-3","bd-white-top-4":"bd-white-top-4","bd-white-top-5":"bd-white-top-5","bd-white-top-6":"bd-white-top-6","bd-white-top-7":"bd-white-top-7","bd-white-top-8":"bd-white-top-8","bd-white-top-9":"bd-white-top-9","bd-white-top-10":"bd-white-top-10","bd-none-top":"bd-none-top","bd-none-top-0":"bd-none-top-0","bd-none-top-1":"bd-none-top-1","bd-none-top-2":"bd-none-top-2","bd-none-top-3":"bd-none-top-3","bd-none-top-4":"bd-none-top-4","bd-none-top-5":"bd-none-top-5","bd-none-top-6":"bd-none-top-6","bd-none-top-7":"bd-none-top-7","bd-none-top-8":"bd-none-top-8","bd-none-top-9":"bd-none-top-9","bd-none-top-10":"bd-none-top-10","p-top-0":"p-top-0","p-y-0":"p-y-0","p-top-x2":"p-top-x2","p-y-x2":"p-y-x2","m-right":"m-right","m-x":"m-x","m-right-0":"m-right-0","m-x-0":"m-x-0","m-right-x2":"m-right-x2","m-x-x2":"m-x-x2","p-right":"p-right","p-x":"p-x","bd-blue-right":"bd-blue-right","bd-blue-right-0":"bd-blue-right-0","bd-blue-right-1":"bd-blue-right-1","bd-blue-right-2":"bd-blue-right-2","bd-blue-right-3":"bd-blue-right-3","bd-blue-right-4":"bd-blue-right-4","bd-blue-right-5":"bd-blue-right-5","bd-blue-right-6":"bd-blue-right-6","bd-blue-right-7":"bd-blue-right-7","bd-blue-right-8":"bd-blue-right-8","bd-blue-right-9":"bd-blue-right-9","bd-blue-right-10":"bd-blue-right-10","bd-green-right":"bd-green-right","bd-green-right-0":"bd-green-right-0","bd-green-right-1":"bd-green-right-1","bd-green-right-2":"bd-green-right-2","bd-green-right-3":"bd-green-right-3","bd-green-right-4":"bd-green-right-4","bd-green-right-5":"bd-green-right-5","bd-green-right-6":"bd-green-right-6","bd-green-right-7":"bd-green-right-7","bd-green-right-8":"bd-green-right-8","bd-green-right-9":"bd-green-right-9","bd-green-right-10":"bd-green-right-10","bd-orange-right":"bd-orange-right","bd-orange-right-0":"bd-orange-right-0","bd-orange-right-1":"bd-orange-right-1","bd-orange-right-2":"bd-orange-right-2","bd-orange-right-3":"bd-orange-right-3","bd-orange-right-4":"bd-orange-right-4","bd-orange-right-5":"bd-orange-right-5","bd-orange-right-6":"bd-orange-right-6","bd-orange-right-7":"bd-orange-right-7","bd-orange-right-8":"bd-orange-right-8","bd-orange-right-9":"bd-orange-right-9","bd-orange-right-10":"bd-orange-right-10","bd-darkblue-right":"bd-darkblue-right","bd-darkblue-right-0":"bd-darkblue-right-0","bd-darkblue-right-1":"bd-darkblue-right-1","bd-darkblue-right-2":"bd-darkblue-right-2","bd-darkblue-right-3":"bd-darkblue-right-3","bd-darkblue-right-4":"bd-darkblue-right-4","bd-darkblue-right-5":"bd-darkblue-right-5","bd-darkblue-right-6":"bd-darkblue-right-6","bd-darkblue-right-7":"bd-darkblue-right-7","bd-darkblue-right-8":"bd-darkblue-right-8","bd-darkblue-right-9":"bd-darkblue-right-9","bd-darkblue-right-10":"bd-darkblue-right-10","bd-gold-right":"bd-gold-right","bd-gold-right-0":"bd-gold-right-0","bd-gold-right-1":"bd-gold-right-1","bd-gold-right-2":"bd-gold-right-2","bd-gold-right-3":"bd-gold-right-3","bd-gold-right-4":"bd-gold-right-4","bd-gold-right-5":"bd-gold-right-5","bd-gold-right-6":"bd-gold-right-6","bd-gold-right-7":"bd-gold-right-7","bd-gold-right-8":"bd-gold-right-8","bd-gold-right-9":"bd-gold-right-9","bd-gold-right-10":"bd-gold-right-10","bd-black-right":"bd-black-right","bd-black-right-0":"bd-black-right-0","bd-black-right-1":"bd-black-right-1","bd-black-right-2":"bd-black-right-2","bd-black-right-3":"bd-black-right-3","bd-black-right-4":"bd-black-right-4","bd-black-right-5":"bd-black-right-5","bd-black-right-6":"bd-black-right-6","bd-black-right-7":"bd-black-right-7","bd-black-right-8":"bd-black-right-8","bd-black-right-9":"bd-black-right-9","bd-black-right-10":"bd-black-right-10","bd-blacklight-right":"bd-blacklight-right","bd-blacklight-right-0":"bd-blacklight-right-0","bd-blacklight-right-1":"bd-blacklight-right-1","bd-blacklight-right-2":"bd-blacklight-right-2","bd-blacklight-right-3":"bd-blacklight-right-3","bd-blacklight-right-4":"bd-blacklight-right-4","bd-blacklight-right-5":"bd-blacklight-right-5","bd-blacklight-right-6":"bd-blacklight-right-6","bd-blacklight-right-7":"bd-blacklight-right-7","bd-blacklight-right-8":"bd-blacklight-right-8","bd-blacklight-right-9":"bd-blacklight-right-9","bd-blacklight-right-10":"bd-blacklight-right-10","bd-blacklighter-right":"bd-blacklighter-right","bd-blacklighter-right-0":"bd-blacklighter-right-0","bd-blacklighter-right-1":"bd-blacklighter-right-1","bd-blacklighter-right-2":"bd-blacklighter-right-2","bd-blacklighter-right-3":"bd-blacklighter-right-3","bd-blacklighter-right-4":"bd-blacklighter-right-4","bd-blacklighter-right-5":"bd-blacklighter-right-5","bd-blacklighter-right-6":"bd-blacklighter-right-6","bd-blacklighter-right-7":"bd-blacklighter-right-7","bd-blacklighter-right-8":"bd-blacklighter-right-8","bd-blacklighter-right-9":"bd-blacklighter-right-9","bd-blacklighter-right-10":"bd-blacklighter-right-10","bd-greystronger-right":"bd-greystronger-right","bd-greystronger-right-0":"bd-greystronger-right-0","bd-greystronger-right-1":"bd-greystronger-right-1","bd-greystronger-right-2":"bd-greystronger-right-2","bd-greystronger-right-3":"bd-greystronger-right-3","bd-greystronger-right-4":"bd-greystronger-right-4","bd-greystronger-right-5":"bd-greystronger-right-5","bd-greystronger-right-6":"bd-greystronger-right-6","bd-greystronger-right-7":"bd-greystronger-right-7","bd-greystronger-right-8":"bd-greystronger-right-8","bd-greystronger-right-9":"bd-greystronger-right-9","bd-greystronger-right-10":"bd-greystronger-right-10","bd-greystrong-right":"bd-greystrong-right","bd-greystrong-right-0":"bd-greystrong-right-0","bd-greystrong-right-1":"bd-greystrong-right-1","bd-greystrong-right-2":"bd-greystrong-right-2","bd-greystrong-right-3":"bd-greystrong-right-3","bd-greystrong-right-4":"bd-greystrong-right-4","bd-greystrong-right-5":"bd-greystrong-right-5","bd-greystrong-right-6":"bd-greystrong-right-6","bd-greystrong-right-7":"bd-greystrong-right-7","bd-greystrong-right-8":"bd-greystrong-right-8","bd-greystrong-right-9":"bd-greystrong-right-9","bd-greystrong-right-10":"bd-greystrong-right-10","bd-grey-right":"bd-grey-right","bd-grey-right-0":"bd-grey-right-0","bd-grey-right-1":"bd-grey-right-1","bd-grey-right-2":"bd-grey-right-2","bd-grey-right-3":"bd-grey-right-3","bd-grey-right-4":"bd-grey-right-4","bd-grey-right-5":"bd-grey-right-5","bd-grey-right-6":"bd-grey-right-6","bd-grey-right-7":"bd-grey-right-7","bd-grey-right-8":"bd-grey-right-8","bd-grey-right-9":"bd-grey-right-9","bd-grey-right-10":"bd-grey-right-10","bd-greylight-right":"bd-greylight-right","bd-greylight-right-0":"bd-greylight-right-0","bd-greylight-right-1":"bd-greylight-right-1","bd-greylight-right-2":"bd-greylight-right-2","bd-greylight-right-3":"bd-greylight-right-3","bd-greylight-right-4":"bd-greylight-right-4","bd-greylight-right-5":"bd-greylight-right-5","bd-greylight-right-6":"bd-greylight-right-6","bd-greylight-right-7":"bd-greylight-right-7","bd-greylight-right-8":"bd-greylight-right-8","bd-greylight-right-9":"bd-greylight-right-9","bd-greylight-right-10":"bd-greylight-right-10","bd-greylighter-right":"bd-greylighter-right","bd-greylighter-right-0":"bd-greylighter-right-0","bd-greylighter-right-1":"bd-greylighter-right-1","bd-greylighter-right-2":"bd-greylighter-right-2","bd-greylighter-right-3":"bd-greylighter-right-3","bd-greylighter-right-4":"bd-greylighter-right-4","bd-greylighter-right-5":"bd-greylighter-right-5","bd-greylighter-right-6":"bd-greylighter-right-6","bd-greylighter-right-7":"bd-greylighter-right-7","bd-greylighter-right-8":"bd-greylighter-right-8","bd-greylighter-right-9":"bd-greylighter-right-9","bd-greylighter-right-10":"bd-greylighter-right-10","bd-white-right":"bd-white-right","bd-white-right-0":"bd-white-right-0","bd-white-right-1":"bd-white-right-1","bd-white-right-2":"bd-white-right-2","bd-white-right-3":"bd-white-right-3","bd-white-right-4":"bd-white-right-4","bd-white-right-5":"bd-white-right-5","bd-white-right-6":"bd-white-right-6","bd-white-right-7":"bd-white-right-7","bd-white-right-8":"bd-white-right-8","bd-white-right-9":"bd-white-right-9","bd-white-right-10":"bd-white-right-10","bd-none-right":"bd-none-right","bd-none-right-0":"bd-none-right-0","bd-none-right-1":"bd-none-right-1","bd-none-right-2":"bd-none-right-2","bd-none-right-3":"bd-none-right-3","bd-none-right-4":"bd-none-right-4","bd-none-right-5":"bd-none-right-5","bd-none-right-6":"bd-none-right-6","bd-none-right-7":"bd-none-right-7","bd-none-right-8":"bd-none-right-8","bd-none-right-9":"bd-none-right-9","bd-none-right-10":"bd-none-right-10","p-right-0":"p-right-0","p-x-0":"p-x-0","p-right-x2":"p-right-x2","p-x-x2":"p-x-x2","m-bottom":"m-bottom","m-bottom-0":"m-bottom-0","m-bottom-x2":"m-bottom-x2","p-bottom":"p-bottom","bd-blue-bottom":"bd-blue-bottom","bd-blue-bottom-0":"bd-blue-bottom-0","bd-blue-bottom-1":"bd-blue-bottom-1","bd-blue-bottom-2":"bd-blue-bottom-2","bd-blue-bottom-3":"bd-blue-bottom-3","bd-blue-bottom-4":"bd-blue-bottom-4","bd-blue-bottom-5":"bd-blue-bottom-5","bd-blue-bottom-6":"bd-blue-bottom-6","bd-blue-bottom-7":"bd-blue-bottom-7","bd-blue-bottom-8":"bd-blue-bottom-8","bd-blue-bottom-9":"bd-blue-bottom-9","bd-blue-bottom-10":"bd-blue-bottom-10","bd-green-bottom":"bd-green-bottom","bd-green-bottom-0":"bd-green-bottom-0","bd-green-bottom-1":"bd-green-bottom-1","bd-green-bottom-2":"bd-green-bottom-2","bd-green-bottom-3":"bd-green-bottom-3","bd-green-bottom-4":"bd-green-bottom-4","bd-green-bottom-5":"bd-green-bottom-5","bd-green-bottom-6":"bd-green-bottom-6","bd-green-bottom-7":"bd-green-bottom-7","bd-green-bottom-8":"bd-green-bottom-8","bd-green-bottom-9":"bd-green-bottom-9","bd-green-bottom-10":"bd-green-bottom-10","bd-orange-bottom":"bd-orange-bottom","bd-orange-bottom-0":"bd-orange-bottom-0","bd-orange-bottom-1":"bd-orange-bottom-1","bd-orange-bottom-2":"bd-orange-bottom-2","bd-orange-bottom-3":"bd-orange-bottom-3","bd-orange-bottom-4":"bd-orange-bottom-4","bd-orange-bottom-5":"bd-orange-bottom-5","bd-orange-bottom-6":"bd-orange-bottom-6","bd-orange-bottom-7":"bd-orange-bottom-7","bd-orange-bottom-8":"bd-orange-bottom-8","bd-orange-bottom-9":"bd-orange-bottom-9","bd-orange-bottom-10":"bd-orange-bottom-10","bd-darkblue-bottom":"bd-darkblue-bottom","bd-darkblue-bottom-0":"bd-darkblue-bottom-0","bd-darkblue-bottom-1":"bd-darkblue-bottom-1","bd-darkblue-bottom-2":"bd-darkblue-bottom-2","bd-darkblue-bottom-3":"bd-darkblue-bottom-3","bd-darkblue-bottom-4":"bd-darkblue-bottom-4","bd-darkblue-bottom-5":"bd-darkblue-bottom-5","bd-darkblue-bottom-6":"bd-darkblue-bottom-6","bd-darkblue-bottom-7":"bd-darkblue-bottom-7","bd-darkblue-bottom-8":"bd-darkblue-bottom-8","bd-darkblue-bottom-9":"bd-darkblue-bottom-9","bd-darkblue-bottom-10":"bd-darkblue-bottom-10","bd-gold-bottom":"bd-gold-bottom","bd-gold-bottom-0":"bd-gold-bottom-0","bd-gold-bottom-1":"bd-gold-bottom-1","bd-gold-bottom-2":"bd-gold-bottom-2","bd-gold-bottom-3":"bd-gold-bottom-3","bd-gold-bottom-4":"bd-gold-bottom-4","bd-gold-bottom-5":"bd-gold-bottom-5","bd-gold-bottom-6":"bd-gold-bottom-6","bd-gold-bottom-7":"bd-gold-bottom-7","bd-gold-bottom-8":"bd-gold-bottom-8","bd-gold-bottom-9":"bd-gold-bottom-9","bd-gold-bottom-10":"bd-gold-bottom-10","bd-black-bottom":"bd-black-bottom","bd-black-bottom-0":"bd-black-bottom-0","bd-black-bottom-1":"bd-black-bottom-1","bd-black-bottom-2":"bd-black-bottom-2","bd-black-bottom-3":"bd-black-bottom-3","bd-black-bottom-4":"bd-black-bottom-4","bd-black-bottom-5":"bd-black-bottom-5","bd-black-bottom-6":"bd-black-bottom-6","bd-black-bottom-7":"bd-black-bottom-7","bd-black-bottom-8":"bd-black-bottom-8","bd-black-bottom-9":"bd-black-bottom-9","bd-black-bottom-10":"bd-black-bottom-10","bd-blacklight-bottom":"bd-blacklight-bottom","bd-blacklight-bottom-0":"bd-blacklight-bottom-0","bd-blacklight-bottom-1":"bd-blacklight-bottom-1","bd-blacklight-bottom-2":"bd-blacklight-bottom-2","bd-blacklight-bottom-3":"bd-blacklight-bottom-3","bd-blacklight-bottom-4":"bd-blacklight-bottom-4","bd-blacklight-bottom-5":"bd-blacklight-bottom-5","bd-blacklight-bottom-6":"bd-blacklight-bottom-6","bd-blacklight-bottom-7":"bd-blacklight-bottom-7","bd-blacklight-bottom-8":"bd-blacklight-bottom-8","bd-blacklight-bottom-9":"bd-blacklight-bottom-9","bd-blacklight-bottom-10":"bd-blacklight-bottom-10","bd-blacklighter-bottom":"bd-blacklighter-bottom","bd-blacklighter-bottom-0":"bd-blacklighter-bottom-0","bd-blacklighter-bottom-1":"bd-blacklighter-bottom-1","bd-blacklighter-bottom-2":"bd-blacklighter-bottom-2","bd-blacklighter-bottom-3":"bd-blacklighter-bottom-3","bd-blacklighter-bottom-4":"bd-blacklighter-bottom-4","bd-blacklighter-bottom-5":"bd-blacklighter-bottom-5","bd-blacklighter-bottom-6":"bd-blacklighter-bottom-6","bd-blacklighter-bottom-7":"bd-blacklighter-bottom-7","bd-blacklighter-bottom-8":"bd-blacklighter-bottom-8","bd-blacklighter-bottom-9":"bd-blacklighter-bottom-9","bd-blacklighter-bottom-10":"bd-blacklighter-bottom-10","bd-greystronger-bottom":"bd-greystronger-bottom","bd-greystronger-bottom-0":"bd-greystronger-bottom-0","bd-greystronger-bottom-1":"bd-greystronger-bottom-1","bd-greystronger-bottom-2":"bd-greystronger-bottom-2","bd-greystronger-bottom-3":"bd-greystronger-bottom-3","bd-greystronger-bottom-4":"bd-greystronger-bottom-4","bd-greystronger-bottom-5":"bd-greystronger-bottom-5","bd-greystronger-bottom-6":"bd-greystronger-bottom-6","bd-greystronger-bottom-7":"bd-greystronger-bottom-7","bd-greystronger-bottom-8":"bd-greystronger-bottom-8","bd-greystronger-bottom-9":"bd-greystronger-bottom-9","bd-greystronger-bottom-10":"bd-greystronger-bottom-10","bd-greystrong-bottom":"bd-greystrong-bottom","bd-greystrong-bottom-0":"bd-greystrong-bottom-0","bd-greystrong-bottom-1":"bd-greystrong-bottom-1","bd-greystrong-bottom-2":"bd-greystrong-bottom-2","bd-greystrong-bottom-3":"bd-greystrong-bottom-3","bd-greystrong-bottom-4":"bd-greystrong-bottom-4","bd-greystrong-bottom-5":"bd-greystrong-bottom-5","bd-greystrong-bottom-6":"bd-greystrong-bottom-6","bd-greystrong-bottom-7":"bd-greystrong-bottom-7","bd-greystrong-bottom-8":"bd-greystrong-bottom-8","bd-greystrong-bottom-9":"bd-greystrong-bottom-9","bd-greystrong-bottom-10":"bd-greystrong-bottom-10","bd-grey-bottom":"bd-grey-bottom","bd-grey-bottom-0":"bd-grey-bottom-0","bd-grey-bottom-1":"bd-grey-bottom-1","bd-grey-bottom-2":"bd-grey-bottom-2","bd-grey-bottom-3":"bd-grey-bottom-3","bd-grey-bottom-4":"bd-grey-bottom-4","bd-grey-bottom-5":"bd-grey-bottom-5","bd-grey-bottom-6":"bd-grey-bottom-6","bd-grey-bottom-7":"bd-grey-bottom-7","bd-grey-bottom-8":"bd-grey-bottom-8","bd-grey-bottom-9":"bd-grey-bottom-9","bd-grey-bottom-10":"bd-grey-bottom-10","bd-greylight-bottom":"bd-greylight-bottom","bd-greylight-bottom-0":"bd-greylight-bottom-0","bd-greylight-bottom-1":"bd-greylight-bottom-1","bd-greylight-bottom-2":"bd-greylight-bottom-2","bd-greylight-bottom-3":"bd-greylight-bottom-3","bd-greylight-bottom-4":"bd-greylight-bottom-4","bd-greylight-bottom-5":"bd-greylight-bottom-5","bd-greylight-bottom-6":"bd-greylight-bottom-6","bd-greylight-bottom-7":"bd-greylight-bottom-7","bd-greylight-bottom-8":"bd-greylight-bottom-8","bd-greylight-bottom-9":"bd-greylight-bottom-9","bd-greylight-bottom-10":"bd-greylight-bottom-10","bd-greylighter-bottom":"bd-greylighter-bottom","bd-greylighter-bottom-0":"bd-greylighter-bottom-0","bd-greylighter-bottom-1":"bd-greylighter-bottom-1","bd-greylighter-bottom-2":"bd-greylighter-bottom-2","bd-greylighter-bottom-3":"bd-greylighter-bottom-3","bd-greylighter-bottom-4":"bd-greylighter-bottom-4","bd-greylighter-bottom-5":"bd-greylighter-bottom-5","bd-greylighter-bottom-6":"bd-greylighter-bottom-6","bd-greylighter-bottom-7":"bd-greylighter-bottom-7","bd-greylighter-bottom-8":"bd-greylighter-bottom-8","bd-greylighter-bottom-9":"bd-greylighter-bottom-9","bd-greylighter-bottom-10":"bd-greylighter-bottom-10","bd-white-bottom":"bd-white-bottom","bd-white-bottom-0":"bd-white-bottom-0","bd-white-bottom-1":"bd-white-bottom-1","bd-white-bottom-2":"bd-white-bottom-2","bd-white-bottom-3":"bd-white-bottom-3","bd-white-bottom-4":"bd-white-bottom-4","bd-white-bottom-5":"bd-white-bottom-5","bd-white-bottom-6":"bd-white-bottom-6","bd-white-bottom-7":"bd-white-bottom-7","bd-white-bottom-8":"bd-white-bottom-8","bd-white-bottom-9":"bd-white-bottom-9","bd-white-bottom-10":"bd-white-bottom-10","bd-none-bottom":"bd-none-bottom","bd-none-bottom-0":"bd-none-bottom-0","bd-none-bottom-1":"bd-none-bottom-1","bd-none-bottom-2":"bd-none-bottom-2","bd-none-bottom-3":"bd-none-bottom-3","bd-none-bottom-4":"bd-none-bottom-4","bd-none-bottom-5":"bd-none-bottom-5","bd-none-bottom-6":"bd-none-bottom-6","bd-none-bottom-7":"bd-none-bottom-7","bd-none-bottom-8":"bd-none-bottom-8","bd-none-bottom-9":"bd-none-bottom-9","bd-none-bottom-10":"bd-none-bottom-10","p-bottom-0":"p-bottom-0","p-bottom-x2":"p-bottom-x2","m-left":"m-left","m-left-0":"m-left-0","m-left-x2":"m-left-x2","p-left":"p-left","bd-blue-left":"bd-blue-left","bd-blue-left-0":"bd-blue-left-0","bd-blue-left-1":"bd-blue-left-1","bd-blue-left-2":"bd-blue-left-2","bd-blue-left-3":"bd-blue-left-3","bd-blue-left-4":"bd-blue-left-4","bd-blue-left-5":"bd-blue-left-5","bd-blue-left-6":"bd-blue-left-6","bd-blue-left-7":"bd-blue-left-7","bd-blue-left-8":"bd-blue-left-8","bd-blue-left-9":"bd-blue-left-9","bd-blue-left-10":"bd-blue-left-10","bd-green-left":"bd-green-left","bd-green-left-0":"bd-green-left-0","bd-green-left-1":"bd-green-left-1","bd-green-left-2":"bd-green-left-2","bd-green-left-3":"bd-green-left-3","bd-green-left-4":"bd-green-left-4","bd-green-left-5":"bd-green-left-5","bd-green-left-6":"bd-green-left-6","bd-green-left-7":"bd-green-left-7","bd-green-left-8":"bd-green-left-8","bd-green-left-9":"bd-green-left-9","bd-green-left-10":"bd-green-left-10","bd-orange-left":"bd-orange-left","bd-orange-left-0":"bd-orange-left-0","bd-orange-left-1":"bd-orange-left-1","bd-orange-left-2":"bd-orange-left-2","bd-orange-left-3":"bd-orange-left-3","bd-orange-left-4":"bd-orange-left-4","bd-orange-left-5":"bd-orange-left-5","bd-orange-left-6":"bd-orange-left-6","bd-orange-left-7":"bd-orange-left-7","bd-orange-left-8":"bd-orange-left-8","bd-orange-left-9":"bd-orange-left-9","bd-orange-left-10":"bd-orange-left-10","bd-darkblue-left":"bd-darkblue-left","bd-darkblue-left-0":"bd-darkblue-left-0","bd-darkblue-left-1":"bd-darkblue-left-1","bd-darkblue-left-2":"bd-darkblue-left-2","bd-darkblue-left-3":"bd-darkblue-left-3","bd-darkblue-left-4":"bd-darkblue-left-4","bd-darkblue-left-5":"bd-darkblue-left-5","bd-darkblue-left-6":"bd-darkblue-left-6","bd-darkblue-left-7":"bd-darkblue-left-7","bd-darkblue-left-8":"bd-darkblue-left-8","bd-darkblue-left-9":"bd-darkblue-left-9","bd-darkblue-left-10":"bd-darkblue-left-10","bd-gold-left":"bd-gold-left","bd-gold-left-0":"bd-gold-left-0","bd-gold-left-1":"bd-gold-left-1","bd-gold-left-2":"bd-gold-left-2","bd-gold-left-3":"bd-gold-left-3","bd-gold-left-4":"bd-gold-left-4","bd-gold-left-5":"bd-gold-left-5","bd-gold-left-6":"bd-gold-left-6","bd-gold-left-7":"bd-gold-left-7","bd-gold-left-8":"bd-gold-left-8","bd-gold-left-9":"bd-gold-left-9","bd-gold-left-10":"bd-gold-left-10","bd-black-left":"bd-black-left","bd-black-left-0":"bd-black-left-0","bd-black-left-1":"bd-black-left-1","bd-black-left-2":"bd-black-left-2","bd-black-left-3":"bd-black-left-3","bd-black-left-4":"bd-black-left-4","bd-black-left-5":"bd-black-left-5","bd-black-left-6":"bd-black-left-6","bd-black-left-7":"bd-black-left-7","bd-black-left-8":"bd-black-left-8","bd-black-left-9":"bd-black-left-9","bd-black-left-10":"bd-black-left-10","bd-blacklight-left":"bd-blacklight-left","bd-blacklight-left-0":"bd-blacklight-left-0","bd-blacklight-left-1":"bd-blacklight-left-1","bd-blacklight-left-2":"bd-blacklight-left-2","bd-blacklight-left-3":"bd-blacklight-left-3","bd-blacklight-left-4":"bd-blacklight-left-4","bd-blacklight-left-5":"bd-blacklight-left-5","bd-blacklight-left-6":"bd-blacklight-left-6","bd-blacklight-left-7":"bd-blacklight-left-7","bd-blacklight-left-8":"bd-blacklight-left-8","bd-blacklight-left-9":"bd-blacklight-left-9","bd-blacklight-left-10":"bd-blacklight-left-10","bd-blacklighter-left":"bd-blacklighter-left","bd-blacklighter-left-0":"bd-blacklighter-left-0","bd-blacklighter-left-1":"bd-blacklighter-left-1","bd-blacklighter-left-2":"bd-blacklighter-left-2","bd-blacklighter-left-3":"bd-blacklighter-left-3","bd-blacklighter-left-4":"bd-blacklighter-left-4","bd-blacklighter-left-5":"bd-blacklighter-left-5","bd-blacklighter-left-6":"bd-blacklighter-left-6","bd-blacklighter-left-7":"bd-blacklighter-left-7","bd-blacklighter-left-8":"bd-blacklighter-left-8","bd-blacklighter-left-9":"bd-blacklighter-left-9","bd-blacklighter-left-10":"bd-blacklighter-left-10","bd-greystronger-left":"bd-greystronger-left","bd-greystronger-left-0":"bd-greystronger-left-0","bd-greystronger-left-1":"bd-greystronger-left-1","bd-greystronger-left-2":"bd-greystronger-left-2","bd-greystronger-left-3":"bd-greystronger-left-3","bd-greystronger-left-4":"bd-greystronger-left-4","bd-greystronger-left-5":"bd-greystronger-left-5","bd-greystronger-left-6":"bd-greystronger-left-6","bd-greystronger-left-7":"bd-greystronger-left-7","bd-greystronger-left-8":"bd-greystronger-left-8","bd-greystronger-left-9":"bd-greystronger-left-9","bd-greystronger-left-10":"bd-greystronger-left-10","bd-greystrong-left":"bd-greystrong-left","bd-greystrong-left-0":"bd-greystrong-left-0","bd-greystrong-left-1":"bd-greystrong-left-1","bd-greystrong-left-2":"bd-greystrong-left-2","bd-greystrong-left-3":"bd-greystrong-left-3","bd-greystrong-left-4":"bd-greystrong-left-4","bd-greystrong-left-5":"bd-greystrong-left-5","bd-greystrong-left-6":"bd-greystrong-left-6","bd-greystrong-left-7":"bd-greystrong-left-7","bd-greystrong-left-8":"bd-greystrong-left-8","bd-greystrong-left-9":"bd-greystrong-left-9","bd-greystrong-left-10":"bd-greystrong-left-10","bd-grey-left":"bd-grey-left","bd-grey-left-0":"bd-grey-left-0","bd-grey-left-1":"bd-grey-left-1","bd-grey-left-2":"bd-grey-left-2","bd-grey-left-3":"bd-grey-left-3","bd-grey-left-4":"bd-grey-left-4","bd-grey-left-5":"bd-grey-left-5","bd-grey-left-6":"bd-grey-left-6","bd-grey-left-7":"bd-grey-left-7","bd-grey-left-8":"bd-grey-left-8","bd-grey-left-9":"bd-grey-left-9","bd-grey-left-10":"bd-grey-left-10","bd-greylight-left":"bd-greylight-left","bd-greylight-left-0":"bd-greylight-left-0","bd-greylight-left-1":"bd-greylight-left-1","bd-greylight-left-2":"bd-greylight-left-2","bd-greylight-left-3":"bd-greylight-left-3","bd-greylight-left-4":"bd-greylight-left-4","bd-greylight-left-5":"bd-greylight-left-5","bd-greylight-left-6":"bd-greylight-left-6","bd-greylight-left-7":"bd-greylight-left-7","bd-greylight-left-8":"bd-greylight-left-8","bd-greylight-left-9":"bd-greylight-left-9","bd-greylight-left-10":"bd-greylight-left-10","bd-greylighter-left":"bd-greylighter-left","bd-greylighter-left-0":"bd-greylighter-left-0","bd-greylighter-left-1":"bd-greylighter-left-1","bd-greylighter-left-2":"bd-greylighter-left-2","bd-greylighter-left-3":"bd-greylighter-left-3","bd-greylighter-left-4":"bd-greylighter-left-4","bd-greylighter-left-5":"bd-greylighter-left-5","bd-greylighter-left-6":"bd-greylighter-left-6","bd-greylighter-left-7":"bd-greylighter-left-7","bd-greylighter-left-8":"bd-greylighter-left-8","bd-greylighter-left-9":"bd-greylighter-left-9","bd-greylighter-left-10":"bd-greylighter-left-10","bd-white-left":"bd-white-left","bd-white-left-0":"bd-white-left-0","bd-white-left-1":"bd-white-left-1","bd-white-left-2":"bd-white-left-2","bd-white-left-3":"bd-white-left-3","bd-white-left-4":"bd-white-left-4","bd-white-left-5":"bd-white-left-5","bd-white-left-6":"bd-white-left-6","bd-white-left-7":"bd-white-left-7","bd-white-left-8":"bd-white-left-8","bd-white-left-9":"bd-white-left-9","bd-white-left-10":"bd-white-left-10","bd-none-left":"bd-none-left","bd-none-left-0":"bd-none-left-0","bd-none-left-1":"bd-none-left-1","bd-none-left-2":"bd-none-left-2","bd-none-left-3":"bd-none-left-3","bd-none-left-4":"bd-none-left-4","bd-none-left-5":"bd-none-left-5","bd-none-left-6":"bd-none-left-6","bd-none-left-7":"bd-none-left-7","bd-none-left-8":"bd-none-left-8","bd-none-left-9":"bd-none-left-9","bd-none-left-10":"bd-none-left-10","p-left-0":"p-left-0","p-left-x2":"p-left-x2","h0":"h0","sep-bottom":"sep-bottom","sep-top":"sep-top","sep-right":"sep-right","sep-left":"sep-left","h1":"h1","h2":"h2","h3":"h3","h4":"h4","h5":"h5","h6":"h6","sep":"sep","reset":"reset","bg-blue":"bg-blue","bg-blue-o-10":"bg-blue-o-10","bg-blue-o-20":"bg-blue-o-20","bg-blue-o-30":"bg-blue-o-30","bg-blue-o-40":"bg-blue-o-40","bg-blue-o-50":"bg-blue-o-50","bg-blue-o-60":"bg-blue-o-60","bg-blue-o-70":"bg-blue-o-70","bg-blue-o-80":"bg-blue-o-80","bg-blue-o-90":"bg-blue-o-90","bg-blue-o-100":"bg-blue-o-100","text":"text","email":"email","password":"password","tel":"tel","url":"url","date":"date","range":"range","number":"number","focus":"focus","active":"active","checkbox":"checkbox","radio":"radio","bg-green":"bg-green","bg-green-o-10":"bg-green-o-10","bg-green-o-20":"bg-green-o-20","bg-green-o-30":"bg-green-o-30","bg-green-o-40":"bg-green-o-40","bg-green-o-50":"bg-green-o-50","bg-green-o-60":"bg-green-o-60","bg-green-o-70":"bg-green-o-70","bg-green-o-80":"bg-green-o-80","bg-green-o-90":"bg-green-o-90","bg-green-o-100":"bg-green-o-100","bg-orange":"bg-orange","bg-orange-o-10":"bg-orange-o-10","bg-orange-o-20":"bg-orange-o-20","bg-orange-o-30":"bg-orange-o-30","bg-orange-o-40":"bg-orange-o-40","bg-orange-o-50":"bg-orange-o-50","bg-orange-o-60":"bg-orange-o-60","bg-orange-o-70":"bg-orange-o-70","bg-orange-o-80":"bg-orange-o-80","bg-orange-o-90":"bg-orange-o-90","bg-orange-o-100":"bg-orange-o-100","bg-darkblue":"bg-darkblue","bg-darkblue-o-10":"bg-darkblue-o-10","bg-darkblue-o-20":"bg-darkblue-o-20","bg-darkblue-o-30":"bg-darkblue-o-30","bg-darkblue-o-40":"bg-darkblue-o-40","bg-darkblue-o-50":"bg-darkblue-o-50","bg-darkblue-o-60":"bg-darkblue-o-60","bg-darkblue-o-70":"bg-darkblue-o-70","bg-darkblue-o-80":"bg-darkblue-o-80","bg-darkblue-o-90":"bg-darkblue-o-90","bg-darkblue-o-100":"bg-darkblue-o-100","bg-gold":"bg-gold","bg-gold-o-10":"bg-gold-o-10","bg-gold-o-20":"bg-gold-o-20","bg-gold-o-30":"bg-gold-o-30","bg-gold-o-40":"bg-gold-o-40","bg-gold-o-50":"bg-gold-o-50","bg-gold-o-60":"bg-gold-o-60","bg-gold-o-70":"bg-gold-o-70","bg-gold-o-80":"bg-gold-o-80","bg-gold-o-90":"bg-gold-o-90","bg-gold-o-100":"bg-gold-o-100","bg-black":"bg-black","bg-black-o-10":"bg-black-o-10","bg-black-o-20":"bg-black-o-20","bg-black-o-30":"bg-black-o-30","bg-black-o-40":"bg-black-o-40","bg-black-o-50":"bg-black-o-50","bg-black-o-60":"bg-black-o-60","bg-black-o-70":"bg-black-o-70","bg-black-o-80":"bg-black-o-80","bg-black-o-90":"bg-black-o-90","bg-black-o-100":"bg-black-o-100","bg-blacklight":"bg-blacklight","bg-blacklight-o-10":"bg-blacklight-o-10","bg-blacklight-o-20":"bg-blacklight-o-20","bg-blacklight-o-30":"bg-blacklight-o-30","bg-blacklight-o-40":"bg-blacklight-o-40","bg-blacklight-o-50":"bg-blacklight-o-50","bg-blacklight-o-60":"bg-blacklight-o-60","bg-blacklight-o-70":"bg-blacklight-o-70","bg-blacklight-o-80":"bg-blacklight-o-80","bg-blacklight-o-90":"bg-blacklight-o-90","bg-blacklight-o-100":"bg-blacklight-o-100","bg-blacklighter":"bg-blacklighter","bg-blacklighter-o-10":"bg-blacklighter-o-10","bg-blacklighter-o-20":"bg-blacklighter-o-20","bg-blacklighter-o-30":"bg-blacklighter-o-30","bg-blacklighter-o-40":"bg-blacklighter-o-40","bg-blacklighter-o-50":"bg-blacklighter-o-50","bg-blacklighter-o-60":"bg-blacklighter-o-60","bg-blacklighter-o-70":"bg-blacklighter-o-70","bg-blacklighter-o-80":"bg-blacklighter-o-80","bg-blacklighter-o-90":"bg-blacklighter-o-90","bg-blacklighter-o-100":"bg-blacklighter-o-100","bg-greystronger":"bg-greystronger","bg-greystronger-o-10":"bg-greystronger-o-10","bg-greystronger-o-20":"bg-greystronger-o-20","bg-greystronger-o-30":"bg-greystronger-o-30","bg-greystronger-o-40":"bg-greystronger-o-40","bg-greystronger-o-50":"bg-greystronger-o-50","bg-greystronger-o-60":"bg-greystronger-o-60","bg-greystronger-o-70":"bg-greystronger-o-70","bg-greystronger-o-80":"bg-greystronger-o-80","bg-greystronger-o-90":"bg-greystronger-o-90","bg-greystronger-o-100":"bg-greystronger-o-100","bg-greystrong":"bg-greystrong","bg-greystrong-o-10":"bg-greystrong-o-10","bg-greystrong-o-20":"bg-greystrong-o-20","bg-greystrong-o-30":"bg-greystrong-o-30","bg-greystrong-o-40":"bg-greystrong-o-40","bg-greystrong-o-50":"bg-greystrong-o-50","bg-greystrong-o-60":"bg-greystrong-o-60","bg-greystrong-o-70":"bg-greystrong-o-70","bg-greystrong-o-80":"bg-greystrong-o-80","bg-greystrong-o-90":"bg-greystrong-o-90","bg-greystrong-o-100":"bg-greystrong-o-100","bg-grey":"bg-grey","bg-grey-o-10":"bg-grey-o-10","bg-grey-o-20":"bg-grey-o-20","bg-grey-o-30":"bg-grey-o-30","bg-grey-o-40":"bg-grey-o-40","bg-grey-o-50":"bg-grey-o-50","bg-grey-o-60":"bg-grey-o-60","bg-grey-o-70":"bg-grey-o-70","bg-grey-o-80":"bg-grey-o-80","bg-grey-o-90":"bg-grey-o-90","bg-grey-o-100":"bg-grey-o-100","bg-greylight":"bg-greylight","bg-greylight-o-10":"bg-greylight-o-10","bg-greylight-o-20":"bg-greylight-o-20","bg-greylight-o-30":"bg-greylight-o-30","bg-greylight-o-40":"bg-greylight-o-40","bg-greylight-o-50":"bg-greylight-o-50","bg-greylight-o-60":"bg-greylight-o-60","bg-greylight-o-70":"bg-greylight-o-70","bg-greylight-o-80":"bg-greylight-o-80","bg-greylight-o-90":"bg-greylight-o-90","bg-greylight-o-100":"bg-greylight-o-100","bg-greylighter":"bg-greylighter","bg-greylighter-o-10":"bg-greylighter-o-10","bg-greylighter-o-20":"bg-greylighter-o-20","bg-greylighter-o-30":"bg-greylighter-o-30","bg-greylighter-o-40":"bg-greylighter-o-40","bg-greylighter-o-50":"bg-greylighter-o-50","bg-greylighter-o-60":"bg-greylighter-o-60","bg-greylighter-o-70":"bg-greylighter-o-70","bg-greylighter-o-80":"bg-greylighter-o-80","bg-greylighter-o-90":"bg-greylighter-o-90","bg-greylighter-o-100":"bg-greylighter-o-100","bg-white":"bg-white","bg-white-o-10":"bg-white-o-10","bg-white-o-20":"bg-white-o-20","bg-white-o-30":"bg-white-o-30","bg-white-o-40":"bg-white-o-40","bg-white-o-50":"bg-white-o-50","bg-white-o-60":"bg-white-o-60","bg-white-o-70":"bg-white-o-70","bg-white-o-80":"bg-white-o-80","bg-white-o-90":"bg-white-o-90","bg-white-o-100":"bg-white-o-100","bg-none":"bg-none","bg-none-o-10":"bg-none-o-10","bg-none-o-20":"bg-none-o-20","bg-none-o-30":"bg-none-o-30","bg-none-o-40":"bg-none-o-40","bg-none-o-50":"bg-none-o-50","bg-none-o-60":"bg-none-o-60","bg-none-o-70":"bg-none-o-70","bg-none-o-80":"bg-none-o-80","bg-none-o-90":"bg-none-o-90","bg-none-o-100":"bg-none-o-100","btn-sm":"btn-sm","editor":"editor","btn-lg":"btn-lg","btn-bd-blue":"btn-bd-blue","btn-bg-blue":"btn-bg-blue","btn-bd-green":"btn-bd-green","btn-bg-green":"btn-bg-green","btn-bd-orange":"btn-bd-orange","btn-bg-orange":"btn-bg-orange","btn-bd-darkblue":"btn-bd-darkblue","btn-bg-darkblue":"btn-bg-darkblue","btn-bd-gold":"btn-bd-gold","btn-bg-gold":"btn-bg-gold","btn-bd-black":"btn-bd-black","btn-bg-black":"btn-bg-black","btn-bd-blacklight":"btn-bd-blacklight","btn-bg-blacklight":"btn-bg-blacklight","btn-bd-blacklighter":"btn-bd-blacklighter","btn-bg-blacklighter":"btn-bg-blacklighter","btn-bd-greystronger":"btn-bd-greystronger","btn-bg-greystronger":"btn-bg-greystronger","btn-bd-greystrong":"btn-bd-greystrong","btn-bg-greystrong":"btn-bg-greystrong","btn-bd-grey":"btn-bd-grey","btn-bg-grey":"btn-bg-grey","btn-bd-greylight":"btn-bd-greylight","btn-bg-greylight":"btn-bg-greylight","btn-bd-greylighter":"btn-bd-greylighter","btn-bg-greylighter":"btn-bg-greylighter","btn-bd-white":"btn-bd-white","btn-bg-white":"btn-bg-white","btn-bd-none":"btn-bd-none","btn-bg-none":"btn-bg-none","flex":"flex","flex-grow-0":"flex-grow-0","flex-grow-1":"flex-grow-1","flex-grow-2":"flex-grow-2","flex-grow-3":"flex-grow-3","flex-grow-4":"flex-grow-4","flex-grow-5":"flex-grow-5","flex-grow-6":"flex-grow-6","flex-grow-7":"flex-grow-7","flex-grow-8":"flex-grow-8","flex-grow-9":"flex-grow-9","flex-grow-10":"flex-grow-10","nofill":"nofill","form-group":"form-group","sliderFW":"sliderFW","sliderFW__container":"sliderFW__container","sliderFW__rail":"sliderFW__rail","sliderFW__item":"sliderFW__item","sliderFW__item__bg":"sliderFW__item__bg","sliderFW__item__content":"sliderFW__item__content","sliderFW__nav":"sliderFW__nav","sliderFW__nav__item":"sliderFW__nav__item","scene":"scene","grid":"grid","strip":"strip","debug":"debug","animate":"animate","wrapper":"wrapper","spin":"spin","brick":"brick","top":"top","right":"right","front":"front","left":"left","back":"back","cover":"cover","stud":"stud","tabs":"tabs","tabs__nav":"tabs__nav","tabs__content":"tabs__content","tab":"tab","foldingbox":"foldingbox","foldingbox__title":"foldingbox__title","foldingbox__item":"foldingbox__item","break":"break","foldingbox__container":"foldingbox__container","foldingbox__item__content":"foldingbox__item__content","foldingbox__item__bg":"foldingbox__item__bg","guideline":"guideline","content":"content","item":"item","toast-container":"toast-container"};
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function($, global) {
-
-function Framway() {
-  var framway = this;
-  framway.components = [];
-  framway.useNotif = true;
-  framway.$debug = $('<div id="debug"></div>').appendTo($('body'));
-
-  return framway;
-};
-
-/**
- * load the components passed in parameters
- * @param  {Array of Strings} arrComponents [array containing the components names]
- */
-Framway.prototype.loadComponents = function (arrComponents) {
-  var framway = this;
-  $.each(arrComponents, function (index, name) {
-    try {
-      __webpack_require__(20)("./" + name + '/' + name + '.js');
-      framway.components.push(name);
-    } catch (e) {
-      framway.log('Component ' + name + ' failed to load.\n' + e);
-    }
-  });
-  if (framway.components.length) framway.log('Component(s) sucessfully loaded: \n - ' + framway.components.join('\n - '));
-  return framway;
-};
-
-/**
- * display things in the browser's console and in a custom debug window
- * @param  {[type]}  strLog
- * @param  {Boolean} blnDebug
- * TODO : style debug window
- */
-Framway.prototype.log = function (strLog) {
-  var blnDebug = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-  var framway = this;
-  if (blnDebug) {
-    var content = framway.$debug.html();
-    content += strLog.replace(/(?:\r\n|\r|\n)/g, '<br>') + '<br>';
-    framway.$debug.html(content).show();
-    framway.$debug.scrollTop(framway.$debug[0].scrollHeight);
-  }
-  console.log("------------------------------------");
-  console.log(strLog);
-  return framway;
-};
-
-/**
- * clear the custom debug window
- */
-Framway.prototype.clearLogs = function () {
-  var framway = this;
-  framway.$debug.html('').hide();
-  return framway;
-};
-
-$(function () {
-  $('body').on('click', 'pre .copy', function (e) {
-    var elem = $(this).parent().clone();
-    elem.find('.copy').remove();
-    if (utils.copyToClipboard(elem.get(0))) notif_fade.success('Copied to clipboard !');
-  });
-});
-
-__webpack_require__(81);
-global.utils = __webpack_require__(82);
-global.app = new Framway();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(4)))
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./block-std/block-std.js": 22,
-	"./brick/brick.js": 23,
-	"./foldingbox/foldingbox.js": 26,
-	"./goto/goto.js": 98,
-	"./guideline/guideline.js": 27,
-	"./sliderFW/sliderFW.js": 103,
-	"./tabs/tabs.js": 80
-};
-function webpackContext(req) {
-	return __webpack_require__(webpackContextResolve(req));
-};
-function webpackContextResolve(req) {
-	var id = map[req];
-	if(!(id + 1)) // check for number or string
-		throw new Error("Cannot find module '" + req + "'.");
-	return id;
-};
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = 20;
-
-/***/ }),
-/* 21 */,
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function($) {
-
-$.fn.Brick = function Brick() {
-  var htmlStud = __webpack_require__(24);
-  var htmlBrick = __webpack_require__(25);
-  $(this).each(function () {
-    var $brick = $(this);
-    var dim = {
-      rows: $brick.attr('rows'),
-      cols: $brick.attr('cols'),
-      studs: $brick.attr('rows') * $brick.attr('cols')
-    };
-    var pos = {
-      z: $brick.attr('z'),
-      x: $brick.attr('x'),
-      y: $brick.attr('y')
-    };
-    var text = $brick.attr('text') || false;
-    var $content = $(htmlBrick);
-
-    // brick construction
-    $brick.append($content);
-    for (var i = 0; i < dim.studs; i++) {
-      $brick.find('.top').append(htmlStud);
-    }
-    if (text) $brick.find('.front,.right,.back,.left').append(text);
-    // brick dimensionning
-    var unitWidth = $brick.outerWidth();
-    var unitHeight = $brick.outerHeight();
-    $brick.css({ 'width': unitWidth * dim.rows });
-    $brick.find('.top').css('height', unitWidth * dim.cols);
-    $brick.find('.left,.right').css('width', unitWidth * dim.cols);
-    $brick.find('.front,.back').css({
-      'height': unitHeight,
-      'width': $brick.find('.top').outerWidth()
-    });
-    // studs dimensionning
-    $brick.find('.stud').css({ 'width': 100 / dim.rows + '%', 'height': 100 / dim.cols + '%' });
-
-    // brick placement
-    if (dim.cols % 2 == 1) pos.y = +pos.y + 0.5;
-    if (dim.rows % 2 == 1) pos.x = +pos.x + 0.5;
-
-    var tZ = unitWidth * pos.y;
-    var tY = unitHeight * pos.z * -1;
-    var tX = unitWidth * pos.x;
-
-    $brick.css('transform', utils.mergeTransforms(this, 'translateZ(' + tZ + 'px) translateY(' + tY + 'px) translateX(' + tX + 'px)'));
-
-    // brick events listeners
-    this.addEventListener("animationstart", brickAnimListener, false);
-    this.addEventListener("animationiteration", brickAnimListener, false);
-    this.addEventListener("animationend", brickAnimListener, false);
-
-    utils.prefixedEvent(this, "animationstart", brickAnimListener);
-    utils.prefixedEvent(this, "animationiteration", brickAnimListener);
-    utils.prefixedEvent(this, "animationend", brickAnimListener);
-
-    $(this).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', brickAnimListener);
-  });
-
-  // grid dimensionning
-  if ($(this).closest('.grid').length) {
-    $(this).closest('.grid').wrapInner('<div class="wrapper"></div>'); // wrap the grid content so we can animate it separatly
-
-    var arrZ = $(this).map(function () {
-      return $(this).attr('z');
-    }).toArray();
-    var nbLayers = Math.max.apply(null, arrZ) + 1; // count one more for layer "0"
-    $(this).closest('.grid').height(nbLayers * $(this).outerHeight());
-
-    // grid events listeners
-    $(this).closest('.grid').each(function (index, grid) {
-      grid.addEventListener("animationstart", gridAnimListener, false);
-      grid.addEventListener("animationiteration", gridAnimListener, false);
-      grid.addEventListener("animationend", gridAnimListener, false);
-
-      utils.prefixedEvent(grid, "animationstart", gridAnimListener);
-      utils.prefixedEvent(grid, "animationiteration", gridAnimListener);
-      utils.prefixedEvent(grid, "animationend", gridAnimListener);
-
-      $(grid).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', gridAnimListener);
-    });
-  }
-
-  // scene dimensionning
-  if ($(this).closest('.scene').length) {
-    // add a bit of spacing to scene, to avoid clipping with other elements
-    $(this).closest('.scene').css('padding', $(this).outerHeight() + 'px 0');
-  }
-
-  // events
-  $(this).on('click', function () {
-    $(this).toggleClass('animate');
-  });
-
-  $(this).closest('.grid').on('click', function () {
-    // $(this).addClass('animate');
-  });
-  return this;
-};
-
-$(function () {
-  $('.brick').Brick();
-  utils.addHtmlHook('.brick', function (item) {
-    console.log("brick added to dom");
-    item.Brick();
-  });
-});
-
-function brickAnimListener(e) {
-  if (e.type == "animationend") {
-    console.log('Brick animation end');
-    $(this).removeClass('animate');
-  }
-}
-
-function gridAnimListener(e) {
-  if (e.type == "animationend") {
-    console.log('Grid animation end');
-    $(this).removeClass('animate');
-  }
-}
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"stud\">\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n</div>";
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"wrapper\">\n  <div class=\"side top\"></div>\n  <div class=\"side right\">\n      <div class=\"side front\"></div>\n      <div class=\"side back\"></div>\n  </div>\n  <div class=\"side left\"></div>\n</div>";
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function($) {
-
-$.fn.foldingbox = function foldingbox() {
-  app._foldingbox = app._foldingbox || [];
-  $(this).each(function () {
-    app._foldingbox.push(new Foldingbox(this));
-  });
-  $(window).trigger('resize');
-};
-
-var Foldingbox = function Foldingbox(item) {
-  var foldingbox = this;
-  foldingbox.$el = $(item);
-  foldingbox.break = $(item).data('break');
-  foldingbox.title = { $el: $(item).children('.foldingbox__title'), text: $(item).children('.foldingbox__title').html() };
-  foldingbox.content = { $el: $(item).find('.foldingbox__container') };
-  foldingbox.content.items = foldingbox.content.$el.children('.foldingbox__item');
-
-  foldingbox.setHeight();
-
-  foldingbox.$el.on('destroyed', function () {
-    app._foldingbox.splice(app._foldingbox.indexOf(foldingbox), 1);
-    foldingbox = undefined;
-  });
-
-  return foldingbox;
-};
-
-Foldingbox.prototype.setHeight = function () {
-  var heightBox = 0;
-  if (this.$el.data('height') && this.$el.data('height') != "") {
-    heightBox = this.$el.data('height');
-  } else {
-    this.content.items.each(function (index, item) {
-      var $clone = $(item).children('.foldingbox__item__content').clone().css({
-        'transition': 'none',
-        'opacity': '1',
-        'visibility': 'hidden'
-      }).appendTo('body');
-      if ($clone.outerHeight() > heightBox) heightBox = $clone.outerHeight() + parseInt($(item).css('padding-top')) * 2;
-      $clone.remove();
-    });
-  }
-  this.content.items.height(heightBox);
-  return this;
-};
-
-Foldingbox.prototype.destroy = function () {
-  this.$el.remove();
-};
-
-var timerResize;
-Foldingbox.prototype.resize = function () {
-  var foldingbox = this;
-  clearTimeout(timerResize);
-  timerResize = setTimeout(function () {
-    foldingbox.setHeight();
-    if (typeof foldingbox.break == "number") {
-      if (foldingbox.$el.width() <= foldingbox.break) foldingbox.$el.addClass('break');else foldingbox.$el.removeClass('break');
-    }
-  }, 300);
-};
-
-$(function () {
-  $('.foldingbox').foldingbox();
-  utils.addHtmlHook('.foldingbox', function (item) {
-    item.foldingbox();
-  });
-
-  $(window).resize(function () {
-    $.each(app._foldingbox, function () {
-      this.resize();
-    });
-  });
-});
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function($) {
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-if ($('#guideline').length) {
-
-  // Building functions
-  var buildComponents = function buildComponents() {
-    var components = { nav: '', content: '' };
-    components.nav += '<ul>';
-    $.each(app.components, function (index, component) {
-      try {
-        components.content += '<div class="item row" id="framway__components-' + component + '">' + '<h2 class="ft-i col-12 sep-bottom">' + component + '</h2>' + '<div class="col-12 editor-target">' + __webpack_require__(28)("./" + component + '/sample.html') + '</div>' + '<div class="col-12 ">' + '<div class="editor"><button class="copy">Copy</button>' + '<textarea name="" id="">' + __webpack_require__(34)("./" + component + '/sample.html').replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</textarea>' + '</div>'
-        // + '<pre><code class="language-html"><button class="copy">Copy</button>'
-        // + require('html-loader!../'+component+'/sample.html').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-        // + '</code></pre>'
-        + '</div>' + '</div>';
-        components.nav += '<li><a href="#framway__components-' + component + '">' + component + '</a></li>';
-      } catch (e) {
-        app.log('Failed to display the ' + component + ' component sample.\n' + e);
-      }
-    });
-    components.nav += '</ul>';
-
-    if (app.components.length == 0) components.content = 'No components loaded';
-    return components;
-  };
-
-  var buildStyling = function buildStyling() {
-    var styling = { nav: '', content: '' };
-    var objConfig;
-
-    styling.nav += '<ul>';
-    // TEXTS
-    objConfig = { 'Default': 'texts' };
-    if (config['enable-bg'] == 'true') objConfig['Backgrounded'] = 'texts_bg';
-    if (config['enable-bd'] == 'true') objConfig['Bordered'] = 'texts_bd';
-    styling.nav += '<li><a href="#framway__styling-text">Texts</a></li>';
-    styling.content += '<div class="item active" id="framway__styling-text">' + '<h2 class="ft-i sep-bottom">Texts</h2>' + buildTabs(objConfig) + '</div>';
-
-    // TITLES
-    objConfig = { 'Default': 'titles', 'With separators': 'titles_sep' };
-    if (config['enable-bg'] == 'true') objConfig['Backgrounded'] = 'titles_bg';
-    styling.nav += '<li><a href="#framway__styling-titles">Titles</a></li>';
-    styling.content += '<div class="item" id="framway__styling-titles">' + '<h2 class="ft-i sep-bottom">Titles</h2>' + buildTabs(objConfig) + '</div>';
-    // BUTTONS
-    objConfig = { 'Default': 'buttons', 'Colored': 'buttons_colors' };
-    styling.nav += '<li><a href="#framway__styling-buttons">Buttons</a></li>';
-    styling.content += '<div class="item" id="framway__styling-buttons">' + '<h2 class="ft-i sep-bottom">Buttons</h2>' + buildTabs(objConfig) + '</div>';
-    // INPUTS
-    objConfig = { 'Type text': 'inputs', 'Type text extra': 'inputs_texts', 'Others': 'inputs_others' };
-    if (config['enable-bg'] == 'true') objConfig['Backgrounded'] = 'inputs_bg';
-    styling.nav += '<li><a href="#framway__styling-inputs">Inputs</a></li>';
-    styling.content += '<div class="item" id="framway__styling-inputs">' + '<h2 class="ft-i sep-bottom">Inputs</h2>' + buildTabs(objConfig) + '</div>';
-    // BACKGROUNDS
-    if (config['enable-bg'] == 'true') {
-      styling.nav += '<li><a href="#framway__styling-backgrounds">Backgrounds</a></li>';
-      styling.content += '<div class="item" id="framway__styling-backgrounds">' + '<h2 class="ft-i sep-bottom">Backgrounds</h2>';
-      $.each(config.colors, function (key, value) {
-        styling.content += __webpack_require__(5)({ color: key });
-      });
-      styling.content += '</div>';
-    }
-    // BORDERS
-    if (config['enable-bd'] == 'true') {
-      objConfig = { 'Default': 'borders', 'Colored': 'borders_colors' };
-      styling.nav += '<li><a href="#framway__styling-borders">Borders</a></li>';
-      styling.content += '<div class="item" id="framway__styling-borders">' + '<h2 class="ft-i sep-bottom">Borders</h2>' + buildTabs(objConfig) + '</div>';
-    }
-
-    styling.nav += '</ul>';
-
-    return styling;
-  };
-
-  var buildTabs = function buildTabs(tabsConfig) {
-    var template = __webpack_require__(43);
-    var nav = '';
-    var content = '';
-
-    $.each(tabsConfig, function (title, templateName) {
-      nav += '<button class="btn-sm btn-bg-greystronger">' + title + '</button> ';
-      if (title.toLowerCase() != "bordered" && title.toLowerCase() != "backgrounded" && title.toLowerCase() != "colored") content += __webpack_require__(6)("./styling_" + templateName + '.html')();else {
-        content += '<div class="tab">';
-        $.each(config.colors, function (key, value) {
-          content += __webpack_require__(6)("./styling_" + templateName + '.html')({ color: key });
-        });
-        content += '</div>';
-      }
-    });
-
-    return template.render({}, { nav: nav, content: content });
-  };
-
-  var buildConfig = function buildConfig(obj) {
-    var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-
-    var template = __webpack_require__(73); // noShortcut is used to insert partials later into the final template
-    var rows = ''; // the partials mentionned above
-    var arrObjects = {}; // used to store and process later the sub-object of config
-    var htmlStack = ''; // used to stack the multiple results form arrObjects results
-    $.each(obj, function (key, value) {
-      if ((typeof value === 'undefined' ? 'undefined' : _typeof(value)) != 'object') {
-        var str = '<span>' + key + ' :</span><span>' + value + '</span>';
-        if (value.indexOf('#') != -1) str = '<span>' + key + ' :</span><span class="bd-' + utils.getObjKeyByValue(config.colors, value) + '-bottom-5 p-bottom-0">' + value + '</span>';
-        rows += __webpack_require__(75)({ str: str });
-      } else arrObjects[key] = value;
-    });
-    $.each(arrObjects, function (key, value) {
-      htmlStack += buildConfig(value, key);
-    });
-    return template.render({ title: title }, { rows: rows }) + htmlStack; // return the initial template filled with his rows PLUS the stack we get by processing recursively the config
-  };
-
-  // require('./_guideline.scss');
-  var config = __webpack_require__(77);
-  $.each(config, function (key, value) {
-    if (value[0] == '(' && value[value.length - 1] == ")") {
-      var objValue = value.replace('(', '{').replace(')', '}').replace(/ /g, '').replace(/([\w]+):/g, '"$1":').replace(/:([\w]+)/g, ':"$1"').replace(/:#([\w]+)/g, ':"#$1"').replace(/:([\d]+)/g, function (m, num) {
-        return ':' + parseFloat(num);
-      }).replace(/:([[{])/g, ':$1');
-      config[key] = JSON.parse(objValue);
-    }
-  });
-  var configHtml = buildConfig(config, 'global');
-  var stylingHtml = buildStyling();
-  var componentsHtml = buildComponents();
-
-  var html = __webpack_require__(78)({
-    config: configHtml,
-    styling: stylingHtml,
-    components: componentsHtml
-  });
-
-  html = $($.parseHTML(html));
-  html.find('.editor textarea').each(function (index, editor) {
-    var editorText = $(editor).val();
-    var timerEdit, timerEditValue;
-    $(editor).bind('keyup change', function (e, forced) {
-      timerEditValue = 500;
-      if (forced) timerEditValue = 0;
-      clearTimeout(timerEdit);
-      timerEdit = setTimeout(function () {
-        var val = $(editor).val();
-        if (val != editorText || forced) {
-          editorText = val;
-          $(editor).closest('.item').find('.editor-target').html(val);
-        }
-      }, timerEditValue);
-    });
-  });
-
-  $('#guideline').append(html);
-}
-
-$(function () {
-  $('#guideline nav a').bind('click', function (e) {
-    e.preventDefault();
-    var target = $(this).addClass('active').attr('href');
-    $('#guideline nav a').not(this).removeClass('active');
-    $('#guideline .content .item').removeClass('active');
-
-    $('#guideline .content .item' + target).addClass('active').find('.item').addClass('active');
-    if (target.split('-').length > 1) {
-      $.each(target.split('-'), function (index, tgt) {
-        $('#guideline .content .item#' + tgt.replace('#', '')).addClass('active');
-      });
-    }
-    $('#guideline .content .item' + target).find('.editor textarea').trigger('change', true);
-  });
-
-  $('.editor textarea').bind('keyup change', function (e) {
-    this.style.height = "auto";
-    this.style.height = this.scrollHeight + 10 + "px";
-  });
-
-  $('body').on('click', '.editor .copy', function (e) {
-    var elem = $(this).parent().find('textarea').get(0);
-    if (utils.copyToClipboard(elem)) notif_fade.success('Copied to clipboard !');
-  });
-
-  // $('#guideline nav a').first().trigger('click');
-  $('#guideline nav a').last().trigger('click');
-});
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
-
-/***/ }),
-/* 28 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./block-std/sample.html": 30,
-	"./brick/sample.html": 31,
-	"./foldingbox/sample.html": 32,
-	"./goto/sample.html": 99,
-	"./sliderFW/sample.html": 101,
-	"./tabs/sample.html": 33
-};
-function webpackContext(req) {
-	return __webpack_require__(webpackContextResolve(req));
-};
-function webpackContextResolve(req) {
-	var id = map[req];
-	if(!(id + 1)) // check for number or string
-		throw new Error("Cannot find module '" + req + "'.");
-	return id;
-};
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = 28;
-
-/***/ }),
-/* 29 */,
-/* 30 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"block-std\">\n  <p>\n    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in felis a risus pellentesque pulvinar. Etiam vehicula molestie libero et sodales. Donec consequat ultrices est at vestibulum. Cras pretium felis vitae mi sodales, convallis finibus leo tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tincidunt egestas nunc, vitae pellentesque quam porttitor ut. Maecenas posuere pellentesque risus ut pulvinar.\n  </p>\n</div>";
-
-/***/ }),
-/* 31 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"scene\">\n  <div class=\"grid\">\n    <div class=\"brick\" rows=\"3\" cols=\"5\" color=\"blacklight\" z=\"1\" x=\"0\" y=\"0\" text=\"Text sample\"></div>\n    <div class=\"brick\" rows=\"2\" cols=\"3\" color=\"blacklighter\" z=\"2\" x=\"-0\" y=\"-1\"></div>\n    <div class=\"brick\" rows=\"1\" cols=\"1\" color=\"greystronger\" z=\"3\" x=\"0\" y=\"-2\"></div>\n    <div class=\"brick\" rows=\"3\" cols=\"2\" color=\"blue\" z=\"2\" x=\"0\" y=\"2\"></div>\n  </div>\n</div>";
-
-/***/ }),
-/* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = "<div class=\"foldingbox\" data-height=\"\" data-break=\"md\">\n  <div class=\"foldingbox__title\">\n    <h2>LOREM IPSUM DOLOR</h2>\n  </div>\n  <div class=\"foldingbox__container\">\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(1) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>Lorem ipsum dolor sit amet</p>\n        <button>Lorem</button>\n      </div>\n    </div>\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(1) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n        </p>\n        <button>Lorem</button>\n      </div>\n    </div>\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(1) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>Lorem ipsum dolor sit amet</p>\n        <button>Lorem</button>\n      </div>\n    </div>\n  </div>\n</div>";
-
-/***/ }),
-/* 33 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"tabs\">\n  <div class=\"tabs__nav\">\n    <button>Lorem</button>\n    <button>Ipsum</button>\n    <button>Dolor</button>\n  </div>\n  <div class=\"tabs__content\">\n    <div class=\"tab\">\n      Lorem ipsum dolor sit amet\n    </div>\n    <div class=\"tab\">\n      Ipsum dolor sit amet lorem\n    </div>\n    <div class=\"tab\">\n      Dolor sit amet lorem ipsum\n    </div>\n  </div>\n</div>";
-
-/***/ }),
-/* 34 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./block-std/sample.html": 36,
-	"./brick/sample.html": 37,
-	"./foldingbox/sample.html": 38,
-	"./goto/sample.html": 100,
-	"./sliderFW/sample.html": 102,
-	"./tabs/sample.html": 39
-};
-function webpackContext(req) {
-	return __webpack_require__(webpackContextResolve(req));
-};
-function webpackContextResolve(req) {
-	var id = map[req];
-	if(!(id + 1)) // check for number or string
-		throw new Error("Cannot find module '" + req + "'.");
-	return id;
-};
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = 34;
-
-/***/ }),
-/* 35 */,
-/* 36 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"block-std\">\r\n  <p>\r\n    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in felis a risus pellentesque pulvinar. Etiam vehicula molestie libero et sodales. Donec consequat ultrices est at vestibulum. Cras pretium felis vitae mi sodales, convallis finibus leo tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tincidunt egestas nunc, vitae pellentesque quam porttitor ut. Maecenas posuere pellentesque risus ut pulvinar.\r\n  </p>\r\n</div>";
-
-/***/ }),
-/* 37 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"scene\">\r\n  <div class=\"grid\">\r\n    <div class=\"brick\" rows=\"3\" cols=\"5\" color=\"blacklight\" z=\"1\" x=\"0\" y=\"0\" text=\"Text sample\"></div>\r\n    <div class=\"brick\" rows=\"2\" cols=\"3\" color=\"blacklighter\" z=\"2\" x=\"-0\" y=\"-1\"></div>\r\n    <div class=\"brick\" rows=\"1\" cols=\"1\" color=\"greystronger\" z=\"3\" x=\"0\" y=\"-2\"></div>\r\n    <div class=\"brick\" rows=\"3\" cols=\"2\" color=\"blue\" z=\"2\" x=\"0\" y=\"2\"></div>\r\n  </div>\r\n</div>";
-
-/***/ }),
-/* 38 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = "<div class=\"foldingbox\" data-height=\"\" data-break=\"md\">\r\n  <div class=\"foldingbox__title\">\r\n    <h2>LOREM IPSUM DOLOR</h2>\r\n  </div>\r\n  <div class=\"foldingbox__container\">\r\n    <div class=\"foldingbox__item\">\r\n      <div class=\"foldingbox__item__bg\">\r\n        <img src=\"" + __webpack_require__(1) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"foldingbox__item__content\">\r\n        <h3>Lorem ipsum</h3>\r\n        <p>Lorem ipsum dolor sit amet</p>\r\n        <button>Lorem</button>\r\n      </div>\r\n    </div>\r\n    <div class=\"foldingbox__item\">\r\n      <div class=\"foldingbox__item__bg\">\r\n        <img src=\"" + __webpack_require__(1) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"foldingbox__item__content\">\r\n        <h3>Lorem ipsum</h3>\r\n        <p>\r\n            Lorem ipsum dolor sit amet<br>\r\n            Lorem ipsum dolor sit amet<br>\r\n            Lorem ipsum dolor sit amet<br>\r\n            Lorem ipsum dolor sit amet<br>\r\n        </p>\r\n        <button>Lorem</button>\r\n      </div>\r\n    </div>\r\n    <div class=\"foldingbox__item\">\r\n      <div class=\"foldingbox__item__bg\">\r\n        <img src=\"" + __webpack_require__(1) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"foldingbox__item__content\">\r\n        <h3>Lorem ipsum</h3>\r\n        <p>Lorem ipsum dolor sit amet</p>\r\n        <button>Lorem</button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>";
-
-/***/ }),
-/* 39 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"tabs\">\r\n  <div class=\"tabs__nav\">\r\n    <button>Lorem</button>\r\n    <button>Ipsum</button>\r\n    <button>Dolor</button>\r\n  </div>\r\n  <div class=\"tabs__content\">\r\n    <div class=\"tab\">\r\n      Lorem ipsum dolor sit amet\r\n    </div>\r\n    <div class=\"tab\">\r\n      Ipsum dolor sit amet lorem\r\n    </div>\r\n    <div class=\"tab\">\r\n      Dolor sit amet lorem ipsum\r\n    </div>\r\n  </div>\r\n</div>";
-
-/***/ }),
-/* 40 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"bg-{{color}} m-bottom\">\n  <h4>bg-{{color}}</h4>\n  <p class=\"clear\">\n    Zombies reversus ab inferno, nam malum cerebro. De carne animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n  </p>\n</div>";
-
-/***/ }),
-/* 41 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/*
- *  Copyright 2011 Twitter, Inc.
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *  http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- */
-
-(function (Hogan) {
-  // Setup regex  assignments
-  // remove whitespace according to Mustache spec
-  var rIsWhitespace = /\S/,
-      rQuot = /\"/g,
-      rNewline =  /\n/g,
-      rCr = /\r/g,
-      rSlash = /\\/g,
-      rLineSep = /\u2028/,
-      rParagraphSep = /\u2029/;
-
-  Hogan.tags = {
-    '#': 1, '^': 2, '<': 3, '$': 4,
-    '/': 5, '!': 6, '>': 7, '=': 8, '_v': 9,
-    '{': 10, '&': 11, '_t': 12
-  };
-
-  Hogan.scan = function scan(text, delimiters) {
-    var len = text.length,
-        IN_TEXT = 0,
-        IN_TAG_TYPE = 1,
-        IN_TAG = 2,
-        state = IN_TEXT,
-        tagType = null,
-        tag = null,
-        buf = '',
-        tokens = [],
-        seenTag = false,
-        i = 0,
-        lineStart = 0,
-        otag = '{{',
-        ctag = '}}';
-
-    function addBuf() {
-      if (buf.length > 0) {
-        tokens.push({tag: '_t', text: new String(buf)});
-        buf = '';
-      }
-    }
-
-    function lineIsWhitespace() {
-      var isAllWhitespace = true;
-      for (var j = lineStart; j < tokens.length; j++) {
-        isAllWhitespace =
-          (Hogan.tags[tokens[j].tag] < Hogan.tags['_v']) ||
-          (tokens[j].tag == '_t' && tokens[j].text.match(rIsWhitespace) === null);
-        if (!isAllWhitespace) {
-          return false;
-        }
-      }
-
-      return isAllWhitespace;
-    }
-
-    function filterLine(haveSeenTag, noNewLine) {
-      addBuf();
-
-      if (haveSeenTag && lineIsWhitespace()) {
-        for (var j = lineStart, next; j < tokens.length; j++) {
-          if (tokens[j].text) {
-            if ((next = tokens[j+1]) && next.tag == '>') {
-              // set indent to token value
-              next.indent = tokens[j].text.toString()
-            }
-            tokens.splice(j, 1);
-          }
-        }
-      } else if (!noNewLine) {
-        tokens.push({tag:'\n'});
-      }
-
-      seenTag = false;
-      lineStart = tokens.length;
-    }
-
-    function changeDelimiters(text, index) {
-      var close = '=' + ctag,
-          closeIndex = text.indexOf(close, index),
-          delimiters = trim(
-            text.substring(text.indexOf('=', index) + 1, closeIndex)
-          ).split(' ');
-
-      otag = delimiters[0];
-      ctag = delimiters[delimiters.length - 1];
-
-      return closeIndex + close.length - 1;
-    }
-
-    if (delimiters) {
-      delimiters = delimiters.split(' ');
-      otag = delimiters[0];
-      ctag = delimiters[1];
-    }
-
-    for (i = 0; i < len; i++) {
-      if (state == IN_TEXT) {
-        if (tagChange(otag, text, i)) {
-          --i;
-          addBuf();
-          state = IN_TAG_TYPE;
-        } else {
-          if (text.charAt(i) == '\n') {
-            filterLine(seenTag);
-          } else {
-            buf += text.charAt(i);
-          }
-        }
-      } else if (state == IN_TAG_TYPE) {
-        i += otag.length - 1;
-        tag = Hogan.tags[text.charAt(i + 1)];
-        tagType = tag ? text.charAt(i + 1) : '_v';
-        if (tagType == '=') {
-          i = changeDelimiters(text, i);
-          state = IN_TEXT;
-        } else {
-          if (tag) {
-            i++;
-          }
-          state = IN_TAG;
-        }
-        seenTag = i;
-      } else {
-        if (tagChange(ctag, text, i)) {
-          tokens.push({tag: tagType, n: trim(buf), otag: otag, ctag: ctag,
-                       i: (tagType == '/') ? seenTag - otag.length : i + ctag.length});
-          buf = '';
-          i += ctag.length - 1;
-          state = IN_TEXT;
-          if (tagType == '{') {
-            if (ctag == '}}') {
-              i++;
-            } else {
-              cleanTripleStache(tokens[tokens.length - 1]);
-            }
-          }
-        } else {
-          buf += text.charAt(i);
-        }
-      }
-    }
-
-    filterLine(seenTag, true);
-
-    return tokens;
-  }
-
-  function cleanTripleStache(token) {
-    if (token.n.substr(token.n.length - 1) === '}') {
-      token.n = token.n.substring(0, token.n.length - 1);
-    }
-  }
-
-  function trim(s) {
-    if (s.trim) {
-      return s.trim();
-    }
-
-    return s.replace(/^\s*|\s*$/g, '');
-  }
-
-  function tagChange(tag, text, index) {
-    if (text.charAt(index) != tag.charAt(0)) {
-      return false;
-    }
-
-    for (var i = 1, l = tag.length; i < l; i++) {
-      if (text.charAt(index + i) != tag.charAt(i)) {
-        return false;
-      }
-    }
-
-    return true;
-  }
-
-  // the tags allowed inside super templates
-  var allowedInSuper = {'_t': true, '\n': true, '$': true, '/': true};
-
-  function buildTree(tokens, kind, stack, customTags) {
-    var instructions = [],
-        opener = null,
-        tail = null,
-        token = null;
-
-    tail = stack[stack.length - 1];
-
-    while (tokens.length > 0) {
-      token = tokens.shift();
-
-      if (tail && tail.tag == '<' && !(token.tag in allowedInSuper)) {
-        throw new Error('Illegal content in < super tag.');
-      }
-
-      if (Hogan.tags[token.tag] <= Hogan.tags['$'] || isOpener(token, customTags)) {
-        stack.push(token);
-        token.nodes = buildTree(tokens, token.tag, stack, customTags);
-      } else if (token.tag == '/') {
-        if (stack.length === 0) {
-          throw new Error('Closing tag without opener: /' + token.n);
-        }
-        opener = stack.pop();
-        if (token.n != opener.n && !isCloser(token.n, opener.n, customTags)) {
-          throw new Error('Nesting error: ' + opener.n + ' vs. ' + token.n);
-        }
-        opener.end = token.i;
-        return instructions;
-      } else if (token.tag == '\n') {
-        token.last = (tokens.length == 0) || (tokens[0].tag == '\n');
-      }
-
-      instructions.push(token);
-    }
-
-    if (stack.length > 0) {
-      throw new Error('missing closing tag: ' + stack.pop().n);
-    }
-
-    return instructions;
-  }
-
-  function isOpener(token, tags) {
-    for (var i = 0, l = tags.length; i < l; i++) {
-      if (tags[i].o == token.n) {
-        token.tag = '#';
-        return true;
-      }
-    }
-  }
-
-  function isCloser(close, open, tags) {
-    for (var i = 0, l = tags.length; i < l; i++) {
-      if (tags[i].c == close && tags[i].o == open) {
-        return true;
-      }
-    }
-  }
-
-  function stringifySubstitutions(obj) {
-    var items = [];
-    for (var key in obj) {
-      items.push('"' + esc(key) + '": function(c,p,t,i) {' + obj[key] + '}');
-    }
-    return "{ " + items.join(",") + " }";
-  }
-
-  function stringifyPartials(codeObj) {
-    var partials = [];
-    for (var key in codeObj.partials) {
-      partials.push('"' + esc(key) + '":{name:"' + esc(codeObj.partials[key].name) + '", ' + stringifyPartials(codeObj.partials[key]) + "}");
-    }
-    return "partials: {" + partials.join(",") + "}, subs: " + stringifySubstitutions(codeObj.subs);
-  }
-
-  Hogan.stringify = function(codeObj, text, options) {
-    return "{code: function (c,p,i) { " + Hogan.wrapMain(codeObj.code) + " }," + stringifyPartials(codeObj) +  "}";
-  }
-
-  var serialNo = 0;
-  Hogan.generate = function(tree, text, options) {
-    serialNo = 0;
-    var context = { code: '', subs: {}, partials: {} };
-    Hogan.walk(tree, context);
-
-    if (options.asString) {
-      return this.stringify(context, text, options);
-    }
-
-    return this.makeTemplate(context, text, options);
-  }
-
-  Hogan.wrapMain = function(code) {
-    return 'var t=this;t.b(i=i||"");' + code + 'return t.fl();';
-  }
-
-  Hogan.template = Hogan.Template;
-
-  Hogan.makeTemplate = function(codeObj, text, options) {
-    var template = this.makePartials(codeObj);
-    template.code = new Function('c', 'p', 'i', this.wrapMain(codeObj.code));
-    return new this.template(template, text, this, options);
-  }
-
-  Hogan.makePartials = function(codeObj) {
-    var key, template = {subs: {}, partials: codeObj.partials, name: codeObj.name};
-    for (key in template.partials) {
-      template.partials[key] = this.makePartials(template.partials[key]);
-    }
-    for (key in codeObj.subs) {
-      template.subs[key] = new Function('c', 'p', 't', 'i', codeObj.subs[key]);
-    }
-    return template;
-  }
-
-  function esc(s) {
-    return s.replace(rSlash, '\\\\')
-            .replace(rQuot, '\\\"')
-            .replace(rNewline, '\\n')
-            .replace(rCr, '\\r')
-            .replace(rLineSep, '\\u2028')
-            .replace(rParagraphSep, '\\u2029');
-  }
-
-  function chooseMethod(s) {
-    return (~s.indexOf('.')) ? 'd' : 'f';
-  }
-
-  function createPartial(node, context) {
-    var prefix = "<" + (context.prefix || "");
-    var sym = prefix + node.n + serialNo++;
-    context.partials[sym] = {name: node.n, partials: {}};
-    context.code += 't.b(t.rp("' +  esc(sym) + '",c,p,"' + (node.indent || '') + '"));';
-    return sym;
-  }
-
-  Hogan.codegen = {
-    '#': function(node, context) {
-      context.code += 'if(t.s(t.' + chooseMethod(node.n) + '("' + esc(node.n) + '",c,p,1),' +
-                      'c,p,0,' + node.i + ',' + node.end + ',"' + node.otag + " " + node.ctag + '")){' +
-                      't.rs(c,p,' + 'function(c,p,t){';
-      Hogan.walk(node.nodes, context);
-      context.code += '});c.pop();}';
-    },
-
-    '^': function(node, context) {
-      context.code += 'if(!t.s(t.' + chooseMethod(node.n) + '("' + esc(node.n) + '",c,p,1),c,p,1,0,0,"")){';
-      Hogan.walk(node.nodes, context);
-      context.code += '};';
-    },
-
-    '>': createPartial,
-    '<': function(node, context) {
-      var ctx = {partials: {}, code: '', subs: {}, inPartial: true};
-      Hogan.walk(node.nodes, ctx);
-      var template = context.partials[createPartial(node, context)];
-      template.subs = ctx.subs;
-      template.partials = ctx.partials;
-    },
-
-    '$': function(node, context) {
-      var ctx = {subs: {}, code: '', partials: context.partials, prefix: node.n};
-      Hogan.walk(node.nodes, ctx);
-      context.subs[node.n] = ctx.code;
-      if (!context.inPartial) {
-        context.code += 't.sub("' + esc(node.n) + '",c,p,i);';
-      }
-    },
-
-    '\n': function(node, context) {
-      context.code += write('"\\n"' + (node.last ? '' : ' + i'));
-    },
-
-    '_v': function(node, context) {
-      context.code += 't.b(t.v(t.' + chooseMethod(node.n) + '("' + esc(node.n) + '",c,p,0)));';
-    },
-
-    '_t': function(node, context) {
-      context.code += write('"' + esc(node.text) + '"');
-    },
-
-    '{': tripleStache,
-
-    '&': tripleStache
-  }
-
-  function tripleStache(node, context) {
-    context.code += 't.b(t.t(t.' + chooseMethod(node.n) + '("' + esc(node.n) + '",c,p,0)));';
-  }
-
-  function write(s) {
-    return 't.b(' + s + ');';
-  }
-
-  Hogan.walk = function(nodelist, context) {
-    var func;
-    for (var i = 0, l = nodelist.length; i < l; i++) {
-      func = Hogan.codegen[nodelist[i].tag];
-      func && func(nodelist[i], context);
-    }
-    return context;
-  }
-
-  Hogan.parse = function(tokens, text, options) {
-    options = options || {};
-    return buildTree(tokens, '', [], options.sectionTags || []);
-  }
-
-  Hogan.cache = {};
-
-  Hogan.cacheKey = function(text, options) {
-    return [text, !!options.asString, !!options.disableLambda, options.delimiters, !!options.modelGet].join('||');
-  }
-
-  Hogan.compile = function(text, options) {
-    options = options || {};
-    var key = Hogan.cacheKey(text, options);
-    var template = this.cache[key];
-
-    if (template) {
-      var partials = template.partials;
-      for (var name in partials) {
-        delete partials[name].instance;
-      }
-      return template;
-    }
-
-    template = this.generate(this.parse(this.scan(text, options.delimiters), text, options), text, options);
-    return this.cache[key] = template;
-  }
-})( true ? exports : Hogan);
-
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/*
- *  Copyright 2011 Twitter, Inc.
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *  http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- */
-
-var Hogan = {};
-
-(function (Hogan) {
-  Hogan.Template = function (codeObj, text, compiler, options) {
-    codeObj = codeObj || {};
-    this.r = codeObj.code || this.r;
-    this.c = compiler;
-    this.options = options || {};
-    this.text = text || '';
-    this.partials = codeObj.partials || {};
-    this.subs = codeObj.subs || {};
-    this.buf = '';
-  }
-
-  Hogan.Template.prototype = {
-    // render: replaced by generated code.
-    r: function (context, partials, indent) { return ''; },
-
-    // variable escaping
-    v: hoganEscape,
-
-    // triple stache
-    t: coerceToString,
-
-    render: function render(context, partials, indent) {
-      return this.ri([context], partials || {}, indent);
-    },
-
-    // render internal -- a hook for overrides that catches partials too
-    ri: function (context, partials, indent) {
-      return this.r(context, partials, indent);
-    },
-
-    // ensurePartial
-    ep: function(symbol, partials) {
-      var partial = this.partials[symbol];
-
-      // check to see that if we've instantiated this partial before
-      var template = partials[partial.name];
-      if (partial.instance && partial.base == template) {
-        return partial.instance;
-      }
-
-      if (typeof template == 'string') {
-        if (!this.c) {
-          throw new Error("No compiler available.");
-        }
-        template = this.c.compile(template, this.options);
-      }
-
-      if (!template) {
-        return null;
-      }
-
-      // We use this to check whether the partials dictionary has changed
-      this.partials[symbol].base = template;
-
-      if (partial.subs) {
-        // Make sure we consider parent template now
-        if (!partials.stackText) partials.stackText = {};
-        for (key in partial.subs) {
-          if (!partials.stackText[key]) {
-            partials.stackText[key] = (this.activeSub !== undefined && partials.stackText[this.activeSub]) ? partials.stackText[this.activeSub] : this.text;
-          }
-        }
-        template = createSpecializedPartial(template, partial.subs, partial.partials,
-          this.stackSubs, this.stackPartials, partials.stackText);
-      }
-      this.partials[symbol].instance = template;
-
-      return template;
-    },
-
-    // tries to find a partial in the current scope and render it
-    rp: function(symbol, context, partials, indent) {
-      var partial = this.ep(symbol, partials);
-      if (!partial) {
-        return '';
-      }
-
-      return partial.ri(context, partials, indent);
-    },
-
-    // render a section
-    rs: function(context, partials, section) {
-      var tail = context[context.length - 1];
-
-      if (!isArray(tail)) {
-        section(context, partials, this);
-        return;
-      }
-
-      for (var i = 0; i < tail.length; i++) {
-        context.push(tail[i]);
-        section(context, partials, this);
-        context.pop();
-      }
-    },
-
-    // maybe start a section
-    s: function(val, ctx, partials, inverted, start, end, tags) {
-      var pass;
-
-      if (isArray(val) && val.length === 0) {
-        return false;
-      }
-
-      if (typeof val == 'function') {
-        val = this.ms(val, ctx, partials, inverted, start, end, tags);
-      }
-
-      pass = !!val;
-
-      if (!inverted && pass && ctx) {
-        ctx.push((typeof val == 'object') ? val : ctx[ctx.length - 1]);
-      }
-
-      return pass;
-    },
-
-    // find values with dotted names
-    d: function(key, ctx, partials, returnFound) {
-      var found,
-          names = key.split('.'),
-          val = this.f(names[0], ctx, partials, returnFound),
-          doModelGet = this.options.modelGet,
-          cx = null;
-
-      if (key === '.' && isArray(ctx[ctx.length - 2])) {
-        val = ctx[ctx.length - 1];
-      } else {
-        for (var i = 1; i < names.length; i++) {
-          found = findInScope(names[i], val, doModelGet);
-          if (found !== undefined) {
-            cx = val;
-            val = found;
-          } else {
-            val = '';
-          }
-        }
-      }
-
-      if (returnFound && !val) {
-        return false;
-      }
-
-      if (!returnFound && typeof val == 'function') {
-        ctx.push(cx);
-        val = this.mv(val, ctx, partials);
-        ctx.pop();
-      }
-
-      return val;
-    },
-
-    // find values with normal names
-    f: function(key, ctx, partials, returnFound) {
-      var val = false,
-          v = null,
-          found = false,
-          doModelGet = this.options.modelGet;
-
-      for (var i = ctx.length - 1; i >= 0; i--) {
-        v = ctx[i];
-        val = findInScope(key, v, doModelGet);
-        if (val !== undefined) {
-          found = true;
-          break;
-        }
-      }
-
-      if (!found) {
-        return (returnFound) ? false : "";
-      }
-
-      if (!returnFound && typeof val == 'function') {
-        val = this.mv(val, ctx, partials);
-      }
-
-      return val;
-    },
-
-    // higher order templates
-    ls: function(func, cx, partials, text, tags) {
-      var oldTags = this.options.delimiters;
-
-      this.options.delimiters = tags;
-      this.b(this.ct(coerceToString(func.call(cx, text)), cx, partials));
-      this.options.delimiters = oldTags;
-
-      return false;
-    },
-
-    // compile text
-    ct: function(text, cx, partials) {
-      if (this.options.disableLambda) {
-        throw new Error('Lambda features disabled.');
-      }
-      return this.c.compile(text, this.options).render(cx, partials);
-    },
-
-    // template result buffering
-    b: function(s) { this.buf += s; },
-
-    fl: function() { var r = this.buf; this.buf = ''; return r; },
-
-    // method replace section
-    ms: function(func, ctx, partials, inverted, start, end, tags) {
-      var textSource,
-          cx = ctx[ctx.length - 1],
-          result = func.call(cx);
-
-      if (typeof result == 'function') {
-        if (inverted) {
-          return true;
-        } else {
-          textSource = (this.activeSub && this.subsText && this.subsText[this.activeSub]) ? this.subsText[this.activeSub] : this.text;
-          return this.ls(result, cx, partials, textSource.substring(start, end), tags);
-        }
-      }
-
-      return result;
-    },
-
-    // method replace variable
-    mv: function(func, ctx, partials) {
-      var cx = ctx[ctx.length - 1];
-      var result = func.call(cx);
-
-      if (typeof result == 'function') {
-        return this.ct(coerceToString(result.call(cx)), cx, partials);
-      }
-
-      return result;
-    },
-
-    sub: function(name, context, partials, indent) {
-      var f = this.subs[name];
-      if (f) {
-        this.activeSub = name;
-        f(context, partials, this, indent);
-        this.activeSub = false;
-      }
-    }
-
-  };
-
-  //Find a key in an object
-  function findInScope(key, scope, doModelGet) {
-    var val;
-
-    if (scope && typeof scope == 'object') {
-
-      if (scope[key] !== undefined) {
-        val = scope[key];
-
-      // try lookup with get for backbone or similar model data
-      } else if (doModelGet && scope.get && typeof scope.get == 'function') {
-        val = scope.get(key);
-      }
-    }
-
-    return val;
-  }
-
-  function createSpecializedPartial(instance, subs, partials, stackSubs, stackPartials, stackText) {
-    function PartialTemplate() {};
-    PartialTemplate.prototype = instance;
-    function Substitutions() {};
-    Substitutions.prototype = instance.subs;
-    var key;
-    var partial = new PartialTemplate();
-    partial.subs = new Substitutions();
-    partial.subsText = {};  //hehe. substext.
-    partial.buf = '';
-
-    stackSubs = stackSubs || {};
-    partial.stackSubs = stackSubs;
-    partial.subsText = stackText;
-    for (key in subs) {
-      if (!stackSubs[key]) stackSubs[key] = subs[key];
-    }
-    for (key in stackSubs) {
-      partial.subs[key] = stackSubs[key];
-    }
-
-    stackPartials = stackPartials || {};
-    partial.stackPartials = stackPartials;
-    for (key in partials) {
-      if (!stackPartials[key]) stackPartials[key] = partials[key];
-    }
-    for (key in stackPartials) {
-      partial.partials[key] = stackPartials[key];
-    }
-
-    return partial;
-  }
-
-  var rAmp = /&/g,
-      rLt = /</g,
-      rGt = />/g,
-      rApos = /\'/g,
-      rQuot = /\"/g,
-      hChars = /[&<>\"\']/;
-
-  function coerceToString(val) {
-    return String((val === null || val === undefined) ? '' : val);
-  }
-
-  function hoganEscape(str) {
-    str = coerceToString(str);
-    return hChars.test(str) ?
-      str
-        .replace(rAmp, '&amp;')
-        .replace(rLt, '&lt;')
-        .replace(rGt, '&gt;')
-        .replace(rApos, '&#39;')
-        .replace(rQuot, '&quot;') :
-      str;
-  }
-
-  var isArray = Array.isArray || function(a) {
-    return Object.prototype.toString.call(a) === '[object Array]';
-  };
-
-})( true ? exports : Hogan);
-
-
-/***/ }),
-/* 43 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(44)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T; }();
-
-/***/ }),
-/* 44 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"tabs\">\n  <div class=\"tabs__nav\">\n    {{> nav}}\n  </div>\n  <div class=\"tabs__content\">\n    {{> content}}\n  </div>\n</div>";
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(46)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 46 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"tab\">\n  <div class=\"bd-darkblue m-bottom\"><h5 class=\"\">bd-darkblue</h5> Lorem ipsum dolor sit amet</div>\n  <div class=\"bd-darkblue-top m-bottom\"><h5 class=\"\">bd-darkblue-top</h5> Lorem ipsum dolor sit amet</div>\n  <div class=\"bd-darkblue-bottom m-bottom\"><h5 class=\"\">bd-darkblue-bottom</h5> Lorem ipsum dolor sit amet</div>\n  <div class=\"bd-darkblue-left m-bottom\">\n    <h5 class=\"txt-center\">bd-darkblue-left</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n  <div class=\"bd-darkblue-right m-bottom\">\n    <h5 class=\"txt-center\">bd-darkblue-right</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n  <div class=\"bd-darkblue-left bd-green-top m-bottom\">\n    <h5 class=\"txt-center\">bd-darkblue-left bd-green-top</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n  <div class=\"bd-darkblue-right bd-green-bottom m-bottom\">\n    <h5 class=\"txt-center\">bd-darkblue-right bd-green-bottom</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n  <div class=\"bd-darkblue-10 bd-blue-left-5 bd-orange-bottom bd-green-right-2 m-bottom\">\n    <h5 class=\"txt-center\">bd-darkblue-10 bd-blue-left-5 bd-orange-bottom bd-green-right-2</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n</div>";
-
-/***/ }),
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(48)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 48 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"bd-{{color}} m-bottom\"> Lorem ipsum dolor sit amet - bd-{{color}}</div>";
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(50)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 50 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"tab\">\n  <h3>Buttons</h3>\n  <div class=\"\">\n    <button class=\"btn-sm\">btn-sm (button)</button><br>\n    <button class=\"\">btn (button)</button><br>\n    <button class=\"btn-lg\">btn-lg (button)</button>\n  </div>\n  <h3>Buttons inputs</h3>\n  <div>\n    <input type=\"button\" class=\"btn-sm\" value=\"btn-sm (input type button)\"><br>\n    <input type=\"button\" class=\"\" value=\"btn (input type button)\"><br>\n    <input type=\"button\" class=\"btn-lg\" value=\"btn-lg (input type button)\"><br>\n    <input type=\"submit\" class=\"btn-sm\" value=\"btn-sm (input type submit)\"><br>\n    <input type=\"submit\" class=\"\" value=\"btn (input type submit)\"><br>\n    <input type=\"submit\" class=\"btn-lg\" value=\"btn-lg (input type submit)\">\n  </div>\n  <h3>Buttons a</h3>\n  <div  class=\"\">\n    <a href=\"#\" class=\"btn-sm\">btn-sm (a)</a><br>\n    <a href=\"#\" class=\"btn\">btn (a)</a><br>\n    <a href=\"#\" class=\"btn-lg\">btn-lg (a)</a>\n  </div>\n</div>";
-
-/***/ }),
-/* 51 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(52)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 52 */
-/***/ (function(module, exports) {
-
-module.exports = "<div>\n  <button class=\"btn-bg-{{color}}\">btn-bg-{{color}}</button>\n  <button class=\"btn-bd-{{color}}\">btn-bd-{{color}}</button>\n</div>";
-
-/***/ }),
-/* 53 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(54)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 54 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"tab\">\n  <input type=\"text\" placeholder=\"Input solo\">\n  <div class=\"form-group\">\n    <input type=\"text\" placeholder=\"Input in a form-group, without label\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input1\">Label ipsum</label>\n    <input id=\"input1\" type=\"text\" placeholder=\"Input in a form-group, with label\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input2\">Input without placeholder</label>\n    <input id=\"input2\" type=\"text\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input3\">Input with value already set</label>\n    <input id=\"input3\" type=\"text\" placeholder=\"Placeholder ipsum\" value=\"Value ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input4\">Input focused</label>\n    <input id=\"input4\" type=\"text\" class=\"focus\" placeholder=\"Placeholder ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input5\">Input required</label>\n    <input id=\"input5\" type=\"text\" placeholder=\"Placeholder ipsum\" required>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input6\">Input required and valid</label>\n    <input id=\"input6\" type=\"text\" placeholder=\"Placeholder ipsum\" value=\"Valid value ipsum\" required>\n  </div>\n</div>";
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(56)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 56 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"bg-{{color}} m-bottom\">\n  <span class=\"fl-right\">bg-{{color}}</span>\n  <div class=\"form-group clear\">\n    <label for=\"input21\">Label ipsum</label>\n    <input id=\"input21\" type=\"text\" placeholder=\"Input in a form-group\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input22\">Label ipsum required invalid</label>\n    <input id=\"input22\" type=\"text\" required placeholder=\"Input in a form-group\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input23\">Label ipsum required valid</label>\n    <input id=\"input23\" type=\"text\" required value=\"Value Ipsum\" placeholder=\"Input in a form-group\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input37\">Input range</label> - todo: script récupération et affichage valeur sélectionnée\n    <input id=\"input37\" type=\"range\" min=\"0\" max=\"100\" value=\"50\" step=\"5\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"\">Checkboxes</label>\n    <input id=\"input38\" type=\"checkbox\" checked>\n    <label for=\"input38\">Label checkbox</label>\n    <input id=\"input39\" type=\"checkbox\">\n    <label for=\"input39\">Label checkbox</label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"\">Radios</label>\n    <input name=\"inputRadio\" id=\"input40\" type=\"radio\" checked>\n    <label for=\"input40\">Label radio</label>\n    <input name=\"inputRadio\" id=\"input41\" type=\"radio\">\n    <label for=\"input41\">Label radio</label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input42\">Select</label> - todo: custom script dropdown\n    <select name=\"\" id=\"input42\">\n      <option value=\"1\">value 1</option>\n      <option value=\"2\">value 2</option>\n      <option value=\"3\">value 3</option>\n    </select>\n  </div>\n</div>";
-
-/***/ }),
-/* 57 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(58)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 58 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"tab\">\n  <div class=\"form-group\">\n    <label for=\"input14\">Input range</label> - todo: script récupération et affichage valeur sélectionnée\n    <input id=\"input14\" type=\"range\" min=\"0\" max=\"100\" value=\"50\" step=\"5\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"\">Checkboxes</label>\n    <input id=\"input15\" type=\"checkbox\" checked>\n    <label for=\"input15\">Label checkbox</label>\n    <input id=\"input16\" type=\"checkbox\">\n    <label for=\"input16\">Label checkbox</label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"\">Radios</label>\n    <input name=\"inputRadio\" id=\"input17\" type=\"radio\" checked>\n    <label for=\"input17\">Label radio</label>\n    <input name=\"inputRadio\" id=\"input18\" type=\"radio\">\n    <label for=\"input18\">Label radio</label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input20\">Select</label> - todo: custom script dropdown\n    <select name=\"\" id=\"input20\">\n      <option value=\"1\">value 1</option>\n      <option value=\"2\">value 2</option>\n      <option value=\"3\">value 3</option>\n    </select>\n  </div>\n</div>";
-
-/***/ }),
-/* 59 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(60)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 60 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"tab\">\n  <div class=\"form-group\">\n    <label for=\"input19\">Textarea</label>\n    <textarea name=\"\" id=\"input19\"></textarea>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input7\">Input password</label>\n    <input id=\"input7\" type=\"password\" placeholder=\"Placeholder ipsum\" value=\"passwordipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input8\">Input email</label>\n    <input id=\"input8\" type=\"email\" placeholder=\"Placeholder ipsum\" value=\"lorem@ipsum.dolor\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input9\">Input email with invalid value</label>\n    <input id=\"input9\" type=\"email\" placeholder=\"Placeholder ipsum\" value=\"loremipsum.dolor\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input10\">Input tel</label> - todo: script ajoutant pattern (contextuel localité) ?\n    <input id=\"input10\" type=\"tel\" placeholder=\"Placeholder ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input11\">Input url</label> - todo: script ajoutant \"http://\" automatiquement au début de l'input\n    <input id=\"input11\" type=\"url\" placeholder=\"Placeholder ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input12\">Input date</label>\n    <input id=\"input12\" type=\"date\" placeholder=\"Placeholder ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input13\">Input number</label>\n    <input id=\"input13\" type=\"number\">\n  </div>\n</div>";
-
-/***/ }),
-/* 61 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(62)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 62 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"tab\">\n  <h4>lorem ipsum dolor sit amet (H4)</h4>\n  <p>\n    Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n  </p>\n  <div class=\"txt-center\">\n    <h4>lorem ipsum dolor sit amet (H4) - txt-center</h4>\n    <p>\n      Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n    </p>\n  </div>\n  <div class=\"txt-right\">\n    <h4>lorem ipsum dolor sit amet (H4) - txt-right</h4>\n    <p>\n      Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n    </p>\n  </div>\n  <ul>\n    <li>Lorem ipsum dolor sit amet</li>\n    <li>Lorem ipsum dolor sit amet</li>\n    <li>Lorem ipsum dolor sit amet</li>\n    <ul>\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Lorem ipsum dolor sit amet</li>\n      <ul>\n        <li>Lorem ipsum dolor sit amet</li>\n        <li>Lorem ipsum dolor sit amet</li>\n      </ul>\n      <li>Lorem ipsum dolor sit amet</li>\n    </ul>\n    <li>Lorem ipsum dolor sit amet</li>\n  </ul>\n  <ol>\n    <li>Lorem ipsum dolor sit amet</li>\n    <li>Lorem ipsum dolor sit amet</li>\n    <li>Lorem ipsum dolor sit amet</li>\n    <ol>\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Lorem ipsum dolor sit amet</li>\n      <ol>\n        <li>Lorem ipsum dolor sit amet</li>\n        <li>Lorem ipsum dolor sit amet</li>\n      </ol>\n      <li>Lorem ipsum dolor sit amet</li>\n    </ol>\n    <li>Lorem ipsum dolor sit amet</li>\n  </ol>\n</div>";
-
-/***/ }),
-/* 63 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(64)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 64 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"bd-{{color}} m-bottom\">\n  <h4>lorem ipsum dolor sit amet (H4) - bd-{{color}}</h4>\n  <p>\n    Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n  </p>\n</div>";
-
-/***/ }),
-/* 65 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(66)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 66 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"bg-{{color}} m-bottom\">\n  <h4>lorem ipsum dolor sit amet (H4) - bg-{{color}}</h4>\n  <p>\n    Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n  </p>\n</div>";
-
-/***/ }),
-/* 67 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(68)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 68 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"tab\">\n  <h1>lorem ipsum dolor sit amet (H1)</h1>\n  <h2>lorem ipsum dolor sit amet (H2)</h2>\n  <h3>lorem ipsum dolor sit amet (H3)</h3>\n  <h4>lorem ipsum dolor sit amet (H4)</h4>\n  <h5>lorem ipsum dolor sit amet (H5)</h5>\n  <h6>lorem ipsum dolor sit amet (H6)</h6>\n</div>";
-
-/***/ }),
-/* 69 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(70)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 70 */
-/***/ (function(module, exports) {
-
-module.exports = "<h4 class=\"bg-{{color}}\">lorem ipsum (h4) - bg-{{color}}</h4>";
-
-/***/ }),
-/* 71 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(72)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 72 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"tab\">\n  <h4 class=\"sep-top\">lorem ipsum (h4) - sep-top</h4>\n  <h4 class=\"sep-bottom\">lorem ipsum (h4) - sep-bottom</h4>\n  <h4 class=\"sep-top sep-bottom\">lorem ipsum (h4) - sep-top sep-bottom</h4>\n\n  <h4 class=\"sep-left\">lorem ipsum (h4) - sep-left</h4>\n  <h4 class=\"sep-right\">lorem ipsum (h4) - sep-right</h4>\n  <h4 class=\"sep-left sep-right\">lorem ipsum (h4) - sep-left sep-right</h4>\n</div>";
-
-/***/ }),
-/* 73 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(74)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T; }();
-
-/***/ }),
-/* 74 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"col-12 col-md-6 col-lg-4 flex-column\">\n  <div class=\"ft-b txt-center\">- {{title}} -</div>\n  <ul class=\" bd-grey-right bd-grey-bottom flex-grow-1\">\n    {{> rows}}\n  </ul>\n</div>";
-
-/***/ }),
-/* 75 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(76)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 76 */
-/***/ (function(module, exports) {
-
-module.exports = "<li class=\"bd-greylight-bottom-1 p-bottom-0 flex-wrap-justify--between\">\n  {{{str}}}\n</li>";
-
-/***/ }),
-/* 77 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-module.exports = {"radius":"2px","spacing":"30px","border-size":"2px","colors":"(\"blue\": #004C79, \"green\": #5cb85c, \"orange\": #DC6053, \"darkblue\": #0a1d29, \"gold\": #edbe5f, \"black\": #000000, \"blacklight\": #111414, \"blacklighter\": #222222, \"greystronger\": #424041, \"greystrong\": #535052, \"grey\": #7A7778, \"greylight\": #DDDDDD, \"greylighter\": #EEEEEE, \"white\": #ffffff, \"none\": transparent)","breakpoints":"(\"xl\": 1400px, \"lg\": 1200px, \"md\": 992px, \"sm\": 768px, \"xs\": 620px, \"xxs\": 520px)","body":"(\"background\": #ffffff, \"font-color\": #424041, \"font-size\": 20px, \"title-font-color\": #111414)","header":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","footer":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","input":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #424041, \"border-size\": 2px, \"placeholder-font-color\": #7A7778, \"radius\": true)","input-focus":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #424041)","input-valid":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #5cb85c)","input-invalid":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #DC6053)","link":"(\"font-color\": #DC6053, \"font-color-hover\": #DC6053, \"font-color-focus\": #DC6053)","btn":"(\"background\": #424041, \"font-color\": #ffffff, \"border-size\": 2px, \"radius\": true, \"extend\": \".btn-bg-darkblue\")","enable-bg":"true","enable-bg-extended":"false","enable-bd":"true"};
-
-/***/ }),
-/* 78 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(79)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 79 */
-/***/ (function(module, exports) {
-
-module.exports = "<nav class=\"bg-greystronger\">\n  <ul>\n    <li><a href=\"#framway__config\">Config</a></li>\n    <li>\n      <a href=\"#framway__styling\">Styling</a>\n      {{{styling.nav}}}\n    </li>\n    <li>\n      <a href=\"#framway__components\">Components</a>\n      {{{components.nav}}}\n    </li>\n  </ul>\n</nav>\n<div class=\"content container-fluid p-x-x2 p-top\">\n  <h1>Framway's config & guideline</h1>\n  <div class=\"item\" id=\"framway__config\">\n    <div class=\"row\">\n      {{{config}}}\n    </div>\n  </div>\n  <div class=\"item\" id=\"framway__styling\">\n      {{{styling.content}}}\n  </div>\n  <div class=\"item\" id=\"framway__components\">\n      {{{components.content}}}\n  </div>\n</div>";
-
-/***/ }),
-/* 80 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function($) {
-
-// require('./_tabs.scss');
-$.fn.Tabs = function Tabs() {
-  app._tabs = app._tabs || [];
-  $(this).each(function () {
-    var tabs = {
-      $el: $(this),
-      nav: { $el: $(this).children('.tabs__nav,tabs__nav') },
-      content: { $el: $(this).children('.tabs__content,tabs__content') }
-    };
-
-    tabs.nav.buttons = tabs.nav.$el.children('button');
-    tabs.content.tabs = tabs.content.$el.children('.tab,tab');
-
-    tabs.nav.buttons.each(function (index, button) {
-      button = $(button);
-      button.bind('click', function (event) {
-        tabs.nav.buttons.removeClass('active');
-        tabs.content.tabs.removeClass('active');
-        button.addClass('active');
-        $(tabs.content.tabs[index]).addClass('active');
-      });
-    });
-    if (!tabs.nav.buttons.hasClass('active')) tabs.nav.buttons.first().trigger('click');else tabs.nav.buttons.filter('.active').trigger('click');
-
-    app._tabs.push(tabs);
-  });
-};
-$(function () {
-  $('.tabs,tabs').Tabs();
-
-  utils.addHtmlHook('.tabs,tabs', function (item) {
-    console.log("tabs added to dom");
-    $(item).Tabs();
-  });
-});
-
-// module.exports = $.fn.Tabs;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
-
-/***/ }),
-/* 81 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// https://tc39.github.io/ecma262/#sec-array.prototype.find
-if (!Array.prototype.find) {
-      Object.defineProperty(Array.prototype, 'find', {
-            value: function value(predicate) {
-                  // 1. Let O be ? ToObject(this value).
-                  if (this == null) {
-                        throw new TypeError('"this" is null or not defined');
-                  }
-
-                  var o = Object(this);
-
-                  // 2. Let len be ? ToLength(? Get(O, "length")).
-                  var len = o.length >>> 0;
-
-                  // 3. If IsCallable(predicate) is false, throw a TypeError exception.
-                  if (typeof predicate !== 'function') {
-                        throw new TypeError('predicate must be a function');
-                  }
-
-                  // 4. If thisArg was supplied, let T be thisArg; else let T be undefined.
-                  var thisArg = arguments[1];
-
-                  // 5. Let k be 0.
-                  var k = 0;
-
-                  // 6. Repeat, while k < len
-                  while (k < len) {
-                        // a. Let Pk be ! ToString(k).
-                        // b. Let kValue be ? Get(O, Pk).
-                        // c. Let testResult be ToBoolean(? Call(predicate, T, « kValue, k, O »)).
-                        // d. If testResult is true, return kValue.
-                        var kValue = o[k];
-                        if (predicate.call(thisArg, kValue, k, o)) {
-                              return kValue;
-                        }
-                        // e. Increase k by 1.
-                        k++;
-                  }
-
-                  // 7. Return undefined.
-                  return undefined;
-            }
-      });
-}
-
-/***/ }),
-/* 82 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function($, global) {
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-function Utils() {
-  var utils = this;
-
-  /**
-   * Add a function callback to most of the jQuery dom modification functions, based on a selector.@async
-   * When an element mathcing the selector is added to the dom, it fires the related callback
-   * @param {String}   selector
-   * @param {Function} callback [if the callback has a parameter called "item", the added element will be passed as param to the callback]
-   */
-  utils.addHtmlHook = function (selector, callback) {
-
-    // update html()
-    var OldHtml = $.fn.html;
-    $.fn.html = function () {
-      var EnhancedHtml = OldHtml.apply(this, arguments);
-      if (typeof EnhancedHtml != "string" && arguments.length && EnhancedHtml.find(selector).length) {
-        if (utils.getParameters(callback).indexOf('item') != -1) callback(EnhancedHtml.find(selector));else callback();
-      }
-      return EnhancedHtml;
-    };
-  };
-
-  // apply prefixed event handlers
-  utils.prefixedEvent = function (element, type, callback) {
-    var pfx = ["webkit", "moz", "MS", "o", ""];
-    for (var p = 0; p < pfx.length; p++) {
-      if (!pfx[p]) type = type.toLowerCase();
-      element.addEventListener(pfx[p] + type, callback, false);
-    }
-  };
-
-  /**
-   * Build a string for css transforms, combining the existent properties of an element and the new string provided
-   * @param  {jQuery} el  [can be a jQuery object or a Dom element]
-   * @param  {String} str [expect a valid css transform string]
-   * @return {String}
-   */
-  utils.mergeTransforms = function (el, str) {
-    try {
-      el = el.get(0);
-    } catch (e) {}
-    var strTransform = el.style.transform || $(el).css('content').replace(/"/g, '');
-    var baseTransform = String(strTransform).split(' ');
-    var targetTransform = str.split(' ');
-    var objTransform = {};
-    if (baseTransform[0] != "none") {
-      $.each(baseTransform, function (index, value) {
-        var key = value.replace(/\((.+?)\)/, '');
-        objTransform[key] = value.replace(key, '');
-      });
-    }
-    $.each(targetTransform, function (index, value) {
-      var key = value.replace(/\((.+?)\)/, '');
-      objTransform[key] = value.replace(key, '');
-    });
-    var strResult = '';
-    $.each(objTransform, function (key, value) {
-      strResult += key + value + ' ';
-    });
-    return strResult;
-  };
-
-  /**
-   * return an array of a function's parameters. Works only if the parameters don't have defaults values
-   * @param  {Function} fn
-   * @return {Array}
-   */
-  utils.getParameters = function (fn) {
-    var fnStr = fn.toString().replace(STRIP_COMMENTS, '');
-    var result = fnStr.slice(fnStr.indexOf('(') + 1, fnStr.indexOf(')')).match(ARGUMENT_NAMES);
-    if (result === null) result = [];
-    return result;
-  };
-  var STRIP_COMMENTS = /(\/\/.*$)|(\/\*[\s\S]*?\*\/)|(\s*=[^,\)]*(('(?:\\'|[^'\r\n])*')|("(?:\\"|[^"\r\n])*"))|(\s*=[^,\)]*))/mg;
-  var ARGUMENT_NAMES = /([^\s,]+)/g;
-
-  /**
-   * return a object containing the viewport width and height
-   * @return {Object}
-   */
-  utils.getDimensions = function () {
-    return {
-      width: window.innerWidth,
-      height: window.innerHeight
-    };
-  };
-
-  /**
-   * return an array of method's names from an object
-   * @param  {Object} obj
-   * @return {Array}
-   */
-  utils.getObjMethods = function (obj) {
-    var res = [];
-    for (var m in obj) {
-      if (typeof obj[m] == "function") res.push(m);
-    }
-    return res;
-  };
-
-  /**
-   * return an Object from an array of Objects that match a property and a specific value
-   * @param  {Array of Objects} arrObj
-   * @param  {String} property
-   * @param  {[type]} value
-   * @return {Object}
-   */
-  utils.getObjBy = function (arrObj, property, value) {
-    var items;
-    if (Array.isArray(arrObj)) {
-      items = arrObj.filter(function (obj) {
-        return obj[property] == value;
-      });
-      if (items.length > 1) return items;else return items[0];
-    } else if ((typeof arrObj === "undefined" ? "undefined" : typeof arrObj === "undefined" ? "undefined" : _typeof(arrObj)) == "object") {
-      items = Object.filter(arrObj, property, value);
-      if (utils.getObjSize(items) > 1) return items;else return items[Object.keys(items)[0]];
-    }
-  };
-  // utility function used by getObjBy - not intended to be used out of this context
-  Object.filter = function (obj, property, value) {
-    return Object.keys(obj).filter(function (key) {
-      return obj[key][property] == value;
-    }).reduce(function (res, key) {
-      return res[key] = obj[key], res;
-    }, {});
-  };
-
-  /**
-   * return the size of an Object
-   * @param  {Object} obj
-   * @return {Integer}
-   */
-  utils.getObjSize = function (obj) {
-    return Object.keys(obj).length;
-  };
-
-  /**
-   * generate a unique ID based on the date and a random number
-   * @return {String}
-   */
-  utils.uniqid = function () {
-    var date = new Date();
-    var components = [date.getYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds(), "-", Math.floor(Math.random() * (9999 - 1000) + 1000)];
-    return components.join("");
-  };
-
-  /**
-   * from an array of objects, return an object containing a set of grouped objects by properties values passed as parameters
-   * @param  {Array of Objects} arrObj
-   * @param  {Array of strings} arrOptions
-   * @return {Object}
-   */
-  utils.groupByObj = function (arrObj, arrOptions) {
-    var results = {};
-    $.each(arrObj, function (alias, value) {
-      var strGroup = '';
-      $.each(arrOptions, function (index, option) {
-        if (index != 0) strGroup += ',';
-        strGroup += value[option];
-      });
-      if (!results[strGroup]) results[strGroup] = {};
-      results[strGroup][alias] = value;
-    });
-    return results;
-  };
-
-  /**
-   * return a key of an object from a value
-   * @param  {Object} obj
-   * @param  {[type]} value
-   * @return {String}
-   */
-  utils.getObjKeyByValue = function (obj, value) {
-    return Object.keys(obj).find(function (key) {
-      return obj[key] === value;
-    });
-  };
-
-  /**
-   * Copy the content of the element provided to the clipboard
-   * @param  {DOM element} elem
-   * @return {Boolean}
-   */
-  utils.copyToClipboard = function (elem) {
-    // create hidden text element, if it doesn't already exist
-    var targetId = "_hiddenCopyText_";
-    var isInput = elem.tagName === "INPUT" || elem.tagName === "TEXTAREA";
-    var origSelectionStart, origSelectionEnd;
-    if (isInput) {
-      // can just use the original source element for the selection and copy
-      target = elem;
-      origSelectionStart = elem.selectionStart;
-      origSelectionEnd = elem.selectionEnd;
-    } else {
-      // must use a temporary form element for the selection and copy
-      target = document.getElementById(targetId);
-      if (!target) {
-        var target = document.createElement("textarea");
-        target.style.position = "absolute";
-        target.style.left = "-9999px";
-        target.style.top = "0";
-        target.id = targetId;
-        document.body.appendChild(target);
-      }
-      target.textContent = elem.textContent;
-    }
-    // select the content
-    var currentFocus = document.activeElement;
-    target.focus();
-    target.setSelectionRange(0, target.value.length);
-
-    // copy the selection
-    var succeed;
-    try {
-      succeed = document.execCommand("copy");
-    } catch (e) {
-      succeed = false;
-    }
-    // restore original focus
-    if (currentFocus && typeof currentFocus.focus === "function") {
-      currentFocus.focus();
-    }
-
-    if (isInput) {
-      // restore prior selection
-      elem.setSelectionRange(origSelectionStart, origSelectionEnd);
-    } else {
-      // clear temporary content
-      target.textContent = "";
-    }
-    return succeed;
-  };
-
-  // NOTIFICATIONS SETUP
-  global.toastr = __webpack_require__(83);
-  var toastrDefault = { "newestOnTop": false, "closeButton": true, "timeOut": 0, "extendedTimeOut": 0, "showMethod": "slideDown", "positionClass": "toast-bottom-left", "progressBar": false };
-  var toastrTimeOut = { "newestOnTop": false, "closeButton": true, "timeOut": 5000, "extendedTimeOut": 1000, "showMethod": "slideDown", "positionClass": "toast-bottom-left", "progressBar": true };
-  toastr.options = toastrDefault;
-
-  /**
-   * display a common notification
-   * @type {Object}
-   */
-  global.notif = {
-    error: function error(str) {
-      if (app.useNotif) toastr.error(str);
-    },
-    success: function success(str) {
-      if (app.useNotif) toastr.success(str);
-    },
-    warning: function warning(str) {
-      if (app.useNotif) toastr.warning(str);
-    },
-    info: function info(str) {
-      if (app.useNotif) toastr.info(str);
-    }
-  };
-  /**
-   * display a notification that will fade past time
-   */
-  global.notif_fade = {
-    error: function error(str) {
-      if (app.useNotif) {
-        toastr.options = toastrTimeOut;
-        toastr.error(str);
-        toastr.options = toastrDefault;
-      }
-    },
-    success: function success(str) {
-      if (app.useNotif) {
-        toastr.options = toastrTimeOut;
-        toastr.success(str);
-        toastr.options = toastrDefault;
-      }
-    },
-    warning: function warning(str) {
-      if (app.useNotif) {
-        toastr.options = toastrTimeOut;
-        toastr.warning(str);
-        toastr.options = toastrDefault;
-      }
-    },
-    info: function info(str) {
-      if (app.useNotif) {
-        toastr.options = toastrTimeOut;
-        toastr.info(str);
-        toastr.options = toastrDefault;
-      }
-    }
-  };
-
-  global.viewport = utils.getDimensions();
-  return utils;
-}
-
-// check end of scrolling
-$.fn.scrollEnd = function (callback, timeout) {
-  $(this).scroll(function () {
-    var $this = $(this);
-    if ($this.data('scrollTimeout')) {
-      clearTimeout($this.data('scrollTimeout'));
-    }
-    $this.data('scrollTimeout', setTimeout(callback, timeout));
-  });
-};
-
-/**
- * check the state of a checkbox
- * @return {Boolean}
- *  TODO : real test
- */
-$.fn.isChecked = function () {
-  if ($(this).is(':checked')) return 1;else return 0;
-};
-
-$.event.special.destroyed = {
-  remove: function remove(o) {
-    if (o.handler) {
-      o.handler();
-    }
-  }
-};
-
-$(function () {
-  $(window).resize(function () {
-    viewport = utils.getDimensions();
-  });
-});
-
-module.exports = new Utils();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(4)))
-
-/***/ }),
-/* 83 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
- * Toastr
- * Copyright 2012-2015
- * Authors: John Papa, Hans Fjällemark, and Tim Ferrell.
- * All Rights Reserved.
- * Use, reproduction, distribution, and modification of this code is subject to the terms and
- * conditions of the MIT license, available at http://www.opensource.org/licenses/mit-license.php
- *
- * ARIA Support: Greta Krafsig
- *
- * Project: https://github.com/CodeSeven/toastr
- */
-/* global define */
-(function (define) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(2)], __WEBPACK_AMD_DEFINE_RESULT__ = (function ($) {
-        return (function () {
-            var $container;
-            var listener;
-            var toastId = 0;
-            var toastType = {
-                error: 'error',
-                info: 'info',
-                success: 'success',
-                warning: 'warning'
-            };
-
-            var toastr = {
-                clear: clear,
-                remove: remove,
-                error: error,
-                getContainer: getContainer,
-                info: info,
-                options: {},
-                subscribe: subscribe,
-                success: success,
-                version: '2.1.4',
-                warning: warning
-            };
-
-            var previousToast;
-
-            return toastr;
-
-            ////////////////
-
-            function error(message, title, optionsOverride) {
-                return notify({
-                    type: toastType.error,
-                    iconClass: getOptions().iconClasses.error,
-                    message: message,
-                    optionsOverride: optionsOverride,
-                    title: title
-                });
-            }
-
-            function getContainer(options, create) {
-                if (!options) { options = getOptions(); }
-                $container = $('#' + options.containerId);
-                if ($container.length) {
-                    return $container;
-                }
-                if (create) {
-                    $container = createContainer(options);
-                }
-                return $container;
-            }
-
-            function info(message, title, optionsOverride) {
-                return notify({
-                    type: toastType.info,
-                    iconClass: getOptions().iconClasses.info,
-                    message: message,
-                    optionsOverride: optionsOverride,
-                    title: title
-                });
-            }
-
-            function subscribe(callback) {
-                listener = callback;
-            }
-
-            function success(message, title, optionsOverride) {
-                return notify({
-                    type: toastType.success,
-                    iconClass: getOptions().iconClasses.success,
-                    message: message,
-                    optionsOverride: optionsOverride,
-                    title: title
-                });
-            }
-
-            function warning(message, title, optionsOverride) {
-                return notify({
-                    type: toastType.warning,
-                    iconClass: getOptions().iconClasses.warning,
-                    message: message,
-                    optionsOverride: optionsOverride,
-                    title: title
-                });
-            }
-
-            function clear($toastElement, clearOptions) {
-                var options = getOptions();
-                if (!$container) { getContainer(options); }
-                if (!clearToast($toastElement, options, clearOptions)) {
-                    clearContainer(options);
-                }
-            }
-
-            function remove($toastElement) {
-                var options = getOptions();
-                if (!$container) { getContainer(options); }
-                if ($toastElement && $(':focus', $toastElement).length === 0) {
-                    removeToast($toastElement);
-                    return;
-                }
-                if ($container.children().length) {
-                    $container.remove();
-                }
-            }
-
-            // internal functions
-
-            function clearContainer (options) {
-                var toastsToClear = $container.children();
-                for (var i = toastsToClear.length - 1; i >= 0; i--) {
-                    clearToast($(toastsToClear[i]), options);
-                }
-            }
-
-            function clearToast ($toastElement, options, clearOptions) {
-                var force = clearOptions && clearOptions.force ? clearOptions.force : false;
-                if ($toastElement && (force || $(':focus', $toastElement).length === 0)) {
-                    $toastElement[options.hideMethod]({
-                        duration: options.hideDuration,
-                        easing: options.hideEasing,
-                        complete: function () { removeToast($toastElement); }
-                    });
-                    return true;
-                }
-                return false;
-            }
-
-            function createContainer(options) {
-                $container = $('<div/>')
-                    .attr('id', options.containerId)
-                    .addClass(options.positionClass);
-
-                $container.appendTo($(options.target));
-                return $container;
-            }
-
-            function getDefaults() {
-                return {
-                    tapToDismiss: true,
-                    toastClass: 'toast',
-                    containerId: 'toast-container',
-                    debug: false,
-
-                    showMethod: 'fadeIn', //fadeIn, slideDown, and show are built into jQuery
-                    showDuration: 300,
-                    showEasing: 'swing', //swing and linear are built into jQuery
-                    onShown: undefined,
-                    hideMethod: 'fadeOut',
-                    hideDuration: 1000,
-                    hideEasing: 'swing',
-                    onHidden: undefined,
-                    closeMethod: false,
-                    closeDuration: false,
-                    closeEasing: false,
-                    closeOnHover: true,
-
-                    extendedTimeOut: 1000,
-                    iconClasses: {
-                        error: 'toast-error',
-                        info: 'toast-info',
-                        success: 'toast-success',
-                        warning: 'toast-warning'
-                    },
-                    iconClass: 'toast-info',
-                    positionClass: 'toast-top-right',
-                    timeOut: 5000, // Set timeOut and extendedTimeOut to 0 to make it sticky
-                    titleClass: 'toast-title',
-                    messageClass: 'toast-message',
-                    escapeHtml: false,
-                    target: 'body',
-                    closeHtml: '<button type="button">&times;</button>',
-                    closeClass: 'toast-close-button',
-                    newestOnTop: true,
-                    preventDuplicates: false,
-                    progressBar: false,
-                    progressClass: 'toast-progress',
-                    rtl: false
-                };
-            }
-
-            function publish(args) {
-                if (!listener) { return; }
-                listener(args);
-            }
-
-            function notify(map) {
-                var options = getOptions();
-                var iconClass = map.iconClass || options.iconClass;
-
-                if (typeof (map.optionsOverride) !== 'undefined') {
-                    options = $.extend(options, map.optionsOverride);
-                    iconClass = map.optionsOverride.iconClass || iconClass;
-                }
-
-                if (shouldExit(options, map)) { return; }
-
-                toastId++;
-
-                $container = getContainer(options, true);
-
-                var intervalId = null;
-                var $toastElement = $('<div/>');
-                var $titleElement = $('<div/>');
-                var $messageElement = $('<div/>');
-                var $progressElement = $('<div/>');
-                var $closeElement = $(options.closeHtml);
-                var progressBar = {
-                    intervalId: null,
-                    hideEta: null,
-                    maxHideTime: null
-                };
-                var response = {
-                    toastId: toastId,
-                    state: 'visible',
-                    startTime: new Date(),
-                    options: options,
-                    map: map
-                };
-
-                personalizeToast();
-
-                displayToast();
-
-                handleEvents();
-
-                publish(response);
-
-                if (options.debug && console) {
-                    console.log(response);
-                }
-
-                return $toastElement;
-
-                function escapeHtml(source) {
-                    if (source == null) {
-                        source = '';
-                    }
-
-                    return source
-                        .replace(/&/g, '&amp;')
-                        .replace(/"/g, '&quot;')
-                        .replace(/'/g, '&#39;')
-                        .replace(/</g, '&lt;')
-                        .replace(/>/g, '&gt;');
-                }
-
-                function personalizeToast() {
-                    setIcon();
-                    setTitle();
-                    setMessage();
-                    setCloseButton();
-                    setProgressBar();
-                    setRTL();
-                    setSequence();
-                    setAria();
-                }
-
-                function setAria() {
-                    var ariaValue = '';
-                    switch (map.iconClass) {
-                        case 'toast-success':
-                        case 'toast-info':
-                            ariaValue =  'polite';
-                            break;
-                        default:
-                            ariaValue = 'assertive';
-                    }
-                    $toastElement.attr('aria-live', ariaValue);
-                }
-
-                function handleEvents() {
-                    if (options.closeOnHover) {
-                        $toastElement.hover(stickAround, delayedHideToast);
-                    }
-
-                    if (!options.onclick && options.tapToDismiss) {
-                        $toastElement.click(hideToast);
-                    }
-
-                    if (options.closeButton && $closeElement) {
-                        $closeElement.click(function (event) {
-                            if (event.stopPropagation) {
-                                event.stopPropagation();
-                            } else if (event.cancelBubble !== undefined && event.cancelBubble !== true) {
-                                event.cancelBubble = true;
-                            }
-
-                            if (options.onCloseClick) {
-                                options.onCloseClick(event);
-                            }
-
-                            hideToast(true);
-                        });
-                    }
-
-                    if (options.onclick) {
-                        $toastElement.click(function (event) {
-                            options.onclick(event);
-                            hideToast();
-                        });
-                    }
-                }
-
-                function displayToast() {
-                    $toastElement.hide();
-
-                    $toastElement[options.showMethod](
-                        {duration: options.showDuration, easing: options.showEasing, complete: options.onShown}
-                    );
-
-                    if (options.timeOut > 0) {
-                        intervalId = setTimeout(hideToast, options.timeOut);
-                        progressBar.maxHideTime = parseFloat(options.timeOut);
-                        progressBar.hideEta = new Date().getTime() + progressBar.maxHideTime;
-                        if (options.progressBar) {
-                            progressBar.intervalId = setInterval(updateProgress, 10);
-                        }
-                    }
-                }
-
-                function setIcon() {
-                    if (map.iconClass) {
-                        $toastElement.addClass(options.toastClass).addClass(iconClass);
-                    }
-                }
-
-                function setSequence() {
-                    if (options.newestOnTop) {
-                        $container.prepend($toastElement);
-                    } else {
-                        $container.append($toastElement);
-                    }
-                }
-
-                function setTitle() {
-                    if (map.title) {
-                        var suffix = map.title;
-                        if (options.escapeHtml) {
-                            suffix = escapeHtml(map.title);
-                        }
-                        $titleElement.append(suffix).addClass(options.titleClass);
-                        $toastElement.append($titleElement);
-                    }
-                }
-
-                function setMessage() {
-                    if (map.message) {
-                        var suffix = map.message;
-                        if (options.escapeHtml) {
-                            suffix = escapeHtml(map.message);
-                        }
-                        $messageElement.append(suffix).addClass(options.messageClass);
-                        $toastElement.append($messageElement);
-                    }
-                }
-
-                function setCloseButton() {
-                    if (options.closeButton) {
-                        $closeElement.addClass(options.closeClass).attr('role', 'button');
-                        $toastElement.prepend($closeElement);
-                    }
-                }
-
-                function setProgressBar() {
-                    if (options.progressBar) {
-                        $progressElement.addClass(options.progressClass);
-                        $toastElement.prepend($progressElement);
-                    }
-                }
-
-                function setRTL() {
-                    if (options.rtl) {
-                        $toastElement.addClass('rtl');
-                    }
-                }
-
-                function shouldExit(options, map) {
-                    if (options.preventDuplicates) {
-                        if (map.message === previousToast) {
-                            return true;
-                        } else {
-                            previousToast = map.message;
-                        }
-                    }
-                    return false;
-                }
-
-                function hideToast(override) {
-                    var method = override && options.closeMethod !== false ? options.closeMethod : options.hideMethod;
-                    var duration = override && options.closeDuration !== false ?
-                        options.closeDuration : options.hideDuration;
-                    var easing = override && options.closeEasing !== false ? options.closeEasing : options.hideEasing;
-                    if ($(':focus', $toastElement).length && !override) {
-                        return;
-                    }
-                    clearTimeout(progressBar.intervalId);
-                    return $toastElement[method]({
-                        duration: duration,
-                        easing: easing,
-                        complete: function () {
-                            removeToast($toastElement);
-                            clearTimeout(intervalId);
-                            if (options.onHidden && response.state !== 'hidden') {
-                                options.onHidden();
-                            }
-                            response.state = 'hidden';
-                            response.endTime = new Date();
-                            publish(response);
-                        }
-                    });
-                }
-
-                function delayedHideToast() {
-                    if (options.timeOut > 0 || options.extendedTimeOut > 0) {
-                        intervalId = setTimeout(hideToast, options.extendedTimeOut);
-                        progressBar.maxHideTime = parseFloat(options.extendedTimeOut);
-                        progressBar.hideEta = new Date().getTime() + progressBar.maxHideTime;
-                    }
-                }
-
-                function stickAround() {
-                    clearTimeout(intervalId);
-                    progressBar.hideEta = 0;
-                    $toastElement.stop(true, true)[options.showMethod](
-                        {duration: options.showDuration, easing: options.showEasing}
-                    );
-                }
-
-                function updateProgress() {
-                    var percentage = ((progressBar.hideEta - (new Date().getTime())) / progressBar.maxHideTime) * 100;
-                    $progressElement.width(percentage + '%');
-                }
-            }
-
-            function getOptions() {
-                return $.extend({}, getDefaults(), toastr.options);
-            }
-
-            function removeToast($toastElement) {
-                if (!$container) { $container = getContainer(); }
-                if ($toastElement.is(':visible')) {
-                    return;
-                }
-                $toastElement.remove();
-                $toastElement = null;
-                if ($container.children().length === 0) {
-                    $container.remove();
-                    previousToast = undefined;
-                }
-            }
-
-        })();
-    }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-}(__webpack_require__(84)));
-
-
-/***/ }),
-/* 84 */
-/***/ (function(module, exports) {
-
-module.exports = function() {
-	throw new Error("define cannot be used indirect");
-};
-
+console.log(app);
 
 /***/ }),
-/* 85 */,
-/* 86 */,
-/* 87 */,
-/* 88 */,
-/* 89 */,
-/* 90 */,
-/* 91 */,
-/* 92 */,
-/* 93 */,
-/* 94 */,
-/* 95 */,
-/* 96 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;/*! Hammer.JS - v2.0.7 - 2016-04-22
@@ -15784,7 +13115,7 @@ if (true) {
 
 
 /***/ }),
-/* 97 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -15798,7 +13129,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 (function (factory) {
     if ( true ) {
         // AMD. Register as an anonymous module.
-        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(2)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -16014,7 +13345,351 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 
 /***/ }),
-/* 98 */
+/* 23 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"radius":"2px","spacing":"30px","border-size":"2px","colors":"(\"blue\": #004C79, \"green\": #5cb85c, \"orange\": #DC6053, \"darkblue\": #0a1d29, \"gold\": #edbe5f, \"black\": #000000, \"blacklight\": #111414, \"blacklighter\": #222222, \"greystronger\": #424041, \"greystrong\": #535052, \"grey\": #7A7778, \"greylight\": #DDDDDD, \"greylighter\": #EEEEEE, \"white\": #ffffff, \"none\": transparent)","breakpoints":"(\"xl\": 1400px, \"lg\": 1200px, \"md\": 992px, \"sm\": 768px, \"xs\": 620px, \"xxs\": 520px)","body":"(\"background\": #ffffff, \"font-color\": #424041, \"font-size\": 20px, \"title-font-color\": #111414)","header":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","footer":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","input":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #424041, \"border-size\": 2px, \"placeholder-font-color\": #7A7778, \"radius\": true)","input-focus":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #424041)","input-valid":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #5cb85c)","input-invalid":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #DC6053)","link":"(\"font-color\": #DC6053, \"font-color-hover\": #DC6053, \"font-color-focus\": #DC6053)","btn":"btn","enable-bg":"true","enable-bg-extended":"false","enable-bd":"true","disabled":"disabled","copy":"copy","no-events":"no-events","no-overflow":"no-overflow","hidden":"hidden","invisible":"invisible","ellipsis":"ellipsis","center":"center","center-block":"center-block","fl-left":"fl-left","float-left":"float-left","fl-right":"fl-right","float-right":"float-right","clear":"clear","clear-left":"clear-left","clear-right":"clear-right","clear-after":"clear-after","clear-before":"clear-before","clear-no":"clear-no","text-right":"text-right","txt-right":"txt-right","text-left":"text-left","txt-left":"txt-left","text-center":"text-center","txt-center":"txt-center","ft-light":"ft-light","ft-normal":"ft-normal","ft-bold":"ft-bold","ft-bolder":"ft-bolder","ft-i":"ft-i","ft-b":"ft-b","ft-u":"ft-u","ft-u-no":"ft-u-no","ft-upper":"ft-upper","ft-lower":"ft-lower","ft-0-em":"ft-0-em","ft-0-rem":"ft-0-rem","ft-0-1-em":"ft-0-1-em","ft-0-1-rem":"ft-0-1-rem","ft-0-2-em":"ft-0-2-em","ft-0-2-rem":"ft-0-2-rem","ft-0-3-em":"ft-0-3-em","ft-0-3-rem":"ft-0-3-rem","ft-0-4-em":"ft-0-4-em","ft-0-4-rem":"ft-0-4-rem","ft-0-5-em":"ft-0-5-em","ft-0-5-rem":"ft-0-5-rem","ft-0-6-em":"ft-0-6-em","ft-0-6-rem":"ft-0-6-rem","ft-0-7-em":"ft-0-7-em","ft-0-7-rem":"ft-0-7-rem","ft-0-8-em":"ft-0-8-em","ft-0-8-rem":"ft-0-8-rem","ft-0-9-em":"ft-0-9-em","ft-0-9-rem":"ft-0-9-rem","ft-minus-10":"ft-minus-10","ft-plus-10":"ft-plus-10","ft-1-em":"ft-1-em","ft-1-rem":"ft-1-rem","ft-1-1-em":"ft-1-1-em","ft-1-1-rem":"ft-1-1-rem","ft-1-2-em":"ft-1-2-em","ft-1-2-rem":"ft-1-2-rem","ft-1-3-em":"ft-1-3-em","ft-1-3-rem":"ft-1-3-rem","ft-1-4-em":"ft-1-4-em","ft-1-4-rem":"ft-1-4-rem","ft-1-5-em":"ft-1-5-em","ft-1-5-rem":"ft-1-5-rem","ft-1-6-em":"ft-1-6-em","ft-1-6-rem":"ft-1-6-rem","ft-1-7-em":"ft-1-7-em","ft-1-7-rem":"ft-1-7-rem","ft-1-8-em":"ft-1-8-em","ft-1-8-rem":"ft-1-8-rem","ft-1-9-em":"ft-1-9-em","ft-1-9-rem":"ft-1-9-rem","ft-minus-20":"ft-minus-20","ft-plus-20":"ft-plus-20","ft-2-em":"ft-2-em","ft-2-rem":"ft-2-rem","ft-2-1-em":"ft-2-1-em","ft-2-1-rem":"ft-2-1-rem","ft-2-2-em":"ft-2-2-em","ft-2-2-rem":"ft-2-2-rem","ft-2-3-em":"ft-2-3-em","ft-2-3-rem":"ft-2-3-rem","ft-2-4-em":"ft-2-4-em","ft-2-4-rem":"ft-2-4-rem","ft-2-5-em":"ft-2-5-em","ft-2-5-rem":"ft-2-5-rem","ft-2-6-em":"ft-2-6-em","ft-2-6-rem":"ft-2-6-rem","ft-2-7-em":"ft-2-7-em","ft-2-7-rem":"ft-2-7-rem","ft-2-8-em":"ft-2-8-em","ft-2-8-rem":"ft-2-8-rem","ft-2-9-em":"ft-2-9-em","ft-2-9-rem":"ft-2-9-rem","ft-minus-30":"ft-minus-30","ft-plus-30":"ft-plus-30","ft-3-em":"ft-3-em","ft-3-rem":"ft-3-rem","ft-3-1-em":"ft-3-1-em","ft-3-1-rem":"ft-3-1-rem","ft-3-2-em":"ft-3-2-em","ft-3-2-rem":"ft-3-2-rem","ft-3-3-em":"ft-3-3-em","ft-3-3-rem":"ft-3-3-rem","ft-3-4-em":"ft-3-4-em","ft-3-4-rem":"ft-3-4-rem","ft-3-5-em":"ft-3-5-em","ft-3-5-rem":"ft-3-5-rem","ft-3-6-em":"ft-3-6-em","ft-3-6-rem":"ft-3-6-rem","ft-3-7-em":"ft-3-7-em","ft-3-7-rem":"ft-3-7-rem","ft-3-8-em":"ft-3-8-em","ft-3-8-rem":"ft-3-8-rem","ft-3-9-em":"ft-3-9-em","ft-3-9-rem":"ft-3-9-rem","ft-minus-40":"ft-minus-40","ft-plus-40":"ft-plus-40","ft-4-em":"ft-4-em","ft-4-rem":"ft-4-rem","ft-4-1-em":"ft-4-1-em","ft-4-1-rem":"ft-4-1-rem","ft-4-2-em":"ft-4-2-em","ft-4-2-rem":"ft-4-2-rem","ft-4-3-em":"ft-4-3-em","ft-4-3-rem":"ft-4-3-rem","ft-4-4-em":"ft-4-4-em","ft-4-4-rem":"ft-4-4-rem","ft-4-5-em":"ft-4-5-em","ft-4-5-rem":"ft-4-5-rem","ft-4-6-em":"ft-4-6-em","ft-4-6-rem":"ft-4-6-rem","ft-4-7-em":"ft-4-7-em","ft-4-7-rem":"ft-4-7-rem","ft-4-8-em":"ft-4-8-em","ft-4-8-rem":"ft-4-8-rem","ft-4-9-em":"ft-4-9-em","ft-4-9-rem":"ft-4-9-rem","ft-minus-50":"ft-minus-50","ft-plus-50":"ft-plus-50","ft-5-em":"ft-5-em","ft-5-rem":"ft-5-rem","ft-5-1-em":"ft-5-1-em","ft-5-1-rem":"ft-5-1-rem","ft-5-2-em":"ft-5-2-em","ft-5-2-rem":"ft-5-2-rem","ft-5-3-em":"ft-5-3-em","ft-5-3-rem":"ft-5-3-rem","ft-5-4-em":"ft-5-4-em","ft-5-4-rem":"ft-5-4-rem","ft-5-5-em":"ft-5-5-em","ft-5-5-rem":"ft-5-5-rem","ft-5-6-em":"ft-5-6-em","ft-5-6-rem":"ft-5-6-rem","ft-5-7-em":"ft-5-7-em","ft-5-7-rem":"ft-5-7-rem","ft-5-8-em":"ft-5-8-em","ft-5-8-rem":"ft-5-8-rem","ft-5-9-em":"ft-5-9-em","ft-5-9-rem":"ft-5-9-rem","ft-minus-60":"ft-minus-60","ft-plus-60":"ft-plus-60","ft-6-em":"ft-6-em","ft-6-rem":"ft-6-rem","ft-6-1-em":"ft-6-1-em","ft-6-1-rem":"ft-6-1-rem","ft-6-2-em":"ft-6-2-em","ft-6-2-rem":"ft-6-2-rem","ft-6-3-em":"ft-6-3-em","ft-6-3-rem":"ft-6-3-rem","ft-6-4-em":"ft-6-4-em","ft-6-4-rem":"ft-6-4-rem","ft-6-5-em":"ft-6-5-em","ft-6-5-rem":"ft-6-5-rem","ft-6-6-em":"ft-6-6-em","ft-6-6-rem":"ft-6-6-rem","ft-6-7-em":"ft-6-7-em","ft-6-7-rem":"ft-6-7-rem","ft-6-8-em":"ft-6-8-em","ft-6-8-rem":"ft-6-8-rem","ft-6-9-em":"ft-6-9-em","ft-6-9-rem":"ft-6-9-rem","ft-minus-70":"ft-minus-70","ft-plus-70":"ft-plus-70","ft-7-em":"ft-7-em","ft-7-rem":"ft-7-rem","ft-7-1-em":"ft-7-1-em","ft-7-1-rem":"ft-7-1-rem","ft-7-2-em":"ft-7-2-em","ft-7-2-rem":"ft-7-2-rem","ft-7-3-em":"ft-7-3-em","ft-7-3-rem":"ft-7-3-rem","ft-7-4-em":"ft-7-4-em","ft-7-4-rem":"ft-7-4-rem","ft-7-5-em":"ft-7-5-em","ft-7-5-rem":"ft-7-5-rem","ft-7-6-em":"ft-7-6-em","ft-7-6-rem":"ft-7-6-rem","ft-7-7-em":"ft-7-7-em","ft-7-7-rem":"ft-7-7-rem","ft-7-8-em":"ft-7-8-em","ft-7-8-rem":"ft-7-8-rem","ft-7-9-em":"ft-7-9-em","ft-7-9-rem":"ft-7-9-rem","ft-minus-80":"ft-minus-80","ft-plus-80":"ft-plus-80","ft-8-em":"ft-8-em","ft-8-rem":"ft-8-rem","ft-8-1-em":"ft-8-1-em","ft-8-1-rem":"ft-8-1-rem","ft-8-2-em":"ft-8-2-em","ft-8-2-rem":"ft-8-2-rem","ft-8-3-em":"ft-8-3-em","ft-8-3-rem":"ft-8-3-rem","ft-8-4-em":"ft-8-4-em","ft-8-4-rem":"ft-8-4-rem","ft-8-5-em":"ft-8-5-em","ft-8-5-rem":"ft-8-5-rem","ft-8-6-em":"ft-8-6-em","ft-8-6-rem":"ft-8-6-rem","ft-8-7-em":"ft-8-7-em","ft-8-7-rem":"ft-8-7-rem","ft-8-8-em":"ft-8-8-em","ft-8-8-rem":"ft-8-8-rem","ft-8-9-em":"ft-8-9-em","ft-8-9-rem":"ft-8-9-rem","ft-minus-90":"ft-minus-90","ft-plus-90":"ft-plus-90","ft-9-em":"ft-9-em","ft-9-rem":"ft-9-rem","ft-9-1-em":"ft-9-1-em","ft-9-1-rem":"ft-9-1-rem","ft-9-2-em":"ft-9-2-em","ft-9-2-rem":"ft-9-2-rem","ft-9-3-em":"ft-9-3-em","ft-9-3-rem":"ft-9-3-rem","ft-9-4-em":"ft-9-4-em","ft-9-4-rem":"ft-9-4-rem","ft-9-5-em":"ft-9-5-em","ft-9-5-rem":"ft-9-5-rem","ft-9-6-em":"ft-9-6-em","ft-9-6-rem":"ft-9-6-rem","ft-9-7-em":"ft-9-7-em","ft-9-7-rem":"ft-9-7-rem","ft-9-8-em":"ft-9-8-em","ft-9-8-rem":"ft-9-8-rem","ft-9-9-em":"ft-9-9-em","ft-9-9-rem":"ft-9-9-rem","ft-minus-100":"ft-minus-100","ft-plus-100":"ft-plus-100","ft-10-em":"ft-10-em","ft-10-rem":"ft-10-rem","ft-10-1-em":"ft-10-1-em","ft-10-1-rem":"ft-10-1-rem","ft-10-2-em":"ft-10-2-em","ft-10-2-rem":"ft-10-2-rem","ft-10-3-em":"ft-10-3-em","ft-10-3-rem":"ft-10-3-rem","ft-10-4-em":"ft-10-4-em","ft-10-4-rem":"ft-10-4-rem","ft-10-5-em":"ft-10-5-em","ft-10-5-rem":"ft-10-5-rem","ft-10-6-em":"ft-10-6-em","ft-10-6-rem":"ft-10-6-rem","ft-10-7-em":"ft-10-7-em","ft-10-7-rem":"ft-10-7-rem","ft-10-8-em":"ft-10-8-em","ft-10-8-rem":"ft-10-8-rem","ft-10-9-em":"ft-10-9-em","ft-10-9-rem":"ft-10-9-rem","ft-blue":"ft-blue","ft-green":"ft-green","ft-orange":"ft-orange","ft-darkblue":"ft-darkblue","ft-gold":"ft-gold","ft-black":"ft-black","ft-blacklight":"ft-blacklight","ft-blacklighter":"ft-blacklighter","ft-greystronger":"ft-greystronger","ft-greystrong":"ft-greystrong","ft-grey":"ft-grey","ft-greylight":"ft-greylight","ft-greylighter":"ft-greylighter","ft-white":"ft-white","ft-none":"ft-none","rad":"rad","tags":"tags","rad-all":"rad-all","rad-top-left":"rad-top-left","rad-top":"rad-top","rad-left":"rad-left","rad-top-right":"rad-top-right","rad-right":"rad-right","rad-bottom-left":"rad-bottom-left","rad-bottom":"rad-bottom","rad-bottom-right":"rad-bottom-right","m-all":"m-all","m-all-0":"m-all-0","m-all-x2":"m-all-x2","p-all":"p-all","bd-blue":"bd-blue","bd-blue-0":"bd-blue-0","bd-blue-1":"bd-blue-1","bd-blue-2":"bd-blue-2","bd-blue-3":"bd-blue-3","bd-blue-4":"bd-blue-4","bd-blue-5":"bd-blue-5","bd-blue-6":"bd-blue-6","bd-blue-7":"bd-blue-7","bd-blue-8":"bd-blue-8","bd-blue-9":"bd-blue-9","bd-blue-10":"bd-blue-10","bd-green":"bd-green","bd-green-0":"bd-green-0","bd-green-1":"bd-green-1","bd-green-2":"bd-green-2","bd-green-3":"bd-green-3","bd-green-4":"bd-green-4","bd-green-5":"bd-green-5","bd-green-6":"bd-green-6","bd-green-7":"bd-green-7","bd-green-8":"bd-green-8","bd-green-9":"bd-green-9","bd-green-10":"bd-green-10","bd-orange":"bd-orange","bd-orange-0":"bd-orange-0","bd-orange-1":"bd-orange-1","bd-orange-2":"bd-orange-2","bd-orange-3":"bd-orange-3","bd-orange-4":"bd-orange-4","bd-orange-5":"bd-orange-5","bd-orange-6":"bd-orange-6","bd-orange-7":"bd-orange-7","bd-orange-8":"bd-orange-8","bd-orange-9":"bd-orange-9","bd-orange-10":"bd-orange-10","bd-darkblue":"bd-darkblue","bd-darkblue-0":"bd-darkblue-0","bd-darkblue-1":"bd-darkblue-1","bd-darkblue-2":"bd-darkblue-2","bd-darkblue-3":"bd-darkblue-3","bd-darkblue-4":"bd-darkblue-4","bd-darkblue-5":"bd-darkblue-5","bd-darkblue-6":"bd-darkblue-6","bd-darkblue-7":"bd-darkblue-7","bd-darkblue-8":"bd-darkblue-8","bd-darkblue-9":"bd-darkblue-9","bd-darkblue-10":"bd-darkblue-10","bd-gold":"bd-gold","bd-gold-0":"bd-gold-0","bd-gold-1":"bd-gold-1","bd-gold-2":"bd-gold-2","bd-gold-3":"bd-gold-3","bd-gold-4":"bd-gold-4","bd-gold-5":"bd-gold-5","bd-gold-6":"bd-gold-6","bd-gold-7":"bd-gold-7","bd-gold-8":"bd-gold-8","bd-gold-9":"bd-gold-9","bd-gold-10":"bd-gold-10","bd-black":"bd-black","bd-black-0":"bd-black-0","bd-black-1":"bd-black-1","bd-black-2":"bd-black-2","bd-black-3":"bd-black-3","bd-black-4":"bd-black-4","bd-black-5":"bd-black-5","bd-black-6":"bd-black-6","bd-black-7":"bd-black-7","bd-black-8":"bd-black-8","bd-black-9":"bd-black-9","bd-black-10":"bd-black-10","bd-blacklight":"bd-blacklight","bd-blacklight-0":"bd-blacklight-0","bd-blacklight-1":"bd-blacklight-1","bd-blacklight-2":"bd-blacklight-2","bd-blacklight-3":"bd-blacklight-3","bd-blacklight-4":"bd-blacklight-4","bd-blacklight-5":"bd-blacklight-5","bd-blacklight-6":"bd-blacklight-6","bd-blacklight-7":"bd-blacklight-7","bd-blacklight-8":"bd-blacklight-8","bd-blacklight-9":"bd-blacklight-9","bd-blacklight-10":"bd-blacklight-10","bd-blacklighter":"bd-blacklighter","bd-blacklighter-0":"bd-blacklighter-0","bd-blacklighter-1":"bd-blacklighter-1","bd-blacklighter-2":"bd-blacklighter-2","bd-blacklighter-3":"bd-blacklighter-3","bd-blacklighter-4":"bd-blacklighter-4","bd-blacklighter-5":"bd-blacklighter-5","bd-blacklighter-6":"bd-blacklighter-6","bd-blacklighter-7":"bd-blacklighter-7","bd-blacklighter-8":"bd-blacklighter-8","bd-blacklighter-9":"bd-blacklighter-9","bd-blacklighter-10":"bd-blacklighter-10","bd-greystronger":"bd-greystronger","bd-greystronger-0":"bd-greystronger-0","bd-greystronger-1":"bd-greystronger-1","bd-greystronger-2":"bd-greystronger-2","bd-greystronger-3":"bd-greystronger-3","bd-greystronger-4":"bd-greystronger-4","bd-greystronger-5":"bd-greystronger-5","bd-greystronger-6":"bd-greystronger-6","bd-greystronger-7":"bd-greystronger-7","bd-greystronger-8":"bd-greystronger-8","bd-greystronger-9":"bd-greystronger-9","bd-greystronger-10":"bd-greystronger-10","bd-greystrong":"bd-greystrong","bd-greystrong-0":"bd-greystrong-0","bd-greystrong-1":"bd-greystrong-1","bd-greystrong-2":"bd-greystrong-2","bd-greystrong-3":"bd-greystrong-3","bd-greystrong-4":"bd-greystrong-4","bd-greystrong-5":"bd-greystrong-5","bd-greystrong-6":"bd-greystrong-6","bd-greystrong-7":"bd-greystrong-7","bd-greystrong-8":"bd-greystrong-8","bd-greystrong-9":"bd-greystrong-9","bd-greystrong-10":"bd-greystrong-10","bd-grey":"bd-grey","bd-grey-0":"bd-grey-0","bd-grey-1":"bd-grey-1","bd-grey-2":"bd-grey-2","bd-grey-3":"bd-grey-3","bd-grey-4":"bd-grey-4","bd-grey-5":"bd-grey-5","bd-grey-6":"bd-grey-6","bd-grey-7":"bd-grey-7","bd-grey-8":"bd-grey-8","bd-grey-9":"bd-grey-9","bd-grey-10":"bd-grey-10","bd-greylight":"bd-greylight","bd-greylight-0":"bd-greylight-0","bd-greylight-1":"bd-greylight-1","bd-greylight-2":"bd-greylight-2","bd-greylight-3":"bd-greylight-3","bd-greylight-4":"bd-greylight-4","bd-greylight-5":"bd-greylight-5","bd-greylight-6":"bd-greylight-6","bd-greylight-7":"bd-greylight-7","bd-greylight-8":"bd-greylight-8","bd-greylight-9":"bd-greylight-9","bd-greylight-10":"bd-greylight-10","bd-greylighter":"bd-greylighter","bd-greylighter-0":"bd-greylighter-0","bd-greylighter-1":"bd-greylighter-1","bd-greylighter-2":"bd-greylighter-2","bd-greylighter-3":"bd-greylighter-3","bd-greylighter-4":"bd-greylighter-4","bd-greylighter-5":"bd-greylighter-5","bd-greylighter-6":"bd-greylighter-6","bd-greylighter-7":"bd-greylighter-7","bd-greylighter-8":"bd-greylighter-8","bd-greylighter-9":"bd-greylighter-9","bd-greylighter-10":"bd-greylighter-10","bd-white":"bd-white","bd-white-0":"bd-white-0","bd-white-1":"bd-white-1","bd-white-2":"bd-white-2","bd-white-3":"bd-white-3","side":"side","bd-white-4":"bd-white-4","bd-white-5":"bd-white-5","bd-white-6":"bd-white-6","bd-white-7":"bd-white-7","bd-white-8":"bd-white-8","bd-white-9":"bd-white-9","bd-white-10":"bd-white-10","bd-none":"bd-none","bd-none-0":"bd-none-0","bd-none-1":"bd-none-1","bd-none-2":"bd-none-2","bd-none-3":"bd-none-3","bd-none-4":"bd-none-4","bd-none-5":"bd-none-5","bd-none-6":"bd-none-6","bd-none-7":"bd-none-7","bd-none-8":"bd-none-8","bd-none-9":"bd-none-9","bd-none-10":"bd-none-10","block-std":"block-std","p-all-0":"p-all-0","p-all-x2":"p-all-x2","m-top":"m-top","m-y":"m-y","m-top-0":"m-top-0","m-y-0":"m-y-0","m-top-x2":"m-top-x2","m-y-x2":"m-y-x2","p-top":"p-top","p-y":"p-y","bd-blue-top":"bd-blue-top","bd-blue-top-0":"bd-blue-top-0","bd-blue-top-1":"bd-blue-top-1","bd-blue-top-2":"bd-blue-top-2","bd-blue-top-3":"bd-blue-top-3","bd-blue-top-4":"bd-blue-top-4","bd-blue-top-5":"bd-blue-top-5","bd-blue-top-6":"bd-blue-top-6","bd-blue-top-7":"bd-blue-top-7","bd-blue-top-8":"bd-blue-top-8","bd-blue-top-9":"bd-blue-top-9","bd-blue-top-10":"bd-blue-top-10","bd-green-top":"bd-green-top","bd-green-top-0":"bd-green-top-0","bd-green-top-1":"bd-green-top-1","bd-green-top-2":"bd-green-top-2","bd-green-top-3":"bd-green-top-3","bd-green-top-4":"bd-green-top-4","bd-green-top-5":"bd-green-top-5","bd-green-top-6":"bd-green-top-6","bd-green-top-7":"bd-green-top-7","bd-green-top-8":"bd-green-top-8","bd-green-top-9":"bd-green-top-9","bd-green-top-10":"bd-green-top-10","bd-orange-top":"bd-orange-top","bd-orange-top-0":"bd-orange-top-0","bd-orange-top-1":"bd-orange-top-1","bd-orange-top-2":"bd-orange-top-2","bd-orange-top-3":"bd-orange-top-3","bd-orange-top-4":"bd-orange-top-4","bd-orange-top-5":"bd-orange-top-5","bd-orange-top-6":"bd-orange-top-6","bd-orange-top-7":"bd-orange-top-7","bd-orange-top-8":"bd-orange-top-8","bd-orange-top-9":"bd-orange-top-9","bd-orange-top-10":"bd-orange-top-10","bd-darkblue-top":"bd-darkblue-top","bd-darkblue-top-0":"bd-darkblue-top-0","bd-darkblue-top-1":"bd-darkblue-top-1","bd-darkblue-top-2":"bd-darkblue-top-2","bd-darkblue-top-3":"bd-darkblue-top-3","bd-darkblue-top-4":"bd-darkblue-top-4","bd-darkblue-top-5":"bd-darkblue-top-5","bd-darkblue-top-6":"bd-darkblue-top-6","bd-darkblue-top-7":"bd-darkblue-top-7","bd-darkblue-top-8":"bd-darkblue-top-8","bd-darkblue-top-9":"bd-darkblue-top-9","bd-darkblue-top-10":"bd-darkblue-top-10","bd-gold-top":"bd-gold-top","bd-gold-top-0":"bd-gold-top-0","bd-gold-top-1":"bd-gold-top-1","bd-gold-top-2":"bd-gold-top-2","bd-gold-top-3":"bd-gold-top-3","bd-gold-top-4":"bd-gold-top-4","bd-gold-top-5":"bd-gold-top-5","bd-gold-top-6":"bd-gold-top-6","bd-gold-top-7":"bd-gold-top-7","bd-gold-top-8":"bd-gold-top-8","bd-gold-top-9":"bd-gold-top-9","bd-gold-top-10":"bd-gold-top-10","bd-black-top":"bd-black-top","bd-black-top-0":"bd-black-top-0","bd-black-top-1":"bd-black-top-1","bd-black-top-2":"bd-black-top-2","bd-black-top-3":"bd-black-top-3","bd-black-top-4":"bd-black-top-4","bd-black-top-5":"bd-black-top-5","bd-black-top-6":"bd-black-top-6","bd-black-top-7":"bd-black-top-7","bd-black-top-8":"bd-black-top-8","bd-black-top-9":"bd-black-top-9","bd-black-top-10":"bd-black-top-10","bd-blacklight-top":"bd-blacklight-top","bd-blacklight-top-0":"bd-blacklight-top-0","bd-blacklight-top-1":"bd-blacklight-top-1","bd-blacklight-top-2":"bd-blacklight-top-2","bd-blacklight-top-3":"bd-blacklight-top-3","bd-blacklight-top-4":"bd-blacklight-top-4","bd-blacklight-top-5":"bd-blacklight-top-5","bd-blacklight-top-6":"bd-blacklight-top-6","bd-blacklight-top-7":"bd-blacklight-top-7","bd-blacklight-top-8":"bd-blacklight-top-8","bd-blacklight-top-9":"bd-blacklight-top-9","bd-blacklight-top-10":"bd-blacklight-top-10","bd-blacklighter-top":"bd-blacklighter-top","bd-blacklighter-top-0":"bd-blacklighter-top-0","bd-blacklighter-top-1":"bd-blacklighter-top-1","bd-blacklighter-top-2":"bd-blacklighter-top-2","bd-blacklighter-top-3":"bd-blacklighter-top-3","bd-blacklighter-top-4":"bd-blacklighter-top-4","bd-blacklighter-top-5":"bd-blacklighter-top-5","bd-blacklighter-top-6":"bd-blacklighter-top-6","bd-blacklighter-top-7":"bd-blacklighter-top-7","bd-blacklighter-top-8":"bd-blacklighter-top-8","bd-blacklighter-top-9":"bd-blacklighter-top-9","bd-blacklighter-top-10":"bd-blacklighter-top-10","bd-greystronger-top":"bd-greystronger-top","bd-greystronger-top-0":"bd-greystronger-top-0","bd-greystronger-top-1":"bd-greystronger-top-1","bd-greystronger-top-2":"bd-greystronger-top-2","bd-greystronger-top-3":"bd-greystronger-top-3","bd-greystronger-top-4":"bd-greystronger-top-4","bd-greystronger-top-5":"bd-greystronger-top-5","bd-greystronger-top-6":"bd-greystronger-top-6","bd-greystronger-top-7":"bd-greystronger-top-7","bd-greystronger-top-8":"bd-greystronger-top-8","bd-greystronger-top-9":"bd-greystronger-top-9","bd-greystronger-top-10":"bd-greystronger-top-10","bd-greystrong-top":"bd-greystrong-top","bd-greystrong-top-0":"bd-greystrong-top-0","bd-greystrong-top-1":"bd-greystrong-top-1","bd-greystrong-top-2":"bd-greystrong-top-2","bd-greystrong-top-3":"bd-greystrong-top-3","bd-greystrong-top-4":"bd-greystrong-top-4","bd-greystrong-top-5":"bd-greystrong-top-5","bd-greystrong-top-6":"bd-greystrong-top-6","bd-greystrong-top-7":"bd-greystrong-top-7","bd-greystrong-top-8":"bd-greystrong-top-8","bd-greystrong-top-9":"bd-greystrong-top-9","bd-greystrong-top-10":"bd-greystrong-top-10","bd-grey-top":"bd-grey-top","bd-grey-top-0":"bd-grey-top-0","bd-grey-top-1":"bd-grey-top-1","bd-grey-top-2":"bd-grey-top-2","bd-grey-top-3":"bd-grey-top-3","bd-grey-top-4":"bd-grey-top-4","bd-grey-top-5":"bd-grey-top-5","bd-grey-top-6":"bd-grey-top-6","bd-grey-top-7":"bd-grey-top-7","bd-grey-top-8":"bd-grey-top-8","bd-grey-top-9":"bd-grey-top-9","bd-grey-top-10":"bd-grey-top-10","bd-greylight-top":"bd-greylight-top","bd-greylight-top-0":"bd-greylight-top-0","bd-greylight-top-1":"bd-greylight-top-1","bd-greylight-top-2":"bd-greylight-top-2","bd-greylight-top-3":"bd-greylight-top-3","bd-greylight-top-4":"bd-greylight-top-4","bd-greylight-top-5":"bd-greylight-top-5","bd-greylight-top-6":"bd-greylight-top-6","bd-greylight-top-7":"bd-greylight-top-7","bd-greylight-top-8":"bd-greylight-top-8","bd-greylight-top-9":"bd-greylight-top-9","bd-greylight-top-10":"bd-greylight-top-10","bd-greylighter-top":"bd-greylighter-top","bd-greylighter-top-0":"bd-greylighter-top-0","bd-greylighter-top-1":"bd-greylighter-top-1","bd-greylighter-top-2":"bd-greylighter-top-2","bd-greylighter-top-3":"bd-greylighter-top-3","bd-greylighter-top-4":"bd-greylighter-top-4","bd-greylighter-top-5":"bd-greylighter-top-5","bd-greylighter-top-6":"bd-greylighter-top-6","bd-greylighter-top-7":"bd-greylighter-top-7","bd-greylighter-top-8":"bd-greylighter-top-8","bd-greylighter-top-9":"bd-greylighter-top-9","bd-greylighter-top-10":"bd-greylighter-top-10","bd-white-top":"bd-white-top","bd-white-top-0":"bd-white-top-0","bd-white-top-1":"bd-white-top-1","bd-white-top-2":"bd-white-top-2","bd-white-top-3":"bd-white-top-3","bd-white-top-4":"bd-white-top-4","bd-white-top-5":"bd-white-top-5","bd-white-top-6":"bd-white-top-6","bd-white-top-7":"bd-white-top-7","bd-white-top-8":"bd-white-top-8","bd-white-top-9":"bd-white-top-9","bd-white-top-10":"bd-white-top-10","bd-none-top":"bd-none-top","bd-none-top-0":"bd-none-top-0","bd-none-top-1":"bd-none-top-1","bd-none-top-2":"bd-none-top-2","bd-none-top-3":"bd-none-top-3","bd-none-top-4":"bd-none-top-4","bd-none-top-5":"bd-none-top-5","bd-none-top-6":"bd-none-top-6","bd-none-top-7":"bd-none-top-7","bd-none-top-8":"bd-none-top-8","bd-none-top-9":"bd-none-top-9","bd-none-top-10":"bd-none-top-10","p-top-0":"p-top-0","p-y-0":"p-y-0","p-top-x2":"p-top-x2","p-y-x2":"p-y-x2","m-right":"m-right","m-x":"m-x","m-right-0":"m-right-0","m-x-0":"m-x-0","m-right-x2":"m-right-x2","m-x-x2":"m-x-x2","p-right":"p-right","p-x":"p-x","bd-blue-right":"bd-blue-right","bd-blue-right-0":"bd-blue-right-0","bd-blue-right-1":"bd-blue-right-1","bd-blue-right-2":"bd-blue-right-2","bd-blue-right-3":"bd-blue-right-3","bd-blue-right-4":"bd-blue-right-4","bd-blue-right-5":"bd-blue-right-5","bd-blue-right-6":"bd-blue-right-6","bd-blue-right-7":"bd-blue-right-7","bd-blue-right-8":"bd-blue-right-8","bd-blue-right-9":"bd-blue-right-9","bd-blue-right-10":"bd-blue-right-10","bd-green-right":"bd-green-right","bd-green-right-0":"bd-green-right-0","bd-green-right-1":"bd-green-right-1","bd-green-right-2":"bd-green-right-2","bd-green-right-3":"bd-green-right-3","bd-green-right-4":"bd-green-right-4","bd-green-right-5":"bd-green-right-5","bd-green-right-6":"bd-green-right-6","bd-green-right-7":"bd-green-right-7","bd-green-right-8":"bd-green-right-8","bd-green-right-9":"bd-green-right-9","bd-green-right-10":"bd-green-right-10","bd-orange-right":"bd-orange-right","bd-orange-right-0":"bd-orange-right-0","bd-orange-right-1":"bd-orange-right-1","bd-orange-right-2":"bd-orange-right-2","bd-orange-right-3":"bd-orange-right-3","bd-orange-right-4":"bd-orange-right-4","bd-orange-right-5":"bd-orange-right-5","bd-orange-right-6":"bd-orange-right-6","bd-orange-right-7":"bd-orange-right-7","bd-orange-right-8":"bd-orange-right-8","bd-orange-right-9":"bd-orange-right-9","bd-orange-right-10":"bd-orange-right-10","bd-darkblue-right":"bd-darkblue-right","bd-darkblue-right-0":"bd-darkblue-right-0","bd-darkblue-right-1":"bd-darkblue-right-1","bd-darkblue-right-2":"bd-darkblue-right-2","bd-darkblue-right-3":"bd-darkblue-right-3","bd-darkblue-right-4":"bd-darkblue-right-4","bd-darkblue-right-5":"bd-darkblue-right-5","bd-darkblue-right-6":"bd-darkblue-right-6","bd-darkblue-right-7":"bd-darkblue-right-7","bd-darkblue-right-8":"bd-darkblue-right-8","bd-darkblue-right-9":"bd-darkblue-right-9","bd-darkblue-right-10":"bd-darkblue-right-10","bd-gold-right":"bd-gold-right","bd-gold-right-0":"bd-gold-right-0","bd-gold-right-1":"bd-gold-right-1","bd-gold-right-2":"bd-gold-right-2","bd-gold-right-3":"bd-gold-right-3","bd-gold-right-4":"bd-gold-right-4","bd-gold-right-5":"bd-gold-right-5","bd-gold-right-6":"bd-gold-right-6","bd-gold-right-7":"bd-gold-right-7","bd-gold-right-8":"bd-gold-right-8","bd-gold-right-9":"bd-gold-right-9","bd-gold-right-10":"bd-gold-right-10","bd-black-right":"bd-black-right","bd-black-right-0":"bd-black-right-0","bd-black-right-1":"bd-black-right-1","bd-black-right-2":"bd-black-right-2","bd-black-right-3":"bd-black-right-3","bd-black-right-4":"bd-black-right-4","bd-black-right-5":"bd-black-right-5","bd-black-right-6":"bd-black-right-6","bd-black-right-7":"bd-black-right-7","bd-black-right-8":"bd-black-right-8","bd-black-right-9":"bd-black-right-9","bd-black-right-10":"bd-black-right-10","bd-blacklight-right":"bd-blacklight-right","bd-blacklight-right-0":"bd-blacklight-right-0","bd-blacklight-right-1":"bd-blacklight-right-1","bd-blacklight-right-2":"bd-blacklight-right-2","bd-blacklight-right-3":"bd-blacklight-right-3","bd-blacklight-right-4":"bd-blacklight-right-4","bd-blacklight-right-5":"bd-blacklight-right-5","bd-blacklight-right-6":"bd-blacklight-right-6","bd-blacklight-right-7":"bd-blacklight-right-7","bd-blacklight-right-8":"bd-blacklight-right-8","bd-blacklight-right-9":"bd-blacklight-right-9","bd-blacklight-right-10":"bd-blacklight-right-10","bd-blacklighter-right":"bd-blacklighter-right","bd-blacklighter-right-0":"bd-blacklighter-right-0","bd-blacklighter-right-1":"bd-blacklighter-right-1","bd-blacklighter-right-2":"bd-blacklighter-right-2","bd-blacklighter-right-3":"bd-blacklighter-right-3","bd-blacklighter-right-4":"bd-blacklighter-right-4","bd-blacklighter-right-5":"bd-blacklighter-right-5","bd-blacklighter-right-6":"bd-blacklighter-right-6","bd-blacklighter-right-7":"bd-blacklighter-right-7","bd-blacklighter-right-8":"bd-blacklighter-right-8","bd-blacklighter-right-9":"bd-blacklighter-right-9","bd-blacklighter-right-10":"bd-blacklighter-right-10","bd-greystronger-right":"bd-greystronger-right","bd-greystronger-right-0":"bd-greystronger-right-0","bd-greystronger-right-1":"bd-greystronger-right-1","bd-greystronger-right-2":"bd-greystronger-right-2","bd-greystronger-right-3":"bd-greystronger-right-3","bd-greystronger-right-4":"bd-greystronger-right-4","bd-greystronger-right-5":"bd-greystronger-right-5","bd-greystronger-right-6":"bd-greystronger-right-6","bd-greystronger-right-7":"bd-greystronger-right-7","bd-greystronger-right-8":"bd-greystronger-right-8","bd-greystronger-right-9":"bd-greystronger-right-9","bd-greystronger-right-10":"bd-greystronger-right-10","bd-greystrong-right":"bd-greystrong-right","bd-greystrong-right-0":"bd-greystrong-right-0","bd-greystrong-right-1":"bd-greystrong-right-1","bd-greystrong-right-2":"bd-greystrong-right-2","bd-greystrong-right-3":"bd-greystrong-right-3","bd-greystrong-right-4":"bd-greystrong-right-4","bd-greystrong-right-5":"bd-greystrong-right-5","bd-greystrong-right-6":"bd-greystrong-right-6","bd-greystrong-right-7":"bd-greystrong-right-7","bd-greystrong-right-8":"bd-greystrong-right-8","bd-greystrong-right-9":"bd-greystrong-right-9","bd-greystrong-right-10":"bd-greystrong-right-10","bd-grey-right":"bd-grey-right","bd-grey-right-0":"bd-grey-right-0","bd-grey-right-1":"bd-grey-right-1","bd-grey-right-2":"bd-grey-right-2","bd-grey-right-3":"bd-grey-right-3","bd-grey-right-4":"bd-grey-right-4","bd-grey-right-5":"bd-grey-right-5","bd-grey-right-6":"bd-grey-right-6","bd-grey-right-7":"bd-grey-right-7","bd-grey-right-8":"bd-grey-right-8","bd-grey-right-9":"bd-grey-right-9","bd-grey-right-10":"bd-grey-right-10","bd-greylight-right":"bd-greylight-right","bd-greylight-right-0":"bd-greylight-right-0","bd-greylight-right-1":"bd-greylight-right-1","bd-greylight-right-2":"bd-greylight-right-2","bd-greylight-right-3":"bd-greylight-right-3","bd-greylight-right-4":"bd-greylight-right-4","bd-greylight-right-5":"bd-greylight-right-5","bd-greylight-right-6":"bd-greylight-right-6","bd-greylight-right-7":"bd-greylight-right-7","bd-greylight-right-8":"bd-greylight-right-8","bd-greylight-right-9":"bd-greylight-right-9","bd-greylight-right-10":"bd-greylight-right-10","bd-greylighter-right":"bd-greylighter-right","bd-greylighter-right-0":"bd-greylighter-right-0","bd-greylighter-right-1":"bd-greylighter-right-1","bd-greylighter-right-2":"bd-greylighter-right-2","bd-greylighter-right-3":"bd-greylighter-right-3","bd-greylighter-right-4":"bd-greylighter-right-4","bd-greylighter-right-5":"bd-greylighter-right-5","bd-greylighter-right-6":"bd-greylighter-right-6","bd-greylighter-right-7":"bd-greylighter-right-7","bd-greylighter-right-8":"bd-greylighter-right-8","bd-greylighter-right-9":"bd-greylighter-right-9","bd-greylighter-right-10":"bd-greylighter-right-10","bd-white-right":"bd-white-right","bd-white-right-0":"bd-white-right-0","bd-white-right-1":"bd-white-right-1","bd-white-right-2":"bd-white-right-2","bd-white-right-3":"bd-white-right-3","bd-white-right-4":"bd-white-right-4","bd-white-right-5":"bd-white-right-5","bd-white-right-6":"bd-white-right-6","bd-white-right-7":"bd-white-right-7","bd-white-right-8":"bd-white-right-8","bd-white-right-9":"bd-white-right-9","bd-white-right-10":"bd-white-right-10","bd-none-right":"bd-none-right","bd-none-right-0":"bd-none-right-0","bd-none-right-1":"bd-none-right-1","bd-none-right-2":"bd-none-right-2","bd-none-right-3":"bd-none-right-3","bd-none-right-4":"bd-none-right-4","bd-none-right-5":"bd-none-right-5","bd-none-right-6":"bd-none-right-6","bd-none-right-7":"bd-none-right-7","bd-none-right-8":"bd-none-right-8","bd-none-right-9":"bd-none-right-9","bd-none-right-10":"bd-none-right-10","p-right-0":"p-right-0","p-x-0":"p-x-0","p-right-x2":"p-right-x2","p-x-x2":"p-x-x2","m-bottom":"m-bottom","m-bottom-0":"m-bottom-0","m-bottom-x2":"m-bottom-x2","p-bottom":"p-bottom","bd-blue-bottom":"bd-blue-bottom","bd-blue-bottom-0":"bd-blue-bottom-0","bd-blue-bottom-1":"bd-blue-bottom-1","bd-blue-bottom-2":"bd-blue-bottom-2","bd-blue-bottom-3":"bd-blue-bottom-3","bd-blue-bottom-4":"bd-blue-bottom-4","bd-blue-bottom-5":"bd-blue-bottom-5","bd-blue-bottom-6":"bd-blue-bottom-6","bd-blue-bottom-7":"bd-blue-bottom-7","bd-blue-bottom-8":"bd-blue-bottom-8","bd-blue-bottom-9":"bd-blue-bottom-9","bd-blue-bottom-10":"bd-blue-bottom-10","bd-green-bottom":"bd-green-bottom","bd-green-bottom-0":"bd-green-bottom-0","bd-green-bottom-1":"bd-green-bottom-1","bd-green-bottom-2":"bd-green-bottom-2","bd-green-bottom-3":"bd-green-bottom-3","bd-green-bottom-4":"bd-green-bottom-4","bd-green-bottom-5":"bd-green-bottom-5","bd-green-bottom-6":"bd-green-bottom-6","bd-green-bottom-7":"bd-green-bottom-7","bd-green-bottom-8":"bd-green-bottom-8","bd-green-bottom-9":"bd-green-bottom-9","bd-green-bottom-10":"bd-green-bottom-10","bd-orange-bottom":"bd-orange-bottom","bd-orange-bottom-0":"bd-orange-bottom-0","bd-orange-bottom-1":"bd-orange-bottom-1","bd-orange-bottom-2":"bd-orange-bottom-2","bd-orange-bottom-3":"bd-orange-bottom-3","bd-orange-bottom-4":"bd-orange-bottom-4","bd-orange-bottom-5":"bd-orange-bottom-5","bd-orange-bottom-6":"bd-orange-bottom-6","bd-orange-bottom-7":"bd-orange-bottom-7","bd-orange-bottom-8":"bd-orange-bottom-8","bd-orange-bottom-9":"bd-orange-bottom-9","bd-orange-bottom-10":"bd-orange-bottom-10","bd-darkblue-bottom":"bd-darkblue-bottom","bd-darkblue-bottom-0":"bd-darkblue-bottom-0","bd-darkblue-bottom-1":"bd-darkblue-bottom-1","bd-darkblue-bottom-2":"bd-darkblue-bottom-2","bd-darkblue-bottom-3":"bd-darkblue-bottom-3","bd-darkblue-bottom-4":"bd-darkblue-bottom-4","bd-darkblue-bottom-5":"bd-darkblue-bottom-5","bd-darkblue-bottom-6":"bd-darkblue-bottom-6","bd-darkblue-bottom-7":"bd-darkblue-bottom-7","bd-darkblue-bottom-8":"bd-darkblue-bottom-8","bd-darkblue-bottom-9":"bd-darkblue-bottom-9","bd-darkblue-bottom-10":"bd-darkblue-bottom-10","bd-gold-bottom":"bd-gold-bottom","bd-gold-bottom-0":"bd-gold-bottom-0","bd-gold-bottom-1":"bd-gold-bottom-1","bd-gold-bottom-2":"bd-gold-bottom-2","bd-gold-bottom-3":"bd-gold-bottom-3","bd-gold-bottom-4":"bd-gold-bottom-4","bd-gold-bottom-5":"bd-gold-bottom-5","bd-gold-bottom-6":"bd-gold-bottom-6","bd-gold-bottom-7":"bd-gold-bottom-7","bd-gold-bottom-8":"bd-gold-bottom-8","bd-gold-bottom-9":"bd-gold-bottom-9","bd-gold-bottom-10":"bd-gold-bottom-10","bd-black-bottom":"bd-black-bottom","bd-black-bottom-0":"bd-black-bottom-0","bd-black-bottom-1":"bd-black-bottom-1","bd-black-bottom-2":"bd-black-bottom-2","bd-black-bottom-3":"bd-black-bottom-3","bd-black-bottom-4":"bd-black-bottom-4","bd-black-bottom-5":"bd-black-bottom-5","bd-black-bottom-6":"bd-black-bottom-6","bd-black-bottom-7":"bd-black-bottom-7","bd-black-bottom-8":"bd-black-bottom-8","bd-black-bottom-9":"bd-black-bottom-9","bd-black-bottom-10":"bd-black-bottom-10","bd-blacklight-bottom":"bd-blacklight-bottom","bd-blacklight-bottom-0":"bd-blacklight-bottom-0","bd-blacklight-bottom-1":"bd-blacklight-bottom-1","bd-blacklight-bottom-2":"bd-blacklight-bottom-2","bd-blacklight-bottom-3":"bd-blacklight-bottom-3","bd-blacklight-bottom-4":"bd-blacklight-bottom-4","bd-blacklight-bottom-5":"bd-blacklight-bottom-5","bd-blacklight-bottom-6":"bd-blacklight-bottom-6","bd-blacklight-bottom-7":"bd-blacklight-bottom-7","bd-blacklight-bottom-8":"bd-blacklight-bottom-8","bd-blacklight-bottom-9":"bd-blacklight-bottom-9","bd-blacklight-bottom-10":"bd-blacklight-bottom-10","bd-blacklighter-bottom":"bd-blacklighter-bottom","bd-blacklighter-bottom-0":"bd-blacklighter-bottom-0","bd-blacklighter-bottom-1":"bd-blacklighter-bottom-1","bd-blacklighter-bottom-2":"bd-blacklighter-bottom-2","bd-blacklighter-bottom-3":"bd-blacklighter-bottom-3","bd-blacklighter-bottom-4":"bd-blacklighter-bottom-4","bd-blacklighter-bottom-5":"bd-blacklighter-bottom-5","bd-blacklighter-bottom-6":"bd-blacklighter-bottom-6","bd-blacklighter-bottom-7":"bd-blacklighter-bottom-7","bd-blacklighter-bottom-8":"bd-blacklighter-bottom-8","bd-blacklighter-bottom-9":"bd-blacklighter-bottom-9","bd-blacklighter-bottom-10":"bd-blacklighter-bottom-10","bd-greystronger-bottom":"bd-greystronger-bottom","bd-greystronger-bottom-0":"bd-greystronger-bottom-0","bd-greystronger-bottom-1":"bd-greystronger-bottom-1","bd-greystronger-bottom-2":"bd-greystronger-bottom-2","bd-greystronger-bottom-3":"bd-greystronger-bottom-3","bd-greystronger-bottom-4":"bd-greystronger-bottom-4","bd-greystronger-bottom-5":"bd-greystronger-bottom-5","bd-greystronger-bottom-6":"bd-greystronger-bottom-6","bd-greystronger-bottom-7":"bd-greystronger-bottom-7","bd-greystronger-bottom-8":"bd-greystronger-bottom-8","bd-greystronger-bottom-9":"bd-greystronger-bottom-9","bd-greystronger-bottom-10":"bd-greystronger-bottom-10","bd-greystrong-bottom":"bd-greystrong-bottom","bd-greystrong-bottom-0":"bd-greystrong-bottom-0","bd-greystrong-bottom-1":"bd-greystrong-bottom-1","bd-greystrong-bottom-2":"bd-greystrong-bottom-2","bd-greystrong-bottom-3":"bd-greystrong-bottom-3","bd-greystrong-bottom-4":"bd-greystrong-bottom-4","bd-greystrong-bottom-5":"bd-greystrong-bottom-5","bd-greystrong-bottom-6":"bd-greystrong-bottom-6","bd-greystrong-bottom-7":"bd-greystrong-bottom-7","bd-greystrong-bottom-8":"bd-greystrong-bottom-8","bd-greystrong-bottom-9":"bd-greystrong-bottom-9","bd-greystrong-bottom-10":"bd-greystrong-bottom-10","bd-grey-bottom":"bd-grey-bottom","bd-grey-bottom-0":"bd-grey-bottom-0","bd-grey-bottom-1":"bd-grey-bottom-1","bd-grey-bottom-2":"bd-grey-bottom-2","bd-grey-bottom-3":"bd-grey-bottom-3","bd-grey-bottom-4":"bd-grey-bottom-4","bd-grey-bottom-5":"bd-grey-bottom-5","bd-grey-bottom-6":"bd-grey-bottom-6","bd-grey-bottom-7":"bd-grey-bottom-7","bd-grey-bottom-8":"bd-grey-bottom-8","bd-grey-bottom-9":"bd-grey-bottom-9","bd-grey-bottom-10":"bd-grey-bottom-10","bd-greylight-bottom":"bd-greylight-bottom","bd-greylight-bottom-0":"bd-greylight-bottom-0","bd-greylight-bottom-1":"bd-greylight-bottom-1","bd-greylight-bottom-2":"bd-greylight-bottom-2","bd-greylight-bottom-3":"bd-greylight-bottom-3","bd-greylight-bottom-4":"bd-greylight-bottom-4","bd-greylight-bottom-5":"bd-greylight-bottom-5","bd-greylight-bottom-6":"bd-greylight-bottom-6","bd-greylight-bottom-7":"bd-greylight-bottom-7","bd-greylight-bottom-8":"bd-greylight-bottom-8","bd-greylight-bottom-9":"bd-greylight-bottom-9","bd-greylight-bottom-10":"bd-greylight-bottom-10","bd-greylighter-bottom":"bd-greylighter-bottom","bd-greylighter-bottom-0":"bd-greylighter-bottom-0","bd-greylighter-bottom-1":"bd-greylighter-bottom-1","bd-greylighter-bottom-2":"bd-greylighter-bottom-2","bd-greylighter-bottom-3":"bd-greylighter-bottom-3","bd-greylighter-bottom-4":"bd-greylighter-bottom-4","bd-greylighter-bottom-5":"bd-greylighter-bottom-5","bd-greylighter-bottom-6":"bd-greylighter-bottom-6","bd-greylighter-bottom-7":"bd-greylighter-bottom-7","bd-greylighter-bottom-8":"bd-greylighter-bottom-8","bd-greylighter-bottom-9":"bd-greylighter-bottom-9","bd-greylighter-bottom-10":"bd-greylighter-bottom-10","bd-white-bottom":"bd-white-bottom","bd-white-bottom-0":"bd-white-bottom-0","bd-white-bottom-1":"bd-white-bottom-1","bd-white-bottom-2":"bd-white-bottom-2","bd-white-bottom-3":"bd-white-bottom-3","bd-white-bottom-4":"bd-white-bottom-4","bd-white-bottom-5":"bd-white-bottom-5","bd-white-bottom-6":"bd-white-bottom-6","bd-white-bottom-7":"bd-white-bottom-7","bd-white-bottom-8":"bd-white-bottom-8","bd-white-bottom-9":"bd-white-bottom-9","bd-white-bottom-10":"bd-white-bottom-10","bd-none-bottom":"bd-none-bottom","bd-none-bottom-0":"bd-none-bottom-0","bd-none-bottom-1":"bd-none-bottom-1","bd-none-bottom-2":"bd-none-bottom-2","bd-none-bottom-3":"bd-none-bottom-3","bd-none-bottom-4":"bd-none-bottom-4","bd-none-bottom-5":"bd-none-bottom-5","bd-none-bottom-6":"bd-none-bottom-6","bd-none-bottom-7":"bd-none-bottom-7","bd-none-bottom-8":"bd-none-bottom-8","bd-none-bottom-9":"bd-none-bottom-9","bd-none-bottom-10":"bd-none-bottom-10","p-bottom-0":"p-bottom-0","p-bottom-x2":"p-bottom-x2","m-left":"m-left","m-left-0":"m-left-0","m-left-x2":"m-left-x2","p-left":"p-left","bd-blue-left":"bd-blue-left","bd-blue-left-0":"bd-blue-left-0","bd-blue-left-1":"bd-blue-left-1","bd-blue-left-2":"bd-blue-left-2","bd-blue-left-3":"bd-blue-left-3","bd-blue-left-4":"bd-blue-left-4","bd-blue-left-5":"bd-blue-left-5","bd-blue-left-6":"bd-blue-left-6","bd-blue-left-7":"bd-blue-left-7","bd-blue-left-8":"bd-blue-left-8","bd-blue-left-9":"bd-blue-left-9","bd-blue-left-10":"bd-blue-left-10","bd-green-left":"bd-green-left","bd-green-left-0":"bd-green-left-0","bd-green-left-1":"bd-green-left-1","bd-green-left-2":"bd-green-left-2","bd-green-left-3":"bd-green-left-3","bd-green-left-4":"bd-green-left-4","bd-green-left-5":"bd-green-left-5","bd-green-left-6":"bd-green-left-6","bd-green-left-7":"bd-green-left-7","bd-green-left-8":"bd-green-left-8","bd-green-left-9":"bd-green-left-9","bd-green-left-10":"bd-green-left-10","bd-orange-left":"bd-orange-left","bd-orange-left-0":"bd-orange-left-0","bd-orange-left-1":"bd-orange-left-1","bd-orange-left-2":"bd-orange-left-2","bd-orange-left-3":"bd-orange-left-3","bd-orange-left-4":"bd-orange-left-4","bd-orange-left-5":"bd-orange-left-5","bd-orange-left-6":"bd-orange-left-6","bd-orange-left-7":"bd-orange-left-7","bd-orange-left-8":"bd-orange-left-8","bd-orange-left-9":"bd-orange-left-9","bd-orange-left-10":"bd-orange-left-10","bd-darkblue-left":"bd-darkblue-left","bd-darkblue-left-0":"bd-darkblue-left-0","bd-darkblue-left-1":"bd-darkblue-left-1","bd-darkblue-left-2":"bd-darkblue-left-2","bd-darkblue-left-3":"bd-darkblue-left-3","bd-darkblue-left-4":"bd-darkblue-left-4","bd-darkblue-left-5":"bd-darkblue-left-5","bd-darkblue-left-6":"bd-darkblue-left-6","bd-darkblue-left-7":"bd-darkblue-left-7","bd-darkblue-left-8":"bd-darkblue-left-8","bd-darkblue-left-9":"bd-darkblue-left-9","bd-darkblue-left-10":"bd-darkblue-left-10","bd-gold-left":"bd-gold-left","bd-gold-left-0":"bd-gold-left-0","bd-gold-left-1":"bd-gold-left-1","bd-gold-left-2":"bd-gold-left-2","bd-gold-left-3":"bd-gold-left-3","bd-gold-left-4":"bd-gold-left-4","bd-gold-left-5":"bd-gold-left-5","bd-gold-left-6":"bd-gold-left-6","bd-gold-left-7":"bd-gold-left-7","bd-gold-left-8":"bd-gold-left-8","bd-gold-left-9":"bd-gold-left-9","bd-gold-left-10":"bd-gold-left-10","bd-black-left":"bd-black-left","bd-black-left-0":"bd-black-left-0","bd-black-left-1":"bd-black-left-1","bd-black-left-2":"bd-black-left-2","bd-black-left-3":"bd-black-left-3","bd-black-left-4":"bd-black-left-4","bd-black-left-5":"bd-black-left-5","bd-black-left-6":"bd-black-left-6","bd-black-left-7":"bd-black-left-7","bd-black-left-8":"bd-black-left-8","bd-black-left-9":"bd-black-left-9","bd-black-left-10":"bd-black-left-10","bd-blacklight-left":"bd-blacklight-left","bd-blacklight-left-0":"bd-blacklight-left-0","bd-blacklight-left-1":"bd-blacklight-left-1","bd-blacklight-left-2":"bd-blacklight-left-2","bd-blacklight-left-3":"bd-blacklight-left-3","bd-blacklight-left-4":"bd-blacklight-left-4","bd-blacklight-left-5":"bd-blacklight-left-5","bd-blacklight-left-6":"bd-blacklight-left-6","bd-blacklight-left-7":"bd-blacklight-left-7","bd-blacklight-left-8":"bd-blacklight-left-8","bd-blacklight-left-9":"bd-blacklight-left-9","bd-blacklight-left-10":"bd-blacklight-left-10","bd-blacklighter-left":"bd-blacklighter-left","bd-blacklighter-left-0":"bd-blacklighter-left-0","bd-blacklighter-left-1":"bd-blacklighter-left-1","bd-blacklighter-left-2":"bd-blacklighter-left-2","bd-blacklighter-left-3":"bd-blacklighter-left-3","bd-blacklighter-left-4":"bd-blacklighter-left-4","bd-blacklighter-left-5":"bd-blacklighter-left-5","bd-blacklighter-left-6":"bd-blacklighter-left-6","bd-blacklighter-left-7":"bd-blacklighter-left-7","bd-blacklighter-left-8":"bd-blacklighter-left-8","bd-blacklighter-left-9":"bd-blacklighter-left-9","bd-blacklighter-left-10":"bd-blacklighter-left-10","bd-greystronger-left":"bd-greystronger-left","bd-greystronger-left-0":"bd-greystronger-left-0","bd-greystronger-left-1":"bd-greystronger-left-1","bd-greystronger-left-2":"bd-greystronger-left-2","bd-greystronger-left-3":"bd-greystronger-left-3","bd-greystronger-left-4":"bd-greystronger-left-4","bd-greystronger-left-5":"bd-greystronger-left-5","bd-greystronger-left-6":"bd-greystronger-left-6","bd-greystronger-left-7":"bd-greystronger-left-7","bd-greystronger-left-8":"bd-greystronger-left-8","bd-greystronger-left-9":"bd-greystronger-left-9","bd-greystronger-left-10":"bd-greystronger-left-10","bd-greystrong-left":"bd-greystrong-left","bd-greystrong-left-0":"bd-greystrong-left-0","bd-greystrong-left-1":"bd-greystrong-left-1","bd-greystrong-left-2":"bd-greystrong-left-2","bd-greystrong-left-3":"bd-greystrong-left-3","bd-greystrong-left-4":"bd-greystrong-left-4","bd-greystrong-left-5":"bd-greystrong-left-5","bd-greystrong-left-6":"bd-greystrong-left-6","bd-greystrong-left-7":"bd-greystrong-left-7","bd-greystrong-left-8":"bd-greystrong-left-8","bd-greystrong-left-9":"bd-greystrong-left-9","bd-greystrong-left-10":"bd-greystrong-left-10","bd-grey-left":"bd-grey-left","bd-grey-left-0":"bd-grey-left-0","bd-grey-left-1":"bd-grey-left-1","bd-grey-left-2":"bd-grey-left-2","bd-grey-left-3":"bd-grey-left-3","bd-grey-left-4":"bd-grey-left-4","bd-grey-left-5":"bd-grey-left-5","bd-grey-left-6":"bd-grey-left-6","bd-grey-left-7":"bd-grey-left-7","bd-grey-left-8":"bd-grey-left-8","bd-grey-left-9":"bd-grey-left-9","bd-grey-left-10":"bd-grey-left-10","bd-greylight-left":"bd-greylight-left","bd-greylight-left-0":"bd-greylight-left-0","bd-greylight-left-1":"bd-greylight-left-1","bd-greylight-left-2":"bd-greylight-left-2","bd-greylight-left-3":"bd-greylight-left-3","bd-greylight-left-4":"bd-greylight-left-4","bd-greylight-left-5":"bd-greylight-left-5","bd-greylight-left-6":"bd-greylight-left-6","bd-greylight-left-7":"bd-greylight-left-7","bd-greylight-left-8":"bd-greylight-left-8","bd-greylight-left-9":"bd-greylight-left-9","bd-greylight-left-10":"bd-greylight-left-10","bd-greylighter-left":"bd-greylighter-left","bd-greylighter-left-0":"bd-greylighter-left-0","bd-greylighter-left-1":"bd-greylighter-left-1","bd-greylighter-left-2":"bd-greylighter-left-2","bd-greylighter-left-3":"bd-greylighter-left-3","bd-greylighter-left-4":"bd-greylighter-left-4","bd-greylighter-left-5":"bd-greylighter-left-5","bd-greylighter-left-6":"bd-greylighter-left-6","bd-greylighter-left-7":"bd-greylighter-left-7","bd-greylighter-left-8":"bd-greylighter-left-8","bd-greylighter-left-9":"bd-greylighter-left-9","bd-greylighter-left-10":"bd-greylighter-left-10","bd-white-left":"bd-white-left","bd-white-left-0":"bd-white-left-0","bd-white-left-1":"bd-white-left-1","bd-white-left-2":"bd-white-left-2","bd-white-left-3":"bd-white-left-3","bd-white-left-4":"bd-white-left-4","bd-white-left-5":"bd-white-left-5","bd-white-left-6":"bd-white-left-6","bd-white-left-7":"bd-white-left-7","bd-white-left-8":"bd-white-left-8","bd-white-left-9":"bd-white-left-9","bd-white-left-10":"bd-white-left-10","bd-none-left":"bd-none-left","bd-none-left-0":"bd-none-left-0","bd-none-left-1":"bd-none-left-1","bd-none-left-2":"bd-none-left-2","bd-none-left-3":"bd-none-left-3","bd-none-left-4":"bd-none-left-4","bd-none-left-5":"bd-none-left-5","bd-none-left-6":"bd-none-left-6","bd-none-left-7":"bd-none-left-7","bd-none-left-8":"bd-none-left-8","bd-none-left-9":"bd-none-left-9","bd-none-left-10":"bd-none-left-10","p-left-0":"p-left-0","p-left-x2":"p-left-x2","h0":"h0","sep-bottom":"sep-bottom","sep-top":"sep-top","sep-right":"sep-right","sep-left":"sep-left","h1":"h1","h2":"h2","h3":"h3","h4":"h4","h5":"h5","h6":"h6","sep":"sep","reset":"reset","bg-blue":"bg-blue","bg-blue-o-10":"bg-blue-o-10","bg-blue-o-20":"bg-blue-o-20","bg-blue-o-30":"bg-blue-o-30","bg-blue-o-40":"bg-blue-o-40","bg-blue-o-50":"bg-blue-o-50","bg-blue-o-60":"bg-blue-o-60","bg-blue-o-70":"bg-blue-o-70","bg-blue-o-80":"bg-blue-o-80","bg-blue-o-90":"bg-blue-o-90","bg-blue-o-100":"bg-blue-o-100","text":"text","email":"email","password":"password","tel":"tel","url":"url","date":"date","range":"range","number":"number","focus":"focus","active":"active","checkbox":"checkbox","radio":"radio","bg-green":"bg-green","bg-green-o-10":"bg-green-o-10","bg-green-o-20":"bg-green-o-20","bg-green-o-30":"bg-green-o-30","bg-green-o-40":"bg-green-o-40","bg-green-o-50":"bg-green-o-50","bg-green-o-60":"bg-green-o-60","bg-green-o-70":"bg-green-o-70","bg-green-o-80":"bg-green-o-80","bg-green-o-90":"bg-green-o-90","bg-green-o-100":"bg-green-o-100","bg-orange":"bg-orange","bg-orange-o-10":"bg-orange-o-10","bg-orange-o-20":"bg-orange-o-20","bg-orange-o-30":"bg-orange-o-30","bg-orange-o-40":"bg-orange-o-40","bg-orange-o-50":"bg-orange-o-50","bg-orange-o-60":"bg-orange-o-60","bg-orange-o-70":"bg-orange-o-70","bg-orange-o-80":"bg-orange-o-80","bg-orange-o-90":"bg-orange-o-90","bg-orange-o-100":"bg-orange-o-100","bg-darkblue":"bg-darkblue","bg-darkblue-o-10":"bg-darkblue-o-10","bg-darkblue-o-20":"bg-darkblue-o-20","bg-darkblue-o-30":"bg-darkblue-o-30","bg-darkblue-o-40":"bg-darkblue-o-40","bg-darkblue-o-50":"bg-darkblue-o-50","bg-darkblue-o-60":"bg-darkblue-o-60","bg-darkblue-o-70":"bg-darkblue-o-70","bg-darkblue-o-80":"bg-darkblue-o-80","bg-darkblue-o-90":"bg-darkblue-o-90","bg-darkblue-o-100":"bg-darkblue-o-100","bg-gold":"bg-gold","bg-gold-o-10":"bg-gold-o-10","bg-gold-o-20":"bg-gold-o-20","bg-gold-o-30":"bg-gold-o-30","bg-gold-o-40":"bg-gold-o-40","bg-gold-o-50":"bg-gold-o-50","bg-gold-o-60":"bg-gold-o-60","bg-gold-o-70":"bg-gold-o-70","bg-gold-o-80":"bg-gold-o-80","bg-gold-o-90":"bg-gold-o-90","bg-gold-o-100":"bg-gold-o-100","bg-black":"bg-black","bg-black-o-10":"bg-black-o-10","bg-black-o-20":"bg-black-o-20","bg-black-o-30":"bg-black-o-30","bg-black-o-40":"bg-black-o-40","bg-black-o-50":"bg-black-o-50","bg-black-o-60":"bg-black-o-60","bg-black-o-70":"bg-black-o-70","bg-black-o-80":"bg-black-o-80","bg-black-o-90":"bg-black-o-90","bg-black-o-100":"bg-black-o-100","bg-blacklight":"bg-blacklight","bg-blacklight-o-10":"bg-blacklight-o-10","bg-blacklight-o-20":"bg-blacklight-o-20","bg-blacklight-o-30":"bg-blacklight-o-30","bg-blacklight-o-40":"bg-blacklight-o-40","bg-blacklight-o-50":"bg-blacklight-o-50","bg-blacklight-o-60":"bg-blacklight-o-60","bg-blacklight-o-70":"bg-blacklight-o-70","bg-blacklight-o-80":"bg-blacklight-o-80","bg-blacklight-o-90":"bg-blacklight-o-90","bg-blacklight-o-100":"bg-blacklight-o-100","bg-blacklighter":"bg-blacklighter","bg-blacklighter-o-10":"bg-blacklighter-o-10","bg-blacklighter-o-20":"bg-blacklighter-o-20","bg-blacklighter-o-30":"bg-blacklighter-o-30","bg-blacklighter-o-40":"bg-blacklighter-o-40","bg-blacklighter-o-50":"bg-blacklighter-o-50","bg-blacklighter-o-60":"bg-blacklighter-o-60","bg-blacklighter-o-70":"bg-blacklighter-o-70","bg-blacklighter-o-80":"bg-blacklighter-o-80","bg-blacklighter-o-90":"bg-blacklighter-o-90","bg-blacklighter-o-100":"bg-blacklighter-o-100","bg-greystronger":"bg-greystronger","bg-greystronger-o-10":"bg-greystronger-o-10","bg-greystronger-o-20":"bg-greystronger-o-20","bg-greystronger-o-30":"bg-greystronger-o-30","bg-greystronger-o-40":"bg-greystronger-o-40","bg-greystronger-o-50":"bg-greystronger-o-50","bg-greystronger-o-60":"bg-greystronger-o-60","bg-greystronger-o-70":"bg-greystronger-o-70","bg-greystronger-o-80":"bg-greystronger-o-80","bg-greystronger-o-90":"bg-greystronger-o-90","bg-greystronger-o-100":"bg-greystronger-o-100","bg-greystrong":"bg-greystrong","bg-greystrong-o-10":"bg-greystrong-o-10","bg-greystrong-o-20":"bg-greystrong-o-20","bg-greystrong-o-30":"bg-greystrong-o-30","bg-greystrong-o-40":"bg-greystrong-o-40","bg-greystrong-o-50":"bg-greystrong-o-50","bg-greystrong-o-60":"bg-greystrong-o-60","bg-greystrong-o-70":"bg-greystrong-o-70","bg-greystrong-o-80":"bg-greystrong-o-80","bg-greystrong-o-90":"bg-greystrong-o-90","bg-greystrong-o-100":"bg-greystrong-o-100","bg-grey":"bg-grey","bg-grey-o-10":"bg-grey-o-10","bg-grey-o-20":"bg-grey-o-20","bg-grey-o-30":"bg-grey-o-30","bg-grey-o-40":"bg-grey-o-40","bg-grey-o-50":"bg-grey-o-50","bg-grey-o-60":"bg-grey-o-60","bg-grey-o-70":"bg-grey-o-70","bg-grey-o-80":"bg-grey-o-80","bg-grey-o-90":"bg-grey-o-90","bg-grey-o-100":"bg-grey-o-100","bg-greylight":"bg-greylight","bg-greylight-o-10":"bg-greylight-o-10","bg-greylight-o-20":"bg-greylight-o-20","bg-greylight-o-30":"bg-greylight-o-30","bg-greylight-o-40":"bg-greylight-o-40","bg-greylight-o-50":"bg-greylight-o-50","bg-greylight-o-60":"bg-greylight-o-60","bg-greylight-o-70":"bg-greylight-o-70","bg-greylight-o-80":"bg-greylight-o-80","bg-greylight-o-90":"bg-greylight-o-90","bg-greylight-o-100":"bg-greylight-o-100","bg-greylighter":"bg-greylighter","bg-greylighter-o-10":"bg-greylighter-o-10","bg-greylighter-o-20":"bg-greylighter-o-20","bg-greylighter-o-30":"bg-greylighter-o-30","bg-greylighter-o-40":"bg-greylighter-o-40","bg-greylighter-o-50":"bg-greylighter-o-50","bg-greylighter-o-60":"bg-greylighter-o-60","bg-greylighter-o-70":"bg-greylighter-o-70","bg-greylighter-o-80":"bg-greylighter-o-80","bg-greylighter-o-90":"bg-greylighter-o-90","bg-greylighter-o-100":"bg-greylighter-o-100","bg-white":"bg-white","bg-white-o-10":"bg-white-o-10","bg-white-o-20":"bg-white-o-20","bg-white-o-30":"bg-white-o-30","bg-white-o-40":"bg-white-o-40","bg-white-o-50":"bg-white-o-50","bg-white-o-60":"bg-white-o-60","bg-white-o-70":"bg-white-o-70","bg-white-o-80":"bg-white-o-80","bg-white-o-90":"bg-white-o-90","bg-white-o-100":"bg-white-o-100","bg-none":"bg-none","bg-none-o-10":"bg-none-o-10","bg-none-o-20":"bg-none-o-20","bg-none-o-30":"bg-none-o-30","bg-none-o-40":"bg-none-o-40","bg-none-o-50":"bg-none-o-50","bg-none-o-60":"bg-none-o-60","bg-none-o-70":"bg-none-o-70","bg-none-o-80":"bg-none-o-80","bg-none-o-90":"bg-none-o-90","bg-none-o-100":"bg-none-o-100","btn-sm":"btn-sm","editor":"editor","btn-lg":"btn-lg","btn-bd-blue":"btn-bd-blue","btn-bg-blue":"btn-bg-blue","btn-bd-green":"btn-bd-green","btn-bg-green":"btn-bg-green","btn-bd-orange":"btn-bd-orange","btn-bg-orange":"btn-bg-orange","btn-bd-darkblue":"btn-bd-darkblue","btn-bg-darkblue":"btn-bg-darkblue","btn-bd-gold":"btn-bd-gold","btn-bg-gold":"btn-bg-gold","btn-bd-black":"btn-bd-black","btn-bg-black":"btn-bg-black","btn-bd-blacklight":"btn-bd-blacklight","btn-bg-blacklight":"btn-bg-blacklight","btn-bd-blacklighter":"btn-bd-blacklighter","btn-bg-blacklighter":"btn-bg-blacklighter","btn-bd-greystronger":"btn-bd-greystronger","btn-bg-greystronger":"btn-bg-greystronger","btn-bd-greystrong":"btn-bd-greystrong","btn-bg-greystrong":"btn-bg-greystrong","btn-bd-grey":"btn-bd-grey","btn-bg-grey":"btn-bg-grey","btn-bd-greylight":"btn-bd-greylight","btn-bg-greylight":"btn-bg-greylight","btn-bd-greylighter":"btn-bd-greylighter","btn-bg-greylighter":"btn-bg-greylighter","btn-bd-white":"btn-bd-white","btn-bg-white":"btn-bg-white","btn-bd-none":"btn-bd-none","btn-bg-none":"btn-bg-none","flex":"flex","flex-grow-0":"flex-grow-0","flex-grow-1":"flex-grow-1","flex-grow-2":"flex-grow-2","flex-grow-3":"flex-grow-3","flex-grow-4":"flex-grow-4","flex-grow-5":"flex-grow-5","flex-grow-6":"flex-grow-6","flex-grow-7":"flex-grow-7","flex-grow-8":"flex-grow-8","flex-grow-9":"flex-grow-9","flex-grow-10":"flex-grow-10","nofill":"nofill","form-group":"form-group","sliderFW":"sliderFW","sliderFW__container":"sliderFW__container","sliderFW__rail":"sliderFW__rail","nav--inner":"nav--inner","nav--top":"nav--top","sliderFW__item":"sliderFW__item","sliderFW__item__bg":"sliderFW__item__bg","sliderFW__item__content":"sliderFW__item__content","content__text--top":"content__text--top","content__text--center":"content__text--center","content--right":"content--right","content--center":"content--center","sliderFW__item__blur":"sliderFW__item__blur","content--noblur":"content--noblur","sliderFW__nav":"sliderFW__nav","nav--left":"nav--left","nav--right":"nav--right","nav--bottom":"nav--bottom","sliderFW__nav__item":"sliderFW__nav__item","scene":"scene","grid":"grid","strip":"strip","debug":"debug","animate":"animate","wrapper":"wrapper","spin":"spin","brick":"brick","top":"top","right":"right","front":"front","left":"left","back":"back","cover":"cover","stud":"stud","tabs":"tabs","tabs__nav":"tabs__nav","tabs__content":"tabs__content","tab":"tab","foldingbox":"foldingbox","foldingbox__title":"foldingbox__title","foldingbox__item":"foldingbox__item","break":"break","foldingbox__container":"foldingbox__container","foldingbox__item__content":"foldingbox__item__content","foldingbox__item__bg":"foldingbox__item__bg","guideline":"guideline","content":"content","item":"item","toast-container":"toast-container"};
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($, global) {
+
+function Framway() {
+  var framway = this;
+  framway.components = [];
+  framway.useNotif = true;
+  framway.$debug = $('<div id="debug"></div>').appendTo($('body'));
+
+  return framway;
+};
+
+/**
+ * load the components passed in parameters
+ * @param  {Array of Strings} arrComponents [array containing the components names]
+ */
+Framway.prototype.loadComponents = function (arrComponents) {
+  var framway = this;
+  $.each(arrComponents, function (index, name) {
+    try {
+      __webpack_require__(25)("./" + name + '/' + name + '.js');
+      framway.components.push(name);
+    } catch (e) {
+      framway.log('Component ' + name + ' failed to load.\n' + e);
+    }
+  });
+  if (framway.components.length) framway.log('Component(s) sucessfully loaded: \n - ' + framway.components.join('\n - '));
+  return framway;
+};
+
+/**
+ * display things in the browser's console and in a custom debug window
+ * @param  {[type]}  strLog
+ * @param  {Boolean} blnDebug
+ * TODO : style debug window
+ */
+Framway.prototype.log = function (strLog) {
+  var blnDebug = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+  var framway = this;
+  if (blnDebug) {
+    var content = framway.$debug.html();
+    content += strLog.replace(/(?:\r\n|\r|\n)/g, '<br>') + '<br>';
+    framway.$debug.html(content).show();
+    framway.$debug.scrollTop(framway.$debug[0].scrollHeight);
+  }
+  console.log("------------------------------------");
+  console.log(strLog);
+  return framway;
+};
+
+/**
+ * clear the custom debug window
+ */
+Framway.prototype.clearLogs = function () {
+  var framway = this;
+  framway.$debug.html('').hide();
+  return framway;
+};
+
+$(function () {
+  $('body').on('click', 'pre .copy', function (e) {
+    var elem = $(this).parent().clone();
+    elem.find('.copy').remove();
+    if (utils.copyToClipboard(elem.get(0))) notif_fade.success('Copied to clipboard !');
+  });
+});
+
+__webpack_require__(89);
+global.utils = __webpack_require__(90);
+global.app = new Framway();
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(4)))
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./block-std/block-std.js": 26,
+	"./brick/brick.js": 27,
+	"./foldingbox/foldingbox.js": 30,
+	"./goto/goto.js": 31,
+	"./guideline/guideline.js": 32,
+	"./sliderFW/sliderFW.js": 87,
+	"./tabs/tabs.js": 88
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 25;
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+$.fn.Brick = function Brick() {
+  var htmlStud = __webpack_require__(28);
+  var htmlBrick = __webpack_require__(29);
+  $(this).each(function () {
+    var $brick = $(this);
+    var dim = {
+      rows: $brick.attr('rows'),
+      cols: $brick.attr('cols'),
+      studs: $brick.attr('rows') * $brick.attr('cols')
+    };
+    var pos = {
+      z: $brick.attr('z'),
+      x: $brick.attr('x'),
+      y: $brick.attr('y')
+    };
+    var text = $brick.attr('text') || false;
+    var $content = $(htmlBrick);
+
+    // brick construction
+    $brick.append($content);
+    for (var i = 0; i < dim.studs; i++) {
+      $brick.find('.top').append(htmlStud);
+    }
+    if (text) $brick.find('.front,.right,.back,.left').append(text);
+    // brick dimensionning
+    var unitWidth = $brick.outerWidth();
+    var unitHeight = $brick.outerHeight();
+    $brick.css({ 'width': unitWidth * dim.rows });
+    $brick.find('.top').css('height', unitWidth * dim.cols);
+    $brick.find('.left,.right').css('width', unitWidth * dim.cols);
+    $brick.find('.front,.back').css({
+      'height': unitHeight,
+      'width': $brick.find('.top').outerWidth()
+    });
+    // studs dimensionning
+    $brick.find('.stud').css({ 'width': 100 / dim.rows + '%', 'height': 100 / dim.cols + '%' });
+
+    // brick placement
+    if (dim.cols % 2 == 1) pos.y = +pos.y + 0.5;
+    if (dim.rows % 2 == 1) pos.x = +pos.x + 0.5;
+
+    var tZ = unitWidth * pos.y;
+    var tY = unitHeight * pos.z * -1;
+    var tX = unitWidth * pos.x;
+
+    $brick.css('transform', utils.mergeTransforms(this, 'translateZ(' + tZ + 'px) translateY(' + tY + 'px) translateX(' + tX + 'px)'));
+
+    // brick events listeners
+    this.addEventListener("animationstart", brickAnimListener, false);
+    this.addEventListener("animationiteration", brickAnimListener, false);
+    this.addEventListener("animationend", brickAnimListener, false);
+
+    utils.prefixedEvent(this, "animationstart", brickAnimListener);
+    utils.prefixedEvent(this, "animationiteration", brickAnimListener);
+    utils.prefixedEvent(this, "animationend", brickAnimListener);
+
+    $(this).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', brickAnimListener);
+  });
+
+  // grid dimensionning
+  if ($(this).closest('.grid').length) {
+    $(this).closest('.grid').wrapInner('<div class="wrapper"></div>'); // wrap the grid content so we can animate it separatly
+
+    var arrZ = $(this).map(function () {
+      return $(this).attr('z');
+    }).toArray();
+    var nbLayers = Math.max.apply(null, arrZ) + 1; // count one more for layer "0"
+    $(this).closest('.grid').height(nbLayers * $(this).outerHeight());
+
+    // grid events listeners
+    $(this).closest('.grid').each(function (index, grid) {
+      grid.addEventListener("animationstart", gridAnimListener, false);
+      grid.addEventListener("animationiteration", gridAnimListener, false);
+      grid.addEventListener("animationend", gridAnimListener, false);
+
+      utils.prefixedEvent(grid, "animationstart", gridAnimListener);
+      utils.prefixedEvent(grid, "animationiteration", gridAnimListener);
+      utils.prefixedEvent(grid, "animationend", gridAnimListener);
+
+      $(grid).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', gridAnimListener);
+    });
+  }
+
+  // scene dimensionning
+  if ($(this).closest('.scene').length) {
+    // add a bit of spacing to scene, to avoid clipping with other elements
+    $(this).closest('.scene').css('padding', $(this).outerHeight() + 'px 0');
+  }
+
+  // events
+  $(this).on('click', function () {
+    $(this).toggleClass('animate');
+  });
+
+  $(this).closest('.grid').on('click', function () {
+    // $(this).addClass('animate');
+  });
+  return this;
+};
+
+$(function () {
+  $('.brick').Brick();
+  utils.addHtmlHook('.brick', function (item) {
+    console.log("brick added to dom");
+    item.Brick();
+  });
+});
+
+function brickAnimListener(e) {
+  if (e.type == "animationend") {
+    console.log('Brick animation end');
+    $(this).removeClass('animate');
+  }
+}
+
+function gridAnimListener(e) {
+  if (e.type == "animationend") {
+    console.log('Grid animation end');
+    $(this).removeClass('animate');
+  }
+}
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"stud\">\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n</div>";
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"wrapper\">\n  <div class=\"side top\"></div>\n  <div class=\"side right\">\n      <div class=\"side front\"></div>\n      <div class=\"side back\"></div>\n  </div>\n  <div class=\"side left\"></div>\n</div>";
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+$.fn.foldingbox = function foldingbox() {
+  app._foldingbox = app._foldingbox || [];
+  $(this).each(function () {
+    app._foldingbox.push(new Foldingbox(this));
+  });
+  $(window).trigger('resize');
+};
+
+var Foldingbox = function Foldingbox(item) {
+  var foldingbox = this;
+  foldingbox.$el = $(item);
+  foldingbox.break = $(item).data('break');
+  foldingbox.title = { $el: $(item).children('.foldingbox__title'), text: $(item).children('.foldingbox__title').html() };
+  foldingbox.content = { $el: $(item).find('.foldingbox__container') };
+  foldingbox.content.items = foldingbox.content.$el.children('.foldingbox__item');
+
+  foldingbox.setHeight();
+
+  foldingbox.$el.on('destroyed', function () {
+    app._foldingbox.splice(app._foldingbox.indexOf(foldingbox), 1);
+    foldingbox = undefined;
+  });
+
+  return foldingbox;
+};
+
+Foldingbox.prototype.setHeight = function () {
+  var heightBox = 0;
+  if (this.$el.data('height') && this.$el.data('height') != "") {
+    heightBox = this.$el.data('height');
+  } else {
+    this.content.items.each(function (index, item) {
+      var $clone = $(item).children('.foldingbox__item__content').clone().css({
+        'transition': 'none',
+        'opacity': '1',
+        'visibility': 'hidden'
+      }).appendTo('body');
+      if ($clone.outerHeight() > heightBox) heightBox = $clone.outerHeight() + parseInt($(item).css('padding-top')) * 2;
+      $clone.remove();
+    });
+  }
+  this.content.items.height(heightBox);
+  return this;
+};
+
+Foldingbox.prototype.destroy = function () {
+  this.$el.remove();
+};
+
+var timerResize;
+Foldingbox.prototype.resize = function () {
+  var foldingbox = this;
+  clearTimeout(timerResize);
+  timerResize = setTimeout(function () {
+    foldingbox.setHeight();
+    if (typeof foldingbox.break == "number") {
+      if (foldingbox.$el.width() <= foldingbox.break) foldingbox.$el.addClass('break');else foldingbox.$el.removeClass('break');
+    }
+  }, 300);
+};
+
+$(function () {
+  $('.foldingbox').foldingbox();
+  utils.addHtmlHook('.foldingbox', function (item) {
+    item.foldingbox();
+  });
+
+  $(window).resize(function () {
+    $.each(app._foldingbox, function () {
+      this.resize();
+    });
+  });
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16044,34 +13719,1424 @@ $(function () {
         }
     });
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 99 */
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+if ($('#guideline').length) {
+
+  // Building functions
+  var buildComponents = function buildComponents() {
+    var components = { nav: '', content: '' };
+    components.nav += '<ul>';
+    $.each(app.components, function (index, component) {
+      try {
+        components.content += '<div class="item row" id="framway__components-' + component + '">' + '<h2 class="ft-i col-12 sep-bottom">' + component + '</h2>' + '<div class="col-12 editor-target">' + __webpack_require__(33)("./" + component + '/sample.html') + '</div>' + '<div class="col-12 ">' + '<div class="editor"><button class="copy">Copy</button>' + '<textarea name="" id="">' + __webpack_require__(40)("./" + component + '/sample.html').replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</textarea>' + '</div>'
+        // + '<pre><code class="language-html"><button class="copy">Copy</button>'
+        // + require('html-loader!../'+component+'/sample.html').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+        // + '</code></pre>'
+        + '</div>' + '</div>';
+        components.nav += '<li><a href="#framway__components-' + component + '">' + component + '</a></li>';
+      } catch (e) {
+        app.log('Failed to display the ' + component + ' component sample.\n' + e);
+      }
+    });
+    components.nav += '</ul>';
+
+    if (app.components.length == 0) components.content = 'No components loaded';
+    return components;
+  };
+
+  var buildStyling = function buildStyling() {
+    var styling = { nav: '', content: '' };
+    var objConfig;
+
+    styling.nav += '<ul>';
+    // TEXTS
+    objConfig = { 'Default': 'texts' };
+    if (config['enable-bg'] == 'true') objConfig['Backgrounded'] = 'texts_bg';
+    if (config['enable-bd'] == 'true') objConfig['Bordered'] = 'texts_bd';
+    styling.nav += '<li><a href="#framway__styling-text">Texts</a></li>';
+    styling.content += '<div class="item active" id="framway__styling-text">' + '<h2 class="ft-i sep-bottom">Texts</h2>' + buildTabs(objConfig) + '</div>';
+
+    // TITLES
+    objConfig = { 'Default': 'titles', 'With separators': 'titles_sep' };
+    if (config['enable-bg'] == 'true') objConfig['Backgrounded'] = 'titles_bg';
+    styling.nav += '<li><a href="#framway__styling-titles">Titles</a></li>';
+    styling.content += '<div class="item" id="framway__styling-titles">' + '<h2 class="ft-i sep-bottom">Titles</h2>' + buildTabs(objConfig) + '</div>';
+    // BUTTONS
+    objConfig = { 'Default': 'buttons', 'Colored': 'buttons_colors' };
+    styling.nav += '<li><a href="#framway__styling-buttons">Buttons</a></li>';
+    styling.content += '<div class="item" id="framway__styling-buttons">' + '<h2 class="ft-i sep-bottom">Buttons</h2>' + buildTabs(objConfig) + '</div>';
+    // INPUTS
+    objConfig = { 'Type text': 'inputs', 'Type text extra': 'inputs_texts', 'Others': 'inputs_others' };
+    if (config['enable-bg'] == 'true') objConfig['Backgrounded'] = 'inputs_bg';
+    styling.nav += '<li><a href="#framway__styling-inputs">Inputs</a></li>';
+    styling.content += '<div class="item" id="framway__styling-inputs">' + '<h2 class="ft-i sep-bottom">Inputs</h2>' + buildTabs(objConfig) + '</div>';
+    // BACKGROUNDS
+    if (config['enable-bg'] == 'true') {
+      styling.nav += '<li><a href="#framway__styling-backgrounds">Backgrounds</a></li>';
+      styling.content += '<div class="item" id="framway__styling-backgrounds">' + '<h2 class="ft-i sep-bottom">Backgrounds</h2>';
+      $.each(config.colors, function (key, value) {
+        styling.content += __webpack_require__(5)({ color: key });
+      });
+      styling.content += '</div>';
+    }
+    // BORDERS
+    if (config['enable-bd'] == 'true') {
+      objConfig = { 'Default': 'borders', 'Colored': 'borders_colors' };
+      styling.nav += '<li><a href="#framway__styling-borders">Borders</a></li>';
+      styling.content += '<div class="item" id="framway__styling-borders">' + '<h2 class="ft-i sep-bottom">Borders</h2>' + buildTabs(objConfig) + '</div>';
+    }
+
+    styling.nav += '</ul>';
+
+    return styling;
+  };
+
+  var buildTabs = function buildTabs(tabsConfig) {
+    var template = __webpack_require__(50);
+    var nav = '';
+    var content = '';
+
+    $.each(tabsConfig, function (title, templateName) {
+      nav += '<button class="btn-sm btn-bg-greystronger">' + title + '</button> ';
+      if (title.toLowerCase() != "bordered" && title.toLowerCase() != "backgrounded" && title.toLowerCase() != "colored") content += __webpack_require__(6)("./styling_" + templateName + '.html')();else {
+        content += '<div class="tab">';
+        $.each(config.colors, function (key, value) {
+          content += __webpack_require__(6)("./styling_" + templateName + '.html')({ color: key });
+        });
+        content += '</div>';
+      }
+    });
+
+    return template.render({}, { nav: nav, content: content });
+  };
+
+  var buildConfig = function buildConfig(obj) {
+    var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+    var template = __webpack_require__(80); // noShortcut is used to insert partials later into the final template
+    var rows = ''; // the partials mentionned above
+    var arrObjects = {}; // used to store and process later the sub-object of config
+    var htmlStack = ''; // used to stack the multiple results form arrObjects results
+    $.each(obj, function (key, value) {
+      if ((typeof value === 'undefined' ? 'undefined' : _typeof(value)) != 'object') {
+        var str = '<span>' + key + ' :</span><span>' + value + '</span>';
+        if (value.indexOf('#') != -1) str = '<span>' + key + ' :</span><span class="bd-' + utils.getObjKeyByValue(config.colors, value) + '-bottom-5 p-bottom-0">' + value + '</span>';
+        rows += __webpack_require__(82)({ str: str });
+      } else arrObjects[key] = value;
+    });
+    $.each(arrObjects, function (key, value) {
+      htmlStack += buildConfig(value, key);
+    });
+    return template.render({ title: title }, { rows: rows }) + htmlStack; // return the initial template filled with his rows PLUS the stack we get by processing recursively the config
+  };
+
+  // require('./_guideline.scss');
+  var config = __webpack_require__(84);
+  $.each(config, function (key, value) {
+    if (value[0] == '(' && value[value.length - 1] == ")") {
+      var objValue = value.replace('(', '{').replace(')', '}').replace(/ /g, '').replace(/([\w]+):/g, '"$1":').replace(/:([\w]+)/g, ':"$1"').replace(/:#([\w]+)/g, ':"#$1"').replace(/:([\d]+)/g, function (m, num) {
+        return ':' + parseFloat(num);
+      }).replace(/:([[{])/g, ':$1');
+      config[key] = JSON.parse(objValue);
+    }
+  });
+  var configHtml = buildConfig(config, 'global');
+  var stylingHtml = buildStyling();
+  var componentsHtml = buildComponents();
+
+  var html = __webpack_require__(85)({
+    config: configHtml,
+    styling: stylingHtml,
+    components: componentsHtml
+  });
+
+  html = $($.parseHTML(html));
+  html.find('.editor textarea').each(function (index, editor) {
+    var editorText = $(editor).val();
+    var timerEdit, timerEditValue;
+    $(editor).bind('keyup change', function (e, forced) {
+      timerEditValue = 500;
+      if (forced) timerEditValue = 0;
+      clearTimeout(timerEdit);
+      timerEdit = setTimeout(function () {
+        var val = $(editor).val();
+        if (val != editorText || forced) {
+          editorText = val;
+          $(editor).closest('.item').find('.editor-target').html(val);
+        }
+      }, timerEditValue);
+    });
+  });
+
+  $('#guideline').append(html);
+}
+
+$(function () {
+  $('#guideline nav a').bind('click', function (e) {
+    e.preventDefault();
+    var target = $(this).addClass('active').attr('href');
+    $('#guideline nav a').not(this).removeClass('active');
+    $('#guideline .content .item').removeClass('active');
+
+    $('#guideline .content .item' + target).addClass('active').find('.item').addClass('active');
+    if (target.split('-').length > 1) {
+      $.each(target.split('-'), function (index, tgt) {
+        $('#guideline .content .item#' + tgt.replace('#', '')).addClass('active');
+      });
+    }
+    $('#guideline .content .item' + target).find('.editor textarea').trigger('change', true);
+  });
+
+  $('.editor textarea').bind('keyup change', function (e) {
+    this.style.height = "auto";
+    this.style.height = this.scrollHeight + 10 + "px";
+  });
+
+  $('body').on('click', '.editor .copy', function (e) {
+    var elem = $(this).parent().find('textarea').get(0);
+    if (utils.copyToClipboard(elem)) notif_fade.success('Copied to clipboard !');
+  });
+
+  // $('#guideline nav a').first().trigger('click');
+  $('#guideline nav a').last().trigger('click');
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./block-std/sample.html": 34,
+	"./brick/sample.html": 35,
+	"./foldingbox/sample.html": 36,
+	"./goto/sample.html": 37,
+	"./sliderFW/sample.html": 38,
+	"./tabs/sample.html": 39
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 33;
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"block-std\">\n  <p>\n    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in felis a risus pellentesque pulvinar. Etiam vehicula molestie libero et sodales. Donec consequat ultrices est at vestibulum. Cras pretium felis vitae mi sodales, convallis finibus leo tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tincidunt egestas nunc, vitae pellentesque quam porttitor ut. Maecenas posuere pellentesque risus ut pulvinar.\n  </p>\n</div>";
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"scene\">\n  <div class=\"grid\">\n    <div class=\"brick\" rows=\"3\" cols=\"5\" color=\"blacklight\" z=\"1\" x=\"0\" y=\"0\" text=\"Text sample\"></div>\n    <div class=\"brick\" rows=\"2\" cols=\"3\" color=\"blacklighter\" z=\"2\" x=\"-0\" y=\"-1\"></div>\n    <div class=\"brick\" rows=\"1\" cols=\"1\" color=\"greystronger\" z=\"3\" x=\"0\" y=\"-2\"></div>\n    <div class=\"brick\" rows=\"3\" cols=\"2\" color=\"blue\" z=\"2\" x=\"0\" y=\"2\"></div>\n  </div>\n</div>";
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = "<div class=\"foldingbox\" data-height=\"\" data-break=\"md\">\n  <div class=\"foldingbox__title\">\n    <h2>LOREM IPSUM DOLOR</h2>\n  </div>\n  <div class=\"foldingbox__container\">\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(2) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>Lorem ipsum dolor sit amet</p>\n        <button>Lorem</button>\n      </div>\n    </div>\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(2) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n        </p>\n        <button>Lorem</button>\n      </div>\n    </div>\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(2) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>Lorem ipsum dolor sit amet</p>\n        <button>Lorem</button>\n      </div>\n    </div>\n  </div>\n</div>";
+
+/***/ }),
+/* 37 */
 /***/ (function(module, exports) {
 
 module.exports = "<button class=\"goto\" data-goto=\"anchorID_1,anchorID_2,anchorID_3\">\n  Click me, I'll take you to a special place\n</button>";
 
 /***/ }),
-/* 100 */
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = "<div class=\"sliderFW \" data-height=\"400\" data-loop=\"true\" data-auto=\"\">\n  <div class=\"sliderFW__container\">\n    <div class=\"sliderFW__rail\">\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(2) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(99) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(2) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tabs\">\n  <div class=\"tabs__nav\">\n    <button>Lorem</button>\n    <button>Ipsum</button>\n    <button>Dolor</button>\n  </div>\n  <div class=\"tabs__content\">\n    <div class=\"tab\">\n      Lorem ipsum dolor sit amet\n    </div>\n    <div class=\"tab\">\n      Ipsum dolor sit amet lorem\n    </div>\n    <div class=\"tab\">\n      Dolor sit amet lorem ipsum\n    </div>\n  </div>\n</div>";
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./block-std/sample.html": 41,
+	"./brick/sample.html": 42,
+	"./foldingbox/sample.html": 43,
+	"./goto/sample.html": 44,
+	"./sliderFW/sample.html": 45,
+	"./tabs/sample.html": 46
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 40;
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"block-std\">\r\n  <p>\r\n    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in felis a risus pellentesque pulvinar. Etiam vehicula molestie libero et sodales. Donec consequat ultrices est at vestibulum. Cras pretium felis vitae mi sodales, convallis finibus leo tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tincidunt egestas nunc, vitae pellentesque quam porttitor ut. Maecenas posuere pellentesque risus ut pulvinar.\r\n  </p>\r\n</div>";
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"scene\">\r\n  <div class=\"grid\">\r\n    <div class=\"brick\" rows=\"3\" cols=\"5\" color=\"blacklight\" z=\"1\" x=\"0\" y=\"0\" text=\"Text sample\"></div>\r\n    <div class=\"brick\" rows=\"2\" cols=\"3\" color=\"blacklighter\" z=\"2\" x=\"-0\" y=\"-1\"></div>\r\n    <div class=\"brick\" rows=\"1\" cols=\"1\" color=\"greystronger\" z=\"3\" x=\"0\" y=\"-2\"></div>\r\n    <div class=\"brick\" rows=\"3\" cols=\"2\" color=\"blue\" z=\"2\" x=\"0\" y=\"2\"></div>\r\n  </div>\r\n</div>";
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = "<div class=\"foldingbox\" data-height=\"\" data-break=\"md\">\r\n  <div class=\"foldingbox__title\">\r\n    <h2>LOREM IPSUM DOLOR</h2>\r\n  </div>\r\n  <div class=\"foldingbox__container\">\r\n    <div class=\"foldingbox__item\">\r\n      <div class=\"foldingbox__item__bg\">\r\n        <img src=\"" + __webpack_require__(2) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"foldingbox__item__content\">\r\n        <h3>Lorem ipsum</h3>\r\n        <p>Lorem ipsum dolor sit amet</p>\r\n        <button>Lorem</button>\r\n      </div>\r\n    </div>\r\n    <div class=\"foldingbox__item\">\r\n      <div class=\"foldingbox__item__bg\">\r\n        <img src=\"" + __webpack_require__(2) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"foldingbox__item__content\">\r\n        <h3>Lorem ipsum</h3>\r\n        <p>\r\n            Lorem ipsum dolor sit amet<br>\r\n            Lorem ipsum dolor sit amet<br>\r\n            Lorem ipsum dolor sit amet<br>\r\n            Lorem ipsum dolor sit amet<br>\r\n        </p>\r\n        <button>Lorem</button>\r\n      </div>\r\n    </div>\r\n    <div class=\"foldingbox__item\">\r\n      <div class=\"foldingbox__item__bg\">\r\n        <img src=\"" + __webpack_require__(2) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"foldingbox__item__content\">\r\n        <h3>Lorem ipsum</h3>\r\n        <p>Lorem ipsum dolor sit amet</p>\r\n        <button>Lorem</button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>";
+
+/***/ }),
+/* 44 */
 /***/ (function(module, exports) {
 
 module.exports = "<button class=\"goto\" data-goto=\"anchorID_1,anchorID_2,anchorID_3\">\r\n  Click me, I'll take you to a special place\r\n</button>";
 
 /***/ }),
-/* 101 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div class=\"sliderFW\">\n  <div class=\"sliderFW__container\">\n    <div class=\"sliderFW__rail\">\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(1) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(1) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(1) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+module.exports = "<div class=\"sliderFW \" data-height=\"400\" data-loop=\"true\" data-auto=\"\">\r\n  <div class=\"sliderFW__container\">\r\n    <div class=\"sliderFW__rail\">\r\n      <div class=\"sliderFW__item\">\r\n        <div class=\"sliderFW__item__bg\">\r\n          <img src=\"" + __webpack_require__(2) + "\" alt=\"sample image\">\r\n        </div>\r\n        <div class=\"sliderFW__item__content\">\r\n          <h3>Lorem ipsum</h3>\r\n          <p>Lorem ipsum dolor sit amet</p>\r\n          <button>Lorem</button>\r\n        </div>\r\n      </div>\r\n      <div class=\"sliderFW__item\">\r\n        <div class=\"sliderFW__item__bg\">\r\n          <img src=\"" + __webpack_require__(99) + "\" alt=\"sample image\">\r\n        </div>\r\n        <div class=\"sliderFW__item__content\">\r\n          <h3>Lorem ipsum</h3>\r\n          <p>Lorem ipsum dolor sit amet</p>\r\n          <button>Lorem</button>\r\n        </div>\r\n      </div>\r\n      <div class=\"sliderFW__item\">\r\n        <div class=\"sliderFW__item__bg\">\r\n          <img src=\"" + __webpack_require__(2) + "\" alt=\"sample image\">\r\n        </div>\r\n        <div class=\"sliderFW__item__content\">\r\n          <h3>Lorem ipsum</h3>\r\n          <p>Lorem ipsum dolor sit amet</p>\r\n          <button>Lorem</button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>";
 
 /***/ }),
-/* 102 */
+/* 46 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tabs\">\r\n  <div class=\"tabs__nav\">\r\n    <button>Lorem</button>\r\n    <button>Ipsum</button>\r\n    <button>Dolor</button>\r\n  </div>\r\n  <div class=\"tabs__content\">\r\n    <div class=\"tab\">\r\n      Lorem ipsum dolor sit amet\r\n    </div>\r\n    <div class=\"tab\">\r\n      Ipsum dolor sit amet lorem\r\n    </div>\r\n    <div class=\"tab\">\r\n      Dolor sit amet lorem ipsum\r\n    </div>\r\n  </div>\r\n</div>";
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"bg-{{color}} m-bottom\">\n  <h4>bg-{{color}}</h4>\n  <p class=\"clear\">\n    Zombies reversus ab inferno, nam malum cerebro. De carne animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n  </p>\n</div>";
+
+/***/ }),
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div class=\"sliderFW\">\r\n  <div class=\"sliderFW__container\">\r\n    <div class=\"sliderFW__rail\">\r\n      <div class=\"sliderFW__item\">\r\n        <div class=\"sliderFW__item__bg\">\r\n          <img src=\"" + __webpack_require__(1) + "\" alt=\"sample image\">\r\n        </div>\r\n        <div class=\"sliderFW__item__content\">\r\n          <h3>Lorem ipsum</h3>\r\n          <p>Lorem ipsum dolor sit amet</p>\r\n          <button>Lorem</button>\r\n        </div>\r\n      </div>\r\n      <div class=\"sliderFW__item\">\r\n        <div class=\"sliderFW__item__bg\">\r\n          <img src=\"" + __webpack_require__(1) + "\" alt=\"sample image\">\r\n        </div>\r\n        <div class=\"sliderFW__item__content\">\r\n          <h3>Lorem ipsum</h3>\r\n          <p>Lorem ipsum dolor sit amet</p>\r\n          <button>Lorem</button>\r\n        </div>\r\n      </div>\r\n      <div class=\"sliderFW__item\">\r\n        <div class=\"sliderFW__item__bg\">\r\n          <img src=\"" + __webpack_require__(1) + "\" alt=\"sample image\">\r\n        </div>\r\n        <div class=\"sliderFW__item__content\">\r\n          <h3>Lorem ipsum</h3>\r\n          <p>Lorem ipsum dolor sit amet</p>\r\n          <button>Lorem</button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>";
+/*
+ *  Copyright 2011 Twitter, Inc.
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+
+(function (Hogan) {
+  // Setup regex  assignments
+  // remove whitespace according to Mustache spec
+  var rIsWhitespace = /\S/,
+      rQuot = /\"/g,
+      rNewline =  /\n/g,
+      rCr = /\r/g,
+      rSlash = /\\/g,
+      rLineSep = /\u2028/,
+      rParagraphSep = /\u2029/;
+
+  Hogan.tags = {
+    '#': 1, '^': 2, '<': 3, '$': 4,
+    '/': 5, '!': 6, '>': 7, '=': 8, '_v': 9,
+    '{': 10, '&': 11, '_t': 12
+  };
+
+  Hogan.scan = function scan(text, delimiters) {
+    var len = text.length,
+        IN_TEXT = 0,
+        IN_TAG_TYPE = 1,
+        IN_TAG = 2,
+        state = IN_TEXT,
+        tagType = null,
+        tag = null,
+        buf = '',
+        tokens = [],
+        seenTag = false,
+        i = 0,
+        lineStart = 0,
+        otag = '{{',
+        ctag = '}}';
+
+    function addBuf() {
+      if (buf.length > 0) {
+        tokens.push({tag: '_t', text: new String(buf)});
+        buf = '';
+      }
+    }
+
+    function lineIsWhitespace() {
+      var isAllWhitespace = true;
+      for (var j = lineStart; j < tokens.length; j++) {
+        isAllWhitespace =
+          (Hogan.tags[tokens[j].tag] < Hogan.tags['_v']) ||
+          (tokens[j].tag == '_t' && tokens[j].text.match(rIsWhitespace) === null);
+        if (!isAllWhitespace) {
+          return false;
+        }
+      }
+
+      return isAllWhitespace;
+    }
+
+    function filterLine(haveSeenTag, noNewLine) {
+      addBuf();
+
+      if (haveSeenTag && lineIsWhitespace()) {
+        for (var j = lineStart, next; j < tokens.length; j++) {
+          if (tokens[j].text) {
+            if ((next = tokens[j+1]) && next.tag == '>') {
+              // set indent to token value
+              next.indent = tokens[j].text.toString()
+            }
+            tokens.splice(j, 1);
+          }
+        }
+      } else if (!noNewLine) {
+        tokens.push({tag:'\n'});
+      }
+
+      seenTag = false;
+      lineStart = tokens.length;
+    }
+
+    function changeDelimiters(text, index) {
+      var close = '=' + ctag,
+          closeIndex = text.indexOf(close, index),
+          delimiters = trim(
+            text.substring(text.indexOf('=', index) + 1, closeIndex)
+          ).split(' ');
+
+      otag = delimiters[0];
+      ctag = delimiters[delimiters.length - 1];
+
+      return closeIndex + close.length - 1;
+    }
+
+    if (delimiters) {
+      delimiters = delimiters.split(' ');
+      otag = delimiters[0];
+      ctag = delimiters[1];
+    }
+
+    for (i = 0; i < len; i++) {
+      if (state == IN_TEXT) {
+        if (tagChange(otag, text, i)) {
+          --i;
+          addBuf();
+          state = IN_TAG_TYPE;
+        } else {
+          if (text.charAt(i) == '\n') {
+            filterLine(seenTag);
+          } else {
+            buf += text.charAt(i);
+          }
+        }
+      } else if (state == IN_TAG_TYPE) {
+        i += otag.length - 1;
+        tag = Hogan.tags[text.charAt(i + 1)];
+        tagType = tag ? text.charAt(i + 1) : '_v';
+        if (tagType == '=') {
+          i = changeDelimiters(text, i);
+          state = IN_TEXT;
+        } else {
+          if (tag) {
+            i++;
+          }
+          state = IN_TAG;
+        }
+        seenTag = i;
+      } else {
+        if (tagChange(ctag, text, i)) {
+          tokens.push({tag: tagType, n: trim(buf), otag: otag, ctag: ctag,
+                       i: (tagType == '/') ? seenTag - otag.length : i + ctag.length});
+          buf = '';
+          i += ctag.length - 1;
+          state = IN_TEXT;
+          if (tagType == '{') {
+            if (ctag == '}}') {
+              i++;
+            } else {
+              cleanTripleStache(tokens[tokens.length - 1]);
+            }
+          }
+        } else {
+          buf += text.charAt(i);
+        }
+      }
+    }
+
+    filterLine(seenTag, true);
+
+    return tokens;
+  }
+
+  function cleanTripleStache(token) {
+    if (token.n.substr(token.n.length - 1) === '}') {
+      token.n = token.n.substring(0, token.n.length - 1);
+    }
+  }
+
+  function trim(s) {
+    if (s.trim) {
+      return s.trim();
+    }
+
+    return s.replace(/^\s*|\s*$/g, '');
+  }
+
+  function tagChange(tag, text, index) {
+    if (text.charAt(index) != tag.charAt(0)) {
+      return false;
+    }
+
+    for (var i = 1, l = tag.length; i < l; i++) {
+      if (text.charAt(index + i) != tag.charAt(i)) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  // the tags allowed inside super templates
+  var allowedInSuper = {'_t': true, '\n': true, '$': true, '/': true};
+
+  function buildTree(tokens, kind, stack, customTags) {
+    var instructions = [],
+        opener = null,
+        tail = null,
+        token = null;
+
+    tail = stack[stack.length - 1];
+
+    while (tokens.length > 0) {
+      token = tokens.shift();
+
+      if (tail && tail.tag == '<' && !(token.tag in allowedInSuper)) {
+        throw new Error('Illegal content in < super tag.');
+      }
+
+      if (Hogan.tags[token.tag] <= Hogan.tags['$'] || isOpener(token, customTags)) {
+        stack.push(token);
+        token.nodes = buildTree(tokens, token.tag, stack, customTags);
+      } else if (token.tag == '/') {
+        if (stack.length === 0) {
+          throw new Error('Closing tag without opener: /' + token.n);
+        }
+        opener = stack.pop();
+        if (token.n != opener.n && !isCloser(token.n, opener.n, customTags)) {
+          throw new Error('Nesting error: ' + opener.n + ' vs. ' + token.n);
+        }
+        opener.end = token.i;
+        return instructions;
+      } else if (token.tag == '\n') {
+        token.last = (tokens.length == 0) || (tokens[0].tag == '\n');
+      }
+
+      instructions.push(token);
+    }
+
+    if (stack.length > 0) {
+      throw new Error('missing closing tag: ' + stack.pop().n);
+    }
+
+    return instructions;
+  }
+
+  function isOpener(token, tags) {
+    for (var i = 0, l = tags.length; i < l; i++) {
+      if (tags[i].o == token.n) {
+        token.tag = '#';
+        return true;
+      }
+    }
+  }
+
+  function isCloser(close, open, tags) {
+    for (var i = 0, l = tags.length; i < l; i++) {
+      if (tags[i].c == close && tags[i].o == open) {
+        return true;
+      }
+    }
+  }
+
+  function stringifySubstitutions(obj) {
+    var items = [];
+    for (var key in obj) {
+      items.push('"' + esc(key) + '": function(c,p,t,i) {' + obj[key] + '}');
+    }
+    return "{ " + items.join(",") + " }";
+  }
+
+  function stringifyPartials(codeObj) {
+    var partials = [];
+    for (var key in codeObj.partials) {
+      partials.push('"' + esc(key) + '":{name:"' + esc(codeObj.partials[key].name) + '", ' + stringifyPartials(codeObj.partials[key]) + "}");
+    }
+    return "partials: {" + partials.join(",") + "}, subs: " + stringifySubstitutions(codeObj.subs);
+  }
+
+  Hogan.stringify = function(codeObj, text, options) {
+    return "{code: function (c,p,i) { " + Hogan.wrapMain(codeObj.code) + " }," + stringifyPartials(codeObj) +  "}";
+  }
+
+  var serialNo = 0;
+  Hogan.generate = function(tree, text, options) {
+    serialNo = 0;
+    var context = { code: '', subs: {}, partials: {} };
+    Hogan.walk(tree, context);
+
+    if (options.asString) {
+      return this.stringify(context, text, options);
+    }
+
+    return this.makeTemplate(context, text, options);
+  }
+
+  Hogan.wrapMain = function(code) {
+    return 'var t=this;t.b(i=i||"");' + code + 'return t.fl();';
+  }
+
+  Hogan.template = Hogan.Template;
+
+  Hogan.makeTemplate = function(codeObj, text, options) {
+    var template = this.makePartials(codeObj);
+    template.code = new Function('c', 'p', 'i', this.wrapMain(codeObj.code));
+    return new this.template(template, text, this, options);
+  }
+
+  Hogan.makePartials = function(codeObj) {
+    var key, template = {subs: {}, partials: codeObj.partials, name: codeObj.name};
+    for (key in template.partials) {
+      template.partials[key] = this.makePartials(template.partials[key]);
+    }
+    for (key in codeObj.subs) {
+      template.subs[key] = new Function('c', 'p', 't', 'i', codeObj.subs[key]);
+    }
+    return template;
+  }
+
+  function esc(s) {
+    return s.replace(rSlash, '\\\\')
+            .replace(rQuot, '\\\"')
+            .replace(rNewline, '\\n')
+            .replace(rCr, '\\r')
+            .replace(rLineSep, '\\u2028')
+            .replace(rParagraphSep, '\\u2029');
+  }
+
+  function chooseMethod(s) {
+    return (~s.indexOf('.')) ? 'd' : 'f';
+  }
+
+  function createPartial(node, context) {
+    var prefix = "<" + (context.prefix || "");
+    var sym = prefix + node.n + serialNo++;
+    context.partials[sym] = {name: node.n, partials: {}};
+    context.code += 't.b(t.rp("' +  esc(sym) + '",c,p,"' + (node.indent || '') + '"));';
+    return sym;
+  }
+
+  Hogan.codegen = {
+    '#': function(node, context) {
+      context.code += 'if(t.s(t.' + chooseMethod(node.n) + '("' + esc(node.n) + '",c,p,1),' +
+                      'c,p,0,' + node.i + ',' + node.end + ',"' + node.otag + " " + node.ctag + '")){' +
+                      't.rs(c,p,' + 'function(c,p,t){';
+      Hogan.walk(node.nodes, context);
+      context.code += '});c.pop();}';
+    },
+
+    '^': function(node, context) {
+      context.code += 'if(!t.s(t.' + chooseMethod(node.n) + '("' + esc(node.n) + '",c,p,1),c,p,1,0,0,"")){';
+      Hogan.walk(node.nodes, context);
+      context.code += '};';
+    },
+
+    '>': createPartial,
+    '<': function(node, context) {
+      var ctx = {partials: {}, code: '', subs: {}, inPartial: true};
+      Hogan.walk(node.nodes, ctx);
+      var template = context.partials[createPartial(node, context)];
+      template.subs = ctx.subs;
+      template.partials = ctx.partials;
+    },
+
+    '$': function(node, context) {
+      var ctx = {subs: {}, code: '', partials: context.partials, prefix: node.n};
+      Hogan.walk(node.nodes, ctx);
+      context.subs[node.n] = ctx.code;
+      if (!context.inPartial) {
+        context.code += 't.sub("' + esc(node.n) + '",c,p,i);';
+      }
+    },
+
+    '\n': function(node, context) {
+      context.code += write('"\\n"' + (node.last ? '' : ' + i'));
+    },
+
+    '_v': function(node, context) {
+      context.code += 't.b(t.v(t.' + chooseMethod(node.n) + '("' + esc(node.n) + '",c,p,0)));';
+    },
+
+    '_t': function(node, context) {
+      context.code += write('"' + esc(node.text) + '"');
+    },
+
+    '{': tripleStache,
+
+    '&': tripleStache
+  }
+
+  function tripleStache(node, context) {
+    context.code += 't.b(t.t(t.' + chooseMethod(node.n) + '("' + esc(node.n) + '",c,p,0)));';
+  }
+
+  function write(s) {
+    return 't.b(' + s + ');';
+  }
+
+  Hogan.walk = function(nodelist, context) {
+    var func;
+    for (var i = 0, l = nodelist.length; i < l; i++) {
+      func = Hogan.codegen[nodelist[i].tag];
+      func && func(nodelist[i], context);
+    }
+    return context;
+  }
+
+  Hogan.parse = function(tokens, text, options) {
+    options = options || {};
+    return buildTree(tokens, '', [], options.sectionTags || []);
+  }
+
+  Hogan.cache = {};
+
+  Hogan.cacheKey = function(text, options) {
+    return [text, !!options.asString, !!options.disableLambda, options.delimiters, !!options.modelGet].join('||');
+  }
+
+  Hogan.compile = function(text, options) {
+    options = options || {};
+    var key = Hogan.cacheKey(text, options);
+    var template = this.cache[key];
+
+    if (template) {
+      var partials = template.partials;
+      for (var name in partials) {
+        delete partials[name].instance;
+      }
+      return template;
+    }
+
+    template = this.generate(this.parse(this.scan(text, options.delimiters), text, options), text, options);
+    return this.cache[key] = template;
+  }
+})( true ? exports : Hogan);
+
 
 /***/ }),
-/* 103 */
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+ *  Copyright 2011 Twitter, Inc.
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+
+var Hogan = {};
+
+(function (Hogan) {
+  Hogan.Template = function (codeObj, text, compiler, options) {
+    codeObj = codeObj || {};
+    this.r = codeObj.code || this.r;
+    this.c = compiler;
+    this.options = options || {};
+    this.text = text || '';
+    this.partials = codeObj.partials || {};
+    this.subs = codeObj.subs || {};
+    this.buf = '';
+  }
+
+  Hogan.Template.prototype = {
+    // render: replaced by generated code.
+    r: function (context, partials, indent) { return ''; },
+
+    // variable escaping
+    v: hoganEscape,
+
+    // triple stache
+    t: coerceToString,
+
+    render: function render(context, partials, indent) {
+      return this.ri([context], partials || {}, indent);
+    },
+
+    // render internal -- a hook for overrides that catches partials too
+    ri: function (context, partials, indent) {
+      return this.r(context, partials, indent);
+    },
+
+    // ensurePartial
+    ep: function(symbol, partials) {
+      var partial = this.partials[symbol];
+
+      // check to see that if we've instantiated this partial before
+      var template = partials[partial.name];
+      if (partial.instance && partial.base == template) {
+        return partial.instance;
+      }
+
+      if (typeof template == 'string') {
+        if (!this.c) {
+          throw new Error("No compiler available.");
+        }
+        template = this.c.compile(template, this.options);
+      }
+
+      if (!template) {
+        return null;
+      }
+
+      // We use this to check whether the partials dictionary has changed
+      this.partials[symbol].base = template;
+
+      if (partial.subs) {
+        // Make sure we consider parent template now
+        if (!partials.stackText) partials.stackText = {};
+        for (key in partial.subs) {
+          if (!partials.stackText[key]) {
+            partials.stackText[key] = (this.activeSub !== undefined && partials.stackText[this.activeSub]) ? partials.stackText[this.activeSub] : this.text;
+          }
+        }
+        template = createSpecializedPartial(template, partial.subs, partial.partials,
+          this.stackSubs, this.stackPartials, partials.stackText);
+      }
+      this.partials[symbol].instance = template;
+
+      return template;
+    },
+
+    // tries to find a partial in the current scope and render it
+    rp: function(symbol, context, partials, indent) {
+      var partial = this.ep(symbol, partials);
+      if (!partial) {
+        return '';
+      }
+
+      return partial.ri(context, partials, indent);
+    },
+
+    // render a section
+    rs: function(context, partials, section) {
+      var tail = context[context.length - 1];
+
+      if (!isArray(tail)) {
+        section(context, partials, this);
+        return;
+      }
+
+      for (var i = 0; i < tail.length; i++) {
+        context.push(tail[i]);
+        section(context, partials, this);
+        context.pop();
+      }
+    },
+
+    // maybe start a section
+    s: function(val, ctx, partials, inverted, start, end, tags) {
+      var pass;
+
+      if (isArray(val) && val.length === 0) {
+        return false;
+      }
+
+      if (typeof val == 'function') {
+        val = this.ms(val, ctx, partials, inverted, start, end, tags);
+      }
+
+      pass = !!val;
+
+      if (!inverted && pass && ctx) {
+        ctx.push((typeof val == 'object') ? val : ctx[ctx.length - 1]);
+      }
+
+      return pass;
+    },
+
+    // find values with dotted names
+    d: function(key, ctx, partials, returnFound) {
+      var found,
+          names = key.split('.'),
+          val = this.f(names[0], ctx, partials, returnFound),
+          doModelGet = this.options.modelGet,
+          cx = null;
+
+      if (key === '.' && isArray(ctx[ctx.length - 2])) {
+        val = ctx[ctx.length - 1];
+      } else {
+        for (var i = 1; i < names.length; i++) {
+          found = findInScope(names[i], val, doModelGet);
+          if (found !== undefined) {
+            cx = val;
+            val = found;
+          } else {
+            val = '';
+          }
+        }
+      }
+
+      if (returnFound && !val) {
+        return false;
+      }
+
+      if (!returnFound && typeof val == 'function') {
+        ctx.push(cx);
+        val = this.mv(val, ctx, partials);
+        ctx.pop();
+      }
+
+      return val;
+    },
+
+    // find values with normal names
+    f: function(key, ctx, partials, returnFound) {
+      var val = false,
+          v = null,
+          found = false,
+          doModelGet = this.options.modelGet;
+
+      for (var i = ctx.length - 1; i >= 0; i--) {
+        v = ctx[i];
+        val = findInScope(key, v, doModelGet);
+        if (val !== undefined) {
+          found = true;
+          break;
+        }
+      }
+
+      if (!found) {
+        return (returnFound) ? false : "";
+      }
+
+      if (!returnFound && typeof val == 'function') {
+        val = this.mv(val, ctx, partials);
+      }
+
+      return val;
+    },
+
+    // higher order templates
+    ls: function(func, cx, partials, text, tags) {
+      var oldTags = this.options.delimiters;
+
+      this.options.delimiters = tags;
+      this.b(this.ct(coerceToString(func.call(cx, text)), cx, partials));
+      this.options.delimiters = oldTags;
+
+      return false;
+    },
+
+    // compile text
+    ct: function(text, cx, partials) {
+      if (this.options.disableLambda) {
+        throw new Error('Lambda features disabled.');
+      }
+      return this.c.compile(text, this.options).render(cx, partials);
+    },
+
+    // template result buffering
+    b: function(s) { this.buf += s; },
+
+    fl: function() { var r = this.buf; this.buf = ''; return r; },
+
+    // method replace section
+    ms: function(func, ctx, partials, inverted, start, end, tags) {
+      var textSource,
+          cx = ctx[ctx.length - 1],
+          result = func.call(cx);
+
+      if (typeof result == 'function') {
+        if (inverted) {
+          return true;
+        } else {
+          textSource = (this.activeSub && this.subsText && this.subsText[this.activeSub]) ? this.subsText[this.activeSub] : this.text;
+          return this.ls(result, cx, partials, textSource.substring(start, end), tags);
+        }
+      }
+
+      return result;
+    },
+
+    // method replace variable
+    mv: function(func, ctx, partials) {
+      var cx = ctx[ctx.length - 1];
+      var result = func.call(cx);
+
+      if (typeof result == 'function') {
+        return this.ct(coerceToString(result.call(cx)), cx, partials);
+      }
+
+      return result;
+    },
+
+    sub: function(name, context, partials, indent) {
+      var f = this.subs[name];
+      if (f) {
+        this.activeSub = name;
+        f(context, partials, this, indent);
+        this.activeSub = false;
+      }
+    }
+
+  };
+
+  //Find a key in an object
+  function findInScope(key, scope, doModelGet) {
+    var val;
+
+    if (scope && typeof scope == 'object') {
+
+      if (scope[key] !== undefined) {
+        val = scope[key];
+
+      // try lookup with get for backbone or similar model data
+      } else if (doModelGet && scope.get && typeof scope.get == 'function') {
+        val = scope.get(key);
+      }
+    }
+
+    return val;
+  }
+
+  function createSpecializedPartial(instance, subs, partials, stackSubs, stackPartials, stackText) {
+    function PartialTemplate() {};
+    PartialTemplate.prototype = instance;
+    function Substitutions() {};
+    Substitutions.prototype = instance.subs;
+    var key;
+    var partial = new PartialTemplate();
+    partial.subs = new Substitutions();
+    partial.subsText = {};  //hehe. substext.
+    partial.buf = '';
+
+    stackSubs = stackSubs || {};
+    partial.stackSubs = stackSubs;
+    partial.subsText = stackText;
+    for (key in subs) {
+      if (!stackSubs[key]) stackSubs[key] = subs[key];
+    }
+    for (key in stackSubs) {
+      partial.subs[key] = stackSubs[key];
+    }
+
+    stackPartials = stackPartials || {};
+    partial.stackPartials = stackPartials;
+    for (key in partials) {
+      if (!stackPartials[key]) stackPartials[key] = partials[key];
+    }
+    for (key in stackPartials) {
+      partial.partials[key] = stackPartials[key];
+    }
+
+    return partial;
+  }
+
+  var rAmp = /&/g,
+      rLt = /</g,
+      rGt = />/g,
+      rApos = /\'/g,
+      rQuot = /\"/g,
+      hChars = /[&<>\"\']/;
+
+  function coerceToString(val) {
+    return String((val === null || val === undefined) ? '' : val);
+  }
+
+  function hoganEscape(str) {
+    str = coerceToString(str);
+    return hChars.test(str) ?
+      str
+        .replace(rAmp, '&amp;')
+        .replace(rLt, '&lt;')
+        .replace(rGt, '&gt;')
+        .replace(rApos, '&#39;')
+        .replace(rQuot, '&quot;') :
+      str;
+  }
+
+  var isArray = Array.isArray || function(a) {
+    return Object.prototype.toString.call(a) === '[object Array]';
+  };
+
+})( true ? exports : Hogan);
+
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(51)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T; }();
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tabs\">\n  <div class=\"tabs__nav\">\n    {{> nav}}\n  </div>\n  <div class=\"tabs__content\">\n    {{> content}}\n  </div>\n</div>";
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(53)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tab\">\n  <div class=\"bd-darkblue m-bottom\"><h5 class=\"\">bd-darkblue</h5> Lorem ipsum dolor sit amet</div>\n  <div class=\"bd-darkblue-top m-bottom\"><h5 class=\"\">bd-darkblue-top</h5> Lorem ipsum dolor sit amet</div>\n  <div class=\"bd-darkblue-bottom m-bottom\"><h5 class=\"\">bd-darkblue-bottom</h5> Lorem ipsum dolor sit amet</div>\n  <div class=\"bd-darkblue-left m-bottom\">\n    <h5 class=\"txt-center\">bd-darkblue-left</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n  <div class=\"bd-darkblue-right m-bottom\">\n    <h5 class=\"txt-center\">bd-darkblue-right</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n  <div class=\"bd-darkblue-left bd-green-top m-bottom\">\n    <h5 class=\"txt-center\">bd-darkblue-left bd-green-top</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n  <div class=\"bd-darkblue-right bd-green-bottom m-bottom\">\n    <h5 class=\"txt-center\">bd-darkblue-right bd-green-bottom</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n  <div class=\"bd-darkblue-10 bd-blue-left-5 bd-orange-bottom bd-green-right-2 m-bottom\">\n    <h5 class=\"txt-center\">bd-darkblue-10 bd-blue-left-5 bd-orange-bottom bd-green-right-2</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n</div>";
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(55)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"bd-{{color}} m-bottom\"> Lorem ipsum dolor sit amet - bd-{{color}}</div>";
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(57)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tab\">\n  <h3>Buttons</h3>\n  <div class=\"\">\n    <button class=\"btn-sm\">btn-sm (button)</button><br>\n    <button class=\"\">btn (button)</button><br>\n    <button class=\"btn-lg\">btn-lg (button)</button>\n  </div>\n  <h3>Buttons inputs</h3>\n  <div>\n    <input type=\"button\" class=\"btn-sm\" value=\"btn-sm (input type button)\"><br>\n    <input type=\"button\" class=\"\" value=\"btn (input type button)\"><br>\n    <input type=\"button\" class=\"btn-lg\" value=\"btn-lg (input type button)\"><br>\n    <input type=\"submit\" class=\"btn-sm\" value=\"btn-sm (input type submit)\"><br>\n    <input type=\"submit\" class=\"\" value=\"btn (input type submit)\"><br>\n    <input type=\"submit\" class=\"btn-lg\" value=\"btn-lg (input type submit)\">\n  </div>\n  <h3>Buttons a</h3>\n  <div  class=\"\">\n    <a href=\"#\" class=\"btn-sm\">btn-sm (a)</a><br>\n    <a href=\"#\" class=\"btn\">btn (a)</a><br>\n    <a href=\"#\" class=\"btn-lg\">btn-lg (a)</a>\n  </div>\n</div>";
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(59)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports) {
+
+module.exports = "<div>\n  <button class=\"btn-bg-{{color}}\">btn-bg-{{color}}</button>\n  <button class=\"btn-bd-{{color}}\">btn-bd-{{color}}</button>\n</div>";
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(61)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tab\">\n  <input type=\"text\" placeholder=\"Input solo\">\n  <div class=\"form-group\">\n    <input type=\"text\" placeholder=\"Input in a form-group, without label\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input1\">Label ipsum</label>\n    <input id=\"input1\" type=\"text\" placeholder=\"Input in a form-group, with label\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input2\">Input without placeholder</label>\n    <input id=\"input2\" type=\"text\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input3\">Input with value already set</label>\n    <input id=\"input3\" type=\"text\" placeholder=\"Placeholder ipsum\" value=\"Value ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input4\">Input focused</label>\n    <input id=\"input4\" type=\"text\" class=\"focus\" placeholder=\"Placeholder ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input5\">Input required</label>\n    <input id=\"input5\" type=\"text\" placeholder=\"Placeholder ipsum\" required>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input6\">Input required and valid</label>\n    <input id=\"input6\" type=\"text\" placeholder=\"Placeholder ipsum\" value=\"Valid value ipsum\" required>\n  </div>\n</div>";
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(63)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"bg-{{color}} m-bottom\">\n  <span class=\"fl-right\">bg-{{color}}</span>\n  <div class=\"form-group clear\">\n    <label for=\"input21\">Label ipsum</label>\n    <input id=\"input21\" type=\"text\" placeholder=\"Input in a form-group\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input22\">Label ipsum required invalid</label>\n    <input id=\"input22\" type=\"text\" required placeholder=\"Input in a form-group\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input23\">Label ipsum required valid</label>\n    <input id=\"input23\" type=\"text\" required value=\"Value Ipsum\" placeholder=\"Input in a form-group\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input37\">Input range</label> - todo: script récupération et affichage valeur sélectionnée\n    <input id=\"input37\" type=\"range\" min=\"0\" max=\"100\" value=\"50\" step=\"5\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"\">Checkboxes</label>\n    <input id=\"input38\" type=\"checkbox\" checked>\n    <label for=\"input38\">Label checkbox</label>\n    <input id=\"input39\" type=\"checkbox\">\n    <label for=\"input39\">Label checkbox</label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"\">Radios</label>\n    <input name=\"inputRadio\" id=\"input40\" type=\"radio\" checked>\n    <label for=\"input40\">Label radio</label>\n    <input name=\"inputRadio\" id=\"input41\" type=\"radio\">\n    <label for=\"input41\">Label radio</label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input42\">Select</label> - todo: custom script dropdown\n    <select name=\"\" id=\"input42\">\n      <option value=\"1\">value 1</option>\n      <option value=\"2\">value 2</option>\n      <option value=\"3\">value 3</option>\n    </select>\n  </div>\n</div>";
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(65)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tab\">\n  <div class=\"form-group\">\n    <label for=\"input14\">Input range</label> - todo: script récupération et affichage valeur sélectionnée\n    <input id=\"input14\" type=\"range\" min=\"0\" max=\"100\" value=\"50\" step=\"5\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"\">Checkboxes</label>\n    <input id=\"input15\" type=\"checkbox\" checked>\n    <label for=\"input15\">Label checkbox</label>\n    <input id=\"input16\" type=\"checkbox\">\n    <label for=\"input16\">Label checkbox</label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"\">Radios</label>\n    <input name=\"inputRadio\" id=\"input17\" type=\"radio\" checked>\n    <label for=\"input17\">Label radio</label>\n    <input name=\"inputRadio\" id=\"input18\" type=\"radio\">\n    <label for=\"input18\">Label radio</label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input20\">Select</label> - todo: custom script dropdown\n    <select name=\"\" id=\"input20\">\n      <option value=\"1\">value 1</option>\n      <option value=\"2\">value 2</option>\n      <option value=\"3\">value 3</option>\n    </select>\n  </div>\n</div>";
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(67)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tab\">\n  <div class=\"form-group\">\n    <label for=\"input19\">Textarea</label>\n    <textarea name=\"\" id=\"input19\"></textarea>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input7\">Input password</label>\n    <input id=\"input7\" type=\"password\" placeholder=\"Placeholder ipsum\" value=\"passwordipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input8\">Input email</label>\n    <input id=\"input8\" type=\"email\" placeholder=\"Placeholder ipsum\" value=\"lorem@ipsum.dolor\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input9\">Input email with invalid value</label>\n    <input id=\"input9\" type=\"email\" placeholder=\"Placeholder ipsum\" value=\"loremipsum.dolor\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input10\">Input tel</label> - todo: script ajoutant pattern (contextuel localité) ?\n    <input id=\"input10\" type=\"tel\" placeholder=\"Placeholder ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input11\">Input url</label> - todo: script ajoutant \"http://\" automatiquement au début de l'input\n    <input id=\"input11\" type=\"url\" placeholder=\"Placeholder ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input12\">Input date</label>\n    <input id=\"input12\" type=\"date\" placeholder=\"Placeholder ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input13\">Input number</label>\n    <input id=\"input13\" type=\"number\">\n  </div>\n</div>";
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(69)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tab\">\n  <h4>lorem ipsum dolor sit amet (H4)</h4>\n  <p>\n    Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n  </p>\n  <div class=\"txt-center\">\n    <h4>lorem ipsum dolor sit amet (H4) - txt-center</h4>\n    <p>\n      Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n    </p>\n  </div>\n  <div class=\"txt-right\">\n    <h4>lorem ipsum dolor sit amet (H4) - txt-right</h4>\n    <p>\n      Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n    </p>\n  </div>\n  <ul>\n    <li>Lorem ipsum dolor sit amet</li>\n    <li>Lorem ipsum dolor sit amet</li>\n    <li>Lorem ipsum dolor sit amet</li>\n    <ul>\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Lorem ipsum dolor sit amet</li>\n      <ul>\n        <li>Lorem ipsum dolor sit amet</li>\n        <li>Lorem ipsum dolor sit amet</li>\n      </ul>\n      <li>Lorem ipsum dolor sit amet</li>\n    </ul>\n    <li>Lorem ipsum dolor sit amet</li>\n  </ul>\n  <ol>\n    <li>Lorem ipsum dolor sit amet</li>\n    <li>Lorem ipsum dolor sit amet</li>\n    <li>Lorem ipsum dolor sit amet</li>\n    <ol>\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Lorem ipsum dolor sit amet</li>\n      <ol>\n        <li>Lorem ipsum dolor sit amet</li>\n        <li>Lorem ipsum dolor sit amet</li>\n      </ol>\n      <li>Lorem ipsum dolor sit amet</li>\n    </ol>\n    <li>Lorem ipsum dolor sit amet</li>\n  </ol>\n</div>";
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(71)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"bd-{{color}} m-bottom\">\n  <h4>lorem ipsum dolor sit amet (H4) - bd-{{color}}</h4>\n  <p>\n    Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n  </p>\n</div>";
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(73)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"bg-{{color}} m-bottom\">\n  <h4>lorem ipsum dolor sit amet (H4) - bg-{{color}}</h4>\n  <p>\n    Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n  </p>\n</div>";
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(75)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tab\">\n  <h1>lorem ipsum dolor sit amet (H1)</h1>\n  <h2>lorem ipsum dolor sit amet (H2)</h2>\n  <h3>lorem ipsum dolor sit amet (H3)</h3>\n  <h4>lorem ipsum dolor sit amet (H4)</h4>\n  <h5>lorem ipsum dolor sit amet (H5)</h5>\n  <h6>lorem ipsum dolor sit amet (H6)</h6>\n</div>";
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(77)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports) {
+
+module.exports = "<h4 class=\"bg-{{color}}\">lorem ipsum (h4) - bg-{{color}}</h4>";
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(79)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tab\">\n  <h4 class=\"sep-top\">lorem ipsum (h4) - sep-top</h4>\n  <h4 class=\"sep-bottom\">lorem ipsum (h4) - sep-bottom</h4>\n  <h4 class=\"sep-top sep-bottom\">lorem ipsum (h4) - sep-top sep-bottom</h4>\n\n  <h4 class=\"sep-left\">lorem ipsum (h4) - sep-left</h4>\n  <h4 class=\"sep-right\">lorem ipsum (h4) - sep-right</h4>\n  <h4 class=\"sep-left sep-right\">lorem ipsum (h4) - sep-left sep-right</h4>\n</div>";
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(81)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T; }();
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"col-12 col-md-6 col-lg-4 flex-column\">\n  <div class=\"ft-b txt-center\">- {{title}} -</div>\n  <ul class=\" bd-grey-right bd-grey-bottom flex-grow-1\">\n    {{> rows}}\n  </ul>\n</div>";
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(83)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports) {
+
+module.exports = "<li class=\"bd-greylight-bottom-1 p-bottom-0 flex-wrap-justify--between\">\n  {{{str}}}\n</li>";
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"radius":"2px","spacing":"30px","border-size":"2px","colors":"(\"blue\": #004C79, \"green\": #5cb85c, \"orange\": #DC6053, \"darkblue\": #0a1d29, \"gold\": #edbe5f, \"black\": #000000, \"blacklight\": #111414, \"blacklighter\": #222222, \"greystronger\": #424041, \"greystrong\": #535052, \"grey\": #7A7778, \"greylight\": #DDDDDD, \"greylighter\": #EEEEEE, \"white\": #ffffff, \"none\": transparent)","breakpoints":"(\"xl\": 1400px, \"lg\": 1200px, \"md\": 992px, \"sm\": 768px, \"xs\": 620px, \"xxs\": 520px)","body":"(\"background\": #ffffff, \"font-color\": #424041, \"font-size\": 20px, \"title-font-color\": #111414)","header":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","footer":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","input":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #424041, \"border-size\": 2px, \"placeholder-font-color\": #7A7778, \"radius\": true)","input-focus":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #424041)","input-valid":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #5cb85c)","input-invalid":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #DC6053)","link":"(\"font-color\": #DC6053, \"font-color-hover\": #DC6053, \"font-color-focus\": #DC6053)","btn":"(\"background\": #424041, \"font-color\": #ffffff, \"border-size\": 2px, \"radius\": true, \"extend\": \".btn-bg-darkblue\")","enable-bg":"true","enable-bg-extended":"false","enable-bd":"true"};
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(86)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports) {
+
+module.exports = "<nav class=\"bg-greystronger\">\n  <ul>\n    <li><a href=\"#framway__config\">Config</a></li>\n    <li>\n      <a href=\"#framway__styling\">Styling</a>\n      {{{styling.nav}}}\n    </li>\n    <li>\n      <a href=\"#framway__components\">Components</a>\n      {{{components.nav}}}\n    </li>\n  </ul>\n</nav>\n<div class=\"content container-fluid p-x-x2 p-top\">\n  <h1>Framway's config & guideline</h1>\n  <div class=\"item\" id=\"framway__config\">\n    <div class=\"row\">\n      {{{config}}}\n    </div>\n  </div>\n  <div class=\"item\" id=\"framway__styling\">\n      {{{styling.content}}}\n  </div>\n  <div class=\"item\" id=\"framway__components\">\n      {{{components.content}}}\n  </div>\n</div>";
+
+/***/ }),
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16082,44 +15147,113 @@ $.fn.sliderFW = function sliderFW() {
   $(this).each(function () {
     app._sliderFW.push(new SliderFW(this));
   });
-  $(window).trigger('resize');
 };
 
 var SliderFW = function SliderFW(item) {
   var slider = this;
   slider.$el = $(item);
-  slider.content = { $el: $(item).find('.sliderFW__container') };
+  slider.content = { $el: slider.$el.find('.sliderFW__container') };
   slider.content.items = slider.content.$el.find('.sliderFW__item');
   slider.$nav = $('<div class="sliderFW__nav"></div>').appendTo(slider.content.$el);
-  for (var i = 0; i < slider.content.items.length; i++) {
+  slider.content.items.each(function () {
     $('<span class="sliderFW__nav__item"></span>').appendTo(slider.$nav);
-  };
+  });
+  slider.loop = slider.$el.data('loop') || false;
+  slider.auto = slider.$el.data('auto') || false;
+
   slider.$nav.children().first().addClass('active');
   slider.$nav.children().bind('click', function (e) {
     var index = $(this).index();
     slider.$nav.children().removeClass('active');
     $(this).addClass('active');
-    slider.content.$el.find('.sliderFW__rail').css('transform', 'translate3d(' + -100 * index + '%,0,0)');
+    slider.content.$el.find('.sliderFW__rail').css('transform', 'translate3d(' + -slider.$el.width() * index + 'px,0,0)');
   });
 
   slider.setHeight();
+  slider.setBlur();
 
   slider.$el.on('destroyed', function () {
     app._sliderFW.splice(app._sliderFW.indexOf(slider), 1);
     slider = undefined;
   });
 
+  // manage swipe event
+  var swipeSlide = new Hammer(slider.$el.get(0));
+  swipeSlide.get('swipe').set({ direction: Hammer.DIRECTION_HORIZONTAL });
+
+  var swipeEvents = function swipeEvents(event) {
+    switch (event.type) {
+      case 'swipeleft':
+        slider.goToNext();break;
+      case 'swiperight':
+        slider.goToPrev();break;
+      default:
+        break;
+    }
+  };
+  swipeSlide.on('swipeleft swiperight', swipeEvents);
+
+  slider.timerAuto;
+
+  if (slider.auto) slider.autoTrigger();
+
   return slider;
+};
+
+SliderFW.prototype.autoTrigger = function () {
+  var slider = this;
+  slider.timerAuto = setTimeout(function () {
+    slider.goToNext();
+  }, 5600);
+};
+
+SliderFW.prototype.goToNext = function () {
+  if (this.loop) {
+    if (this.$nav.find('.sliderFW__nav__item.active').next('.sliderFW__nav__item').length) this.$nav.find('.sliderFW__nav__item.active').next('.sliderFW__nav__item').trigger('click');else this.$nav.find('.sliderFW__nav__item').first().trigger('click');
+  } else {
+    this.$nav.find('.sliderFW__nav__item.active').next('.sliderFW__nav__item').trigger('click');
+  }
+  if (this.auto) {
+    clearTimeout(this.timerAuto);
+    this.autoTrigger();
+  }
+};
+SliderFW.prototype.goToPrev = function () {
+  if (this.loop) {
+    if (this.$nav.find('.sliderFW__nav__item.active').prev('.sliderFW__nav__item').length) this.$nav.find('.sliderFW__nav__item.active').prev('.sliderFW__nav__item').trigger('click');else this.$nav.find('.sliderFW__nav__item').last().trigger('click');
+  } else {
+    this.$nav.find('.sliderFW__nav__item.active').prev('.sliderFW__nav__item').trigger('click');
+  }
+  if (this.auto) {
+    clearTimeout(this.timerAuto);
+    this.autoTrigger();
+  }
+};
+
+SliderFW.prototype.setBlur = function () {
+  var slider = this;
+
+  slider.content.items.each(function (index, item) {
+    if ($(item).find('.sliderFW__item__blur').length) {
+      $(item).find('.sliderFW__item__blur').width($(item).find('.sliderFW__item__content').outerWidth());
+      $(item).find('.sliderFW__item__blur img').width($(item).find('.sliderFW__item__bg img').outerWidth());
+    } else {
+      var container = $(item).find('.sliderFW__item__bg');
+      var imgClone = $('<div class="sliderFW__item__blur"></div>').append($(item).find('.sliderFW__item__bg img').clone()).appendTo(container);
+      slider.setBlur();
+    }
+  });
 };
 
 SliderFW.prototype.setHeight = function () {
   var slider = this;
   var heightBox = 0;
-  if (slider.$el.attr('data-height') && slider.$el.attr('data-height') != "") {
-    heightBox = slider.$el.attr('data-height');
+  if (slider.$el.data('height') && slider.$el.data('height') != "") {
+    heightBox = slider.$el.data('height');
   } else {
     slider.content.items.each(function (index, item) {
       var $clone = $(item).children('.sliderFW__item__content').clone().css({
+        'height': 'auto',
         'transition': 'none',
         'opacity': '1',
         'visibility': 'hidden'
@@ -16138,12 +15272,31 @@ SliderFW.prototype.destroy = function () {
   this.$el.remove();
 };
 
+SliderFW.prototype.keyEvent = function (event) {
+  // console.log('keyevent triggered');
+  switch (event.which) {
+    case 38: // up
+    case 40: // down
+    case 37:
+      // left
+      this.goToPrev();break;
+    case 39:
+      // right
+      this.goToNext();break;
+    default:
+      return; // exit this handler for other keys
+  }
+  event.preventDefault();
+};
+
 var timerResize;
 SliderFW.prototype.resize = function () {
   var slider = this;
+  slider.setBlur();
   clearTimeout(timerResize);
   timerResize = setTimeout(function () {
-    // slider.setHeight();
+    slider.$nav.find('.sliderFW__nav__item.active').trigger('click');
+    slider.setHeight();
   }, 300);
 };
 
@@ -16154,12 +15307,975 @@ $(function () {
   });
 
   $(window).resize(function () {
+    $.each(app._sliderFW, function (index, slider) {
+      this.resize();
+    });
+  });
+
+  $(document).on('keyup', function (event) {
     $.each(app._sliderFW, function () {
+      this.keyEvent(event);
+    });
+  });
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+$.fn.tabs = function tabs() {
+  app._tabs = app._tabs || [];
+  $(this).each(function () {
+    app._tabs.push(new Tabs(this));
+  });
+};
+
+var Tabs = function Tabs(item) {
+  var tabs = this;
+  tabs.$el = $(item);
+  tabs.nav = { $el: tabs.$el.children('.tabs__nav,tabs__nav') };
+  tabs.content = { $el: tabs.$el.children('.tabs__content,tabs__content') };
+
+  tabs.nav.buttons = tabs.nav.$el.children('button');
+  tabs.content.tabs = tabs.content.$el.children('.tab,tab');
+
+  tabs.nav.buttons.each(function (index, button) {
+    button = $(button);
+    button.bind('click', function (event) {
+      tabs.nav.buttons.removeClass('active');
+      tabs.content.tabs.removeClass('active');
+      button.addClass('active');
+      $(tabs.content.tabs[index]).addClass('active');
+    });
+  });
+  if (!tabs.nav.buttons.hasClass('active')) tabs.nav.buttons.first().trigger('click');else tabs.nav.buttons.filter('.active').trigger('click');
+
+  tabs.$el.on('destroyed', function () {
+    app._tabs.splice(app._tabs.indexOf(tabs), 1);
+    tabs = undefined;
+  });
+};
+
+var timerResize;
+Tabs.prototype.resize = function () {
+  var tabs = this;
+  clearTimeout(timerResize);
+  timerResize = setTimeout(function () {}, 300);
+};
+
+Tabs.prototype.destroy = function () {
+  this.$el.remove();
+};
+
+$(function () {
+  $('.tabs,tabs').tabs();
+  utils.addHtmlHook('.tabs,tabs', function (item) {
+    item.tabs();
+  });
+
+  $(window).resize(function () {
+    $.each(app._tabs, function (index, tabs) {
       this.resize();
     });
   });
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 89 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// https://tc39.github.io/ecma262/#sec-array.prototype.find
+if (!Array.prototype.find) {
+      Object.defineProperty(Array.prototype, 'find', {
+            value: function value(predicate) {
+                  // 1. Let O be ? ToObject(this value).
+                  if (this == null) {
+                        throw new TypeError('"this" is null or not defined');
+                  }
+
+                  var o = Object(this);
+
+                  // 2. Let len be ? ToLength(? Get(O, "length")).
+                  var len = o.length >>> 0;
+
+                  // 3. If IsCallable(predicate) is false, throw a TypeError exception.
+                  if (typeof predicate !== 'function') {
+                        throw new TypeError('predicate must be a function');
+                  }
+
+                  // 4. If thisArg was supplied, let T be thisArg; else let T be undefined.
+                  var thisArg = arguments[1];
+
+                  // 5. Let k be 0.
+                  var k = 0;
+
+                  // 6. Repeat, while k < len
+                  while (k < len) {
+                        // a. Let Pk be ! ToString(k).
+                        // b. Let kValue be ? Get(O, Pk).
+                        // c. Let testResult be ToBoolean(? Call(predicate, T, « kValue, k, O »)).
+                        // d. If testResult is true, return kValue.
+                        var kValue = o[k];
+                        if (predicate.call(thisArg, kValue, k, o)) {
+                              return kValue;
+                        }
+                        // e. Increase k by 1.
+                        k++;
+                  }
+
+                  // 7. Return undefined.
+                  return undefined;
+            }
+      });
+}
+
+/***/ }),
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($, global) {
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+function Utils() {
+  var utils = this;
+
+  /**
+   * Add a function callback to most of the jQuery dom modification functions, based on a selector.@async
+   * When an element mathcing the selector is added to the dom, it fires the related callback
+   * @param {String}   selector
+   * @param {Function} callback [if the callback has a parameter called "item", the added element will be passed as param to the callback]
+   */
+  utils.addHtmlHook = function (selector, callback) {
+
+    // update html()
+    var OldHtml = $.fn.html;
+    $.fn.html = function () {
+      var EnhancedHtml = OldHtml.apply(this, arguments);
+      if (typeof EnhancedHtml != "string" && arguments.length && EnhancedHtml.find(selector).length) {
+        if (utils.getParameters(callback).indexOf('item') != -1) callback(EnhancedHtml.find(selector));else callback();
+      }
+      return EnhancedHtml;
+    };
+  };
+
+  // apply prefixed event handlers
+  utils.prefixedEvent = function (element, type, callback) {
+    var pfx = ["webkit", "moz", "MS", "o", ""];
+    for (var p = 0; p < pfx.length; p++) {
+      if (!pfx[p]) type = type.toLowerCase();
+      element.addEventListener(pfx[p] + type, callback, false);
+    }
+  };
+
+  /**
+   * Build a string for css transforms, combining the existent properties of an element and the new string provided
+   * @param  {jQuery} el  [can be a jQuery object or a Dom element]
+   * @param  {String} str [expect a valid css transform string]
+   * @return {String}
+   */
+  utils.mergeTransforms = function (el, str) {
+    try {
+      el = el.get(0);
+    } catch (e) {}
+    var strTransform = el.style.transform || $(el).css('content').replace(/"/g, '');
+    var baseTransform = String(strTransform).split(' ');
+    var targetTransform = str.split(' ');
+    var objTransform = {};
+    if (baseTransform[0] != "none") {
+      $.each(baseTransform, function (index, value) {
+        var key = value.replace(/\((.+?)\)/, '');
+        objTransform[key] = value.replace(key, '');
+      });
+    }
+    $.each(targetTransform, function (index, value) {
+      var key = value.replace(/\((.+?)\)/, '');
+      objTransform[key] = value.replace(key, '');
+    });
+    var strResult = '';
+    $.each(objTransform, function (key, value) {
+      strResult += key + value + ' ';
+    });
+    return strResult;
+  };
+
+  /**
+   * return an array of a function's parameters. Works only if the parameters don't have defaults values
+   * @param  {Function} fn
+   * @return {Array}
+   */
+  utils.getParameters = function (fn) {
+    var fnStr = fn.toString().replace(STRIP_COMMENTS, '');
+    var result = fnStr.slice(fnStr.indexOf('(') + 1, fnStr.indexOf(')')).match(ARGUMENT_NAMES);
+    if (result === null) result = [];
+    return result;
+  };
+  var STRIP_COMMENTS = /(\/\/.*$)|(\/\*[\s\S]*?\*\/)|(\s*=[^,\)]*(('(?:\\'|[^'\r\n])*')|("(?:\\"|[^"\r\n])*"))|(\s*=[^,\)]*))/mg;
+  var ARGUMENT_NAMES = /([^\s,]+)/g;
+
+  /**
+   * return a object containing the viewport width and height
+   * @return {Object}
+   */
+  utils.getDimensions = function () {
+    return {
+      width: window.innerWidth,
+      height: window.innerHeight
+    };
+  };
+
+  /**
+   * return an array of method's names from an object
+   * @param  {Object} obj
+   * @return {Array}
+   */
+  utils.getObjMethods = function (obj) {
+    var res = [];
+    for (var m in obj) {
+      if (typeof obj[m] == "function") res.push(m);
+    }
+    return res;
+  };
+
+  /**
+   * return an Object from an array of Objects that match a property and a specific value
+   * @param  {Array of Objects} arrObj
+   * @param  {String} property
+   * @param  {[type]} value
+   * @return {Object}
+   */
+  utils.getObjBy = function (arrObj, property, value) {
+    var items;
+    if (Array.isArray(arrObj)) {
+      items = arrObj.filter(function (obj) {
+        return obj[property] == value;
+      });
+      if (items.length > 1) return items;else return items[0];
+    } else if ((typeof arrObj === "undefined" ? "undefined" : typeof arrObj === "undefined" ? "undefined" : _typeof(arrObj)) == "object") {
+      items = Object.filter(arrObj, property, value);
+      if (utils.getObjSize(items) > 1) return items;else return items[Object.keys(items)[0]];
+    }
+  };
+  // utility function used by getObjBy - not intended to be used out of this context
+  Object.filter = function (obj, property, value) {
+    return Object.keys(obj).filter(function (key) {
+      return obj[key][property] == value;
+    }).reduce(function (res, key) {
+      return res[key] = obj[key], res;
+    }, {});
+  };
+
+  /**
+   * return the size of an Object
+   * @param  {Object} obj
+   * @return {Integer}
+   */
+  utils.getObjSize = function (obj) {
+    return Object.keys(obj).length;
+  };
+
+  /**
+   * generate a unique ID based on the date and a random number
+   * @return {String}
+   */
+  utils.uniqid = function () {
+    var date = new Date();
+    var components = [date.getYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds(), "-", Math.floor(Math.random() * (9999 - 1000) + 1000)];
+    return components.join("");
+  };
+
+  /**
+   * from an array of objects, return an object containing a set of grouped objects by properties values passed as parameters
+   * @param  {Array of Objects} arrObj
+   * @param  {Array of strings} arrOptions
+   * @return {Object}
+   */
+  utils.groupByObj = function (arrObj, arrOptions) {
+    var results = {};
+    $.each(arrObj, function (alias, value) {
+      var strGroup = '';
+      $.each(arrOptions, function (index, option) {
+        if (index != 0) strGroup += ',';
+        strGroup += value[option];
+      });
+      if (!results[strGroup]) results[strGroup] = {};
+      results[strGroup][alias] = value;
+    });
+    return results;
+  };
+
+  /**
+   * return a key of an object from a value
+   * @param  {Object} obj
+   * @param  {[type]} value
+   * @return {String}
+   */
+  utils.getObjKeyByValue = function (obj, value) {
+    return Object.keys(obj).find(function (key) {
+      return obj[key] === value;
+    });
+  };
+
+  /**
+   * Copy the content of the element provided to the clipboard
+   * @param  {DOM element} elem
+   * @return {Boolean}
+   */
+  utils.copyToClipboard = function (elem) {
+    // create hidden text element, if it doesn't already exist
+    var targetId = "_hiddenCopyText_";
+    var isInput = elem.tagName === "INPUT" || elem.tagName === "TEXTAREA";
+    var origSelectionStart, origSelectionEnd;
+    if (isInput) {
+      // can just use the original source element for the selection and copy
+      target = elem;
+      origSelectionStart = elem.selectionStart;
+      origSelectionEnd = elem.selectionEnd;
+    } else {
+      // must use a temporary form element for the selection and copy
+      target = document.getElementById(targetId);
+      if (!target) {
+        var target = document.createElement("textarea");
+        target.style.position = "absolute";
+        target.style.left = "-9999px";
+        target.style.top = "0";
+        target.id = targetId;
+        document.body.appendChild(target);
+      }
+      target.textContent = elem.textContent;
+    }
+    // select the content
+    var currentFocus = document.activeElement;
+    target.focus();
+    target.setSelectionRange(0, target.value.length);
+
+    // copy the selection
+    var succeed;
+    try {
+      succeed = document.execCommand("copy");
+    } catch (e) {
+      succeed = false;
+    }
+    // restore original focus
+    if (currentFocus && typeof currentFocus.focus === "function") {
+      currentFocus.focus();
+    }
+
+    if (isInput) {
+      // restore prior selection
+      elem.setSelectionRange(origSelectionStart, origSelectionEnd);
+    } else {
+      // clear temporary content
+      target.textContent = "";
+    }
+    return succeed;
+  };
+
+  // NOTIFICATIONS SETUP
+  global.toastr = __webpack_require__(91);
+  var toastrDefault = { "newestOnTop": false, "closeButton": true, "timeOut": 0, "extendedTimeOut": 0, "showMethod": "slideDown", "positionClass": "toast-bottom-left", "progressBar": false };
+  var toastrTimeOut = { "newestOnTop": false, "closeButton": true, "timeOut": 5000, "extendedTimeOut": 1000, "showMethod": "slideDown", "positionClass": "toast-bottom-left", "progressBar": true };
+  toastr.options = toastrDefault;
+
+  /**
+   * display a common notification
+   * @type {Object}
+   */
+  global.notif = {
+    error: function error(str) {
+      if (app.useNotif) toastr.error(str);
+    },
+    success: function success(str) {
+      if (app.useNotif) toastr.success(str);
+    },
+    warning: function warning(str) {
+      if (app.useNotif) toastr.warning(str);
+    },
+    info: function info(str) {
+      if (app.useNotif) toastr.info(str);
+    }
+  };
+  /**
+   * display a notification that will fade past time
+   */
+  global.notif_fade = {
+    error: function error(str) {
+      if (app.useNotif) {
+        toastr.options = toastrTimeOut;
+        toastr.error(str);
+        toastr.options = toastrDefault;
+      }
+    },
+    success: function success(str) {
+      if (app.useNotif) {
+        toastr.options = toastrTimeOut;
+        toastr.success(str);
+        toastr.options = toastrDefault;
+      }
+    },
+    warning: function warning(str) {
+      if (app.useNotif) {
+        toastr.options = toastrTimeOut;
+        toastr.warning(str);
+        toastr.options = toastrDefault;
+      }
+    },
+    info: function info(str) {
+      if (app.useNotif) {
+        toastr.options = toastrTimeOut;
+        toastr.info(str);
+        toastr.options = toastrDefault;
+      }
+    }
+  };
+
+  global.viewport = utils.getDimensions();
+  return utils;
+}
+
+// check end of scrolling
+$.fn.scrollEnd = function (callback, timeout) {
+  $(this).scroll(function () {
+    var $this = $(this);
+    if ($this.data('scrollTimeout')) {
+      clearTimeout($this.data('scrollTimeout'));
+    }
+    $this.data('scrollTimeout', setTimeout(callback, timeout));
+  });
+};
+
+/**
+ * check the state of a checkbox
+ * @return {Boolean}
+ *  TODO : real test
+ */
+$.fn.isChecked = function () {
+  if ($(this).is(':checked')) return 1;else return 0;
+};
+
+$.event.special.destroyed = {
+  remove: function remove(o) {
+    if (o.handler) {
+      o.handler();
+    }
+  }
+};
+
+$(function () {
+  $(window).resize(function () {
+    viewport = utils.getDimensions();
+  });
+});
+
+module.exports = new Utils();
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(4)))
+
+/***/ }),
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
+ * Toastr
+ * Copyright 2012-2015
+ * Authors: John Papa, Hans Fjällemark, and Tim Ferrell.
+ * All Rights Reserved.
+ * Use, reproduction, distribution, and modification of this code is subject to the terms and
+ * conditions of the MIT license, available at http://www.opensource.org/licenses/mit-license.php
+ *
+ * ARIA Support: Greta Krafsig
+ *
+ * Project: https://github.com/CodeSeven/toastr
+ */
+/* global define */
+(function (define) {
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1)], __WEBPACK_AMD_DEFINE_RESULT__ = (function ($) {
+        return (function () {
+            var $container;
+            var listener;
+            var toastId = 0;
+            var toastType = {
+                error: 'error',
+                info: 'info',
+                success: 'success',
+                warning: 'warning'
+            };
+
+            var toastr = {
+                clear: clear,
+                remove: remove,
+                error: error,
+                getContainer: getContainer,
+                info: info,
+                options: {},
+                subscribe: subscribe,
+                success: success,
+                version: '2.1.4',
+                warning: warning
+            };
+
+            var previousToast;
+
+            return toastr;
+
+            ////////////////
+
+            function error(message, title, optionsOverride) {
+                return notify({
+                    type: toastType.error,
+                    iconClass: getOptions().iconClasses.error,
+                    message: message,
+                    optionsOverride: optionsOverride,
+                    title: title
+                });
+            }
+
+            function getContainer(options, create) {
+                if (!options) { options = getOptions(); }
+                $container = $('#' + options.containerId);
+                if ($container.length) {
+                    return $container;
+                }
+                if (create) {
+                    $container = createContainer(options);
+                }
+                return $container;
+            }
+
+            function info(message, title, optionsOverride) {
+                return notify({
+                    type: toastType.info,
+                    iconClass: getOptions().iconClasses.info,
+                    message: message,
+                    optionsOverride: optionsOverride,
+                    title: title
+                });
+            }
+
+            function subscribe(callback) {
+                listener = callback;
+            }
+
+            function success(message, title, optionsOverride) {
+                return notify({
+                    type: toastType.success,
+                    iconClass: getOptions().iconClasses.success,
+                    message: message,
+                    optionsOverride: optionsOverride,
+                    title: title
+                });
+            }
+
+            function warning(message, title, optionsOverride) {
+                return notify({
+                    type: toastType.warning,
+                    iconClass: getOptions().iconClasses.warning,
+                    message: message,
+                    optionsOverride: optionsOverride,
+                    title: title
+                });
+            }
+
+            function clear($toastElement, clearOptions) {
+                var options = getOptions();
+                if (!$container) { getContainer(options); }
+                if (!clearToast($toastElement, options, clearOptions)) {
+                    clearContainer(options);
+                }
+            }
+
+            function remove($toastElement) {
+                var options = getOptions();
+                if (!$container) { getContainer(options); }
+                if ($toastElement && $(':focus', $toastElement).length === 0) {
+                    removeToast($toastElement);
+                    return;
+                }
+                if ($container.children().length) {
+                    $container.remove();
+                }
+            }
+
+            // internal functions
+
+            function clearContainer (options) {
+                var toastsToClear = $container.children();
+                for (var i = toastsToClear.length - 1; i >= 0; i--) {
+                    clearToast($(toastsToClear[i]), options);
+                }
+            }
+
+            function clearToast ($toastElement, options, clearOptions) {
+                var force = clearOptions && clearOptions.force ? clearOptions.force : false;
+                if ($toastElement && (force || $(':focus', $toastElement).length === 0)) {
+                    $toastElement[options.hideMethod]({
+                        duration: options.hideDuration,
+                        easing: options.hideEasing,
+                        complete: function () { removeToast($toastElement); }
+                    });
+                    return true;
+                }
+                return false;
+            }
+
+            function createContainer(options) {
+                $container = $('<div/>')
+                    .attr('id', options.containerId)
+                    .addClass(options.positionClass);
+
+                $container.appendTo($(options.target));
+                return $container;
+            }
+
+            function getDefaults() {
+                return {
+                    tapToDismiss: true,
+                    toastClass: 'toast',
+                    containerId: 'toast-container',
+                    debug: false,
+
+                    showMethod: 'fadeIn', //fadeIn, slideDown, and show are built into jQuery
+                    showDuration: 300,
+                    showEasing: 'swing', //swing and linear are built into jQuery
+                    onShown: undefined,
+                    hideMethod: 'fadeOut',
+                    hideDuration: 1000,
+                    hideEasing: 'swing',
+                    onHidden: undefined,
+                    closeMethod: false,
+                    closeDuration: false,
+                    closeEasing: false,
+                    closeOnHover: true,
+
+                    extendedTimeOut: 1000,
+                    iconClasses: {
+                        error: 'toast-error',
+                        info: 'toast-info',
+                        success: 'toast-success',
+                        warning: 'toast-warning'
+                    },
+                    iconClass: 'toast-info',
+                    positionClass: 'toast-top-right',
+                    timeOut: 5000, // Set timeOut and extendedTimeOut to 0 to make it sticky
+                    titleClass: 'toast-title',
+                    messageClass: 'toast-message',
+                    escapeHtml: false,
+                    target: 'body',
+                    closeHtml: '<button type="button">&times;</button>',
+                    closeClass: 'toast-close-button',
+                    newestOnTop: true,
+                    preventDuplicates: false,
+                    progressBar: false,
+                    progressClass: 'toast-progress',
+                    rtl: false
+                };
+            }
+
+            function publish(args) {
+                if (!listener) { return; }
+                listener(args);
+            }
+
+            function notify(map) {
+                var options = getOptions();
+                var iconClass = map.iconClass || options.iconClass;
+
+                if (typeof (map.optionsOverride) !== 'undefined') {
+                    options = $.extend(options, map.optionsOverride);
+                    iconClass = map.optionsOverride.iconClass || iconClass;
+                }
+
+                if (shouldExit(options, map)) { return; }
+
+                toastId++;
+
+                $container = getContainer(options, true);
+
+                var intervalId = null;
+                var $toastElement = $('<div/>');
+                var $titleElement = $('<div/>');
+                var $messageElement = $('<div/>');
+                var $progressElement = $('<div/>');
+                var $closeElement = $(options.closeHtml);
+                var progressBar = {
+                    intervalId: null,
+                    hideEta: null,
+                    maxHideTime: null
+                };
+                var response = {
+                    toastId: toastId,
+                    state: 'visible',
+                    startTime: new Date(),
+                    options: options,
+                    map: map
+                };
+
+                personalizeToast();
+
+                displayToast();
+
+                handleEvents();
+
+                publish(response);
+
+                if (options.debug && console) {
+                    console.log(response);
+                }
+
+                return $toastElement;
+
+                function escapeHtml(source) {
+                    if (source == null) {
+                        source = '';
+                    }
+
+                    return source
+                        .replace(/&/g, '&amp;')
+                        .replace(/"/g, '&quot;')
+                        .replace(/'/g, '&#39;')
+                        .replace(/</g, '&lt;')
+                        .replace(/>/g, '&gt;');
+                }
+
+                function personalizeToast() {
+                    setIcon();
+                    setTitle();
+                    setMessage();
+                    setCloseButton();
+                    setProgressBar();
+                    setRTL();
+                    setSequence();
+                    setAria();
+                }
+
+                function setAria() {
+                    var ariaValue = '';
+                    switch (map.iconClass) {
+                        case 'toast-success':
+                        case 'toast-info':
+                            ariaValue =  'polite';
+                            break;
+                        default:
+                            ariaValue = 'assertive';
+                    }
+                    $toastElement.attr('aria-live', ariaValue);
+                }
+
+                function handleEvents() {
+                    if (options.closeOnHover) {
+                        $toastElement.hover(stickAround, delayedHideToast);
+                    }
+
+                    if (!options.onclick && options.tapToDismiss) {
+                        $toastElement.click(hideToast);
+                    }
+
+                    if (options.closeButton && $closeElement) {
+                        $closeElement.click(function (event) {
+                            if (event.stopPropagation) {
+                                event.stopPropagation();
+                            } else if (event.cancelBubble !== undefined && event.cancelBubble !== true) {
+                                event.cancelBubble = true;
+                            }
+
+                            if (options.onCloseClick) {
+                                options.onCloseClick(event);
+                            }
+
+                            hideToast(true);
+                        });
+                    }
+
+                    if (options.onclick) {
+                        $toastElement.click(function (event) {
+                            options.onclick(event);
+                            hideToast();
+                        });
+                    }
+                }
+
+                function displayToast() {
+                    $toastElement.hide();
+
+                    $toastElement[options.showMethod](
+                        {duration: options.showDuration, easing: options.showEasing, complete: options.onShown}
+                    );
+
+                    if (options.timeOut > 0) {
+                        intervalId = setTimeout(hideToast, options.timeOut);
+                        progressBar.maxHideTime = parseFloat(options.timeOut);
+                        progressBar.hideEta = new Date().getTime() + progressBar.maxHideTime;
+                        if (options.progressBar) {
+                            progressBar.intervalId = setInterval(updateProgress, 10);
+                        }
+                    }
+                }
+
+                function setIcon() {
+                    if (map.iconClass) {
+                        $toastElement.addClass(options.toastClass).addClass(iconClass);
+                    }
+                }
+
+                function setSequence() {
+                    if (options.newestOnTop) {
+                        $container.prepend($toastElement);
+                    } else {
+                        $container.append($toastElement);
+                    }
+                }
+
+                function setTitle() {
+                    if (map.title) {
+                        var suffix = map.title;
+                        if (options.escapeHtml) {
+                            suffix = escapeHtml(map.title);
+                        }
+                        $titleElement.append(suffix).addClass(options.titleClass);
+                        $toastElement.append($titleElement);
+                    }
+                }
+
+                function setMessage() {
+                    if (map.message) {
+                        var suffix = map.message;
+                        if (options.escapeHtml) {
+                            suffix = escapeHtml(map.message);
+                        }
+                        $messageElement.append(suffix).addClass(options.messageClass);
+                        $toastElement.append($messageElement);
+                    }
+                }
+
+                function setCloseButton() {
+                    if (options.closeButton) {
+                        $closeElement.addClass(options.closeClass).attr('role', 'button');
+                        $toastElement.prepend($closeElement);
+                    }
+                }
+
+                function setProgressBar() {
+                    if (options.progressBar) {
+                        $progressElement.addClass(options.progressClass);
+                        $toastElement.prepend($progressElement);
+                    }
+                }
+
+                function setRTL() {
+                    if (options.rtl) {
+                        $toastElement.addClass('rtl');
+                    }
+                }
+
+                function shouldExit(options, map) {
+                    if (options.preventDuplicates) {
+                        if (map.message === previousToast) {
+                            return true;
+                        } else {
+                            previousToast = map.message;
+                        }
+                    }
+                    return false;
+                }
+
+                function hideToast(override) {
+                    var method = override && options.closeMethod !== false ? options.closeMethod : options.hideMethod;
+                    var duration = override && options.closeDuration !== false ?
+                        options.closeDuration : options.hideDuration;
+                    var easing = override && options.closeEasing !== false ? options.closeEasing : options.hideEasing;
+                    if ($(':focus', $toastElement).length && !override) {
+                        return;
+                    }
+                    clearTimeout(progressBar.intervalId);
+                    return $toastElement[method]({
+                        duration: duration,
+                        easing: easing,
+                        complete: function () {
+                            removeToast($toastElement);
+                            clearTimeout(intervalId);
+                            if (options.onHidden && response.state !== 'hidden') {
+                                options.onHidden();
+                            }
+                            response.state = 'hidden';
+                            response.endTime = new Date();
+                            publish(response);
+                        }
+                    });
+                }
+
+                function delayedHideToast() {
+                    if (options.timeOut > 0 || options.extendedTimeOut > 0) {
+                        intervalId = setTimeout(hideToast, options.extendedTimeOut);
+                        progressBar.maxHideTime = parseFloat(options.extendedTimeOut);
+                        progressBar.hideEta = new Date().getTime() + progressBar.maxHideTime;
+                    }
+                }
+
+                function stickAround() {
+                    clearTimeout(intervalId);
+                    progressBar.hideEta = 0;
+                    $toastElement.stop(true, true)[options.showMethod](
+                        {duration: options.showDuration, easing: options.showEasing}
+                    );
+                }
+
+                function updateProgress() {
+                    var percentage = ((progressBar.hideEta - (new Date().getTime())) / progressBar.maxHideTime) * 100;
+                    $progressElement.width(percentage + '%');
+                }
+            }
+
+            function getOptions() {
+                return $.extend({}, getDefaults(), toastr.options);
+            }
+
+            function removeToast($toastElement) {
+                if (!$container) { $container = getContainer(); }
+                if ($toastElement.is(':visible')) {
+                    return;
+                }
+                $toastElement.remove();
+                $toastElement = null;
+                if ($container.children().length === 0) {
+                    $container.remove();
+                    previousToast = undefined;
+                }
+            }
+
+        })();
+    }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+}(__webpack_require__(92)));
+
+
+/***/ }),
+/* 92 */
+/***/ (function(module, exports) {
+
+module.exports = function() {
+	throw new Error("define cannot be used indirect");
+};
+
+
+/***/ }),
+/* 93 */,
+/* 94 */,
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */,
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "img/san_francisco_tramway.jpg";
 
 /***/ })
 /******/ ]);

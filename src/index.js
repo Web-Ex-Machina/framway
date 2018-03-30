@@ -14,3 +14,4 @@ app.loadComponents([
   'guideline',
 ]);
 
+console.log(app);
