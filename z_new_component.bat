@@ -1,4 +1,4 @@
-set name=sliderFW
+set name=block-img
 
 rem creating the component structure ---------------------------------------------------------
 cd src/components

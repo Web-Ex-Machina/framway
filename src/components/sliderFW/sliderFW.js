@@ -139,12 +139,12 @@ SliderFW.prototype.destroy = function() {
 SliderFW.prototype.keyEvent = function(event){
   // console.log('keyevent triggered');
   switch(event.which){
-      case 38: // up
-      case 40: // down
       case 37: // left
           this.goToPrev(); break;
       case 39: // right
           this.goToNext(); break;
+      case 38: // up
+      case 40: // down
       default: return; // exit this handler for other keys
   }
   event.preventDefault();

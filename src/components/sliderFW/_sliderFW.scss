@@ -1,8 +1,10 @@
 .sliderFW{margin-bottom: $spacing;}
 .sliderFW__container{position: relative; overflow: hidden;  width: 100%; height: 400px;}
 .sliderFW__rail{position: absolute; left:0; min-width: 100%; top: 0;@include flex-container(); @include transition(all 0.8s); bottom: 45px;
+  .nav--hidden &,
   .nav--inner &{bottom: 0;}
   .nav--top &{bottom: 0; top: 45px;}
+  .nav--top.nav--hidden &,
   .nav--top.nav--inner &{bottom: 0; top: 0;}
 }
 .sliderFW__item{@include size(100%); position: relative; @include flex-shrink(0); cursor: grab;}
@@ -41,6 +43,7 @@
 }
 
 .sliderFW__nav{@include flex-container(row,wrap,center); position: absolute; bottom: 0; width: 100%;
+  .nav--hidden &{display: none;}
   .nav--left &{@include justify-content(flex-start);}
   .nav--right &{@include justify-content(flex-end);}
   .nav--bottom &{bottom: 0; top: auto;}
