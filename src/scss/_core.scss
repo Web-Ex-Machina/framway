@@ -13,7 +13,33 @@ p{margin-bottom: $spacing;}
 
 table{table-layout: fixed;}
 iframe{max-width:100%;}
-img{max-width: 100%; height: auto;}
+img{max-width: 100%; height: auto;
+  .zoomin &, &.zoomin,
+  .zoomout &, &.zoomout,
+  .fadetogrey &, &.fadetogrey,
+  .fadetocolor &, &.fadetocolor
+  {transition: all 0.6s; outline: 1px solid transparent;}
+
+  .zoomin &,
+  &.zoomin{transform: scale3d(1,1,1);}
+  .zoomin &:hover,
+  &.zoomin:hover{transform: scale3d(1.2,1.2,1.2);}
+
+  .zoomout &,
+  &.zoomout{transform: scale3d(1.2,1.2,1.2);}
+  .zoomout &:hover,
+  &.zoomout:hover{transform: scale3d(1,1,1);}
+
+  .fadetocolor &,
+  &.fadetocolor{filter: grayscale(100%);}
+  .fadetocolor &:hover,
+  &.fadetocolor:hover{filter: grayscale(0%);}
+
+  .fadetogrey &,
+  &.fadetogrey {filter: grayscale(0%);}
+  .fadetogrey &:hover,
+  &.fadetogrey:hover {filter: grayscale(100%);}
+}
 
 pre{background: color(blacklight); color: color(white); padding: $spacing/2; border-radius: $radius; font-size: 0.8em; margin-bottom: $spacing;}
 pre code{display: block; position: static;}
