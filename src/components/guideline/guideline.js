@@ -40,6 +40,22 @@ if($('#guideline').length){
     });
   });
 
+  html.find('.constructor select').each(function(index,select){
+    $(select).bind('change',function(e){
+      var selector = $(select).attr('name').split(',')[0];
+      var attr = $(select).attr('name').split(',')[1];
+      var type = $(select).attr('name').split(',')[2];
+      var reg = new RegExp(type+'\\S+', 'g');
+      var item = $($(select).closest('.item').find('.editor textarea').val()).wrapAll('<div></div>');
+      if(attr == 'class'){
+        item.parent().find('.'+selector).removeClass(function(index,classname){
+          return (classname.match(reg) || []).join(' ');
+        }).addClass($(select).val());
+      }
+      $(select).closest('.item').find('.editor textarea').val(item.parent().get(0).innerHTML).trigger('keyup');
+    })
+  });
+
   $('#guideline').append(html);
 
   // Building functions
@@ -47,24 +63,57 @@ if($('#guideline').length){
     var components = {nav : '', content : ''};
     components.nav += '<ul>';
     $.each(app.components,function(index,component){
+      var sampleText = '';
       try{
+        sampleText = require('html-loader?interpolate!../'+component+'/sample.html');
+      } catch(e){
+        app.log('Failed to retrieve the '+component+' component sample.\n'+e);
+      }
+      if(sampleText != ''){
+        sampleText = $(sampleText).wrapAll('<div></div>');
+        var constructorText = '';
+        if(sampleText.parent().find('.constructor').length){
+          sampleText.parent().find('.constructor').addClass('col-4').find('.input').each(function(){
+            var ref = $(this);
+            var inputGroup = '<div class="form-group">'
+                           + '<label for="'+component+',class,'+ref.data('name')+'">'+ref.data('label')+'</label>';
+            if(ref.hasClass('select')){
+              var arrVal = ref.data('value').split(',');
+              var arrOutput = ref.data('output').split(',');
+              inputGroup += '<select name="'+component+',class,'+ref.data('name')+'" id="'+component+',class,'+ref.data('name')+'">'
+                          + '<option value=""> - </option>'
+              $.each(arrVal,function(index,val){
+                inputGroup += '<option value="'+val+'">'+arrOutput[index]+'</option>';
+              });
+              inputGroup += '</select>';
+            } else{
+              // TODO: input not select
+            }
+            inputGroup += '</div>';
+            ref.replaceWith(inputGroup);
+          });
+          constructorText = sampleText.parent().find('.constructor').remove().get(0).outerHTML;
+        }
+        sampleText = sampleText.parent().get(0).innerHTML;
+
+        if(typeof sampleText == 'undefined')
+          sampleText = 'error while retrieving sample';
+
         components.content += '<div class="item row" id="framway__components-'+component+'">'
                            + '<h2 class="ft-i col-12 sep-bottom">'+component+'</h2>'
                            + '<div class="col-12 editor-target">'
-                           + require('html-loader?interpolate!../'+component+'/sample.html')
+                           + sampleText
                            + '</div>'
-                           + '<div class="col-12 ">'
+                           + '<div class="col">'
                            + '<div class="editor"><button class="copy">Copy</button>'
-                           + '<textarea name="" id="">'+require('html-loader!../'+component+'/sample.html').replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</textarea>'
+                           + '<textarea name="" id="">'+sampleText.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</textarea>'
                            + '</div>'
-                           // + '<pre><code class="language-html"><button class="copy">Copy</button>'
-                           // + require('html-loader!../'+component+'/sample.html').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-                           // + '</code></pre>'
                            + '</div>'
+                           + constructorText
                            + '</div>'
         components.nav += '<li><a href="#framway__components-'+component+'">'+component+'</a></li>';
-      } catch(e){
-        app.log('Failed to display the '+component+' component sample.\n'+e);
+      } else {
+        app.log('Failed to display the '+component+' component sample.\n');
       }
     });
     components.nav += '</ul>';

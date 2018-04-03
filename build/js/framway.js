@@ -13751,15 +13751,43 @@ if ($('#guideline').length) {
     var components = { nav: '', content: '' };
     components.nav += '<ul>';
     $.each(app.components, function (index, component) {
+      var sampleText = '';
       try {
-        components.content += '<div class="item row" id="framway__components-' + component + '">' + '<h2 class="ft-i col-12 sep-bottom">' + component + '</h2>' + '<div class="col-12 editor-target">' + __webpack_require__(35)("./" + component + '/sample.html') + '</div>' + '<div class="col-12 ">' + '<div class="editor"><button class="copy">Copy</button>' + '<textarea name="" id="">' + __webpack_require__(43)("./" + component + '/sample.html').replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</textarea>' + '</div>'
-        // + '<pre><code class="language-html"><button class="copy">Copy</button>'
-        // + require('html-loader!../'+component+'/sample.html').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-        // + '</code></pre>'
-        + '</div>' + '</div>';
-        components.nav += '<li><a href="#framway__components-' + component + '">' + component + '</a></li>';
+        sampleText = __webpack_require__(35)("./" + component + '/sample.html');
       } catch (e) {
-        app.log('Failed to display the ' + component + ' component sample.\n' + e);
+        app.log('Failed to retrieve the ' + component + ' component sample.\n' + e);
+      }
+      if (sampleText != '') {
+        sampleText = $(sampleText).wrapAll('<div></div>');
+        var constructorText = '';
+        if (sampleText.parent().find('.constructor').length) {
+          sampleText.parent().find('.constructor').addClass('col-4').find('.input').each(function () {
+            var ref = $(this);
+            var inputGroup = '<div class="form-group">' + '<label for="' + component + ',class,' + ref.data('name') + '">' + ref.data('label') + '</label>';
+            if (ref.hasClass('select')) {
+              var arrVal = ref.data('value').split(',');
+              var arrOutput = ref.data('output').split(',');
+              inputGroup += '<select name="' + component + ',class,' + ref.data('name') + '" id="' + component + ',class,' + ref.data('name') + '">' + '<option value=""> - </option>';
+              $.each(arrVal, function (index, val) {
+                inputGroup += '<option value="' + val + '">' + arrOutput[index] + '</option>';
+              });
+              inputGroup += '</select>';
+            } else {
+              // TODO: input not select
+            }
+            inputGroup += '</div>';
+            ref.replaceWith(inputGroup);
+          });
+          constructorText = sampleText.parent().find('.constructor').remove().get(0).outerHTML;
+        }
+        sampleText = sampleText.parent().get(0).innerHTML;
+
+        if (typeof sampleText == 'undefined') sampleText = 'error while retrieving sample';
+
+        components.content += '<div class="item row" id="framway__components-' + component + '">' + '<h2 class="ft-i col-12 sep-bottom">' + component + '</h2>' + '<div class="col-12 editor-target">' + sampleText + '</div>' + '<div class="col">' + '<div class="editor"><button class="copy">Copy</button>' + '<textarea name="" id="">' + sampleText.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</textarea>' + '</div>' + '</div>' + constructorText + '</div>';
+        components.nav += '<li><a href="#framway__components-' + component + '">' + component + '</a></li>';
+      } else {
+        app.log('Failed to display the ' + component + ' component sample.\n');
       }
     });
     components.nav += '</ul>';
@@ -13892,6 +13920,22 @@ if ($('#guideline').length) {
     });
   });
 
+  html.find('.constructor select').each(function (index, select) {
+    $(select).bind('change', function (e) {
+      var selector = $(select).attr('name').split(',')[0];
+      var attr = $(select).attr('name').split(',')[1];
+      var type = $(select).attr('name').split(',')[2];
+      var reg = new RegExp(type + '\\S+', 'g');
+      var item = $($(select).closest('.item').find('.editor textarea').val()).wrapAll('<div></div>');
+      if (attr == 'class') {
+        item.parent().find('.' + selector).removeClass(function (index, classname) {
+          return (classname.match(reg) || []).join(' ');
+        }).addClass($(select).val());
+      }
+      $(select).closest('.item').find('.editor textarea').val(item.parent().get(0).innerHTML).trigger('keyup');
+    });
+  });
+
   $('#guideline').append(html);
 }
 
@@ -13959,7 +14003,7 @@ webpackContext.id = 35;
 /* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div class=\"row zoomin fadetogrey\">\n  <div class=\"block-img col-6 \">\n    <a href=\"\" class=\"block-img__wrapper\">\n      <div class=\"block-img__figure\">\n        <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-img__title\">\n        Native ratio - fit with the largest img in the row\n      </div>\n    </a>\n  </div>\n  <div class=\"block-img col-6 \">\n    <a href=\"\" class=\"block-img__wrapper\">\n      <div class=\"block-img__figure\">\n        <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-img__title\">\n        Native ratio - fit with the largest img in the row\n      </div>\n    </a>\n  </div>\n  <div class=\"block-img r_1-1 col-4\">\n    <div href=\"\" class=\"block-img__wrapper\">\n      <div class=\"block-img__figure\">\n        <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-img__title \">\n        ratio 1:1\n      </div>\n    </div>\n  </div>\n  <div class=\"block-img r_2-1 col-4 \">\n    <a href=\"\" class=\"block-img__wrapper\">\n      <div class=\"block-img__figure\">\n        <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-img__title\">\n        ratio 2:1\n      </div>\n    </a>\n  </div>\n  <div class=\"block-img r_16-9 col-4 \">\n    <a href=\"\" class=\"block-img__wrapper\">\n      <div class=\"block-img__figure\">\n        <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-img__title\">\n        ratio 16:9\n      </div>\n    </a>\n  </div>\n  <div class=\"block-img r_1-1 col-4\">\n    <div href=\"\" class=\"block-img__wrapper\">\n      <div class=\"block-img__figure\">\n        <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-img__title \">\n        ratio 1:1 - align center (default)\n      </div>\n    </div>\n  </div>\n  <div class=\"block-img r_1-1 h-left col-4\">\n    <div href=\"\" class=\"block-img__wrapper\">\n      <div class=\"block-img__figure\">\n        <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-img__title \">\n        ratio 1:1 - align left\n      </div>\n    </div>\n  </div>\n  <div class=\"block-img r_1-1 h-right col-4\">\n    <div href=\"\" class=\"block-img__wrapper\">\n      <div class=\"block-img__figure\">\n        <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-img__title \">\n        ratio 1:1 - align right\n      </div>\n    </div>\n  </div>\n  <div class=\"block-img r_2-1 col-4 \">\n    <a href=\"\" class=\"block-img__wrapper\">\n      <div class=\"block-img__figure\">\n        <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-img__title\">\n        ratio 2:1 - align center (default)\n      </div>\n    </a>\n  </div>\n  <div class=\"block-img r_2-1 v-top col-4 \">\n    <a href=\"\" class=\"block-img__wrapper\">\n      <div class=\"block-img__figure\">\n        <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-img__title\">\n        ratio 2:1 - align top\n      </div>\n    </a>\n  </div>\n  <div class=\"block-img r_2-1 v-bottom col-4 \">\n    <a href=\"\" class=\"block-img__wrapper\">\n      <div class=\"block-img__figure\">\n        <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-img__title\">\n        ratio 2:1 - align bottom\n      </div>\n    </a>\n  </div>\n</div>";
+module.exports = "<div class=\"row\">\n  <div class=\"block-img col-6 \">\n    <a href=\"\" class=\"block-img__wrapper\">\n      <div class=\"block-img__figure\">\n        <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-img__title\">\n        Lorem ipsum dolor sit amet\n      </div>\n    </a>\n  </div>\n</div>\n<div class=\"constructor\">\n  <div class=\"input select\" data-label=\"zoom\" data-attr=\"class\" data-name=\"zoom\" data-value=\"zoomin,zoomout\" data-output=\"Zoom in,Zoom out\"></div>\n  <div class=\"input select\" data-label=\"fade\" data-attr=\"class\" data-name=\"fade\" data-value=\"fadetogrey,fadetocolor\" data-output=\"Fade to grey,Fade to color\"></div>\n  <div class=\"input select\" data-label=\"ratio\" data-attr=\"class\" data-name=\"r_\" data-value=\"r_1-1,r_2-1,r_1-2,r_16-9\" data-output=\"1:1,2:1,1:2,16:9\"></div>\n  <div class=\"input select\" data-label=\"title\" data-attr=\"class\" data-name=\"title\" data-value=\"\" data-output=\"\"></div>\n</div>\n";
 
 /***/ }),
 /* 37 */
@@ -13998,77 +14042,14 @@ module.exports = "<div class=\"sliderFW\" data-height=\"400\" data-loop=\"true\"
 module.exports = "<div class=\"tabs\">\n  <div class=\"tabs__nav\">\n    <button>Lorem</button>\n    <button>Ipsum</button>\n    <button>Dolor</button>\n  </div>\n  <div class=\"tabs__content\">\n    <div class=\"tab\">\n      Lorem ipsum dolor sit amet\n    </div>\n    <div class=\"tab\">\n      Ipsum dolor sit amet lorem\n    </div>\n    <div class=\"tab\">\n      Dolor sit amet lorem ipsum\n    </div>\n  </div>\n</div>";
 
 /***/ }),
-/* 43 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./block-img/sample.html": 44,
-	"./block-std/sample.html": 45,
-	"./brick/sample.html": 46,
-	"./foldingbox/sample.html": 47,
-	"./goto/sample.html": 48,
-	"./sliderFW/sample.html": 49,
-	"./tabs/sample.html": 50
-};
-function webpackContext(req) {
-	return __webpack_require__(webpackContextResolve(req));
-};
-function webpackContextResolve(req) {
-	var id = map[req];
-	if(!(id + 1)) // check for number or string
-		throw new Error("Cannot find module '" + req + "'.");
-	return id;
-};
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = 43;
-
-/***/ }),
-/* 44 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = "<div class=\"row zoomin fadetogrey\">\r\n  <div class=\"block-img col-6 \">\r\n    <a href=\"\" class=\"block-img__wrapper\">\r\n      <div class=\"block-img__figure\">\r\n        <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"block-img__title\">\r\n        Native ratio - fit with the largest img in the row\r\n      </div>\r\n    </a>\r\n  </div>\r\n  <div class=\"block-img col-6 \">\r\n    <a href=\"\" class=\"block-img__wrapper\">\r\n      <div class=\"block-img__figure\">\r\n        <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"block-img__title\">\r\n        Native ratio - fit with the largest img in the row\r\n      </div>\r\n    </a>\r\n  </div>\r\n  <div class=\"block-img r_1-1 col-4\">\r\n    <div href=\"\" class=\"block-img__wrapper\">\r\n      <div class=\"block-img__figure\">\r\n        <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"block-img__title \">\r\n        ratio 1:1\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"block-img r_2-1 col-4 \">\r\n    <a href=\"\" class=\"block-img__wrapper\">\r\n      <div class=\"block-img__figure\">\r\n        <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"block-img__title\">\r\n        ratio 2:1\r\n      </div>\r\n    </a>\r\n  </div>\r\n  <div class=\"block-img r_16-9 col-4 \">\r\n    <a href=\"\" class=\"block-img__wrapper\">\r\n      <div class=\"block-img__figure\">\r\n        <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"block-img__title\">\r\n        ratio 16:9\r\n      </div>\r\n    </a>\r\n  </div>\r\n  <div class=\"block-img r_1-1 col-4\">\r\n    <div href=\"\" class=\"block-img__wrapper\">\r\n      <div class=\"block-img__figure\">\r\n        <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"block-img__title \">\r\n        ratio 1:1 - align center (default)\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"block-img r_1-1 h-left col-4\">\r\n    <div href=\"\" class=\"block-img__wrapper\">\r\n      <div class=\"block-img__figure\">\r\n        <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"block-img__title \">\r\n        ratio 1:1 - align left\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"block-img r_1-1 h-right col-4\">\r\n    <div href=\"\" class=\"block-img__wrapper\">\r\n      <div class=\"block-img__figure\">\r\n        <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"block-img__title \">\r\n        ratio 1:1 - align right\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"block-img r_2-1 col-4 \">\r\n    <a href=\"\" class=\"block-img__wrapper\">\r\n      <div class=\"block-img__figure\">\r\n        <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"block-img__title\">\r\n        ratio 2:1 - align center (default)\r\n      </div>\r\n    </a>\r\n  </div>\r\n  <div class=\"block-img r_2-1 v-top col-4 \">\r\n    <a href=\"\" class=\"block-img__wrapper\">\r\n      <div class=\"block-img__figure\">\r\n        <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"block-img__title\">\r\n        ratio 2:1 - align top\r\n      </div>\r\n    </a>\r\n  </div>\r\n  <div class=\"block-img r_2-1 v-bottom col-4 \">\r\n    <a href=\"\" class=\"block-img__wrapper\">\r\n      <div class=\"block-img__figure\">\r\n        <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"block-img__title\">\r\n        ratio 2:1 - align bottom\r\n      </div>\r\n    </a>\r\n  </div>\r\n</div>";
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"block-std\">\r\n  <p>\r\n    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in felis a risus pellentesque pulvinar. Etiam vehicula molestie libero et sodales. Donec consequat ultrices est at vestibulum. Cras pretium felis vitae mi sodales, convallis finibus leo tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tincidunt egestas nunc, vitae pellentesque quam porttitor ut. Maecenas posuere pellentesque risus ut pulvinar.\r\n  </p>\r\n</div>";
-
-/***/ }),
-/* 46 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"scene\">\r\n  <div class=\"grid\">\r\n    <div class=\"brick\" rows=\"3\" cols=\"5\" color=\"blacklight\" z=\"1\" x=\"0\" y=\"0\" text=\"Text sample\"></div>\r\n    <div class=\"brick\" rows=\"2\" cols=\"3\" color=\"blacklighter\" z=\"2\" x=\"-0\" y=\"-1\"></div>\r\n    <div class=\"brick\" rows=\"1\" cols=\"1\" color=\"greystronger\" z=\"3\" x=\"0\" y=\"-2\"></div>\r\n    <div class=\"brick\" rows=\"3\" cols=\"2\" color=\"blue\" z=\"2\" x=\"0\" y=\"2\"></div>\r\n  </div>\r\n</div>";
-
-/***/ }),
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = "<div class=\"foldingbox\" data-height=\"\" data-break=\"md\">\r\n  <div class=\"foldingbox__title\">\r\n    <h2>LOREM IPSUM DOLOR</h2>\r\n  </div>\r\n  <div class=\"foldingbox__container\">\r\n    <div class=\"foldingbox__item\">\r\n      <div class=\"foldingbox__item__bg\">\r\n        <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"foldingbox__item__content\">\r\n        <h3>Lorem ipsum</h3>\r\n        <p>Lorem ipsum dolor sit amet</p>\r\n        <button>Lorem</button>\r\n      </div>\r\n    </div>\r\n    <div class=\"foldingbox__item\">\r\n      <div class=\"foldingbox__item__bg\">\r\n        <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"foldingbox__item__content\">\r\n        <h3>Lorem ipsum</h3>\r\n        <p>\r\n            Lorem ipsum dolor sit amet<br>\r\n            Lorem ipsum dolor sit amet<br>\r\n            Lorem ipsum dolor sit amet<br>\r\n            Lorem ipsum dolor sit amet<br>\r\n        </p>\r\n        <button>Lorem</button>\r\n      </div>\r\n    </div>\r\n    <div class=\"foldingbox__item\">\r\n      <div class=\"foldingbox__item__bg\">\r\n        <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\r\n      </div>\r\n      <div class=\"foldingbox__item__content\">\r\n        <h3>Lorem ipsum</h3>\r\n        <p>Lorem ipsum dolor sit amet</p>\r\n        <button>Lorem</button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>";
-
-/***/ }),
-/* 48 */
-/***/ (function(module, exports) {
-
-module.exports = "<button class=\"goto\" data-goto=\"anchorID_1,anchorID_2,anchorID_3\">\r\n  Click me, I'll take you to a special place\r\n</button>";
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = "<div class=\"sliderFW\" data-height=\"400\" data-loop=\"true\" data-auto=\"\">\r\n  <div class=\"sliderFW__container\">\r\n    <div class=\"sliderFW__rail\">\r\n      <div class=\"sliderFW__item\">\r\n        <div class=\"sliderFW__item__bg\">\r\n          <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\r\n        </div>\r\n        <div class=\"sliderFW__item__content\">\r\n          <h3>Lorem ipsum</h3>\r\n          <p>Lorem ipsum dolor sit amet</p>\r\n          <button>Lorem</button>\r\n        </div>\r\n      </div>\r\n      <div class=\"sliderFW__item\">\r\n        <div class=\"sliderFW__item__bg\">\r\n          <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\r\n        </div>\r\n        <div class=\"sliderFW__item__content\">\r\n          <h3>Lorem ipsum</h3>\r\n          <p>Lorem ipsum dolor sit amet</p>\r\n          <button>Lorem</button>\r\n        </div>\r\n      </div>\r\n      <div class=\"sliderFW__item\">\r\n        <div class=\"sliderFW__item__bg\">\r\n          <img src=\"" + __webpack_require__(0) + "\" alt=\"sample image\">\r\n        </div>\r\n        <div class=\"sliderFW__item__content\">\r\n          <h3>Lorem ipsum</h3>\r\n          <p>Lorem ipsum dolor sit amet</p>\r\n          <button>Lorem</button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>";
-
-/***/ }),
-/* 50 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"tabs\">\r\n  <div class=\"tabs__nav\">\r\n    <button>Lorem</button>\r\n    <button>Ipsum</button>\r\n    <button>Dolor</button>\r\n  </div>\r\n  <div class=\"tabs__content\">\r\n    <div class=\"tab\">\r\n      Lorem ipsum dolor sit amet\r\n    </div>\r\n    <div class=\"tab\">\r\n      Ipsum dolor sit amet lorem\r\n    </div>\r\n    <div class=\"tab\">\r\n      Dolor sit amet lorem ipsum\r\n    </div>\r\n  </div>\r\n</div>";
-
-/***/ }),
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
 /* 51 */
 /***/ (function(module, exports) {
 
