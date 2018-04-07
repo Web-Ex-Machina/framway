@@ -47,7 +47,7 @@ module.exports = {
                                 localIdentName: '[local]', // used to keep the right name of a css class instead of a hash
                             }
                         },
-                        {loader: "autoprefixer-loader"},
+                        {loader: "postcss-loader", options:{sourceMap:true}},
                         {loader: "sass-loader", options:{sourceMap:true}},
                         {loader: "sass-resources-loader", options:{ // import every resource sass in each file that need it
                             resources: ['./src/scss/_mixins.scss','./src/scss/_vars.scss','./src/scss/_config.scss']
@@ -68,8 +68,6 @@ module.exports = {
         ],
     },
     devtool: 'source-map',
-    devServer: {
-    },
     plugins: [
         new LiveReloadPlugin(),
         new ExtractTextPlugin({

@@ -9,7 +9,7 @@
 }
 .sliderFW__item{@include size(100%); position: relative; @include flex-shrink(0); cursor: grab;}
 .sliderFW__item__bg{ @include size(100%); position: absolute; top: 0; left: 0; z-index: -1;
-  & img{@include object-fit(cover); @include size(100%);}
+  & img{object-fit: cover; @include size(100%);}
 }
 .sliderFW__item__content{padding: $spacing; background-color: rgba(white,0.4); height: 100%; @include flex-container(column,nowrap,flex-end);max-width: 100%; position: absolute; left: 5em; margin-right: 5em;
   .content__text--top &{@include justify-content(flex-start);}

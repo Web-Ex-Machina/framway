@@ -54,7 +54,7 @@ if($('#guideline').length){
       }
       $(select).closest('.item').find('.editor textarea').val(item.parent().get(0).innerHTML).trigger('keyup');
     })
-  });
+  }).trigger('change');
 
   $('#guideline').append(html);
 
@@ -73,9 +73,9 @@ if($('#guideline').length){
         sampleText = $(sampleText).wrapAll('<div></div>');
         var constructorText = '';
         if(sampleText.parent().find('.constructor').length){
-          sampleText.parent().find('.constructor').addClass('col-4').find('.input').each(function(){
+          sampleText.parent().find('.constructor').addClass('col-12 col-lg-6 ').find('.input').each(function(){
             var ref = $(this);
-            var inputGroup = '<div class="form-group">'
+            var inputGroup = '<div class="form-group col-12 col-xl-6">'
                            + '<label for="'+component+',class,'+ref.data('name')+'">'+ref.data('label')+'</label>';
             if(ref.hasClass('select')){
               var arrVal = ref.data('value').split(',');
@@ -83,7 +83,10 @@ if($('#guideline').length){
               inputGroup += '<select name="'+component+',class,'+ref.data('name')+'" id="'+component+',class,'+ref.data('name')+'">'
                           + '<option value=""> - </option>'
               $.each(arrVal,function(index,val){
-                inputGroup += '<option value="'+val+'">'+arrOutput[index]+'</option>';
+                if(val == ref.data('selected'))
+                  inputGroup += '<option value="'+val+'" selected>'+arrOutput[index]+'</option>';
+                else
+                  inputGroup += '<option value="'+val+'">'+arrOutput[index]+'</option>';
               });
               inputGroup += '</select>';
             } else{
@@ -92,7 +95,7 @@ if($('#guideline').length){
             inputGroup += '</div>';
             ref.replaceWith(inputGroup);
           });
-          constructorText = sampleText.parent().find('.constructor').remove().get(0).outerHTML;
+          constructorText = sampleText.parent().find('.constructor').wrapInner('<div class="row"></div>').remove().get(0).outerHTML;
         }
         sampleText = sampleText.parent().get(0).innerHTML;
 
