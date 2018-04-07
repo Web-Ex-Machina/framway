@@ -44,13 +44,15 @@ if($('#guideline').length){
     $(select).bind('change',function(e){
       var selector = $(select).attr('name').split(',')[0];
       var attr = $(select).attr('name').split(',')[1];
-      var type = $(select).attr('name').split(',')[2];
-      var reg = new RegExp(type+'\\S+', 'g');
       var item = $($(select).closest('.item').find('.editor textarea').val()).wrapAll('<div></div>');
+      var match = [];
+      $(select).find('option').each(function(){
+        if(this.value != '')
+          match.push(this.value);
+      });
+      match = match.join(' ');
       if(attr == 'class'){
-        item.parent().find('.'+selector).removeClass(function(index,classname){
-          return (classname.match(reg) || []).join(' ');
-        }).addClass($(select).val());
+        item.parent().find('.'+selector).removeClass(match).addClass($(select).val());
       }
       $(select).closest('.item').find('.editor textarea').val(item.parent().get(0).innerHTML).trigger('keyup');
     })
@@ -75,12 +77,13 @@ if($('#guideline').length){
         if(sampleText.parent().find('.constructor').length){
           sampleText.parent().find('.constructor').addClass('col-12 col-lg-6 ').find('.input').each(function(){
             var ref = $(this);
+            var name = ref.data('label').replace(' ','-').toLowerCase();
             var inputGroup = '<div class="form-group col-12 col-xl-6">'
-                           + '<label for="'+component+',class,'+ref.data('name')+'">'+ref.data('label')+'</label>';
+                           + '<label for="'+component+',class,'+name+'">'+ref.data('label')+'</label>';
             if(ref.hasClass('select')){
               var arrVal = ref.data('value').split(',');
               var arrOutput = ref.data('output').split(',');
-              inputGroup += '<select name="'+component+',class,'+ref.data('name')+'" id="'+component+',class,'+ref.data('name')+'">'
+              inputGroup += '<select name="'+component+',class,'+name+'" id="'+component+',class,'+name+'">'
                           + '<option value=""> - </option>'
               $.each(arrVal,function(index,val){
                 if(val == ref.data('selected'))

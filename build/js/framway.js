@@ -10575,7 +10575,7 @@ __webpack_require__(23); // importing jquery-mousewheel
 __webpack_require__(24);
 __webpack_require__(25);
 
-app.loadComponents(['tabs', 'block-std', 'goto', 'foldingbox', 'sliderFW', 'block-img',
+app.loadComponents(['tabs', 'block-std', 'goto', 'foldingbox', 'block-img', 'sliderFW',
 // 'brick',
 'guideline']);
 
@@ -13874,11 +13874,12 @@ if ($('#guideline').length) {
         if (sampleText.parent().find('.constructor').length) {
           sampleText.parent().find('.constructor').addClass('col-12 col-lg-6 ').find('.input').each(function () {
             var ref = $(this);
-            var inputGroup = '<div class="form-group col-12 col-xl-6">' + '<label for="' + component + ',class,' + ref.data('name') + '">' + ref.data('label') + '</label>';
+            var name = ref.data('label').replace(' ', '-').toLowerCase();
+            var inputGroup = '<div class="form-group col-12 col-xl-6">' + '<label for="' + component + ',class,' + name + '">' + ref.data('label') + '</label>';
             if (ref.hasClass('select')) {
               var arrVal = ref.data('value').split(',');
               var arrOutput = ref.data('output').split(',');
-              inputGroup += '<select name="' + component + ',class,' + ref.data('name') + '" id="' + component + ',class,' + ref.data('name') + '">' + '<option value=""> - </option>';
+              inputGroup += '<select name="' + component + ',class,' + name + '" id="' + component + ',class,' + name + '">' + '<option value=""> - </option>';
               $.each(arrVal, function (index, val) {
                 if (val == ref.data('selected')) inputGroup += '<option value="' + val + '" selected>' + arrOutput[index] + '</option>';else inputGroup += '<option value="' + val + '">' + arrOutput[index] + '</option>';
               });
@@ -14035,13 +14036,14 @@ if ($('#guideline').length) {
     $(select).bind('change', function (e) {
       var selector = $(select).attr('name').split(',')[0];
       var attr = $(select).attr('name').split(',')[1];
-      var type = $(select).attr('name').split(',')[2];
-      var reg = new RegExp(type + '\\S+', 'g');
       var item = $($(select).closest('.item').find('.editor textarea').val()).wrapAll('<div></div>');
+      var match = [];
+      $(select).find('option').each(function () {
+        if (this.value != '') match.push(this.value);
+      });
+      match = match.join(' ');
       if (attr == 'class') {
-        item.parent().find('.' + selector).removeClass(function (index, classname) {
-          return (classname.match(reg) || []).join(' ');
-        }).addClass($(select).val());
+        item.parent().find('.' + selector).removeClass(match).addClass($(select).val());
       }
       $(select).closest('.item').find('.editor textarea').val(item.parent().get(0).innerHTML).trigger('keyup');
     });
@@ -14114,7 +14116,7 @@ webpackContext.id = 35;
 /* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"block-img col-6 \">\n    <a href=\"\" class=\"block-img__wrapper\">\n      <div class=\"block-img__figure\">\n        <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-img__title\">\n        Lorem ipsum dolor sit amet\n      </div>\n    </a>\n  </div>\n</div>\n<div class=\"constructor\">\n  <div class=\"input select\" data-label=\"hover zoom\" data-attr=\"class\" data-name=\"zoom\" data-value=\"zoomin,zoomout\" data-output=\"Zoom in,Zoom out\" data-selected=\"zoomin\"></div>\n  <div class=\"input select\" data-label=\"hover fade\" data-attr=\"class\" data-name=\"fade\" data-value=\"fadetogrey,fadetocolor\" data-output=\"Fade to grey,Fade to color\" data-selected=\"fadetogrey\"></div>\n  <div class=\"input select\" data-label=\"ratio\" data-attr=\"class\" data-name=\"r_\" data-value=\"r_1-1,r_2-1,r_1-2,r_16-9\" data-output=\"1:1,2:1,1:2,16:9\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"align vertical\" data-attr=\"class\" data-name=\"av_\" data-value=\"av_top,av_bottom\" data-output=\"Top,Bottom\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"align horizontal\" data-attr=\"class\" data-name=\"ah_\" data-value=\"ah_left,ah_right\" data-output=\"Left,Right\" data-selected=\"\"></div>\n  <!-- <div class=\"input select\" data-label=\"title\" data-attr=\"class\" data-name=\"title\" data-value=\"\" data-output=\"\" data-selected=\"\"></div> -->\n</div>\n";
+module.exports = "<div class=\"row\">\n  <div class=\"block-img col-6 \">\n    <a href=\"\" class=\"block-img__wrapper\">\n      <div class=\"block-img__figure\">\n        <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-img__title\">\n        Lorem ipsum dolor sit amet\n      </div>\n    </a>\n  </div>\n</div>\n<div class=\"constructor\">\n  <div class=\"input select\" data-label=\"hover zoom\" data-attr=\"class\" data-value=\"zoomin,zoomout\" data-output=\"Zoom in,Zoom out\" data-selected=\"zoomin\"></div>\n  <div class=\"input select\" data-label=\"hover fade\" data-attr=\"class\" data-value=\"fadetogrey,fadetocolor\" data-output=\"Fade to grey,Fade to color\" data-selected=\"fadetogrey\"></div>\n  <div class=\"input select\" data-label=\"align vertical\" data-attr=\"class\" data-value=\"av_top,av_bottom\" data-output=\"Top,Bottom\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"align horizontal\" data-attr=\"class\" data-value=\"ah_left,ah_right\" data-output=\"Left,Right\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"ratio\" data-attr=\"class\" data-value=\"r_1-1,r_2-1,r_1-2,r_16-9\" data-output=\"1:1,2:1,1:2,16:9\" data-selected=\"\"></div>\n  <!-- <div class=\"input select\" data-label=\"title\" data-attr=\"class\" data-value=\"\" data-output=\"\" data-selected=\"\"></div> -->\n</div>\n";
 
 /***/ }),
 /* 37 */
@@ -14132,7 +14134,7 @@ module.exports = "<div class=\"scene\">\n  <div class=\"grid\">\n    <div class=
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div class=\"foldingbox\" data-height=\"\" data-break=\"md\">\n  <div class=\"foldingbox__title\">\n    <h2>LOREM IPSUM DOLOR</h2>\n  </div>\n  <div class=\"foldingbox__container\">\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(4) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>Lorem ipsum dolor sit amet</p>\n        <button>Lorem</button>\n      </div>\n    </div>\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(4) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n        </p>\n        <button>Lorem</button>\n      </div>\n    </div>\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(4) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>Lorem ipsum dolor sit amet</p>\n        <button>Lorem</button>\n      </div>\n    </div>\n  </div>\n</div>";
+module.exports = "<div class=\"foldingbox\" data-height=\"\" data-break=\"md\">\n  <div class=\"foldingbox__title\">\n    <h2>LOREM IPSUM DOLOR</h2>\n  </div>\n  <div class=\"foldingbox__container\">\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(4) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>Lorem ipsum dolor sit amet</p>\n        <button>Lorem</button>\n      </div>\n    </div>\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(4) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n        </p>\n        <button>Lorem</button>\n      </div>\n    </div>\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(4) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>Lorem ipsum dolor sit amet</p>\n        <button>Lorem</button>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"constructor\">\n  <!-- <div class=\"input select\" data-label=\"hover zoom\" data-attr=\"class\" data-name=\"zoom\" data-value=\"zoomin,zoomout\" data-output=\"Zoom in,Zoom out\" data-selected=\"zoomin\"></div> -->\n</div>\n";
 
 /***/ }),
 /* 40 */
@@ -14144,7 +14146,7 @@ module.exports = "<button class=\"goto\" data-goto=\"anchorID_1,anchorID_2,ancho
 /* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div class=\"sliderFW\" data-height=\"400\" data-loop=\"true\" data-auto=\"\">\n  <div class=\"sliderFW__container\">\n    <div class=\"sliderFW__rail\">\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(4) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(4) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+module.exports = "<div class=\"sliderFW\" data-height=\"400\" data-loop=\"true\" data-auto=\"true\">\n  <div class=\"sliderFW__container\">\n    <div class=\"sliderFW__rail\">\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(4) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(4) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"constructor\">\n  <div class=\"input select\" data-label=\"nav vertical\" data-attr=\"class\" data-value=\"nav--bottom,nav--top\" data-output=\"bottom,top\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"nav horizontal\" data-attr=\"class\" data-value=\"nav--left,nav--right\" data-output=\"left,right\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"nav display\" data-attr=\"class\" data-value=\"nav--inner,nav--hidden\" data-output=\"inner,hidden\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"content blur\" data-attr=\"class\" data-value=\"content--noblur\" data-output=\"no blur\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"content position\" data-attr=\"class\" data-value=\"content--right,content--center\" data-output=\"right,center\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"text position\" data-attr=\"class\" data-value=\"content__text--top,content__text--center\" data-output=\"top,center\" data-selected=\"\"></div>\n</div>\n";
 
 /***/ }),
 /* 42 */
