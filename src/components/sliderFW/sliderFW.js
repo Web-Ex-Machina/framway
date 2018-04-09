@@ -19,11 +19,29 @@ var SliderFW = function SliderFW(item){
 
   slider.$nav.children().first().addClass('active');
   slider.$nav.children().bind('click',function(e){
-    var index = $(this).index();
     slider.$nav.children().removeClass('active');
-    $(this).addClass('active');
-    slider.content.$el.find('.sliderFW__rail').css('transform', 'translate3d('+ (-slider.$el.width() * index) +'px,0,0)');
+    var index = $(this).addClass('active').index();
+    $(slider.content.items.removeClass('active').get(index)).addClass('active');
+    slider.content.$el.find('.sliderFW__rail').css('transform', 'translate3d('+ (-slider.content.items.get(index).offsetLeft) +'px,0,0)');
   });
+
+  if(slider.loop){
+    slider.content.$el.find('.sliderFW__rail').on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e){
+      var rail = $(this);
+      if(rail.get(0) == e.target){
+        rail.addClass('no-transition');
+        if(slider.content.items.filter('.active').next().length == 0)
+          rail.find('.sliderFW__item').first().appendTo(rail);
+        else if(slider.content.items.filter('.active').prev().length == 0)
+          rail.find('.sliderFW__item').last().prependTo(rail);
+        rail.css('transform', 'translate3d('+ (-slider.content.items.filter('.active').get(0).offsetLeft) +'px,0,0)');
+        setTimeout(function () {
+          rail.removeClass('no-transition');
+        }, 1);
+      }
+    });
+    slider.$nav.children().first().trigger('click');
+  }
 
   slider.setHeight();
   slider.setBlur();

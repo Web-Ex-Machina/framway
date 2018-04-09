@@ -48,6 +48,7 @@ pre .copy{position: absolute; right: $spacing; @extend .btn-sm;}
 /*-----------------------------------------------------------------------------------------------------------------------------*/
 /* OVERALL CLASSES */
 .no-events{pointer-events: none;}
+.no-transition{transition: none !important;}
 .no-overflow{overflow:hidden;}
 
 .hidden,
