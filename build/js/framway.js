@@ -13856,6 +13856,34 @@ $(function () {
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 if ($('#guideline').length) {
+  var applyConstructorChanges = function applyConstructorChanges($el) {
+    var editor = $el.closest('.item').find('.editor textarea');
+
+    var selector = $el.attr('name').split(',')[0];
+    var attr = $el.attr('name').split(',')[1];
+    var dummy = $(editor.val()).wrapAll('<div></div>');
+
+    var match = false;
+    var value = $el.val();
+    if ($el.hasClass('select')) {
+      match = [];
+      $el.find('option').each(function () {
+        if (this.value != '') match.push(this.value);
+      });
+      match = match.join(' ');
+    } else if ($el.hasClass('checkbox') && value == "undefined") {
+      value = $el.isChecked();
+    }
+
+    if (attr == 'class') {
+      if (match) dummy.parent().find('.' + selector).removeClass(match);
+      dummy.parent().find('.' + selector).toggleClass(value);
+    } else {
+      dummy.parent().find('.' + selector).attr(attr, value);
+    }
+
+    editor.val(dummy.parent().get(0).innerHTML).trigger('keyup');
+  };
 
   // Building functions
   var buildComponents = function buildComponents() {
@@ -13874,19 +13902,22 @@ if ($('#guideline').length) {
         if (sampleText.parent().find('.constructor').length) {
           sampleText.parent().find('.constructor').addClass('col-12 col-lg-6 ').find('.input').each(function () {
             var ref = $(this);
+            var target = ref.data('attr');
             var name = ref.data('label').replace(' ', '-').toLowerCase();
-            var inputGroup = '<div class="form-group col-12 col-xl-6">' + '<label for="' + component + ',class,' + name + '">' + ref.data('label') + '</label>';
+            var inputGroup = '<div class="form-group col-12 col-xl-6">';
+
             if (ref.hasClass('select')) {
               var arrVal = ref.data('value').split(',');
               var arrOutput = ref.data('output').split(',');
-              inputGroup += '<select name="' + component + ',class,' + name + '" id="' + component + ',class,' + name + '">' + '<option value=""> - </option>';
+              inputGroup += '<label for="' + component + ',' + target + ',' + name + '">' + ref.data('label') + '</label>' + '<select class="select" name="' + component + ',' + target + ',' + name + '" id="' + component + ',' + target + ',' + name + '">' + '<option value=""> - </option>';
               $.each(arrVal, function (index, val) {
                 if (val == ref.data('selected')) inputGroup += '<option value="' + val + '" selected>' + arrOutput[index] + '</option>';else inputGroup += '<option value="' + val + '">' + arrOutput[index] + '</option>';
               });
               inputGroup += '</select>';
-            } else {
-              // TODO: input not select
+            } else if (ref.hasClass('checkbox')) {
+              inputGroup += '<input type="checkbox" value="' + ref.data('value') + '" class="checkbox" name="' + component + ',' + target + ',' + name + '" id="' + component + ',' + target + ',' + name + '" data-default="' + ref.data('selected') + '" >' + '<label for="' + component + ',' + target + ',' + name + '">' + ref.data('label') + '</label>';
             }
+
             inputGroup += '</div>';
             ref.replaceWith(inputGroup);
           });
@@ -14032,22 +14063,20 @@ if ($('#guideline').length) {
     });
   });
 
-  html.find('.constructor select').each(function (index, select) {
-    $(select).bind('change', function (e) {
-      var selector = $(select).attr('name').split(',')[0];
-      var attr = $(select).attr('name').split(',')[1];
-      var item = $($(select).closest('.item').find('.editor textarea').val()).wrapAll('<div></div>');
-      var match = [];
-      $(select).find('option').each(function () {
-        if (this.value != '') match.push(this.value);
-      });
-      match = match.join(' ');
-      if (attr == 'class') {
-        item.parent().find('.' + selector).removeClass(match).addClass($(select).val());
-      }
-      $(select).closest('.item').find('.editor textarea').val(item.parent().get(0).innerHTML).trigger('keyup');
+  html.find('.constructor').each(function (index, constructor) {
+    var editor = $(constructor).closest('.item').find('.editor textarea');
+    // SELECTS
+    $(constructor).find('select').bind('change', function (e) {
+      applyConstructorChanges($(this));
+    }).trigger('change');
+
+    // CHECKBOXES
+    $(constructor).find('.checkbox').bind('click', function (e) {
+      applyConstructorChanges($(this));
+    }).each(function () {
+      if ($(this).data('default')) $(this).trigger('click');
     });
-  }).trigger('change');
+  });
 
   $('#guideline').append(html);
 }
@@ -14116,7 +14145,7 @@ webpackContext.id = 35;
 /* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"block-img col-6 \">\n    <a href=\"\" class=\"block-img__wrapper\">\n      <div class=\"block-img__figure\">\n        <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-img__title\">\n        Lorem ipsum dolor sit amet\n      </div>\n    </a>\n  </div>\n</div>\n<div class=\"constructor\">\n  <div class=\"input select\" data-label=\"hover zoom\" data-attr=\"class\" data-value=\"zoomin,zoomout\" data-output=\"Zoom in,Zoom out\" data-selected=\"zoomin\"></div>\n  <div class=\"input select\" data-label=\"hover fade\" data-attr=\"class\" data-value=\"fadetogrey,fadetocolor\" data-output=\"Fade to grey,Fade to color\" data-selected=\"fadetogrey\"></div>\n  <div class=\"input select\" data-label=\"align vertical\" data-attr=\"class\" data-value=\"av_top,av_bottom\" data-output=\"Top,Bottom\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"align horizontal\" data-attr=\"class\" data-value=\"ah_left,ah_right\" data-output=\"Left,Right\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"ratio\" data-attr=\"class\" data-value=\"r_1-1,r_2-1,r_1-2,r_16-9\" data-output=\"1:1,2:1,1:2,16:9\" data-selected=\"\"></div>\n  <!-- <div class=\"input select\" data-label=\"title\" data-attr=\"class\" data-value=\"\" data-output=\"\" data-selected=\"\"></div> -->\n</div>\n";
+module.exports = "<div class=\"row\">\n  <div class=\"block-img col-6 \">\n    <a href=\"\" class=\"block-img__wrapper\">\n      <div class=\"block-img__figure\">\n        <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-img__title\">\n        Lorem ipsum dolor sit amet\n      </div>\n    </a>\n  </div>\n</div>\n<div class=\"constructor\">\n  <div class=\"input select\" data-label=\"hover zoom\" data-attr=\"class\" data-value=\"zoomin,zoomout\" data-output=\"Zoom in,Zoom out\" data-selected=\"zoomin\"></div>\n  <div class=\"input select\" data-label=\"hover fade\" data-attr=\"class\" data-value=\"fadetogrey,fadetocolor\" data-output=\"Fade to grey,Fade to color\" data-selected=\"fadetogrey\"></div>\n  <div class=\"input select\" data-label=\"align vertical\" data-attr=\"class\" data-value=\"av_top,av_bottom\" data-output=\"Top,Bottom\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"align horizontal\" data-attr=\"class\" data-value=\"ah_left,ah_right\" data-output=\"Left,Right\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"ratio\" data-attr=\"class\" data-value=\"r_1-1,r_2-1,r_1-2,r_16-9\" data-output=\"1:1,2:1,1:2,16:9\" data-selected=\"\"></div>\n</div>\n";
 
 /***/ }),
 /* 37 */
@@ -14146,7 +14175,7 @@ module.exports = "<button class=\"goto\" data-goto=\"anchorID_1,anchorID_2,ancho
 /* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div class=\"sliderFW\" data-height=\"400\" data-loop=\"true\" data-auto=\"true\">\n  <div class=\"sliderFW__container\">\n    <div class=\"sliderFW__rail\">\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(4) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(4) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"constructor\">\n  <div class=\"input select\" data-label=\"nav vertical\" data-attr=\"class\" data-value=\"nav--bottom,nav--top\" data-output=\"bottom,top\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"nav horizontal\" data-attr=\"class\" data-value=\"nav--left,nav--right\" data-output=\"left,right\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"nav display\" data-attr=\"class\" data-value=\"nav--inner,nav--hidden\" data-output=\"inner,hidden\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"content blur\" data-attr=\"class\" data-value=\"content--noblur\" data-output=\"no blur\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"content position\" data-attr=\"class\" data-value=\"content--right,content--center\" data-output=\"right,center\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"text position\" data-attr=\"class\" data-value=\"content__text--top,content__text--center\" data-output=\"top,center\" data-selected=\"\"></div>\n</div>\n";
+module.exports = "<div class=\"sliderFW\" data-height=\"400\" data-loop=\"\" data-auto=\"\">\n  <div class=\"sliderFW__container\">\n    <div class=\"sliderFW__rail\">\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(4) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(4) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"constructor\">\n  <div class=\"input checkbox\" data-label=\"Loop\" data-attr=\"data-loop\" data-selected=\"true\"></div>\n  <div class=\"input checkbox\" data-label=\"Autoplay\" data-attr=\"data-auto\" data-selected=\"true\"></div>\n  <div class=\"input select\" data-label=\"nav vertical\" data-attr=\"class\" data-value=\"nav--bottom,nav--top\" data-output=\"bottom,top\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"nav horizontal\" data-attr=\"class\" data-value=\"nav--left,nav--right\" data-output=\"left,right\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"nav display\" data-attr=\"class\" data-value=\"nav--inner,nav--hidden\" data-output=\"inner,hidden\" data-selected=\"\"></div>\n  <div class=\"w-100\"></div>\n  <div class=\"input select\" data-label=\"content position\" data-attr=\"class\" data-value=\"content--right,content--center\" data-output=\"right,center\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"text position\" data-attr=\"class\" data-value=\"content__text--top,content__text--center\" data-output=\"top,center\" data-selected=\"\"></div>\n  <div class=\"w-100\"></div>\n  <div class=\"input checkbox\" data-label=\"No blur\" data-attr=\"class\" data-value=\"content--noblur\" data-selected=\"\"></div>\n</div>\n";
 
 /***/ }),
 /* 42 */
@@ -15873,7 +15902,7 @@ $.fn.scrollEnd = function (callback, timeout) {
  *  TODO : real test
  */
 $.fn.isChecked = function () {
-  if ($(this).is(':checked')) return 1;else return 0;
+  if ($(this).is(':checked')) return true;else return false;
 };
 
 $.event.special.destroyed = {

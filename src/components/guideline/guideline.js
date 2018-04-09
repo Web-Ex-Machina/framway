@@ -40,23 +40,52 @@ if($('#guideline').length){
     });
   });
 
-  html.find('.constructor select').each(function(index,select){
-    $(select).bind('change',function(e){
-      var selector = $(select).attr('name').split(',')[0];
-      var attr = $(select).attr('name').split(',')[1];
-      var item = $($(select).closest('.item').find('.editor textarea').val()).wrapAll('<div></div>');
-      var match = [];
-      $(select).find('option').each(function(){
+  html.find('.constructor').each(function(index,constructor){
+    var editor = $(constructor).closest('.item').find('.editor textarea');
+    // SELECTS
+    $(constructor).find('select').bind('change',function(e){
+      applyConstructorChanges($(this));
+    }).trigger('change');
+
+    // CHECKBOXES
+    $(constructor).find('.checkbox').bind('click',function(e){
+      applyConstructorChanges($(this));
+    }).each(function(){
+      if($(this).data('default'))
+        $(this).trigger('click');
+    });
+  });
+
+  function applyConstructorChanges($el){
+    var editor = $el.closest('.item').find('.editor textarea');
+
+    var selector = $el.attr('name').split(',')[0];
+    var attr = $el.attr('name').split(',')[1];
+    var dummy = $(editor.val()).wrapAll('<div></div>');
+
+    var match = false;
+    var value = $el.val();
+    if($el.hasClass('select')){
+      match = [];
+      $el.find('option').each(function(){
         if(this.value != '')
           match.push(this.value);
       });
       match = match.join(' ');
-      if(attr == 'class'){
-        item.parent().find('.'+selector).removeClass(match).addClass($(select).val());
-      }
-      $(select).closest('.item').find('.editor textarea').val(item.parent().get(0).innerHTML).trigger('keyup');
-    })
-  }).trigger('change');
+    } else if($el.hasClass('checkbox') && value == "undefined"){
+      value = $el.isChecked();
+    }
+
+    if(attr == 'class'){
+      if(match)
+        dummy.parent().find('.'+selector).removeClass(match);
+      dummy.parent().find('.'+selector).toggleClass(value);
+    } else {
+      dummy.parent().find('.'+selector).attr(attr,value);
+    }
+
+    editor.val(dummy.parent().get(0).innerHTML).trigger('keyup');
+  }
 
   $('#guideline').append(html);
 
@@ -77,13 +106,15 @@ if($('#guideline').length){
         if(sampleText.parent().find('.constructor').length){
           sampleText.parent().find('.constructor').addClass('col-12 col-lg-6 ').find('.input').each(function(){
             var ref = $(this);
+            var target = ref.data('attr');
             var name = ref.data('label').replace(' ','-').toLowerCase();
-            var inputGroup = '<div class="form-group col-12 col-xl-6">'
-                           + '<label for="'+component+',class,'+name+'">'+ref.data('label')+'</label>';
+            var inputGroup = '<div class="form-group col-12 col-xl-6">';
+
             if(ref.hasClass('select')){
               var arrVal = ref.data('value').split(',');
               var arrOutput = ref.data('output').split(',');
-              inputGroup += '<select name="'+component+',class,'+name+'" id="'+component+',class,'+name+'">'
+              inputGroup += '<label for="'+component+','+target+','+name+'">'+ref.data('label')+'</label>'
+                          + '<select class="select" name="'+component+','+target+','+name+'" id="'+component+','+target+','+name+'">'
                           + '<option value=""> - </option>'
               $.each(arrVal,function(index,val){
                 if(val == ref.data('selected'))
@@ -92,9 +123,11 @@ if($('#guideline').length){
                   inputGroup += '<option value="'+val+'">'+arrOutput[index]+'</option>';
               });
               inputGroup += '</select>';
-            } else{
-              // TODO: input not select
+            } else if(ref.hasClass('checkbox')){
+              inputGroup += '<input type="checkbox" value="'+ref.data('value')+'" class="checkbox" name="'+component+','+target+','+name+'" id="'+component+','+target+','+name+'" data-default="'+ref.data('selected')+'" >'
+                          + '<label for="'+component+','+target+','+name+'">'+ref.data('label')+'</label>';
             }
+
             inputGroup += '</div>';
             ref.replaceWith(inputGroup);
           });

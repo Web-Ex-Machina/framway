@@ -317,7 +317,7 @@ $.fn.scrollEnd = function (callback, timeout) {
  *  TODO : real test
  */
 $.fn.isChecked = function () {
-  if ($(this).is(':checked')) return 1;else return 0;
+  if ($(this).is(':checked')) return true;else return false;
 };
 
 $.event.special.destroyed = {
