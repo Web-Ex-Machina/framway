@@ -421,7 +421,7 @@ input[type="submit"].btn-lg, input[type="button"].btn-lg, button.btn-lg{@extend 
 
 input[type="submit"],
 input[type="button"],
-button:not([class*="toast"]),
+button:not([class*="btn-bg"]):not([class*="btn-bd"]):not([class*="toast"]),
 *[class*="btn"]{@extend .btn;}
 
 @if btn(extend) != '' {
