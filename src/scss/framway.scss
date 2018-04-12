@@ -1,12 +1,13 @@
-/* Core css */ 
-@import 'core'; 
-/* Components */ 
+/* Core css */
+@import 'core';
+/* Components */
 @import '../components/block-img/block-img';
 @import '../components/sliderFW/sliderFW';
-@import '../components/brick/brick'; 
-@import '../components/tabs/tabs'; 
-@import '../components/foldingbox/foldingbox'; 
-@import '../components/block-std/block-std'; 
-@import '../components/guideline/guideline'; 
-/* Themes */ 
-@import './themes/user'; 
+@import '../components/brick/brick';
+@import '../components/tabs/tabs';
+@import '../components/foldingbox/foldingbox';
+@import '../components/block-std/block-std';
+@import '../components/guideline/guideline';
+/* Themes */
+@import './themes/toastr';
+@import './themes/user';
