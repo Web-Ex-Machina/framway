@@ -1,8 +1,6 @@
-
 /* Primary vars */
 $spacing: 30px;
 $radius: 2px;
-$border-size : 2px;
 
 $colors: (
   'blue': #004C79,
@@ -22,6 +20,9 @@ $colors: (
   'none': transparent,
 );
 @function color($color) {@return map-get($colors, '#{$color}'); }
+
+$border-default-size : 2px;
+$border-default-color : color(black);
 
 /* STYLING VARS */
 /* structure */
@@ -52,7 +53,7 @@ $input: (
   'background': color(none),
   'font-color': color(greystronger),
   'border-color': color(greystronger),
-  'border-size': $border-size,
+  'border-size': $border-default-size ,
   'placeholder-font-color': color(grey),
   'radius': true,
 );
@@ -93,7 +94,7 @@ $link: (
 $btn: (
   'background': body(font-color),
   'font-color': body(background),
-  'border-size': $border-size,
+  'border-size': $border-default-size ,
   'radius': true,
   'extend': '.btn-bg-darkblue',
 );
@@ -122,7 +123,8 @@ $enable-bd: true;
 :export {
   radius: $radius;
   spacing: $spacing;
-  border-size: $border-size;
+  border-default-size: $border-default-size ;
+  border-default-color: $border-default-color ;
 
   colors: #{$colors};
   breakpoints: #{$breakpoints};

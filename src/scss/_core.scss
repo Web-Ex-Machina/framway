@@ -180,7 +180,7 @@ pre .copy{position: absolute; right: $spacing; @extend .btn-sm;}
 
 /*-----------------------------------------------------------------------------------------------------------------------------*/
 // SEPARATORS
-.sep{ display:inline-block; width: 100%; margin: $spacing 0 $spacing; clear: both;  height: $border-size; background: body(font-color);}
+.sep{ display:inline-block; width: 100%; margin: $spacing 0 $spacing; clear: both;  height: $border-default-size; background: body(font-color);}
 .sep-top:before,
 .sep-bottom:after{content:""; @extend .sep}
 
@@ -313,24 +313,49 @@ ul.tags>li{padding: 3px 8px 5px; background: btn(background); color: btn(font-co
 /*-----------------------------------------------------------------------------------------------------------------------------*/
 // BORDERS
 @if $enable-bd{
-  @each $key, $value in $colors{
-    @each $side in $sides {
+  @each $side in $sides {
+    @if $side == 'all'{
+      .bd,
+      .bd-#{$side}{border: $border-default-size solid $border-default-color; @extend .p-all;}
+    }
+    @else{
+      .bd-#{$side}[class*="bd-"],
+      .bd-#{$side}{border-#{$side}: $border-default-size solid $border-default-color;
+        &:not([class*="p-#{$side}"]){@extend .p-#{$side};}
+      }
+    }
+    @for $index from 0 through 10 {
       @if $side == 'all'{
-        .bd-#{$key}{border: $border-size solid $value; @extend .p-all;}
+        .bd-#{$index},
+        .bd-#{$side}-#{$index}{border: #{$index}px solid $border-default-color; @extend .p-all;}
       }
       @else{
-        .bd-#{$key}-#{$side}[class*="bd-"],
-        .bd-#{$key}-#{$side}{border-#{$side}: $border-size solid $value;
+        .bd-#{$side}-#{$index}[class*="bd-"],
+        .bd-#{$side}-#{$index}{border-#{$side}: #{$index}px solid $border-default-color;
           &:not([class*="p-#{$side}"]){@extend .p-#{$side};}
         }
       }
-      @for $index from 0 through 10{
+    }
+
+    @each $key, $value in $colors{
+      @if $side == 'all'{
+        .bd-#{$key},
+        .bd-#{$side}-#{$key}{border: $border-default-size solid $value; @extend .p-all;}
+      }
+      @else{
+        .bd-#{$side}-#{$key}[class*="bd-"],
+        .bd-#{$side}-#{$key} { border-#{$side}: $border-default-size solid $value;
+          &:not([class*="p-#{$side}"]) {@extend .p-#{$side}; }
+        }
+      }
+      @for $index from 0 through 10 {
         @if $side == 'all'{
-          .bd-#{$key}-#{$index}{border: #{$index}px solid $value; @extend .p-all;}
+          .bd-#{$key}-#{$index},
+          .bd-#{$side}-#{$key}-#{$index}{border: #{$index}px solid $value; @extend .p-all;}
         }
         @else{
-          .bd-#{$key}-#{$side}-#{$index}[class*="bd-"],
-          .bd-#{$key}-#{$side}-#{$index}{border-#{$side}: #{$index}px solid $value;
+          .bd-#{$side}-#{$key}-#{$index}[class*="bd-"],
+          .bd-#{$side}-#{$key}-#{$index}{border-#{$side}: #{$index}px solid $value;
             &:not([class*="p-#{$side}"]){@extend .p-#{$side};}
           }
         }
@@ -339,12 +364,15 @@ ul.tags>li{padding: 3px 8px 5px; background: btn(background); color: btn(font-co
   }
 }
 
+
 /*-----------------------------------------------------------------------------------------------------------------------------*/
 // BUTTONS
 .btn {
   display: inline-block;
   text-align: center;
-  white-space: nowrap;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
   vertical-align: middle;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -442,24 +470,18 @@ button:not([class*="btn-bg"]):not([class*="btn-bd"]):not([class*="toast"]),
 *[class*='flex-'][class*='-wrap']{@include flex-wrap();}
 *[class*='flex-'][class*='-nowrap']{@include flex-wrap(nowrap);}
 
-*[class*='flex-'][class*='-justify--start']{@include justify-content(flex-start);}
-*[class*='flex-'][class*='-justify--center']{@include justify-content(center);}
-*[class*='flex-'][class*='-justify--end']{@include justify-content(flex-end);}
-*[class*='flex-'][class*='-justify--between']{@include justify-content(space-between);}
-*[class*='flex-'][class*='-justify--around']{@include justify-content(space-around);}
+@each $value in $flexvalues{
+  $valueflat : str-replace($value,'-','');
+  *[class*='flex-'][class*='-justifycontent--#{$valueflat}']{justify-content: $value;}
+  *[class*='flex-'][class*='-alignitems--#{$valueflat}']{justify-content: $value;}
 
-*[class*='flex-'][class*='-align--start']{@include align-items(flex-start);}
-*[class*='flex-'][class*='-align--center']{@include align-items(center);}
-*[class*='flex-'][class*='-align--end']{@include align-items(flex-end);}
-
-*[class*='flex-'][class*='-alignself--start']{@include align-self(flex-start);}
-*[class*='flex-'][class*='-alignself--center']{@include align-self(center);}
-*[class*='flex-'][class*='-alignself--end']{@include align-self(flex-end);}
+  .alignself--#{$valueflat}{align-self: $value;}
+}
 
 @for $index from 0 through 10 {
-  *[class*='flex-'][class*='-childgrow--#{$index}']>*{@include flex-grow($index);}
-  *[class*='flex-'][class*='-childgrow']>*[class*='flex-'][class*="-grow-#{$index}"],
-  .flex-grow-#{$index}{@include flex-grow($index);}
+  .flexgrow--#{$index},
+  *[class*='flex-'][class*='-flexgrow']>*[class*="flexgrow--#{$index}"],
+  *[class*='flex-'][class*='-flexgrow--#{$index}']>*{@include flex-grow($index);}
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------------*/

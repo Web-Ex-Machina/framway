@@ -253,9 +253,9 @@ if($('#guideline').length){
     var htmlStack = ''; // used to stack the multiple results form arrObjects results
     $.each(obj,function(key,value){
       if(typeof value != 'object'){
-        var str = '<span>'+key+' :</span><span>'+value+'</span>';
+        var str = '<span class="ellipsis" title="'+key+'">'+key+' :</span><span>'+value+'</span>';
         if(value.indexOf('#') != -1)
-          str = '<span>'+key+' :</span><span class="bd-'+utils.getObjKeyByValue(config.colors, value)+'-bottom-5 p-bottom-0">'+value+'</span>';
+          str = '<span class="ellipsis" title="'+key+'">'+key+' :</span><span class="bd-bottom-'+utils.getObjKeyByValue(config.colors, value)+'-5 p-bottom-0">'+value+'</span>';
         rows += require('mustache-loader!html-loader?interpolate!./templates/config_row.html')({str: str});
       }
       else
@@ -295,6 +295,6 @@ $(function () {
       notif_fade.success('Copied to clipboard !');
   });
 
-  // $('#guideline nav a').first().trigger('click');
-  $('#guideline nav a').last().trigger('click');
+  $('#guideline nav a').first().trigger('click');
+  // $('#guideline nav a').last().trigger('click');
 });
