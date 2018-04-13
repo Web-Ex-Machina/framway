@@ -1,0 +1,26 @@
+<h3>Syntax</h3>
+<div class="block-std center">flex<span class="tag">-valueofbooleanlikeproperty</span><span class="tag">-propertyname--propertyvalue</span><span class="tag">...</span></div>
+<h3>Example</h3>
+<div class="block-std center"><span class="tag">flex-wrap-justifycontent--center-alignitems--flexend</span></div>
+<h3>Rules</h3>
+<div class="block-std">
+  <ul class="m-top">
+    <li class="m-bottom">
+      Each property name or value has to be normalized: lowercase, no space, no <span class="tag"> - </span> or <span class="tag"> _ </span> <br>
+      <i>Example: <span class="tag">justify-content</span> become <span class="tag">justifycontent</span>, <span class="tag">flex-start</span> become <span class="tag">flexstart</span>, etc...</i>
+    </li>
+    <li class="m-bottom">
+      Properties which are boolean-like (flex-wrap, flex-direction, ..) are directly specified by their values.<br>
+      <i>Example: <span class="tag">flex-wrap-column</span>, <span class="tag">flex-nowrap-row</span></i>
+    </li>
+    <li class="m-bottom">
+      flex-grow property applied on container affect all children. <br>
+      <i>Example: <span class="tag">flex-flexgrow--1</span> mean all the children's flex-grow is set to 1.</i>
+    </li>
+    <li class="m-bottom">
+      Children's related property can be set on them, with the same syntax but without the flex- prefix :<br>
+      <p class="txt-center">flexgrow--<span class="tag">number</span>, alignself--<span class="tag">propertyvalue</span></p>
+      <i>Example: <span class="tag">flexgrow--1</span>, <span class="tag">alignself--flexend</span></i>
+    </li>
+  </ul>
+</div>

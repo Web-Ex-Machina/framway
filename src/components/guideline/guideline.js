@@ -14,10 +14,12 @@ if($('#guideline').length){
   });
   var configHtml = buildConfig(config,'global');
   var stylingHtml = buildStyling();
+  var classesHtml = buildClasses();
   var componentsHtml = buildComponents();
 
   var html = require('mustache-loader!html-loader?interpolate!./templates/index.html')({
     config: configHtml,
+    classes: classesHtml,
     styling: stylingHtml,
     components: componentsHtml,
   });
@@ -225,6 +227,23 @@ if($('#guideline').length){
     return styling;
   }
 
+  function buildClasses(){
+    var classes = {nav : '', content : ''};
+    var arrClasses = ['flex'];
+    $.each(arrClasses,function(index,className){
+      classes.nav += '<ul>';
+      classes.nav += '<li><a href="#framway__classes-'+className+'">'+className.replace(className[0], className[0].toUpperCase())+'</a></li>';
+      classes.content += '<div class="item active" id="framway__classes-'+className+'">'
+                        + '<h2 class="ft-i sep-bottom">'+className.replace(className[0], className[0].toUpperCase())+'</h2>'
+                        + require('mustache-loader!html-loader?interpolate!./classes/'+className+'.html')()
+                        + '</div>';
+    });
+
+    classes.nav += '</ul>';
+
+    return classes;
+  }
+
   function buildTabs(tabsConfig){
     var template = require('mustache-loader?noShortcut!html-loader?interpolate!./templates/tabs.html');
     var nav = '';
@@ -295,6 +314,7 @@ $(function () {
       notif_fade.success('Copied to clipboard !');
   });
 
-  $('#guideline nav a').first().trigger('click');
+  $('#guideline nav a').eq(2).trigger('click');
+  // $('#guideline nav a').first().trigger('click');
   // $('#guideline nav a').last().trigger('click');
 });

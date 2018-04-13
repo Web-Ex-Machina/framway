@@ -56,7 +56,7 @@ pre .copy{position: absolute; right: $spacing; @extend .btn-sm;}
 
 .ellipsis{@include ellipsis();}
 
-.center{margin: auto;}
+.center{margin: auto; width: fit-content;}
 .center-block{margin: auto; display: block;}
 
 .fl-left, .float-left{float: left;}
@@ -73,6 +73,21 @@ pre .copy{position: absolute; right: $spacing; @extend .btn-sm;}
 .text-left, .txt-left{text-align: left;}
 .text-center, .txt-center{text-align: center;}
 
+.tag {
+  background: #fff;
+  border: 1px solid #ddd;
+  display: inline-block;
+  padding: 2px 8px 5px;
+  height: auto;
+  margin: 0 5px;
+  border-radius: 0.3em;
+  font-style: normal;
+  text-transform: none;
+  text-decoration: none;
+  color: inherit;
+  font-family: monospace;
+  font-size: 0.9em;
+}
 
 /*-----------------------------------------------------------------------------------------------------------------------------*/
 // FONTS CLASSES
