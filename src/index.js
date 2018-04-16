@@ -6,11 +6,11 @@ require('./js/framway.js');
 
 app.loadComponents([
   'tabs',
-  'block-std',
   'goto',
   'foldingbox',
-  'block-img',
   'sliderFW',
+  'block-std',
+  'block-img',
   // 'brick',
   'guideline',
 ]);

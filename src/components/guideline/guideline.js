@@ -56,6 +56,13 @@ if($('#guideline').length){
       if($(this).data('default'))
         $(this).trigger('click');
     });
+
+    // NUMBERS
+    $(constructor).find('.number').bind('change',function(e){
+      applyConstructorChanges($(this));
+    }).each(function(){
+        $(this).trigger('change');
+    });
   });
 
   function applyConstructorChanges($el){
@@ -74,8 +81,18 @@ if($('#guideline').length){
           match.push(this.value);
       });
       match = match.join(' ');
-    } else if($el.hasClass('checkbox') && value == "undefined"){
+    }
+    else if($el.hasClass('checkbox') && value == "undefined"){
       value = $el.isChecked();
+    }
+    else if($el.hasClass('number')){
+      match = [];
+      for (var i = $el.attr('min'); i <= $el.attr('max'); i++) {
+        match.push($el.data('prefix')+i);
+      }
+      match = match.join(' ');
+      if($el.val())
+        value = $el.data('prefix') + $el.val();
     }
 
     if(attr == 'class'){
@@ -128,6 +145,10 @@ if($('#guideline').length){
             } else if(ref.hasClass('checkbox')){
               inputGroup += '<input type="checkbox" value="'+ref.data('value')+'" class="checkbox" name="'+component+','+target+','+name+'" id="'+component+','+target+','+name+'" data-default="'+ref.data('selected')+'" >'
                           + '<label for="'+component+','+target+','+name+'">'+ref.data('label')+'</label>';
+            } else if(ref.hasClass('number')){
+              var range = ref.data('range').split('-');
+              inputGroup += '<label for="'+component+','+target+','+name+'">'+ref.data('label')+'</label>'
+              inputGroup += '<input type="number" min="'+range[0]+'" max="'+range[1]+'" data-prefix="'+ref.data('prefix')+'" value="'+ref.data('value')+'" class="number" name="'+component+','+target+','+name+'" id="'+component+','+target+','+name+'">';
             }
 
             inputGroup += '</div>';
@@ -314,7 +335,7 @@ $(function () {
       notif_fade.success('Copied to clipboard !');
   });
 
-  $('#guideline nav a').eq(2).trigger('click');
+  // $('#guideline nav a').eq(2).trigger('click');
   // $('#guideline nav a').first().trigger('click');
-  // $('#guideline nav a').last().trigger('click');
+  $('#guideline nav a').last().trigger('click');
 });

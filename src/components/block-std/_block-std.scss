@@ -1,7 +1,10 @@
 .block-std{ max-width: 100%;
   @extend
+  %paper,
+  %lift,
   .bg-white,
   .m-bottom,
-  .p-all !optional;
+  .p-all
+  !optional;
   &>*:last-child{margin-bottom: 0;}
 }
