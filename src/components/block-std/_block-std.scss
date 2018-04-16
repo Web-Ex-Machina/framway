@@ -1,4 +1,5 @@
-.block-std{ @extend
+.block-std{ max-width: 100%;
+  @extend
   .bg-white,
   .m-bottom,
   .p-all !optional;
