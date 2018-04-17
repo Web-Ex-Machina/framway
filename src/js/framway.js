@@ -65,5 +65,7 @@ $(function () {
 });
 
 require('../js/polyfills.js');
-global.utils = require('../js/utils.js');
+require('../js/component.js');
 global.app = new Framway();
+global.utils = utils;
+global.$ = global.jQuery = $;

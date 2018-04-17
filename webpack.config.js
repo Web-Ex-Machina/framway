@@ -69,12 +69,19 @@ module.exports = {
         ],
     },
     devtool: 'source-map',
+    resolve: {
+        extensions: ['.js'],
+        alias: {
+            'utils': path.resolve(__dirname, './src/js/utils')  // <-- When you build or restart dev-server, you'll get an error if the path to your utils.js file is incorrect.
+        }
+    },
     plugins: [
         new LiveReloadPlugin(),
         new ExtractTextPlugin({
             filename : "css/[name].css",
         }),
         new webpack.ProvidePlugin({
+            utils: 'utils',
             $: "jquery",
             jQuery: "jquery", // enable $ and jQuery as global variables
             Tether: 'tether',

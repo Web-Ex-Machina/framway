@@ -338,4 +338,5 @@ $(function () {
   // $('#guideline nav a').eq(2).trigger('click');
   // $('#guideline nav a').first().trigger('click');
   $('#guideline nav a').last().trigger('click');
+
 });

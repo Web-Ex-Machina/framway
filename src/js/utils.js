@@ -1,4 +1,4 @@
-function Utils(){
+var Utils = function Utils(){
   var utils = this;
 
   /**
@@ -75,17 +75,6 @@ function Utils(){
   };
   var STRIP_COMMENTS = /(\/\/.*$)|(\/\*[\s\S]*?\*\/)|(\s*=[^,\)]*(('(?:\\'|[^'\r\n])*')|("(?:\\"|[^"\r\n])*"))|(\s*=[^,\)]*))/mg;
   var ARGUMENT_NAMES = /([^\s,]+)/g;
-
-  /**
-   * return a object containing the viewport width and height
-   * @return {Object}
-   */
-  utils.getDimensions = function(){
-    return {
-      width: window.innerWidth,
-      height: window.innerHeight,
-    }
-  };
 
   /**
    * return an array of method's names from an object
@@ -299,6 +288,17 @@ function Utils(){
   global.viewport = utils.getDimensions();
   return utils;
 }
+/**
+ * return a object containing the viewport width and height
+ * @return {Object}
+ */
+Utils.prototype.getDimensions = function(){
+  return {
+    width: window.innerWidth,
+    height: window.innerHeight,
+  }
+};
+
 
 // check end of scrolling
 $.fn.scrollEnd = function (callback, timeout) {
@@ -328,13 +328,10 @@ $.event.special.destroyed = {
   }
 }
 
-
 $(function () {
   $(window).resize(function(){
-    viewport = utils.getDimensions();
+    viewport = Utils.prototype.getDimensions();
   });
 });
-
-
 
 module.exports = new Utils();
