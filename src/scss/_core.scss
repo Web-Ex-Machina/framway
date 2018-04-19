@@ -420,12 +420,12 @@ ul.tags>li{padding: 3px 8px 5px; background: btn(background); color: btn(font-co
   border: btn(border-size) solid btn(background);
   background-color: btn(background);
   color: btn(font-color);
-  margin-bottom: 6px;
   cursor: pointer;
   font-family: inherit;
   text-decoration: none;
   @extend .ft-normal;
   @include transition(all .2s ease-in-out);
+  &:not([class*="m-bottom"]){margin-bottom: 6px;}
   &:focus{color: btn(font-color); text-decoration: none; outline: none; @include box-shadow(none);}
   &:hover{color: btn(font-color); text-decoration: none;}
   &>a{padding: .4em 1.5em .5em; margin: -.4em -1.5em -.5em;}
@@ -504,7 +504,7 @@ button:not([class*="btn-bg"]):not([class*="btn-bd"]):not([class*="toast"]),
 @each $value in $flexvalues{
   $valueflat : str-replace($value,'-','');
   *[class*='flex-'][class*='-justifycontent--#{$valueflat}']{justify-content: $value;}
-  *[class*='flex-'][class*='-alignitems--#{$valueflat}']{justify-content: $value;}
+  *[class*='flex-'][class*='-alignitems--#{$valueflat}']{align-items: $value;}
 
   .alignself--#{$valueflat}{align-self: $value;}
 }

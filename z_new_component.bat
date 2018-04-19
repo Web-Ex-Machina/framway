@@ -1,4 +1,4 @@
-set name=block-img
+set name=testCompo
 
 rem creating the component structure ---------------------------------------------------------
 cd src/components
@@ -7,11 +7,12 @@ cd "%name%"
 type NUL > "_%name%.scss"
 type NUL > "%name%.js"
 type NUL > sample.html
+@echo off
+setlocal enabledelayedexpansion
+echo ^<div class="%name%"^>^</div^> >> sample.html
 
 rem writing the call in main scss file ---------------------------------------------------------
 cd ../../scss
-@echo off
-setlocal enabledelayedexpansion
 set num = 0
 
 for /f "tokens=*" %%a in (framway.scss) do (
