@@ -1,7 +1,7 @@
 .block-img{max-width: 100%; margin-bottom: $spacing;
-  &.title--fadein,
-  &.title--fadeout{@extend .title--inner;}
-  &[class*="title--from"]{@extend .title--full;}
+  &.content--fadein,
+  &.content--fadeout{@extend .content--inner;}
+  &[class*="content--from"]{@extend .content--full;}
 }
 .block-img__wrapper{
   text-decoration: none;
@@ -41,7 +41,7 @@
   .r_1-1 &:before {padding-top: 100%;}
   .r_1-2 &:before {padding-top: 200%;}
 }
-.block-img__title{
+.block-img__content{
   @include flex-container(row,wrap,center,center);
   width: 100%;
   padding: $spacing/2;
@@ -49,31 +49,31 @@
   color: body(background);
   text-align: center;
   order: 1;
-  .title--inner &{position: absolute; bottom: 0;}
-  .title--inner.title--top &{bottom: auto; top:0}
-  .title--top &{order: 0}
-  .title--full &{position: absolute; top: 0; width: 100%; height: 100%;}
+  .content--inner &{position: absolute; bottom: 0;}
+  .content--inner.content--top &{bottom: auto; top:0}
+  .content--top &{order: 0}
+  .content--full &{position: absolute; top: 0; width: 100%; height: 100%;}
 
-  .title--fadeout &,
-  .title--fadein &{transition: opacity 0.6s;}
-  .title--fadein &,
-  .title--fadeout:hover &{ opacity: 0;}
-  .title--fadeout &,
-  .title--fadein:hover &{ opacity: 1;}
+  .content--fadeout &,
+  .content--fadein &{transition: opacity 0.6s;}
+  .content--fadein &,
+  .content--fadeout:hover &{ opacity: 0;}
+  .content--fadeout &,
+  .content--fadein:hover &{ opacity: 1;}
 
-  .title--fromtop &{transform: translate3d(0,-101%,0);}
-  .title--frombottom &{transform: translate3d(0,101%,0);}
-  .title--fromleft &{transform: translate3d(-101%,0,0);}
-  .title--fromright &{transform: translate3d(101%,0,0);}
-  [class*="title--from"] &{transition: transform 0.6s; opacity: 1;}
-  [class*="title--from"]:hover &{transform: translate3d(0,0,0); opacity: 1;}
+  .content--fromtop &{transform: translate3d(0,-101%,0);}
+  .content--frombottom &{transform: translate3d(0,101%,0);}
+  .content--fromleft &{transform: translate3d(-101%,0,0);}
+  .content--fromright &{transform: translate3d(101%,0,0);}
+  [class*="content--from"] &{transition: transform 0.6s; opacity: 1;}
+  [class*="content--from"]:hover &{transform: translate3d(0,0,0); opacity: 1;}
 
-  .title__text--left &{@include justify-content(flex-start);}
-  .title__text--right &{@include justify-content(flex-end);}
-  .title__text--top &{@include align-items(flex-start);}
-  .title__text--bottom &{@include align-items(flex-end);}
+  .content__text--left &{@include justify-content(flex-start);}
+  .content__text--right &{@include justify-content(flex-end);}
+  .content__text--top &{@include align-items(flex-start);}
+  .content__text--bottom &{@include align-items(flex-end);}
 
   @for $index from 0 through 10 {
-    .title__opacity--#{$index} &{background-color: rgba(body(font-color), $index*.1);}
+    .content__opacity--#{$index} &{background-color: rgba(body(font-color), $index*.1);}
   }
 }

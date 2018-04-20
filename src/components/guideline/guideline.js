@@ -127,7 +127,13 @@ if($('#guideline').length){
             var ref = $(this);
             var target = ref.data('attr');
             var name = ref.data('label').replace(' ','-').toLowerCase();
+            var desc = ref.html() || false;
             var inputGroup = '<div class="form-group col-12 col-xl-6">';
+
+            if(desc){
+              inputGroup += '<i class="descIcon fas fa-question-circle"></i>';
+              inputGroup += '<div class="descText">'+desc+'</div>';
+            }
 
             if(ref.hasClass('select')){
               var arrVal = ref.data('value').split(',');

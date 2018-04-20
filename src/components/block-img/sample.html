@@ -4,26 +4,51 @@
       <div class="block-img__figure">
         <img src="../../img/san_francisco_tramway.jpg" alt="sample image">
       </div>
-      <div class="block-img__title">
+      <div class="block-img__content">
         Lorem ipsum dolor sit amet
       </div>
     </a>
   </div>
 </div>
 <div class="constructor">
-  <div class="input select" data-label="text horizontal" data-attr="class" data-value="title__text--left,title__text--right" data-output="Text left,Text right" data-selected=""></div>
-  <div class="input select" data-label="text vertical" data-attr="class" data-value="title__text--top,title__text--bottom" data-output="Text top,Text bottom" data-selected=""></div>
-  <!-- <div class="input select" data-label="title position" data-attr="class" data-value="title--top,title--full" data-output="Title top,Title full" data-selected=""></div> -->
-  <div class="input select" data-label="title translate" data-attr="class" data-value="title--fromtop,title--frombottom,title--fromleft,title--fromright" data-output="From top,From bottom,From left,From right" data-selected=""></div>
-  <div class="input select" data-label="title fade" data-attr="class" data-value="title--fadein,title--fadeout" data-output="Fade in,Fade out" data-selected=""></div>
-  <div class="w-100"></div>
-  <div class="input checkbox" data-label="Title inner" data-attr="class" data-value="title--inner" data-selected=""></div>
-  <div class="input checkbox" data-label="Title full" data-attr="class" data-value="title--full" data-selected=""></div>
-  <div class="input number" data-label="Title opacity" data-attr="class" data-range="0-10" data-value="" data-prefix="title__opacity--"></div>
-  <div class="w-100"></div>
-  <div class="input select" data-label="img zoom" data-attr="class" data-value="zoomin,zoomout" data-output="Zoom in,Zoom out" data-selected=""></div>
-  <div class="input select" data-label="img fade" data-attr="class" data-value="fadetogrey,fadetocolor" data-output="Fade to grey,Fade to color" data-selected=""></div>
-  <div class="input select" data-label="img vertical" data-attr="class" data-value="img--top,img--bottom" data-output="Top,Bottom" data-selected=""></div>
-  <div class="input select" data-label="img horizontal" data-attr="class" data-value="img--left,img--right" data-output="Left,Right" data-selected=""></div>
-  <div class="input select" data-label="img ratio" data-attr="class" data-value="r_1-1,r_2-1,r_1-2,r_16-9" data-output="1:1,2:1,1:2,16:9" data-selected=""></div>
+  <p>Image properties</p>
+  <div class="input select" data-label="ratio" data-attr="class" data-value="r_1-1,r_2-1,r_1-2,r_16-9" data-output="1:1,2:1,1:2,16:9" data-selected=""></div>
+  <p>Image alignement</p>
+  <div class="input select" data-label="vertical" data-attr="class" data-value="img--top,img--bottom" data-output="Top,Bottom" data-selected="">
+    Align the image only if cropped
+  </div>
+  <div class="input select" data-label="horizontal" data-attr="class" data-value="img--left,img--right" data-output="Left,Right" data-selected="">
+    Align the image only if cropped
+  </div>
+  <p>Image effects on hover</p>
+  <div class="input select" data-label="zoom" data-attr="class" data-value="zoomin,zoomout" data-output="Zoom in,Zoom out" data-selected="">
+    Apply a zoom effect on hover. Can be stack with other effects.
+  </div>
+  <div class="input select" data-label="color fade" data-attr="class" data-value="fadetogrey,fadetocolor" data-output="Fade to grey,Fade to color" data-selected="">
+    Apply a color effect on hover. Can be stack with other effects.
+  </div>
+  <p>Text alignement</p>
+  <div class="input select" data-label="horizontal" data-attr="class" data-value="content__text--left,content__text--right" data-output="Text left,Text right" data-selected="">
+    Align the text in its container.
+  </div>
+  <div class="input select" data-label="vertical" data-attr="class" data-value="content__text--top,content__text--bottom" data-output="Text top,Text bottom" data-selected="">
+    Align the text in its container. Only apply on a full height container.
+  </div>
+  <p>Content properties</p>
+  <div class="input select" data-label="format" data-attr="class" data-value="content--inner,content--full"  data-output="Inner,Full width"  data-selected="">
+    <b>Inner</b>: place the content container in the block. (over the image)<br>
+    <b>Full width</b>: the container will take all remaining space. (include <b>Inner</b>)
+  </div>
+  <div class="input number" data-label="background opacity" data-attr="class" data-range="0-10" data-value="" data-prefix="content__opacity--">
+    Set transparency to the content background. From 0 to 10, where 0 is non-visible and 10 is fully opaque.
+  </div>
+  <p>Content effects on hover</p>
+  <div class="input select" data-label="translate" data-attr="class" data-value="content--fromtop,content--frombottom,content--fromleft,content--fromright" data-output="From top,From bottom,From left,From right" data-selected="">
+    Make the content appears on hover from the indicated side. Non stackable with fade effects.<br>
+    Include: <b>Inner, Full width</b>
+  </div>
+  <div class="input select" data-label="fade" data-attr="class" data-value="content--fadein,content--fadeout" data-output="Fade in,Fade out" data-selected="">
+    Apply a fading effect on hover. Non stackable with translate effects.<br>
+    Include: <b>Inner</b>
+  </div>
 </div>

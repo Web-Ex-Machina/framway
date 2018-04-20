@@ -10436,8 +10436,7 @@ return jQuery;
 
 
 /***/ }),
-/* 2 */,
-/* 3 */
+/* 2 */
 /***/ (function(module, exports) {
 
 var g;
@@ -10464,6 +10463,7 @@ module.exports = g;
 
 
 /***/ }),
+/* 3 */,
 /* 4 */
 /***/ (function(module, exports) {
 
@@ -17140,7 +17140,7 @@ Popper.Defaults = Defaults;
 /* harmony default export */ __webpack_exports__["default"] = (Popper);
 //# sourceMappingURL=popper.js.map
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
 /* 12 */
@@ -22714,7 +22714,7 @@ bunker(function () {
 	return Promise;
 });
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(18).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(18).setImmediate))
 
 /***/ }),
 /* 18 */
@@ -22966,7 +22966,7 @@ exports.clearImmediate = clearImmediate;
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(4)))
 
 /***/ }),
 /* 20 */

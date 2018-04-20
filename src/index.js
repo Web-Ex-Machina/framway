@@ -8,8 +8,8 @@ app.loadComponents([
   'goto',
   'foldingbox',
   'block-std',
-  'block-img',
   'sliderFW',
+  'block-img',
   // 'brick',
   'guideline',
 ]);
