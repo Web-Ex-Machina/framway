@@ -138,9 +138,23 @@ if($('#guideline').length){
             if(ref.hasClass('select')){
               var arrVal = ref.data('value').split(',');
               var arrOutput = ref.data('output').split(',');
+              if(arrVal[0].indexOf('#colors') != -1){
+                var baseValue = arrVal[0].replace('#colors','');
+                arrVal = [];
+                $.each(config.colors,function(key,color){
+                  arrVal.push(baseValue+key);
+                });
+              }
+              if(arrOutput[0].indexOf('#colors') != -1){
+                var baseValue = arrOutput[0].replace('#colors','');
+                arrOutput = [];
+                $.each(config.colors,function(key,color){
+                  arrOutput.push(baseValue+key);
+                });
+              }
               inputGroup += '<label for="'+component+','+target+','+name+'">'+ref.data('label')+'</label>'
                           + '<select class="select" name="'+component+','+target+','+name+'" id="'+component+','+target+','+name+'">'
-                          + '<option value=""> - </option>'
+                          + '<option value=""> - </option>';
               $.each(arrVal,function(index,val){
                 if(val == ref.data('selected'))
                   inputGroup += '<option value="'+val+'" selected>'+arrOutput[index]+'</option>';

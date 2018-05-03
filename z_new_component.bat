@@ -1,4 +1,4 @@
-set name=testCompo
+set name=heroFW
 
 rem creating the component structure ---------------------------------------------------------
 cd src/components

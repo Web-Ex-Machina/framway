@@ -45,6 +45,8 @@ pre{background: color(blacklight); color: color(white); padding: $spacing/2; bor
 pre code{display: block; position: static;}
 pre .copy{position: absolute; right: $spacing; @extend .btn-sm;}
 
+.force-full{width: 100vw; position: relative; left: 50%; transform: translateX(-50%);}
+
 /*-----------------------------------------------------------------------------------------------------------------------------*/
 /* OVERALL CLASSES */
 .no-events{pointer-events: none;}
@@ -267,7 +269,9 @@ ul.tags>li{padding: 3px 8px 5px; background: btn(background); color: btn(font-co
       h#{$index}.bg-#{$key},
       .h#{$index}.bg-#{$key},
       .bg-#{$key} h#{$index},
-      .bg-#{$key} .h#{$index}{color: contrast(body(title-font-color),$value);}
+      .bg-#{$key} .h#{$index}{
+        color: contrast(body(title-font-color),$value);
+      }
     }
 
     /* links */

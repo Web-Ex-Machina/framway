@@ -1,0 +1,40 @@
+.heroFW{ margin-bottom: $spacing; padding: 0; background-color: body(background);
+  @for $index from 0 through 6{
+    &[class*="ft-"] h#{$index},
+    &[class*="ft-"] .h#{$index}{color: inherit;}
+  }
+}
+.heroFW__wrapper{text-decoration: none; color: inherit; overflow: hidden; position: relative; display: block; width: 100%; height: 100%; }
+.heroFW__figure{
+  width: 100%;
+  height: 100%;
+  @for $index from 0 through 10 {
+    .figure__opacity--#{$index} &{opacity: $index*.1;}
+  }
+  & img{@include object-fit(cover); width: 100%;height: 100%;}
+  @each $side_1 in $sides {
+    @if $side_1 == 'left' or $side_1 == 'right' {
+      .img--#{$side_1} & img{ object-fit: cover; object-position:#{$side_1}; }
+      @each $side_2 in $sides {
+        @if $side_2 == 'top' or $side_2 == 'bottom' {
+          .img--#{$side_2} & img{ object-fit: cover; object-position:#{$side_2}; }
+          .img--#{$side_1}.img--#{$side_2} & img{ object-fit: cover; object-position:#{$side_1+' '+$side_2}; }
+        }
+      }
+    }
+  }
+}
+.heroFW__content{position: absolute; z-index: 0; left: 0; top: 0; width: 100%;height: 100%; padding: $spacing*2; @include flex-container(row,wrap,flex-start,center);
+  .heroFW[class*="content--"][class*="--center"] &{justify-content: center; align-items: center;}
+  .heroFW[class*="content--"][class*="--left"] &{justify-content: flex-start;}
+  .heroFW[class*="content--"][class*="--right"] &{justify-content: flex-end;}
+  .heroFW[class*="content--"][class*="--top"] &{align-items: flex-start;}
+  .heroFW[class*="content--"][class*="--bottom"] &{align-items: flex-end;}
+  @each $key, $value in $colors{
+    .content__bg--#{$key} &:after{@include pseudo(); top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-color: $value;}
+  }
+  @for $index from 0 through 10 {
+    .content__bg__opacity--#{$index} &:after{opacity: $index*.1;}
+  }
+  & .heroFW__content__wrapper{}
+}

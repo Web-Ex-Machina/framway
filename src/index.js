@@ -10,7 +10,7 @@ app.loadComponents([
   'block-std',
   'sliderFW',
   'block-img',
-  // 'brick',
+  'heroFW',
   'guideline',
 ]);
 console.log(app);
