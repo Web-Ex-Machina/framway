@@ -9,8 +9,8 @@ app.loadComponents([
   'foldingbox',
   'block-std',
   'sliderFW',
-  'block-img',
   'heroFW',
+  'block-img',
   'guideline',
 ]);
 console.log(app);

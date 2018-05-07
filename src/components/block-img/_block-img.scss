@@ -2,6 +2,7 @@
   &.content--fadein,
   &.content--fadeout{@extend .content--inner;}
   &[class*="content--from"]{@extend .content--full;}
+  &[class*="ft-"] *{color: inherit;}
 }
 .block-img__wrapper{
   text-decoration: none;
@@ -11,7 +12,7 @@
   display: block;
   width: 100%;
   @include flex-container(column);
-  @extend %paper,%lift !optional;
+  @extend %paper !optional;
   *[class*="r_"] &{display: block; height: auto;}
   &:hover{color: inherit; text-decoration: none;}
 }
@@ -45,9 +46,9 @@
   @include flex-container(row,wrap,center,center);
   width: 100%;
   padding: $spacing/2;
-  background-color: body(font-color);
   color: body(background);
   text-align: center;
+  z-index: 1;
   order: 1;
   .content--inner &{position: absolute; bottom: 0;}
   .content--inner.content--top &{bottom: auto; top:0}
@@ -73,7 +74,12 @@
   .content__text--top &{@include align-items(flex-start);}
   .content__text--bottom &{@include align-items(flex-end);}
 
+  &:after{@include pseudo(); top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-color: body(font-color);}
+
+  @each $key, $value in $colors{
+    .content__bg--#{$key} &:after{ background-color: $value;}
+  }
   @for $index from 0 through 10 {
-    .content__opacity--#{$index} &{background-color: rgba(body(font-color), $index*.1);}
+    .content__bg__opacity--#{$index} &:after{opacity: $index*.1;}
   }
 }

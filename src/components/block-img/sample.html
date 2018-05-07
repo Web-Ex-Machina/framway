@@ -35,12 +35,18 @@
     Align the text in its container. Only apply on a full height container.
   </div>
   <p>Content properties</p>
-  <div class="input select" data-label="format" data-attr="class" data-value="content--inner,content--full"  data-output="Inner,Full width"  data-selected="">
+  <div class="input select" data-label="format" data-attr="class" data-value="content--inner,content--full"  data-output="Inner,Full width"  data-selected="content--inner">
     <b>Inner</b>: place the content container in the block. (over the image)<br>
     <b>Full width</b>: the container will take all remaining space. (include <b>Inner</b>)
   </div>
-  <div class="input number" data-label="background opacity" data-attr="class" data-range="0-10" data-value="" data-prefix="content__opacity--">
-    Set transparency to the content background. From 0 to 10, where 0 is non-visible and 10 is fully opaque.
+  <div class="input select" data-label="Font color" data-attr="class" data-value="ft-#colors" data-output="#colors" data-selected="">
+    Set the content's font color
+  </div>
+  <div class="input select" data-label="Background color" data-attr="class" data-value="content__bg--#colors" data-output="#colors" data-selected="">
+    Set the content's background color
+  </div>
+  <div class="input number" data-label="background opacity" data-attr="class" data-range="0-10" data-value="" data-prefix="content__bg__opacity--">
+    Set transparency to the content's background. From 0 to 10, where 0 is non-visible and 10 is fully opaque.
   </div>
   <p>Content effects on hover</p>
   <div class="input select" data-label="translate" data-attr="class" data-value="content--fromtop,content--frombottom,content--fromleft,content--fromright" data-output="From top,From bottom,From left,From right" data-selected="">

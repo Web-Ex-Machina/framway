@@ -85,6 +85,10 @@ if($('#guideline').length){
     else if($el.hasClass('checkbox') && value == "undefined"){
       value = $el.isChecked();
     }
+    else if($el.hasClass('checkbox') && value != "undefined" && attr != "class"){
+      if($el.isChecked()) value = $el.val();
+      else value = '';
+    }
     else if($el.hasClass('number')){
       match = [];
       for (var i = $el.attr('min'); i <= $el.attr('max'); i++) {

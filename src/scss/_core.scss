@@ -201,7 +201,7 @@ pre .copy{position: absolute; right: $spacing; @extend .btn-sm;}
 
 /*-----------------------------------------------------------------------------------------------------------------------------*/
 // TITLES
-@for $index from 0 through 6{
+@for $index from 1 through 6{
   h#{$index},
   .h#{$index}{color: body(title-font-color); line-height: inherit;
     &.sep-bottom{margin-bottom: 0; &:after{margin-top: 1rem;}}
@@ -265,7 +265,7 @@ ul.tags>li{padding: 3px 8px 5px; background: btn(background); color: btn(font-co
     .bg-#{$key} .sep{ background: contrast(body(font-color), $value);}
 
     /* titles */
-    @for $index from 0 through 6{
+    @for $index from 1 through 6{
       h#{$index}.bg-#{$key},
       .h#{$index}.bg-#{$key},
       .bg-#{$key} h#{$index},
