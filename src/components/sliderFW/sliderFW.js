@@ -145,6 +145,9 @@ SliderFW.prototype.setHeight = function() {
       $clone.remove();
     });
   }
+  if(this.$el.data('height') == "viewport"){
+    heightBox = viewport.height - $('#header').outerHeight();
+  }
   slider.content.$el.height(heightBox);
   return this;
 };
