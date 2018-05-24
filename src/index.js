@@ -7,10 +7,11 @@ app.loadComponents([
   'tabs',
   'goto',
   'foldingbox',
-  'block-std',
   'sliderFW',
   'heroFW',
+  'block-std',
   'block-img',
+  'list-block',
   'guideline',
 ]);
 console.log(app);

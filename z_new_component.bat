@@ -1,4 +1,4 @@
-set name=heroFW
+set name=list-block
 
 rem creating the component structure ---------------------------------------------------------
 cd src/components

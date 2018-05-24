@@ -16,32 +16,7 @@
   *[class*="r_"] &{display: block; height: auto;}
   &:hover{color: inherit; text-decoration: none;}
 }
-.block-img__figure{position: relative; overflow: hidden; @include flex-grow();  width: 100%; order: 1;
-  & img{height: 100%; width: 100%; object-fit: cover;
-    pointer-events: none;
-  }
-  *[class*="r_"] &{
-    &:before{content: ""; width: 1px; margin-left: -1px; float: left; height: 0; padding-top: 100%;}
-    &:after {content: ""; display: table; clear: both;}
-    & img{width: 100%; height: 100%;object-fit: cover; position: absolute; left: 0; top: 0;}
-  }
-  @each $side_1 in $sides {
-    @if $side_1 == 'left' or $side_1 == 'right' {
-      *[class*="r_"].img--#{$side_1} & img{ object-fit: cover; object-position:#{$side_1}; }
-      @each $side_2 in $sides {
-        @if $side_2 == 'top' or $side_2 == 'bottom' {
-          *[class*="r_"].img--#{$side_2} & img{ object-fit: cover; object-position:#{$side_2}; }
-          *[class*="r_"].img--#{$side_1}.img--#{$side_2} & img{ object-fit: cover; object-position:#{$side_1+' '+$side_2}; }
-        }
-      }
-    }
-  }
-
-  .r_16-9 &:before{padding-top: 56.25%;}
-  .r_2-1 &:before {padding-top: 50%;}
-  .r_1-1 &:before {padding-top: 100%;}
-  .r_1-2 &:before {padding-top: 200%;}
-}
+.block-img__figure{@extend %img-container;}
 .block-img__content{
   @include flex-container(row,wrap,center,center);
   width: 100%;
@@ -49,10 +24,8 @@
   color: body(background);
   text-align: center;
   z-index: 1;
-  order: 1;
   .content--inner &{position: absolute; bottom: 0;}
   .content--inner.content--top &{bottom: auto; top:0}
-  .content--top &{order: 0}
   .content--full &{position: absolute; top: 0; width: 100%; height: 100%;}
 
   .content--fadeout &,
