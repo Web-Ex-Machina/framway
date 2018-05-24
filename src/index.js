@@ -11,7 +11,7 @@ app.loadComponents([
   'heroFW',
   'block-std',
   'block-img',
-  'list-block',
+  'block-list',
   'guideline',
 ]);
 console.log(app);
