@@ -11,32 +11,31 @@
   .m-bottom,
   .p-all
   !optional;
+  @each $key, $value in $colors{
+    .content__bg--#{$key} &{ background-color: $value; }
+    .headline--outer.content__bg--#{$key} & .block-list__headline>div{ background-color: rgba($value,1); }
+  }
 }
-.block-list__figure{@extend %img-container;}
+.block-list__figure{@extend %img-container; margin-bottom: 0;}
 
 .block-list__content{padding: $spacing; position: relative; z-index: 1; flex-grow: 1; @include flex-container(column,wrap,center);
   & p:last-of-type{margin-bottom: 0.2rem;}
-
-  &:after{@include pseudo(); top: 0; left: 0; width: 100%; height: 100%; z-index: -1;}
-  @each $key, $value in $colors{
-    .content__bg--#{$key} &:after{ background-color: $value;}
-    .headline--outer.content__bg--#{$key} & .block-list__headline>div:after{background-color: $value;}
-  }
-  @for $index from 0 through 10 {
-    .content__bg__opacity--#{$index} &:after{opacity: $index*.1;}
-    .headline--outer.content__bg__opacity--#{$index} & .block-list__headline>div:after{opacity: $index*.1;}
-  }
 }
 
-.block-list__headline{opacity: 0.6; @include flex-container(row,wrap,space-between);  transform: translateY(-50%);
-  .headline--outer &{opacity: 1; position: absolute; bottom: 100%;left: 0;right: 0; margin-bottom: 0; transform: none;
-    &>div{position: absolute;  padding: .2rem .5rem; font-weight: bold; font-size: 0.6rem; text-transform: uppercase; bottom: 0;
-      &:before,
-      &:after{@include pseudo(); top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-color: color(white);}
-    }
-    & .block-list__category{left:0; border-top-left-radius: $radius;}
-    & .block-list__date{right:0; border-top-left-radius: $radius;}
+.block-list__footer,
+.block-list__headline{opacity: 0.6; @include flex-container(row,wrap,space-between); line-height: $spacing;
+  &>div{font-size: 0.8rem; padding: 0.5rem;}
+}
+.block-list__headline{ margin-bottom: -$spacing;
+  .headline--outer &{opacity: 1; position: absolute; left: 0;right: 0; top:0; margin: auto; line-height: 1;
+    &>div{ font-weight: bold; font-size: 0.6rem; text-transform: uppercase;  background-color: color(white);}
+    & .block-list__category{left:0; border-bottom-right-radius: $radius*2;}
+    & .block-list__date{right:0; border-bottom-left-radius: $radius*2;}
   }
   .headline--disable &{display: none;}
 }
+.block-list__footer{margin-top: -$spacing; flex-direction: row-reverse;
+  .footer--disable &{display: none;}
+}
+
 .block-list__title{font-weight: bold; text-transform: uppercase;margin-bottom: 0.2rem;}
