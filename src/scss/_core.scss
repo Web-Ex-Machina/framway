@@ -707,3 +707,6 @@ input.active::placeholder{color: contrast(input(placeholder-font-color),input-fo
 .form-group label:first-child+%radio,
 .form-group label:first-child+%checkbox{display: block; }
 .form-group:last-child>*:last-child{margin-bottom: 0;}
+
+/* MISC */
+#toast-container>div{box-shadow: none;}

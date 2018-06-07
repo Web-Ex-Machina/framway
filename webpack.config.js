@@ -9,6 +9,7 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var LiveReloadPlugin = require('webpack-livereload-plugin');
+var WebpackSynchronizableShellPlugin = require('webpack-synchronizable-shell-plugin');
 
 const webpack = require('webpack'); //to access built-in plugins
 const path = require('path');
@@ -42,17 +43,14 @@ module.exports = {
                     use: [
                         {loader: "css-loader",
                             options:{
-                                sourceMap:true, // enable sourcemap
+                                sourceMap:false, // enable sourcemap
                                 minimize: true, // minimize css
                                 module: true,  // enable use of imported css as js object
                                 localIdentName: '[local]', // used to keep the right name of a css class instead of a hash
                             }
                         },
-                        {loader: "postcss-loader", options:{sourceMap:true}},
-                        {loader: "sass-loader", options:{sourceMap:true}},
-                        {loader: "sass-resources-loader", options:{ // import every resource sass in each file that need it
-                            resources: ['./src/scss/_mixins.scss','./src/scss/_vars.scss','./src/scss/_config.scss']
-                        }},
+                        {loader: "postcss-loader", options:{sourceMap:false}},
+                        {loader: "sass-loader", options:{sourceMap:false}},
                     ],
                     publicPath: '../'
                 })
@@ -76,6 +74,15 @@ module.exports = {
         }
     },
     plugins: [
+        new WebpackSynchronizableShellPlugin({
+            onBuildStart:{
+                scripts: ['npm run prepare'],
+                blocking: true,
+                parallel: false
+            },
+            // onBuildEnd:{},
+            dev: false,
+        }),
         new LiveReloadPlugin(),
         new ExtractTextPlugin({
             filename : "css/[name].css",

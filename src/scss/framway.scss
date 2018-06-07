@@ -1,6 +1,11 @@
-/* Core css */
+/* Default configuration & mixins */
+@import 'mixins';
+@import 'vars';
+@import 'config';
+/* Themes configuration override */
+/* Core styles */
 @import 'core';
-/* Components */
+/* Components styles */
 @import '../components/heroFW/heroFW';
 @import '../components/sliderFW/sliderFW';
 @import '../components/brick/brick';
@@ -10,6 +15,4 @@
 @import '../components/block-std/block-std';
 @import '../components/block-img/block-img';
 @import '../components/guideline/guideline';
-/* Themes */
-@import './themes/toastr';
-@import './themes/user';
+/* Themes styles override */

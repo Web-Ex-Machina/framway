@@ -1,6 +1,9 @@
 if($('#guideline').length){
-  // require('./_guideline.scss');
   var config = require('../../scss/_config.scss');
+  $.each(app.themes,function(index,theme){
+    config = Object.assign(config,require('../../themes/'+theme+'/_config.scss'));
+  });
+
   $.each(config,function(key,value){
     if(value[0] == '(' && value[value.length - 1] == ")"){
       var objValue = value.replace('(','{').replace(')','}').replace(/ /g, '')
@@ -360,7 +363,7 @@ $(function () {
   });
 
   // $('#guideline nav a').eq(2).trigger('click');
-  // $('#guideline nav a').first().trigger('click');
-  $('#guideline nav a').last().trigger('click');
+  $('#guideline nav a').first().trigger('click');
+  // $('#guideline nav a').last().trigger('click');
 
 });

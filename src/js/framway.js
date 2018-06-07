@@ -1,6 +1,7 @@
 function Framway(){
   var framway = this;
   framway.components = [];
+  framway.themes = [];
   framway.useNotif = true;
   framway.$debug = $('<div id="debug"></div>').appendTo($('body'));
 
@@ -23,6 +24,25 @@ Framway.prototype.loadComponents = function(arrComponents){
   });
   if(framway.components.length)
     framway.log('Component(s) sucessfully loaded: \n - '+ framway.components.join('\n - '));
+  return framway;
+};
+
+/**
+ * load the components passed in parameters
+ * @param  {Array of Strings} arrComponents [array containing the components names]
+ */
+Framway.prototype.loadThemes = function(arrThemes){
+  var framway = this;
+  $.each(arrThemes,function(index,name){
+    try{
+      require('../themes/'+name+'/'+name+'.js');
+      framway.themes.push(name);
+    } catch(e){
+      framway.log('Component '+ name + ' failed to load.\n'+e);
+    }
+  });
+  if(framway.themes.length)
+    framway.log('Theme(s) sucessfully loaded: \n - '+ framway.themes.join('\n - '));
   return framway;
 };
 
