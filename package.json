@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "webpack --progress --colors",
     "watch": "webpack --progress --colors --watch",
-    "prepare": "node scripts/prepare.js"
+    "prepare": "node scripts/prepare.js",
+    "component": "node scripts/component.js",
+    "theme": "node scripts/theme.js"
   },
   "author": "Web ex Machina",
   "license": "ISC",

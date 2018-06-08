@@ -1,6 +1,5 @@
 module.exports = {
   themes:[
-    // 'test',
   ],
   components:[
     'heroFW',

@@ -13816,9 +13816,7 @@ module.exports = {"radius":"2px","spacing":"30px","border-default-size":"2px","b
 
 
 module.exports = {
-  themes: [
-    // 'test',
-  ],
+  themes: [],
   components: ['heroFW', 'sliderFW', 'brick', 'tabs', 'foldingbox', 'block-list', 'block-std', 'block-img', 'guideline']
 };
 
@@ -13865,7 +13863,7 @@ Framway.prototype.loadThemes = function (arrThemes) {
   var framway = this;
   $.each(arrThemes, function (index, name) {
     try {
-      __webpack_require__(98)("./" + name + '/' + name + '.js');
+      !(function webpackMissingModule() { var e = new Error("Cannot find module \"../themes\""); e.code = 'MODULE_NOT_FOUND'; throw e; }());
       framway.themes.push(name);
     } catch (e) {
       framway.log('Component ' + name + ' failed to load.\n' + e);
@@ -13913,8 +13911,8 @@ $(function () {
   });
 });
 
-__webpack_require__(100);
-__webpack_require__(101);
+__webpack_require__(98);
+__webpack_require__(99);
 global.app = new Framway();
 global.utils = utils;
 global.$ = global.jQuery = $;
@@ -14418,9 +14416,9 @@ var map = {
 	"./foldingbox/foldingbox.js": 37,
 	"./goto/goto.js": 38,
 	"./guideline/guideline.js": 39,
-	"./heroFW/heroFW.js": 95,
-	"./sliderFW/sliderFW.js": 96,
-	"./tabs/tabs.js": 97
+	"./heroFW/heroFW.js": 94,
+	"./sliderFW/sliderFW.js": 95,
+	"./tabs/tabs.js": 96
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -14944,7 +14942,7 @@ if ($('#guideline').length) {
 
   var config = __webpack_require__(90);
   $.each(app.themes, function (index, theme) {
-    config = Object.assign(config, __webpack_require__(91)("./" + theme + '/_config.scss'));
+    config = Object.assign(config, !(function webpackMissingModule() { var e = new Error("Cannot find module \"../../themes\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
   });
 
   $.each(config, function (key, value) {
@@ -14960,7 +14958,7 @@ if ($('#guideline').length) {
   var classesHtml = buildClasses();
   var componentsHtml = buildComponents();
 
-  var html = __webpack_require__(93)({
+  var html = __webpack_require__(92)({
     config: configHtml,
     classes: classesHtml,
     styling: stylingHtml,
@@ -16247,39 +16245,21 @@ module.exports = {"radius":"2px","spacing":"30px","border-default-size":"2px","b
 
 /***/ }),
 /* 91 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-var map = {
-	"./test/_config.scss": 92
-};
-function webpackContext(req) {
-	return __webpack_require__(webpackContextResolve(req));
-};
-function webpackContextResolve(req) {
-	var id = map[req];
-	if(!(id + 1)) // check for number or string
-		throw new Error("Cannot find module '" + req + "'.");
-	return id;
-};
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = 91;
+function webpackEmptyContext(req) {
+	throw new Error("Cannot find module '" + req + "'.");
+}
+webpackEmptyContext.keys = function() { return []; };
+webpackEmptyContext.resolve = webpackEmptyContext;
+module.exports = webpackEmptyContext;
+webpackEmptyContext.id = 91;
 
 /***/ }),
 /* 92 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-module.exports = {"spacing":"60px"};
-
-/***/ }),
-/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var result = __webpack_require__(94)
+var result = __webpack_require__(93)
 var H = __webpack_require__(0);
 window.Hogan = H;
 module.exports = function() {
@@ -16287,13 +16267,13 @@ var T = H.compile(result, {});
 return T.render.apply(T, arguments); };
 
 /***/ }),
-/* 94 */
+/* 93 */
 /***/ (function(module, exports) {
 
 module.exports = "<nav class=\"bg-greystronger\">\n  <ul>\n    <li><a href=\"#framway__config\">Config</a></li>\n    <li>\n      <a href=\"#framway__classes\">Classes</a>\n      {{{classes.nav}}}\n    </li>\n    <li>\n      <a href=\"#framway__styling\">Examples</a>\n      {{{styling.nav}}}\n    </li>\n    <li>\n      <a href=\"#framway__components\">Components</a>\n      {{{components.nav}}}\n    </li>\n  </ul>\n</nav>\n<div class=\"content container-fluid p-x-x2 p-top\">\n  <h1>Framway's config & guideline</h1>\n  <div class=\"item\" id=\"framway__config\">\n    <div class=\"row\">\n      {{{config}}}\n    </div>\n  </div>\n  <div class=\"item\" id=\"framway__classes\">\n      {{{classes.content}}}\n  </div>\n  <div class=\"item\" id=\"framway__styling\">\n      {{{styling.content}}}\n  </div>\n  <div class=\"item\" id=\"framway__components\">\n      {{{components.content}}}\n  </div>\n</div>";
 
 /***/ }),
-/* 95 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16361,7 +16341,7 @@ $(function () {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
 
 /***/ }),
-/* 96 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16564,7 +16544,7 @@ $(function () {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
 
 /***/ }),
-/* 97 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16629,38 +16609,19 @@ $(function () {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
 
 /***/ }),
+/* 97 */
+/***/ (function(module, exports) {
+
+function webpackEmptyContext(req) {
+	throw new Error("Cannot find module '" + req + "'.");
+}
+webpackEmptyContext.keys = function() { return []; };
+webpackEmptyContext.resolve = webpackEmptyContext;
+module.exports = webpackEmptyContext;
+webpackEmptyContext.id = 97;
+
+/***/ }),
 /* 98 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./test/test.js": 99
-};
-function webpackContext(req) {
-	return __webpack_require__(webpackContextResolve(req));
-};
-function webpackContextResolve(req) {
-	var id = map[req];
-	if(!(id + 1)) // check for number or string
-		throw new Error("Cannot find module '" + req + "'.");
-	return id;
-};
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = 98;
-
-/***/ }),
-/* 99 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-// console.log('coucou from test');
-
-
-/***/ }),
-/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16712,7 +16673,7 @@ if (!Array.prototype.find) {
 }
 
 /***/ }),
-/* 101 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
