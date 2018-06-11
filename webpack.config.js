@@ -5,15 +5,12 @@
 * or with yarn
 * yarn add webpack babel-loader babel-core babel-preset-es2015 style-loader css-loader
 */
-
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var LiveReloadPlugin = require('webpack-livereload-plugin');
 var WebpackSynchronizableShellPlugin = require('webpack-synchronizable-shell-plugin');
-
 const webpack = require('webpack'); //to access built-in plugins
 const path = require('path');
-
 module.exports = {
     entry: {
         vendor : './vendor', // split vendors from app's file, in order to optimize the building process
@@ -43,14 +40,14 @@ module.exports = {
                     use: [
                         {loader: "css-loader",
                             options:{
-                                sourceMap:false, // enable sourcemap
+                                sourceMap:true, // enable sourcemap
                                 minimize: true, // minimize css
                                 module: true,  // enable use of imported css as js object
                                 localIdentName: '[local]', // used to keep the right name of a css class instead of a hash
                             }
                         },
-                        {loader: "postcss-loader", options:{sourceMap:false}},
-                        {loader: "sass-loader", options:{sourceMap:false}},
+                        {loader: "postcss-loader", options:{sourceMap:true}},
+                        {loader: "sass-loader", options:{sourceMap:true}},
                     ],
                     publicPath: '../'
                 })
