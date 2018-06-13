@@ -13833,7 +13833,6 @@ function Framway() {
   framway.themes = [];
   framway.useNotif = true;
   framway.$debug = $('<div id="debug"></div>').appendTo($('body'));
-
   return framway;
 };
 

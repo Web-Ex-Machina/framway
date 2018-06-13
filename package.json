@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "init": "z_init.bat", // run this command only when installing a remote repository
+    "init": "z_init.bat",
     "build": "webpack --progress --colors",
     "watch": "webpack --progress --colors --watch",
     "prepare": "node scripts/prepare.js",
