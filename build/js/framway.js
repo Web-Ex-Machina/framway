@@ -57,7 +57,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "./";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 22);
@@ -13862,7 +13862,7 @@ Framway.prototype.loadThemes = function (arrThemes) {
   var framway = this;
   $.each(arrThemes, function (index, name) {
     try {
-      !(function webpackMissingModule() { var e = new Error("Cannot find module \"../themes\""); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+      __webpack_require__(98)("./" + name + '/' + name + '.js');
       framway.themes.push(name);
     } catch (e) {
       framway.log('Component ' + name + ' failed to load.\n' + e);
@@ -13910,8 +13910,8 @@ $(function () {
   });
 });
 
-__webpack_require__(98);
-__webpack_require__(99);
+__webpack_require__(100);
+__webpack_require__(101);
 global.app = new Framway();
 global.utils = utils;
 global.$ = global.jQuery = $;
@@ -14415,9 +14415,9 @@ var map = {
 	"./foldingbox/foldingbox.js": 37,
 	"./goto/goto.js": 38,
 	"./guideline/guideline.js": 39,
-	"./heroFW/heroFW.js": 94,
-	"./sliderFW/sliderFW.js": 95,
-	"./tabs/tabs.js": 96
+	"./heroFW/heroFW.js": 95,
+	"./sliderFW/sliderFW.js": 96,
+	"./tabs/tabs.js": 97
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -14941,7 +14941,7 @@ if ($('#guideline').length) {
 
   var config = __webpack_require__(90);
   $.each(app.themes, function (index, theme) {
-    config = Object.assign(config, !(function webpackMissingModule() { var e = new Error("Cannot find module \"../../themes\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+    config = Object.assign(config, __webpack_require__(91)("./" + theme + '/_config.scss'));
   });
 
   $.each(config, function (key, value) {
@@ -14957,7 +14957,7 @@ if ($('#guideline').length) {
   var classesHtml = buildClasses();
   var componentsHtml = buildComponents();
 
-  var html = __webpack_require__(92)({
+  var html = __webpack_require__(93)({
     config: configHtml,
     classes: classesHtml,
     styling: stylingHtml,
@@ -16244,21 +16244,39 @@ module.exports = {"radius":"2px","spacing":"30px","border-default-size":"2px","b
 
 /***/ }),
 /* 91 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-function webpackEmptyContext(req) {
-	throw new Error("Cannot find module '" + req + "'.");
-}
-webpackEmptyContext.keys = function() { return []; };
-webpackEmptyContext.resolve = webpackEmptyContext;
-module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 91;
+var map = {
+	"./user/_config.scss": 92
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 91;
 
 /***/ }),
 /* 92 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"radius":"2px","spacing":"30px","border-default-size":"2px","border-default-color":"#000000","colors":"(\"blue\": #004C79, \"green\": #5cb85c, \"orange\": #DC6053, \"darkblue\": #0a1d29, \"gold\": #edbe5f, \"black\": #000000, \"blacklight\": #111414, \"blacklighter\": #222222, \"greystronger\": #424041, \"greystrong\": #535052, \"grey\": #7A7778, \"greylight\": #DDDDDD, \"greylighter\": #EEEEEE, \"white\": #ffffff, \"none\": transparent)","breakpoints":"(\"xl\": 1400px, \"lg\": 1200px, \"md\": 992px, \"sm\": 768px, \"xs\": 620px, \"xxs\": 520px)","body":"(\"background\": #ffffff, \"font-color\": #424041, \"font-size\": 20px, \"title-font-color\": #111414)","header":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","footer":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","input":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #424041, \"border-size\": 2px, \"placeholder-font-color\": #7A7778, \"radius\": true)","input-focus":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #424041)","input-valid":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #5cb85c)","input-invalid":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #DC6053)","link":"(\"font-color\": #DC6053, \"font-color-hover\": #DC6053, \"font-color-focus\": #DC6053)","btn":"(\"background\": #424041, \"font-color\": #ffffff, \"border-size\": 2px, \"radius\": true, \"extend\": \".btn-bg-darkblue\")","enable-bg":"true","enable-bg-extended":"false","enable-bd":"true"};
+
+/***/ }),
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var result = __webpack_require__(93)
+var result = __webpack_require__(94)
 var H = __webpack_require__(0);
 window.Hogan = H;
 module.exports = function() {
@@ -16266,13 +16284,13 @@ var T = H.compile(result, {});
 return T.render.apply(T, arguments); };
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports) {
 
 module.exports = "<nav class=\"bg-greystronger\">\n  <ul>\n    <li><a href=\"#framway__config\">Config</a></li>\n    <li>\n      <a href=\"#framway__classes\">Classes</a>\n      {{{classes.nav}}}\n    </li>\n    <li>\n      <a href=\"#framway__styling\">Examples</a>\n      {{{styling.nav}}}\n    </li>\n    <li>\n      <a href=\"#framway__components\">Components</a>\n      {{{components.nav}}}\n    </li>\n  </ul>\n</nav>\n<div class=\"content container-fluid p-x-x2 p-top\">\n  <h1>Framway's config & guideline</h1>\n  <div class=\"item\" id=\"framway__config\">\n    <div class=\"row\">\n      {{{config}}}\n    </div>\n  </div>\n  <div class=\"item\" id=\"framway__classes\">\n      {{{classes.content}}}\n  </div>\n  <div class=\"item\" id=\"framway__styling\">\n      {{{styling.content}}}\n  </div>\n  <div class=\"item\" id=\"framway__components\">\n      {{{components.content}}}\n  </div>\n</div>";
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16340,7 +16358,7 @@ $(function () {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16543,7 +16561,7 @@ $(function () {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16608,19 +16626,40 @@ $(function () {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
 
 /***/ }),
-/* 97 */
-/***/ (function(module, exports) {
+/* 98 */
+/***/ (function(module, exports, __webpack_require__) {
 
-function webpackEmptyContext(req) {
-	throw new Error("Cannot find module '" + req + "'.");
-}
-webpackEmptyContext.keys = function() { return []; };
-webpackEmptyContext.resolve = webpackEmptyContext;
-module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 97;
+var map = {
+	"./user/user.js": 99
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 98;
 
 /***/ }),
-/* 98 */
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+$(function () {});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16672,7 +16711,7 @@ if (!Array.prototype.find) {
 }
 
 /***/ }),
-/* 99 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
