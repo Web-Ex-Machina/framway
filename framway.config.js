@@ -4,7 +4,7 @@ module.exports = {
   components:[
     'heroFW',
     'sliderFW',
-    'brick',
+    // 'brick',
     'tabs',
     'foldingbox',
     'block-list',

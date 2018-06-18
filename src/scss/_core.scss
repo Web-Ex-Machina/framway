@@ -266,8 +266,8 @@ ul.tags>li{padding: 3px 8px 5px; background: btn(background); color: btn(font-co
 /*-----------------------------------------------------------------------------------------------------------------------------*/
 // BACKGROUNDS
 @if $enable-bg{
-  *[class*='bg-']:not([class*='bg--']){@extend .p-all;}
-  *[class*='bg-']:not([class*='bg--'])>*:last-child{margin-bottom:0;}
+  *[class*='bg-']:not([class*='bg--']):not([class*='btn-']){@extend .p-all;}
+  *[class*='bg-']:not([class*='bg--']):not([class*='btn-'])>*:last-child{margin-bottom:0;}
   @each $key, $value in $colors{
     .bg-#{$key}{background-color: $value; color: body(font-color); color: contrast(body(font-color), $value);}
     // *[class~="bg-#{$key}"],
