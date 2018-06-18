@@ -7,7 +7,7 @@
     "init":      "npm install",
     "open" :     "cd build && index.html && cd ..",
     "build":     "webpack --progress --colors",
-    "watch":     "npm run open && webpack --progress --colors --watch",
+    "watch":     "webpack --progress --colors --watch",
     "prepare":   "node scripts/prepare.js",
     "component": "node scripts/component.js",
     "theme":     "node scripts/theme.js",
