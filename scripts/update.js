@@ -1,4 +1,5 @@
 var shell = require('shelljs');
+var fs = require('fs');
 
 var arrBuildFiles = getFiles('./build/');
 for (var i = 0; i < arrBuildFiles.length; i++) {
