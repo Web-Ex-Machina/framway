@@ -5,7 +5,6 @@ var fs = require('fs');
 
 var arrBuildFiles = getFiles('./build/');
 for (var i = 0; i < arrBuildFiles.length; i++) {
-  arrBuildFiles[i]
   shell.exec('git update-index --skip-worktree '+arrBuildFiles[i]);
 }
 shell.exec('git update-index --skip-worktree webpack.config.js');

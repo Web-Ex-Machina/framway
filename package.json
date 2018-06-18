@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "init": "npm install && node scripts/init.js",
-    "build": "webpack --progress --colors",
-    "watch": "webpack --progress --colors --watch",
-    "prepare": "node scripts/prepare.js",
+    "init":      "npm install",
+    "open" :     "cd build && index.html && cd ..",
+    "build":     "webpack --progress --colors",
+    "watch":     "npm run open && webpack --progress --colors --watch",
+    "prepare":   "node scripts/prepare.js",
     "component": "node scripts/component.js",
-    "theme": "node scripts/theme.js"
+    "theme":     "node scripts/theme.js",
+    "update":    "node scripts/update.js"
   },
   "author": "Web ex Machina",
   "license": "ISC",
