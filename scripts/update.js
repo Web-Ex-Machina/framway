@@ -5,7 +5,9 @@ var arrBuildFiles = getFiles('./build/');
 for (var i = 0; i < arrBuildFiles.length; i++) {
   shell.exec('git update-index --assume-unchanged '+arrBuildFiles[i]);
 }
-shell.exec('git stash && git pull && git stash pop');
+shell.exec('git stash');
+shell.exec('git pull');
+shell.exec('git stash pop');
 for (var i = 0; i < arrBuildFiles.length; i++) {
   shell.exec('git update-index --no-assume-unchanged '+arrBuildFiles[i]);
 }
