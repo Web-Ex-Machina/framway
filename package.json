@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "init":      "npm install",
-    "open" :     "cd build && index.html && cd ..",
-    "build":     "webpack --progress --colors",
-    "watch":     "webpack --progress --colors --watch",
-    "prepare":   "node scripts/prepare.js",
+    "init": "npm install",
+    "open": "cd build && index.html && cd ..",
+    "build": "webpack --progress --colors",
+    "watch": "webpack --progress --colors --watch",
+    "prepare": "node scripts/prepare.js",
     "component": "node scripts/component.js",
-    "theme":     "node scripts/theme.js",
-    "update":    "node scripts/update.js"
+    "theme": "node scripts/theme.js",
+    "update": "node scripts/update.js"
   },
   "author": "Web ex Machina",
   "license": "ISC",
@@ -55,6 +55,7 @@
     "native-promise-only": "^0.8.1",
     "object-fit-images": "^3.2.3",
     "popper.js": "^1.14.3",
+    "select2": "^4.0.6-rc.1",
     "tether": "^1.4.3",
     "toastr": "^2.1.4"
   },

@@ -50,18 +50,18 @@ $footer: (
 
 /* inputs */
 $input: (
-  'background': color(none),
+  'background': color(white),
   'font-color': color(greystronger),
   'border-color': color(greystronger),
-  'border-size': $border-default-size ,
+  'border-size': 1px ,
   'placeholder-font-color': color(grey),
-  'radius': true,
+  'radius': false,
 );
 @function input($property) {@return map-get($input, '#{$property}'); }
 
 /* inputs focus */
 $input-focus: (
-  'background': color(none),
+  'background': color(white),
   'font-color': input(font-color),
   'border-color': input(border-color),
 );
@@ -69,14 +69,14 @@ $input-focus: (
 
 /* inputs validations */
 $input-valid: (
-  'background': color(none),
+  'background': color(white),
   'font-color': input(font-color),
   'border-color': color(green),
 );
 @function input-valid($property) {@return map-get($input-valid, '#{$property}'); }
 
 $input-invalid: (
-  'background': color(none),
+  'background': color(white),
   'font-color': input(font-color),
   'border-color': color(orange),
 );

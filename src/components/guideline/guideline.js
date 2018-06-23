@@ -362,8 +362,8 @@ $(function () {
       notif_fade.success('Copied to clipboard !');
   });
 
-  // $('#guideline nav a').eq(2).trigger('click');
-  $('#guideline nav a').first().trigger('click');
-  // $('#guideline nav a').last().trigger('click');
+  // $('#guideline nav a').eq(7).trigger('click');
+  // $('#guideline nav a').first().trigger('click');
+  $('#guideline nav a').last().trigger('click');
 
 });

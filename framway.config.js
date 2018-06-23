@@ -10,6 +10,7 @@ module.exports = {
     'block-list',
     'block-std',
     'block-img',
+    'select2FW',
     'guideline',
   ],
 }

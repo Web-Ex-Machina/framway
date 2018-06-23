@@ -19,3 +19,6 @@ objectFitImages();
 
 // TOASTR
 import toastr_style from 'toastr/toastr.scss';
+
+// SELECT2
+import 'select2/dist/css/select2.min.css';

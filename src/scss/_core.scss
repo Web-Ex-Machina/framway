@@ -553,7 +553,7 @@ button:not([class*="btn-bg"]):not([class*="btn-bd"]):not([class*="toast"]),
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------------*/
-// FORMS
+// INPUTS
 %input{
   @include transition(all 0.4s);
   background-color: input(background);
@@ -562,6 +562,9 @@ button:not([class*="btn-bg"]):not([class*="btn-bd"]):not([class*="toast"]),
   border: input(border-size) solid input(border-color);
   @if input(radius) == true{
     border-radius: $radius;
+  }
+  @else{
+    border-radius: 0;
   }
   outline: none;
   width: 100%;
