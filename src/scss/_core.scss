@@ -512,13 +512,20 @@ ul.tags>li{padding: 3px 8px 5px; background: btn(background); color: btn(font-co
   }
 }
 
-input[type="submit"].btn-sm, input[type="button"].btn-sm, button.btn-sm{@extend .btn-sm;}
-input[type="submit"].btn-lg, input[type="button"].btn-lg, button.btn-lg{@extend .btn-lg;}
 
+// button:not([class*="btn-bg"]):not([class*="btn-bd"]):not([class*="toast"]),
 input[type="submit"],
 input[type="button"],
-button:not([class*="btn-bg"]):not([class*="btn-bd"]):not([class*="toast"]),
+button,
 *[class*="btn"]{@extend .btn;}
+
+input[type="submit"].btn-sm,
+input[type="button"].btn-sm,
+button.btn-sm{@extend .btn-sm;}
+
+input[type="submit"].btn-lg,
+input[type="button"].btn-lg,
+button.btn-lg{@extend .btn-lg;}
 
 @if btn(extend) != '' {
   input[type="submit"]:not([class*="btn-bg"]):not([class*="btn-bd"]),

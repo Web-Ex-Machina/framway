@@ -84,8 +84,8 @@
 
 // This file is for use with Node.js. See dist/ for browser files.
 
-var Hogan = __webpack_require__(52);
-Hogan.Template = __webpack_require__(53).Template;
+var Hogan = __webpack_require__(55);
+Hogan.Template = __webpack_require__(56).Template;
 Hogan.template = Hogan.Template;
 module.exports = Hogan;
 
@@ -10470,6 +10470,8 @@ return jQuery;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 var Utils = function Utils() {
   var utils = this;
 
@@ -10530,6 +10532,10 @@ var Utils = function Utils() {
       strResult += key + value + ' ';
     });
     return strResult;
+  };
+
+  utils.mergeArrays = function (arr1, arr2) {
+    return [].concat(_toConsumableArray(new Set([].concat(_toConsumableArray(arr1), _toConsumableArray(arr2)))));
   };
 
   /**
@@ -10693,6 +10699,13 @@ var Utils = function Utils() {
     return succeed;
   };
 
+  utils.capitalize = function (str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+  utils.lowerize = function (str) {
+    return str.charAt(0).toLowerCase() + str.slice(1);
+  };
+
   // NOTIFICATIONS SETUP
   global.toastr = __webpack_require__(29);
   var toastrDefault = { "newestOnTop": false, "closeButton": true, "timeOut": 0, "extendedTimeOut": 0, "showMethod": "slideDown", "positionClass": "toast-bottom-left", "progressBar": false };
@@ -10846,7 +10859,7 @@ module.exports = __webpack_require__.p + "img/tramway_lego.jpg";
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var result = __webpack_require__(51)
+var result = __webpack_require__(54)
 var H = __webpack_require__(0);
 window.Hogan = H;
 module.exports = function() {
@@ -10859,20 +10872,20 @@ return T.render.apply(T, arguments); };
 
 var map = {
 	"./styling_backgrounds.html": 7,
-	"./styling_borders.html": 59,
-	"./styling_borders_colors.html": 61,
-	"./styling_buttons.html": 63,
-	"./styling_buttons_colors.html": 65,
-	"./styling_inputs.html": 67,
-	"./styling_inputs_bg.html": 69,
-	"./styling_inputs_others.html": 71,
-	"./styling_inputs_texts.html": 73,
-	"./styling_texts.html": 75,
-	"./styling_texts_bd.html": 77,
-	"./styling_texts_bg.html": 79,
-	"./styling_titles.html": 81,
-	"./styling_titles_bg.html": 83,
-	"./styling_titles_sep.html": 85
+	"./styling_borders.html": 62,
+	"./styling_borders_colors.html": 64,
+	"./styling_buttons.html": 66,
+	"./styling_buttons_colors.html": 68,
+	"./styling_inputs.html": 70,
+	"./styling_inputs_bg.html": 72,
+	"./styling_inputs_others.html": 74,
+	"./styling_inputs_texts.html": 76,
+	"./styling_texts.html": 78,
+	"./styling_texts_bd.html": 80,
+	"./styling_texts_bg.html": 82,
+	"./styling_titles.html": 84,
+	"./styling_titles_bg.html": 86,
+	"./styling_titles_sep.html": 88
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -10904,7 +10917,5585 @@ webpackContext.id = 8;
 /* 19 */,
 /* 20 */,
 /* 21 */,
-/* 22 */
+/* 22 */,
+/* 23 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+__webpack_require__(24); // importing hammer.js
+__webpack_require__(25); // importing jquery-mousewheel
+
+__webpack_require__(26);
+var config = __webpack_require__(27);
+
+__webpack_require__(28);
+app.loadThemes(config.themes);
+app.loadComponents(config.components);
+
+$(function () {
+  app.log(app);
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_RESULT__;/*! Hammer.JS - v2.0.7 - 2016-04-22
+ * http://hammerjs.github.io/
+ *
+ * Copyright (c) 2016 Jorik Tangelder;
+ * Licensed under the MIT license */
+(function(window, document, exportName, undefined) {
+  'use strict';
+
+var VENDOR_PREFIXES = ['', 'webkit', 'Moz', 'MS', 'ms', 'o'];
+var TEST_ELEMENT = document.createElement('div');
+
+var TYPE_FUNCTION = 'function';
+
+var round = Math.round;
+var abs = Math.abs;
+var now = Date.now;
+
+/**
+ * set a timeout with a given scope
+ * @param {Function} fn
+ * @param {Number} timeout
+ * @param {Object} context
+ * @returns {number}
+ */
+function setTimeoutContext(fn, timeout, context) {
+    return setTimeout(bindFn(fn, context), timeout);
+}
+
+/**
+ * if the argument is an array, we want to execute the fn on each entry
+ * if it aint an array we don't want to do a thing.
+ * this is used by all the methods that accept a single and array argument.
+ * @param {*|Array} arg
+ * @param {String} fn
+ * @param {Object} [context]
+ * @returns {Boolean}
+ */
+function invokeArrayArg(arg, fn, context) {
+    if (Array.isArray(arg)) {
+        each(arg, context[fn], context);
+        return true;
+    }
+    return false;
+}
+
+/**
+ * walk objects and arrays
+ * @param {Object} obj
+ * @param {Function} iterator
+ * @param {Object} context
+ */
+function each(obj, iterator, context) {
+    var i;
+
+    if (!obj) {
+        return;
+    }
+
+    if (obj.forEach) {
+        obj.forEach(iterator, context);
+    } else if (obj.length !== undefined) {
+        i = 0;
+        while (i < obj.length) {
+            iterator.call(context, obj[i], i, obj);
+            i++;
+        }
+    } else {
+        for (i in obj) {
+            obj.hasOwnProperty(i) && iterator.call(context, obj[i], i, obj);
+        }
+    }
+}
+
+/**
+ * wrap a method with a deprecation warning and stack trace
+ * @param {Function} method
+ * @param {String} name
+ * @param {String} message
+ * @returns {Function} A new function wrapping the supplied method.
+ */
+function deprecate(method, name, message) {
+    var deprecationMessage = 'DEPRECATED METHOD: ' + name + '\n' + message + ' AT \n';
+    return function() {
+        var e = new Error('get-stack-trace');
+        var stack = e && e.stack ? e.stack.replace(/^[^\(]+?[\n$]/gm, '')
+            .replace(/^\s+at\s+/gm, '')
+            .replace(/^Object.<anonymous>\s*\(/gm, '{anonymous}()@') : 'Unknown Stack Trace';
+
+        var log = window.console && (window.console.warn || window.console.log);
+        if (log) {
+            log.call(window.console, deprecationMessage, stack);
+        }
+        return method.apply(this, arguments);
+    };
+}
+
+/**
+ * extend object.
+ * means that properties in dest will be overwritten by the ones in src.
+ * @param {Object} target
+ * @param {...Object} objects_to_assign
+ * @returns {Object} target
+ */
+var assign;
+if (typeof Object.assign !== 'function') {
+    assign = function assign(target) {
+        if (target === undefined || target === null) {
+            throw new TypeError('Cannot convert undefined or null to object');
+        }
+
+        var output = Object(target);
+        for (var index = 1; index < arguments.length; index++) {
+            var source = arguments[index];
+            if (source !== undefined && source !== null) {
+                for (var nextKey in source) {
+                    if (source.hasOwnProperty(nextKey)) {
+                        output[nextKey] = source[nextKey];
+                    }
+                }
+            }
+        }
+        return output;
+    };
+} else {
+    assign = Object.assign;
+}
+
+/**
+ * extend object.
+ * means that properties in dest will be overwritten by the ones in src.
+ * @param {Object} dest
+ * @param {Object} src
+ * @param {Boolean} [merge=false]
+ * @returns {Object} dest
+ */
+var extend = deprecate(function extend(dest, src, merge) {
+    var keys = Object.keys(src);
+    var i = 0;
+    while (i < keys.length) {
+        if (!merge || (merge && dest[keys[i]] === undefined)) {
+            dest[keys[i]] = src[keys[i]];
+        }
+        i++;
+    }
+    return dest;
+}, 'extend', 'Use `assign`.');
+
+/**
+ * merge the values from src in the dest.
+ * means that properties that exist in dest will not be overwritten by src
+ * @param {Object} dest
+ * @param {Object} src
+ * @returns {Object} dest
+ */
+var merge = deprecate(function merge(dest, src) {
+    return extend(dest, src, true);
+}, 'merge', 'Use `assign`.');
+
+/**
+ * simple class inheritance
+ * @param {Function} child
+ * @param {Function} base
+ * @param {Object} [properties]
+ */
+function inherit(child, base, properties) {
+    var baseP = base.prototype,
+        childP;
+
+    childP = child.prototype = Object.create(baseP);
+    childP.constructor = child;
+    childP._super = baseP;
+
+    if (properties) {
+        assign(childP, properties);
+    }
+}
+
+/**
+ * simple function bind
+ * @param {Function} fn
+ * @param {Object} context
+ * @returns {Function}
+ */
+function bindFn(fn, context) {
+    return function boundFn() {
+        return fn.apply(context, arguments);
+    };
+}
+
+/**
+ * let a boolean value also be a function that must return a boolean
+ * this first item in args will be used as the context
+ * @param {Boolean|Function} val
+ * @param {Array} [args]
+ * @returns {Boolean}
+ */
+function boolOrFn(val, args) {
+    if (typeof val == TYPE_FUNCTION) {
+        return val.apply(args ? args[0] || undefined : undefined, args);
+    }
+    return val;
+}
+
+/**
+ * use the val2 when val1 is undefined
+ * @param {*} val1
+ * @param {*} val2
+ * @returns {*}
+ */
+function ifUndefined(val1, val2) {
+    return (val1 === undefined) ? val2 : val1;
+}
+
+/**
+ * addEventListener with multiple events at once
+ * @param {EventTarget} target
+ * @param {String} types
+ * @param {Function} handler
+ */
+function addEventListeners(target, types, handler) {
+    each(splitStr(types), function(type) {
+        target.addEventListener(type, handler, false);
+    });
+}
+
+/**
+ * removeEventListener with multiple events at once
+ * @param {EventTarget} target
+ * @param {String} types
+ * @param {Function} handler
+ */
+function removeEventListeners(target, types, handler) {
+    each(splitStr(types), function(type) {
+        target.removeEventListener(type, handler, false);
+    });
+}
+
+/**
+ * find if a node is in the given parent
+ * @method hasParent
+ * @param {HTMLElement} node
+ * @param {HTMLElement} parent
+ * @return {Boolean} found
+ */
+function hasParent(node, parent) {
+    while (node) {
+        if (node == parent) {
+            return true;
+        }
+        node = node.parentNode;
+    }
+    return false;
+}
+
+/**
+ * small indexOf wrapper
+ * @param {String} str
+ * @param {String} find
+ * @returns {Boolean} found
+ */
+function inStr(str, find) {
+    return str.indexOf(find) > -1;
+}
+
+/**
+ * split string on whitespace
+ * @param {String} str
+ * @returns {Array} words
+ */
+function splitStr(str) {
+    return str.trim().split(/\s+/g);
+}
+
+/**
+ * find if a array contains the object using indexOf or a simple polyFill
+ * @param {Array} src
+ * @param {String} find
+ * @param {String} [findByKey]
+ * @return {Boolean|Number} false when not found, or the index
+ */
+function inArray(src, find, findByKey) {
+    if (src.indexOf && !findByKey) {
+        return src.indexOf(find);
+    } else {
+        var i = 0;
+        while (i < src.length) {
+            if ((findByKey && src[i][findByKey] == find) || (!findByKey && src[i] === find)) {
+                return i;
+            }
+            i++;
+        }
+        return -1;
+    }
+}
+
+/**
+ * convert array-like objects to real arrays
+ * @param {Object} obj
+ * @returns {Array}
+ */
+function toArray(obj) {
+    return Array.prototype.slice.call(obj, 0);
+}
+
+/**
+ * unique array with objects based on a key (like 'id') or just by the array's value
+ * @param {Array} src [{id:1},{id:2},{id:1}]
+ * @param {String} [key]
+ * @param {Boolean} [sort=False]
+ * @returns {Array} [{id:1},{id:2}]
+ */
+function uniqueArray(src, key, sort) {
+    var results = [];
+    var values = [];
+    var i = 0;
+
+    while (i < src.length) {
+        var val = key ? src[i][key] : src[i];
+        if (inArray(values, val) < 0) {
+            results.push(src[i]);
+        }
+        values[i] = val;
+        i++;
+    }
+
+    if (sort) {
+        if (!key) {
+            results = results.sort();
+        } else {
+            results = results.sort(function sortUniqueArray(a, b) {
+                return a[key] > b[key];
+            });
+        }
+    }
+
+    return results;
+}
+
+/**
+ * get the prefixed property
+ * @param {Object} obj
+ * @param {String} property
+ * @returns {String|Undefined} prefixed
+ */
+function prefixed(obj, property) {
+    var prefix, prop;
+    var camelProp = property[0].toUpperCase() + property.slice(1);
+
+    var i = 0;
+    while (i < VENDOR_PREFIXES.length) {
+        prefix = VENDOR_PREFIXES[i];
+        prop = (prefix) ? prefix + camelProp : property;
+
+        if (prop in obj) {
+            return prop;
+        }
+        i++;
+    }
+    return undefined;
+}
+
+/**
+ * get a unique id
+ * @returns {number} uniqueId
+ */
+var _uniqueId = 1;
+function uniqueId() {
+    return _uniqueId++;
+}
+
+/**
+ * get the window object of an element
+ * @param {HTMLElement} element
+ * @returns {DocumentView|Window}
+ */
+function getWindowForElement(element) {
+    var doc = element.ownerDocument || element;
+    return (doc.defaultView || doc.parentWindow || window);
+}
+
+var MOBILE_REGEX = /mobile|tablet|ip(ad|hone|od)|android/i;
+
+var SUPPORT_TOUCH = ('ontouchstart' in window);
+var SUPPORT_POINTER_EVENTS = prefixed(window, 'PointerEvent') !== undefined;
+var SUPPORT_ONLY_TOUCH = SUPPORT_TOUCH && MOBILE_REGEX.test(navigator.userAgent);
+
+var INPUT_TYPE_TOUCH = 'touch';
+var INPUT_TYPE_PEN = 'pen';
+var INPUT_TYPE_MOUSE = 'mouse';
+var INPUT_TYPE_KINECT = 'kinect';
+
+var COMPUTE_INTERVAL = 25;
+
+var INPUT_START = 1;
+var INPUT_MOVE = 2;
+var INPUT_END = 4;
+var INPUT_CANCEL = 8;
+
+var DIRECTION_NONE = 1;
+var DIRECTION_LEFT = 2;
+var DIRECTION_RIGHT = 4;
+var DIRECTION_UP = 8;
+var DIRECTION_DOWN = 16;
+
+var DIRECTION_HORIZONTAL = DIRECTION_LEFT | DIRECTION_RIGHT;
+var DIRECTION_VERTICAL = DIRECTION_UP | DIRECTION_DOWN;
+var DIRECTION_ALL = DIRECTION_HORIZONTAL | DIRECTION_VERTICAL;
+
+var PROPS_XY = ['x', 'y'];
+var PROPS_CLIENT_XY = ['clientX', 'clientY'];
+
+/**
+ * create new input type manager
+ * @param {Manager} manager
+ * @param {Function} callback
+ * @returns {Input}
+ * @constructor
+ */
+function Input(manager, callback) {
+    var self = this;
+    this.manager = manager;
+    this.callback = callback;
+    this.element = manager.element;
+    this.target = manager.options.inputTarget;
+
+    // smaller wrapper around the handler, for the scope and the enabled state of the manager,
+    // so when disabled the input events are completely bypassed.
+    this.domHandler = function(ev) {
+        if (boolOrFn(manager.options.enable, [manager])) {
+            self.handler(ev);
+        }
+    };
+
+    this.init();
+
+}
+
+Input.prototype = {
+    /**
+     * should handle the inputEvent data and trigger the callback
+     * @virtual
+     */
+    handler: function() { },
+
+    /**
+     * bind the events
+     */
+    init: function() {
+        this.evEl && addEventListeners(this.element, this.evEl, this.domHandler);
+        this.evTarget && addEventListeners(this.target, this.evTarget, this.domHandler);
+        this.evWin && addEventListeners(getWindowForElement(this.element), this.evWin, this.domHandler);
+    },
+
+    /**
+     * unbind the events
+     */
+    destroy: function() {
+        this.evEl && removeEventListeners(this.element, this.evEl, this.domHandler);
+        this.evTarget && removeEventListeners(this.target, this.evTarget, this.domHandler);
+        this.evWin && removeEventListeners(getWindowForElement(this.element), this.evWin, this.domHandler);
+    }
+};
+
+/**
+ * create new input type manager
+ * called by the Manager constructor
+ * @param {Hammer} manager
+ * @returns {Input}
+ */
+function createInputInstance(manager) {
+    var Type;
+    var inputClass = manager.options.inputClass;
+
+    if (inputClass) {
+        Type = inputClass;
+    } else if (SUPPORT_POINTER_EVENTS) {
+        Type = PointerEventInput;
+    } else if (SUPPORT_ONLY_TOUCH) {
+        Type = TouchInput;
+    } else if (!SUPPORT_TOUCH) {
+        Type = MouseInput;
+    } else {
+        Type = TouchMouseInput;
+    }
+    return new (Type)(manager, inputHandler);
+}
+
+/**
+ * handle input events
+ * @param {Manager} manager
+ * @param {String} eventType
+ * @param {Object} input
+ */
+function inputHandler(manager, eventType, input) {
+    var pointersLen = input.pointers.length;
+    var changedPointersLen = input.changedPointers.length;
+    var isFirst = (eventType & INPUT_START && (pointersLen - changedPointersLen === 0));
+    var isFinal = (eventType & (INPUT_END | INPUT_CANCEL) && (pointersLen - changedPointersLen === 0));
+
+    input.isFirst = !!isFirst;
+    input.isFinal = !!isFinal;
+
+    if (isFirst) {
+        manager.session = {};
+    }
+
+    // source event is the normalized value of the domEvents
+    // like 'touchstart, mouseup, pointerdown'
+    input.eventType = eventType;
+
+    // compute scale, rotation etc
+    computeInputData(manager, input);
+
+    // emit secret event
+    manager.emit('hammer.input', input);
+
+    manager.recognize(input);
+    manager.session.prevInput = input;
+}
+
+/**
+ * extend the data with some usable properties like scale, rotate, velocity etc
+ * @param {Object} manager
+ * @param {Object} input
+ */
+function computeInputData(manager, input) {
+    var session = manager.session;
+    var pointers = input.pointers;
+    var pointersLength = pointers.length;
+
+    // store the first input to calculate the distance and direction
+    if (!session.firstInput) {
+        session.firstInput = simpleCloneInputData(input);
+    }
+
+    // to compute scale and rotation we need to store the multiple touches
+    if (pointersLength > 1 && !session.firstMultiple) {
+        session.firstMultiple = simpleCloneInputData(input);
+    } else if (pointersLength === 1) {
+        session.firstMultiple = false;
+    }
+
+    var firstInput = session.firstInput;
+    var firstMultiple = session.firstMultiple;
+    var offsetCenter = firstMultiple ? firstMultiple.center : firstInput.center;
+
+    var center = input.center = getCenter(pointers);
+    input.timeStamp = now();
+    input.deltaTime = input.timeStamp - firstInput.timeStamp;
+
+    input.angle = getAngle(offsetCenter, center);
+    input.distance = getDistance(offsetCenter, center);
+
+    computeDeltaXY(session, input);
+    input.offsetDirection = getDirection(input.deltaX, input.deltaY);
+
+    var overallVelocity = getVelocity(input.deltaTime, input.deltaX, input.deltaY);
+    input.overallVelocityX = overallVelocity.x;
+    input.overallVelocityY = overallVelocity.y;
+    input.overallVelocity = (abs(overallVelocity.x) > abs(overallVelocity.y)) ? overallVelocity.x : overallVelocity.y;
+
+    input.scale = firstMultiple ? getScale(firstMultiple.pointers, pointers) : 1;
+    input.rotation = firstMultiple ? getRotation(firstMultiple.pointers, pointers) : 0;
+
+    input.maxPointers = !session.prevInput ? input.pointers.length : ((input.pointers.length >
+        session.prevInput.maxPointers) ? input.pointers.length : session.prevInput.maxPointers);
+
+    computeIntervalInputData(session, input);
+
+    // find the correct target
+    var target = manager.element;
+    if (hasParent(input.srcEvent.target, target)) {
+        target = input.srcEvent.target;
+    }
+    input.target = target;
+}
+
+function computeDeltaXY(session, input) {
+    var center = input.center;
+    var offset = session.offsetDelta || {};
+    var prevDelta = session.prevDelta || {};
+    var prevInput = session.prevInput || {};
+
+    if (input.eventType === INPUT_START || prevInput.eventType === INPUT_END) {
+        prevDelta = session.prevDelta = {
+            x: prevInput.deltaX || 0,
+            y: prevInput.deltaY || 0
+        };
+
+        offset = session.offsetDelta = {
+            x: center.x,
+            y: center.y
+        };
+    }
+
+    input.deltaX = prevDelta.x + (center.x - offset.x);
+    input.deltaY = prevDelta.y + (center.y - offset.y);
+}
+
+/**
+ * velocity is calculated every x ms
+ * @param {Object} session
+ * @param {Object} input
+ */
+function computeIntervalInputData(session, input) {
+    var last = session.lastInterval || input,
+        deltaTime = input.timeStamp - last.timeStamp,
+        velocity, velocityX, velocityY, direction;
+
+    if (input.eventType != INPUT_CANCEL && (deltaTime > COMPUTE_INTERVAL || last.velocity === undefined)) {
+        var deltaX = input.deltaX - last.deltaX;
+        var deltaY = input.deltaY - last.deltaY;
+
+        var v = getVelocity(deltaTime, deltaX, deltaY);
+        velocityX = v.x;
+        velocityY = v.y;
+        velocity = (abs(v.x) > abs(v.y)) ? v.x : v.y;
+        direction = getDirection(deltaX, deltaY);
+
+        session.lastInterval = input;
+    } else {
+        // use latest velocity info if it doesn't overtake a minimum period
+        velocity = last.velocity;
+        velocityX = last.velocityX;
+        velocityY = last.velocityY;
+        direction = last.direction;
+    }
+
+    input.velocity = velocity;
+    input.velocityX = velocityX;
+    input.velocityY = velocityY;
+    input.direction = direction;
+}
+
+/**
+ * create a simple clone from the input used for storage of firstInput and firstMultiple
+ * @param {Object} input
+ * @returns {Object} clonedInputData
+ */
+function simpleCloneInputData(input) {
+    // make a simple copy of the pointers because we will get a reference if we don't
+    // we only need clientXY for the calculations
+    var pointers = [];
+    var i = 0;
+    while (i < input.pointers.length) {
+        pointers[i] = {
+            clientX: round(input.pointers[i].clientX),
+            clientY: round(input.pointers[i].clientY)
+        };
+        i++;
+    }
+
+    return {
+        timeStamp: now(),
+        pointers: pointers,
+        center: getCenter(pointers),
+        deltaX: input.deltaX,
+        deltaY: input.deltaY
+    };
+}
+
+/**
+ * get the center of all the pointers
+ * @param {Array} pointers
+ * @return {Object} center contains `x` and `y` properties
+ */
+function getCenter(pointers) {
+    var pointersLength = pointers.length;
+
+    // no need to loop when only one touch
+    if (pointersLength === 1) {
+        return {
+            x: round(pointers[0].clientX),
+            y: round(pointers[0].clientY)
+        };
+    }
+
+    var x = 0, y = 0, i = 0;
+    while (i < pointersLength) {
+        x += pointers[i].clientX;
+        y += pointers[i].clientY;
+        i++;
+    }
+
+    return {
+        x: round(x / pointersLength),
+        y: round(y / pointersLength)
+    };
+}
+
+/**
+ * calculate the velocity between two points. unit is in px per ms.
+ * @param {Number} deltaTime
+ * @param {Number} x
+ * @param {Number} y
+ * @return {Object} velocity `x` and `y`
+ */
+function getVelocity(deltaTime, x, y) {
+    return {
+        x: x / deltaTime || 0,
+        y: y / deltaTime || 0
+    };
+}
+
+/**
+ * get the direction between two points
+ * @param {Number} x
+ * @param {Number} y
+ * @return {Number} direction
+ */
+function getDirection(x, y) {
+    if (x === y) {
+        return DIRECTION_NONE;
+    }
+
+    if (abs(x) >= abs(y)) {
+        return x < 0 ? DIRECTION_LEFT : DIRECTION_RIGHT;
+    }
+    return y < 0 ? DIRECTION_UP : DIRECTION_DOWN;
+}
+
+/**
+ * calculate the absolute distance between two points
+ * @param {Object} p1 {x, y}
+ * @param {Object} p2 {x, y}
+ * @param {Array} [props] containing x and y keys
+ * @return {Number} distance
+ */
+function getDistance(p1, p2, props) {
+    if (!props) {
+        props = PROPS_XY;
+    }
+    var x = p2[props[0]] - p1[props[0]],
+        y = p2[props[1]] - p1[props[1]];
+
+    return Math.sqrt((x * x) + (y * y));
+}
+
+/**
+ * calculate the angle between two coordinates
+ * @param {Object} p1
+ * @param {Object} p2
+ * @param {Array} [props] containing x and y keys
+ * @return {Number} angle
+ */
+function getAngle(p1, p2, props) {
+    if (!props) {
+        props = PROPS_XY;
+    }
+    var x = p2[props[0]] - p1[props[0]],
+        y = p2[props[1]] - p1[props[1]];
+    return Math.atan2(y, x) * 180 / Math.PI;
+}
+
+/**
+ * calculate the rotation degrees between two pointersets
+ * @param {Array} start array of pointers
+ * @param {Array} end array of pointers
+ * @return {Number} rotation
+ */
+function getRotation(start, end) {
+    return getAngle(end[1], end[0], PROPS_CLIENT_XY) + getAngle(start[1], start[0], PROPS_CLIENT_XY);
+}
+
+/**
+ * calculate the scale factor between two pointersets
+ * no scale is 1, and goes down to 0 when pinched together, and bigger when pinched out
+ * @param {Array} start array of pointers
+ * @param {Array} end array of pointers
+ * @return {Number} scale
+ */
+function getScale(start, end) {
+    return getDistance(end[0], end[1], PROPS_CLIENT_XY) / getDistance(start[0], start[1], PROPS_CLIENT_XY);
+}
+
+var MOUSE_INPUT_MAP = {
+    mousedown: INPUT_START,
+    mousemove: INPUT_MOVE,
+    mouseup: INPUT_END
+};
+
+var MOUSE_ELEMENT_EVENTS = 'mousedown';
+var MOUSE_WINDOW_EVENTS = 'mousemove mouseup';
+
+/**
+ * Mouse events input
+ * @constructor
+ * @extends Input
+ */
+function MouseInput() {
+    this.evEl = MOUSE_ELEMENT_EVENTS;
+    this.evWin = MOUSE_WINDOW_EVENTS;
+
+    this.pressed = false; // mousedown state
+
+    Input.apply(this, arguments);
+}
+
+inherit(MouseInput, Input, {
+    /**
+     * handle mouse events
+     * @param {Object} ev
+     */
+    handler: function MEhandler(ev) {
+        var eventType = MOUSE_INPUT_MAP[ev.type];
+
+        // on start we want to have the left mouse button down
+        if (eventType & INPUT_START && ev.button === 0) {
+            this.pressed = true;
+        }
+
+        if (eventType & INPUT_MOVE && ev.which !== 1) {
+            eventType = INPUT_END;
+        }
+
+        // mouse must be down
+        if (!this.pressed) {
+            return;
+        }
+
+        if (eventType & INPUT_END) {
+            this.pressed = false;
+        }
+
+        this.callback(this.manager, eventType, {
+            pointers: [ev],
+            changedPointers: [ev],
+            pointerType: INPUT_TYPE_MOUSE,
+            srcEvent: ev
+        });
+    }
+});
+
+var POINTER_INPUT_MAP = {
+    pointerdown: INPUT_START,
+    pointermove: INPUT_MOVE,
+    pointerup: INPUT_END,
+    pointercancel: INPUT_CANCEL,
+    pointerout: INPUT_CANCEL
+};
+
+// in IE10 the pointer types is defined as an enum
+var IE10_POINTER_TYPE_ENUM = {
+    2: INPUT_TYPE_TOUCH,
+    3: INPUT_TYPE_PEN,
+    4: INPUT_TYPE_MOUSE,
+    5: INPUT_TYPE_KINECT // see https://twitter.com/jacobrossi/status/480596438489890816
+};
+
+var POINTER_ELEMENT_EVENTS = 'pointerdown';
+var POINTER_WINDOW_EVENTS = 'pointermove pointerup pointercancel';
+
+// IE10 has prefixed support, and case-sensitive
+if (window.MSPointerEvent && !window.PointerEvent) {
+    POINTER_ELEMENT_EVENTS = 'MSPointerDown';
+    POINTER_WINDOW_EVENTS = 'MSPointerMove MSPointerUp MSPointerCancel';
+}
+
+/**
+ * Pointer events input
+ * @constructor
+ * @extends Input
+ */
+function PointerEventInput() {
+    this.evEl = POINTER_ELEMENT_EVENTS;
+    this.evWin = POINTER_WINDOW_EVENTS;
+
+    Input.apply(this, arguments);
+
+    this.store = (this.manager.session.pointerEvents = []);
+}
+
+inherit(PointerEventInput, Input, {
+    /**
+     * handle mouse events
+     * @param {Object} ev
+     */
+    handler: function PEhandler(ev) {
+        var store = this.store;
+        var removePointer = false;
+
+        var eventTypeNormalized = ev.type.toLowerCase().replace('ms', '');
+        var eventType = POINTER_INPUT_MAP[eventTypeNormalized];
+        var pointerType = IE10_POINTER_TYPE_ENUM[ev.pointerType] || ev.pointerType;
+
+        var isTouch = (pointerType == INPUT_TYPE_TOUCH);
+
+        // get index of the event in the store
+        var storeIndex = inArray(store, ev.pointerId, 'pointerId');
+
+        // start and mouse must be down
+        if (eventType & INPUT_START && (ev.button === 0 || isTouch)) {
+            if (storeIndex < 0) {
+                store.push(ev);
+                storeIndex = store.length - 1;
+            }
+        } else if (eventType & (INPUT_END | INPUT_CANCEL)) {
+            removePointer = true;
+        }
+
+        // it not found, so the pointer hasn't been down (so it's probably a hover)
+        if (storeIndex < 0) {
+            return;
+        }
+
+        // update the event in the store
+        store[storeIndex] = ev;
+
+        this.callback(this.manager, eventType, {
+            pointers: store,
+            changedPointers: [ev],
+            pointerType: pointerType,
+            srcEvent: ev
+        });
+
+        if (removePointer) {
+            // remove from the store
+            store.splice(storeIndex, 1);
+        }
+    }
+});
+
+var SINGLE_TOUCH_INPUT_MAP = {
+    touchstart: INPUT_START,
+    touchmove: INPUT_MOVE,
+    touchend: INPUT_END,
+    touchcancel: INPUT_CANCEL
+};
+
+var SINGLE_TOUCH_TARGET_EVENTS = 'touchstart';
+var SINGLE_TOUCH_WINDOW_EVENTS = 'touchstart touchmove touchend touchcancel';
+
+/**
+ * Touch events input
+ * @constructor
+ * @extends Input
+ */
+function SingleTouchInput() {
+    this.evTarget = SINGLE_TOUCH_TARGET_EVENTS;
+    this.evWin = SINGLE_TOUCH_WINDOW_EVENTS;
+    this.started = false;
+
+    Input.apply(this, arguments);
+}
+
+inherit(SingleTouchInput, Input, {
+    handler: function TEhandler(ev) {
+        var type = SINGLE_TOUCH_INPUT_MAP[ev.type];
+
+        // should we handle the touch events?
+        if (type === INPUT_START) {
+            this.started = true;
+        }
+
+        if (!this.started) {
+            return;
+        }
+
+        var touches = normalizeSingleTouches.call(this, ev, type);
+
+        // when done, reset the started state
+        if (type & (INPUT_END | INPUT_CANCEL) && touches[0].length - touches[1].length === 0) {
+            this.started = false;
+        }
+
+        this.callback(this.manager, type, {
+            pointers: touches[0],
+            changedPointers: touches[1],
+            pointerType: INPUT_TYPE_TOUCH,
+            srcEvent: ev
+        });
+    }
+});
+
+/**
+ * @this {TouchInput}
+ * @param {Object} ev
+ * @param {Number} type flag
+ * @returns {undefined|Array} [all, changed]
+ */
+function normalizeSingleTouches(ev, type) {
+    var all = toArray(ev.touches);
+    var changed = toArray(ev.changedTouches);
+
+    if (type & (INPUT_END | INPUT_CANCEL)) {
+        all = uniqueArray(all.concat(changed), 'identifier', true);
+    }
+
+    return [all, changed];
+}
+
+var TOUCH_INPUT_MAP = {
+    touchstart: INPUT_START,
+    touchmove: INPUT_MOVE,
+    touchend: INPUT_END,
+    touchcancel: INPUT_CANCEL
+};
+
+var TOUCH_TARGET_EVENTS = 'touchstart touchmove touchend touchcancel';
+
+/**
+ * Multi-user touch events input
+ * @constructor
+ * @extends Input
+ */
+function TouchInput() {
+    this.evTarget = TOUCH_TARGET_EVENTS;
+    this.targetIds = {};
+
+    Input.apply(this, arguments);
+}
+
+inherit(TouchInput, Input, {
+    handler: function MTEhandler(ev) {
+        var type = TOUCH_INPUT_MAP[ev.type];
+        var touches = getTouches.call(this, ev, type);
+        if (!touches) {
+            return;
+        }
+
+        this.callback(this.manager, type, {
+            pointers: touches[0],
+            changedPointers: touches[1],
+            pointerType: INPUT_TYPE_TOUCH,
+            srcEvent: ev
+        });
+    }
+});
+
+/**
+ * @this {TouchInput}
+ * @param {Object} ev
+ * @param {Number} type flag
+ * @returns {undefined|Array} [all, changed]
+ */
+function getTouches(ev, type) {
+    var allTouches = toArray(ev.touches);
+    var targetIds = this.targetIds;
+
+    // when there is only one touch, the process can be simplified
+    if (type & (INPUT_START | INPUT_MOVE) && allTouches.length === 1) {
+        targetIds[allTouches[0].identifier] = true;
+        return [allTouches, allTouches];
+    }
+
+    var i,
+        targetTouches,
+        changedTouches = toArray(ev.changedTouches),
+        changedTargetTouches = [],
+        target = this.target;
+
+    // get target touches from touches
+    targetTouches = allTouches.filter(function(touch) {
+        return hasParent(touch.target, target);
+    });
+
+    // collect touches
+    if (type === INPUT_START) {
+        i = 0;
+        while (i < targetTouches.length) {
+            targetIds[targetTouches[i].identifier] = true;
+            i++;
+        }
+    }
+
+    // filter changed touches to only contain touches that exist in the collected target ids
+    i = 0;
+    while (i < changedTouches.length) {
+        if (targetIds[changedTouches[i].identifier]) {
+            changedTargetTouches.push(changedTouches[i]);
+        }
+
+        // cleanup removed touches
+        if (type & (INPUT_END | INPUT_CANCEL)) {
+            delete targetIds[changedTouches[i].identifier];
+        }
+        i++;
+    }
+
+    if (!changedTargetTouches.length) {
+        return;
+    }
+
+    return [
+        // merge targetTouches with changedTargetTouches so it contains ALL touches, including 'end' and 'cancel'
+        uniqueArray(targetTouches.concat(changedTargetTouches), 'identifier', true),
+        changedTargetTouches
+    ];
+}
+
+/**
+ * Combined touch and mouse input
+ *
+ * Touch has a higher priority then mouse, and while touching no mouse events are allowed.
+ * This because touch devices also emit mouse events while doing a touch.
+ *
+ * @constructor
+ * @extends Input
+ */
+
+var DEDUP_TIMEOUT = 2500;
+var DEDUP_DISTANCE = 25;
+
+function TouchMouseInput() {
+    Input.apply(this, arguments);
+
+    var handler = bindFn(this.handler, this);
+    this.touch = new TouchInput(this.manager, handler);
+    this.mouse = new MouseInput(this.manager, handler);
+
+    this.primaryTouch = null;
+    this.lastTouches = [];
+}
+
+inherit(TouchMouseInput, Input, {
+    /**
+     * handle mouse and touch events
+     * @param {Hammer} manager
+     * @param {String} inputEvent
+     * @param {Object} inputData
+     */
+    handler: function TMEhandler(manager, inputEvent, inputData) {
+        var isTouch = (inputData.pointerType == INPUT_TYPE_TOUCH),
+            isMouse = (inputData.pointerType == INPUT_TYPE_MOUSE);
+
+        if (isMouse && inputData.sourceCapabilities && inputData.sourceCapabilities.firesTouchEvents) {
+            return;
+        }
+
+        // when we're in a touch event, record touches to  de-dupe synthetic mouse event
+        if (isTouch) {
+            recordTouches.call(this, inputEvent, inputData);
+        } else if (isMouse && isSyntheticEvent.call(this, inputData)) {
+            return;
+        }
+
+        this.callback(manager, inputEvent, inputData);
+    },
+
+    /**
+     * remove the event listeners
+     */
+    destroy: function destroy() {
+        this.touch.destroy();
+        this.mouse.destroy();
+    }
+});
+
+function recordTouches(eventType, eventData) {
+    if (eventType & INPUT_START) {
+        this.primaryTouch = eventData.changedPointers[0].identifier;
+        setLastTouch.call(this, eventData);
+    } else if (eventType & (INPUT_END | INPUT_CANCEL)) {
+        setLastTouch.call(this, eventData);
+    }
+}
+
+function setLastTouch(eventData) {
+    var touch = eventData.changedPointers[0];
+
+    if (touch.identifier === this.primaryTouch) {
+        var lastTouch = {x: touch.clientX, y: touch.clientY};
+        this.lastTouches.push(lastTouch);
+        var lts = this.lastTouches;
+        var removeLastTouch = function() {
+            var i = lts.indexOf(lastTouch);
+            if (i > -1) {
+                lts.splice(i, 1);
+            }
+        };
+        setTimeout(removeLastTouch, DEDUP_TIMEOUT);
+    }
+}
+
+function isSyntheticEvent(eventData) {
+    var x = eventData.srcEvent.clientX, y = eventData.srcEvent.clientY;
+    for (var i = 0; i < this.lastTouches.length; i++) {
+        var t = this.lastTouches[i];
+        var dx = Math.abs(x - t.x), dy = Math.abs(y - t.y);
+        if (dx <= DEDUP_DISTANCE && dy <= DEDUP_DISTANCE) {
+            return true;
+        }
+    }
+    return false;
+}
+
+var PREFIXED_TOUCH_ACTION = prefixed(TEST_ELEMENT.style, 'touchAction');
+var NATIVE_TOUCH_ACTION = PREFIXED_TOUCH_ACTION !== undefined;
+
+// magical touchAction value
+var TOUCH_ACTION_COMPUTE = 'compute';
+var TOUCH_ACTION_AUTO = 'auto';
+var TOUCH_ACTION_MANIPULATION = 'manipulation'; // not implemented
+var TOUCH_ACTION_NONE = 'none';
+var TOUCH_ACTION_PAN_X = 'pan-x';
+var TOUCH_ACTION_PAN_Y = 'pan-y';
+var TOUCH_ACTION_MAP = getTouchActionProps();
+
+/**
+ * Touch Action
+ * sets the touchAction property or uses the js alternative
+ * @param {Manager} manager
+ * @param {String} value
+ * @constructor
+ */
+function TouchAction(manager, value) {
+    this.manager = manager;
+    this.set(value);
+}
+
+TouchAction.prototype = {
+    /**
+     * set the touchAction value on the element or enable the polyfill
+     * @param {String} value
+     */
+    set: function(value) {
+        // find out the touch-action by the event handlers
+        if (value == TOUCH_ACTION_COMPUTE) {
+            value = this.compute();
+        }
+
+        if (NATIVE_TOUCH_ACTION && this.manager.element.style && TOUCH_ACTION_MAP[value]) {
+            this.manager.element.style[PREFIXED_TOUCH_ACTION] = value;
+        }
+        this.actions = value.toLowerCase().trim();
+    },
+
+    /**
+     * just re-set the touchAction value
+     */
+    update: function() {
+        this.set(this.manager.options.touchAction);
+    },
+
+    /**
+     * compute the value for the touchAction property based on the recognizer's settings
+     * @returns {String} value
+     */
+    compute: function() {
+        var actions = [];
+        each(this.manager.recognizers, function(recognizer) {
+            if (boolOrFn(recognizer.options.enable, [recognizer])) {
+                actions = actions.concat(recognizer.getTouchAction());
+            }
+        });
+        return cleanTouchActions(actions.join(' '));
+    },
+
+    /**
+     * this method is called on each input cycle and provides the preventing of the browser behavior
+     * @param {Object} input
+     */
+    preventDefaults: function(input) {
+        var srcEvent = input.srcEvent;
+        var direction = input.offsetDirection;
+
+        // if the touch action did prevented once this session
+        if (this.manager.session.prevented) {
+            srcEvent.preventDefault();
+            return;
+        }
+
+        var actions = this.actions;
+        var hasNone = inStr(actions, TOUCH_ACTION_NONE) && !TOUCH_ACTION_MAP[TOUCH_ACTION_NONE];
+        var hasPanY = inStr(actions, TOUCH_ACTION_PAN_Y) && !TOUCH_ACTION_MAP[TOUCH_ACTION_PAN_Y];
+        var hasPanX = inStr(actions, TOUCH_ACTION_PAN_X) && !TOUCH_ACTION_MAP[TOUCH_ACTION_PAN_X];
+
+        if (hasNone) {
+            //do not prevent defaults if this is a tap gesture
+
+            var isTapPointer = input.pointers.length === 1;
+            var isTapMovement = input.distance < 2;
+            var isTapTouchTime = input.deltaTime < 250;
+
+            if (isTapPointer && isTapMovement && isTapTouchTime) {
+                return;
+            }
+        }
+
+        if (hasPanX && hasPanY) {
+            // `pan-x pan-y` means browser handles all scrolling/panning, do not prevent
+            return;
+        }
+
+        if (hasNone ||
+            (hasPanY && direction & DIRECTION_HORIZONTAL) ||
+            (hasPanX && direction & DIRECTION_VERTICAL)) {
+            return this.preventSrc(srcEvent);
+        }
+    },
+
+    /**
+     * call preventDefault to prevent the browser's default behavior (scrolling in most cases)
+     * @param {Object} srcEvent
+     */
+    preventSrc: function(srcEvent) {
+        this.manager.session.prevented = true;
+        srcEvent.preventDefault();
+    }
+};
+
+/**
+ * when the touchActions are collected they are not a valid value, so we need to clean things up. *
+ * @param {String} actions
+ * @returns {*}
+ */
+function cleanTouchActions(actions) {
+    // none
+    if (inStr(actions, TOUCH_ACTION_NONE)) {
+        return TOUCH_ACTION_NONE;
+    }
+
+    var hasPanX = inStr(actions, TOUCH_ACTION_PAN_X);
+    var hasPanY = inStr(actions, TOUCH_ACTION_PAN_Y);
+
+    // if both pan-x and pan-y are set (different recognizers
+    // for different directions, e.g. horizontal pan but vertical swipe?)
+    // we need none (as otherwise with pan-x pan-y combined none of these
+    // recognizers will work, since the browser would handle all panning
+    if (hasPanX && hasPanY) {
+        return TOUCH_ACTION_NONE;
+    }
+
+    // pan-x OR pan-y
+    if (hasPanX || hasPanY) {
+        return hasPanX ? TOUCH_ACTION_PAN_X : TOUCH_ACTION_PAN_Y;
+    }
+
+    // manipulation
+    if (inStr(actions, TOUCH_ACTION_MANIPULATION)) {
+        return TOUCH_ACTION_MANIPULATION;
+    }
+
+    return TOUCH_ACTION_AUTO;
+}
+
+function getTouchActionProps() {
+    if (!NATIVE_TOUCH_ACTION) {
+        return false;
+    }
+    var touchMap = {};
+    var cssSupports = window.CSS && window.CSS.supports;
+    ['auto', 'manipulation', 'pan-y', 'pan-x', 'pan-x pan-y', 'none'].forEach(function(val) {
+
+        // If css.supports is not supported but there is native touch-action assume it supports
+        // all values. This is the case for IE 10 and 11.
+        touchMap[val] = cssSupports ? window.CSS.supports('touch-action', val) : true;
+    });
+    return touchMap;
+}
+
+/**
+ * Recognizer flow explained; *
+ * All recognizers have the initial state of POSSIBLE when a input session starts.
+ * The definition of a input session is from the first input until the last input, with all it's movement in it. *
+ * Example session for mouse-input: mousedown -> mousemove -> mouseup
+ *
+ * On each recognizing cycle (see Manager.recognize) the .recognize() method is executed
+ * which determines with state it should be.
+ *
+ * If the recognizer has the state FAILED, CANCELLED or RECOGNIZED (equals ENDED), it is reset to
+ * POSSIBLE to give it another change on the next cycle.
+ *
+ *               Possible
+ *                  |
+ *            +-----+---------------+
+ *            |                     |
+ *      +-----+-----+               |
+ *      |           |               |
+ *   Failed      Cancelled          |
+ *                          +-------+------+
+ *                          |              |
+ *                      Recognized       Began
+ *                                         |
+ *                                      Changed
+ *                                         |
+ *                                  Ended/Recognized
+ */
+var STATE_POSSIBLE = 1;
+var STATE_BEGAN = 2;
+var STATE_CHANGED = 4;
+var STATE_ENDED = 8;
+var STATE_RECOGNIZED = STATE_ENDED;
+var STATE_CANCELLED = 16;
+var STATE_FAILED = 32;
+
+/**
+ * Recognizer
+ * Every recognizer needs to extend from this class.
+ * @constructor
+ * @param {Object} options
+ */
+function Recognizer(options) {
+    this.options = assign({}, this.defaults, options || {});
+
+    this.id = uniqueId();
+
+    this.manager = null;
+
+    // default is enable true
+    this.options.enable = ifUndefined(this.options.enable, true);
+
+    this.state = STATE_POSSIBLE;
+
+    this.simultaneous = {};
+    this.requireFail = [];
+}
+
+Recognizer.prototype = {
+    /**
+     * @virtual
+     * @type {Object}
+     */
+    defaults: {},
+
+    /**
+     * set options
+     * @param {Object} options
+     * @return {Recognizer}
+     */
+    set: function(options) {
+        assign(this.options, options);
+
+        // also update the touchAction, in case something changed about the directions/enabled state
+        this.manager && this.manager.touchAction.update();
+        return this;
+    },
+
+    /**
+     * recognize simultaneous with an other recognizer.
+     * @param {Recognizer} otherRecognizer
+     * @returns {Recognizer} this
+     */
+    recognizeWith: function(otherRecognizer) {
+        if (invokeArrayArg(otherRecognizer, 'recognizeWith', this)) {
+            return this;
+        }
+
+        var simultaneous = this.simultaneous;
+        otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
+        if (!simultaneous[otherRecognizer.id]) {
+            simultaneous[otherRecognizer.id] = otherRecognizer;
+            otherRecognizer.recognizeWith(this);
+        }
+        return this;
+    },
+
+    /**
+     * drop the simultaneous link. it doesnt remove the link on the other recognizer.
+     * @param {Recognizer} otherRecognizer
+     * @returns {Recognizer} this
+     */
+    dropRecognizeWith: function(otherRecognizer) {
+        if (invokeArrayArg(otherRecognizer, 'dropRecognizeWith', this)) {
+            return this;
+        }
+
+        otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
+        delete this.simultaneous[otherRecognizer.id];
+        return this;
+    },
+
+    /**
+     * recognizer can only run when an other is failing
+     * @param {Recognizer} otherRecognizer
+     * @returns {Recognizer} this
+     */
+    requireFailure: function(otherRecognizer) {
+        if (invokeArrayArg(otherRecognizer, 'requireFailure', this)) {
+            return this;
+        }
+
+        var requireFail = this.requireFail;
+        otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
+        if (inArray(requireFail, otherRecognizer) === -1) {
+            requireFail.push(otherRecognizer);
+            otherRecognizer.requireFailure(this);
+        }
+        return this;
+    },
+
+    /**
+     * drop the requireFailure link. it does not remove the link on the other recognizer.
+     * @param {Recognizer} otherRecognizer
+     * @returns {Recognizer} this
+     */
+    dropRequireFailure: function(otherRecognizer) {
+        if (invokeArrayArg(otherRecognizer, 'dropRequireFailure', this)) {
+            return this;
+        }
+
+        otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
+        var index = inArray(this.requireFail, otherRecognizer);
+        if (index > -1) {
+            this.requireFail.splice(index, 1);
+        }
+        return this;
+    },
+
+    /**
+     * has require failures boolean
+     * @returns {boolean}
+     */
+    hasRequireFailures: function() {
+        return this.requireFail.length > 0;
+    },
+
+    /**
+     * if the recognizer can recognize simultaneous with an other recognizer
+     * @param {Recognizer} otherRecognizer
+     * @returns {Boolean}
+     */
+    canRecognizeWith: function(otherRecognizer) {
+        return !!this.simultaneous[otherRecognizer.id];
+    },
+
+    /**
+     * You should use `tryEmit` instead of `emit` directly to check
+     * that all the needed recognizers has failed before emitting.
+     * @param {Object} input
+     */
+    emit: function(input) {
+        var self = this;
+        var state = this.state;
+
+        function emit(event) {
+            self.manager.emit(event, input);
+        }
+
+        // 'panstart' and 'panmove'
+        if (state < STATE_ENDED) {
+            emit(self.options.event + stateStr(state));
+        }
+
+        emit(self.options.event); // simple 'eventName' events
+
+        if (input.additionalEvent) { // additional event(panleft, panright, pinchin, pinchout...)
+            emit(input.additionalEvent);
+        }
+
+        // panend and pancancel
+        if (state >= STATE_ENDED) {
+            emit(self.options.event + stateStr(state));
+        }
+    },
+
+    /**
+     * Check that all the require failure recognizers has failed,
+     * if true, it emits a gesture event,
+     * otherwise, setup the state to FAILED.
+     * @param {Object} input
+     */
+    tryEmit: function(input) {
+        if (this.canEmit()) {
+            return this.emit(input);
+        }
+        // it's failing anyway
+        this.state = STATE_FAILED;
+    },
+
+    /**
+     * can we emit?
+     * @returns {boolean}
+     */
+    canEmit: function() {
+        var i = 0;
+        while (i < this.requireFail.length) {
+            if (!(this.requireFail[i].state & (STATE_FAILED | STATE_POSSIBLE))) {
+                return false;
+            }
+            i++;
+        }
+        return true;
+    },
+
+    /**
+     * update the recognizer
+     * @param {Object} inputData
+     */
+    recognize: function(inputData) {
+        // make a new copy of the inputData
+        // so we can change the inputData without messing up the other recognizers
+        var inputDataClone = assign({}, inputData);
+
+        // is is enabled and allow recognizing?
+        if (!boolOrFn(this.options.enable, [this, inputDataClone])) {
+            this.reset();
+            this.state = STATE_FAILED;
+            return;
+        }
+
+        // reset when we've reached the end
+        if (this.state & (STATE_RECOGNIZED | STATE_CANCELLED | STATE_FAILED)) {
+            this.state = STATE_POSSIBLE;
+        }
+
+        this.state = this.process(inputDataClone);
+
+        // the recognizer has recognized a gesture
+        // so trigger an event
+        if (this.state & (STATE_BEGAN | STATE_CHANGED | STATE_ENDED | STATE_CANCELLED)) {
+            this.tryEmit(inputDataClone);
+        }
+    },
+
+    /**
+     * return the state of the recognizer
+     * the actual recognizing happens in this method
+     * @virtual
+     * @param {Object} inputData
+     * @returns {Const} STATE
+     */
+    process: function(inputData) { }, // jshint ignore:line
+
+    /**
+     * return the preferred touch-action
+     * @virtual
+     * @returns {Array}
+     */
+    getTouchAction: function() { },
+
+    /**
+     * called when the gesture isn't allowed to recognize
+     * like when another is being recognized or it is disabled
+     * @virtual
+     */
+    reset: function() { }
+};
+
+/**
+ * get a usable string, used as event postfix
+ * @param {Const} state
+ * @returns {String} state
+ */
+function stateStr(state) {
+    if (state & STATE_CANCELLED) {
+        return 'cancel';
+    } else if (state & STATE_ENDED) {
+        return 'end';
+    } else if (state & STATE_CHANGED) {
+        return 'move';
+    } else if (state & STATE_BEGAN) {
+        return 'start';
+    }
+    return '';
+}
+
+/**
+ * direction cons to string
+ * @param {Const} direction
+ * @returns {String}
+ */
+function directionStr(direction) {
+    if (direction == DIRECTION_DOWN) {
+        return 'down';
+    } else if (direction == DIRECTION_UP) {
+        return 'up';
+    } else if (direction == DIRECTION_LEFT) {
+        return 'left';
+    } else if (direction == DIRECTION_RIGHT) {
+        return 'right';
+    }
+    return '';
+}
+
+/**
+ * get a recognizer by name if it is bound to a manager
+ * @param {Recognizer|String} otherRecognizer
+ * @param {Recognizer} recognizer
+ * @returns {Recognizer}
+ */
+function getRecognizerByNameIfManager(otherRecognizer, recognizer) {
+    var manager = recognizer.manager;
+    if (manager) {
+        return manager.get(otherRecognizer);
+    }
+    return otherRecognizer;
+}
+
+/**
+ * This recognizer is just used as a base for the simple attribute recognizers.
+ * @constructor
+ * @extends Recognizer
+ */
+function AttrRecognizer() {
+    Recognizer.apply(this, arguments);
+}
+
+inherit(AttrRecognizer, Recognizer, {
+    /**
+     * @namespace
+     * @memberof AttrRecognizer
+     */
+    defaults: {
+        /**
+         * @type {Number}
+         * @default 1
+         */
+        pointers: 1
+    },
+
+    /**
+     * Used to check if it the recognizer receives valid input, like input.distance > 10.
+     * @memberof AttrRecognizer
+     * @param {Object} input
+     * @returns {Boolean} recognized
+     */
+    attrTest: function(input) {
+        var optionPointers = this.options.pointers;
+        return optionPointers === 0 || input.pointers.length === optionPointers;
+    },
+
+    /**
+     * Process the input and return the state for the recognizer
+     * @memberof AttrRecognizer
+     * @param {Object} input
+     * @returns {*} State
+     */
+    process: function(input) {
+        var state = this.state;
+        var eventType = input.eventType;
+
+        var isRecognized = state & (STATE_BEGAN | STATE_CHANGED);
+        var isValid = this.attrTest(input);
+
+        // on cancel input and we've recognized before, return STATE_CANCELLED
+        if (isRecognized && (eventType & INPUT_CANCEL || !isValid)) {
+            return state | STATE_CANCELLED;
+        } else if (isRecognized || isValid) {
+            if (eventType & INPUT_END) {
+                return state | STATE_ENDED;
+            } else if (!(state & STATE_BEGAN)) {
+                return STATE_BEGAN;
+            }
+            return state | STATE_CHANGED;
+        }
+        return STATE_FAILED;
+    }
+});
+
+/**
+ * Pan
+ * Recognized when the pointer is down and moved in the allowed direction.
+ * @constructor
+ * @extends AttrRecognizer
+ */
+function PanRecognizer() {
+    AttrRecognizer.apply(this, arguments);
+
+    this.pX = null;
+    this.pY = null;
+}
+
+inherit(PanRecognizer, AttrRecognizer, {
+    /**
+     * @namespace
+     * @memberof PanRecognizer
+     */
+    defaults: {
+        event: 'pan',
+        threshold: 10,
+        pointers: 1,
+        direction: DIRECTION_ALL
+    },
+
+    getTouchAction: function() {
+        var direction = this.options.direction;
+        var actions = [];
+        if (direction & DIRECTION_HORIZONTAL) {
+            actions.push(TOUCH_ACTION_PAN_Y);
+        }
+        if (direction & DIRECTION_VERTICAL) {
+            actions.push(TOUCH_ACTION_PAN_X);
+        }
+        return actions;
+    },
+
+    directionTest: function(input) {
+        var options = this.options;
+        var hasMoved = true;
+        var distance = input.distance;
+        var direction = input.direction;
+        var x = input.deltaX;
+        var y = input.deltaY;
+
+        // lock to axis?
+        if (!(direction & options.direction)) {
+            if (options.direction & DIRECTION_HORIZONTAL) {
+                direction = (x === 0) ? DIRECTION_NONE : (x < 0) ? DIRECTION_LEFT : DIRECTION_RIGHT;
+                hasMoved = x != this.pX;
+                distance = Math.abs(input.deltaX);
+            } else {
+                direction = (y === 0) ? DIRECTION_NONE : (y < 0) ? DIRECTION_UP : DIRECTION_DOWN;
+                hasMoved = y != this.pY;
+                distance = Math.abs(input.deltaY);
+            }
+        }
+        input.direction = direction;
+        return hasMoved && distance > options.threshold && direction & options.direction;
+    },
+
+    attrTest: function(input) {
+        return AttrRecognizer.prototype.attrTest.call(this, input) &&
+            (this.state & STATE_BEGAN || (!(this.state & STATE_BEGAN) && this.directionTest(input)));
+    },
+
+    emit: function(input) {
+
+        this.pX = input.deltaX;
+        this.pY = input.deltaY;
+
+        var direction = directionStr(input.direction);
+
+        if (direction) {
+            input.additionalEvent = this.options.event + direction;
+        }
+        this._super.emit.call(this, input);
+    }
+});
+
+/**
+ * Pinch
+ * Recognized when two or more pointers are moving toward (zoom-in) or away from each other (zoom-out).
+ * @constructor
+ * @extends AttrRecognizer
+ */
+function PinchRecognizer() {
+    AttrRecognizer.apply(this, arguments);
+}
+
+inherit(PinchRecognizer, AttrRecognizer, {
+    /**
+     * @namespace
+     * @memberof PinchRecognizer
+     */
+    defaults: {
+        event: 'pinch',
+        threshold: 0,
+        pointers: 2
+    },
+
+    getTouchAction: function() {
+        return [TOUCH_ACTION_NONE];
+    },
+
+    attrTest: function(input) {
+        return this._super.attrTest.call(this, input) &&
+            (Math.abs(input.scale - 1) > this.options.threshold || this.state & STATE_BEGAN);
+    },
+
+    emit: function(input) {
+        if (input.scale !== 1) {
+            var inOut = input.scale < 1 ? 'in' : 'out';
+            input.additionalEvent = this.options.event + inOut;
+        }
+        this._super.emit.call(this, input);
+    }
+});
+
+/**
+ * Press
+ * Recognized when the pointer is down for x ms without any movement.
+ * @constructor
+ * @extends Recognizer
+ */
+function PressRecognizer() {
+    Recognizer.apply(this, arguments);
+
+    this._timer = null;
+    this._input = null;
+}
+
+inherit(PressRecognizer, Recognizer, {
+    /**
+     * @namespace
+     * @memberof PressRecognizer
+     */
+    defaults: {
+        event: 'press',
+        pointers: 1,
+        time: 251, // minimal time of the pointer to be pressed
+        threshold: 9 // a minimal movement is ok, but keep it low
+    },
+
+    getTouchAction: function() {
+        return [TOUCH_ACTION_AUTO];
+    },
+
+    process: function(input) {
+        var options = this.options;
+        var validPointers = input.pointers.length === options.pointers;
+        var validMovement = input.distance < options.threshold;
+        var validTime = input.deltaTime > options.time;
+
+        this._input = input;
+
+        // we only allow little movement
+        // and we've reached an end event, so a tap is possible
+        if (!validMovement || !validPointers || (input.eventType & (INPUT_END | INPUT_CANCEL) && !validTime)) {
+            this.reset();
+        } else if (input.eventType & INPUT_START) {
+            this.reset();
+            this._timer = setTimeoutContext(function() {
+                this.state = STATE_RECOGNIZED;
+                this.tryEmit();
+            }, options.time, this);
+        } else if (input.eventType & INPUT_END) {
+            return STATE_RECOGNIZED;
+        }
+        return STATE_FAILED;
+    },
+
+    reset: function() {
+        clearTimeout(this._timer);
+    },
+
+    emit: function(input) {
+        if (this.state !== STATE_RECOGNIZED) {
+            return;
+        }
+
+        if (input && (input.eventType & INPUT_END)) {
+            this.manager.emit(this.options.event + 'up', input);
+        } else {
+            this._input.timeStamp = now();
+            this.manager.emit(this.options.event, this._input);
+        }
+    }
+});
+
+/**
+ * Rotate
+ * Recognized when two or more pointer are moving in a circular motion.
+ * @constructor
+ * @extends AttrRecognizer
+ */
+function RotateRecognizer() {
+    AttrRecognizer.apply(this, arguments);
+}
+
+inherit(RotateRecognizer, AttrRecognizer, {
+    /**
+     * @namespace
+     * @memberof RotateRecognizer
+     */
+    defaults: {
+        event: 'rotate',
+        threshold: 0,
+        pointers: 2
+    },
+
+    getTouchAction: function() {
+        return [TOUCH_ACTION_NONE];
+    },
+
+    attrTest: function(input) {
+        return this._super.attrTest.call(this, input) &&
+            (Math.abs(input.rotation) > this.options.threshold || this.state & STATE_BEGAN);
+    }
+});
+
+/**
+ * Swipe
+ * Recognized when the pointer is moving fast (velocity), with enough distance in the allowed direction.
+ * @constructor
+ * @extends AttrRecognizer
+ */
+function SwipeRecognizer() {
+    AttrRecognizer.apply(this, arguments);
+}
+
+inherit(SwipeRecognizer, AttrRecognizer, {
+    /**
+     * @namespace
+     * @memberof SwipeRecognizer
+     */
+    defaults: {
+        event: 'swipe',
+        threshold: 10,
+        velocity: 0.3,
+        direction: DIRECTION_HORIZONTAL | DIRECTION_VERTICAL,
+        pointers: 1
+    },
+
+    getTouchAction: function() {
+        return PanRecognizer.prototype.getTouchAction.call(this);
+    },
+
+    attrTest: function(input) {
+        var direction = this.options.direction;
+        var velocity;
+
+        if (direction & (DIRECTION_HORIZONTAL | DIRECTION_VERTICAL)) {
+            velocity = input.overallVelocity;
+        } else if (direction & DIRECTION_HORIZONTAL) {
+            velocity = input.overallVelocityX;
+        } else if (direction & DIRECTION_VERTICAL) {
+            velocity = input.overallVelocityY;
+        }
+
+        return this._super.attrTest.call(this, input) &&
+            direction & input.offsetDirection &&
+            input.distance > this.options.threshold &&
+            input.maxPointers == this.options.pointers &&
+            abs(velocity) > this.options.velocity && input.eventType & INPUT_END;
+    },
+
+    emit: function(input) {
+        var direction = directionStr(input.offsetDirection);
+        if (direction) {
+            this.manager.emit(this.options.event + direction, input);
+        }
+
+        this.manager.emit(this.options.event, input);
+    }
+});
+
+/**
+ * A tap is ecognized when the pointer is doing a small tap/click. Multiple taps are recognized if they occur
+ * between the given interval and position. The delay option can be used to recognize multi-taps without firing
+ * a single tap.
+ *
+ * The eventData from the emitted event contains the property `tapCount`, which contains the amount of
+ * multi-taps being recognized.
+ * @constructor
+ * @extends Recognizer
+ */
+function TapRecognizer() {
+    Recognizer.apply(this, arguments);
+
+    // previous time and center,
+    // used for tap counting
+    this.pTime = false;
+    this.pCenter = false;
+
+    this._timer = null;
+    this._input = null;
+    this.count = 0;
+}
+
+inherit(TapRecognizer, Recognizer, {
+    /**
+     * @namespace
+     * @memberof PinchRecognizer
+     */
+    defaults: {
+        event: 'tap',
+        pointers: 1,
+        taps: 1,
+        interval: 300, // max time between the multi-tap taps
+        time: 250, // max time of the pointer to be down (like finger on the screen)
+        threshold: 9, // a minimal movement is ok, but keep it low
+        posThreshold: 10 // a multi-tap can be a bit off the initial position
+    },
+
+    getTouchAction: function() {
+        return [TOUCH_ACTION_MANIPULATION];
+    },
+
+    process: function(input) {
+        var options = this.options;
+
+        var validPointers = input.pointers.length === options.pointers;
+        var validMovement = input.distance < options.threshold;
+        var validTouchTime = input.deltaTime < options.time;
+
+        this.reset();
+
+        if ((input.eventType & INPUT_START) && (this.count === 0)) {
+            return this.failTimeout();
+        }
+
+        // we only allow little movement
+        // and we've reached an end event, so a tap is possible
+        if (validMovement && validTouchTime && validPointers) {
+            if (input.eventType != INPUT_END) {
+                return this.failTimeout();
+            }
+
+            var validInterval = this.pTime ? (input.timeStamp - this.pTime < options.interval) : true;
+            var validMultiTap = !this.pCenter || getDistance(this.pCenter, input.center) < options.posThreshold;
+
+            this.pTime = input.timeStamp;
+            this.pCenter = input.center;
+
+            if (!validMultiTap || !validInterval) {
+                this.count = 1;
+            } else {
+                this.count += 1;
+            }
+
+            this._input = input;
+
+            // if tap count matches we have recognized it,
+            // else it has began recognizing...
+            var tapCount = this.count % options.taps;
+            if (tapCount === 0) {
+                // no failing requirements, immediately trigger the tap event
+                // or wait as long as the multitap interval to trigger
+                if (!this.hasRequireFailures()) {
+                    return STATE_RECOGNIZED;
+                } else {
+                    this._timer = setTimeoutContext(function() {
+                        this.state = STATE_RECOGNIZED;
+                        this.tryEmit();
+                    }, options.interval, this);
+                    return STATE_BEGAN;
+                }
+            }
+        }
+        return STATE_FAILED;
+    },
+
+    failTimeout: function() {
+        this._timer = setTimeoutContext(function() {
+            this.state = STATE_FAILED;
+        }, this.options.interval, this);
+        return STATE_FAILED;
+    },
+
+    reset: function() {
+        clearTimeout(this._timer);
+    },
+
+    emit: function() {
+        if (this.state == STATE_RECOGNIZED) {
+            this._input.tapCount = this.count;
+            this.manager.emit(this.options.event, this._input);
+        }
+    }
+});
+
+/**
+ * Simple way to create a manager with a default set of recognizers.
+ * @param {HTMLElement} element
+ * @param {Object} [options]
+ * @constructor
+ */
+function Hammer(element, options) {
+    options = options || {};
+    options.recognizers = ifUndefined(options.recognizers, Hammer.defaults.preset);
+    return new Manager(element, options);
+}
+
+/**
+ * @const {string}
+ */
+Hammer.VERSION = '2.0.7';
+
+/**
+ * default settings
+ * @namespace
+ */
+Hammer.defaults = {
+    /**
+     * set if DOM events are being triggered.
+     * But this is slower and unused by simple implementations, so disabled by default.
+     * @type {Boolean}
+     * @default false
+     */
+    domEvents: false,
+
+    /**
+     * The value for the touchAction property/fallback.
+     * When set to `compute` it will magically set the correct value based on the added recognizers.
+     * @type {String}
+     * @default compute
+     */
+    touchAction: TOUCH_ACTION_COMPUTE,
+
+    /**
+     * @type {Boolean}
+     * @default true
+     */
+    enable: true,
+
+    /**
+     * EXPERIMENTAL FEATURE -- can be removed/changed
+     * Change the parent input target element.
+     * If Null, then it is being set the to main element.
+     * @type {Null|EventTarget}
+     * @default null
+     */
+    inputTarget: null,
+
+    /**
+     * force an input class
+     * @type {Null|Function}
+     * @default null
+     */
+    inputClass: null,
+
+    /**
+     * Default recognizer setup when calling `Hammer()`
+     * When creating a new Manager these will be skipped.
+     * @type {Array}
+     */
+    preset: [
+        // RecognizerClass, options, [recognizeWith, ...], [requireFailure, ...]
+        [RotateRecognizer, {enable: false}],
+        [PinchRecognizer, {enable: false}, ['rotate']],
+        [SwipeRecognizer, {direction: DIRECTION_HORIZONTAL}],
+        [PanRecognizer, {direction: DIRECTION_HORIZONTAL}, ['swipe']],
+        [TapRecognizer],
+        [TapRecognizer, {event: 'doubletap', taps: 2}, ['tap']],
+        [PressRecognizer]
+    ],
+
+    /**
+     * Some CSS properties can be used to improve the working of Hammer.
+     * Add them to this method and they will be set when creating a new Manager.
+     * @namespace
+     */
+    cssProps: {
+        /**
+         * Disables text selection to improve the dragging gesture. Mainly for desktop browsers.
+         * @type {String}
+         * @default 'none'
+         */
+        userSelect: 'none',
+
+        /**
+         * Disable the Windows Phone grippers when pressing an element.
+         * @type {String}
+         * @default 'none'
+         */
+        touchSelect: 'none',
+
+        /**
+         * Disables the default callout shown when you touch and hold a touch target.
+         * On iOS, when you touch and hold a touch target such as a link, Safari displays
+         * a callout containing information about the link. This property allows you to disable that callout.
+         * @type {String}
+         * @default 'none'
+         */
+        touchCallout: 'none',
+
+        /**
+         * Specifies whether zooming is enabled. Used by IE10>
+         * @type {String}
+         * @default 'none'
+         */
+        contentZooming: 'none',
+
+        /**
+         * Specifies that an entire element should be draggable instead of its contents. Mainly for desktop browsers.
+         * @type {String}
+         * @default 'none'
+         */
+        userDrag: 'none',
+
+        /**
+         * Overrides the highlight color shown when the user taps a link or a JavaScript
+         * clickable element in iOS. This property obeys the alpha value, if specified.
+         * @type {String}
+         * @default 'rgba(0,0,0,0)'
+         */
+        tapHighlightColor: 'rgba(0,0,0,0)'
+    }
+};
+
+var STOP = 1;
+var FORCED_STOP = 2;
+
+/**
+ * Manager
+ * @param {HTMLElement} element
+ * @param {Object} [options]
+ * @constructor
+ */
+function Manager(element, options) {
+    this.options = assign({}, Hammer.defaults, options || {});
+
+    this.options.inputTarget = this.options.inputTarget || element;
+
+    this.handlers = {};
+    this.session = {};
+    this.recognizers = [];
+    this.oldCssProps = {};
+
+    this.element = element;
+    this.input = createInputInstance(this);
+    this.touchAction = new TouchAction(this, this.options.touchAction);
+
+    toggleCssProps(this, true);
+
+    each(this.options.recognizers, function(item) {
+        var recognizer = this.add(new (item[0])(item[1]));
+        item[2] && recognizer.recognizeWith(item[2]);
+        item[3] && recognizer.requireFailure(item[3]);
+    }, this);
+}
+
+Manager.prototype = {
+    /**
+     * set options
+     * @param {Object} options
+     * @returns {Manager}
+     */
+    set: function(options) {
+        assign(this.options, options);
+
+        // Options that need a little more setup
+        if (options.touchAction) {
+            this.touchAction.update();
+        }
+        if (options.inputTarget) {
+            // Clean up existing event listeners and reinitialize
+            this.input.destroy();
+            this.input.target = options.inputTarget;
+            this.input.init();
+        }
+        return this;
+    },
+
+    /**
+     * stop recognizing for this session.
+     * This session will be discarded, when a new [input]start event is fired.
+     * When forced, the recognizer cycle is stopped immediately.
+     * @param {Boolean} [force]
+     */
+    stop: function(force) {
+        this.session.stopped = force ? FORCED_STOP : STOP;
+    },
+
+    /**
+     * run the recognizers!
+     * called by the inputHandler function on every movement of the pointers (touches)
+     * it walks through all the recognizers and tries to detect the gesture that is being made
+     * @param {Object} inputData
+     */
+    recognize: function(inputData) {
+        var session = this.session;
+        if (session.stopped) {
+            return;
+        }
+
+        // run the touch-action polyfill
+        this.touchAction.preventDefaults(inputData);
+
+        var recognizer;
+        var recognizers = this.recognizers;
+
+        // this holds the recognizer that is being recognized.
+        // so the recognizer's state needs to be BEGAN, CHANGED, ENDED or RECOGNIZED
+        // if no recognizer is detecting a thing, it is set to `null`
+        var curRecognizer = session.curRecognizer;
+
+        // reset when the last recognizer is recognized
+        // or when we're in a new session
+        if (!curRecognizer || (curRecognizer && curRecognizer.state & STATE_RECOGNIZED)) {
+            curRecognizer = session.curRecognizer = null;
+        }
+
+        var i = 0;
+        while (i < recognizers.length) {
+            recognizer = recognizers[i];
+
+            // find out if we are allowed try to recognize the input for this one.
+            // 1.   allow if the session is NOT forced stopped (see the .stop() method)
+            // 2.   allow if we still haven't recognized a gesture in this session, or the this recognizer is the one
+            //      that is being recognized.
+            // 3.   allow if the recognizer is allowed to run simultaneous with the current recognized recognizer.
+            //      this can be setup with the `recognizeWith()` method on the recognizer.
+            if (session.stopped !== FORCED_STOP && ( // 1
+                    !curRecognizer || recognizer == curRecognizer || // 2
+                    recognizer.canRecognizeWith(curRecognizer))) { // 3
+                recognizer.recognize(inputData);
+            } else {
+                recognizer.reset();
+            }
+
+            // if the recognizer has been recognizing the input as a valid gesture, we want to store this one as the
+            // current active recognizer. but only if we don't already have an active recognizer
+            if (!curRecognizer && recognizer.state & (STATE_BEGAN | STATE_CHANGED | STATE_ENDED)) {
+                curRecognizer = session.curRecognizer = recognizer;
+            }
+            i++;
+        }
+    },
+
+    /**
+     * get a recognizer by its event name.
+     * @param {Recognizer|String} recognizer
+     * @returns {Recognizer|Null}
+     */
+    get: function(recognizer) {
+        if (recognizer instanceof Recognizer) {
+            return recognizer;
+        }
+
+        var recognizers = this.recognizers;
+        for (var i = 0; i < recognizers.length; i++) {
+            if (recognizers[i].options.event == recognizer) {
+                return recognizers[i];
+            }
+        }
+        return null;
+    },
+
+    /**
+     * add a recognizer to the manager
+     * existing recognizers with the same event name will be removed
+     * @param {Recognizer} recognizer
+     * @returns {Recognizer|Manager}
+     */
+    add: function(recognizer) {
+        if (invokeArrayArg(recognizer, 'add', this)) {
+            return this;
+        }
+
+        // remove existing
+        var existing = this.get(recognizer.options.event);
+        if (existing) {
+            this.remove(existing);
+        }
+
+        this.recognizers.push(recognizer);
+        recognizer.manager = this;
+
+        this.touchAction.update();
+        return recognizer;
+    },
+
+    /**
+     * remove a recognizer by name or instance
+     * @param {Recognizer|String} recognizer
+     * @returns {Manager}
+     */
+    remove: function(recognizer) {
+        if (invokeArrayArg(recognizer, 'remove', this)) {
+            return this;
+        }
+
+        recognizer = this.get(recognizer);
+
+        // let's make sure this recognizer exists
+        if (recognizer) {
+            var recognizers = this.recognizers;
+            var index = inArray(recognizers, recognizer);
+
+            if (index !== -1) {
+                recognizers.splice(index, 1);
+                this.touchAction.update();
+            }
+        }
+
+        return this;
+    },
+
+    /**
+     * bind event
+     * @param {String} events
+     * @param {Function} handler
+     * @returns {EventEmitter} this
+     */
+    on: function(events, handler) {
+        if (events === undefined) {
+            return;
+        }
+        if (handler === undefined) {
+            return;
+        }
+
+        var handlers = this.handlers;
+        each(splitStr(events), function(event) {
+            handlers[event] = handlers[event] || [];
+            handlers[event].push(handler);
+        });
+        return this;
+    },
+
+    /**
+     * unbind event, leave emit blank to remove all handlers
+     * @param {String} events
+     * @param {Function} [handler]
+     * @returns {EventEmitter} this
+     */
+    off: function(events, handler) {
+        if (events === undefined) {
+            return;
+        }
+
+        var handlers = this.handlers;
+        each(splitStr(events), function(event) {
+            if (!handler) {
+                delete handlers[event];
+            } else {
+                handlers[event] && handlers[event].splice(inArray(handlers[event], handler), 1);
+            }
+        });
+        return this;
+    },
+
+    /**
+     * emit event to the listeners
+     * @param {String} event
+     * @param {Object} data
+     */
+    emit: function(event, data) {
+        // we also want to trigger dom events
+        if (this.options.domEvents) {
+            triggerDomEvent(event, data);
+        }
+
+        // no handlers, so skip it all
+        var handlers = this.handlers[event] && this.handlers[event].slice();
+        if (!handlers || !handlers.length) {
+            return;
+        }
+
+        data.type = event;
+        data.preventDefault = function() {
+            data.srcEvent.preventDefault();
+        };
+
+        var i = 0;
+        while (i < handlers.length) {
+            handlers[i](data);
+            i++;
+        }
+    },
+
+    /**
+     * destroy the manager and unbinds all events
+     * it doesn't unbind dom events, that is the user own responsibility
+     */
+    destroy: function() {
+        this.element && toggleCssProps(this, false);
+
+        this.handlers = {};
+        this.session = {};
+        this.input.destroy();
+        this.element = null;
+    }
+};
+
+/**
+ * add/remove the css properties as defined in manager.options.cssProps
+ * @param {Manager} manager
+ * @param {Boolean} add
+ */
+function toggleCssProps(manager, add) {
+    var element = manager.element;
+    if (!element.style) {
+        return;
+    }
+    var prop;
+    each(manager.options.cssProps, function(value, name) {
+        prop = prefixed(element.style, name);
+        if (add) {
+            manager.oldCssProps[prop] = element.style[prop];
+            element.style[prop] = value;
+        } else {
+            element.style[prop] = manager.oldCssProps[prop] || '';
+        }
+    });
+    if (!add) {
+        manager.oldCssProps = {};
+    }
+}
+
+/**
+ * trigger dom event
+ * @param {String} event
+ * @param {Object} data
+ */
+function triggerDomEvent(event, data) {
+    var gestureEvent = document.createEvent('Event');
+    gestureEvent.initEvent(event, true, true);
+    gestureEvent.gesture = data;
+    data.target.dispatchEvent(gestureEvent);
+}
+
+assign(Hammer, {
+    INPUT_START: INPUT_START,
+    INPUT_MOVE: INPUT_MOVE,
+    INPUT_END: INPUT_END,
+    INPUT_CANCEL: INPUT_CANCEL,
+
+    STATE_POSSIBLE: STATE_POSSIBLE,
+    STATE_BEGAN: STATE_BEGAN,
+    STATE_CHANGED: STATE_CHANGED,
+    STATE_ENDED: STATE_ENDED,
+    STATE_RECOGNIZED: STATE_RECOGNIZED,
+    STATE_CANCELLED: STATE_CANCELLED,
+    STATE_FAILED: STATE_FAILED,
+
+    DIRECTION_NONE: DIRECTION_NONE,
+    DIRECTION_LEFT: DIRECTION_LEFT,
+    DIRECTION_RIGHT: DIRECTION_RIGHT,
+    DIRECTION_UP: DIRECTION_UP,
+    DIRECTION_DOWN: DIRECTION_DOWN,
+    DIRECTION_HORIZONTAL: DIRECTION_HORIZONTAL,
+    DIRECTION_VERTICAL: DIRECTION_VERTICAL,
+    DIRECTION_ALL: DIRECTION_ALL,
+
+    Manager: Manager,
+    Input: Input,
+    TouchAction: TouchAction,
+
+    TouchInput: TouchInput,
+    MouseInput: MouseInput,
+    PointerEventInput: PointerEventInput,
+    TouchMouseInput: TouchMouseInput,
+    SingleTouchInput: SingleTouchInput,
+
+    Recognizer: Recognizer,
+    AttrRecognizer: AttrRecognizer,
+    Tap: TapRecognizer,
+    Pan: PanRecognizer,
+    Swipe: SwipeRecognizer,
+    Pinch: PinchRecognizer,
+    Rotate: RotateRecognizer,
+    Press: PressRecognizer,
+
+    on: addEventListeners,
+    off: removeEventListeners,
+    each: each,
+    merge: merge,
+    extend: extend,
+    assign: assign,
+    inherit: inherit,
+    bindFn: bindFn,
+    prefixed: prefixed
+});
+
+// this prevents errors when Hammer is loaded in the presence of an AMD
+//  style loader but by script tag, not by the loader.
+var freeGlobal = (typeof window !== 'undefined' ? window : (typeof self !== 'undefined' ? self : {})); // jshint ignore:line
+freeGlobal.Hammer = Hammer;
+
+if (true) {
+    !(__WEBPACK_AMD_DEFINE_RESULT__ = (function() {
+        return Hammer;
+    }).call(exports, __webpack_require__, exports, module),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+} else if (typeof module != 'undefined' && module.exports) {
+    module.exports = Hammer;
+} else {
+    window[exportName] = Hammer;
+}
+
+})(window, document, 'Hammer');
+
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+ * jQuery Mousewheel 3.1.13
+ *
+ * Copyright jQuery Foundation and other contributors
+ * Released under the MIT license
+ * http://jquery.org/license
+ */
+
+(function (factory) {
+    if ( true ) {
+        // AMD. Register as an anonymous module.
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+    } else if (typeof exports === 'object') {
+        // Node/CommonJS style for Browserify
+        module.exports = factory;
+    } else {
+        // Browser globals
+        factory(jQuery);
+    }
+}(function ($) {
+
+    var toFix  = ['wheel', 'mousewheel', 'DOMMouseScroll', 'MozMousePixelScroll'],
+        toBind = ( 'onwheel' in document || document.documentMode >= 9 ) ?
+                    ['wheel'] : ['mousewheel', 'DomMouseScroll', 'MozMousePixelScroll'],
+        slice  = Array.prototype.slice,
+        nullLowestDeltaTimeout, lowestDelta;
+
+    if ( $.event.fixHooks ) {
+        for ( var i = toFix.length; i; ) {
+            $.event.fixHooks[ toFix[--i] ] = $.event.mouseHooks;
+        }
+    }
+
+    var special = $.event.special.mousewheel = {
+        version: '3.1.12',
+
+        setup: function() {
+            if ( this.addEventListener ) {
+                for ( var i = toBind.length; i; ) {
+                    this.addEventListener( toBind[--i], handler, false );
+                }
+            } else {
+                this.onmousewheel = handler;
+            }
+            // Store the line height and page height for this particular element
+            $.data(this, 'mousewheel-line-height', special.getLineHeight(this));
+            $.data(this, 'mousewheel-page-height', special.getPageHeight(this));
+        },
+
+        teardown: function() {
+            if ( this.removeEventListener ) {
+                for ( var i = toBind.length; i; ) {
+                    this.removeEventListener( toBind[--i], handler, false );
+                }
+            } else {
+                this.onmousewheel = null;
+            }
+            // Clean up the data we added to the element
+            $.removeData(this, 'mousewheel-line-height');
+            $.removeData(this, 'mousewheel-page-height');
+        },
+
+        getLineHeight: function(elem) {
+            var $elem = $(elem),
+                $parent = $elem['offsetParent' in $.fn ? 'offsetParent' : 'parent']();
+            if (!$parent.length) {
+                $parent = $('body');
+            }
+            return parseInt($parent.css('fontSize'), 10) || parseInt($elem.css('fontSize'), 10) || 16;
+        },
+
+        getPageHeight: function(elem) {
+            return $(elem).height();
+        },
+
+        settings: {
+            adjustOldDeltas: true, // see shouldAdjustOldDeltas() below
+            normalizeOffset: true  // calls getBoundingClientRect for each event
+        }
+    };
+
+    $.fn.extend({
+        mousewheel: function(fn) {
+            return fn ? this.bind('mousewheel', fn) : this.trigger('mousewheel');
+        },
+
+        unmousewheel: function(fn) {
+            return this.unbind('mousewheel', fn);
+        }
+    });
+
+
+    function handler(event) {
+        var orgEvent   = event || window.event,
+            args       = slice.call(arguments, 1),
+            delta      = 0,
+            deltaX     = 0,
+            deltaY     = 0,
+            absDelta   = 0,
+            offsetX    = 0,
+            offsetY    = 0;
+        event = $.event.fix(orgEvent);
+        event.type = 'mousewheel';
+
+        // Old school scrollwheel delta
+        if ( 'detail'      in orgEvent ) { deltaY = orgEvent.detail * -1;      }
+        if ( 'wheelDelta'  in orgEvent ) { deltaY = orgEvent.wheelDelta;       }
+        if ( 'wheelDeltaY' in orgEvent ) { deltaY = orgEvent.wheelDeltaY;      }
+        if ( 'wheelDeltaX' in orgEvent ) { deltaX = orgEvent.wheelDeltaX * -1; }
+
+        // Firefox < 17 horizontal scrolling related to DOMMouseScroll event
+        if ( 'axis' in orgEvent && orgEvent.axis === orgEvent.HORIZONTAL_AXIS ) {
+            deltaX = deltaY * -1;
+            deltaY = 0;
+        }
+
+        // Set delta to be deltaY or deltaX if deltaY is 0 for backwards compatabilitiy
+        delta = deltaY === 0 ? deltaX : deltaY;
+
+        // New school wheel delta (wheel event)
+        if ( 'deltaY' in orgEvent ) {
+            deltaY = orgEvent.deltaY * -1;
+            delta  = deltaY;
+        }
+        if ( 'deltaX' in orgEvent ) {
+            deltaX = orgEvent.deltaX;
+            if ( deltaY === 0 ) { delta  = deltaX * -1; }
+        }
+
+        // No change actually happened, no reason to go any further
+        if ( deltaY === 0 && deltaX === 0 ) { return; }
+
+        // Need to convert lines and pages to pixels if we aren't already in pixels
+        // There are three delta modes:
+        //   * deltaMode 0 is by pixels, nothing to do
+        //   * deltaMode 1 is by lines
+        //   * deltaMode 2 is by pages
+        if ( orgEvent.deltaMode === 1 ) {
+            var lineHeight = $.data(this, 'mousewheel-line-height');
+            delta  *= lineHeight;
+            deltaY *= lineHeight;
+            deltaX *= lineHeight;
+        } else if ( orgEvent.deltaMode === 2 ) {
+            var pageHeight = $.data(this, 'mousewheel-page-height');
+            delta  *= pageHeight;
+            deltaY *= pageHeight;
+            deltaX *= pageHeight;
+        }
+
+        // Store lowest absolute delta to normalize the delta values
+        absDelta = Math.max( Math.abs(deltaY), Math.abs(deltaX) );
+
+        if ( !lowestDelta || absDelta < lowestDelta ) {
+            lowestDelta = absDelta;
+
+            // Adjust older deltas if necessary
+            if ( shouldAdjustOldDeltas(orgEvent, absDelta) ) {
+                lowestDelta /= 40;
+            }
+        }
+
+        // Adjust older deltas if necessary
+        if ( shouldAdjustOldDeltas(orgEvent, absDelta) ) {
+            // Divide all the things by 40!
+            delta  /= 40;
+            deltaX /= 40;
+            deltaY /= 40;
+        }
+
+        // Get a whole, normalized value for the deltas
+        delta  = Math[ delta  >= 1 ? 'floor' : 'ceil' ](delta  / lowestDelta);
+        deltaX = Math[ deltaX >= 1 ? 'floor' : 'ceil' ](deltaX / lowestDelta);
+        deltaY = Math[ deltaY >= 1 ? 'floor' : 'ceil' ](deltaY / lowestDelta);
+
+        // Normalise offsetX and offsetY properties
+        if ( special.settings.normalizeOffset && this.getBoundingClientRect ) {
+            var boundingRect = this.getBoundingClientRect();
+            offsetX = event.clientX - boundingRect.left;
+            offsetY = event.clientY - boundingRect.top;
+        }
+
+        // Add information to the event object
+        event.deltaX = deltaX;
+        event.deltaY = deltaY;
+        event.deltaFactor = lowestDelta;
+        event.offsetX = offsetX;
+        event.offsetY = offsetY;
+        // Go ahead and set deltaMode to 0 since we converted to pixels
+        // Although this is a little odd since we overwrite the deltaX/Y
+        // properties with normalized deltas.
+        event.deltaMode = 0;
+
+        // Add event and delta to the front of the arguments
+        args.unshift(event, delta, deltaX, deltaY);
+
+        // Clearout lowestDelta after sometime to better
+        // handle multiple device types that give different
+        // a different lowestDelta
+        // Ex: trackpad = 3 and mouse wheel = 120
+        if (nullLowestDeltaTimeout) { clearTimeout(nullLowestDeltaTimeout); }
+        nullLowestDeltaTimeout = setTimeout(nullLowestDelta, 200);
+
+        return ($.event.dispatch || $.event.handle).apply(this, args);
+    }
+
+    function nullLowestDelta() {
+        lowestDelta = null;
+    }
+
+    function shouldAdjustOldDeltas(orgEvent, absDelta) {
+        // If this is an older event and the delta is divisable by 120,
+        // then we are assuming that the browser is treating this as an
+        // older mouse wheel event and that we should divide the deltas
+        // by 40 to try and get a more usable deltaFactor.
+        // Side note, this actually impacts the reported scroll distance
+        // in older browsers and can cause scrolling to be slower than native.
+        // Turn this off by setting $.event.special.mousewheel.settings.adjustOldDeltas to false.
+        return special.settings.adjustOldDeltas && orgEvent.type === 'mousewheel' && absDelta % 120 === 0;
+    }
+
+}));
+
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"radius":"2px","spacing":"30px","border-default-size":"2px","border-default-color":"#000000","colors":"(\"blue\": #004C79, \"green\": #5cb85c, \"orange\": #DC6053, \"darkblue\": #0a1d29, \"gold\": #edbe5f, \"black\": #000000, \"blacklight\": #111414, \"blacklighter\": #222222, \"greystronger\": #424041, \"greystrong\": #535052, \"grey\": #7A7778, \"greylight\": #DDDDDD, \"greylighter\": #EEEEEE, \"white\": #ffffff, \"none\": transparent)","breakpoints":"(\"xl\": 1400px, \"lg\": 1200px, \"md\": 992px, \"sm\": 768px, \"xs\": 620px, \"xxs\": 520px)","body":"(\"background\": #ffffff, \"font-color\": #424041, \"font-size\": 20px, \"title-font-color\": #111414)","header":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","footer":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","input":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #424041, \"border-size\": 1px, \"placeholder-font-color\": #7A7778, \"radius\": false)","input-focus":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #424041)","input-valid":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #5cb85c)","input-invalid":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #DC6053)","link":"(\"font-color\": #DC6053, \"font-color-hover\": #DC6053, \"font-color-focus\": #DC6053)","btn":"btn","enable-bg":"true","enable-bg-extended":"false","enable-bd":"true","disabled":"disabled","zoomin":"zoomin","zoomout":"zoomout","fadetogrey":"fadetogrey","fadetocolor":"fadetocolor","copy":"copy","no-events":"no-events","no-transition":"no-transition","no-overflow":"no-overflow","hidden":"hidden","invisible":"invisible","ellipsis":"ellipsis","center":"center","center-block":"center-block","fl-left":"fl-left","float-left":"float-left","fl-right":"fl-right","float-right":"float-right","clear":"clear","clear-left":"clear-left","clear-right":"clear-right","clear-after":"clear-after","clear-before":"clear-before","clear-no":"clear-no","text-right":"text-right","txt-right":"txt-right","text-left":"text-left","txt-left":"txt-left","text-center":"text-center","txt-center":"txt-center","force-full":"force-full","block-list__figure":"block-list__figure","block-img__figure":"block-img__figure","img--right":"img--right","img--top":"img--top","img--bottom":"img--bottom","img--left":"img--left","r_16-9":"r_16-9","r_2-1":"r_2-1","r_1-1":"r_1-1","r_1-2":"r_1-2","block-list__wrapper":"block-list__wrapper","block-std":"block-std","block-img__wrapper":"block-img__wrapper","guideline":"guideline","descText":"descText","ft-light":"ft-light","ft-normal":"ft-normal","ft-bold":"ft-bold","ft-bolder":"ft-bolder","ft-i":"ft-i","ft-b":"ft-b","ft-u":"ft-u","ft-u-no":"ft-u-no","ft-upper":"ft-upper","ft-lower":"ft-lower","ft-0-em":"ft-0-em","ft-0-rem":"ft-0-rem","ft-0-1-em":"ft-0-1-em","ft-0-1-rem":"ft-0-1-rem","ft-0-2-em":"ft-0-2-em","ft-0-2-rem":"ft-0-2-rem","ft-0-3-em":"ft-0-3-em","ft-0-3-rem":"ft-0-3-rem","ft-0-4-em":"ft-0-4-em","ft-0-4-rem":"ft-0-4-rem","ft-0-5-em":"ft-0-5-em","ft-0-5-rem":"ft-0-5-rem","ft-0-6-em":"ft-0-6-em","ft-0-6-rem":"ft-0-6-rem","ft-0-7-em":"ft-0-7-em","ft-0-7-rem":"ft-0-7-rem","ft-0-8-em":"ft-0-8-em","ft-0-8-rem":"ft-0-8-rem","ft-0-9-em":"ft-0-9-em","ft-0-9-rem":"ft-0-9-rem","ft-minus-10":"ft-minus-10","ft-plus-10":"ft-plus-10","ft-1-em":"ft-1-em","ft-1-rem":"ft-1-rem","ft-1-1-em":"ft-1-1-em","ft-1-1-rem":"ft-1-1-rem","ft-1-2-em":"ft-1-2-em","ft-1-2-rem":"ft-1-2-rem","ft-1-3-em":"ft-1-3-em","ft-1-3-rem":"ft-1-3-rem","ft-1-4-em":"ft-1-4-em","ft-1-4-rem":"ft-1-4-rem","ft-1-5-em":"ft-1-5-em","ft-1-5-rem":"ft-1-5-rem","ft-1-6-em":"ft-1-6-em","ft-1-6-rem":"ft-1-6-rem","ft-1-7-em":"ft-1-7-em","ft-1-7-rem":"ft-1-7-rem","ft-1-8-em":"ft-1-8-em","ft-1-8-rem":"ft-1-8-rem","ft-1-9-em":"ft-1-9-em","ft-1-9-rem":"ft-1-9-rem","ft-minus-20":"ft-minus-20","ft-plus-20":"ft-plus-20","ft-2-em":"ft-2-em","ft-2-rem":"ft-2-rem","ft-2-1-em":"ft-2-1-em","ft-2-1-rem":"ft-2-1-rem","ft-2-2-em":"ft-2-2-em","ft-2-2-rem":"ft-2-2-rem","ft-2-3-em":"ft-2-3-em","ft-2-3-rem":"ft-2-3-rem","ft-2-4-em":"ft-2-4-em","ft-2-4-rem":"ft-2-4-rem","ft-2-5-em":"ft-2-5-em","ft-2-5-rem":"ft-2-5-rem","ft-2-6-em":"ft-2-6-em","ft-2-6-rem":"ft-2-6-rem","ft-2-7-em":"ft-2-7-em","ft-2-7-rem":"ft-2-7-rem","ft-2-8-em":"ft-2-8-em","ft-2-8-rem":"ft-2-8-rem","ft-2-9-em":"ft-2-9-em","ft-2-9-rem":"ft-2-9-rem","ft-minus-30":"ft-minus-30","ft-plus-30":"ft-plus-30","ft-3-em":"ft-3-em","ft-3-rem":"ft-3-rem","ft-3-1-em":"ft-3-1-em","ft-3-1-rem":"ft-3-1-rem","ft-3-2-em":"ft-3-2-em","ft-3-2-rem":"ft-3-2-rem","ft-3-3-em":"ft-3-3-em","ft-3-3-rem":"ft-3-3-rem","ft-3-4-em":"ft-3-4-em","ft-3-4-rem":"ft-3-4-rem","ft-3-5-em":"ft-3-5-em","ft-3-5-rem":"ft-3-5-rem","ft-3-6-em":"ft-3-6-em","ft-3-6-rem":"ft-3-6-rem","ft-3-7-em":"ft-3-7-em","ft-3-7-rem":"ft-3-7-rem","ft-3-8-em":"ft-3-8-em","ft-3-8-rem":"ft-3-8-rem","ft-3-9-em":"ft-3-9-em","ft-3-9-rem":"ft-3-9-rem","ft-minus-40":"ft-minus-40","ft-plus-40":"ft-plus-40","ft-4-em":"ft-4-em","ft-4-rem":"ft-4-rem","ft-4-1-em":"ft-4-1-em","ft-4-1-rem":"ft-4-1-rem","ft-4-2-em":"ft-4-2-em","ft-4-2-rem":"ft-4-2-rem","ft-4-3-em":"ft-4-3-em","ft-4-3-rem":"ft-4-3-rem","ft-4-4-em":"ft-4-4-em","ft-4-4-rem":"ft-4-4-rem","ft-4-5-em":"ft-4-5-em","ft-4-5-rem":"ft-4-5-rem","ft-4-6-em":"ft-4-6-em","ft-4-6-rem":"ft-4-6-rem","ft-4-7-em":"ft-4-7-em","ft-4-7-rem":"ft-4-7-rem","ft-4-8-em":"ft-4-8-em","ft-4-8-rem":"ft-4-8-rem","ft-4-9-em":"ft-4-9-em","ft-4-9-rem":"ft-4-9-rem","ft-minus-50":"ft-minus-50","ft-plus-50":"ft-plus-50","ft-5-em":"ft-5-em","ft-5-rem":"ft-5-rem","ft-5-1-em":"ft-5-1-em","ft-5-1-rem":"ft-5-1-rem","ft-5-2-em":"ft-5-2-em","ft-5-2-rem":"ft-5-2-rem","ft-5-3-em":"ft-5-3-em","ft-5-3-rem":"ft-5-3-rem","ft-5-4-em":"ft-5-4-em","ft-5-4-rem":"ft-5-4-rem","ft-5-5-em":"ft-5-5-em","ft-5-5-rem":"ft-5-5-rem","ft-5-6-em":"ft-5-6-em","ft-5-6-rem":"ft-5-6-rem","ft-5-7-em":"ft-5-7-em","ft-5-7-rem":"ft-5-7-rem","ft-5-8-em":"ft-5-8-em","ft-5-8-rem":"ft-5-8-rem","ft-5-9-em":"ft-5-9-em","ft-5-9-rem":"ft-5-9-rem","ft-minus-60":"ft-minus-60","ft-plus-60":"ft-plus-60","ft-6-em":"ft-6-em","ft-6-rem":"ft-6-rem","ft-6-1-em":"ft-6-1-em","ft-6-1-rem":"ft-6-1-rem","ft-6-2-em":"ft-6-2-em","ft-6-2-rem":"ft-6-2-rem","ft-6-3-em":"ft-6-3-em","ft-6-3-rem":"ft-6-3-rem","ft-6-4-em":"ft-6-4-em","ft-6-4-rem":"ft-6-4-rem","ft-6-5-em":"ft-6-5-em","ft-6-5-rem":"ft-6-5-rem","ft-6-6-em":"ft-6-6-em","ft-6-6-rem":"ft-6-6-rem","ft-6-7-em":"ft-6-7-em","ft-6-7-rem":"ft-6-7-rem","ft-6-8-em":"ft-6-8-em","ft-6-8-rem":"ft-6-8-rem","ft-6-9-em":"ft-6-9-em","ft-6-9-rem":"ft-6-9-rem","ft-minus-70":"ft-minus-70","ft-plus-70":"ft-plus-70","ft-7-em":"ft-7-em","ft-7-rem":"ft-7-rem","ft-7-1-em":"ft-7-1-em","ft-7-1-rem":"ft-7-1-rem","ft-7-2-em":"ft-7-2-em","ft-7-2-rem":"ft-7-2-rem","ft-7-3-em":"ft-7-3-em","ft-7-3-rem":"ft-7-3-rem","ft-7-4-em":"ft-7-4-em","ft-7-4-rem":"ft-7-4-rem","ft-7-5-em":"ft-7-5-em","ft-7-5-rem":"ft-7-5-rem","ft-7-6-em":"ft-7-6-em","ft-7-6-rem":"ft-7-6-rem","ft-7-7-em":"ft-7-7-em","ft-7-7-rem":"ft-7-7-rem","ft-7-8-em":"ft-7-8-em","ft-7-8-rem":"ft-7-8-rem","ft-7-9-em":"ft-7-9-em","ft-7-9-rem":"ft-7-9-rem","ft-minus-80":"ft-minus-80","ft-plus-80":"ft-plus-80","ft-8-em":"ft-8-em","ft-8-rem":"ft-8-rem","ft-8-1-em":"ft-8-1-em","ft-8-1-rem":"ft-8-1-rem","ft-8-2-em":"ft-8-2-em","ft-8-2-rem":"ft-8-2-rem","ft-8-3-em":"ft-8-3-em","ft-8-3-rem":"ft-8-3-rem","ft-8-4-em":"ft-8-4-em","ft-8-4-rem":"ft-8-4-rem","ft-8-5-em":"ft-8-5-em","ft-8-5-rem":"ft-8-5-rem","ft-8-6-em":"ft-8-6-em","ft-8-6-rem":"ft-8-6-rem","ft-8-7-em":"ft-8-7-em","ft-8-7-rem":"ft-8-7-rem","ft-8-8-em":"ft-8-8-em","ft-8-8-rem":"ft-8-8-rem","ft-8-9-em":"ft-8-9-em","ft-8-9-rem":"ft-8-9-rem","ft-minus-90":"ft-minus-90","ft-plus-90":"ft-plus-90","ft-9-em":"ft-9-em","ft-9-rem":"ft-9-rem","ft-9-1-em":"ft-9-1-em","ft-9-1-rem":"ft-9-1-rem","ft-9-2-em":"ft-9-2-em","ft-9-2-rem":"ft-9-2-rem","ft-9-3-em":"ft-9-3-em","ft-9-3-rem":"ft-9-3-rem","ft-9-4-em":"ft-9-4-em","ft-9-4-rem":"ft-9-4-rem","ft-9-5-em":"ft-9-5-em","ft-9-5-rem":"ft-9-5-rem","ft-9-6-em":"ft-9-6-em","ft-9-6-rem":"ft-9-6-rem","ft-9-7-em":"ft-9-7-em","ft-9-7-rem":"ft-9-7-rem","ft-9-8-em":"ft-9-8-em","ft-9-8-rem":"ft-9-8-rem","ft-9-9-em":"ft-9-9-em","ft-9-9-rem":"ft-9-9-rem","ft-minus-100":"ft-minus-100","ft-plus-100":"ft-plus-100","ft-10-em":"ft-10-em","ft-10-rem":"ft-10-rem","ft-10-1-em":"ft-10-1-em","ft-10-1-rem":"ft-10-1-rem","ft-10-2-em":"ft-10-2-em","ft-10-2-rem":"ft-10-2-rem","ft-10-3-em":"ft-10-3-em","ft-10-3-rem":"ft-10-3-rem","ft-10-4-em":"ft-10-4-em","ft-10-4-rem":"ft-10-4-rem","ft-10-5-em":"ft-10-5-em","ft-10-5-rem":"ft-10-5-rem","ft-10-6-em":"ft-10-6-em","ft-10-6-rem":"ft-10-6-rem","ft-10-7-em":"ft-10-7-em","ft-10-7-rem":"ft-10-7-rem","ft-10-8-em":"ft-10-8-em","ft-10-8-rem":"ft-10-8-rem","ft-10-9-em":"ft-10-9-em","ft-10-9-rem":"ft-10-9-rem","ft-blue":"ft-blue","ft-green":"ft-green","ft-orange":"ft-orange","ft-darkblue":"ft-darkblue","ft-gold":"ft-gold","ft-black":"ft-black","ft-blacklight":"ft-blacklight","ft-blacklighter":"ft-blacklighter","ft-greystronger":"ft-greystronger","ft-greystrong":"ft-greystrong","ft-grey":"ft-grey","ft-greylight":"ft-greylight","ft-greylighter":"ft-greylighter","ft-white":"ft-white","ft-none":"ft-none","rad":"rad","tags":"tags","rad-all":"rad-all","rad-top-left":"rad-top-left","rad-top":"rad-top","rad-left":"rad-left","rad-top-right":"rad-top-right","rad-right":"rad-right","rad-bottom-left":"rad-bottom-left","rad-bottom":"rad-bottom","rad-bottom-right":"rad-bottom-right","m-all":"m-all","m-all-0":"m-all-0","m-all-x2":"m-all-x2","p-all":"p-all","bd":"bd","bd-all":"bd-all","bd-0":"bd-0","bd-all-0":"bd-all-0","bd-1":"bd-1","bd-all-1":"bd-all-1","bd-2":"bd-2","bd-all-2":"bd-all-2","bd-3":"bd-3","bd-all-3":"bd-all-3","bd-4":"bd-4","bd-all-4":"bd-all-4","bd-5":"bd-5","bd-all-5":"bd-all-5","bd-6":"bd-6","bd-all-6":"bd-all-6","bd-7":"bd-7","bd-all-7":"bd-all-7","bd-8":"bd-8","bd-all-8":"bd-all-8","bd-9":"bd-9","bd-all-9":"bd-all-9","bd-10":"bd-10","bd-all-10":"bd-all-10","bd-blue":"bd-blue","bd-all-blue":"bd-all-blue","bd-blue-0":"bd-blue-0","bd-all-blue-0":"bd-all-blue-0","bd-blue-1":"bd-blue-1","bd-all-blue-1":"bd-all-blue-1","bd-blue-2":"bd-blue-2","bd-all-blue-2":"bd-all-blue-2","bd-blue-3":"bd-blue-3","bd-all-blue-3":"bd-all-blue-3","bd-blue-4":"bd-blue-4","bd-all-blue-4":"bd-all-blue-4","bd-blue-5":"bd-blue-5","bd-all-blue-5":"bd-all-blue-5","bd-blue-6":"bd-blue-6","bd-all-blue-6":"bd-all-blue-6","bd-blue-7":"bd-blue-7","bd-all-blue-7":"bd-all-blue-7","bd-blue-8":"bd-blue-8","bd-all-blue-8":"bd-all-blue-8","bd-blue-9":"bd-blue-9","bd-all-blue-9":"bd-all-blue-9","bd-blue-10":"bd-blue-10","bd-all-blue-10":"bd-all-blue-10","bd-green":"bd-green","bd-all-green":"bd-all-green","bd-green-0":"bd-green-0","bd-all-green-0":"bd-all-green-0","bd-green-1":"bd-green-1","bd-all-green-1":"bd-all-green-1","bd-green-2":"bd-green-2","bd-all-green-2":"bd-all-green-2","bd-green-3":"bd-green-3","bd-all-green-3":"bd-all-green-3","bd-green-4":"bd-green-4","bd-all-green-4":"bd-all-green-4","bd-green-5":"bd-green-5","bd-all-green-5":"bd-all-green-5","bd-green-6":"bd-green-6","bd-all-green-6":"bd-all-green-6","bd-green-7":"bd-green-7","bd-all-green-7":"bd-all-green-7","bd-green-8":"bd-green-8","bd-all-green-8":"bd-all-green-8","bd-green-9":"bd-green-9","bd-all-green-9":"bd-all-green-9","bd-green-10":"bd-green-10","bd-all-green-10":"bd-all-green-10","bd-orange":"bd-orange","bd-all-orange":"bd-all-orange","bd-orange-0":"bd-orange-0","bd-all-orange-0":"bd-all-orange-0","bd-orange-1":"bd-orange-1","bd-all-orange-1":"bd-all-orange-1","bd-orange-2":"bd-orange-2","bd-all-orange-2":"bd-all-orange-2","bd-orange-3":"bd-orange-3","bd-all-orange-3":"bd-all-orange-3","bd-orange-4":"bd-orange-4","bd-all-orange-4":"bd-all-orange-4","bd-orange-5":"bd-orange-5","bd-all-orange-5":"bd-all-orange-5","bd-orange-6":"bd-orange-6","bd-all-orange-6":"bd-all-orange-6","bd-orange-7":"bd-orange-7","bd-all-orange-7":"bd-all-orange-7","bd-orange-8":"bd-orange-8","bd-all-orange-8":"bd-all-orange-8","bd-orange-9":"bd-orange-9","bd-all-orange-9":"bd-all-orange-9","bd-orange-10":"bd-orange-10","bd-all-orange-10":"bd-all-orange-10","bd-darkblue":"bd-darkblue","bd-all-darkblue":"bd-all-darkblue","bd-darkblue-0":"bd-darkblue-0","bd-all-darkblue-0":"bd-all-darkblue-0","bd-darkblue-1":"bd-darkblue-1","bd-all-darkblue-1":"bd-all-darkblue-1","bd-darkblue-2":"bd-darkblue-2","bd-all-darkblue-2":"bd-all-darkblue-2","bd-darkblue-3":"bd-darkblue-3","bd-all-darkblue-3":"bd-all-darkblue-3","bd-darkblue-4":"bd-darkblue-4","bd-all-darkblue-4":"bd-all-darkblue-4","bd-darkblue-5":"bd-darkblue-5","bd-all-darkblue-5":"bd-all-darkblue-5","bd-darkblue-6":"bd-darkblue-6","bd-all-darkblue-6":"bd-all-darkblue-6","bd-darkblue-7":"bd-darkblue-7","bd-all-darkblue-7":"bd-all-darkblue-7","bd-darkblue-8":"bd-darkblue-8","bd-all-darkblue-8":"bd-all-darkblue-8","bd-darkblue-9":"bd-darkblue-9","bd-all-darkblue-9":"bd-all-darkblue-9","bd-darkblue-10":"bd-darkblue-10","bd-all-darkblue-10":"bd-all-darkblue-10","bd-gold":"bd-gold","bd-all-gold":"bd-all-gold","bd-gold-0":"bd-gold-0","bd-all-gold-0":"bd-all-gold-0","bd-gold-1":"bd-gold-1","bd-all-gold-1":"bd-all-gold-1","bd-gold-2":"bd-gold-2","bd-all-gold-2":"bd-all-gold-2","bd-gold-3":"bd-gold-3","bd-all-gold-3":"bd-all-gold-3","bd-gold-4":"bd-gold-4","bd-all-gold-4":"bd-all-gold-4","bd-gold-5":"bd-gold-5","bd-all-gold-5":"bd-all-gold-5","bd-gold-6":"bd-gold-6","bd-all-gold-6":"bd-all-gold-6","bd-gold-7":"bd-gold-7","bd-all-gold-7":"bd-all-gold-7","bd-gold-8":"bd-gold-8","bd-all-gold-8":"bd-all-gold-8","bd-gold-9":"bd-gold-9","bd-all-gold-9":"bd-all-gold-9","bd-gold-10":"bd-gold-10","bd-all-gold-10":"bd-all-gold-10","bd-black":"bd-black","bd-all-black":"bd-all-black","bd-black-0":"bd-black-0","bd-all-black-0":"bd-all-black-0","bd-black-1":"bd-black-1","bd-all-black-1":"bd-all-black-1","bd-black-2":"bd-black-2","bd-all-black-2":"bd-all-black-2","bd-black-3":"bd-black-3","bd-all-black-3":"bd-all-black-3","bd-black-4":"bd-black-4","bd-all-black-4":"bd-all-black-4","bd-black-5":"bd-black-5","bd-all-black-5":"bd-all-black-5","bd-black-6":"bd-black-6","bd-all-black-6":"bd-all-black-6","bd-black-7":"bd-black-7","bd-all-black-7":"bd-all-black-7","bd-black-8":"bd-black-8","bd-all-black-8":"bd-all-black-8","bd-black-9":"bd-black-9","bd-all-black-9":"bd-all-black-9","bd-black-10":"bd-black-10","bd-all-black-10":"bd-all-black-10","bd-blacklight":"bd-blacklight","bd-all-blacklight":"bd-all-blacklight","bd-blacklight-0":"bd-blacklight-0","bd-all-blacklight-0":"bd-all-blacklight-0","bd-blacklight-1":"bd-blacklight-1","bd-all-blacklight-1":"bd-all-blacklight-1","bd-blacklight-2":"bd-blacklight-2","bd-all-blacklight-2":"bd-all-blacklight-2","bd-blacklight-3":"bd-blacklight-3","bd-all-blacklight-3":"bd-all-blacklight-3","bd-blacklight-4":"bd-blacklight-4","bd-all-blacklight-4":"bd-all-blacklight-4","bd-blacklight-5":"bd-blacklight-5","bd-all-blacklight-5":"bd-all-blacklight-5","bd-blacklight-6":"bd-blacklight-6","bd-all-blacklight-6":"bd-all-blacklight-6","bd-blacklight-7":"bd-blacklight-7","bd-all-blacklight-7":"bd-all-blacklight-7","bd-blacklight-8":"bd-blacklight-8","bd-all-blacklight-8":"bd-all-blacklight-8","bd-blacklight-9":"bd-blacklight-9","bd-all-blacklight-9":"bd-all-blacklight-9","bd-blacklight-10":"bd-blacklight-10","bd-all-blacklight-10":"bd-all-blacklight-10","bd-blacklighter":"bd-blacklighter","bd-all-blacklighter":"bd-all-blacklighter","bd-blacklighter-0":"bd-blacklighter-0","bd-all-blacklighter-0":"bd-all-blacklighter-0","bd-blacklighter-1":"bd-blacklighter-1","bd-all-blacklighter-1":"bd-all-blacklighter-1","bd-blacklighter-2":"bd-blacklighter-2","bd-all-blacklighter-2":"bd-all-blacklighter-2","bd-blacklighter-3":"bd-blacklighter-3","bd-all-blacklighter-3":"bd-all-blacklighter-3","bd-blacklighter-4":"bd-blacklighter-4","bd-all-blacklighter-4":"bd-all-blacklighter-4","bd-blacklighter-5":"bd-blacklighter-5","bd-all-blacklighter-5":"bd-all-blacklighter-5","bd-blacklighter-6":"bd-blacklighter-6","bd-all-blacklighter-6":"bd-all-blacklighter-6","bd-blacklighter-7":"bd-blacklighter-7","bd-all-blacklighter-7":"bd-all-blacklighter-7","bd-blacklighter-8":"bd-blacklighter-8","bd-all-blacklighter-8":"bd-all-blacklighter-8","bd-blacklighter-9":"bd-blacklighter-9","bd-all-blacklighter-9":"bd-all-blacklighter-9","bd-blacklighter-10":"bd-blacklighter-10","bd-all-blacklighter-10":"bd-all-blacklighter-10","bd-greystronger":"bd-greystronger","bd-all-greystronger":"bd-all-greystronger","bd-greystronger-0":"bd-greystronger-0","bd-all-greystronger-0":"bd-all-greystronger-0","bd-greystronger-1":"bd-greystronger-1","bd-all-greystronger-1":"bd-all-greystronger-1","bd-greystronger-2":"bd-greystronger-2","bd-all-greystronger-2":"bd-all-greystronger-2","bd-greystronger-3":"bd-greystronger-3","bd-all-greystronger-3":"bd-all-greystronger-3","bd-greystronger-4":"bd-greystronger-4","bd-all-greystronger-4":"bd-all-greystronger-4","bd-greystronger-5":"bd-greystronger-5","bd-all-greystronger-5":"bd-all-greystronger-5","bd-greystronger-6":"bd-greystronger-6","bd-all-greystronger-6":"bd-all-greystronger-6","bd-greystronger-7":"bd-greystronger-7","bd-all-greystronger-7":"bd-all-greystronger-7","bd-greystronger-8":"bd-greystronger-8","bd-all-greystronger-8":"bd-all-greystronger-8","bd-greystronger-9":"bd-greystronger-9","bd-all-greystronger-9":"bd-all-greystronger-9","bd-greystronger-10":"bd-greystronger-10","bd-all-greystronger-10":"bd-all-greystronger-10","bd-greystrong":"bd-greystrong","bd-all-greystrong":"bd-all-greystrong","bd-greystrong-0":"bd-greystrong-0","bd-all-greystrong-0":"bd-all-greystrong-0","bd-greystrong-1":"bd-greystrong-1","bd-all-greystrong-1":"bd-all-greystrong-1","bd-greystrong-2":"bd-greystrong-2","bd-all-greystrong-2":"bd-all-greystrong-2","bd-greystrong-3":"bd-greystrong-3","bd-all-greystrong-3":"bd-all-greystrong-3","bd-greystrong-4":"bd-greystrong-4","bd-all-greystrong-4":"bd-all-greystrong-4","bd-greystrong-5":"bd-greystrong-5","bd-all-greystrong-5":"bd-all-greystrong-5","bd-greystrong-6":"bd-greystrong-6","bd-all-greystrong-6":"bd-all-greystrong-6","bd-greystrong-7":"bd-greystrong-7","bd-all-greystrong-7":"bd-all-greystrong-7","bd-greystrong-8":"bd-greystrong-8","bd-all-greystrong-8":"bd-all-greystrong-8","bd-greystrong-9":"bd-greystrong-9","bd-all-greystrong-9":"bd-all-greystrong-9","bd-greystrong-10":"bd-greystrong-10","bd-all-greystrong-10":"bd-all-greystrong-10","bd-grey":"bd-grey","bd-all-grey":"bd-all-grey","bd-grey-0":"bd-grey-0","bd-all-grey-0":"bd-all-grey-0","bd-grey-1":"bd-grey-1","bd-all-grey-1":"bd-all-grey-1","bd-grey-2":"bd-grey-2","bd-all-grey-2":"bd-all-grey-2","bd-grey-3":"bd-grey-3","bd-all-grey-3":"bd-all-grey-3","bd-grey-4":"bd-grey-4","bd-all-grey-4":"bd-all-grey-4","bd-grey-5":"bd-grey-5","bd-all-grey-5":"bd-all-grey-5","bd-grey-6":"bd-grey-6","bd-all-grey-6":"bd-all-grey-6","bd-grey-7":"bd-grey-7","bd-all-grey-7":"bd-all-grey-7","bd-grey-8":"bd-grey-8","bd-all-grey-8":"bd-all-grey-8","bd-grey-9":"bd-grey-9","bd-all-grey-9":"bd-all-grey-9","bd-grey-10":"bd-grey-10","bd-all-grey-10":"bd-all-grey-10","bd-greylight":"bd-greylight","bd-all-greylight":"bd-all-greylight","bd-greylight-0":"bd-greylight-0","bd-all-greylight-0":"bd-all-greylight-0","bd-greylight-1":"bd-greylight-1","bd-all-greylight-1":"bd-all-greylight-1","bd-greylight-2":"bd-greylight-2","bd-all-greylight-2":"bd-all-greylight-2","bd-greylight-3":"bd-greylight-3","bd-all-greylight-3":"bd-all-greylight-3","bd-greylight-4":"bd-greylight-4","bd-all-greylight-4":"bd-all-greylight-4","bd-greylight-5":"bd-greylight-5","bd-all-greylight-5":"bd-all-greylight-5","bd-greylight-6":"bd-greylight-6","bd-all-greylight-6":"bd-all-greylight-6","bd-greylight-7":"bd-greylight-7","bd-all-greylight-7":"bd-all-greylight-7","bd-greylight-8":"bd-greylight-8","bd-all-greylight-8":"bd-all-greylight-8","bd-greylight-9":"bd-greylight-9","bd-all-greylight-9":"bd-all-greylight-9","bd-greylight-10":"bd-greylight-10","bd-all-greylight-10":"bd-all-greylight-10","bd-greylighter":"bd-greylighter","bd-all-greylighter":"bd-all-greylighter","bd-greylighter-0":"bd-greylighter-0","bd-all-greylighter-0":"bd-all-greylighter-0","bd-greylighter-1":"bd-greylighter-1","bd-all-greylighter-1":"bd-all-greylighter-1","bd-greylighter-2":"bd-greylighter-2","bd-all-greylighter-2":"bd-all-greylighter-2","bd-greylighter-3":"bd-greylighter-3","bd-all-greylighter-3":"bd-all-greylighter-3","bd-greylighter-4":"bd-greylighter-4","bd-all-greylighter-4":"bd-all-greylighter-4","bd-greylighter-5":"bd-greylighter-5","bd-all-greylighter-5":"bd-all-greylighter-5","bd-greylighter-6":"bd-greylighter-6","bd-all-greylighter-6":"bd-all-greylighter-6","bd-greylighter-7":"bd-greylighter-7","bd-all-greylighter-7":"bd-all-greylighter-7","bd-greylighter-8":"bd-greylighter-8","bd-all-greylighter-8":"bd-all-greylighter-8","bd-greylighter-9":"bd-greylighter-9","bd-all-greylighter-9":"bd-all-greylighter-9","bd-greylighter-10":"bd-greylighter-10","bd-all-greylighter-10":"bd-all-greylighter-10","bd-white":"bd-white","bd-all-white":"bd-all-white","bd-white-0":"bd-white-0","bd-all-white-0":"bd-all-white-0","bd-white-1":"bd-white-1","bd-all-white-1":"bd-all-white-1","bd-white-2":"bd-white-2","bd-all-white-2":"bd-all-white-2","bd-white-3":"bd-white-3","bd-all-white-3":"bd-all-white-3","bd-white-4":"bd-white-4","bd-all-white-4":"bd-all-white-4","bd-white-5":"bd-white-5","bd-all-white-5":"bd-all-white-5","bd-white-6":"bd-white-6","bd-all-white-6":"bd-all-white-6","bd-white-7":"bd-white-7","bd-all-white-7":"bd-all-white-7","bd-white-8":"bd-white-8","bd-all-white-8":"bd-all-white-8","bd-white-9":"bd-white-9","bd-all-white-9":"bd-all-white-9","bd-white-10":"bd-white-10","bd-all-white-10":"bd-all-white-10","bd-none":"bd-none","bd-all-none":"bd-all-none","bd-none-0":"bd-none-0","bd-all-none-0":"bd-all-none-0","bd-none-1":"bd-none-1","bd-all-none-1":"bd-all-none-1","bd-none-2":"bd-none-2","bd-all-none-2":"bd-all-none-2","bd-none-3":"bd-none-3","bd-all-none-3":"bd-all-none-3","bd-none-4":"bd-none-4","bd-all-none-4":"bd-all-none-4","bd-none-5":"bd-none-5","bd-all-none-5":"bd-all-none-5","bd-none-6":"bd-none-6","bd-all-none-6":"bd-all-none-6","bd-none-7":"bd-none-7","bd-all-none-7":"bd-all-none-7","bd-none-8":"bd-none-8","bd-all-none-8":"bd-all-none-8","bd-none-9":"bd-none-9","bd-all-none-9":"bd-all-none-9","bd-none-10":"bd-none-10","bd-all-none-10":"bd-all-none-10","p-all-0":"p-all-0","p-all-x2":"p-all-x2","m-top":"m-top","m-y":"m-y","m-top-0":"m-top-0","m-y-0":"m-y-0","m-top-x2":"m-top-x2","m-y-x2":"m-y-x2","p-top":"p-top","p-y":"p-y","bd-top":"bd-top","bd-top-0":"bd-top-0","bd-top-1":"bd-top-1","bd-top-2":"bd-top-2","bd-top-3":"bd-top-3","bd-top-4":"bd-top-4","bd-top-5":"bd-top-5","bd-top-6":"bd-top-6","bd-top-7":"bd-top-7","bd-top-8":"bd-top-8","bd-top-9":"bd-top-9","bd-top-10":"bd-top-10","bd-top-blue":"bd-top-blue","bd-top-blue-0":"bd-top-blue-0","bd-top-blue-1":"bd-top-blue-1","bd-top-blue-2":"bd-top-blue-2","bd-top-blue-3":"bd-top-blue-3","bd-top-blue-4":"bd-top-blue-4","bd-top-blue-5":"bd-top-blue-5","bd-top-blue-6":"bd-top-blue-6","bd-top-blue-7":"bd-top-blue-7","bd-top-blue-8":"bd-top-blue-8","bd-top-blue-9":"bd-top-blue-9","bd-top-blue-10":"bd-top-blue-10","bd-top-green":"bd-top-green","bd-top-green-0":"bd-top-green-0","bd-top-green-1":"bd-top-green-1","bd-top-green-2":"bd-top-green-2","bd-top-green-3":"bd-top-green-3","bd-top-green-4":"bd-top-green-4","bd-top-green-5":"bd-top-green-5","bd-top-green-6":"bd-top-green-6","bd-top-green-7":"bd-top-green-7","bd-top-green-8":"bd-top-green-8","bd-top-green-9":"bd-top-green-9","bd-top-green-10":"bd-top-green-10","bd-top-orange":"bd-top-orange","bd-top-orange-0":"bd-top-orange-0","bd-top-orange-1":"bd-top-orange-1","bd-top-orange-2":"bd-top-orange-2","bd-top-orange-3":"bd-top-orange-3","bd-top-orange-4":"bd-top-orange-4","bd-top-orange-5":"bd-top-orange-5","bd-top-orange-6":"bd-top-orange-6","bd-top-orange-7":"bd-top-orange-7","bd-top-orange-8":"bd-top-orange-8","bd-top-orange-9":"bd-top-orange-9","bd-top-orange-10":"bd-top-orange-10","bd-top-darkblue":"bd-top-darkblue","bd-top-darkblue-0":"bd-top-darkblue-0","bd-top-darkblue-1":"bd-top-darkblue-1","bd-top-darkblue-2":"bd-top-darkblue-2","bd-top-darkblue-3":"bd-top-darkblue-3","bd-top-darkblue-4":"bd-top-darkblue-4","bd-top-darkblue-5":"bd-top-darkblue-5","bd-top-darkblue-6":"bd-top-darkblue-6","bd-top-darkblue-7":"bd-top-darkblue-7","bd-top-darkblue-8":"bd-top-darkblue-8","bd-top-darkblue-9":"bd-top-darkblue-9","bd-top-darkblue-10":"bd-top-darkblue-10","bd-top-gold":"bd-top-gold","bd-top-gold-0":"bd-top-gold-0","bd-top-gold-1":"bd-top-gold-1","bd-top-gold-2":"bd-top-gold-2","bd-top-gold-3":"bd-top-gold-3","bd-top-gold-4":"bd-top-gold-4","bd-top-gold-5":"bd-top-gold-5","bd-top-gold-6":"bd-top-gold-6","bd-top-gold-7":"bd-top-gold-7","bd-top-gold-8":"bd-top-gold-8","bd-top-gold-9":"bd-top-gold-9","bd-top-gold-10":"bd-top-gold-10","bd-top-black":"bd-top-black","bd-top-black-0":"bd-top-black-0","bd-top-black-1":"bd-top-black-1","bd-top-black-2":"bd-top-black-2","bd-top-black-3":"bd-top-black-3","bd-top-black-4":"bd-top-black-4","bd-top-black-5":"bd-top-black-5","bd-top-black-6":"bd-top-black-6","bd-top-black-7":"bd-top-black-7","bd-top-black-8":"bd-top-black-8","bd-top-black-9":"bd-top-black-9","bd-top-black-10":"bd-top-black-10","bd-top-blacklight":"bd-top-blacklight","bd-top-blacklight-0":"bd-top-blacklight-0","bd-top-blacklight-1":"bd-top-blacklight-1","bd-top-blacklight-2":"bd-top-blacklight-2","bd-top-blacklight-3":"bd-top-blacklight-3","bd-top-blacklight-4":"bd-top-blacklight-4","bd-top-blacklight-5":"bd-top-blacklight-5","bd-top-blacklight-6":"bd-top-blacklight-6","bd-top-blacklight-7":"bd-top-blacklight-7","bd-top-blacklight-8":"bd-top-blacklight-8","bd-top-blacklight-9":"bd-top-blacklight-9","bd-top-blacklight-10":"bd-top-blacklight-10","bd-top-blacklighter":"bd-top-blacklighter","bd-top-blacklighter-0":"bd-top-blacklighter-0","bd-top-blacklighter-1":"bd-top-blacklighter-1","bd-top-blacklighter-2":"bd-top-blacklighter-2","bd-top-blacklighter-3":"bd-top-blacklighter-3","bd-top-blacklighter-4":"bd-top-blacklighter-4","bd-top-blacklighter-5":"bd-top-blacklighter-5","bd-top-blacklighter-6":"bd-top-blacklighter-6","bd-top-blacklighter-7":"bd-top-blacklighter-7","bd-top-blacklighter-8":"bd-top-blacklighter-8","bd-top-blacklighter-9":"bd-top-blacklighter-9","bd-top-blacklighter-10":"bd-top-blacklighter-10","bd-top-greystronger":"bd-top-greystronger","bd-top-greystronger-0":"bd-top-greystronger-0","bd-top-greystronger-1":"bd-top-greystronger-1","bd-top-greystronger-2":"bd-top-greystronger-2","bd-top-greystronger-3":"bd-top-greystronger-3","bd-top-greystronger-4":"bd-top-greystronger-4","bd-top-greystronger-5":"bd-top-greystronger-5","bd-top-greystronger-6":"bd-top-greystronger-6","bd-top-greystronger-7":"bd-top-greystronger-7","bd-top-greystronger-8":"bd-top-greystronger-8","bd-top-greystronger-9":"bd-top-greystronger-9","bd-top-greystronger-10":"bd-top-greystronger-10","bd-top-greystrong":"bd-top-greystrong","bd-top-greystrong-0":"bd-top-greystrong-0","bd-top-greystrong-1":"bd-top-greystrong-1","bd-top-greystrong-2":"bd-top-greystrong-2","bd-top-greystrong-3":"bd-top-greystrong-3","bd-top-greystrong-4":"bd-top-greystrong-4","bd-top-greystrong-5":"bd-top-greystrong-5","bd-top-greystrong-6":"bd-top-greystrong-6","bd-top-greystrong-7":"bd-top-greystrong-7","bd-top-greystrong-8":"bd-top-greystrong-8","bd-top-greystrong-9":"bd-top-greystrong-9","bd-top-greystrong-10":"bd-top-greystrong-10","bd-top-grey":"bd-top-grey","bd-top-grey-0":"bd-top-grey-0","bd-top-grey-1":"bd-top-grey-1","bd-top-grey-2":"bd-top-grey-2","bd-top-grey-3":"bd-top-grey-3","bd-top-grey-4":"bd-top-grey-4","bd-top-grey-5":"bd-top-grey-5","bd-top-grey-6":"bd-top-grey-6","bd-top-grey-7":"bd-top-grey-7","bd-top-grey-8":"bd-top-grey-8","bd-top-grey-9":"bd-top-grey-9","bd-top-grey-10":"bd-top-grey-10","bd-top-greylight":"bd-top-greylight","bd-top-greylight-0":"bd-top-greylight-0","bd-top-greylight-1":"bd-top-greylight-1","bd-top-greylight-2":"bd-top-greylight-2","bd-top-greylight-3":"bd-top-greylight-3","bd-top-greylight-4":"bd-top-greylight-4","bd-top-greylight-5":"bd-top-greylight-5","bd-top-greylight-6":"bd-top-greylight-6","bd-top-greylight-7":"bd-top-greylight-7","bd-top-greylight-8":"bd-top-greylight-8","bd-top-greylight-9":"bd-top-greylight-9","bd-top-greylight-10":"bd-top-greylight-10","bd-top-greylighter":"bd-top-greylighter","bd-top-greylighter-0":"bd-top-greylighter-0","bd-top-greylighter-1":"bd-top-greylighter-1","bd-top-greylighter-2":"bd-top-greylighter-2","bd-top-greylighter-3":"bd-top-greylighter-3","bd-top-greylighter-4":"bd-top-greylighter-4","bd-top-greylighter-5":"bd-top-greylighter-5","bd-top-greylighter-6":"bd-top-greylighter-6","bd-top-greylighter-7":"bd-top-greylighter-7","bd-top-greylighter-8":"bd-top-greylighter-8","bd-top-greylighter-9":"bd-top-greylighter-9","bd-top-greylighter-10":"bd-top-greylighter-10","bd-top-white":"bd-top-white","bd-top-white-0":"bd-top-white-0","bd-top-white-1":"bd-top-white-1","bd-top-white-2":"bd-top-white-2","bd-top-white-3":"bd-top-white-3","bd-top-white-4":"bd-top-white-4","bd-top-white-5":"bd-top-white-5","bd-top-white-6":"bd-top-white-6","bd-top-white-7":"bd-top-white-7","bd-top-white-8":"bd-top-white-8","bd-top-white-9":"bd-top-white-9","bd-top-white-10":"bd-top-white-10","bd-top-none":"bd-top-none","bd-top-none-0":"bd-top-none-0","bd-top-none-1":"bd-top-none-1","bd-top-none-2":"bd-top-none-2","bd-top-none-3":"bd-top-none-3","bd-top-none-4":"bd-top-none-4","bd-top-none-5":"bd-top-none-5","bd-top-none-6":"bd-top-none-6","bd-top-none-7":"bd-top-none-7","bd-top-none-8":"bd-top-none-8","bd-top-none-9":"bd-top-none-9","bd-top-none-10":"bd-top-none-10","p-top-0":"p-top-0","p-y-0":"p-y-0","p-top-x2":"p-top-x2","p-y-x2":"p-y-x2","m-right":"m-right","m-x":"m-x","m-right-0":"m-right-0","m-x-0":"m-x-0","m-right-x2":"m-right-x2","m-x-x2":"m-x-x2","p-right":"p-right","p-x":"p-x","bd-right":"bd-right","bd-right-0":"bd-right-0","bd-right-1":"bd-right-1","bd-right-2":"bd-right-2","bd-right-3":"bd-right-3","bd-right-4":"bd-right-4","bd-right-5":"bd-right-5","bd-right-6":"bd-right-6","bd-right-7":"bd-right-7","bd-right-8":"bd-right-8","bd-right-9":"bd-right-9","bd-right-10":"bd-right-10","bd-right-blue":"bd-right-blue","bd-right-blue-0":"bd-right-blue-0","bd-right-blue-1":"bd-right-blue-1","bd-right-blue-2":"bd-right-blue-2","bd-right-blue-3":"bd-right-blue-3","bd-right-blue-4":"bd-right-blue-4","bd-right-blue-5":"bd-right-blue-5","bd-right-blue-6":"bd-right-blue-6","bd-right-blue-7":"bd-right-blue-7","bd-right-blue-8":"bd-right-blue-8","bd-right-blue-9":"bd-right-blue-9","bd-right-blue-10":"bd-right-blue-10","bd-right-green":"bd-right-green","bd-right-green-0":"bd-right-green-0","bd-right-green-1":"bd-right-green-1","bd-right-green-2":"bd-right-green-2","bd-right-green-3":"bd-right-green-3","bd-right-green-4":"bd-right-green-4","bd-right-green-5":"bd-right-green-5","bd-right-green-6":"bd-right-green-6","bd-right-green-7":"bd-right-green-7","bd-right-green-8":"bd-right-green-8","bd-right-green-9":"bd-right-green-9","bd-right-green-10":"bd-right-green-10","bd-right-orange":"bd-right-orange","bd-right-orange-0":"bd-right-orange-0","bd-right-orange-1":"bd-right-orange-1","bd-right-orange-2":"bd-right-orange-2","bd-right-orange-3":"bd-right-orange-3","bd-right-orange-4":"bd-right-orange-4","bd-right-orange-5":"bd-right-orange-5","bd-right-orange-6":"bd-right-orange-6","bd-right-orange-7":"bd-right-orange-7","bd-right-orange-8":"bd-right-orange-8","bd-right-orange-9":"bd-right-orange-9","bd-right-orange-10":"bd-right-orange-10","bd-right-darkblue":"bd-right-darkblue","bd-right-darkblue-0":"bd-right-darkblue-0","bd-right-darkblue-1":"bd-right-darkblue-1","bd-right-darkblue-2":"bd-right-darkblue-2","bd-right-darkblue-3":"bd-right-darkblue-3","bd-right-darkblue-4":"bd-right-darkblue-4","bd-right-darkblue-5":"bd-right-darkblue-5","bd-right-darkblue-6":"bd-right-darkblue-6","bd-right-darkblue-7":"bd-right-darkblue-7","bd-right-darkblue-8":"bd-right-darkblue-8","bd-right-darkblue-9":"bd-right-darkblue-9","bd-right-darkblue-10":"bd-right-darkblue-10","bd-right-gold":"bd-right-gold","bd-right-gold-0":"bd-right-gold-0","bd-right-gold-1":"bd-right-gold-1","bd-right-gold-2":"bd-right-gold-2","bd-right-gold-3":"bd-right-gold-3","bd-right-gold-4":"bd-right-gold-4","bd-right-gold-5":"bd-right-gold-5","bd-right-gold-6":"bd-right-gold-6","bd-right-gold-7":"bd-right-gold-7","bd-right-gold-8":"bd-right-gold-8","bd-right-gold-9":"bd-right-gold-9","bd-right-gold-10":"bd-right-gold-10","bd-right-black":"bd-right-black","bd-right-black-0":"bd-right-black-0","bd-right-black-1":"bd-right-black-1","bd-right-black-2":"bd-right-black-2","bd-right-black-3":"bd-right-black-3","bd-right-black-4":"bd-right-black-4","bd-right-black-5":"bd-right-black-5","bd-right-black-6":"bd-right-black-6","bd-right-black-7":"bd-right-black-7","bd-right-black-8":"bd-right-black-8","bd-right-black-9":"bd-right-black-9","bd-right-black-10":"bd-right-black-10","bd-right-blacklight":"bd-right-blacklight","bd-right-blacklight-0":"bd-right-blacklight-0","bd-right-blacklight-1":"bd-right-blacklight-1","bd-right-blacklight-2":"bd-right-blacklight-2","bd-right-blacklight-3":"bd-right-blacklight-3","bd-right-blacklight-4":"bd-right-blacklight-4","bd-right-blacklight-5":"bd-right-blacklight-5","bd-right-blacklight-6":"bd-right-blacklight-6","bd-right-blacklight-7":"bd-right-blacklight-7","bd-right-blacklight-8":"bd-right-blacklight-8","bd-right-blacklight-9":"bd-right-blacklight-9","bd-right-blacklight-10":"bd-right-blacklight-10","bd-right-blacklighter":"bd-right-blacklighter","bd-right-blacklighter-0":"bd-right-blacklighter-0","bd-right-blacklighter-1":"bd-right-blacklighter-1","bd-right-blacklighter-2":"bd-right-blacklighter-2","bd-right-blacklighter-3":"bd-right-blacklighter-3","bd-right-blacklighter-4":"bd-right-blacklighter-4","bd-right-blacklighter-5":"bd-right-blacklighter-5","bd-right-blacklighter-6":"bd-right-blacklighter-6","bd-right-blacklighter-7":"bd-right-blacklighter-7","bd-right-blacklighter-8":"bd-right-blacklighter-8","bd-right-blacklighter-9":"bd-right-blacklighter-9","bd-right-blacklighter-10":"bd-right-blacklighter-10","bd-right-greystronger":"bd-right-greystronger","bd-right-greystronger-0":"bd-right-greystronger-0","bd-right-greystronger-1":"bd-right-greystronger-1","bd-right-greystronger-2":"bd-right-greystronger-2","bd-right-greystronger-3":"bd-right-greystronger-3","bd-right-greystronger-4":"bd-right-greystronger-4","bd-right-greystronger-5":"bd-right-greystronger-5","bd-right-greystronger-6":"bd-right-greystronger-6","bd-right-greystronger-7":"bd-right-greystronger-7","bd-right-greystronger-8":"bd-right-greystronger-8","bd-right-greystronger-9":"bd-right-greystronger-9","bd-right-greystronger-10":"bd-right-greystronger-10","bd-right-greystrong":"bd-right-greystrong","bd-right-greystrong-0":"bd-right-greystrong-0","bd-right-greystrong-1":"bd-right-greystrong-1","bd-right-greystrong-2":"bd-right-greystrong-2","bd-right-greystrong-3":"bd-right-greystrong-3","bd-right-greystrong-4":"bd-right-greystrong-4","bd-right-greystrong-5":"bd-right-greystrong-5","bd-right-greystrong-6":"bd-right-greystrong-6","bd-right-greystrong-7":"bd-right-greystrong-7","bd-right-greystrong-8":"bd-right-greystrong-8","bd-right-greystrong-9":"bd-right-greystrong-9","bd-right-greystrong-10":"bd-right-greystrong-10","bd-right-grey":"bd-right-grey","bd-right-grey-0":"bd-right-grey-0","bd-right-grey-1":"bd-right-grey-1","bd-right-grey-2":"bd-right-grey-2","bd-right-grey-3":"bd-right-grey-3","bd-right-grey-4":"bd-right-grey-4","bd-right-grey-5":"bd-right-grey-5","bd-right-grey-6":"bd-right-grey-6","bd-right-grey-7":"bd-right-grey-7","bd-right-grey-8":"bd-right-grey-8","bd-right-grey-9":"bd-right-grey-9","bd-right-grey-10":"bd-right-grey-10","bd-right-greylight":"bd-right-greylight","bd-right-greylight-0":"bd-right-greylight-0","bd-right-greylight-1":"bd-right-greylight-1","bd-right-greylight-2":"bd-right-greylight-2","bd-right-greylight-3":"bd-right-greylight-3","bd-right-greylight-4":"bd-right-greylight-4","bd-right-greylight-5":"bd-right-greylight-5","bd-right-greylight-6":"bd-right-greylight-6","bd-right-greylight-7":"bd-right-greylight-7","bd-right-greylight-8":"bd-right-greylight-8","bd-right-greylight-9":"bd-right-greylight-9","bd-right-greylight-10":"bd-right-greylight-10","bd-right-greylighter":"bd-right-greylighter","bd-right-greylighter-0":"bd-right-greylighter-0","bd-right-greylighter-1":"bd-right-greylighter-1","bd-right-greylighter-2":"bd-right-greylighter-2","bd-right-greylighter-3":"bd-right-greylighter-3","bd-right-greylighter-4":"bd-right-greylighter-4","bd-right-greylighter-5":"bd-right-greylighter-5","bd-right-greylighter-6":"bd-right-greylighter-6","bd-right-greylighter-7":"bd-right-greylighter-7","bd-right-greylighter-8":"bd-right-greylighter-8","bd-right-greylighter-9":"bd-right-greylighter-9","bd-right-greylighter-10":"bd-right-greylighter-10","bd-right-white":"bd-right-white","bd-right-white-0":"bd-right-white-0","bd-right-white-1":"bd-right-white-1","bd-right-white-2":"bd-right-white-2","bd-right-white-3":"bd-right-white-3","bd-right-white-4":"bd-right-white-4","bd-right-white-5":"bd-right-white-5","bd-right-white-6":"bd-right-white-6","bd-right-white-7":"bd-right-white-7","bd-right-white-8":"bd-right-white-8","bd-right-white-9":"bd-right-white-9","bd-right-white-10":"bd-right-white-10","bd-right-none":"bd-right-none","bd-right-none-0":"bd-right-none-0","bd-right-none-1":"bd-right-none-1","bd-right-none-2":"bd-right-none-2","bd-right-none-3":"bd-right-none-3","bd-right-none-4":"bd-right-none-4","bd-right-none-5":"bd-right-none-5","bd-right-none-6":"bd-right-none-6","bd-right-none-7":"bd-right-none-7","bd-right-none-8":"bd-right-none-8","bd-right-none-9":"bd-right-none-9","bd-right-none-10":"bd-right-none-10","p-right-0":"p-right-0","p-x-0":"p-x-0","p-right-x2":"p-right-x2","p-x-x2":"p-x-x2","m-bottom":"m-bottom","m-bottom-0":"m-bottom-0","m-bottom-x2":"m-bottom-x2","p-bottom":"p-bottom","bd-bottom":"bd-bottom","bd-bottom-0":"bd-bottom-0","bd-bottom-1":"bd-bottom-1","bd-bottom-2":"bd-bottom-2","bd-bottom-3":"bd-bottom-3","bd-bottom-4":"bd-bottom-4","bd-bottom-5":"bd-bottom-5","bd-bottom-6":"bd-bottom-6","bd-bottom-7":"bd-bottom-7","bd-bottom-8":"bd-bottom-8","bd-bottom-9":"bd-bottom-9","bd-bottom-10":"bd-bottom-10","bd-bottom-blue":"bd-bottom-blue","bd-bottom-blue-0":"bd-bottom-blue-0","bd-bottom-blue-1":"bd-bottom-blue-1","bd-bottom-blue-2":"bd-bottom-blue-2","bd-bottom-blue-3":"bd-bottom-blue-3","bd-bottom-blue-4":"bd-bottom-blue-4","bd-bottom-blue-5":"bd-bottom-blue-5","bd-bottom-blue-6":"bd-bottom-blue-6","bd-bottom-blue-7":"bd-bottom-blue-7","bd-bottom-blue-8":"bd-bottom-blue-8","bd-bottom-blue-9":"bd-bottom-blue-9","bd-bottom-blue-10":"bd-bottom-blue-10","bd-bottom-green":"bd-bottom-green","bd-bottom-green-0":"bd-bottom-green-0","bd-bottom-green-1":"bd-bottom-green-1","bd-bottom-green-2":"bd-bottom-green-2","bd-bottom-green-3":"bd-bottom-green-3","bd-bottom-green-4":"bd-bottom-green-4","bd-bottom-green-5":"bd-bottom-green-5","bd-bottom-green-6":"bd-bottom-green-6","bd-bottom-green-7":"bd-bottom-green-7","bd-bottom-green-8":"bd-bottom-green-8","bd-bottom-green-9":"bd-bottom-green-9","bd-bottom-green-10":"bd-bottom-green-10","bd-bottom-orange":"bd-bottom-orange","bd-bottom-orange-0":"bd-bottom-orange-0","bd-bottom-orange-1":"bd-bottom-orange-1","bd-bottom-orange-2":"bd-bottom-orange-2","bd-bottom-orange-3":"bd-bottom-orange-3","bd-bottom-orange-4":"bd-bottom-orange-4","bd-bottom-orange-5":"bd-bottom-orange-5","bd-bottom-orange-6":"bd-bottom-orange-6","bd-bottom-orange-7":"bd-bottom-orange-7","bd-bottom-orange-8":"bd-bottom-orange-8","bd-bottom-orange-9":"bd-bottom-orange-9","bd-bottom-orange-10":"bd-bottom-orange-10","bd-bottom-darkblue":"bd-bottom-darkblue","bd-bottom-darkblue-0":"bd-bottom-darkblue-0","bd-bottom-darkblue-1":"bd-bottom-darkblue-1","bd-bottom-darkblue-2":"bd-bottom-darkblue-2","bd-bottom-darkblue-3":"bd-bottom-darkblue-3","bd-bottom-darkblue-4":"bd-bottom-darkblue-4","bd-bottom-darkblue-5":"bd-bottom-darkblue-5","bd-bottom-darkblue-6":"bd-bottom-darkblue-6","bd-bottom-darkblue-7":"bd-bottom-darkblue-7","bd-bottom-darkblue-8":"bd-bottom-darkblue-8","bd-bottom-darkblue-9":"bd-bottom-darkblue-9","bd-bottom-darkblue-10":"bd-bottom-darkblue-10","bd-bottom-gold":"bd-bottom-gold","bd-bottom-gold-0":"bd-bottom-gold-0","bd-bottom-gold-1":"bd-bottom-gold-1","bd-bottom-gold-2":"bd-bottom-gold-2","bd-bottom-gold-3":"bd-bottom-gold-3","bd-bottom-gold-4":"bd-bottom-gold-4","bd-bottom-gold-5":"bd-bottom-gold-5","bd-bottom-gold-6":"bd-bottom-gold-6","bd-bottom-gold-7":"bd-bottom-gold-7","bd-bottom-gold-8":"bd-bottom-gold-8","bd-bottom-gold-9":"bd-bottom-gold-9","bd-bottom-gold-10":"bd-bottom-gold-10","bd-bottom-black":"bd-bottom-black","bd-bottom-black-0":"bd-bottom-black-0","bd-bottom-black-1":"bd-bottom-black-1","bd-bottom-black-2":"bd-bottom-black-2","bd-bottom-black-3":"bd-bottom-black-3","bd-bottom-black-4":"bd-bottom-black-4","bd-bottom-black-5":"bd-bottom-black-5","bd-bottom-black-6":"bd-bottom-black-6","bd-bottom-black-7":"bd-bottom-black-7","bd-bottom-black-8":"bd-bottom-black-8","bd-bottom-black-9":"bd-bottom-black-9","bd-bottom-black-10":"bd-bottom-black-10","bd-bottom-blacklight":"bd-bottom-blacklight","bd-bottom-blacklight-0":"bd-bottom-blacklight-0","bd-bottom-blacklight-1":"bd-bottom-blacklight-1","bd-bottom-blacklight-2":"bd-bottom-blacklight-2","bd-bottom-blacklight-3":"bd-bottom-blacklight-3","bd-bottom-blacklight-4":"bd-bottom-blacklight-4","bd-bottom-blacklight-5":"bd-bottom-blacklight-5","bd-bottom-blacklight-6":"bd-bottom-blacklight-6","bd-bottom-blacklight-7":"bd-bottom-blacklight-7","bd-bottom-blacklight-8":"bd-bottom-blacklight-8","bd-bottom-blacklight-9":"bd-bottom-blacklight-9","bd-bottom-blacklight-10":"bd-bottom-blacklight-10","bd-bottom-blacklighter":"bd-bottom-blacklighter","bd-bottom-blacklighter-0":"bd-bottom-blacklighter-0","bd-bottom-blacklighter-1":"bd-bottom-blacklighter-1","bd-bottom-blacklighter-2":"bd-bottom-blacklighter-2","bd-bottom-blacklighter-3":"bd-bottom-blacklighter-3","bd-bottom-blacklighter-4":"bd-bottom-blacklighter-4","bd-bottom-blacklighter-5":"bd-bottom-blacklighter-5","bd-bottom-blacklighter-6":"bd-bottom-blacklighter-6","bd-bottom-blacklighter-7":"bd-bottom-blacklighter-7","bd-bottom-blacklighter-8":"bd-bottom-blacklighter-8","bd-bottom-blacklighter-9":"bd-bottom-blacklighter-9","bd-bottom-blacklighter-10":"bd-bottom-blacklighter-10","bd-bottom-greystronger":"bd-bottom-greystronger","bd-bottom-greystronger-0":"bd-bottom-greystronger-0","bd-bottom-greystronger-1":"bd-bottom-greystronger-1","bd-bottom-greystronger-2":"bd-bottom-greystronger-2","bd-bottom-greystronger-3":"bd-bottom-greystronger-3","bd-bottom-greystronger-4":"bd-bottom-greystronger-4","bd-bottom-greystronger-5":"bd-bottom-greystronger-5","bd-bottom-greystronger-6":"bd-bottom-greystronger-6","bd-bottom-greystronger-7":"bd-bottom-greystronger-7","bd-bottom-greystronger-8":"bd-bottom-greystronger-8","bd-bottom-greystronger-9":"bd-bottom-greystronger-9","bd-bottom-greystronger-10":"bd-bottom-greystronger-10","bd-bottom-greystrong":"bd-bottom-greystrong","bd-bottom-greystrong-0":"bd-bottom-greystrong-0","bd-bottom-greystrong-1":"bd-bottom-greystrong-1","bd-bottom-greystrong-2":"bd-bottom-greystrong-2","bd-bottom-greystrong-3":"bd-bottom-greystrong-3","bd-bottom-greystrong-4":"bd-bottom-greystrong-4","bd-bottom-greystrong-5":"bd-bottom-greystrong-5","bd-bottom-greystrong-6":"bd-bottom-greystrong-6","bd-bottom-greystrong-7":"bd-bottom-greystrong-7","bd-bottom-greystrong-8":"bd-bottom-greystrong-8","bd-bottom-greystrong-9":"bd-bottom-greystrong-9","bd-bottom-greystrong-10":"bd-bottom-greystrong-10","bd-bottom-grey":"bd-bottom-grey","bd-bottom-grey-0":"bd-bottom-grey-0","bd-bottom-grey-1":"bd-bottom-grey-1","bd-bottom-grey-2":"bd-bottom-grey-2","bd-bottom-grey-3":"bd-bottom-grey-3","bd-bottom-grey-4":"bd-bottom-grey-4","bd-bottom-grey-5":"bd-bottom-grey-5","bd-bottom-grey-6":"bd-bottom-grey-6","bd-bottom-grey-7":"bd-bottom-grey-7","bd-bottom-grey-8":"bd-bottom-grey-8","bd-bottom-grey-9":"bd-bottom-grey-9","bd-bottom-grey-10":"bd-bottom-grey-10","bd-bottom-greylight":"bd-bottom-greylight","bd-bottom-greylight-0":"bd-bottom-greylight-0","bd-bottom-greylight-1":"bd-bottom-greylight-1","bd-bottom-greylight-2":"bd-bottom-greylight-2","bd-bottom-greylight-3":"bd-bottom-greylight-3","bd-bottom-greylight-4":"bd-bottom-greylight-4","bd-bottom-greylight-5":"bd-bottom-greylight-5","bd-bottom-greylight-6":"bd-bottom-greylight-6","bd-bottom-greylight-7":"bd-bottom-greylight-7","bd-bottom-greylight-8":"bd-bottom-greylight-8","bd-bottom-greylight-9":"bd-bottom-greylight-9","bd-bottom-greylight-10":"bd-bottom-greylight-10","bd-bottom-greylighter":"bd-bottom-greylighter","bd-bottom-greylighter-0":"bd-bottom-greylighter-0","bd-bottom-greylighter-1":"bd-bottom-greylighter-1","bd-bottom-greylighter-2":"bd-bottom-greylighter-2","bd-bottom-greylighter-3":"bd-bottom-greylighter-3","bd-bottom-greylighter-4":"bd-bottom-greylighter-4","bd-bottom-greylighter-5":"bd-bottom-greylighter-5","bd-bottom-greylighter-6":"bd-bottom-greylighter-6","bd-bottom-greylighter-7":"bd-bottom-greylighter-7","bd-bottom-greylighter-8":"bd-bottom-greylighter-8","bd-bottom-greylighter-9":"bd-bottom-greylighter-9","bd-bottom-greylighter-10":"bd-bottom-greylighter-10","bd-bottom-white":"bd-bottom-white","bd-bottom-white-0":"bd-bottom-white-0","bd-bottom-white-1":"bd-bottom-white-1","bd-bottom-white-2":"bd-bottom-white-2","bd-bottom-white-3":"bd-bottom-white-3","bd-bottom-white-4":"bd-bottom-white-4","bd-bottom-white-5":"bd-bottom-white-5","bd-bottom-white-6":"bd-bottom-white-6","bd-bottom-white-7":"bd-bottom-white-7","bd-bottom-white-8":"bd-bottom-white-8","bd-bottom-white-9":"bd-bottom-white-9","bd-bottom-white-10":"bd-bottom-white-10","bd-bottom-none":"bd-bottom-none","bd-bottom-none-0":"bd-bottom-none-0","bd-bottom-none-1":"bd-bottom-none-1","bd-bottom-none-2":"bd-bottom-none-2","bd-bottom-none-3":"bd-bottom-none-3","bd-bottom-none-4":"bd-bottom-none-4","bd-bottom-none-5":"bd-bottom-none-5","bd-bottom-none-6":"bd-bottom-none-6","bd-bottom-none-7":"bd-bottom-none-7","bd-bottom-none-8":"bd-bottom-none-8","bd-bottom-none-9":"bd-bottom-none-9","bd-bottom-none-10":"bd-bottom-none-10","p-bottom-0":"p-bottom-0","p-bottom-x2":"p-bottom-x2","m-left":"m-left","m-left-0":"m-left-0","m-left-x2":"m-left-x2","p-left":"p-left","bd-left":"bd-left","bd-left-0":"bd-left-0","bd-left-1":"bd-left-1","bd-left-2":"bd-left-2","bd-left-3":"bd-left-3","bd-left-4":"bd-left-4","bd-left-5":"bd-left-5","bd-left-6":"bd-left-6","bd-left-7":"bd-left-7","bd-left-8":"bd-left-8","bd-left-9":"bd-left-9","bd-left-10":"bd-left-10","bd-left-blue":"bd-left-blue","bd-left-blue-0":"bd-left-blue-0","bd-left-blue-1":"bd-left-blue-1","bd-left-blue-2":"bd-left-blue-2","bd-left-blue-3":"bd-left-blue-3","bd-left-blue-4":"bd-left-blue-4","bd-left-blue-5":"bd-left-blue-5","bd-left-blue-6":"bd-left-blue-6","bd-left-blue-7":"bd-left-blue-7","bd-left-blue-8":"bd-left-blue-8","bd-left-blue-9":"bd-left-blue-9","bd-left-blue-10":"bd-left-blue-10","bd-left-green":"bd-left-green","bd-left-green-0":"bd-left-green-0","bd-left-green-1":"bd-left-green-1","bd-left-green-2":"bd-left-green-2","bd-left-green-3":"bd-left-green-3","bd-left-green-4":"bd-left-green-4","bd-left-green-5":"bd-left-green-5","bd-left-green-6":"bd-left-green-6","bd-left-green-7":"bd-left-green-7","bd-left-green-8":"bd-left-green-8","bd-left-green-9":"bd-left-green-9","bd-left-green-10":"bd-left-green-10","bd-left-orange":"bd-left-orange","bd-left-orange-0":"bd-left-orange-0","bd-left-orange-1":"bd-left-orange-1","bd-left-orange-2":"bd-left-orange-2","bd-left-orange-3":"bd-left-orange-3","bd-left-orange-4":"bd-left-orange-4","bd-left-orange-5":"bd-left-orange-5","bd-left-orange-6":"bd-left-orange-6","bd-left-orange-7":"bd-left-orange-7","bd-left-orange-8":"bd-left-orange-8","bd-left-orange-9":"bd-left-orange-9","bd-left-orange-10":"bd-left-orange-10","bd-left-darkblue":"bd-left-darkblue","bd-left-darkblue-0":"bd-left-darkblue-0","bd-left-darkblue-1":"bd-left-darkblue-1","bd-left-darkblue-2":"bd-left-darkblue-2","bd-left-darkblue-3":"bd-left-darkblue-3","bd-left-darkblue-4":"bd-left-darkblue-4","bd-left-darkblue-5":"bd-left-darkblue-5","bd-left-darkblue-6":"bd-left-darkblue-6","bd-left-darkblue-7":"bd-left-darkblue-7","bd-left-darkblue-8":"bd-left-darkblue-8","bd-left-darkblue-9":"bd-left-darkblue-9","bd-left-darkblue-10":"bd-left-darkblue-10","bd-left-gold":"bd-left-gold","bd-left-gold-0":"bd-left-gold-0","bd-left-gold-1":"bd-left-gold-1","bd-left-gold-2":"bd-left-gold-2","bd-left-gold-3":"bd-left-gold-3","bd-left-gold-4":"bd-left-gold-4","bd-left-gold-5":"bd-left-gold-5","bd-left-gold-6":"bd-left-gold-6","bd-left-gold-7":"bd-left-gold-7","bd-left-gold-8":"bd-left-gold-8","bd-left-gold-9":"bd-left-gold-9","bd-left-gold-10":"bd-left-gold-10","bd-left-black":"bd-left-black","bd-left-black-0":"bd-left-black-0","bd-left-black-1":"bd-left-black-1","bd-left-black-2":"bd-left-black-2","bd-left-black-3":"bd-left-black-3","bd-left-black-4":"bd-left-black-4","bd-left-black-5":"bd-left-black-5","bd-left-black-6":"bd-left-black-6","bd-left-black-7":"bd-left-black-7","bd-left-black-8":"bd-left-black-8","bd-left-black-9":"bd-left-black-9","bd-left-black-10":"bd-left-black-10","bd-left-blacklight":"bd-left-blacklight","bd-left-blacklight-0":"bd-left-blacklight-0","bd-left-blacklight-1":"bd-left-blacklight-1","bd-left-blacklight-2":"bd-left-blacklight-2","bd-left-blacklight-3":"bd-left-blacklight-3","bd-left-blacklight-4":"bd-left-blacklight-4","bd-left-blacklight-5":"bd-left-blacklight-5","bd-left-blacklight-6":"bd-left-blacklight-6","bd-left-blacklight-7":"bd-left-blacklight-7","bd-left-blacklight-8":"bd-left-blacklight-8","bd-left-blacklight-9":"bd-left-blacklight-9","bd-left-blacklight-10":"bd-left-blacklight-10","bd-left-blacklighter":"bd-left-blacklighter","bd-left-blacklighter-0":"bd-left-blacklighter-0","bd-left-blacklighter-1":"bd-left-blacklighter-1","bd-left-blacklighter-2":"bd-left-blacklighter-2","bd-left-blacklighter-3":"bd-left-blacklighter-3","bd-left-blacklighter-4":"bd-left-blacklighter-4","bd-left-blacklighter-5":"bd-left-blacklighter-5","bd-left-blacklighter-6":"bd-left-blacklighter-6","bd-left-blacklighter-7":"bd-left-blacklighter-7","bd-left-blacklighter-8":"bd-left-blacklighter-8","bd-left-blacklighter-9":"bd-left-blacklighter-9","bd-left-blacklighter-10":"bd-left-blacklighter-10","bd-left-greystronger":"bd-left-greystronger","bd-left-greystronger-0":"bd-left-greystronger-0","bd-left-greystronger-1":"bd-left-greystronger-1","bd-left-greystronger-2":"bd-left-greystronger-2","bd-left-greystronger-3":"bd-left-greystronger-3","bd-left-greystronger-4":"bd-left-greystronger-4","bd-left-greystronger-5":"bd-left-greystronger-5","bd-left-greystronger-6":"bd-left-greystronger-6","bd-left-greystronger-7":"bd-left-greystronger-7","bd-left-greystronger-8":"bd-left-greystronger-8","bd-left-greystronger-9":"bd-left-greystronger-9","bd-left-greystronger-10":"bd-left-greystronger-10","bd-left-greystrong":"bd-left-greystrong","bd-left-greystrong-0":"bd-left-greystrong-0","bd-left-greystrong-1":"bd-left-greystrong-1","bd-left-greystrong-2":"bd-left-greystrong-2","bd-left-greystrong-3":"bd-left-greystrong-3","bd-left-greystrong-4":"bd-left-greystrong-4","bd-left-greystrong-5":"bd-left-greystrong-5","bd-left-greystrong-6":"bd-left-greystrong-6","bd-left-greystrong-7":"bd-left-greystrong-7","bd-left-greystrong-8":"bd-left-greystrong-8","bd-left-greystrong-9":"bd-left-greystrong-9","bd-left-greystrong-10":"bd-left-greystrong-10","bd-left-grey":"bd-left-grey","bd-left-grey-0":"bd-left-grey-0","bd-left-grey-1":"bd-left-grey-1","bd-left-grey-2":"bd-left-grey-2","bd-left-grey-3":"bd-left-grey-3","bd-left-grey-4":"bd-left-grey-4","bd-left-grey-5":"bd-left-grey-5","bd-left-grey-6":"bd-left-grey-6","bd-left-grey-7":"bd-left-grey-7","bd-left-grey-8":"bd-left-grey-8","bd-left-grey-9":"bd-left-grey-9","bd-left-grey-10":"bd-left-grey-10","bd-left-greylight":"bd-left-greylight","bd-left-greylight-0":"bd-left-greylight-0","bd-left-greylight-1":"bd-left-greylight-1","bd-left-greylight-2":"bd-left-greylight-2","bd-left-greylight-3":"bd-left-greylight-3","bd-left-greylight-4":"bd-left-greylight-4","bd-left-greylight-5":"bd-left-greylight-5","bd-left-greylight-6":"bd-left-greylight-6","bd-left-greylight-7":"bd-left-greylight-7","bd-left-greylight-8":"bd-left-greylight-8","bd-left-greylight-9":"bd-left-greylight-9","bd-left-greylight-10":"bd-left-greylight-10","bd-left-greylighter":"bd-left-greylighter","bd-left-greylighter-0":"bd-left-greylighter-0","bd-left-greylighter-1":"bd-left-greylighter-1","bd-left-greylighter-2":"bd-left-greylighter-2","bd-left-greylighter-3":"bd-left-greylighter-3","bd-left-greylighter-4":"bd-left-greylighter-4","bd-left-greylighter-5":"bd-left-greylighter-5","bd-left-greylighter-6":"bd-left-greylighter-6","bd-left-greylighter-7":"bd-left-greylighter-7","bd-left-greylighter-8":"bd-left-greylighter-8","bd-left-greylighter-9":"bd-left-greylighter-9","bd-left-greylighter-10":"bd-left-greylighter-10","bd-left-white":"bd-left-white","bd-left-white-0":"bd-left-white-0","bd-left-white-1":"bd-left-white-1","bd-left-white-2":"bd-left-white-2","bd-left-white-3":"bd-left-white-3","bd-left-white-4":"bd-left-white-4","bd-left-white-5":"bd-left-white-5","bd-left-white-6":"bd-left-white-6","bd-left-white-7":"bd-left-white-7","bd-left-white-8":"bd-left-white-8","bd-left-white-9":"bd-left-white-9","bd-left-white-10":"bd-left-white-10","bd-left-none":"bd-left-none","bd-left-none-0":"bd-left-none-0","bd-left-none-1":"bd-left-none-1","bd-left-none-2":"bd-left-none-2","bd-left-none-3":"bd-left-none-3","bd-left-none-4":"bd-left-none-4","bd-left-none-5":"bd-left-none-5","bd-left-none-6":"bd-left-none-6","bd-left-none-7":"bd-left-none-7","bd-left-none-8":"bd-left-none-8","bd-left-none-9":"bd-left-none-9","bd-left-none-10":"bd-left-none-10","p-left-0":"p-left-0","p-left-x2":"p-left-x2","h1":"h1","sep-bottom":"sep-bottom","sep-top":"sep-top","sep-right":"sep-right","sep-left":"sep-left","h2":"h2","h3":"h3","h4":"h4","h5":"h5","h6":"h6","sep":"sep","reset":"reset","bg-blue":"bg-blue","bg-blue-o-10":"bg-blue-o-10","bg-blue-o-20":"bg-blue-o-20","bg-blue-o-30":"bg-blue-o-30","bg-blue-o-40":"bg-blue-o-40","bg-blue-o-50":"bg-blue-o-50","bg-blue-o-60":"bg-blue-o-60","bg-blue-o-70":"bg-blue-o-70","bg-blue-o-80":"bg-blue-o-80","bg-blue-o-90":"bg-blue-o-90","bg-blue-o-100":"bg-blue-o-100","text":"text","email":"email","password":"password","tel":"tel","url":"url","date":"date","range":"range","number":"number","select2-container":"select2-container","select2-selection":"select2-selection","focus":"focus","active":"active","checkbox":"checkbox","radio":"radio","bg-green":"bg-green","bg-green-o-10":"bg-green-o-10","bg-green-o-20":"bg-green-o-20","bg-green-o-30":"bg-green-o-30","bg-green-o-40":"bg-green-o-40","bg-green-o-50":"bg-green-o-50","bg-green-o-60":"bg-green-o-60","bg-green-o-70":"bg-green-o-70","bg-green-o-80":"bg-green-o-80","bg-green-o-90":"bg-green-o-90","bg-green-o-100":"bg-green-o-100","bg-orange":"bg-orange","bg-orange-o-10":"bg-orange-o-10","bg-orange-o-20":"bg-orange-o-20","bg-orange-o-30":"bg-orange-o-30","bg-orange-o-40":"bg-orange-o-40","bg-orange-o-50":"bg-orange-o-50","bg-orange-o-60":"bg-orange-o-60","bg-orange-o-70":"bg-orange-o-70","bg-orange-o-80":"bg-orange-o-80","bg-orange-o-90":"bg-orange-o-90","bg-orange-o-100":"bg-orange-o-100","bg-darkblue":"bg-darkblue","bg-darkblue-o-10":"bg-darkblue-o-10","bg-darkblue-o-20":"bg-darkblue-o-20","bg-darkblue-o-30":"bg-darkblue-o-30","bg-darkblue-o-40":"bg-darkblue-o-40","bg-darkblue-o-50":"bg-darkblue-o-50","bg-darkblue-o-60":"bg-darkblue-o-60","bg-darkblue-o-70":"bg-darkblue-o-70","bg-darkblue-o-80":"bg-darkblue-o-80","bg-darkblue-o-90":"bg-darkblue-o-90","bg-darkblue-o-100":"bg-darkblue-o-100","bg-gold":"bg-gold","bg-gold-o-10":"bg-gold-o-10","bg-gold-o-20":"bg-gold-o-20","bg-gold-o-30":"bg-gold-o-30","bg-gold-o-40":"bg-gold-o-40","bg-gold-o-50":"bg-gold-o-50","bg-gold-o-60":"bg-gold-o-60","bg-gold-o-70":"bg-gold-o-70","bg-gold-o-80":"bg-gold-o-80","bg-gold-o-90":"bg-gold-o-90","bg-gold-o-100":"bg-gold-o-100","bg-black":"bg-black","bg-black-o-10":"bg-black-o-10","bg-black-o-20":"bg-black-o-20","bg-black-o-30":"bg-black-o-30","bg-black-o-40":"bg-black-o-40","bg-black-o-50":"bg-black-o-50","bg-black-o-60":"bg-black-o-60","bg-black-o-70":"bg-black-o-70","bg-black-o-80":"bg-black-o-80","bg-black-o-90":"bg-black-o-90","bg-black-o-100":"bg-black-o-100","bg-blacklight":"bg-blacklight","bg-blacklight-o-10":"bg-blacklight-o-10","bg-blacklight-o-20":"bg-blacklight-o-20","bg-blacklight-o-30":"bg-blacklight-o-30","bg-blacklight-o-40":"bg-blacklight-o-40","bg-blacklight-o-50":"bg-blacklight-o-50","bg-blacklight-o-60":"bg-blacklight-o-60","bg-blacklight-o-70":"bg-blacklight-o-70","bg-blacklight-o-80":"bg-blacklight-o-80","bg-blacklight-o-90":"bg-blacklight-o-90","bg-blacklight-o-100":"bg-blacklight-o-100","bg-blacklighter":"bg-blacklighter","bg-blacklighter-o-10":"bg-blacklighter-o-10","bg-blacklighter-o-20":"bg-blacklighter-o-20","bg-blacklighter-o-30":"bg-blacklighter-o-30","bg-blacklighter-o-40":"bg-blacklighter-o-40","bg-blacklighter-o-50":"bg-blacklighter-o-50","bg-blacklighter-o-60":"bg-blacklighter-o-60","bg-blacklighter-o-70":"bg-blacklighter-o-70","bg-blacklighter-o-80":"bg-blacklighter-o-80","bg-blacklighter-o-90":"bg-blacklighter-o-90","bg-blacklighter-o-100":"bg-blacklighter-o-100","bg-greystronger":"bg-greystronger","bg-greystronger-o-10":"bg-greystronger-o-10","bg-greystronger-o-20":"bg-greystronger-o-20","bg-greystronger-o-30":"bg-greystronger-o-30","bg-greystronger-o-40":"bg-greystronger-o-40","bg-greystronger-o-50":"bg-greystronger-o-50","bg-greystronger-o-60":"bg-greystronger-o-60","bg-greystronger-o-70":"bg-greystronger-o-70","bg-greystronger-o-80":"bg-greystronger-o-80","bg-greystronger-o-90":"bg-greystronger-o-90","bg-greystronger-o-100":"bg-greystronger-o-100","bg-greystrong":"bg-greystrong","bg-greystrong-o-10":"bg-greystrong-o-10","bg-greystrong-o-20":"bg-greystrong-o-20","bg-greystrong-o-30":"bg-greystrong-o-30","bg-greystrong-o-40":"bg-greystrong-o-40","bg-greystrong-o-50":"bg-greystrong-o-50","bg-greystrong-o-60":"bg-greystrong-o-60","bg-greystrong-o-70":"bg-greystrong-o-70","bg-greystrong-o-80":"bg-greystrong-o-80","bg-greystrong-o-90":"bg-greystrong-o-90","bg-greystrong-o-100":"bg-greystrong-o-100","bg-grey":"bg-grey","bg-grey-o-10":"bg-grey-o-10","bg-grey-o-20":"bg-grey-o-20","bg-grey-o-30":"bg-grey-o-30","bg-grey-o-40":"bg-grey-o-40","bg-grey-o-50":"bg-grey-o-50","bg-grey-o-60":"bg-grey-o-60","bg-grey-o-70":"bg-grey-o-70","bg-grey-o-80":"bg-grey-o-80","bg-grey-o-90":"bg-grey-o-90","bg-grey-o-100":"bg-grey-o-100","bg-greylight":"bg-greylight","bg-greylight-o-10":"bg-greylight-o-10","bg-greylight-o-20":"bg-greylight-o-20","bg-greylight-o-30":"bg-greylight-o-30","bg-greylight-o-40":"bg-greylight-o-40","bg-greylight-o-50":"bg-greylight-o-50","bg-greylight-o-60":"bg-greylight-o-60","bg-greylight-o-70":"bg-greylight-o-70","bg-greylight-o-80":"bg-greylight-o-80","bg-greylight-o-90":"bg-greylight-o-90","bg-greylight-o-100":"bg-greylight-o-100","bg-greylighter":"bg-greylighter","bg-greylighter-o-10":"bg-greylighter-o-10","bg-greylighter-o-20":"bg-greylighter-o-20","bg-greylighter-o-30":"bg-greylighter-o-30","bg-greylighter-o-40":"bg-greylighter-o-40","bg-greylighter-o-50":"bg-greylighter-o-50","bg-greylighter-o-60":"bg-greylighter-o-60","bg-greylighter-o-70":"bg-greylighter-o-70","bg-greylighter-o-80":"bg-greylighter-o-80","bg-greylighter-o-90":"bg-greylighter-o-90","bg-greylighter-o-100":"bg-greylighter-o-100","bg-white":"bg-white","bg-white-o-10":"bg-white-o-10","bg-white-o-20":"bg-white-o-20","bg-white-o-30":"bg-white-o-30","bg-white-o-40":"bg-white-o-40","bg-white-o-50":"bg-white-o-50","bg-white-o-60":"bg-white-o-60","bg-white-o-70":"bg-white-o-70","bg-white-o-80":"bg-white-o-80","bg-white-o-90":"bg-white-o-90","bg-white-o-100":"bg-white-o-100","bg-none":"bg-none","bg-none-o-10":"bg-none-o-10","bg-none-o-20":"bg-none-o-20","bg-none-o-30":"bg-none-o-30","bg-none-o-40":"bg-none-o-40","bg-none-o-50":"bg-none-o-50","bg-none-o-60":"bg-none-o-60","bg-none-o-70":"bg-none-o-70","bg-none-o-80":"bg-none-o-80","bg-none-o-90":"bg-none-o-90","bg-none-o-100":"bg-none-o-100","btn-sm":"btn-sm","editor":"editor","btn-lg":"btn-lg","btn-bd-blue":"btn-bd-blue","btn-bg-blue":"btn-bg-blue","btn-bd-green":"btn-bd-green","btn-bg-green":"btn-bg-green","btn-bd-orange":"btn-bd-orange","btn-bg-orange":"btn-bg-orange","btn-bd-darkblue":"btn-bd-darkblue","btn-bg-darkblue":"btn-bg-darkblue","btn-bd-gold":"btn-bd-gold","btn-bg-gold":"btn-bg-gold","btn-bd-black":"btn-bd-black","btn-bg-black":"btn-bg-black","btn-bd-blacklight":"btn-bd-blacklight","btn-bg-blacklight":"btn-bg-blacklight","btn-bd-blacklighter":"btn-bd-blacklighter","btn-bg-blacklighter":"btn-bg-blacklighter","btn-bd-greystronger":"btn-bd-greystronger","btn-bg-greystronger":"btn-bg-greystronger","btn-bd-greystrong":"btn-bd-greystrong","btn-bg-greystrong":"btn-bg-greystrong","btn-bd-grey":"btn-bd-grey","btn-bg-grey":"btn-bg-grey","btn-bd-greylight":"btn-bd-greylight","btn-bg-greylight":"btn-bg-greylight","btn-bd-greylighter":"btn-bd-greylighter","btn-bg-greylighter":"btn-bg-greylighter","btn-bd-white":"btn-bd-white","btn-bg-white":"btn-bg-white","btn-bd-none":"btn-bd-none","btn-bg-none":"btn-bg-none","flex":"flex","alignself--flexstart":"alignself--flexstart","alignself--flexend":"alignself--flexend","alignself--center":"alignself--center","alignself--spacebetween":"alignself--spacebetween","alignself--spacearound":"alignself--spacearound","flexgrow--0":"flexgrow--0","flexgrow--1":"flexgrow--1","flexgrow--2":"flexgrow--2","flexgrow--3":"flexgrow--3","flexgrow--4":"flexgrow--4","flexgrow--5":"flexgrow--5","flexgrow--6":"flexgrow--6","flexgrow--7":"flexgrow--7","flexgrow--8":"flexgrow--8","flexgrow--9":"flexgrow--9","flexgrow--10":"flexgrow--10","nofill":"nofill","form-group":"form-group","toast-container":"toast-container","heroFW":"heroFW","width--content":"width--content","title--1":"title--1","title--2":"title--2","title--3":"title--3","title--4":"title--4","heroFW__wrapper":"heroFW__wrapper","heroFW__figure":"heroFW__figure","height--content":"height--content","figure__opacity--0":"figure__opacity--0","figure__opacity--1":"figure__opacity--1","figure__opacity--2":"figure__opacity--2","figure__opacity--3":"figure__opacity--3","figure__opacity--4":"figure__opacity--4","figure__opacity--5":"figure__opacity--5","figure__opacity--6":"figure__opacity--6","figure__opacity--7":"figure__opacity--7","figure__opacity--8":"figure__opacity--8","figure__opacity--9":"figure__opacity--9","figure__opacity--10":"figure__opacity--10","heroFW__content":"heroFW__content","content__bg--blue":"content__bg--blue","content__bg--green":"content__bg--green","content__bg--orange":"content__bg--orange","content__bg--darkblue":"content__bg--darkblue","content__bg--gold":"content__bg--gold","content__bg--black":"content__bg--black","content__bg--blacklight":"content__bg--blacklight","content__bg--blacklighter":"content__bg--blacklighter","content__bg--greystronger":"content__bg--greystronger","content__bg--greystrong":"content__bg--greystrong","content__bg--grey":"content__bg--grey","content__bg--greylight":"content__bg--greylight","content__bg--greylighter":"content__bg--greylighter","content__bg--white":"content__bg--white","content__bg--none":"content__bg--none","content__bg__opacity--0":"content__bg__opacity--0","content__bg__opacity--1":"content__bg__opacity--1","content__bg__opacity--2":"content__bg__opacity--2","content__bg__opacity--3":"content__bg__opacity--3","content__bg__opacity--4":"content__bg__opacity--4","content__bg__opacity--5":"content__bg__opacity--5","content__bg__opacity--6":"content__bg__opacity--6","content__bg__opacity--7":"content__bg__opacity--7","content__bg__opacity--8":"content__bg__opacity--8","content__bg__opacity--9":"content__bg__opacity--9","content__bg__opacity--10":"content__bg__opacity--10","sliderFW":"sliderFW","sliderFW__container":"sliderFW__container","sliderFW__rail":"sliderFW__rail","nav--hidden":"nav--hidden","nav--inner":"nav--inner","nav--top":"nav--top","sliderFW__item":"sliderFW__item","sliderFW__item__bg":"sliderFW__item__bg","sliderFW__item__content":"sliderFW__item__content","content__text--top":"content__text--top","content__text--center":"content__text--center","content--right":"content--right","content--center":"content--center","sliderFW__item__blur":"sliderFW__item__blur","content--noblur":"content--noblur","sliderFW__nav":"sliderFW__nav","nav--left":"nav--left","nav--right":"nav--right","nav--bottom":"nav--bottom","sliderFW__nav__item":"sliderFW__nav__item","tabs":"tabs","tabs__nav":"tabs__nav","tabs__content":"tabs__content","tab":"tab","foldingbox":"foldingbox","foldingbox__title":"foldingbox__title","foldingbox__item":"foldingbox__item","break":"break","foldingbox__container":"foldingbox__container","foldingbox__item__content":"foldingbox__item__content","foldingbox__item__bg":"foldingbox__item__bg","block-list":"block-list","headline--outer":"headline--outer","block-list__headline":"block-list__headline","block-list__content":"block-list__content","block-list__footer":"block-list__footer","block-list__category":"block-list__category","block-list__date":"block-list__date","headline--disable":"headline--disable","footer--disable":"footer--disable","block-list__title":"block-list__title","block-img":"block-img","block-img__content":"block-img__content","content--inner":"content--inner","content--fadein":"content--fadein","content--fadeout":"content--fadeout","content--top":"content--top","content--full":"content--full","content--fromtop":"content--fromtop","content--frombottom":"content--frombottom","content--fromleft":"content--fromleft","content--fromright":"content--fromright","content__text--left":"content__text--left","content__text--right":"content__text--right","content__text--bottom":"content__text--bottom","select2-container--default":"select2-container--default","select2-selection--single":"select2-selection--single","select2-selection__rendered":"select2-selection__rendered","select2-selection__arrow":"select2-selection__arrow","select2-container--open":"select2-container--open","select2-selection--multiple":"select2-selection--multiple","select2-selection__choice":"select2-selection__choice","select2-search--inline":"select2-search--inline","select2-search__field":"select2-search__field","select2-selection__choice__remove":"select2-selection__choice__remove","select2-dropdown":"select2-dropdown","btn-load":"btn-load","content":"content","item":"item","tag":"tag","descIcon":"descIcon"};
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = {
+  themes: [],
+  components: ['heroFW', 'sliderFW',
+  // 'brick',
+  'tabs', 'foldingbox', 'block-list', 'block-std', 'block-img', 'select2FW', 'btn-load', 'guideline']
+};
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($, utils, global) {
+
+function Framway() {
+  var framway = this;
+  framway.components = [];
+  framway.components_loaded = {};
+  framway.themes = [];
+  framway.$debug = $('<div id="debug"></div>').appendTo($('body'));
+  framway.debug = false;
+  framway.useNotif = true;
+  return framway;
+};
+/**
+ * load the components passed in parameters
+ * @param  {Array of Strings} arrComponents [array containing the components names]
+ */
+Framway.prototype.loadComponents = function (arrComponents) {
+  var framway = this;
+  $.each(arrComponents, function (index, name) {
+    try {
+      __webpack_require__(31)("./" + name + '/' + name + '.js');
+      framway.components.push(name);
+    } catch (e) {
+      framway.log('Component ' + name + ' failed to load.\n' + e);
+    }
+  });
+  if (framway.components.length) framway.log('Component(s) sucessfully loaded: \n - ' + framway.components.join('\n - '));
+  return framway;
+};
+
+/**
+ * load the components passed in parameters
+ * @param  {Array of Strings} arrComponents [array containing the components names]
+ */
+Framway.prototype.loadThemes = function (arrThemes) {
+  var framway = this;
+  $.each(arrThemes, function (index, name) {
+    try {
+      __webpack_require__(104)("./" + name + '/' + name + '.js');
+      framway.themes.push(name);
+    } catch (e) {
+      framway.log('Component ' + name + ' failed to load.\n' + e);
+    }
+  });
+  if (framway.themes.length) framway.log('Theme(s) sucessfully loaded: \n - ' + framway.themes.join('\n - '));
+  return framway;
+};
+
+/**
+ * display things in the browser's console and in a custom debug window
+ * @param  {[type]}  strLog
+ * @param  {Boolean} blnDebug
+ * TODO : style debug window
+ */
+Framway.prototype.log = function (strLog) {
+  var blnDebug = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+  var framway = this;
+  if (blnDebug) {
+    var content = framway.$debug.html();
+    content += strLog.replace(/(?:\r\n|\r|\n)/g, '<br>') + '<br>';
+    framway.$debug.html(content).show();
+    framway.$debug.scrollTop(framway.$debug[0].scrollHeight);
+  }
+  console.log('─'.repeat(15));
+  console.log(strLog);
+  return framway;
+};
+
+/**
+ * clear the custom debug window
+ */
+Framway.prototype.clearLogs = function () {
+  var framway = this;
+  framway.$debug.html('').hide();
+  return framway;
+};
+
+$(function () {
+  $('body').on('click', 'pre .copy', function (e) {
+    var elem = $(this).parent().clone();
+    elem.find('.copy').remove();
+    if (utils.copyToClipboard(elem.get(0))) notif_fade.success('Copied to clipboard !');
+  });
+});
+
+__webpack_require__(106);
+global.Component = __webpack_require__(107);
+global.app = new Framway();
+global.utils = utils;
+global.$ = global.jQuery = $;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2), __webpack_require__(3)))
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
+ * Toastr
+ * Copyright 2012-2015
+ * Authors: John Papa, Hans Fjällemark, and Tim Ferrell.
+ * All Rights Reserved.
+ * Use, reproduction, distribution, and modification of this code is subject to the terms and
+ * conditions of the MIT license, available at http://www.opensource.org/licenses/mit-license.php
+ *
+ * ARIA Support: Greta Krafsig
+ *
+ * Project: https://github.com/CodeSeven/toastr
+ */
+/* global define */
+(function (define) {
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1)], __WEBPACK_AMD_DEFINE_RESULT__ = (function ($) {
+        return (function () {
+            var $container;
+            var listener;
+            var toastId = 0;
+            var toastType = {
+                error: 'error',
+                info: 'info',
+                success: 'success',
+                warning: 'warning'
+            };
+
+            var toastr = {
+                clear: clear,
+                remove: remove,
+                error: error,
+                getContainer: getContainer,
+                info: info,
+                options: {},
+                subscribe: subscribe,
+                success: success,
+                version: '2.1.4',
+                warning: warning
+            };
+
+            var previousToast;
+
+            return toastr;
+
+            ////////////////
+
+            function error(message, title, optionsOverride) {
+                return notify({
+                    type: toastType.error,
+                    iconClass: getOptions().iconClasses.error,
+                    message: message,
+                    optionsOverride: optionsOverride,
+                    title: title
+                });
+            }
+
+            function getContainer(options, create) {
+                if (!options) { options = getOptions(); }
+                $container = $('#' + options.containerId);
+                if ($container.length) {
+                    return $container;
+                }
+                if (create) {
+                    $container = createContainer(options);
+                }
+                return $container;
+            }
+
+            function info(message, title, optionsOverride) {
+                return notify({
+                    type: toastType.info,
+                    iconClass: getOptions().iconClasses.info,
+                    message: message,
+                    optionsOverride: optionsOverride,
+                    title: title
+                });
+            }
+
+            function subscribe(callback) {
+                listener = callback;
+            }
+
+            function success(message, title, optionsOverride) {
+                return notify({
+                    type: toastType.success,
+                    iconClass: getOptions().iconClasses.success,
+                    message: message,
+                    optionsOverride: optionsOverride,
+                    title: title
+                });
+            }
+
+            function warning(message, title, optionsOverride) {
+                return notify({
+                    type: toastType.warning,
+                    iconClass: getOptions().iconClasses.warning,
+                    message: message,
+                    optionsOverride: optionsOverride,
+                    title: title
+                });
+            }
+
+            function clear($toastElement, clearOptions) {
+                var options = getOptions();
+                if (!$container) { getContainer(options); }
+                if (!clearToast($toastElement, options, clearOptions)) {
+                    clearContainer(options);
+                }
+            }
+
+            function remove($toastElement) {
+                var options = getOptions();
+                if (!$container) { getContainer(options); }
+                if ($toastElement && $(':focus', $toastElement).length === 0) {
+                    removeToast($toastElement);
+                    return;
+                }
+                if ($container.children().length) {
+                    $container.remove();
+                }
+            }
+
+            // internal functions
+
+            function clearContainer (options) {
+                var toastsToClear = $container.children();
+                for (var i = toastsToClear.length - 1; i >= 0; i--) {
+                    clearToast($(toastsToClear[i]), options);
+                }
+            }
+
+            function clearToast ($toastElement, options, clearOptions) {
+                var force = clearOptions && clearOptions.force ? clearOptions.force : false;
+                if ($toastElement && (force || $(':focus', $toastElement).length === 0)) {
+                    $toastElement[options.hideMethod]({
+                        duration: options.hideDuration,
+                        easing: options.hideEasing,
+                        complete: function () { removeToast($toastElement); }
+                    });
+                    return true;
+                }
+                return false;
+            }
+
+            function createContainer(options) {
+                $container = $('<div/>')
+                    .attr('id', options.containerId)
+                    .addClass(options.positionClass);
+
+                $container.appendTo($(options.target));
+                return $container;
+            }
+
+            function getDefaults() {
+                return {
+                    tapToDismiss: true,
+                    toastClass: 'toast',
+                    containerId: 'toast-container',
+                    debug: false,
+
+                    showMethod: 'fadeIn', //fadeIn, slideDown, and show are built into jQuery
+                    showDuration: 300,
+                    showEasing: 'swing', //swing and linear are built into jQuery
+                    onShown: undefined,
+                    hideMethod: 'fadeOut',
+                    hideDuration: 1000,
+                    hideEasing: 'swing',
+                    onHidden: undefined,
+                    closeMethod: false,
+                    closeDuration: false,
+                    closeEasing: false,
+                    closeOnHover: true,
+
+                    extendedTimeOut: 1000,
+                    iconClasses: {
+                        error: 'toast-error',
+                        info: 'toast-info',
+                        success: 'toast-success',
+                        warning: 'toast-warning'
+                    },
+                    iconClass: 'toast-info',
+                    positionClass: 'toast-top-right',
+                    timeOut: 5000, // Set timeOut and extendedTimeOut to 0 to make it sticky
+                    titleClass: 'toast-title',
+                    messageClass: 'toast-message',
+                    escapeHtml: false,
+                    target: 'body',
+                    closeHtml: '<button type="button">&times;</button>',
+                    closeClass: 'toast-close-button',
+                    newestOnTop: true,
+                    preventDuplicates: false,
+                    progressBar: false,
+                    progressClass: 'toast-progress',
+                    rtl: false
+                };
+            }
+
+            function publish(args) {
+                if (!listener) { return; }
+                listener(args);
+            }
+
+            function notify(map) {
+                var options = getOptions();
+                var iconClass = map.iconClass || options.iconClass;
+
+                if (typeof (map.optionsOverride) !== 'undefined') {
+                    options = $.extend(options, map.optionsOverride);
+                    iconClass = map.optionsOverride.iconClass || iconClass;
+                }
+
+                if (shouldExit(options, map)) { return; }
+
+                toastId++;
+
+                $container = getContainer(options, true);
+
+                var intervalId = null;
+                var $toastElement = $('<div/>');
+                var $titleElement = $('<div/>');
+                var $messageElement = $('<div/>');
+                var $progressElement = $('<div/>');
+                var $closeElement = $(options.closeHtml);
+                var progressBar = {
+                    intervalId: null,
+                    hideEta: null,
+                    maxHideTime: null
+                };
+                var response = {
+                    toastId: toastId,
+                    state: 'visible',
+                    startTime: new Date(),
+                    options: options,
+                    map: map
+                };
+
+                personalizeToast();
+
+                displayToast();
+
+                handleEvents();
+
+                publish(response);
+
+                if (options.debug && console) {
+                    console.log(response);
+                }
+
+                return $toastElement;
+
+                function escapeHtml(source) {
+                    if (source == null) {
+                        source = '';
+                    }
+
+                    return source
+                        .replace(/&/g, '&amp;')
+                        .replace(/"/g, '&quot;')
+                        .replace(/'/g, '&#39;')
+                        .replace(/</g, '&lt;')
+                        .replace(/>/g, '&gt;');
+                }
+
+                function personalizeToast() {
+                    setIcon();
+                    setTitle();
+                    setMessage();
+                    setCloseButton();
+                    setProgressBar();
+                    setRTL();
+                    setSequence();
+                    setAria();
+                }
+
+                function setAria() {
+                    var ariaValue = '';
+                    switch (map.iconClass) {
+                        case 'toast-success':
+                        case 'toast-info':
+                            ariaValue =  'polite';
+                            break;
+                        default:
+                            ariaValue = 'assertive';
+                    }
+                    $toastElement.attr('aria-live', ariaValue);
+                }
+
+                function handleEvents() {
+                    if (options.closeOnHover) {
+                        $toastElement.hover(stickAround, delayedHideToast);
+                    }
+
+                    if (!options.onclick && options.tapToDismiss) {
+                        $toastElement.click(hideToast);
+                    }
+
+                    if (options.closeButton && $closeElement) {
+                        $closeElement.click(function (event) {
+                            if (event.stopPropagation) {
+                                event.stopPropagation();
+                            } else if (event.cancelBubble !== undefined && event.cancelBubble !== true) {
+                                event.cancelBubble = true;
+                            }
+
+                            if (options.onCloseClick) {
+                                options.onCloseClick(event);
+                            }
+
+                            hideToast(true);
+                        });
+                    }
+
+                    if (options.onclick) {
+                        $toastElement.click(function (event) {
+                            options.onclick(event);
+                            hideToast();
+                        });
+                    }
+                }
+
+                function displayToast() {
+                    $toastElement.hide();
+
+                    $toastElement[options.showMethod](
+                        {duration: options.showDuration, easing: options.showEasing, complete: options.onShown}
+                    );
+
+                    if (options.timeOut > 0) {
+                        intervalId = setTimeout(hideToast, options.timeOut);
+                        progressBar.maxHideTime = parseFloat(options.timeOut);
+                        progressBar.hideEta = new Date().getTime() + progressBar.maxHideTime;
+                        if (options.progressBar) {
+                            progressBar.intervalId = setInterval(updateProgress, 10);
+                        }
+                    }
+                }
+
+                function setIcon() {
+                    if (map.iconClass) {
+                        $toastElement.addClass(options.toastClass).addClass(iconClass);
+                    }
+                }
+
+                function setSequence() {
+                    if (options.newestOnTop) {
+                        $container.prepend($toastElement);
+                    } else {
+                        $container.append($toastElement);
+                    }
+                }
+
+                function setTitle() {
+                    if (map.title) {
+                        var suffix = map.title;
+                        if (options.escapeHtml) {
+                            suffix = escapeHtml(map.title);
+                        }
+                        $titleElement.append(suffix).addClass(options.titleClass);
+                        $toastElement.append($titleElement);
+                    }
+                }
+
+                function setMessage() {
+                    if (map.message) {
+                        var suffix = map.message;
+                        if (options.escapeHtml) {
+                            suffix = escapeHtml(map.message);
+                        }
+                        $messageElement.append(suffix).addClass(options.messageClass);
+                        $toastElement.append($messageElement);
+                    }
+                }
+
+                function setCloseButton() {
+                    if (options.closeButton) {
+                        $closeElement.addClass(options.closeClass).attr('role', 'button');
+                        $toastElement.prepend($closeElement);
+                    }
+                }
+
+                function setProgressBar() {
+                    if (options.progressBar) {
+                        $progressElement.addClass(options.progressClass);
+                        $toastElement.prepend($progressElement);
+                    }
+                }
+
+                function setRTL() {
+                    if (options.rtl) {
+                        $toastElement.addClass('rtl');
+                    }
+                }
+
+                function shouldExit(options, map) {
+                    if (options.preventDuplicates) {
+                        if (map.message === previousToast) {
+                            return true;
+                        } else {
+                            previousToast = map.message;
+                        }
+                    }
+                    return false;
+                }
+
+                function hideToast(override) {
+                    var method = override && options.closeMethod !== false ? options.closeMethod : options.hideMethod;
+                    var duration = override && options.closeDuration !== false ?
+                        options.closeDuration : options.hideDuration;
+                    var easing = override && options.closeEasing !== false ? options.closeEasing : options.hideEasing;
+                    if ($(':focus', $toastElement).length && !override) {
+                        return;
+                    }
+                    clearTimeout(progressBar.intervalId);
+                    return $toastElement[method]({
+                        duration: duration,
+                        easing: easing,
+                        complete: function () {
+                            removeToast($toastElement);
+                            clearTimeout(intervalId);
+                            if (options.onHidden && response.state !== 'hidden') {
+                                options.onHidden();
+                            }
+                            response.state = 'hidden';
+                            response.endTime = new Date();
+                            publish(response);
+                        }
+                    });
+                }
+
+                function delayedHideToast() {
+                    if (options.timeOut > 0 || options.extendedTimeOut > 0) {
+                        intervalId = setTimeout(hideToast, options.extendedTimeOut);
+                        progressBar.maxHideTime = parseFloat(options.extendedTimeOut);
+                        progressBar.hideEta = new Date().getTime() + progressBar.maxHideTime;
+                    }
+                }
+
+                function stickAround() {
+                    clearTimeout(intervalId);
+                    progressBar.hideEta = 0;
+                    $toastElement.stop(true, true)[options.showMethod](
+                        {duration: options.showDuration, easing: options.showEasing}
+                    );
+                }
+
+                function updateProgress() {
+                    var percentage = ((progressBar.hideEta - (new Date().getTime())) / progressBar.maxHideTime) * 100;
+                    $progressElement.width(percentage + '%');
+                }
+            }
+
+            function getOptions() {
+                return $.extend({}, getDefaults(), toastr.options);
+            }
+
+            function removeToast($toastElement) {
+                if (!$container) { $container = getContainer(); }
+                if ($toastElement.is(':visible')) {
+                    return;
+                }
+                $toastElement.remove();
+                $toastElement = null;
+                if ($container.children().length === 0) {
+                    $container.remove();
+                    previousToast = undefined;
+                }
+            }
+
+        })();
+    }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+}(__webpack_require__(30)));
+
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports) {
+
+module.exports = function() {
+	throw new Error("define cannot be used indirect");
+};
+
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./block-img/block-img.js": 32,
+	"./block-list/block-list.js": 33,
+	"./block-std/block-std.js": 34,
+	"./brick/brick.js": 35,
+	"./btn-load/btn-load.js": 38,
+	"./foldingbox/foldingbox.js": 39,
+	"./goto/goto.js": 40,
+	"./guideline/guideline.js": 41,
+	"./heroFW/heroFW.js": 99,
+	"./select2FW/select2FW.js": 100,
+	"./sliderFW/sliderFW.js": 102,
+	"./tabs/tabs.js": 103
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 31;
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($, utils) {
+
+$.fn.Brick = function Brick() {
+  var htmlStud = __webpack_require__(36);
+  var htmlBrick = __webpack_require__(37);
+  $(this).each(function () {
+    var $brick = $(this);
+    var dim = {
+      rows: $brick.attr('rows'),
+      cols: $brick.attr('cols'),
+      studs: $brick.attr('rows') * $brick.attr('cols')
+    };
+    var pos = {
+      z: $brick.attr('z'),
+      x: $brick.attr('x'),
+      y: $brick.attr('y')
+    };
+    var text = $brick.attr('text') || false;
+    var $content = $(htmlBrick);
+
+    // brick construction
+    $brick.append($content);
+    for (var i = 0; i < dim.studs; i++) {
+      $brick.find('.top').append(htmlStud);
+    }
+    if (text) $brick.find('.front,.right,.back,.left').append(text);
+    // brick dimensionning
+    var unitWidth = $brick.outerWidth();
+    var unitHeight = $brick.outerHeight();
+    $brick.css({ 'width': unitWidth * dim.rows });
+    $brick.find('.top').css('height', unitWidth * dim.cols);
+    $brick.find('.left,.right').css('width', unitWidth * dim.cols);
+    $brick.find('.front,.back').css({
+      'height': unitHeight,
+      'width': $brick.find('.top').outerWidth()
+    });
+    // studs dimensionning
+    $brick.find('.stud').css({ 'width': 100 / dim.rows + '%', 'height': 100 / dim.cols + '%' });
+
+    // brick placement
+    if (dim.cols % 2 == 1) pos.y = +pos.y + 0.5;
+    if (dim.rows % 2 == 1) pos.x = +pos.x + 0.5;
+
+    var tZ = unitWidth * pos.y;
+    var tY = unitHeight * pos.z * -1;
+    var tX = unitWidth * pos.x;
+
+    $brick.css('transform', utils.mergeTransforms(this, 'translateZ(' + tZ + 'px) translateY(' + tY + 'px) translateX(' + tX + 'px)'));
+
+    // brick events listeners
+    this.addEventListener("animationstart", brickAnimListener, false);
+    this.addEventListener("animationiteration", brickAnimListener, false);
+    this.addEventListener("animationend", brickAnimListener, false);
+
+    utils.prefixedEvent(this, "animationstart", brickAnimListener);
+    utils.prefixedEvent(this, "animationiteration", brickAnimListener);
+    utils.prefixedEvent(this, "animationend", brickAnimListener);
+
+    $(this).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', brickAnimListener);
+  });
+
+  // grid dimensionning
+  if ($(this).closest('.grid').length) {
+    $(this).closest('.grid').wrapInner('<div class="wrapper"></div>'); // wrap the grid content so we can animate it separatly
+
+    var arrZ = $(this).map(function () {
+      return $(this).attr('z');
+    }).toArray();
+    var nbLayers = Math.max.apply(null, arrZ) + 1; // count one more for layer "0"
+    $(this).closest('.grid').height(nbLayers * $(this).outerHeight());
+
+    // grid events listeners
+    $(this).closest('.grid').each(function (index, grid) {
+      grid.addEventListener("animationstart", gridAnimListener, false);
+      grid.addEventListener("animationiteration", gridAnimListener, false);
+      grid.addEventListener("animationend", gridAnimListener, false);
+
+      utils.prefixedEvent(grid, "animationstart", gridAnimListener);
+      utils.prefixedEvent(grid, "animationiteration", gridAnimListener);
+      utils.prefixedEvent(grid, "animationend", gridAnimListener);
+
+      $(grid).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', gridAnimListener);
+    });
+  }
+
+  // scene dimensionning
+  if ($(this).closest('.scene').length) {
+    // add a bit of spacing to scene, to avoid clipping with other elements
+    $(this).closest('.scene').css('padding', $(this).outerHeight() + 'px 0');
+  }
+
+  // events
+  $(this).on('click', function () {
+    $(this).toggleClass('animate');
+  });
+
+  $(this).closest('.grid').on('click', function () {
+    // $(this).addClass('animate');
+  });
+  return this;
+};
+
+$(function () {
+  $('.brick').Brick();
+  utils.addHtmlHook('.brick', function (item) {
+    console.log("brick added to dom");
+    item.Brick();
+  });
+});
+
+function brickAnimListener(e) {
+  if (e.type == "animationend") {
+    console.log('Brick animation end');
+    $(this).removeClass('animate');
+  }
+}
+
+function gridAnimListener(e) {
+  if (e.type == "animationend") {
+    console.log('Grid animation end');
+    $(this).removeClass('animate');
+  }
+}
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"stud\">\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n</div>";
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"wrapper\">\n  <div class=\"side top\"></div>\n  <div class=\"side right\">\n      <div class=\"side front\"></div>\n      <div class=\"side back\"></div>\n  </div>\n  <div class=\"side left\"></div>\n</div>";
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var BtnLoad = new Component("btn-load");
+// BtnLoad.debug = true;
+BtnLoad.iconSelector = '.fas.fa-spinner.fa-pulse';
+BtnLoad.icon = '<i class="' + BtnLoad.iconSelector.replace(/\./g, ' ').trim() + '"></i>';
+
+BtnLoad.prototype.onCreate = function () {
+  var btn = this;
+  btn.process = window[btn.$el.data('process')];
+  btn.icon = btn.$el.data('icon');
+  btn.textIdle = btn.$el.text();
+  btn.textLoading = btn.$el.data('text') || btn.$el.text();
+  if (btn.icon) btn.textLoading += BtnLoad.icon;
+
+  btn.$el.bind('click', function () {
+    if (typeof btn.process == "function") {
+      btn.toggleState();
+      btn.process().then(function (data) {
+        btn.toggleState('idle');
+      }).catch(function (data) {
+        btn.toggleState('failed');
+      });
+    }
+  });
+  btn.log('created');
+};
+
+BtnLoad.prototype.toggleState = function (state) {
+  var btn = this;
+  switch (state) {
+    case 'idle':
+      btn.$el.html(btn.textIdle);
+      break;
+    case 'failed':
+      btn.$el.html(btn.textIdle);
+      break;
+    case 'loading':
+    default:
+      btn.$el.html(btn.textLoading);
+      if (btn.icon) {
+        btn.$el.find(BtnLoad.iconSelector).css({
+          'margin-left': parseInt(btn.$el.css('padding-right')) / 2,
+          'margin-right': parseInt(btn.$el.css('padding-right')) / -2
+        });
+      }
+      break;
+  }
+};
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($, utils) {
+
+$.fn.foldingbox = function foldingbox() {
+  app._foldingbox = app._foldingbox || [];
+  $(this).each(function () {
+    app._foldingbox.push(new Foldingbox(this));
+  });
+  $(window).trigger('resize');
+};
+
+var Foldingbox = function Foldingbox(item) {
+  var foldingbox = this;
+  foldingbox.$el = $(item);
+  foldingbox.break = $(item).data('break');
+  foldingbox.title = { $el: $(item).children('.foldingbox__title'), text: $(item).children('.foldingbox__title').html() };
+  foldingbox.content = { $el: $(item).find('.foldingbox__container') };
+  foldingbox.content.items = foldingbox.content.$el.children('.foldingbox__item');
+
+  foldingbox.setHeight();
+
+  foldingbox.$el.on('destroyed', function () {
+    app._foldingbox.splice(app._foldingbox.indexOf(foldingbox), 1);
+    foldingbox = undefined;
+  });
+
+  return foldingbox;
+};
+
+Foldingbox.prototype.setHeight = function () {
+  var heightBox = 0;
+  if (this.$el.data('height') && this.$el.data('height') != "") {
+    heightBox = this.$el.data('height');
+  } else {
+    this.content.items.each(function (index, item) {
+      var $clone = $(item).children('.foldingbox__item__content').clone().css({
+        'transition': 'none',
+        'opacity': '1',
+        'visibility': 'hidden'
+      }).appendTo('body');
+      if ($clone.outerHeight() > heightBox) heightBox = $clone.outerHeight() + parseInt($(item).css('padding-top')) * 2;
+      $clone.remove();
+    });
+  }
+  this.content.items.height(heightBox);
+  return this;
+};
+
+Foldingbox.prototype.destroy = function () {
+  this.$el.remove();
+};
+
+var timerResize;
+Foldingbox.prototype.resize = function () {
+  var foldingbox = this;
+  clearTimeout(timerResize);
+  timerResize = setTimeout(function () {
+    foldingbox.setHeight();
+    if (typeof foldingbox.break == "number") {
+      if (foldingbox.$el.width() <= foldingbox.break) foldingbox.$el.addClass('break');else foldingbox.$el.removeClass('break');
+    }
+  }, 300);
+};
+
+$(function () {
+  $('.foldingbox').foldingbox();
+  utils.addHtmlHook('.foldingbox', function (item) {
+    item.foldingbox();
+  });
+
+  $(window).resize(function () {
+    $.each(app._foldingbox, function () {
+      this.resize();
+    });
+  });
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+$(function () {
+    $('body').on('click', '.goto', function (event) {
+        event.preventDefault();
+        var target = $(this).data('goto').split(',');
+        if (target.length == 1) target = target[0];else {
+            $.each(target, function (index, item) {
+                if ($('#' + item).length) {
+                    target = item;
+                    return false;
+                }
+            });
+        }
+        if ($('#' + target).length) {
+            var scrollValue = $('#' + target).offset().top - $('header').outerHeight();
+
+            $('body,html').animate({
+                scrollTop: scrollValue
+            }, 600).promise().then(function () {
+                window.location.hash = '#' + target;
+                window.location.replace(window.location);
+            });
+        }
+    });
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($, utils) {
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+if ($('#guideline').length) {
+  var applyConstructorChanges = function applyConstructorChanges($el) {
+    var editor = $el.closest('.item').find('.editor textarea');
+
+    var selector = $el.attr('name').split(',')[0];
+    var attr = $el.attr('name').split(',')[1];
+    var dummy = $(editor.val()).wrapAll('<div></div>');
+
+    var match = false;
+    var value = $el.val();
+    if ($el.hasClass('select')) {
+      match = [];
+      $el.find('option').each(function () {
+        if (this.value != '') match.push(this.value);
+      });
+      match = match.join(' ');
+    } else if ($el.hasClass('checkbox') && value == "undefined") {
+      value = $el.isChecked();
+    } else if ($el.hasClass('checkbox') && value != "undefined" && attr != "class") {
+      if ($el.isChecked()) value = $el.val();else value = '';
+    } else if ($el.hasClass('number')) {
+      match = [];
+      for (var i = $el.attr('min'); i <= $el.attr('max'); i++) {
+        match.push($el.data('prefix') + i);
+      }
+      match = match.join(' ');
+      if ($el.val()) value = $el.data('prefix') + $el.val();
+    }
+
+    if (attr == 'class') {
+      if (match) dummy.parent().find('.' + selector).removeClass(match);
+      dummy.parent().find('.' + selector).toggleClass(value);
+    } else {
+      dummy.parent().find('.' + selector).attr(attr, value);
+    }
+
+    editor.val(dummy.parent().get(0).innerHTML).trigger('keyup');
+  };
+
+  // Building functions
+  var buildComponents = function buildComponents() {
+    var components = { nav: '', content: '' };
+    components.nav += '<ul>';
+    $.each(app.components, function (index, component) {
+      var sampleText = '';
+      try {
+        sampleText = __webpack_require__(42)("./" + component + '/sample.html');
+      } catch (e) {
+        app.log('Failed to retrieve the ' + component + ' component sample.\n' + e);
+      }
+      if (sampleText != '') {
+        sampleText = $(sampleText).wrapAll('<div></div>');
+        var constructorText = '';
+        if (sampleText.parent().find('.constructor').length) {
+          sampleText.parent().find('.constructor').addClass('col-12 col-lg-6 ').find('.input').each(function () {
+            var ref = $(this);
+            var target = ref.data('attr');
+            var name = ref.data('label').replace(' ', '-').toLowerCase();
+            var desc = ref.html() || false;
+            var inputGroup = '<div class="form-group col-12 col-xl-6">';
+
+            if (desc) {
+              inputGroup += '<i class="descIcon fas fa-question-circle"></i>';
+              inputGroup += '<div class="descText">' + desc + '</div>';
+            }
+
+            if (ref.hasClass('select')) {
+              var arrVal = ref.data('value').split(',');
+              var arrOutput = ref.data('output').split(',');
+              if (arrVal[0].indexOf('#colors') != -1) {
+                var baseValue = arrVal[0].replace('#colors', '');
+                arrVal = [];
+                $.each(config.colors, function (key, color) {
+                  arrVal.push(baseValue + key);
+                });
+              }
+              if (arrOutput[0].indexOf('#colors') != -1) {
+                var baseValue = arrOutput[0].replace('#colors', '');
+                arrOutput = [];
+                $.each(config.colors, function (key, color) {
+                  arrOutput.push(baseValue + key);
+                });
+              }
+              inputGroup += '<label for="' + component + ',' + target + ',' + name + '">' + ref.data('label') + '</label>' + '<select class="select" name="' + component + ',' + target + ',' + name + '" id="' + component + ',' + target + ',' + name + '">' + '<option value=""> - </option>';
+              $.each(arrVal, function (index, val) {
+                if (val == ref.data('selected')) inputGroup += '<option value="' + val + '" selected>' + arrOutput[index] + '</option>';else inputGroup += '<option value="' + val + '">' + arrOutput[index] + '</option>';
+              });
+              inputGroup += '</select>';
+            } else if (ref.hasClass('checkbox')) {
+              inputGroup += '<input type="checkbox" value="' + ref.data('value') + '" class="checkbox" name="' + component + ',' + target + ',' + name + '" id="' + component + ',' + target + ',' + name + '" data-default="' + ref.data('selected') + '" >' + '<label for="' + component + ',' + target + ',' + name + '">' + ref.data('label') + '</label>';
+            } else if (ref.hasClass('number')) {
+              var range = ref.data('range').split('-');
+              inputGroup += '<label for="' + component + ',' + target + ',' + name + '">' + ref.data('label') + '</label>';
+              inputGroup += '<input type="number" min="' + range[0] + '" max="' + range[1] + '" data-prefix="' + ref.data('prefix') + '" value="' + ref.data('value') + '" class="number" name="' + component + ',' + target + ',' + name + '" id="' + component + ',' + target + ',' + name + '">';
+            }
+
+            inputGroup += '</div>';
+            ref.replaceWith(inputGroup);
+          });
+          constructorText = sampleText.parent().find('.constructor').wrapInner('<div class="row"></div>').remove().get(0).outerHTML;
+        }
+        sampleText = sampleText.parent().get(0).innerHTML;
+
+        if (typeof sampleText == 'undefined') sampleText = 'error while retrieving sample';
+
+        components.content += '<div class="item row" id="framway__components-' + component + '">' + '<h2 class="ft-i col-12 sep-bottom">' + component + '</h2>' + '<div class="col-12 editor-target">' + sampleText + '</div>' + '<div class="col">' + '<div class="editor"><button class="copy">Copy</button>' + '<textarea name="" id="">' + sampleText.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</textarea>' + '</div>' + '</div>' + constructorText + '</div>';
+        components.nav += '<li><a href="#framway__components-' + component + '">' + component + '</a></li>';
+      } else {
+        app.log('Failed to display the ' + component + ' component sample.\n');
+      }
+    });
+    components.nav += '</ul>';
+
+    if (app.components.length == 0) components.content = 'No components loaded';
+    return components;
+  };
+
+  var buildStyling = function buildStyling() {
+    var styling = { nav: '', content: '' };
+    var objConfig;
+
+    styling.nav += '<ul>';
+    // TEXTS
+    objConfig = { 'Default': 'texts' };
+    if (config['enable-bg'] == 'true') objConfig['Backgrounded'] = 'texts_bg';
+    if (config['enable-bd'] == 'true') objConfig['Bordered'] = 'texts_bd';
+    styling.nav += '<li><a href="#framway__styling-text">Texts</a></li>';
+    styling.content += '<div class="item active" id="framway__styling-text">' + '<h2 class="ft-i sep-bottom">Texts</h2>' + buildTabs(objConfig) + '</div>';
+
+    // TITLES
+    objConfig = { 'Default': 'titles', 'With separators': 'titles_sep' };
+    if (config['enable-bg'] == 'true') objConfig['Backgrounded'] = 'titles_bg';
+    styling.nav += '<li><a href="#framway__styling-titles">Titles</a></li>';
+    styling.content += '<div class="item" id="framway__styling-titles">' + '<h2 class="ft-i sep-bottom">Titles</h2>' + buildTabs(objConfig) + '</div>';
+    // BUTTONS
+    objConfig = { 'Default': 'buttons', 'Colored': 'buttons_colors' };
+    styling.nav += '<li><a href="#framway__styling-buttons">Buttons</a></li>';
+    styling.content += '<div class="item" id="framway__styling-buttons">' + '<h2 class="ft-i sep-bottom">Buttons</h2>' + buildTabs(objConfig) + '</div>';
+    // INPUTS
+    objConfig = { 'Type text': 'inputs', 'Type text extra': 'inputs_texts', 'Others': 'inputs_others' };
+    if (config['enable-bg'] == 'true') objConfig['Backgrounded'] = 'inputs_bg';
+    styling.nav += '<li><a href="#framway__styling-inputs">Inputs</a></li>';
+    styling.content += '<div class="item" id="framway__styling-inputs">' + '<h2 class="ft-i sep-bottom">Inputs</h2>' + buildTabs(objConfig) + '</div>';
+    // BACKGROUNDS
+    if (config['enable-bg'] == 'true') {
+      styling.nav += '<li><a href="#framway__styling-backgrounds">Backgrounds</a></li>';
+      styling.content += '<div class="item" id="framway__styling-backgrounds">' + '<h2 class="ft-i sep-bottom">Backgrounds</h2>';
+      $.each(config.colors, function (key, value) {
+        styling.content += __webpack_require__(7)({ color: key });
+      });
+      styling.content += '</div>';
+    }
+    // BORDERS
+    if (config['enable-bd'] == 'true') {
+      objConfig = { 'Default': 'borders', 'Colored': 'borders_colors' };
+      styling.nav += '<li><a href="#framway__styling-borders">Borders</a></li>';
+      styling.content += '<div class="item" id="framway__styling-borders">' + '<h2 class="ft-i sep-bottom">Borders</h2>' + buildTabs(objConfig) + '</div>';
+    }
+
+    styling.nav += '</ul>';
+
+    return styling;
+  };
+
+  var buildClasses = function buildClasses() {
+    var classes = { nav: '', content: '' };
+    var arrClasses = ['flex'];
+    $.each(arrClasses, function (index, className) {
+      classes.nav += '<ul>';
+      classes.nav += '<li><a href="#framway__classes-' + className + '">' + className.replace(className[0], className[0].toUpperCase()) + '</a></li>';
+      classes.content += '<div class="item active" id="framway__classes-' + className + '">' + '<h2 class="ft-i sep-bottom">' + className.replace(className[0], className[0].toUpperCase()) + '</h2>' + __webpack_require__(57)("./" + className + '.html')() + '</div>';
+    });
+
+    classes.nav += '</ul>';
+
+    return classes;
+  };
+
+  var buildTabs = function buildTabs(tabsConfig) {
+    var template = __webpack_require__(60);
+    var nav = '';
+    var content = '';
+
+    $.each(tabsConfig, function (title, templateName) {
+      nav += '<button class="btn-sm btn-bg-greystronger">' + title + '</button> ';
+      if (title.toLowerCase() != "bordered" && title.toLowerCase() != "backgrounded" && title.toLowerCase() != "colored") content += __webpack_require__(8)("./styling_" + templateName + '.html')();else {
+        content += '<div class="tab">';
+        $.each(config.colors, function (key, value) {
+          content += __webpack_require__(8)("./styling_" + templateName + '.html')({ color: key });
+        });
+        content += '</div>';
+      }
+    });
+
+    return template.render({}, { nav: nav, content: content });
+  };
+
+  var buildConfig = function buildConfig(obj) {
+    var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+    var template = __webpack_require__(90); // noShortcut is used to insert partials later into the final template
+    var rows = ''; // the partials mentionned above
+    var arrObjects = {}; // used to store and process later the sub-object of config
+    var htmlStack = ''; // used to stack the multiple results form arrObjects results
+    $.each(obj, function (key, value) {
+      if ((typeof value === 'undefined' ? 'undefined' : _typeof(value)) != 'object') {
+        var str = '<span class="ellipsis" title="' + key + '">' + key + ' :</span><span>' + value + '</span>';
+        if (value.indexOf('#') != -1) str = '<span class="ellipsis" title="' + key + '">' + key + ' :</span><span class="bd-bottom-' + utils.getObjKeyByValue(config.colors, value) + '-5 p-bottom-0">' + value + '</span>';
+        rows += __webpack_require__(92)({ str: str });
+      } else arrObjects[key] = value;
+    });
+    $.each(arrObjects, function (key, value) {
+      htmlStack += buildConfig(value, key);
+    });
+    return template.render({ title: title }, { rows: rows }) + htmlStack; // return the initial template filled with his rows PLUS the stack we get by processing recursively the config
+  };
+
+  var config = __webpack_require__(94);
+  $.each(app.themes, function (index, theme) {
+    config = Object.assign(config, __webpack_require__(95)("./" + theme + '/_config.scss'));
+  });
+
+  $.each(config, function (key, value) {
+    if (value[0] == '(' && value[value.length - 1] == ")") {
+      var objValue = value.replace('(', '{').replace(')', '}').replace(/ /g, '').replace(/([\w]+):/g, '"$1":').replace(/:([\w]+)/g, ':"$1"').replace(/:#([\w]+)/g, ':"#$1"').replace(/:([\d]+)/g, function (m, num) {
+        return ':' + parseFloat(num);
+      }).replace(/:([[{])/g, ':$1');
+      config[key] = JSON.parse(objValue);
+    }
+  });
+  var configHtml = buildConfig(config, 'global');
+  var stylingHtml = buildStyling();
+  var classesHtml = buildClasses();
+  var componentsHtml = buildComponents();
+
+  var html = __webpack_require__(97)({
+    config: configHtml,
+    classes: classesHtml,
+    styling: stylingHtml,
+    components: componentsHtml
+  });
+
+  html = $($.parseHTML(html));
+  html.find('.editor textarea').each(function (index, editor) {
+    var editorText = $(editor).val();
+    var timerEdit, timerEditValue;
+    $(editor).bind('keyup change', function (e, forced) {
+      timerEditValue = 500;
+      if (forced) timerEditValue = 0;
+      clearTimeout(timerEdit);
+      timerEdit = setTimeout(function () {
+        var val = $(editor).val();
+        if (val != editorText || forced) {
+          editorText = val;
+          $(editor).closest('.item').find('.editor-target').html(val);
+        }
+      }, timerEditValue);
+    });
+  });
+
+  html.find('.constructor').each(function (index, constructor) {
+    var editor = $(constructor).closest('.item').find('.editor textarea');
+    // SELECTS
+    $(constructor).find('select').bind('change', function (e) {
+      applyConstructorChanges($(this));
+    }).trigger('change');
+
+    // CHECKBOXES
+    $(constructor).find('.checkbox').bind('click', function (e) {
+      applyConstructorChanges($(this));
+    }).each(function () {
+      if ($(this).data('default')) $(this).trigger('click');
+    });
+
+    // NUMBERS
+    $(constructor).find('.number').bind('change', function (e) {
+      applyConstructorChanges($(this));
+    }).each(function () {
+      $(this).trigger('change');
+    });
+  });
+
+  $('#guideline').append(html);
+}
+
+$(function () {
+  $('#guideline nav a').bind('click', function (e) {
+    e.preventDefault();
+    var target = $(this).addClass('active').attr('href');
+    $('#guideline nav a').not(this).removeClass('active');
+    $('#guideline .content .item').removeClass('active');
+
+    $('#guideline .content .item' + target).addClass('active').find('.item').addClass('active');
+    if (target.split('-').length > 1) {
+      $.each(target.split('-'), function (index, tgt) {
+        $('#guideline .content .item#' + tgt.replace('#', '')).addClass('active');
+      });
+    }
+    $('#guideline .content .item' + target).find('.editor textarea').trigger('change', true);
+  });
+
+  $('.editor textarea').bind('keyup change', function (e) {
+    this.style.height = "auto";
+    this.style.height = this.scrollHeight + 10 + "px";
+  });
+
+  $('body').on('click', '.editor .copy', function (e) {
+    var elem = $(this).parent().find('textarea').get(0);
+    if (utils.copyToClipboard(elem)) notif_fade.success('Copied to clipboard !');
+  });
+
+  // $('#guideline nav a').eq(7).trigger('click');
+  // $('#guideline nav a').first().trigger('click');
+  $('#guideline nav a').last().trigger('click');
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./block-img/sample.html": 43,
+	"./block-list/sample.html": 44,
+	"./block-std/sample.html": 45,
+	"./brick/sample.html": 46,
+	"./btn-load/sample.html": 47,
+	"./foldingbox/sample.html": 48,
+	"./goto/sample.html": 49,
+	"./heroFW/sample.html": 50,
+	"./select2FW/sample.html": 51,
+	"./sliderFW/sample.html": 52,
+	"./tabs/sample.html": 53
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 42;
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = "<div class=\"row\">\n  <div class=\"block-img col-6\">\n    <a href=\"\" class=\"block-img__wrapper\">\n      <div class=\"block-img__figure\">\n        <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-img__content\">\n        Lorem ipsum dolor sit amet\n      </div>\n    </a>\n  </div>\n</div>\n<div class=\"constructor\">\n  <p>Image properties</p>\n  <div class=\"input select\" data-label=\"ratio\" data-attr=\"class\" data-value=\"r_1-1,r_2-1,r_1-2,r_16-9\" data-output=\"1:1,2:1,1:2,16:9\" data-selected=\"\"></div>\n  <p>Image alignement</p>\n  <div class=\"input select\" data-label=\"vertical\" data-attr=\"class\" data-value=\"img--top,img--bottom\" data-output=\"Top,Bottom\" data-selected=\"\">\n    Align the image only if cropped\n  </div>\n  <div class=\"input select\" data-label=\"horizontal\" data-attr=\"class\" data-value=\"img--left,img--right\" data-output=\"Left,Right\" data-selected=\"\">\n    Align the image only if cropped\n  </div>\n  <p>Image effects on hover</p>\n  <div class=\"input select\" data-label=\"zoom\" data-attr=\"class\" data-value=\"zoomin,zoomout\" data-output=\"Zoom in,Zoom out\" data-selected=\"\">\n    Apply a zoom effect on hover. Can be stack with other effects.\n  </div>\n  <div class=\"input select\" data-label=\"color fade\" data-attr=\"class\" data-value=\"fadetogrey,fadetocolor\" data-output=\"Fade to grey,Fade to color\" data-selected=\"\">\n    Apply a color effect on hover. Can be stack with other effects.\n  </div>\n  <p>Text alignement</p>\n  <div class=\"input select\" data-label=\"horizontal\" data-attr=\"class\" data-value=\"content__text--left,content__text--right\" data-output=\"Text left,Text right\" data-selected=\"\">\n    Align the text in its container.\n  </div>\n  <div class=\"input select\" data-label=\"vertical\" data-attr=\"class\" data-value=\"content__text--top,content__text--bottom\" data-output=\"Text top,Text bottom\" data-selected=\"\">\n    Align the text in its container. Only apply on a full height container.\n  </div>\n  <p>Content properties</p>\n  <div class=\"input select\" data-label=\"format\" data-attr=\"class\" data-value=\"content--inner,content--full\"  data-output=\"Inner,Full width\"  data-selected=\"content--inner\">\n    <b>Inner</b>: place the content container in the block. (over the image)<br>\n    <b>Full width</b>: the container will take all remaining space. (include <b>Inner</b>)\n  </div>\n  <div class=\"input select\" data-label=\"Font color\" data-attr=\"class\" data-value=\"ft-#colors\" data-output=\"#colors\" data-selected=\"\">\n    Set the content's font color\n  </div>\n  <div class=\"input select\" data-label=\"Background color\" data-attr=\"class\" data-value=\"content__bg--#colors\" data-output=\"#colors\" data-selected=\"\">\n    Set the content's background color\n  </div>\n  <div class=\"input number\" data-label=\"background opacity\" data-attr=\"class\" data-range=\"0-10\" data-value=\"\" data-prefix=\"content__bg__opacity--\">\n    Set transparency to the content's background. From 0 to 10, where 0 is non-visible and 10 is fully opaque.\n  </div>\n  <p>Content effects on hover</p>\n  <div class=\"input select\" data-label=\"translate\" data-attr=\"class\" data-value=\"content--fromtop,content--frombottom,content--fromleft,content--fromright\" data-output=\"From top,From bottom,From left,From right\" data-selected=\"\">\n    Make the content appears on hover from the indicated side. Non stackable with fade effects.<br>\n    Include: <b>Inner, Full width</b>\n  </div>\n  <div class=\"input select\" data-label=\"fade\" data-attr=\"class\" data-value=\"content--fadein,content--fadeout\" data-output=\"Fade in,Fade out\" data-selected=\"\">\n    Apply a fading effect on hover. Non stackable with translate effects.<br>\n    Include: <b>Inner</b>\n  </div>\n</div>\n";
+
+/***/ }),
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = "<div class=\"row\">\n  <div class=\"block-list col-4\">\n    <a href=\"\" class=\"block-list__wrapper\">\n      <div class=\"block-list__figure\">\n        <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-list__headline\">\n        <div class=\"block-list__category\">Article</div>\n        <div class=\"block-list__date\">01/01/1990</div>\n      </div>\n      <div class=\"block-list__content\">\n        <div class=\"block-list__title\">Lorem ipsum dolor</div>\n        <div class=\"block-list__text\">\n          <p>\n            Lorem ipsum dolor sit amet lorem ipsum dolor sit amet Lorem ipsum dolor sit amet lorem ipsum dolor sit amet\n            Lorem ipsum dolor sit amet...\n          </p>\n        </div>\n      </div>\n      <div class=\"block-list__footer\">\n        <div class=\"block-list__author\">par Machin Truc</div>\n      </div>\n    </a>\n  </div>\n  <div class=\"block-list col-4\">\n    <a href=\"\" class=\"block-list__wrapper\">\n      <div class=\"block-list__figure\">\n        <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-list__content\">\n        <div class=\"block-list__title\">Lorem ipsum dolor</div>\n        <div class=\"block-list__text\">\n          <p>\n            Lorem ipsum dolor sit amet lorem ipsum dolor sit amet Lorem ipsum dolor sit amet lorem ipsum dolor sit amet\n            Lorem ipsum dolor sit amet...\n          </p>\n        </div>\n      </div>\n      <div class=\"block-list__footer\">\n        <div class=\"block-list__author\">par Machin Truc</div>\n      </div>\n    </a>\n  </div>\n  <div class=\"block-list col-4\">\n    <a href=\"\" class=\"block-list__wrapper\">\n      <div class=\"block-list__headline\">\n        <div class=\"block-list__category\">Article</div>\n        <div class=\"block-list__date\">01/01/1990</div>\n      </div>\n      <div class=\"block-list__content\">\n        <div class=\"block-list__title\">Lorem ipsum dolor</div>\n        <div class=\"block-list__text\">\n          <p>\n            Lorem ipsum dolor sit amet lorem ipsum dolor sit amet Lorem ipsum dolor sit amet lorem ipsum dolor sit amet\n            Lorem ipsum dolor sit amet...\n          </p>\n        </div>\n      </div>\n      <div class=\"block-list__footer\">\n        <div class=\"block-list__author\">par Machin Truc</div>\n      </div>\n    </a>\n  </div>\n</div>\n\n\n<div class=\"constructor\">\n  <p>Image properties</p>\n  <div class=\"input select\" data-label=\"ratio\" data-attr=\"class\" data-value=\"r_1-1,r_2-1,r_1-2,r_16-9\" data-output=\"1:1,2:1,1:2,16:9\" data-selected=\"\"></div>\n  <p>Image alignement</p>\n  <div class=\"input select\" data-label=\"vertical\" data-attr=\"class\" data-value=\"img--top,img--bottom\" data-output=\"Top,Bottom\" data-selected=\"\">\n    Align the image only if cropped\n  </div>\n  <div class=\"input select\" data-label=\"horizontal\" data-attr=\"class\" data-value=\"img--left,img--right\" data-output=\"Left,Right\" data-selected=\"\">\n    Align the image only if cropped\n  </div>\n  <p>Image effects on hover</p>\n  <div class=\"input select\" data-label=\"zoom\" data-attr=\"class\" data-value=\"zoomin,zoomout\" data-output=\"Zoom in,Zoom out\" data-selected=\"\">\n    Apply a zoom effect on hover. Can be stack with other effects.\n  </div>\n  <div class=\"input select\" data-label=\"color fade\" data-attr=\"class\" data-value=\"fadetogrey,fadetocolor\" data-output=\"Fade to grey,Fade to color\" data-selected=\"\">\n    Apply a color effect on hover. Can be stack with other effects.\n  </div>\n  <p>Content properties</p>\n  <div class=\"input checkbox\" data-label=\"Headline disable\" data-attr=\"class\" data-value=\"headline--disable\" data-selected=\"\"></div>\n  <div class=\"input checkbox\" data-label=\"Footer disable\" data-attr=\"class\" data-value=\"footer--disable\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"Font color\" data-attr=\"class\" data-value=\"ft-#colors\" data-output=\"#colors\" data-selected=\"\">\n    Set the content's font color\n  </div>\n  <div class=\"input select\" data-label=\"Background color\" data-attr=\"class\" data-value=\"content__bg--#colors\" data-output=\"#colors\" data-selected=\"\">\n    Set the content's background color\n  </div>\n  <div class=\"input checkbox\" data-label=\"Headline outer\" data-attr=\"class\" data-value=\"headline--outer\" data-selected=\"\"></div>\n</div>";
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"block-std\">\n  <p>\n    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in felis a risus pellentesque pulvinar. Etiam vehicula molestie libero et sodales. Donec consequat ultrices est at vestibulum. Cras pretium felis vitae mi sodales, convallis finibus leo tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tincidunt egestas nunc, vitae pellentesque quam porttitor ut. Maecenas posuere pellentesque risus ut pulvinar.\n  </p>\n</div>";
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"scene\">\n  <div class=\"grid\">\n    <div class=\"brick\" rows=\"3\" cols=\"5\" color=\"blacklight\" z=\"1\" x=\"0\" y=\"0\" text=\"Text sample\"></div>\n    <div class=\"brick\" rows=\"2\" cols=\"3\" color=\"blacklighter\" z=\"2\" x=\"-0\" y=\"-1\"></div>\n    <div class=\"brick\" rows=\"1\" cols=\"1\" color=\"greystronger\" z=\"3\" x=\"0\" y=\"-2\"></div>\n    <div class=\"brick\" rows=\"3\" cols=\"2\" color=\"blue\" z=\"2\" x=\"0\" y=\"2\"></div>\n  </div>\n</div>";
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports) {
+
+module.exports = "<button class=\"btn-load\" data-text=\"Loading...\" data-icon=\"true\" data-process=\"processFunction\">Click me !</button>\n\n<script>\n  var processFunction = function processFunction(){\n    return new Promise(function(resolve,reject){\n        setTimeout(function(){\n          resolve();\n        },3000);\n    });\n  }\n</script>";
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = "<div class=\"foldingbox\" data-height=\"\" data-break=\"md\">\n  <div class=\"foldingbox__title\">\n    <h2>LOREM IPSUM DOLOR</h2>\n  </div>\n  <div class=\"foldingbox__container\">\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(6) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>Lorem ipsum dolor sit amet</p>\n        <button>Lorem</button>\n      </div>\n    </div>\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(6) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n        </p>\n        <button>Lorem</button>\n      </div>\n    </div>\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(6) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>Lorem ipsum dolor sit amet</p>\n        <button>Lorem</button>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"constructor\">\n  <!-- <div class=\"input select\" data-label=\"hover zoom\" data-attr=\"class\" data-name=\"zoom\" data-value=\"zoomin,zoomout\" data-output=\"Zoom in,Zoom out\" data-selected=\"zoomin\"></div> -->\n</div>\n";
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports) {
+
+module.exports = "<button class=\"goto\" data-goto=\"anchorID_1,anchorID_2,anchorID_3\">\n  Click me, I'll take you to a special place\n</button>";
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = "<div class=\"heroFW\" data-height=\"\">\n  <div class=\"heroFW__wrapper\">\n    <div class=\"heroFW__figure\">\n      <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n    </div>\n    <div class=\"heroFW__content\">\n      <div class=\"heroFW__content__wrapper\">\n        <h3>Lorem ipsum</h3>\n        <p>Lorem ipsum dolor sit amet</p>\n        <button>Lorem</button>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"constructor\">\n  <p>Image properties</p>\n  <div class=\"input number\" data-label=\"Image opacity\" data-attr=\"class\" data-range=\"0-10\" data-value=\"\" data-prefix=\"figure__opacity--\">\n    Set transparency to the background image. From 0 to 10, where 0 is non-visible and 10 is fully opaque.\n  </div>\n  <p>Image alignement</p>\n  <div class=\"input select\" data-label=\"vertical\" data-attr=\"class\" data-value=\"img--top,img--bottom\" data-output=\"Top,Bottom\" data-selected=\"\">\n    Align the image only if cropped\n  </div>\n  <div class=\"input select\" data-label=\"horizontal\" data-attr=\"class\" data-value=\"img--left,img--right\" data-output=\"Left,Right\" data-selected=\"\">\n    Align the image only if cropped\n  </div>\n  <p>Content properties</p>\n  <div class=\"input select\" data-label=\"Position\" data-attr=\"class\" data-value=\"content--left--top,content--left--center,content--left--bottom,content--right--top,content--right--center,content--right--bottom,content--center\"  data-output=\"Left Top,Left Center,Left Bottom,Rigth Top,Rigth Center,Rigth Bottom,Center Center\"  data-selected=\"\">\n    Adjust the content position in the block\n  </div>\n  <div class=\"input select\" data-label=\"Title modifier\" data-attr=\"class\" data-value=\"title--1,title--2,title--3,title--4\" data-output=\"Display 1,Display 2,Display 3,Display 4\" data-selected=\"title--3\">\n    Apply a style modifier to the title elements\n  </div>\n  <div class=\"input select\" data-label=\"Font color\" data-attr=\"class\" data-value=\"ft-#colors\" data-output=\"#colors\" data-selected=\"ft-white\">\n    Set the content's font color\n  </div>\n  <div class=\"w-100\"></div>\n  <div class=\"input select\" data-label=\"Background color\" data-attr=\"class\" data-value=\"content__bg--#colors\" data-output=\"#colors\" data-selected=\"content__bg--darkblue\">\n    Set the content's background color\n  </div>\n  <div class=\"input number\" data-label=\"background opacity\" data-attr=\"class\" data-range=\"0-10\" data-value=\"6\" data-prefix=\"content__bg__opacity--\">\n    Set transparency to the content's background. From 0 to 10, where 0 is non-visible and 10 is fully opaque.\n  </div>\n  <p>Misc</p>\n  <div class=\"input checkbox\" data-label=\"Force full width\" data-attr=\"class\" data-value=\"force-full\" data-selected=\"\">\n    By default, the element's width is 100% of its container. This option force the hero to take the <b>full viewport width</b>.\n  </div>\n  <div class=\"input checkbox\" data-label=\"Force full height\" data-attr=\"data-height\" data-value=\"viewport\" data-selected=\"\">\n    By default, the height is defined by the image's height. This option force the hero to take the <b>full viewport height</b>. Alternatively, you can fill the data-height attribute with the desired dimension.\n  </div>\n  <div class=\"input checkbox\" data-label=\"Height relative to content\" data-attr=\"class\" data-value=\"height--content\" data-selected=\"\">\n    By default, the height is defined by the image's height. This option force the hero to take the <b>content's height</b>. Alternatively, you can fill the data-height attribute with the desired dimension.\n  </div>\n  <div class=\"input checkbox\" data-label=\"Width relative to content\" data-attr=\"class\" data-value=\"width--content\" data-selected=\"\">\n    By default, the element's width is 100% of its container. This option force the hero to take the <b>content's width</b> and <b>content's height</b>.\n  </div>\n</div>";
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports) {
+
+module.exports = "<select name=\"\" id=\"\" multiple>\n    <option value=\"\" selected>Option 1</option>\n    <option value=\"\" >Option 2</option>\n    <option value=\"\">Option 3</option>\n</select>\n<select name=\"\" id=\"\">\n    <option value=\"\">Option 1</option>\n    <option value=\"\">Option 2</option>\n    <option value=\"\">Option 3</option>\n    <option value=\"\">Option 4</option>\n    <option value=\"\">Option 5</option>\n</select>\n<select name=\"\" id=\"\">\n  <optgroup label=\"Group 1\">\n    <option value=\"\">Option 1</option>\n  </optgroup>\n  <optgroup label=\"Group 2\">\n    <option value=\"\">Option 2</option>\n    <option value=\"\">Option 3</option>\n    <option value=\"\">Option 4</option>\n    <option value=\"\">Option 5</option>\n  </optgroup>\n</select>";
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = "<div class=\"sliderFW\" data-height=\"400\" data-loop=\"\" data-auto=\"\">\n  <div class=\"sliderFW__container\">\n    <div class=\"sliderFW__rail\">\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(6) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(6) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"constructor\">\n  <p>Misc</p>\n  <div class=\"input checkbox\" data-label=\"Loop\" data-attr=\"data-loop\" data-selected=\"true\">\n    The user can loop throught the images\n  </div>\n  <div class=\"input checkbox\" data-label=\"Autoplay\" data-attr=\"data-auto\" data-selected=\"\"></div>\n  <div class=\"input checkbox\" data-label=\"Force full width\" data-attr=\"class\" data-value=\"force-full\" data-selected=\"\">\n    By default, the element's width is 100% of its container. This option force the hero to take the <b>full viewport width</b>.\n  </div>\n  <div class=\"input checkbox\" data-label=\"Force full height\" data-attr=\"data-height\" data-value=\"viewport\" data-selected=\"\">\n    By default, the height is defined by the image's height. This option force the hero to take the <b>full viewport height</b>. Alternatively, you can fill the data-height attribute with the desired dimension.\n  </div>\n  <p>Navigation</p>\n  <div class=\"input select\" data-label=\"nav vertical\" data-attr=\"class\" data-value=\"nav--bottom,nav--top\" data-output=\"bottom,top\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"nav horizontal\" data-attr=\"class\" data-value=\"nav--left,nav--right\" data-output=\"left,right\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"nav display\" data-attr=\"class\" data-value=\"nav--inner,nav--hidden\" data-output=\"inner,hidden\" data-selected=\"\"></div>\n  <p>Content</p>\n  <div class=\"input select\" data-label=\"content position\" data-attr=\"class\" data-value=\"content--right,content--center\" data-output=\"right,center\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"text position\" data-attr=\"class\" data-value=\"content__text--top,content__text--center\" data-output=\"top,center\" data-selected=\"\"></div>\n  <div class=\"input checkbox\" data-label=\"Remove content blur\" data-attr=\"class\" data-value=\"content--noblur\" data-selected=\"\"></div>\n</div>\n";
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tabs\">\n  <div class=\"tabs__nav\">\n    <button>Lorem</button>\n    <button>Ipsum</button>\n    <button>Dolor</button>\n  </div>\n  <div class=\"tabs__content\">\n    <div class=\"tab\">\n      Lorem ipsum dolor sit amet\n    </div>\n    <div class=\"tab\">\n      Ipsum dolor sit amet lorem\n    </div>\n    <div class=\"tab\">\n      Dolor sit amet lorem ipsum\n    </div>\n  </div>\n</div>";
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"bg-{{color}} m-bottom\">\n  <h4>bg-{{color}}</h4>\n  <p class=\"clear\">\n    Zombies reversus ab inferno, nam malum cerebro. De carne animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n  </p>\n</div>";
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+ *  Copyright 2011 Twitter, Inc.
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+
+(function (Hogan) {
+  // Setup regex  assignments
+  // remove whitespace according to Mustache spec
+  var rIsWhitespace = /\S/,
+      rQuot = /\"/g,
+      rNewline =  /\n/g,
+      rCr = /\r/g,
+      rSlash = /\\/g,
+      rLineSep = /\u2028/,
+      rParagraphSep = /\u2029/;
+
+  Hogan.tags = {
+    '#': 1, '^': 2, '<': 3, '$': 4,
+    '/': 5, '!': 6, '>': 7, '=': 8, '_v': 9,
+    '{': 10, '&': 11, '_t': 12
+  };
+
+  Hogan.scan = function scan(text, delimiters) {
+    var len = text.length,
+        IN_TEXT = 0,
+        IN_TAG_TYPE = 1,
+        IN_TAG = 2,
+        state = IN_TEXT,
+        tagType = null,
+        tag = null,
+        buf = '',
+        tokens = [],
+        seenTag = false,
+        i = 0,
+        lineStart = 0,
+        otag = '{{',
+        ctag = '}}';
+
+    function addBuf() {
+      if (buf.length > 0) {
+        tokens.push({tag: '_t', text: new String(buf)});
+        buf = '';
+      }
+    }
+
+    function lineIsWhitespace() {
+      var isAllWhitespace = true;
+      for (var j = lineStart; j < tokens.length; j++) {
+        isAllWhitespace =
+          (Hogan.tags[tokens[j].tag] < Hogan.tags['_v']) ||
+          (tokens[j].tag == '_t' && tokens[j].text.match(rIsWhitespace) === null);
+        if (!isAllWhitespace) {
+          return false;
+        }
+      }
+
+      return isAllWhitespace;
+    }
+
+    function filterLine(haveSeenTag, noNewLine) {
+      addBuf();
+
+      if (haveSeenTag && lineIsWhitespace()) {
+        for (var j = lineStart, next; j < tokens.length; j++) {
+          if (tokens[j].text) {
+            if ((next = tokens[j+1]) && next.tag == '>') {
+              // set indent to token value
+              next.indent = tokens[j].text.toString()
+            }
+            tokens.splice(j, 1);
+          }
+        }
+      } else if (!noNewLine) {
+        tokens.push({tag:'\n'});
+      }
+
+      seenTag = false;
+      lineStart = tokens.length;
+    }
+
+    function changeDelimiters(text, index) {
+      var close = '=' + ctag,
+          closeIndex = text.indexOf(close, index),
+          delimiters = trim(
+            text.substring(text.indexOf('=', index) + 1, closeIndex)
+          ).split(' ');
+
+      otag = delimiters[0];
+      ctag = delimiters[delimiters.length - 1];
+
+      return closeIndex + close.length - 1;
+    }
+
+    if (delimiters) {
+      delimiters = delimiters.split(' ');
+      otag = delimiters[0];
+      ctag = delimiters[1];
+    }
+
+    for (i = 0; i < len; i++) {
+      if (state == IN_TEXT) {
+        if (tagChange(otag, text, i)) {
+          --i;
+          addBuf();
+          state = IN_TAG_TYPE;
+        } else {
+          if (text.charAt(i) == '\n') {
+            filterLine(seenTag);
+          } else {
+            buf += text.charAt(i);
+          }
+        }
+      } else if (state == IN_TAG_TYPE) {
+        i += otag.length - 1;
+        tag = Hogan.tags[text.charAt(i + 1)];
+        tagType = tag ? text.charAt(i + 1) : '_v';
+        if (tagType == '=') {
+          i = changeDelimiters(text, i);
+          state = IN_TEXT;
+        } else {
+          if (tag) {
+            i++;
+          }
+          state = IN_TAG;
+        }
+        seenTag = i;
+      } else {
+        if (tagChange(ctag, text, i)) {
+          tokens.push({tag: tagType, n: trim(buf), otag: otag, ctag: ctag,
+                       i: (tagType == '/') ? seenTag - otag.length : i + ctag.length});
+          buf = '';
+          i += ctag.length - 1;
+          state = IN_TEXT;
+          if (tagType == '{') {
+            if (ctag == '}}') {
+              i++;
+            } else {
+              cleanTripleStache(tokens[tokens.length - 1]);
+            }
+          }
+        } else {
+          buf += text.charAt(i);
+        }
+      }
+    }
+
+    filterLine(seenTag, true);
+
+    return tokens;
+  }
+
+  function cleanTripleStache(token) {
+    if (token.n.substr(token.n.length - 1) === '}') {
+      token.n = token.n.substring(0, token.n.length - 1);
+    }
+  }
+
+  function trim(s) {
+    if (s.trim) {
+      return s.trim();
+    }
+
+    return s.replace(/^\s*|\s*$/g, '');
+  }
+
+  function tagChange(tag, text, index) {
+    if (text.charAt(index) != tag.charAt(0)) {
+      return false;
+    }
+
+    for (var i = 1, l = tag.length; i < l; i++) {
+      if (text.charAt(index + i) != tag.charAt(i)) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  // the tags allowed inside super templates
+  var allowedInSuper = {'_t': true, '\n': true, '$': true, '/': true};
+
+  function buildTree(tokens, kind, stack, customTags) {
+    var instructions = [],
+        opener = null,
+        tail = null,
+        token = null;
+
+    tail = stack[stack.length - 1];
+
+    while (tokens.length > 0) {
+      token = tokens.shift();
+
+      if (tail && tail.tag == '<' && !(token.tag in allowedInSuper)) {
+        throw new Error('Illegal content in < super tag.');
+      }
+
+      if (Hogan.tags[token.tag] <= Hogan.tags['$'] || isOpener(token, customTags)) {
+        stack.push(token);
+        token.nodes = buildTree(tokens, token.tag, stack, customTags);
+      } else if (token.tag == '/') {
+        if (stack.length === 0) {
+          throw new Error('Closing tag without opener: /' + token.n);
+        }
+        opener = stack.pop();
+        if (token.n != opener.n && !isCloser(token.n, opener.n, customTags)) {
+          throw new Error('Nesting error: ' + opener.n + ' vs. ' + token.n);
+        }
+        opener.end = token.i;
+        return instructions;
+      } else if (token.tag == '\n') {
+        token.last = (tokens.length == 0) || (tokens[0].tag == '\n');
+      }
+
+      instructions.push(token);
+    }
+
+    if (stack.length > 0) {
+      throw new Error('missing closing tag: ' + stack.pop().n);
+    }
+
+    return instructions;
+  }
+
+  function isOpener(token, tags) {
+    for (var i = 0, l = tags.length; i < l; i++) {
+      if (tags[i].o == token.n) {
+        token.tag = '#';
+        return true;
+      }
+    }
+  }
+
+  function isCloser(close, open, tags) {
+    for (var i = 0, l = tags.length; i < l; i++) {
+      if (tags[i].c == close && tags[i].o == open) {
+        return true;
+      }
+    }
+  }
+
+  function stringifySubstitutions(obj) {
+    var items = [];
+    for (var key in obj) {
+      items.push('"' + esc(key) + '": function(c,p,t,i) {' + obj[key] + '}');
+    }
+    return "{ " + items.join(",") + " }";
+  }
+
+  function stringifyPartials(codeObj) {
+    var partials = [];
+    for (var key in codeObj.partials) {
+      partials.push('"' + esc(key) + '":{name:"' + esc(codeObj.partials[key].name) + '", ' + stringifyPartials(codeObj.partials[key]) + "}");
+    }
+    return "partials: {" + partials.join(",") + "}, subs: " + stringifySubstitutions(codeObj.subs);
+  }
+
+  Hogan.stringify = function(codeObj, text, options) {
+    return "{code: function (c,p,i) { " + Hogan.wrapMain(codeObj.code) + " }," + stringifyPartials(codeObj) +  "}";
+  }
+
+  var serialNo = 0;
+  Hogan.generate = function(tree, text, options) {
+    serialNo = 0;
+    var context = { code: '', subs: {}, partials: {} };
+    Hogan.walk(tree, context);
+
+    if (options.asString) {
+      return this.stringify(context, text, options);
+    }
+
+    return this.makeTemplate(context, text, options);
+  }
+
+  Hogan.wrapMain = function(code) {
+    return 'var t=this;t.b(i=i||"");' + code + 'return t.fl();';
+  }
+
+  Hogan.template = Hogan.Template;
+
+  Hogan.makeTemplate = function(codeObj, text, options) {
+    var template = this.makePartials(codeObj);
+    template.code = new Function('c', 'p', 'i', this.wrapMain(codeObj.code));
+    return new this.template(template, text, this, options);
+  }
+
+  Hogan.makePartials = function(codeObj) {
+    var key, template = {subs: {}, partials: codeObj.partials, name: codeObj.name};
+    for (key in template.partials) {
+      template.partials[key] = this.makePartials(template.partials[key]);
+    }
+    for (key in codeObj.subs) {
+      template.subs[key] = new Function('c', 'p', 't', 'i', codeObj.subs[key]);
+    }
+    return template;
+  }
+
+  function esc(s) {
+    return s.replace(rSlash, '\\\\')
+            .replace(rQuot, '\\\"')
+            .replace(rNewline, '\\n')
+            .replace(rCr, '\\r')
+            .replace(rLineSep, '\\u2028')
+            .replace(rParagraphSep, '\\u2029');
+  }
+
+  function chooseMethod(s) {
+    return (~s.indexOf('.')) ? 'd' : 'f';
+  }
+
+  function createPartial(node, context) {
+    var prefix = "<" + (context.prefix || "");
+    var sym = prefix + node.n + serialNo++;
+    context.partials[sym] = {name: node.n, partials: {}};
+    context.code += 't.b(t.rp("' +  esc(sym) + '",c,p,"' + (node.indent || '') + '"));';
+    return sym;
+  }
+
+  Hogan.codegen = {
+    '#': function(node, context) {
+      context.code += 'if(t.s(t.' + chooseMethod(node.n) + '("' + esc(node.n) + '",c,p,1),' +
+                      'c,p,0,' + node.i + ',' + node.end + ',"' + node.otag + " " + node.ctag + '")){' +
+                      't.rs(c,p,' + 'function(c,p,t){';
+      Hogan.walk(node.nodes, context);
+      context.code += '});c.pop();}';
+    },
+
+    '^': function(node, context) {
+      context.code += 'if(!t.s(t.' + chooseMethod(node.n) + '("' + esc(node.n) + '",c,p,1),c,p,1,0,0,"")){';
+      Hogan.walk(node.nodes, context);
+      context.code += '};';
+    },
+
+    '>': createPartial,
+    '<': function(node, context) {
+      var ctx = {partials: {}, code: '', subs: {}, inPartial: true};
+      Hogan.walk(node.nodes, ctx);
+      var template = context.partials[createPartial(node, context)];
+      template.subs = ctx.subs;
+      template.partials = ctx.partials;
+    },
+
+    '$': function(node, context) {
+      var ctx = {subs: {}, code: '', partials: context.partials, prefix: node.n};
+      Hogan.walk(node.nodes, ctx);
+      context.subs[node.n] = ctx.code;
+      if (!context.inPartial) {
+        context.code += 't.sub("' + esc(node.n) + '",c,p,i);';
+      }
+    },
+
+    '\n': function(node, context) {
+      context.code += write('"\\n"' + (node.last ? '' : ' + i'));
+    },
+
+    '_v': function(node, context) {
+      context.code += 't.b(t.v(t.' + chooseMethod(node.n) + '("' + esc(node.n) + '",c,p,0)));';
+    },
+
+    '_t': function(node, context) {
+      context.code += write('"' + esc(node.text) + '"');
+    },
+
+    '{': tripleStache,
+
+    '&': tripleStache
+  }
+
+  function tripleStache(node, context) {
+    context.code += 't.b(t.t(t.' + chooseMethod(node.n) + '("' + esc(node.n) + '",c,p,0)));';
+  }
+
+  function write(s) {
+    return 't.b(' + s + ');';
+  }
+
+  Hogan.walk = function(nodelist, context) {
+    var func;
+    for (var i = 0, l = nodelist.length; i < l; i++) {
+      func = Hogan.codegen[nodelist[i].tag];
+      func && func(nodelist[i], context);
+    }
+    return context;
+  }
+
+  Hogan.parse = function(tokens, text, options) {
+    options = options || {};
+    return buildTree(tokens, '', [], options.sectionTags || []);
+  }
+
+  Hogan.cache = {};
+
+  Hogan.cacheKey = function(text, options) {
+    return [text, !!options.asString, !!options.disableLambda, options.delimiters, !!options.modelGet].join('||');
+  }
+
+  Hogan.compile = function(text, options) {
+    options = options || {};
+    var key = Hogan.cacheKey(text, options);
+    var template = this.cache[key];
+
+    if (template) {
+      var partials = template.partials;
+      for (var name in partials) {
+        delete partials[name].instance;
+      }
+      return template;
+    }
+
+    template = this.generate(this.parse(this.scan(text, options.delimiters), text, options), text, options);
+    return this.cache[key] = template;
+  }
+})( true ? exports : Hogan);
+
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+ *  Copyright 2011 Twitter, Inc.
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+
+var Hogan = {};
+
+(function (Hogan) {
+  Hogan.Template = function (codeObj, text, compiler, options) {
+    codeObj = codeObj || {};
+    this.r = codeObj.code || this.r;
+    this.c = compiler;
+    this.options = options || {};
+    this.text = text || '';
+    this.partials = codeObj.partials || {};
+    this.subs = codeObj.subs || {};
+    this.buf = '';
+  }
+
+  Hogan.Template.prototype = {
+    // render: replaced by generated code.
+    r: function (context, partials, indent) { return ''; },
+
+    // variable escaping
+    v: hoganEscape,
+
+    // triple stache
+    t: coerceToString,
+
+    render: function render(context, partials, indent) {
+      return this.ri([context], partials || {}, indent);
+    },
+
+    // render internal -- a hook for overrides that catches partials too
+    ri: function (context, partials, indent) {
+      return this.r(context, partials, indent);
+    },
+
+    // ensurePartial
+    ep: function(symbol, partials) {
+      var partial = this.partials[symbol];
+
+      // check to see that if we've instantiated this partial before
+      var template = partials[partial.name];
+      if (partial.instance && partial.base == template) {
+        return partial.instance;
+      }
+
+      if (typeof template == 'string') {
+        if (!this.c) {
+          throw new Error("No compiler available.");
+        }
+        template = this.c.compile(template, this.options);
+      }
+
+      if (!template) {
+        return null;
+      }
+
+      // We use this to check whether the partials dictionary has changed
+      this.partials[symbol].base = template;
+
+      if (partial.subs) {
+        // Make sure we consider parent template now
+        if (!partials.stackText) partials.stackText = {};
+        for (key in partial.subs) {
+          if (!partials.stackText[key]) {
+            partials.stackText[key] = (this.activeSub !== undefined && partials.stackText[this.activeSub]) ? partials.stackText[this.activeSub] : this.text;
+          }
+        }
+        template = createSpecializedPartial(template, partial.subs, partial.partials,
+          this.stackSubs, this.stackPartials, partials.stackText);
+      }
+      this.partials[symbol].instance = template;
+
+      return template;
+    },
+
+    // tries to find a partial in the current scope and render it
+    rp: function(symbol, context, partials, indent) {
+      var partial = this.ep(symbol, partials);
+      if (!partial) {
+        return '';
+      }
+
+      return partial.ri(context, partials, indent);
+    },
+
+    // render a section
+    rs: function(context, partials, section) {
+      var tail = context[context.length - 1];
+
+      if (!isArray(tail)) {
+        section(context, partials, this);
+        return;
+      }
+
+      for (var i = 0; i < tail.length; i++) {
+        context.push(tail[i]);
+        section(context, partials, this);
+        context.pop();
+      }
+    },
+
+    // maybe start a section
+    s: function(val, ctx, partials, inverted, start, end, tags) {
+      var pass;
+
+      if (isArray(val) && val.length === 0) {
+        return false;
+      }
+
+      if (typeof val == 'function') {
+        val = this.ms(val, ctx, partials, inverted, start, end, tags);
+      }
+
+      pass = !!val;
+
+      if (!inverted && pass && ctx) {
+        ctx.push((typeof val == 'object') ? val : ctx[ctx.length - 1]);
+      }
+
+      return pass;
+    },
+
+    // find values with dotted names
+    d: function(key, ctx, partials, returnFound) {
+      var found,
+          names = key.split('.'),
+          val = this.f(names[0], ctx, partials, returnFound),
+          doModelGet = this.options.modelGet,
+          cx = null;
+
+      if (key === '.' && isArray(ctx[ctx.length - 2])) {
+        val = ctx[ctx.length - 1];
+      } else {
+        for (var i = 1; i < names.length; i++) {
+          found = findInScope(names[i], val, doModelGet);
+          if (found !== undefined) {
+            cx = val;
+            val = found;
+          } else {
+            val = '';
+          }
+        }
+      }
+
+      if (returnFound && !val) {
+        return false;
+      }
+
+      if (!returnFound && typeof val == 'function') {
+        ctx.push(cx);
+        val = this.mv(val, ctx, partials);
+        ctx.pop();
+      }
+
+      return val;
+    },
+
+    // find values with normal names
+    f: function(key, ctx, partials, returnFound) {
+      var val = false,
+          v = null,
+          found = false,
+          doModelGet = this.options.modelGet;
+
+      for (var i = ctx.length - 1; i >= 0; i--) {
+        v = ctx[i];
+        val = findInScope(key, v, doModelGet);
+        if (val !== undefined) {
+          found = true;
+          break;
+        }
+      }
+
+      if (!found) {
+        return (returnFound) ? false : "";
+      }
+
+      if (!returnFound && typeof val == 'function') {
+        val = this.mv(val, ctx, partials);
+      }
+
+      return val;
+    },
+
+    // higher order templates
+    ls: function(func, cx, partials, text, tags) {
+      var oldTags = this.options.delimiters;
+
+      this.options.delimiters = tags;
+      this.b(this.ct(coerceToString(func.call(cx, text)), cx, partials));
+      this.options.delimiters = oldTags;
+
+      return false;
+    },
+
+    // compile text
+    ct: function(text, cx, partials) {
+      if (this.options.disableLambda) {
+        throw new Error('Lambda features disabled.');
+      }
+      return this.c.compile(text, this.options).render(cx, partials);
+    },
+
+    // template result buffering
+    b: function(s) { this.buf += s; },
+
+    fl: function() { var r = this.buf; this.buf = ''; return r; },
+
+    // method replace section
+    ms: function(func, ctx, partials, inverted, start, end, tags) {
+      var textSource,
+          cx = ctx[ctx.length - 1],
+          result = func.call(cx);
+
+      if (typeof result == 'function') {
+        if (inverted) {
+          return true;
+        } else {
+          textSource = (this.activeSub && this.subsText && this.subsText[this.activeSub]) ? this.subsText[this.activeSub] : this.text;
+          return this.ls(result, cx, partials, textSource.substring(start, end), tags);
+        }
+      }
+
+      return result;
+    },
+
+    // method replace variable
+    mv: function(func, ctx, partials) {
+      var cx = ctx[ctx.length - 1];
+      var result = func.call(cx);
+
+      if (typeof result == 'function') {
+        return this.ct(coerceToString(result.call(cx)), cx, partials);
+      }
+
+      return result;
+    },
+
+    sub: function(name, context, partials, indent) {
+      var f = this.subs[name];
+      if (f) {
+        this.activeSub = name;
+        f(context, partials, this, indent);
+        this.activeSub = false;
+      }
+    }
+
+  };
+
+  //Find a key in an object
+  function findInScope(key, scope, doModelGet) {
+    var val;
+
+    if (scope && typeof scope == 'object') {
+
+      if (scope[key] !== undefined) {
+        val = scope[key];
+
+      // try lookup with get for backbone or similar model data
+      } else if (doModelGet && scope.get && typeof scope.get == 'function') {
+        val = scope.get(key);
+      }
+    }
+
+    return val;
+  }
+
+  function createSpecializedPartial(instance, subs, partials, stackSubs, stackPartials, stackText) {
+    function PartialTemplate() {};
+    PartialTemplate.prototype = instance;
+    function Substitutions() {};
+    Substitutions.prototype = instance.subs;
+    var key;
+    var partial = new PartialTemplate();
+    partial.subs = new Substitutions();
+    partial.subsText = {};  //hehe. substext.
+    partial.buf = '';
+
+    stackSubs = stackSubs || {};
+    partial.stackSubs = stackSubs;
+    partial.subsText = stackText;
+    for (key in subs) {
+      if (!stackSubs[key]) stackSubs[key] = subs[key];
+    }
+    for (key in stackSubs) {
+      partial.subs[key] = stackSubs[key];
+    }
+
+    stackPartials = stackPartials || {};
+    partial.stackPartials = stackPartials;
+    for (key in partials) {
+      if (!stackPartials[key]) stackPartials[key] = partials[key];
+    }
+    for (key in stackPartials) {
+      partial.partials[key] = stackPartials[key];
+    }
+
+    return partial;
+  }
+
+  var rAmp = /&/g,
+      rLt = /</g,
+      rGt = />/g,
+      rApos = /\'/g,
+      rQuot = /\"/g,
+      hChars = /[&<>\"\']/;
+
+  function coerceToString(val) {
+    return String((val === null || val === undefined) ? '' : val);
+  }
+
+  function hoganEscape(str) {
+    str = coerceToString(str);
+    return hChars.test(str) ?
+      str
+        .replace(rAmp, '&amp;')
+        .replace(rLt, '&lt;')
+        .replace(rGt, '&gt;')
+        .replace(rApos, '&#39;')
+        .replace(rQuot, '&quot;') :
+      str;
+  }
+
+  var isArray = Array.isArray || function(a) {
+    return Object.prototype.toString.call(a) === '[object Array]';
+  };
+
+})( true ? exports : Hogan);
+
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./flex.html": 58
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 57;
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(59)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports) {
+
+module.exports = "<h3>Syntax</h3>\n<div class=\"block-std center txt-center\">flex <span class=\"tag\">-valueofbooleanlikeproperty</span><span class=\"tag\">-propertyname--propertyvalue</span><span class=\"tag\">...</span></div>\n<h3>Example</h3>\n<div class=\"block-std center txt-center\"><span class=\"tag\">flex-wrap-justifycontent--center-alignitems--flexend</span></div>\n<h3>Rules</h3>\n<div class=\"block-std\">\n  <ul class=\"m-top\">\n    <li class=\"m-bottom\">\n      Each property name or value has to be normalized: lowercase, no space, no <span class=\"tag\"> - </span> or <span class=\"tag\"> _ </span> <br>\n      <i>Example: <span class=\"tag\">justify-content</span> become <span class=\"tag\">justifycontent</span>, <span class=\"tag\">flex-start</span> become <span class=\"tag\">flexstart</span>, etc...</i>\n    </li>\n    <li class=\"m-bottom\">\n      Properties which are boolean-like (flex-wrap, flex-direction, ..) are directly specified by their values.<br>\n      <i>Example: <span class=\"tag\">flex-wrap-column</span>, <span class=\"tag\">flex-nowrap-row</span></i>\n    </li>\n    <li class=\"m-bottom\">\n      flex-grow property applied on container affect all children. <br>\n      <i>Example: <span class=\"tag\">flex-flexgrow--1</span> mean all the children's flex-grow is set to 1.</i>\n    </li>\n    <li class=\"m-bottom\">\n      Children's related property can be set on them, with the same syntax but without the flex- prefix :<br>\n      <p class=\"txt-center\">flexgrow--<span class=\"tag\">number</span>, alignself--<span class=\"tag\">propertyvalue</span></p>\n      <i>Example: <span class=\"tag\">flexgrow--1</span>, <span class=\"tag\">alignself--flexend</span></i>\n    </li>\n  </ul>\n</div>";
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(61)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T; }();
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tabs\">\n  <div class=\"tabs__nav\">\n    {{> nav}}\n  </div>\n  <div class=\"tabs__content\">\n    {{> content}}\n  </div>\n</div>";
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(63)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tab\">\n  <div class=\"bd m-bottom\"><h5 class=\"\">bd</h5> Lorem ipsum dolor sit amet</div>\n  <div class=\"bd-top m-bottom\"><h5 class=\"\">bd-top</h5> Lorem ipsum dolor sit amet</div>\n  <div class=-bottom\"bd m-bottom\"><h5 class=\"\">bd-bottom</h5> Lorem ipsum dolor sit amet</div>\n  <div class=\"bd-left m-bottom\">\n    <h5 class=\"txt-center\">bd-left</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n  <div class=\"bd-right m-bottom\">\n    <h5 class=\"txt-center\">bd-right</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n  <div class=\"bd-left bd-top-green m-bottom\">\n    <h5 class=\"txt-center\">bd-left bd-top-green</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n  <div class=\"bd-right bd-bottom-green m-bottom\">\n    <h5 class=\"txt-center\">bd-right bd-bottom-green</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n  <div class=\"bd-10 bd-left-grey-5 bd-bottom-orange bd-right-green-2 m-bottom\">\n    <h5 class=\"txt-center\">bd-10 bd-grey-left-5 bd-bottom-orange bd-right-green-2</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n</div>";
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(65)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"bd-{{color}} m-bottom\"> Lorem ipsum dolor sit amet - bd-{{color}}</div>";
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(67)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tab\">\n  <h3>Buttons</h3>\n  <div class=\"\">\n    <button class=\"btn-sm\">btn-sm (button)</button><br>\n    <button class=\"\">btn (button)</button><br>\n    <button class=\"btn-lg\">btn-lg (button)</button>\n  </div>\n  <h3>Buttons inputs</h3>\n  <div>\n    <input type=\"button\" class=\"btn-sm\" value=\"btn-sm (input type button)\"><br>\n    <input type=\"button\" class=\"\" value=\"btn (input type button)\"><br>\n    <input type=\"button\" class=\"btn-lg\" value=\"btn-lg (input type button)\"><br>\n    <input type=\"submit\" class=\"btn-sm\" value=\"btn-sm (input type submit)\"><br>\n    <input type=\"submit\" class=\"\" value=\"btn (input type submit)\"><br>\n    <input type=\"submit\" class=\"btn-lg\" value=\"btn-lg (input type submit)\">\n  </div>\n  <h3>Buttons a</h3>\n  <div  class=\"\">\n    <a href=\"#\" class=\"btn-sm\">btn-sm (a)</a><br>\n    <a href=\"#\" class=\"btn\">btn (a)</a><br>\n    <a href=\"#\" class=\"btn-lg\">btn-lg (a)</a>\n  </div>\n</div>";
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(69)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports) {
+
+module.exports = "<div>\n  <button class=\"btn-bg-{{color}}\">btn-bg-{{color}}</button>\n  <button class=\"btn-bd-{{color}}\">btn-bd-{{color}}</button>\n</div>";
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(71)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tab\">\n  <input type=\"text\" placeholder=\"Input solo\">\n  <div class=\"form-group\">\n    <input type=\"text\" placeholder=\"Input in a form-group, without label\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input1\">Label ipsum</label>\n    <input id=\"input1\" type=\"text\" placeholder=\"Input in a form-group, with label\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input2\">Input without placeholder</label>\n    <input id=\"input2\" type=\"text\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input3\">Input with value already set</label>\n    <input id=\"input3\" type=\"text\" placeholder=\"Placeholder ipsum\" value=\"Value ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input4\">Input focused</label>\n    <input id=\"input4\" type=\"text\" class=\"focus\" placeholder=\"Placeholder ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input5\">Input required</label>\n    <input id=\"input5\" type=\"text\" placeholder=\"Placeholder ipsum\" required>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input6\">Input required and valid</label>\n    <input id=\"input6\" type=\"text\" placeholder=\"Placeholder ipsum\" value=\"Valid value ipsum\" required>\n  </div>\n</div>";
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(73)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"bg-{{color}} m-bottom\">\n  <span class=\"fl-right\">bg-{{color}}</span>\n  <div class=\"form-group clear\">\n    <label for=\"input21\">Label ipsum</label>\n    <input id=\"input21\" type=\"text\" placeholder=\"Input in a form-group\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input22\">Label ipsum required invalid</label>\n    <input id=\"input22\" type=\"text\" required placeholder=\"Input in a form-group\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input23\">Label ipsum required valid</label>\n    <input id=\"input23\" type=\"text\" required value=\"Value Ipsum\" placeholder=\"Input in a form-group\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input37\">Input range</label> - todo: script récupération et affichage valeur sélectionnée\n    <input id=\"input37\" type=\"range\" min=\"0\" max=\"100\" value=\"50\" step=\"5\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"\">Checkboxes</label>\n    <input id=\"input38\" type=\"checkbox\" checked>\n    <label for=\"input38\">Label checkbox</label>\n    <input id=\"input39\" type=\"checkbox\">\n    <label for=\"input39\">Label checkbox</label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"\">Radios</label>\n    <input name=\"inputRadio\" id=\"input40\" type=\"radio\" checked>\n    <label for=\"input40\">Label radio</label>\n    <input name=\"inputRadio\" id=\"input41\" type=\"radio\">\n    <label for=\"input41\">Label radio</label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input42\">Select</label> - todo: custom script dropdown\n    <select name=\"\" id=\"input42\">\n      <option value=\"1\">value 1</option>\n      <option value=\"2\">value 2</option>\n      <option value=\"3\">value 3</option>\n    </select>\n  </div>\n</div>";
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(75)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tab\">\n  <div class=\"form-group\">\n    <label for=\"input14\">Input range</label> - todo: script récupération et affichage valeur sélectionnée\n    <input id=\"input14\" type=\"range\" min=\"0\" max=\"100\" value=\"50\" step=\"5\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input19\">Input number</label><br>\n    <input id=\"input19\" type=\"number\" min=\"0\" max=\"10\" value=\"5\" step=\"1\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"\">Checkboxes</label>\n    <input id=\"input15\" type=\"checkbox\" checked>\n    <label for=\"input15\">Label checkbox</label>\n    <input id=\"input16\" type=\"checkbox\">\n    <label for=\"input16\">Label checkbox</label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"\">Radios</label>\n    <input name=\"inputRadio\" id=\"input17\" type=\"radio\" checked>\n    <label for=\"input17\">Label radio</label>\n    <input name=\"inputRadio\" id=\"input18\" type=\"radio\">\n    <label for=\"input18\">Label radio</label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input20\">Select</label> - todo: custom script dropdown\n    <select name=\"\" id=\"input20\">\n      <option value=\"1\">value 1</option>\n      <option value=\"2\">value 2</option>\n      <option value=\"3\">value 3</option>\n    </select>\n  </div>\n</div>";
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(77)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tab\">\n  <div class=\"form-group\">\n    <label for=\"input19\">Textarea</label>\n    <textarea name=\"\" id=\"input19\"></textarea>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input7\">Input password</label>\n    <input id=\"input7\" type=\"password\" placeholder=\"Placeholder ipsum\" value=\"passwordipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input8\">Input email</label>\n    <input id=\"input8\" type=\"email\" placeholder=\"Placeholder ipsum\" value=\"lorem@ipsum.dolor\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input9\">Input email with invalid value</label>\n    <input id=\"input9\" type=\"email\" placeholder=\"Placeholder ipsum\" value=\"loremipsum.dolor\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input10\">Input tel</label> - todo: script ajoutant pattern (contextuel localité) ?\n    <input id=\"input10\" type=\"tel\" placeholder=\"Placeholder ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input11\">Input url</label> - todo: script ajoutant \"http://\" automatiquement au début de l'input\n    <input id=\"input11\" type=\"url\" placeholder=\"Placeholder ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input12\">Input date</label>\n    <input id=\"input12\" type=\"date\" placeholder=\"Placeholder ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input13\">Input number</label>\n    <input id=\"input13\" type=\"number\">\n  </div>\n</div>";
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(79)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tab\">\n  <h4>lorem ipsum dolor sit amet (H4)</h4>\n  <p>\n    Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n  </p>\n  <div class=\"txt-center\">\n    <h4>lorem ipsum dolor sit amet (H4) - txt-center</h4>\n    <p>\n      Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n    </p>\n  </div>\n  <div class=\"txt-right\">\n    <h4>lorem ipsum dolor sit amet (H4) - txt-right</h4>\n    <p>\n      Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n    </p>\n  </div>\n  <ul>\n    <li>Lorem ipsum dolor sit amet</li>\n    <li>Lorem ipsum dolor sit amet</li>\n    <li>Lorem ipsum dolor sit amet</li>\n    <ul>\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Lorem ipsum dolor sit amet</li>\n      <ul>\n        <li>Lorem ipsum dolor sit amet</li>\n        <li>Lorem ipsum dolor sit amet</li>\n      </ul>\n      <li>Lorem ipsum dolor sit amet</li>\n    </ul>\n    <li>Lorem ipsum dolor sit amet</li>\n  </ul>\n  <ol>\n    <li>Lorem ipsum dolor sit amet</li>\n    <li>Lorem ipsum dolor sit amet</li>\n    <li>Lorem ipsum dolor sit amet</li>\n    <ol>\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Lorem ipsum dolor sit amet</li>\n      <ol>\n        <li>Lorem ipsum dolor sit amet</li>\n        <li>Lorem ipsum dolor sit amet</li>\n      </ol>\n      <li>Lorem ipsum dolor sit amet</li>\n    </ol>\n    <li>Lorem ipsum dolor sit amet</li>\n  </ol>\n</div>";
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(81)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"bd-{{color}} m-bottom\">\n  <h4>lorem ipsum dolor sit amet (H4) - bd-{{color}}</h4>\n  <p>\n    Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n  </p>\n</div>";
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(83)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"bg-{{color}} m-bottom\">\n  <h4>lorem ipsum dolor sit amet (H4) - bg-{{color}}</h4>\n  <p>\n    Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n  </p>\n</div>";
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(85)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tab\">\n  <h1>lorem ipsum dolor sit amet (H1)</h1>\n  <h2>lorem ipsum dolor sit amet (H2)</h2>\n  <h3>lorem ipsum dolor sit amet (H3)</h3>\n  <h4>lorem ipsum dolor sit amet (H4)</h4>\n  <h5>lorem ipsum dolor sit amet (H5)</h5>\n  <h6>lorem ipsum dolor sit amet (H6)</h6>\n</div>";
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(87)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 87 */
+/***/ (function(module, exports) {
+
+module.exports = "<h4 class=\"bg-{{color}}\">lorem ipsum (h4) - bg-{{color}}</h4>";
+
+/***/ }),
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(89)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 89 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tab\">\n  <h4 class=\"sep-top\">lorem ipsum (h4) - sep-top</h4>\n  <h4 class=\"sep-bottom\">lorem ipsum (h4) - sep-bottom</h4>\n  <h4 class=\"sep-top sep-bottom\">lorem ipsum (h4) - sep-top sep-bottom</h4>\n\n  <h4 class=\"sep-left\">lorem ipsum (h4) - sep-left</h4>\n  <h4 class=\"sep-right\">lorem ipsum (h4) - sep-right</h4>\n  <h4 class=\"sep-left sep-right\">lorem ipsum (h4) - sep-left sep-right</h4>\n</div>";
+
+/***/ }),
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(91)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T; }();
+
+/***/ }),
+/* 91 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"col-12 col-md-6 col-lg-4 flex-column-flexgrow--1\">\n  <div class=\"ft-b txt-center flexgrow--0\">- {{title}} -</div>\n  <ul class=\"bd-right bd-bottom p-left-0\">\n    {{> rows}}\n  </ul>\n</div>";
+
+/***/ }),
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(93)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports) {
+
+module.exports = "<li class=\"bd-bottom-grey-1 p-bottom-0 flex-justifycontent--spacebetween\">\n  {{{str}}}\n</li>";
+
+/***/ }),
+/* 94 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"radius":"2px","spacing":"30px","border-default-size":"2px","border-default-color":"#000000","colors":"(\"blue\": #004C79, \"green\": #5cb85c, \"orange\": #DC6053, \"darkblue\": #0a1d29, \"gold\": #edbe5f, \"black\": #000000, \"blacklight\": #111414, \"blacklighter\": #222222, \"greystronger\": #424041, \"greystrong\": #535052, \"grey\": #7A7778, \"greylight\": #DDDDDD, \"greylighter\": #EEEEEE, \"white\": #ffffff, \"none\": transparent)","breakpoints":"(\"xl\": 1400px, \"lg\": 1200px, \"md\": 992px, \"sm\": 768px, \"xs\": 620px, \"xxs\": 520px)","body":"(\"background\": #ffffff, \"font-color\": #424041, \"font-size\": 20px, \"title-font-color\": #111414)","header":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","footer":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","input":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #424041, \"border-size\": 1px, \"placeholder-font-color\": #7A7778, \"radius\": false)","input-focus":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #424041)","input-valid":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #5cb85c)","input-invalid":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #DC6053)","link":"(\"font-color\": #DC6053, \"font-color-hover\": #DC6053, \"font-color-focus\": #DC6053)","btn":"(\"background\": #424041, \"font-color\": #ffffff, \"border-size\": 2px, \"radius\": true, \"extend\": \".btn-bg-darkblue\")","enable-bg":"true","enable-bg-extended":"false","enable-bd":"true"};
+
+/***/ }),
+/* 95 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./user/_config.scss": 96
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 95;
+
+/***/ }),
+/* 96 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"radius":"2px","spacing":"30px","border-default-size":"2px","border-default-color":"#000000","colors":"(\"blue\": #004C79, \"green\": #5cb85c, \"orange\": #DC6053, \"darkblue\": #0a1d29, \"gold\": #edbe5f, \"black\": #000000, \"blacklight\": #111414, \"blacklighter\": #222222, \"greystronger\": #424041, \"greystrong\": #535052, \"grey\": #7A7778, \"greylight\": #DDDDDD, \"greylighter\": #EEEEEE, \"white\": #ffffff, \"none\": transparent)","breakpoints":"(\"xl\": 1400px, \"lg\": 1200px, \"md\": 992px, \"sm\": 768px, \"xs\": 620px, \"xxs\": 520px)","body":"(\"background\": #ffffff, \"font-color\": #424041, \"font-size\": 20px, \"title-font-color\": #111414)","header":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","footer":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","input":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #424041, \"border-size\": 2px, \"placeholder-font-color\": #7A7778, \"radius\": true)","input-focus":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #424041)","input-valid":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #5cb85c)","input-invalid":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #DC6053)","link":"(\"font-color\": #DC6053, \"font-color-hover\": #DC6053, \"font-color-focus\": #DC6053)","btn":"(\"background\": #424041, \"font-color\": #ffffff, \"border-size\": 2px, \"radius\": true, \"extend\": \".btn-bg-darkblue\")","enable-bg":"true","enable-bg-extended":"false","enable-bd":"true"};
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(98)
+var H = __webpack_require__(0);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 98 */
+/***/ (function(module, exports) {
+
+module.exports = "<nav class=\"bg-greystronger\">\n  <ul>\n    <li><a href=\"#framway__config\">Config</a></li>\n    <li>\n      <a href=\"#framway__classes\">Classes</a>\n      {{{classes.nav}}}\n    </li>\n    <li>\n      <a href=\"#framway__styling\">Examples</a>\n      {{{styling.nav}}}\n    </li>\n    <li>\n      <a href=\"#framway__components\">Components</a>\n      {{{components.nav}}}\n    </li>\n  </ul>\n</nav>\n<div class=\"content container-fluid p-x-x2 p-top\">\n  <h1>Framway's config & guideline</h1>\n  <div class=\"item\" id=\"framway__config\">\n    <div class=\"row\">\n      {{{config}}}\n    </div>\n  </div>\n  <div class=\"item\" id=\"framway__classes\">\n      {{{classes.content}}}\n  </div>\n  <div class=\"item\" id=\"framway__styling\">\n      {{{styling.content}}}\n  </div>\n  <div class=\"item\" id=\"framway__components\">\n      {{{components.content}}}\n  </div>\n</div>";
+
+/***/ }),
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($, utils) {
+
+$.fn.heroFW = function heroFW() {
+  app._heroFW = app._heroFW || [];
+  $(this).each(function () {
+    app._heroFW.push(new HeroFW(this));
+  });
+};
+
+var HeroFW = function HeroFW(item) {
+  var heroFW = this;
+  heroFW.$el = $(item);
+  heroFW.content = { $el: $(item).find('.heroFW__content') };
+
+  heroFW.setHeight();
+
+  heroFW.$el.on('destroyed', function () {
+    app._heroFW.splice(app._heroFW.indexOf(heroFW), 1);
+    heroFW = undefined;
+  });
+
+  return heroFW;
+};
+
+HeroFW.prototype.setHeight = function () {
+  var heightBox = 0;
+  if (this.$el.data('height') && this.$el.data('height') != "") {
+    heightBox = this.$el.data('height');
+    if (this.$el.data('height') == "viewport") {
+      heightBox = viewport.height - $('#header').outerHeight();
+    }
+  }
+  if (heightBox != 0) this.$el.height(heightBox);
+  return this;
+};
+
+HeroFW.prototype.destroy = function () {
+  this.$el.remove();
+};
+
+var timerResize;
+HeroFW.prototype.resize = function () {
+  var heroFW = this;
+  clearTimeout(timerResize);
+  timerResize = setTimeout(function () {
+    heroFW.setHeight();
+  }, 300);
+};
+
+$(function () {
+  $('.heroFW').heroFW();
+  utils.addHtmlHook('.heroFW', function (item) {
+    item.heroFW();
+  });
+
+  $(window).resize(function () {
+    $.each(app._heroFW, function () {
+      this.resize();
+    });
+  });
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
+
+/***/ }),
+/* 100 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($, utils) {
+
+__webpack_require__(101);
+
+$.fn.select2FW = function select2FW() {
+  app._select2FW = app._select2FW || [];
+  $(this).each(function () {
+    app._select2FW.push(new Select2FW(this));
+  });
+};
+
+var Select2FW = function Select2FW(item) {
+  var select2FW = this;
+  select2FW.$el = $(item);
+
+  select2FW.$el.select2({
+    minimumResultsForSearch: 5,
+    width: '100%'
+  });
+
+  select2FW.$el.on('destroyed', function () {
+    app._select2FW.splice(app._select2FW.indexOf(select2FW), 1);
+    select2FW = undefined;
+  });
+
+  return select2FW;
+};
+
+Select2FW.prototype.destroy = function () {
+  this.$el.remove();
+};
+
+$(function () {
+  $('select').not('.custom').select2FW();
+  utils.addHtmlHook('select:not(.custom)', function (item) {
+    item.select2FW();
+  });
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
+
+/***/ }),
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;var require;/*!
@@ -16761,5465 +22352,7 @@ S2.define('jquery.select2',[
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-__webpack_require__(24); // importing hammer.js
-__webpack_require__(25); // importing jquery-mousewheel
-
-__webpack_require__(26);
-
-var config = __webpack_require__(27);
-
-__webpack_require__(28);
-app.loadThemes(config.themes);
-app.loadComponents(config.components);
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_RESULT__;/*! Hammer.JS - v2.0.7 - 2016-04-22
- * http://hammerjs.github.io/
- *
- * Copyright (c) 2016 Jorik Tangelder;
- * Licensed under the MIT license */
-(function(window, document, exportName, undefined) {
-  'use strict';
-
-var VENDOR_PREFIXES = ['', 'webkit', 'Moz', 'MS', 'ms', 'o'];
-var TEST_ELEMENT = document.createElement('div');
-
-var TYPE_FUNCTION = 'function';
-
-var round = Math.round;
-var abs = Math.abs;
-var now = Date.now;
-
-/**
- * set a timeout with a given scope
- * @param {Function} fn
- * @param {Number} timeout
- * @param {Object} context
- * @returns {number}
- */
-function setTimeoutContext(fn, timeout, context) {
-    return setTimeout(bindFn(fn, context), timeout);
-}
-
-/**
- * if the argument is an array, we want to execute the fn on each entry
- * if it aint an array we don't want to do a thing.
- * this is used by all the methods that accept a single and array argument.
- * @param {*|Array} arg
- * @param {String} fn
- * @param {Object} [context]
- * @returns {Boolean}
- */
-function invokeArrayArg(arg, fn, context) {
-    if (Array.isArray(arg)) {
-        each(arg, context[fn], context);
-        return true;
-    }
-    return false;
-}
-
-/**
- * walk objects and arrays
- * @param {Object} obj
- * @param {Function} iterator
- * @param {Object} context
- */
-function each(obj, iterator, context) {
-    var i;
-
-    if (!obj) {
-        return;
-    }
-
-    if (obj.forEach) {
-        obj.forEach(iterator, context);
-    } else if (obj.length !== undefined) {
-        i = 0;
-        while (i < obj.length) {
-            iterator.call(context, obj[i], i, obj);
-            i++;
-        }
-    } else {
-        for (i in obj) {
-            obj.hasOwnProperty(i) && iterator.call(context, obj[i], i, obj);
-        }
-    }
-}
-
-/**
- * wrap a method with a deprecation warning and stack trace
- * @param {Function} method
- * @param {String} name
- * @param {String} message
- * @returns {Function} A new function wrapping the supplied method.
- */
-function deprecate(method, name, message) {
-    var deprecationMessage = 'DEPRECATED METHOD: ' + name + '\n' + message + ' AT \n';
-    return function() {
-        var e = new Error('get-stack-trace');
-        var stack = e && e.stack ? e.stack.replace(/^[^\(]+?[\n$]/gm, '')
-            .replace(/^\s+at\s+/gm, '')
-            .replace(/^Object.<anonymous>\s*\(/gm, '{anonymous}()@') : 'Unknown Stack Trace';
-
-        var log = window.console && (window.console.warn || window.console.log);
-        if (log) {
-            log.call(window.console, deprecationMessage, stack);
-        }
-        return method.apply(this, arguments);
-    };
-}
-
-/**
- * extend object.
- * means that properties in dest will be overwritten by the ones in src.
- * @param {Object} target
- * @param {...Object} objects_to_assign
- * @returns {Object} target
- */
-var assign;
-if (typeof Object.assign !== 'function') {
-    assign = function assign(target) {
-        if (target === undefined || target === null) {
-            throw new TypeError('Cannot convert undefined or null to object');
-        }
-
-        var output = Object(target);
-        for (var index = 1; index < arguments.length; index++) {
-            var source = arguments[index];
-            if (source !== undefined && source !== null) {
-                for (var nextKey in source) {
-                    if (source.hasOwnProperty(nextKey)) {
-                        output[nextKey] = source[nextKey];
-                    }
-                }
-            }
-        }
-        return output;
-    };
-} else {
-    assign = Object.assign;
-}
-
-/**
- * extend object.
- * means that properties in dest will be overwritten by the ones in src.
- * @param {Object} dest
- * @param {Object} src
- * @param {Boolean} [merge=false]
- * @returns {Object} dest
- */
-var extend = deprecate(function extend(dest, src, merge) {
-    var keys = Object.keys(src);
-    var i = 0;
-    while (i < keys.length) {
-        if (!merge || (merge && dest[keys[i]] === undefined)) {
-            dest[keys[i]] = src[keys[i]];
-        }
-        i++;
-    }
-    return dest;
-}, 'extend', 'Use `assign`.');
-
-/**
- * merge the values from src in the dest.
- * means that properties that exist in dest will not be overwritten by src
- * @param {Object} dest
- * @param {Object} src
- * @returns {Object} dest
- */
-var merge = deprecate(function merge(dest, src) {
-    return extend(dest, src, true);
-}, 'merge', 'Use `assign`.');
-
-/**
- * simple class inheritance
- * @param {Function} child
- * @param {Function} base
- * @param {Object} [properties]
- */
-function inherit(child, base, properties) {
-    var baseP = base.prototype,
-        childP;
-
-    childP = child.prototype = Object.create(baseP);
-    childP.constructor = child;
-    childP._super = baseP;
-
-    if (properties) {
-        assign(childP, properties);
-    }
-}
-
-/**
- * simple function bind
- * @param {Function} fn
- * @param {Object} context
- * @returns {Function}
- */
-function bindFn(fn, context) {
-    return function boundFn() {
-        return fn.apply(context, arguments);
-    };
-}
-
-/**
- * let a boolean value also be a function that must return a boolean
- * this first item in args will be used as the context
- * @param {Boolean|Function} val
- * @param {Array} [args]
- * @returns {Boolean}
- */
-function boolOrFn(val, args) {
-    if (typeof val == TYPE_FUNCTION) {
-        return val.apply(args ? args[0] || undefined : undefined, args);
-    }
-    return val;
-}
-
-/**
- * use the val2 when val1 is undefined
- * @param {*} val1
- * @param {*} val2
- * @returns {*}
- */
-function ifUndefined(val1, val2) {
-    return (val1 === undefined) ? val2 : val1;
-}
-
-/**
- * addEventListener with multiple events at once
- * @param {EventTarget} target
- * @param {String} types
- * @param {Function} handler
- */
-function addEventListeners(target, types, handler) {
-    each(splitStr(types), function(type) {
-        target.addEventListener(type, handler, false);
-    });
-}
-
-/**
- * removeEventListener with multiple events at once
- * @param {EventTarget} target
- * @param {String} types
- * @param {Function} handler
- */
-function removeEventListeners(target, types, handler) {
-    each(splitStr(types), function(type) {
-        target.removeEventListener(type, handler, false);
-    });
-}
-
-/**
- * find if a node is in the given parent
- * @method hasParent
- * @param {HTMLElement} node
- * @param {HTMLElement} parent
- * @return {Boolean} found
- */
-function hasParent(node, parent) {
-    while (node) {
-        if (node == parent) {
-            return true;
-        }
-        node = node.parentNode;
-    }
-    return false;
-}
-
-/**
- * small indexOf wrapper
- * @param {String} str
- * @param {String} find
- * @returns {Boolean} found
- */
-function inStr(str, find) {
-    return str.indexOf(find) > -1;
-}
-
-/**
- * split string on whitespace
- * @param {String} str
- * @returns {Array} words
- */
-function splitStr(str) {
-    return str.trim().split(/\s+/g);
-}
-
-/**
- * find if a array contains the object using indexOf or a simple polyFill
- * @param {Array} src
- * @param {String} find
- * @param {String} [findByKey]
- * @return {Boolean|Number} false when not found, or the index
- */
-function inArray(src, find, findByKey) {
-    if (src.indexOf && !findByKey) {
-        return src.indexOf(find);
-    } else {
-        var i = 0;
-        while (i < src.length) {
-            if ((findByKey && src[i][findByKey] == find) || (!findByKey && src[i] === find)) {
-                return i;
-            }
-            i++;
-        }
-        return -1;
-    }
-}
-
-/**
- * convert array-like objects to real arrays
- * @param {Object} obj
- * @returns {Array}
- */
-function toArray(obj) {
-    return Array.prototype.slice.call(obj, 0);
-}
-
-/**
- * unique array with objects based on a key (like 'id') or just by the array's value
- * @param {Array} src [{id:1},{id:2},{id:1}]
- * @param {String} [key]
- * @param {Boolean} [sort=False]
- * @returns {Array} [{id:1},{id:2}]
- */
-function uniqueArray(src, key, sort) {
-    var results = [];
-    var values = [];
-    var i = 0;
-
-    while (i < src.length) {
-        var val = key ? src[i][key] : src[i];
-        if (inArray(values, val) < 0) {
-            results.push(src[i]);
-        }
-        values[i] = val;
-        i++;
-    }
-
-    if (sort) {
-        if (!key) {
-            results = results.sort();
-        } else {
-            results = results.sort(function sortUniqueArray(a, b) {
-                return a[key] > b[key];
-            });
-        }
-    }
-
-    return results;
-}
-
-/**
- * get the prefixed property
- * @param {Object} obj
- * @param {String} property
- * @returns {String|Undefined} prefixed
- */
-function prefixed(obj, property) {
-    var prefix, prop;
-    var camelProp = property[0].toUpperCase() + property.slice(1);
-
-    var i = 0;
-    while (i < VENDOR_PREFIXES.length) {
-        prefix = VENDOR_PREFIXES[i];
-        prop = (prefix) ? prefix + camelProp : property;
-
-        if (prop in obj) {
-            return prop;
-        }
-        i++;
-    }
-    return undefined;
-}
-
-/**
- * get a unique id
- * @returns {number} uniqueId
- */
-var _uniqueId = 1;
-function uniqueId() {
-    return _uniqueId++;
-}
-
-/**
- * get the window object of an element
- * @param {HTMLElement} element
- * @returns {DocumentView|Window}
- */
-function getWindowForElement(element) {
-    var doc = element.ownerDocument || element;
-    return (doc.defaultView || doc.parentWindow || window);
-}
-
-var MOBILE_REGEX = /mobile|tablet|ip(ad|hone|od)|android/i;
-
-var SUPPORT_TOUCH = ('ontouchstart' in window);
-var SUPPORT_POINTER_EVENTS = prefixed(window, 'PointerEvent') !== undefined;
-var SUPPORT_ONLY_TOUCH = SUPPORT_TOUCH && MOBILE_REGEX.test(navigator.userAgent);
-
-var INPUT_TYPE_TOUCH = 'touch';
-var INPUT_TYPE_PEN = 'pen';
-var INPUT_TYPE_MOUSE = 'mouse';
-var INPUT_TYPE_KINECT = 'kinect';
-
-var COMPUTE_INTERVAL = 25;
-
-var INPUT_START = 1;
-var INPUT_MOVE = 2;
-var INPUT_END = 4;
-var INPUT_CANCEL = 8;
-
-var DIRECTION_NONE = 1;
-var DIRECTION_LEFT = 2;
-var DIRECTION_RIGHT = 4;
-var DIRECTION_UP = 8;
-var DIRECTION_DOWN = 16;
-
-var DIRECTION_HORIZONTAL = DIRECTION_LEFT | DIRECTION_RIGHT;
-var DIRECTION_VERTICAL = DIRECTION_UP | DIRECTION_DOWN;
-var DIRECTION_ALL = DIRECTION_HORIZONTAL | DIRECTION_VERTICAL;
-
-var PROPS_XY = ['x', 'y'];
-var PROPS_CLIENT_XY = ['clientX', 'clientY'];
-
-/**
- * create new input type manager
- * @param {Manager} manager
- * @param {Function} callback
- * @returns {Input}
- * @constructor
- */
-function Input(manager, callback) {
-    var self = this;
-    this.manager = manager;
-    this.callback = callback;
-    this.element = manager.element;
-    this.target = manager.options.inputTarget;
-
-    // smaller wrapper around the handler, for the scope and the enabled state of the manager,
-    // so when disabled the input events are completely bypassed.
-    this.domHandler = function(ev) {
-        if (boolOrFn(manager.options.enable, [manager])) {
-            self.handler(ev);
-        }
-    };
-
-    this.init();
-
-}
-
-Input.prototype = {
-    /**
-     * should handle the inputEvent data and trigger the callback
-     * @virtual
-     */
-    handler: function() { },
-
-    /**
-     * bind the events
-     */
-    init: function() {
-        this.evEl && addEventListeners(this.element, this.evEl, this.domHandler);
-        this.evTarget && addEventListeners(this.target, this.evTarget, this.domHandler);
-        this.evWin && addEventListeners(getWindowForElement(this.element), this.evWin, this.domHandler);
-    },
-
-    /**
-     * unbind the events
-     */
-    destroy: function() {
-        this.evEl && removeEventListeners(this.element, this.evEl, this.domHandler);
-        this.evTarget && removeEventListeners(this.target, this.evTarget, this.domHandler);
-        this.evWin && removeEventListeners(getWindowForElement(this.element), this.evWin, this.domHandler);
-    }
-};
-
-/**
- * create new input type manager
- * called by the Manager constructor
- * @param {Hammer} manager
- * @returns {Input}
- */
-function createInputInstance(manager) {
-    var Type;
-    var inputClass = manager.options.inputClass;
-
-    if (inputClass) {
-        Type = inputClass;
-    } else if (SUPPORT_POINTER_EVENTS) {
-        Type = PointerEventInput;
-    } else if (SUPPORT_ONLY_TOUCH) {
-        Type = TouchInput;
-    } else if (!SUPPORT_TOUCH) {
-        Type = MouseInput;
-    } else {
-        Type = TouchMouseInput;
-    }
-    return new (Type)(manager, inputHandler);
-}
-
-/**
- * handle input events
- * @param {Manager} manager
- * @param {String} eventType
- * @param {Object} input
- */
-function inputHandler(manager, eventType, input) {
-    var pointersLen = input.pointers.length;
-    var changedPointersLen = input.changedPointers.length;
-    var isFirst = (eventType & INPUT_START && (pointersLen - changedPointersLen === 0));
-    var isFinal = (eventType & (INPUT_END | INPUT_CANCEL) && (pointersLen - changedPointersLen === 0));
-
-    input.isFirst = !!isFirst;
-    input.isFinal = !!isFinal;
-
-    if (isFirst) {
-        manager.session = {};
-    }
-
-    // source event is the normalized value of the domEvents
-    // like 'touchstart, mouseup, pointerdown'
-    input.eventType = eventType;
-
-    // compute scale, rotation etc
-    computeInputData(manager, input);
-
-    // emit secret event
-    manager.emit('hammer.input', input);
-
-    manager.recognize(input);
-    manager.session.prevInput = input;
-}
-
-/**
- * extend the data with some usable properties like scale, rotate, velocity etc
- * @param {Object} manager
- * @param {Object} input
- */
-function computeInputData(manager, input) {
-    var session = manager.session;
-    var pointers = input.pointers;
-    var pointersLength = pointers.length;
-
-    // store the first input to calculate the distance and direction
-    if (!session.firstInput) {
-        session.firstInput = simpleCloneInputData(input);
-    }
-
-    // to compute scale and rotation we need to store the multiple touches
-    if (pointersLength > 1 && !session.firstMultiple) {
-        session.firstMultiple = simpleCloneInputData(input);
-    } else if (pointersLength === 1) {
-        session.firstMultiple = false;
-    }
-
-    var firstInput = session.firstInput;
-    var firstMultiple = session.firstMultiple;
-    var offsetCenter = firstMultiple ? firstMultiple.center : firstInput.center;
-
-    var center = input.center = getCenter(pointers);
-    input.timeStamp = now();
-    input.deltaTime = input.timeStamp - firstInput.timeStamp;
-
-    input.angle = getAngle(offsetCenter, center);
-    input.distance = getDistance(offsetCenter, center);
-
-    computeDeltaXY(session, input);
-    input.offsetDirection = getDirection(input.deltaX, input.deltaY);
-
-    var overallVelocity = getVelocity(input.deltaTime, input.deltaX, input.deltaY);
-    input.overallVelocityX = overallVelocity.x;
-    input.overallVelocityY = overallVelocity.y;
-    input.overallVelocity = (abs(overallVelocity.x) > abs(overallVelocity.y)) ? overallVelocity.x : overallVelocity.y;
-
-    input.scale = firstMultiple ? getScale(firstMultiple.pointers, pointers) : 1;
-    input.rotation = firstMultiple ? getRotation(firstMultiple.pointers, pointers) : 0;
-
-    input.maxPointers = !session.prevInput ? input.pointers.length : ((input.pointers.length >
-        session.prevInput.maxPointers) ? input.pointers.length : session.prevInput.maxPointers);
-
-    computeIntervalInputData(session, input);
-
-    // find the correct target
-    var target = manager.element;
-    if (hasParent(input.srcEvent.target, target)) {
-        target = input.srcEvent.target;
-    }
-    input.target = target;
-}
-
-function computeDeltaXY(session, input) {
-    var center = input.center;
-    var offset = session.offsetDelta || {};
-    var prevDelta = session.prevDelta || {};
-    var prevInput = session.prevInput || {};
-
-    if (input.eventType === INPUT_START || prevInput.eventType === INPUT_END) {
-        prevDelta = session.prevDelta = {
-            x: prevInput.deltaX || 0,
-            y: prevInput.deltaY || 0
-        };
-
-        offset = session.offsetDelta = {
-            x: center.x,
-            y: center.y
-        };
-    }
-
-    input.deltaX = prevDelta.x + (center.x - offset.x);
-    input.deltaY = prevDelta.y + (center.y - offset.y);
-}
-
-/**
- * velocity is calculated every x ms
- * @param {Object} session
- * @param {Object} input
- */
-function computeIntervalInputData(session, input) {
-    var last = session.lastInterval || input,
-        deltaTime = input.timeStamp - last.timeStamp,
-        velocity, velocityX, velocityY, direction;
-
-    if (input.eventType != INPUT_CANCEL && (deltaTime > COMPUTE_INTERVAL || last.velocity === undefined)) {
-        var deltaX = input.deltaX - last.deltaX;
-        var deltaY = input.deltaY - last.deltaY;
-
-        var v = getVelocity(deltaTime, deltaX, deltaY);
-        velocityX = v.x;
-        velocityY = v.y;
-        velocity = (abs(v.x) > abs(v.y)) ? v.x : v.y;
-        direction = getDirection(deltaX, deltaY);
-
-        session.lastInterval = input;
-    } else {
-        // use latest velocity info if it doesn't overtake a minimum period
-        velocity = last.velocity;
-        velocityX = last.velocityX;
-        velocityY = last.velocityY;
-        direction = last.direction;
-    }
-
-    input.velocity = velocity;
-    input.velocityX = velocityX;
-    input.velocityY = velocityY;
-    input.direction = direction;
-}
-
-/**
- * create a simple clone from the input used for storage of firstInput and firstMultiple
- * @param {Object} input
- * @returns {Object} clonedInputData
- */
-function simpleCloneInputData(input) {
-    // make a simple copy of the pointers because we will get a reference if we don't
-    // we only need clientXY for the calculations
-    var pointers = [];
-    var i = 0;
-    while (i < input.pointers.length) {
-        pointers[i] = {
-            clientX: round(input.pointers[i].clientX),
-            clientY: round(input.pointers[i].clientY)
-        };
-        i++;
-    }
-
-    return {
-        timeStamp: now(),
-        pointers: pointers,
-        center: getCenter(pointers),
-        deltaX: input.deltaX,
-        deltaY: input.deltaY
-    };
-}
-
-/**
- * get the center of all the pointers
- * @param {Array} pointers
- * @return {Object} center contains `x` and `y` properties
- */
-function getCenter(pointers) {
-    var pointersLength = pointers.length;
-
-    // no need to loop when only one touch
-    if (pointersLength === 1) {
-        return {
-            x: round(pointers[0].clientX),
-            y: round(pointers[0].clientY)
-        };
-    }
-
-    var x = 0, y = 0, i = 0;
-    while (i < pointersLength) {
-        x += pointers[i].clientX;
-        y += pointers[i].clientY;
-        i++;
-    }
-
-    return {
-        x: round(x / pointersLength),
-        y: round(y / pointersLength)
-    };
-}
-
-/**
- * calculate the velocity between two points. unit is in px per ms.
- * @param {Number} deltaTime
- * @param {Number} x
- * @param {Number} y
- * @return {Object} velocity `x` and `y`
- */
-function getVelocity(deltaTime, x, y) {
-    return {
-        x: x / deltaTime || 0,
-        y: y / deltaTime || 0
-    };
-}
-
-/**
- * get the direction between two points
- * @param {Number} x
- * @param {Number} y
- * @return {Number} direction
- */
-function getDirection(x, y) {
-    if (x === y) {
-        return DIRECTION_NONE;
-    }
-
-    if (abs(x) >= abs(y)) {
-        return x < 0 ? DIRECTION_LEFT : DIRECTION_RIGHT;
-    }
-    return y < 0 ? DIRECTION_UP : DIRECTION_DOWN;
-}
-
-/**
- * calculate the absolute distance between two points
- * @param {Object} p1 {x, y}
- * @param {Object} p2 {x, y}
- * @param {Array} [props] containing x and y keys
- * @return {Number} distance
- */
-function getDistance(p1, p2, props) {
-    if (!props) {
-        props = PROPS_XY;
-    }
-    var x = p2[props[0]] - p1[props[0]],
-        y = p2[props[1]] - p1[props[1]];
-
-    return Math.sqrt((x * x) + (y * y));
-}
-
-/**
- * calculate the angle between two coordinates
- * @param {Object} p1
- * @param {Object} p2
- * @param {Array} [props] containing x and y keys
- * @return {Number} angle
- */
-function getAngle(p1, p2, props) {
-    if (!props) {
-        props = PROPS_XY;
-    }
-    var x = p2[props[0]] - p1[props[0]],
-        y = p2[props[1]] - p1[props[1]];
-    return Math.atan2(y, x) * 180 / Math.PI;
-}
-
-/**
- * calculate the rotation degrees between two pointersets
- * @param {Array} start array of pointers
- * @param {Array} end array of pointers
- * @return {Number} rotation
- */
-function getRotation(start, end) {
-    return getAngle(end[1], end[0], PROPS_CLIENT_XY) + getAngle(start[1], start[0], PROPS_CLIENT_XY);
-}
-
-/**
- * calculate the scale factor between two pointersets
- * no scale is 1, and goes down to 0 when pinched together, and bigger when pinched out
- * @param {Array} start array of pointers
- * @param {Array} end array of pointers
- * @return {Number} scale
- */
-function getScale(start, end) {
-    return getDistance(end[0], end[1], PROPS_CLIENT_XY) / getDistance(start[0], start[1], PROPS_CLIENT_XY);
-}
-
-var MOUSE_INPUT_MAP = {
-    mousedown: INPUT_START,
-    mousemove: INPUT_MOVE,
-    mouseup: INPUT_END
-};
-
-var MOUSE_ELEMENT_EVENTS = 'mousedown';
-var MOUSE_WINDOW_EVENTS = 'mousemove mouseup';
-
-/**
- * Mouse events input
- * @constructor
- * @extends Input
- */
-function MouseInput() {
-    this.evEl = MOUSE_ELEMENT_EVENTS;
-    this.evWin = MOUSE_WINDOW_EVENTS;
-
-    this.pressed = false; // mousedown state
-
-    Input.apply(this, arguments);
-}
-
-inherit(MouseInput, Input, {
-    /**
-     * handle mouse events
-     * @param {Object} ev
-     */
-    handler: function MEhandler(ev) {
-        var eventType = MOUSE_INPUT_MAP[ev.type];
-
-        // on start we want to have the left mouse button down
-        if (eventType & INPUT_START && ev.button === 0) {
-            this.pressed = true;
-        }
-
-        if (eventType & INPUT_MOVE && ev.which !== 1) {
-            eventType = INPUT_END;
-        }
-
-        // mouse must be down
-        if (!this.pressed) {
-            return;
-        }
-
-        if (eventType & INPUT_END) {
-            this.pressed = false;
-        }
-
-        this.callback(this.manager, eventType, {
-            pointers: [ev],
-            changedPointers: [ev],
-            pointerType: INPUT_TYPE_MOUSE,
-            srcEvent: ev
-        });
-    }
-});
-
-var POINTER_INPUT_MAP = {
-    pointerdown: INPUT_START,
-    pointermove: INPUT_MOVE,
-    pointerup: INPUT_END,
-    pointercancel: INPUT_CANCEL,
-    pointerout: INPUT_CANCEL
-};
-
-// in IE10 the pointer types is defined as an enum
-var IE10_POINTER_TYPE_ENUM = {
-    2: INPUT_TYPE_TOUCH,
-    3: INPUT_TYPE_PEN,
-    4: INPUT_TYPE_MOUSE,
-    5: INPUT_TYPE_KINECT // see https://twitter.com/jacobrossi/status/480596438489890816
-};
-
-var POINTER_ELEMENT_EVENTS = 'pointerdown';
-var POINTER_WINDOW_EVENTS = 'pointermove pointerup pointercancel';
-
-// IE10 has prefixed support, and case-sensitive
-if (window.MSPointerEvent && !window.PointerEvent) {
-    POINTER_ELEMENT_EVENTS = 'MSPointerDown';
-    POINTER_WINDOW_EVENTS = 'MSPointerMove MSPointerUp MSPointerCancel';
-}
-
-/**
- * Pointer events input
- * @constructor
- * @extends Input
- */
-function PointerEventInput() {
-    this.evEl = POINTER_ELEMENT_EVENTS;
-    this.evWin = POINTER_WINDOW_EVENTS;
-
-    Input.apply(this, arguments);
-
-    this.store = (this.manager.session.pointerEvents = []);
-}
-
-inherit(PointerEventInput, Input, {
-    /**
-     * handle mouse events
-     * @param {Object} ev
-     */
-    handler: function PEhandler(ev) {
-        var store = this.store;
-        var removePointer = false;
-
-        var eventTypeNormalized = ev.type.toLowerCase().replace('ms', '');
-        var eventType = POINTER_INPUT_MAP[eventTypeNormalized];
-        var pointerType = IE10_POINTER_TYPE_ENUM[ev.pointerType] || ev.pointerType;
-
-        var isTouch = (pointerType == INPUT_TYPE_TOUCH);
-
-        // get index of the event in the store
-        var storeIndex = inArray(store, ev.pointerId, 'pointerId');
-
-        // start and mouse must be down
-        if (eventType & INPUT_START && (ev.button === 0 || isTouch)) {
-            if (storeIndex < 0) {
-                store.push(ev);
-                storeIndex = store.length - 1;
-            }
-        } else if (eventType & (INPUT_END | INPUT_CANCEL)) {
-            removePointer = true;
-        }
-
-        // it not found, so the pointer hasn't been down (so it's probably a hover)
-        if (storeIndex < 0) {
-            return;
-        }
-
-        // update the event in the store
-        store[storeIndex] = ev;
-
-        this.callback(this.manager, eventType, {
-            pointers: store,
-            changedPointers: [ev],
-            pointerType: pointerType,
-            srcEvent: ev
-        });
-
-        if (removePointer) {
-            // remove from the store
-            store.splice(storeIndex, 1);
-        }
-    }
-});
-
-var SINGLE_TOUCH_INPUT_MAP = {
-    touchstart: INPUT_START,
-    touchmove: INPUT_MOVE,
-    touchend: INPUT_END,
-    touchcancel: INPUT_CANCEL
-};
-
-var SINGLE_TOUCH_TARGET_EVENTS = 'touchstart';
-var SINGLE_TOUCH_WINDOW_EVENTS = 'touchstart touchmove touchend touchcancel';
-
-/**
- * Touch events input
- * @constructor
- * @extends Input
- */
-function SingleTouchInput() {
-    this.evTarget = SINGLE_TOUCH_TARGET_EVENTS;
-    this.evWin = SINGLE_TOUCH_WINDOW_EVENTS;
-    this.started = false;
-
-    Input.apply(this, arguments);
-}
-
-inherit(SingleTouchInput, Input, {
-    handler: function TEhandler(ev) {
-        var type = SINGLE_TOUCH_INPUT_MAP[ev.type];
-
-        // should we handle the touch events?
-        if (type === INPUT_START) {
-            this.started = true;
-        }
-
-        if (!this.started) {
-            return;
-        }
-
-        var touches = normalizeSingleTouches.call(this, ev, type);
-
-        // when done, reset the started state
-        if (type & (INPUT_END | INPUT_CANCEL) && touches[0].length - touches[1].length === 0) {
-            this.started = false;
-        }
-
-        this.callback(this.manager, type, {
-            pointers: touches[0],
-            changedPointers: touches[1],
-            pointerType: INPUT_TYPE_TOUCH,
-            srcEvent: ev
-        });
-    }
-});
-
-/**
- * @this {TouchInput}
- * @param {Object} ev
- * @param {Number} type flag
- * @returns {undefined|Array} [all, changed]
- */
-function normalizeSingleTouches(ev, type) {
-    var all = toArray(ev.touches);
-    var changed = toArray(ev.changedTouches);
-
-    if (type & (INPUT_END | INPUT_CANCEL)) {
-        all = uniqueArray(all.concat(changed), 'identifier', true);
-    }
-
-    return [all, changed];
-}
-
-var TOUCH_INPUT_MAP = {
-    touchstart: INPUT_START,
-    touchmove: INPUT_MOVE,
-    touchend: INPUT_END,
-    touchcancel: INPUT_CANCEL
-};
-
-var TOUCH_TARGET_EVENTS = 'touchstart touchmove touchend touchcancel';
-
-/**
- * Multi-user touch events input
- * @constructor
- * @extends Input
- */
-function TouchInput() {
-    this.evTarget = TOUCH_TARGET_EVENTS;
-    this.targetIds = {};
-
-    Input.apply(this, arguments);
-}
-
-inherit(TouchInput, Input, {
-    handler: function MTEhandler(ev) {
-        var type = TOUCH_INPUT_MAP[ev.type];
-        var touches = getTouches.call(this, ev, type);
-        if (!touches) {
-            return;
-        }
-
-        this.callback(this.manager, type, {
-            pointers: touches[0],
-            changedPointers: touches[1],
-            pointerType: INPUT_TYPE_TOUCH,
-            srcEvent: ev
-        });
-    }
-});
-
-/**
- * @this {TouchInput}
- * @param {Object} ev
- * @param {Number} type flag
- * @returns {undefined|Array} [all, changed]
- */
-function getTouches(ev, type) {
-    var allTouches = toArray(ev.touches);
-    var targetIds = this.targetIds;
-
-    // when there is only one touch, the process can be simplified
-    if (type & (INPUT_START | INPUT_MOVE) && allTouches.length === 1) {
-        targetIds[allTouches[0].identifier] = true;
-        return [allTouches, allTouches];
-    }
-
-    var i,
-        targetTouches,
-        changedTouches = toArray(ev.changedTouches),
-        changedTargetTouches = [],
-        target = this.target;
-
-    // get target touches from touches
-    targetTouches = allTouches.filter(function(touch) {
-        return hasParent(touch.target, target);
-    });
-
-    // collect touches
-    if (type === INPUT_START) {
-        i = 0;
-        while (i < targetTouches.length) {
-            targetIds[targetTouches[i].identifier] = true;
-            i++;
-        }
-    }
-
-    // filter changed touches to only contain touches that exist in the collected target ids
-    i = 0;
-    while (i < changedTouches.length) {
-        if (targetIds[changedTouches[i].identifier]) {
-            changedTargetTouches.push(changedTouches[i]);
-        }
-
-        // cleanup removed touches
-        if (type & (INPUT_END | INPUT_CANCEL)) {
-            delete targetIds[changedTouches[i].identifier];
-        }
-        i++;
-    }
-
-    if (!changedTargetTouches.length) {
-        return;
-    }
-
-    return [
-        // merge targetTouches with changedTargetTouches so it contains ALL touches, including 'end' and 'cancel'
-        uniqueArray(targetTouches.concat(changedTargetTouches), 'identifier', true),
-        changedTargetTouches
-    ];
-}
-
-/**
- * Combined touch and mouse input
- *
- * Touch has a higher priority then mouse, and while touching no mouse events are allowed.
- * This because touch devices also emit mouse events while doing a touch.
- *
- * @constructor
- * @extends Input
- */
-
-var DEDUP_TIMEOUT = 2500;
-var DEDUP_DISTANCE = 25;
-
-function TouchMouseInput() {
-    Input.apply(this, arguments);
-
-    var handler = bindFn(this.handler, this);
-    this.touch = new TouchInput(this.manager, handler);
-    this.mouse = new MouseInput(this.manager, handler);
-
-    this.primaryTouch = null;
-    this.lastTouches = [];
-}
-
-inherit(TouchMouseInput, Input, {
-    /**
-     * handle mouse and touch events
-     * @param {Hammer} manager
-     * @param {String} inputEvent
-     * @param {Object} inputData
-     */
-    handler: function TMEhandler(manager, inputEvent, inputData) {
-        var isTouch = (inputData.pointerType == INPUT_TYPE_TOUCH),
-            isMouse = (inputData.pointerType == INPUT_TYPE_MOUSE);
-
-        if (isMouse && inputData.sourceCapabilities && inputData.sourceCapabilities.firesTouchEvents) {
-            return;
-        }
-
-        // when we're in a touch event, record touches to  de-dupe synthetic mouse event
-        if (isTouch) {
-            recordTouches.call(this, inputEvent, inputData);
-        } else if (isMouse && isSyntheticEvent.call(this, inputData)) {
-            return;
-        }
-
-        this.callback(manager, inputEvent, inputData);
-    },
-
-    /**
-     * remove the event listeners
-     */
-    destroy: function destroy() {
-        this.touch.destroy();
-        this.mouse.destroy();
-    }
-});
-
-function recordTouches(eventType, eventData) {
-    if (eventType & INPUT_START) {
-        this.primaryTouch = eventData.changedPointers[0].identifier;
-        setLastTouch.call(this, eventData);
-    } else if (eventType & (INPUT_END | INPUT_CANCEL)) {
-        setLastTouch.call(this, eventData);
-    }
-}
-
-function setLastTouch(eventData) {
-    var touch = eventData.changedPointers[0];
-
-    if (touch.identifier === this.primaryTouch) {
-        var lastTouch = {x: touch.clientX, y: touch.clientY};
-        this.lastTouches.push(lastTouch);
-        var lts = this.lastTouches;
-        var removeLastTouch = function() {
-            var i = lts.indexOf(lastTouch);
-            if (i > -1) {
-                lts.splice(i, 1);
-            }
-        };
-        setTimeout(removeLastTouch, DEDUP_TIMEOUT);
-    }
-}
-
-function isSyntheticEvent(eventData) {
-    var x = eventData.srcEvent.clientX, y = eventData.srcEvent.clientY;
-    for (var i = 0; i < this.lastTouches.length; i++) {
-        var t = this.lastTouches[i];
-        var dx = Math.abs(x - t.x), dy = Math.abs(y - t.y);
-        if (dx <= DEDUP_DISTANCE && dy <= DEDUP_DISTANCE) {
-            return true;
-        }
-    }
-    return false;
-}
-
-var PREFIXED_TOUCH_ACTION = prefixed(TEST_ELEMENT.style, 'touchAction');
-var NATIVE_TOUCH_ACTION = PREFIXED_TOUCH_ACTION !== undefined;
-
-// magical touchAction value
-var TOUCH_ACTION_COMPUTE = 'compute';
-var TOUCH_ACTION_AUTO = 'auto';
-var TOUCH_ACTION_MANIPULATION = 'manipulation'; // not implemented
-var TOUCH_ACTION_NONE = 'none';
-var TOUCH_ACTION_PAN_X = 'pan-x';
-var TOUCH_ACTION_PAN_Y = 'pan-y';
-var TOUCH_ACTION_MAP = getTouchActionProps();
-
-/**
- * Touch Action
- * sets the touchAction property or uses the js alternative
- * @param {Manager} manager
- * @param {String} value
- * @constructor
- */
-function TouchAction(manager, value) {
-    this.manager = manager;
-    this.set(value);
-}
-
-TouchAction.prototype = {
-    /**
-     * set the touchAction value on the element or enable the polyfill
-     * @param {String} value
-     */
-    set: function(value) {
-        // find out the touch-action by the event handlers
-        if (value == TOUCH_ACTION_COMPUTE) {
-            value = this.compute();
-        }
-
-        if (NATIVE_TOUCH_ACTION && this.manager.element.style && TOUCH_ACTION_MAP[value]) {
-            this.manager.element.style[PREFIXED_TOUCH_ACTION] = value;
-        }
-        this.actions = value.toLowerCase().trim();
-    },
-
-    /**
-     * just re-set the touchAction value
-     */
-    update: function() {
-        this.set(this.manager.options.touchAction);
-    },
-
-    /**
-     * compute the value for the touchAction property based on the recognizer's settings
-     * @returns {String} value
-     */
-    compute: function() {
-        var actions = [];
-        each(this.manager.recognizers, function(recognizer) {
-            if (boolOrFn(recognizer.options.enable, [recognizer])) {
-                actions = actions.concat(recognizer.getTouchAction());
-            }
-        });
-        return cleanTouchActions(actions.join(' '));
-    },
-
-    /**
-     * this method is called on each input cycle and provides the preventing of the browser behavior
-     * @param {Object} input
-     */
-    preventDefaults: function(input) {
-        var srcEvent = input.srcEvent;
-        var direction = input.offsetDirection;
-
-        // if the touch action did prevented once this session
-        if (this.manager.session.prevented) {
-            srcEvent.preventDefault();
-            return;
-        }
-
-        var actions = this.actions;
-        var hasNone = inStr(actions, TOUCH_ACTION_NONE) && !TOUCH_ACTION_MAP[TOUCH_ACTION_NONE];
-        var hasPanY = inStr(actions, TOUCH_ACTION_PAN_Y) && !TOUCH_ACTION_MAP[TOUCH_ACTION_PAN_Y];
-        var hasPanX = inStr(actions, TOUCH_ACTION_PAN_X) && !TOUCH_ACTION_MAP[TOUCH_ACTION_PAN_X];
-
-        if (hasNone) {
-            //do not prevent defaults if this is a tap gesture
-
-            var isTapPointer = input.pointers.length === 1;
-            var isTapMovement = input.distance < 2;
-            var isTapTouchTime = input.deltaTime < 250;
-
-            if (isTapPointer && isTapMovement && isTapTouchTime) {
-                return;
-            }
-        }
-
-        if (hasPanX && hasPanY) {
-            // `pan-x pan-y` means browser handles all scrolling/panning, do not prevent
-            return;
-        }
-
-        if (hasNone ||
-            (hasPanY && direction & DIRECTION_HORIZONTAL) ||
-            (hasPanX && direction & DIRECTION_VERTICAL)) {
-            return this.preventSrc(srcEvent);
-        }
-    },
-
-    /**
-     * call preventDefault to prevent the browser's default behavior (scrolling in most cases)
-     * @param {Object} srcEvent
-     */
-    preventSrc: function(srcEvent) {
-        this.manager.session.prevented = true;
-        srcEvent.preventDefault();
-    }
-};
-
-/**
- * when the touchActions are collected they are not a valid value, so we need to clean things up. *
- * @param {String} actions
- * @returns {*}
- */
-function cleanTouchActions(actions) {
-    // none
-    if (inStr(actions, TOUCH_ACTION_NONE)) {
-        return TOUCH_ACTION_NONE;
-    }
-
-    var hasPanX = inStr(actions, TOUCH_ACTION_PAN_X);
-    var hasPanY = inStr(actions, TOUCH_ACTION_PAN_Y);
-
-    // if both pan-x and pan-y are set (different recognizers
-    // for different directions, e.g. horizontal pan but vertical swipe?)
-    // we need none (as otherwise with pan-x pan-y combined none of these
-    // recognizers will work, since the browser would handle all panning
-    if (hasPanX && hasPanY) {
-        return TOUCH_ACTION_NONE;
-    }
-
-    // pan-x OR pan-y
-    if (hasPanX || hasPanY) {
-        return hasPanX ? TOUCH_ACTION_PAN_X : TOUCH_ACTION_PAN_Y;
-    }
-
-    // manipulation
-    if (inStr(actions, TOUCH_ACTION_MANIPULATION)) {
-        return TOUCH_ACTION_MANIPULATION;
-    }
-
-    return TOUCH_ACTION_AUTO;
-}
-
-function getTouchActionProps() {
-    if (!NATIVE_TOUCH_ACTION) {
-        return false;
-    }
-    var touchMap = {};
-    var cssSupports = window.CSS && window.CSS.supports;
-    ['auto', 'manipulation', 'pan-y', 'pan-x', 'pan-x pan-y', 'none'].forEach(function(val) {
-
-        // If css.supports is not supported but there is native touch-action assume it supports
-        // all values. This is the case for IE 10 and 11.
-        touchMap[val] = cssSupports ? window.CSS.supports('touch-action', val) : true;
-    });
-    return touchMap;
-}
-
-/**
- * Recognizer flow explained; *
- * All recognizers have the initial state of POSSIBLE when a input session starts.
- * The definition of a input session is from the first input until the last input, with all it's movement in it. *
- * Example session for mouse-input: mousedown -> mousemove -> mouseup
- *
- * On each recognizing cycle (see Manager.recognize) the .recognize() method is executed
- * which determines with state it should be.
- *
- * If the recognizer has the state FAILED, CANCELLED or RECOGNIZED (equals ENDED), it is reset to
- * POSSIBLE to give it another change on the next cycle.
- *
- *               Possible
- *                  |
- *            +-----+---------------+
- *            |                     |
- *      +-----+-----+               |
- *      |           |               |
- *   Failed      Cancelled          |
- *                          +-------+------+
- *                          |              |
- *                      Recognized       Began
- *                                         |
- *                                      Changed
- *                                         |
- *                                  Ended/Recognized
- */
-var STATE_POSSIBLE = 1;
-var STATE_BEGAN = 2;
-var STATE_CHANGED = 4;
-var STATE_ENDED = 8;
-var STATE_RECOGNIZED = STATE_ENDED;
-var STATE_CANCELLED = 16;
-var STATE_FAILED = 32;
-
-/**
- * Recognizer
- * Every recognizer needs to extend from this class.
- * @constructor
- * @param {Object} options
- */
-function Recognizer(options) {
-    this.options = assign({}, this.defaults, options || {});
-
-    this.id = uniqueId();
-
-    this.manager = null;
-
-    // default is enable true
-    this.options.enable = ifUndefined(this.options.enable, true);
-
-    this.state = STATE_POSSIBLE;
-
-    this.simultaneous = {};
-    this.requireFail = [];
-}
-
-Recognizer.prototype = {
-    /**
-     * @virtual
-     * @type {Object}
-     */
-    defaults: {},
-
-    /**
-     * set options
-     * @param {Object} options
-     * @return {Recognizer}
-     */
-    set: function(options) {
-        assign(this.options, options);
-
-        // also update the touchAction, in case something changed about the directions/enabled state
-        this.manager && this.manager.touchAction.update();
-        return this;
-    },
-
-    /**
-     * recognize simultaneous with an other recognizer.
-     * @param {Recognizer} otherRecognizer
-     * @returns {Recognizer} this
-     */
-    recognizeWith: function(otherRecognizer) {
-        if (invokeArrayArg(otherRecognizer, 'recognizeWith', this)) {
-            return this;
-        }
-
-        var simultaneous = this.simultaneous;
-        otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
-        if (!simultaneous[otherRecognizer.id]) {
-            simultaneous[otherRecognizer.id] = otherRecognizer;
-            otherRecognizer.recognizeWith(this);
-        }
-        return this;
-    },
-
-    /**
-     * drop the simultaneous link. it doesnt remove the link on the other recognizer.
-     * @param {Recognizer} otherRecognizer
-     * @returns {Recognizer} this
-     */
-    dropRecognizeWith: function(otherRecognizer) {
-        if (invokeArrayArg(otherRecognizer, 'dropRecognizeWith', this)) {
-            return this;
-        }
-
-        otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
-        delete this.simultaneous[otherRecognizer.id];
-        return this;
-    },
-
-    /**
-     * recognizer can only run when an other is failing
-     * @param {Recognizer} otherRecognizer
-     * @returns {Recognizer} this
-     */
-    requireFailure: function(otherRecognizer) {
-        if (invokeArrayArg(otherRecognizer, 'requireFailure', this)) {
-            return this;
-        }
-
-        var requireFail = this.requireFail;
-        otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
-        if (inArray(requireFail, otherRecognizer) === -1) {
-            requireFail.push(otherRecognizer);
-            otherRecognizer.requireFailure(this);
-        }
-        return this;
-    },
-
-    /**
-     * drop the requireFailure link. it does not remove the link on the other recognizer.
-     * @param {Recognizer} otherRecognizer
-     * @returns {Recognizer} this
-     */
-    dropRequireFailure: function(otherRecognizer) {
-        if (invokeArrayArg(otherRecognizer, 'dropRequireFailure', this)) {
-            return this;
-        }
-
-        otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
-        var index = inArray(this.requireFail, otherRecognizer);
-        if (index > -1) {
-            this.requireFail.splice(index, 1);
-        }
-        return this;
-    },
-
-    /**
-     * has require failures boolean
-     * @returns {boolean}
-     */
-    hasRequireFailures: function() {
-        return this.requireFail.length > 0;
-    },
-
-    /**
-     * if the recognizer can recognize simultaneous with an other recognizer
-     * @param {Recognizer} otherRecognizer
-     * @returns {Boolean}
-     */
-    canRecognizeWith: function(otherRecognizer) {
-        return !!this.simultaneous[otherRecognizer.id];
-    },
-
-    /**
-     * You should use `tryEmit` instead of `emit` directly to check
-     * that all the needed recognizers has failed before emitting.
-     * @param {Object} input
-     */
-    emit: function(input) {
-        var self = this;
-        var state = this.state;
-
-        function emit(event) {
-            self.manager.emit(event, input);
-        }
-
-        // 'panstart' and 'panmove'
-        if (state < STATE_ENDED) {
-            emit(self.options.event + stateStr(state));
-        }
-
-        emit(self.options.event); // simple 'eventName' events
-
-        if (input.additionalEvent) { // additional event(panleft, panright, pinchin, pinchout...)
-            emit(input.additionalEvent);
-        }
-
-        // panend and pancancel
-        if (state >= STATE_ENDED) {
-            emit(self.options.event + stateStr(state));
-        }
-    },
-
-    /**
-     * Check that all the require failure recognizers has failed,
-     * if true, it emits a gesture event,
-     * otherwise, setup the state to FAILED.
-     * @param {Object} input
-     */
-    tryEmit: function(input) {
-        if (this.canEmit()) {
-            return this.emit(input);
-        }
-        // it's failing anyway
-        this.state = STATE_FAILED;
-    },
-
-    /**
-     * can we emit?
-     * @returns {boolean}
-     */
-    canEmit: function() {
-        var i = 0;
-        while (i < this.requireFail.length) {
-            if (!(this.requireFail[i].state & (STATE_FAILED | STATE_POSSIBLE))) {
-                return false;
-            }
-            i++;
-        }
-        return true;
-    },
-
-    /**
-     * update the recognizer
-     * @param {Object} inputData
-     */
-    recognize: function(inputData) {
-        // make a new copy of the inputData
-        // so we can change the inputData without messing up the other recognizers
-        var inputDataClone = assign({}, inputData);
-
-        // is is enabled and allow recognizing?
-        if (!boolOrFn(this.options.enable, [this, inputDataClone])) {
-            this.reset();
-            this.state = STATE_FAILED;
-            return;
-        }
-
-        // reset when we've reached the end
-        if (this.state & (STATE_RECOGNIZED | STATE_CANCELLED | STATE_FAILED)) {
-            this.state = STATE_POSSIBLE;
-        }
-
-        this.state = this.process(inputDataClone);
-
-        // the recognizer has recognized a gesture
-        // so trigger an event
-        if (this.state & (STATE_BEGAN | STATE_CHANGED | STATE_ENDED | STATE_CANCELLED)) {
-            this.tryEmit(inputDataClone);
-        }
-    },
-
-    /**
-     * return the state of the recognizer
-     * the actual recognizing happens in this method
-     * @virtual
-     * @param {Object} inputData
-     * @returns {Const} STATE
-     */
-    process: function(inputData) { }, // jshint ignore:line
-
-    /**
-     * return the preferred touch-action
-     * @virtual
-     * @returns {Array}
-     */
-    getTouchAction: function() { },
-
-    /**
-     * called when the gesture isn't allowed to recognize
-     * like when another is being recognized or it is disabled
-     * @virtual
-     */
-    reset: function() { }
-};
-
-/**
- * get a usable string, used as event postfix
- * @param {Const} state
- * @returns {String} state
- */
-function stateStr(state) {
-    if (state & STATE_CANCELLED) {
-        return 'cancel';
-    } else if (state & STATE_ENDED) {
-        return 'end';
-    } else if (state & STATE_CHANGED) {
-        return 'move';
-    } else if (state & STATE_BEGAN) {
-        return 'start';
-    }
-    return '';
-}
-
-/**
- * direction cons to string
- * @param {Const} direction
- * @returns {String}
- */
-function directionStr(direction) {
-    if (direction == DIRECTION_DOWN) {
-        return 'down';
-    } else if (direction == DIRECTION_UP) {
-        return 'up';
-    } else if (direction == DIRECTION_LEFT) {
-        return 'left';
-    } else if (direction == DIRECTION_RIGHT) {
-        return 'right';
-    }
-    return '';
-}
-
-/**
- * get a recognizer by name if it is bound to a manager
- * @param {Recognizer|String} otherRecognizer
- * @param {Recognizer} recognizer
- * @returns {Recognizer}
- */
-function getRecognizerByNameIfManager(otherRecognizer, recognizer) {
-    var manager = recognizer.manager;
-    if (manager) {
-        return manager.get(otherRecognizer);
-    }
-    return otherRecognizer;
-}
-
-/**
- * This recognizer is just used as a base for the simple attribute recognizers.
- * @constructor
- * @extends Recognizer
- */
-function AttrRecognizer() {
-    Recognizer.apply(this, arguments);
-}
-
-inherit(AttrRecognizer, Recognizer, {
-    /**
-     * @namespace
-     * @memberof AttrRecognizer
-     */
-    defaults: {
-        /**
-         * @type {Number}
-         * @default 1
-         */
-        pointers: 1
-    },
-
-    /**
-     * Used to check if it the recognizer receives valid input, like input.distance > 10.
-     * @memberof AttrRecognizer
-     * @param {Object} input
-     * @returns {Boolean} recognized
-     */
-    attrTest: function(input) {
-        var optionPointers = this.options.pointers;
-        return optionPointers === 0 || input.pointers.length === optionPointers;
-    },
-
-    /**
-     * Process the input and return the state for the recognizer
-     * @memberof AttrRecognizer
-     * @param {Object} input
-     * @returns {*} State
-     */
-    process: function(input) {
-        var state = this.state;
-        var eventType = input.eventType;
-
-        var isRecognized = state & (STATE_BEGAN | STATE_CHANGED);
-        var isValid = this.attrTest(input);
-
-        // on cancel input and we've recognized before, return STATE_CANCELLED
-        if (isRecognized && (eventType & INPUT_CANCEL || !isValid)) {
-            return state | STATE_CANCELLED;
-        } else if (isRecognized || isValid) {
-            if (eventType & INPUT_END) {
-                return state | STATE_ENDED;
-            } else if (!(state & STATE_BEGAN)) {
-                return STATE_BEGAN;
-            }
-            return state | STATE_CHANGED;
-        }
-        return STATE_FAILED;
-    }
-});
-
-/**
- * Pan
- * Recognized when the pointer is down and moved in the allowed direction.
- * @constructor
- * @extends AttrRecognizer
- */
-function PanRecognizer() {
-    AttrRecognizer.apply(this, arguments);
-
-    this.pX = null;
-    this.pY = null;
-}
-
-inherit(PanRecognizer, AttrRecognizer, {
-    /**
-     * @namespace
-     * @memberof PanRecognizer
-     */
-    defaults: {
-        event: 'pan',
-        threshold: 10,
-        pointers: 1,
-        direction: DIRECTION_ALL
-    },
-
-    getTouchAction: function() {
-        var direction = this.options.direction;
-        var actions = [];
-        if (direction & DIRECTION_HORIZONTAL) {
-            actions.push(TOUCH_ACTION_PAN_Y);
-        }
-        if (direction & DIRECTION_VERTICAL) {
-            actions.push(TOUCH_ACTION_PAN_X);
-        }
-        return actions;
-    },
-
-    directionTest: function(input) {
-        var options = this.options;
-        var hasMoved = true;
-        var distance = input.distance;
-        var direction = input.direction;
-        var x = input.deltaX;
-        var y = input.deltaY;
-
-        // lock to axis?
-        if (!(direction & options.direction)) {
-            if (options.direction & DIRECTION_HORIZONTAL) {
-                direction = (x === 0) ? DIRECTION_NONE : (x < 0) ? DIRECTION_LEFT : DIRECTION_RIGHT;
-                hasMoved = x != this.pX;
-                distance = Math.abs(input.deltaX);
-            } else {
-                direction = (y === 0) ? DIRECTION_NONE : (y < 0) ? DIRECTION_UP : DIRECTION_DOWN;
-                hasMoved = y != this.pY;
-                distance = Math.abs(input.deltaY);
-            }
-        }
-        input.direction = direction;
-        return hasMoved && distance > options.threshold && direction & options.direction;
-    },
-
-    attrTest: function(input) {
-        return AttrRecognizer.prototype.attrTest.call(this, input) &&
-            (this.state & STATE_BEGAN || (!(this.state & STATE_BEGAN) && this.directionTest(input)));
-    },
-
-    emit: function(input) {
-
-        this.pX = input.deltaX;
-        this.pY = input.deltaY;
-
-        var direction = directionStr(input.direction);
-
-        if (direction) {
-            input.additionalEvent = this.options.event + direction;
-        }
-        this._super.emit.call(this, input);
-    }
-});
-
-/**
- * Pinch
- * Recognized when two or more pointers are moving toward (zoom-in) or away from each other (zoom-out).
- * @constructor
- * @extends AttrRecognizer
- */
-function PinchRecognizer() {
-    AttrRecognizer.apply(this, arguments);
-}
-
-inherit(PinchRecognizer, AttrRecognizer, {
-    /**
-     * @namespace
-     * @memberof PinchRecognizer
-     */
-    defaults: {
-        event: 'pinch',
-        threshold: 0,
-        pointers: 2
-    },
-
-    getTouchAction: function() {
-        return [TOUCH_ACTION_NONE];
-    },
-
-    attrTest: function(input) {
-        return this._super.attrTest.call(this, input) &&
-            (Math.abs(input.scale - 1) > this.options.threshold || this.state & STATE_BEGAN);
-    },
-
-    emit: function(input) {
-        if (input.scale !== 1) {
-            var inOut = input.scale < 1 ? 'in' : 'out';
-            input.additionalEvent = this.options.event + inOut;
-        }
-        this._super.emit.call(this, input);
-    }
-});
-
-/**
- * Press
- * Recognized when the pointer is down for x ms without any movement.
- * @constructor
- * @extends Recognizer
- */
-function PressRecognizer() {
-    Recognizer.apply(this, arguments);
-
-    this._timer = null;
-    this._input = null;
-}
-
-inherit(PressRecognizer, Recognizer, {
-    /**
-     * @namespace
-     * @memberof PressRecognizer
-     */
-    defaults: {
-        event: 'press',
-        pointers: 1,
-        time: 251, // minimal time of the pointer to be pressed
-        threshold: 9 // a minimal movement is ok, but keep it low
-    },
-
-    getTouchAction: function() {
-        return [TOUCH_ACTION_AUTO];
-    },
-
-    process: function(input) {
-        var options = this.options;
-        var validPointers = input.pointers.length === options.pointers;
-        var validMovement = input.distance < options.threshold;
-        var validTime = input.deltaTime > options.time;
-
-        this._input = input;
-
-        // we only allow little movement
-        // and we've reached an end event, so a tap is possible
-        if (!validMovement || !validPointers || (input.eventType & (INPUT_END | INPUT_CANCEL) && !validTime)) {
-            this.reset();
-        } else if (input.eventType & INPUT_START) {
-            this.reset();
-            this._timer = setTimeoutContext(function() {
-                this.state = STATE_RECOGNIZED;
-                this.tryEmit();
-            }, options.time, this);
-        } else if (input.eventType & INPUT_END) {
-            return STATE_RECOGNIZED;
-        }
-        return STATE_FAILED;
-    },
-
-    reset: function() {
-        clearTimeout(this._timer);
-    },
-
-    emit: function(input) {
-        if (this.state !== STATE_RECOGNIZED) {
-            return;
-        }
-
-        if (input && (input.eventType & INPUT_END)) {
-            this.manager.emit(this.options.event + 'up', input);
-        } else {
-            this._input.timeStamp = now();
-            this.manager.emit(this.options.event, this._input);
-        }
-    }
-});
-
-/**
- * Rotate
- * Recognized when two or more pointer are moving in a circular motion.
- * @constructor
- * @extends AttrRecognizer
- */
-function RotateRecognizer() {
-    AttrRecognizer.apply(this, arguments);
-}
-
-inherit(RotateRecognizer, AttrRecognizer, {
-    /**
-     * @namespace
-     * @memberof RotateRecognizer
-     */
-    defaults: {
-        event: 'rotate',
-        threshold: 0,
-        pointers: 2
-    },
-
-    getTouchAction: function() {
-        return [TOUCH_ACTION_NONE];
-    },
-
-    attrTest: function(input) {
-        return this._super.attrTest.call(this, input) &&
-            (Math.abs(input.rotation) > this.options.threshold || this.state & STATE_BEGAN);
-    }
-});
-
-/**
- * Swipe
- * Recognized when the pointer is moving fast (velocity), with enough distance in the allowed direction.
- * @constructor
- * @extends AttrRecognizer
- */
-function SwipeRecognizer() {
-    AttrRecognizer.apply(this, arguments);
-}
-
-inherit(SwipeRecognizer, AttrRecognizer, {
-    /**
-     * @namespace
-     * @memberof SwipeRecognizer
-     */
-    defaults: {
-        event: 'swipe',
-        threshold: 10,
-        velocity: 0.3,
-        direction: DIRECTION_HORIZONTAL | DIRECTION_VERTICAL,
-        pointers: 1
-    },
-
-    getTouchAction: function() {
-        return PanRecognizer.prototype.getTouchAction.call(this);
-    },
-
-    attrTest: function(input) {
-        var direction = this.options.direction;
-        var velocity;
-
-        if (direction & (DIRECTION_HORIZONTAL | DIRECTION_VERTICAL)) {
-            velocity = input.overallVelocity;
-        } else if (direction & DIRECTION_HORIZONTAL) {
-            velocity = input.overallVelocityX;
-        } else if (direction & DIRECTION_VERTICAL) {
-            velocity = input.overallVelocityY;
-        }
-
-        return this._super.attrTest.call(this, input) &&
-            direction & input.offsetDirection &&
-            input.distance > this.options.threshold &&
-            input.maxPointers == this.options.pointers &&
-            abs(velocity) > this.options.velocity && input.eventType & INPUT_END;
-    },
-
-    emit: function(input) {
-        var direction = directionStr(input.offsetDirection);
-        if (direction) {
-            this.manager.emit(this.options.event + direction, input);
-        }
-
-        this.manager.emit(this.options.event, input);
-    }
-});
-
-/**
- * A tap is ecognized when the pointer is doing a small tap/click. Multiple taps are recognized if they occur
- * between the given interval and position. The delay option can be used to recognize multi-taps without firing
- * a single tap.
- *
- * The eventData from the emitted event contains the property `tapCount`, which contains the amount of
- * multi-taps being recognized.
- * @constructor
- * @extends Recognizer
- */
-function TapRecognizer() {
-    Recognizer.apply(this, arguments);
-
-    // previous time and center,
-    // used for tap counting
-    this.pTime = false;
-    this.pCenter = false;
-
-    this._timer = null;
-    this._input = null;
-    this.count = 0;
-}
-
-inherit(TapRecognizer, Recognizer, {
-    /**
-     * @namespace
-     * @memberof PinchRecognizer
-     */
-    defaults: {
-        event: 'tap',
-        pointers: 1,
-        taps: 1,
-        interval: 300, // max time between the multi-tap taps
-        time: 250, // max time of the pointer to be down (like finger on the screen)
-        threshold: 9, // a minimal movement is ok, but keep it low
-        posThreshold: 10 // a multi-tap can be a bit off the initial position
-    },
-
-    getTouchAction: function() {
-        return [TOUCH_ACTION_MANIPULATION];
-    },
-
-    process: function(input) {
-        var options = this.options;
-
-        var validPointers = input.pointers.length === options.pointers;
-        var validMovement = input.distance < options.threshold;
-        var validTouchTime = input.deltaTime < options.time;
-
-        this.reset();
-
-        if ((input.eventType & INPUT_START) && (this.count === 0)) {
-            return this.failTimeout();
-        }
-
-        // we only allow little movement
-        // and we've reached an end event, so a tap is possible
-        if (validMovement && validTouchTime && validPointers) {
-            if (input.eventType != INPUT_END) {
-                return this.failTimeout();
-            }
-
-            var validInterval = this.pTime ? (input.timeStamp - this.pTime < options.interval) : true;
-            var validMultiTap = !this.pCenter || getDistance(this.pCenter, input.center) < options.posThreshold;
-
-            this.pTime = input.timeStamp;
-            this.pCenter = input.center;
-
-            if (!validMultiTap || !validInterval) {
-                this.count = 1;
-            } else {
-                this.count += 1;
-            }
-
-            this._input = input;
-
-            // if tap count matches we have recognized it,
-            // else it has began recognizing...
-            var tapCount = this.count % options.taps;
-            if (tapCount === 0) {
-                // no failing requirements, immediately trigger the tap event
-                // or wait as long as the multitap interval to trigger
-                if (!this.hasRequireFailures()) {
-                    return STATE_RECOGNIZED;
-                } else {
-                    this._timer = setTimeoutContext(function() {
-                        this.state = STATE_RECOGNIZED;
-                        this.tryEmit();
-                    }, options.interval, this);
-                    return STATE_BEGAN;
-                }
-            }
-        }
-        return STATE_FAILED;
-    },
-
-    failTimeout: function() {
-        this._timer = setTimeoutContext(function() {
-            this.state = STATE_FAILED;
-        }, this.options.interval, this);
-        return STATE_FAILED;
-    },
-
-    reset: function() {
-        clearTimeout(this._timer);
-    },
-
-    emit: function() {
-        if (this.state == STATE_RECOGNIZED) {
-            this._input.tapCount = this.count;
-            this.manager.emit(this.options.event, this._input);
-        }
-    }
-});
-
-/**
- * Simple way to create a manager with a default set of recognizers.
- * @param {HTMLElement} element
- * @param {Object} [options]
- * @constructor
- */
-function Hammer(element, options) {
-    options = options || {};
-    options.recognizers = ifUndefined(options.recognizers, Hammer.defaults.preset);
-    return new Manager(element, options);
-}
-
-/**
- * @const {string}
- */
-Hammer.VERSION = '2.0.7';
-
-/**
- * default settings
- * @namespace
- */
-Hammer.defaults = {
-    /**
-     * set if DOM events are being triggered.
-     * But this is slower and unused by simple implementations, so disabled by default.
-     * @type {Boolean}
-     * @default false
-     */
-    domEvents: false,
-
-    /**
-     * The value for the touchAction property/fallback.
-     * When set to `compute` it will magically set the correct value based on the added recognizers.
-     * @type {String}
-     * @default compute
-     */
-    touchAction: TOUCH_ACTION_COMPUTE,
-
-    /**
-     * @type {Boolean}
-     * @default true
-     */
-    enable: true,
-
-    /**
-     * EXPERIMENTAL FEATURE -- can be removed/changed
-     * Change the parent input target element.
-     * If Null, then it is being set the to main element.
-     * @type {Null|EventTarget}
-     * @default null
-     */
-    inputTarget: null,
-
-    /**
-     * force an input class
-     * @type {Null|Function}
-     * @default null
-     */
-    inputClass: null,
-
-    /**
-     * Default recognizer setup when calling `Hammer()`
-     * When creating a new Manager these will be skipped.
-     * @type {Array}
-     */
-    preset: [
-        // RecognizerClass, options, [recognizeWith, ...], [requireFailure, ...]
-        [RotateRecognizer, {enable: false}],
-        [PinchRecognizer, {enable: false}, ['rotate']],
-        [SwipeRecognizer, {direction: DIRECTION_HORIZONTAL}],
-        [PanRecognizer, {direction: DIRECTION_HORIZONTAL}, ['swipe']],
-        [TapRecognizer],
-        [TapRecognizer, {event: 'doubletap', taps: 2}, ['tap']],
-        [PressRecognizer]
-    ],
-
-    /**
-     * Some CSS properties can be used to improve the working of Hammer.
-     * Add them to this method and they will be set when creating a new Manager.
-     * @namespace
-     */
-    cssProps: {
-        /**
-         * Disables text selection to improve the dragging gesture. Mainly for desktop browsers.
-         * @type {String}
-         * @default 'none'
-         */
-        userSelect: 'none',
-
-        /**
-         * Disable the Windows Phone grippers when pressing an element.
-         * @type {String}
-         * @default 'none'
-         */
-        touchSelect: 'none',
-
-        /**
-         * Disables the default callout shown when you touch and hold a touch target.
-         * On iOS, when you touch and hold a touch target such as a link, Safari displays
-         * a callout containing information about the link. This property allows you to disable that callout.
-         * @type {String}
-         * @default 'none'
-         */
-        touchCallout: 'none',
-
-        /**
-         * Specifies whether zooming is enabled. Used by IE10>
-         * @type {String}
-         * @default 'none'
-         */
-        contentZooming: 'none',
-
-        /**
-         * Specifies that an entire element should be draggable instead of its contents. Mainly for desktop browsers.
-         * @type {String}
-         * @default 'none'
-         */
-        userDrag: 'none',
-
-        /**
-         * Overrides the highlight color shown when the user taps a link or a JavaScript
-         * clickable element in iOS. This property obeys the alpha value, if specified.
-         * @type {String}
-         * @default 'rgba(0,0,0,0)'
-         */
-        tapHighlightColor: 'rgba(0,0,0,0)'
-    }
-};
-
-var STOP = 1;
-var FORCED_STOP = 2;
-
-/**
- * Manager
- * @param {HTMLElement} element
- * @param {Object} [options]
- * @constructor
- */
-function Manager(element, options) {
-    this.options = assign({}, Hammer.defaults, options || {});
-
-    this.options.inputTarget = this.options.inputTarget || element;
-
-    this.handlers = {};
-    this.session = {};
-    this.recognizers = [];
-    this.oldCssProps = {};
-
-    this.element = element;
-    this.input = createInputInstance(this);
-    this.touchAction = new TouchAction(this, this.options.touchAction);
-
-    toggleCssProps(this, true);
-
-    each(this.options.recognizers, function(item) {
-        var recognizer = this.add(new (item[0])(item[1]));
-        item[2] && recognizer.recognizeWith(item[2]);
-        item[3] && recognizer.requireFailure(item[3]);
-    }, this);
-}
-
-Manager.prototype = {
-    /**
-     * set options
-     * @param {Object} options
-     * @returns {Manager}
-     */
-    set: function(options) {
-        assign(this.options, options);
-
-        // Options that need a little more setup
-        if (options.touchAction) {
-            this.touchAction.update();
-        }
-        if (options.inputTarget) {
-            // Clean up existing event listeners and reinitialize
-            this.input.destroy();
-            this.input.target = options.inputTarget;
-            this.input.init();
-        }
-        return this;
-    },
-
-    /**
-     * stop recognizing for this session.
-     * This session will be discarded, when a new [input]start event is fired.
-     * When forced, the recognizer cycle is stopped immediately.
-     * @param {Boolean} [force]
-     */
-    stop: function(force) {
-        this.session.stopped = force ? FORCED_STOP : STOP;
-    },
-
-    /**
-     * run the recognizers!
-     * called by the inputHandler function on every movement of the pointers (touches)
-     * it walks through all the recognizers and tries to detect the gesture that is being made
-     * @param {Object} inputData
-     */
-    recognize: function(inputData) {
-        var session = this.session;
-        if (session.stopped) {
-            return;
-        }
-
-        // run the touch-action polyfill
-        this.touchAction.preventDefaults(inputData);
-
-        var recognizer;
-        var recognizers = this.recognizers;
-
-        // this holds the recognizer that is being recognized.
-        // so the recognizer's state needs to be BEGAN, CHANGED, ENDED or RECOGNIZED
-        // if no recognizer is detecting a thing, it is set to `null`
-        var curRecognizer = session.curRecognizer;
-
-        // reset when the last recognizer is recognized
-        // or when we're in a new session
-        if (!curRecognizer || (curRecognizer && curRecognizer.state & STATE_RECOGNIZED)) {
-            curRecognizer = session.curRecognizer = null;
-        }
-
-        var i = 0;
-        while (i < recognizers.length) {
-            recognizer = recognizers[i];
-
-            // find out if we are allowed try to recognize the input for this one.
-            // 1.   allow if the session is NOT forced stopped (see the .stop() method)
-            // 2.   allow if we still haven't recognized a gesture in this session, or the this recognizer is the one
-            //      that is being recognized.
-            // 3.   allow if the recognizer is allowed to run simultaneous with the current recognized recognizer.
-            //      this can be setup with the `recognizeWith()` method on the recognizer.
-            if (session.stopped !== FORCED_STOP && ( // 1
-                    !curRecognizer || recognizer == curRecognizer || // 2
-                    recognizer.canRecognizeWith(curRecognizer))) { // 3
-                recognizer.recognize(inputData);
-            } else {
-                recognizer.reset();
-            }
-
-            // if the recognizer has been recognizing the input as a valid gesture, we want to store this one as the
-            // current active recognizer. but only if we don't already have an active recognizer
-            if (!curRecognizer && recognizer.state & (STATE_BEGAN | STATE_CHANGED | STATE_ENDED)) {
-                curRecognizer = session.curRecognizer = recognizer;
-            }
-            i++;
-        }
-    },
-
-    /**
-     * get a recognizer by its event name.
-     * @param {Recognizer|String} recognizer
-     * @returns {Recognizer|Null}
-     */
-    get: function(recognizer) {
-        if (recognizer instanceof Recognizer) {
-            return recognizer;
-        }
-
-        var recognizers = this.recognizers;
-        for (var i = 0; i < recognizers.length; i++) {
-            if (recognizers[i].options.event == recognizer) {
-                return recognizers[i];
-            }
-        }
-        return null;
-    },
-
-    /**
-     * add a recognizer to the manager
-     * existing recognizers with the same event name will be removed
-     * @param {Recognizer} recognizer
-     * @returns {Recognizer|Manager}
-     */
-    add: function(recognizer) {
-        if (invokeArrayArg(recognizer, 'add', this)) {
-            return this;
-        }
-
-        // remove existing
-        var existing = this.get(recognizer.options.event);
-        if (existing) {
-            this.remove(existing);
-        }
-
-        this.recognizers.push(recognizer);
-        recognizer.manager = this;
-
-        this.touchAction.update();
-        return recognizer;
-    },
-
-    /**
-     * remove a recognizer by name or instance
-     * @param {Recognizer|String} recognizer
-     * @returns {Manager}
-     */
-    remove: function(recognizer) {
-        if (invokeArrayArg(recognizer, 'remove', this)) {
-            return this;
-        }
-
-        recognizer = this.get(recognizer);
-
-        // let's make sure this recognizer exists
-        if (recognizer) {
-            var recognizers = this.recognizers;
-            var index = inArray(recognizers, recognizer);
-
-            if (index !== -1) {
-                recognizers.splice(index, 1);
-                this.touchAction.update();
-            }
-        }
-
-        return this;
-    },
-
-    /**
-     * bind event
-     * @param {String} events
-     * @param {Function} handler
-     * @returns {EventEmitter} this
-     */
-    on: function(events, handler) {
-        if (events === undefined) {
-            return;
-        }
-        if (handler === undefined) {
-            return;
-        }
-
-        var handlers = this.handlers;
-        each(splitStr(events), function(event) {
-            handlers[event] = handlers[event] || [];
-            handlers[event].push(handler);
-        });
-        return this;
-    },
-
-    /**
-     * unbind event, leave emit blank to remove all handlers
-     * @param {String} events
-     * @param {Function} [handler]
-     * @returns {EventEmitter} this
-     */
-    off: function(events, handler) {
-        if (events === undefined) {
-            return;
-        }
-
-        var handlers = this.handlers;
-        each(splitStr(events), function(event) {
-            if (!handler) {
-                delete handlers[event];
-            } else {
-                handlers[event] && handlers[event].splice(inArray(handlers[event], handler), 1);
-            }
-        });
-        return this;
-    },
-
-    /**
-     * emit event to the listeners
-     * @param {String} event
-     * @param {Object} data
-     */
-    emit: function(event, data) {
-        // we also want to trigger dom events
-        if (this.options.domEvents) {
-            triggerDomEvent(event, data);
-        }
-
-        // no handlers, so skip it all
-        var handlers = this.handlers[event] && this.handlers[event].slice();
-        if (!handlers || !handlers.length) {
-            return;
-        }
-
-        data.type = event;
-        data.preventDefault = function() {
-            data.srcEvent.preventDefault();
-        };
-
-        var i = 0;
-        while (i < handlers.length) {
-            handlers[i](data);
-            i++;
-        }
-    },
-
-    /**
-     * destroy the manager and unbinds all events
-     * it doesn't unbind dom events, that is the user own responsibility
-     */
-    destroy: function() {
-        this.element && toggleCssProps(this, false);
-
-        this.handlers = {};
-        this.session = {};
-        this.input.destroy();
-        this.element = null;
-    }
-};
-
-/**
- * add/remove the css properties as defined in manager.options.cssProps
- * @param {Manager} manager
- * @param {Boolean} add
- */
-function toggleCssProps(manager, add) {
-    var element = manager.element;
-    if (!element.style) {
-        return;
-    }
-    var prop;
-    each(manager.options.cssProps, function(value, name) {
-        prop = prefixed(element.style, name);
-        if (add) {
-            manager.oldCssProps[prop] = element.style[prop];
-            element.style[prop] = value;
-        } else {
-            element.style[prop] = manager.oldCssProps[prop] || '';
-        }
-    });
-    if (!add) {
-        manager.oldCssProps = {};
-    }
-}
-
-/**
- * trigger dom event
- * @param {String} event
- * @param {Object} data
- */
-function triggerDomEvent(event, data) {
-    var gestureEvent = document.createEvent('Event');
-    gestureEvent.initEvent(event, true, true);
-    gestureEvent.gesture = data;
-    data.target.dispatchEvent(gestureEvent);
-}
-
-assign(Hammer, {
-    INPUT_START: INPUT_START,
-    INPUT_MOVE: INPUT_MOVE,
-    INPUT_END: INPUT_END,
-    INPUT_CANCEL: INPUT_CANCEL,
-
-    STATE_POSSIBLE: STATE_POSSIBLE,
-    STATE_BEGAN: STATE_BEGAN,
-    STATE_CHANGED: STATE_CHANGED,
-    STATE_ENDED: STATE_ENDED,
-    STATE_RECOGNIZED: STATE_RECOGNIZED,
-    STATE_CANCELLED: STATE_CANCELLED,
-    STATE_FAILED: STATE_FAILED,
-
-    DIRECTION_NONE: DIRECTION_NONE,
-    DIRECTION_LEFT: DIRECTION_LEFT,
-    DIRECTION_RIGHT: DIRECTION_RIGHT,
-    DIRECTION_UP: DIRECTION_UP,
-    DIRECTION_DOWN: DIRECTION_DOWN,
-    DIRECTION_HORIZONTAL: DIRECTION_HORIZONTAL,
-    DIRECTION_VERTICAL: DIRECTION_VERTICAL,
-    DIRECTION_ALL: DIRECTION_ALL,
-
-    Manager: Manager,
-    Input: Input,
-    TouchAction: TouchAction,
-
-    TouchInput: TouchInput,
-    MouseInput: MouseInput,
-    PointerEventInput: PointerEventInput,
-    TouchMouseInput: TouchMouseInput,
-    SingleTouchInput: SingleTouchInput,
-
-    Recognizer: Recognizer,
-    AttrRecognizer: AttrRecognizer,
-    Tap: TapRecognizer,
-    Pan: PanRecognizer,
-    Swipe: SwipeRecognizer,
-    Pinch: PinchRecognizer,
-    Rotate: RotateRecognizer,
-    Press: PressRecognizer,
-
-    on: addEventListeners,
-    off: removeEventListeners,
-    each: each,
-    merge: merge,
-    extend: extend,
-    assign: assign,
-    inherit: inherit,
-    bindFn: bindFn,
-    prefixed: prefixed
-});
-
-// this prevents errors when Hammer is loaded in the presence of an AMD
-//  style loader but by script tag, not by the loader.
-var freeGlobal = (typeof window !== 'undefined' ? window : (typeof self !== 'undefined' ? self : {})); // jshint ignore:line
-freeGlobal.Hammer = Hammer;
-
-if (true) {
-    !(__WEBPACK_AMD_DEFINE_RESULT__ = (function() {
-        return Hammer;
-    }).call(exports, __webpack_require__, exports, module),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-} else if (typeof module != 'undefined' && module.exports) {
-    module.exports = Hammer;
-} else {
-    window[exportName] = Hammer;
-}
-
-})(window, document, 'Hammer');
-
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
- * jQuery Mousewheel 3.1.13
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license
- * http://jquery.org/license
- */
-
-(function (factory) {
-    if ( true ) {
-        // AMD. Register as an anonymous module.
-        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-    } else if (typeof exports === 'object') {
-        // Node/CommonJS style for Browserify
-        module.exports = factory;
-    } else {
-        // Browser globals
-        factory(jQuery);
-    }
-}(function ($) {
-
-    var toFix  = ['wheel', 'mousewheel', 'DOMMouseScroll', 'MozMousePixelScroll'],
-        toBind = ( 'onwheel' in document || document.documentMode >= 9 ) ?
-                    ['wheel'] : ['mousewheel', 'DomMouseScroll', 'MozMousePixelScroll'],
-        slice  = Array.prototype.slice,
-        nullLowestDeltaTimeout, lowestDelta;
-
-    if ( $.event.fixHooks ) {
-        for ( var i = toFix.length; i; ) {
-            $.event.fixHooks[ toFix[--i] ] = $.event.mouseHooks;
-        }
-    }
-
-    var special = $.event.special.mousewheel = {
-        version: '3.1.12',
-
-        setup: function() {
-            if ( this.addEventListener ) {
-                for ( var i = toBind.length; i; ) {
-                    this.addEventListener( toBind[--i], handler, false );
-                }
-            } else {
-                this.onmousewheel = handler;
-            }
-            // Store the line height and page height for this particular element
-            $.data(this, 'mousewheel-line-height', special.getLineHeight(this));
-            $.data(this, 'mousewheel-page-height', special.getPageHeight(this));
-        },
-
-        teardown: function() {
-            if ( this.removeEventListener ) {
-                for ( var i = toBind.length; i; ) {
-                    this.removeEventListener( toBind[--i], handler, false );
-                }
-            } else {
-                this.onmousewheel = null;
-            }
-            // Clean up the data we added to the element
-            $.removeData(this, 'mousewheel-line-height');
-            $.removeData(this, 'mousewheel-page-height');
-        },
-
-        getLineHeight: function(elem) {
-            var $elem = $(elem),
-                $parent = $elem['offsetParent' in $.fn ? 'offsetParent' : 'parent']();
-            if (!$parent.length) {
-                $parent = $('body');
-            }
-            return parseInt($parent.css('fontSize'), 10) || parseInt($elem.css('fontSize'), 10) || 16;
-        },
-
-        getPageHeight: function(elem) {
-            return $(elem).height();
-        },
-
-        settings: {
-            adjustOldDeltas: true, // see shouldAdjustOldDeltas() below
-            normalizeOffset: true  // calls getBoundingClientRect for each event
-        }
-    };
-
-    $.fn.extend({
-        mousewheel: function(fn) {
-            return fn ? this.bind('mousewheel', fn) : this.trigger('mousewheel');
-        },
-
-        unmousewheel: function(fn) {
-            return this.unbind('mousewheel', fn);
-        }
-    });
-
-
-    function handler(event) {
-        var orgEvent   = event || window.event,
-            args       = slice.call(arguments, 1),
-            delta      = 0,
-            deltaX     = 0,
-            deltaY     = 0,
-            absDelta   = 0,
-            offsetX    = 0,
-            offsetY    = 0;
-        event = $.event.fix(orgEvent);
-        event.type = 'mousewheel';
-
-        // Old school scrollwheel delta
-        if ( 'detail'      in orgEvent ) { deltaY = orgEvent.detail * -1;      }
-        if ( 'wheelDelta'  in orgEvent ) { deltaY = orgEvent.wheelDelta;       }
-        if ( 'wheelDeltaY' in orgEvent ) { deltaY = orgEvent.wheelDeltaY;      }
-        if ( 'wheelDeltaX' in orgEvent ) { deltaX = orgEvent.wheelDeltaX * -1; }
-
-        // Firefox < 17 horizontal scrolling related to DOMMouseScroll event
-        if ( 'axis' in orgEvent && orgEvent.axis === orgEvent.HORIZONTAL_AXIS ) {
-            deltaX = deltaY * -1;
-            deltaY = 0;
-        }
-
-        // Set delta to be deltaY or deltaX if deltaY is 0 for backwards compatabilitiy
-        delta = deltaY === 0 ? deltaX : deltaY;
-
-        // New school wheel delta (wheel event)
-        if ( 'deltaY' in orgEvent ) {
-            deltaY = orgEvent.deltaY * -1;
-            delta  = deltaY;
-        }
-        if ( 'deltaX' in orgEvent ) {
-            deltaX = orgEvent.deltaX;
-            if ( deltaY === 0 ) { delta  = deltaX * -1; }
-        }
-
-        // No change actually happened, no reason to go any further
-        if ( deltaY === 0 && deltaX === 0 ) { return; }
-
-        // Need to convert lines and pages to pixels if we aren't already in pixels
-        // There are three delta modes:
-        //   * deltaMode 0 is by pixels, nothing to do
-        //   * deltaMode 1 is by lines
-        //   * deltaMode 2 is by pages
-        if ( orgEvent.deltaMode === 1 ) {
-            var lineHeight = $.data(this, 'mousewheel-line-height');
-            delta  *= lineHeight;
-            deltaY *= lineHeight;
-            deltaX *= lineHeight;
-        } else if ( orgEvent.deltaMode === 2 ) {
-            var pageHeight = $.data(this, 'mousewheel-page-height');
-            delta  *= pageHeight;
-            deltaY *= pageHeight;
-            deltaX *= pageHeight;
-        }
-
-        // Store lowest absolute delta to normalize the delta values
-        absDelta = Math.max( Math.abs(deltaY), Math.abs(deltaX) );
-
-        if ( !lowestDelta || absDelta < lowestDelta ) {
-            lowestDelta = absDelta;
-
-            // Adjust older deltas if necessary
-            if ( shouldAdjustOldDeltas(orgEvent, absDelta) ) {
-                lowestDelta /= 40;
-            }
-        }
-
-        // Adjust older deltas if necessary
-        if ( shouldAdjustOldDeltas(orgEvent, absDelta) ) {
-            // Divide all the things by 40!
-            delta  /= 40;
-            deltaX /= 40;
-            deltaY /= 40;
-        }
-
-        // Get a whole, normalized value for the deltas
-        delta  = Math[ delta  >= 1 ? 'floor' : 'ceil' ](delta  / lowestDelta);
-        deltaX = Math[ deltaX >= 1 ? 'floor' : 'ceil' ](deltaX / lowestDelta);
-        deltaY = Math[ deltaY >= 1 ? 'floor' : 'ceil' ](deltaY / lowestDelta);
-
-        // Normalise offsetX and offsetY properties
-        if ( special.settings.normalizeOffset && this.getBoundingClientRect ) {
-            var boundingRect = this.getBoundingClientRect();
-            offsetX = event.clientX - boundingRect.left;
-            offsetY = event.clientY - boundingRect.top;
-        }
-
-        // Add information to the event object
-        event.deltaX = deltaX;
-        event.deltaY = deltaY;
-        event.deltaFactor = lowestDelta;
-        event.offsetX = offsetX;
-        event.offsetY = offsetY;
-        // Go ahead and set deltaMode to 0 since we converted to pixels
-        // Although this is a little odd since we overwrite the deltaX/Y
-        // properties with normalized deltas.
-        event.deltaMode = 0;
-
-        // Add event and delta to the front of the arguments
-        args.unshift(event, delta, deltaX, deltaY);
-
-        // Clearout lowestDelta after sometime to better
-        // handle multiple device types that give different
-        // a different lowestDelta
-        // Ex: trackpad = 3 and mouse wheel = 120
-        if (nullLowestDeltaTimeout) { clearTimeout(nullLowestDeltaTimeout); }
-        nullLowestDeltaTimeout = setTimeout(nullLowestDelta, 200);
-
-        return ($.event.dispatch || $.event.handle).apply(this, args);
-    }
-
-    function nullLowestDelta() {
-        lowestDelta = null;
-    }
-
-    function shouldAdjustOldDeltas(orgEvent, absDelta) {
-        // If this is an older event and the delta is divisable by 120,
-        // then we are assuming that the browser is treating this as an
-        // older mouse wheel event and that we should divide the deltas
-        // by 40 to try and get a more usable deltaFactor.
-        // Side note, this actually impacts the reported scroll distance
-        // in older browsers and can cause scrolling to be slower than native.
-        // Turn this off by setting $.event.special.mousewheel.settings.adjustOldDeltas to false.
-        return special.settings.adjustOldDeltas && orgEvent.type === 'mousewheel' && absDelta % 120 === 0;
-    }
-
-}));
-
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-module.exports = {"radius":"2px","spacing":"30px","border-default-size":"2px","border-default-color":"#000000","colors":"(\"blue\": #004C79, \"green\": #5cb85c, \"orange\": #DC6053, \"darkblue\": #0a1d29, \"gold\": #edbe5f, \"black\": #000000, \"blacklight\": #111414, \"blacklighter\": #222222, \"greystronger\": #424041, \"greystrong\": #535052, \"grey\": #7A7778, \"greylight\": #DDDDDD, \"greylighter\": #EEEEEE, \"white\": #ffffff, \"none\": transparent)","breakpoints":"(\"xl\": 1400px, \"lg\": 1200px, \"md\": 992px, \"sm\": 768px, \"xs\": 620px, \"xxs\": 520px)","body":"(\"background\": #ffffff, \"font-color\": #424041, \"font-size\": 20px, \"title-font-color\": #111414)","header":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","footer":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","input":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #424041, \"border-size\": 1px, \"placeholder-font-color\": #7A7778, \"radius\": false)","input-focus":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #424041)","input-valid":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #5cb85c)","input-invalid":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #DC6053)","link":"(\"font-color\": #DC6053, \"font-color-hover\": #DC6053, \"font-color-focus\": #DC6053)","btn":"btn","enable-bg":"true","enable-bg-extended":"false","enable-bd":"true","disabled":"disabled","zoomin":"zoomin","zoomout":"zoomout","fadetogrey":"fadetogrey","fadetocolor":"fadetocolor","copy":"copy","no-events":"no-events","no-transition":"no-transition","no-overflow":"no-overflow","hidden":"hidden","invisible":"invisible","ellipsis":"ellipsis","center":"center","center-block":"center-block","fl-left":"fl-left","float-left":"float-left","fl-right":"fl-right","float-right":"float-right","clear":"clear","clear-left":"clear-left","clear-right":"clear-right","clear-after":"clear-after","clear-before":"clear-before","clear-no":"clear-no","text-right":"text-right","txt-right":"txt-right","text-left":"text-left","txt-left":"txt-left","text-center":"text-center","txt-center":"txt-center","force-full":"force-full","block-list__figure":"block-list__figure","block-img__figure":"block-img__figure","img--right":"img--right","img--top":"img--top","img--bottom":"img--bottom","img--left":"img--left","r_16-9":"r_16-9","r_2-1":"r_2-1","r_1-1":"r_1-1","r_1-2":"r_1-2","block-list__wrapper":"block-list__wrapper","block-std":"block-std","block-img__wrapper":"block-img__wrapper","guideline":"guideline","descText":"descText","ft-light":"ft-light","ft-normal":"ft-normal","ft-bold":"ft-bold","ft-bolder":"ft-bolder","ft-i":"ft-i","ft-b":"ft-b","ft-u":"ft-u","ft-u-no":"ft-u-no","ft-upper":"ft-upper","ft-lower":"ft-lower","ft-0-em":"ft-0-em","ft-0-rem":"ft-0-rem","ft-0-1-em":"ft-0-1-em","ft-0-1-rem":"ft-0-1-rem","ft-0-2-em":"ft-0-2-em","ft-0-2-rem":"ft-0-2-rem","ft-0-3-em":"ft-0-3-em","ft-0-3-rem":"ft-0-3-rem","ft-0-4-em":"ft-0-4-em","ft-0-4-rem":"ft-0-4-rem","ft-0-5-em":"ft-0-5-em","ft-0-5-rem":"ft-0-5-rem","ft-0-6-em":"ft-0-6-em","ft-0-6-rem":"ft-0-6-rem","ft-0-7-em":"ft-0-7-em","ft-0-7-rem":"ft-0-7-rem","ft-0-8-em":"ft-0-8-em","ft-0-8-rem":"ft-0-8-rem","ft-0-9-em":"ft-0-9-em","ft-0-9-rem":"ft-0-9-rem","ft-minus-10":"ft-minus-10","ft-plus-10":"ft-plus-10","ft-1-em":"ft-1-em","ft-1-rem":"ft-1-rem","ft-1-1-em":"ft-1-1-em","ft-1-1-rem":"ft-1-1-rem","ft-1-2-em":"ft-1-2-em","ft-1-2-rem":"ft-1-2-rem","ft-1-3-em":"ft-1-3-em","ft-1-3-rem":"ft-1-3-rem","ft-1-4-em":"ft-1-4-em","ft-1-4-rem":"ft-1-4-rem","ft-1-5-em":"ft-1-5-em","ft-1-5-rem":"ft-1-5-rem","ft-1-6-em":"ft-1-6-em","ft-1-6-rem":"ft-1-6-rem","ft-1-7-em":"ft-1-7-em","ft-1-7-rem":"ft-1-7-rem","ft-1-8-em":"ft-1-8-em","ft-1-8-rem":"ft-1-8-rem","ft-1-9-em":"ft-1-9-em","ft-1-9-rem":"ft-1-9-rem","ft-minus-20":"ft-minus-20","ft-plus-20":"ft-plus-20","ft-2-em":"ft-2-em","ft-2-rem":"ft-2-rem","ft-2-1-em":"ft-2-1-em","ft-2-1-rem":"ft-2-1-rem","ft-2-2-em":"ft-2-2-em","ft-2-2-rem":"ft-2-2-rem","ft-2-3-em":"ft-2-3-em","ft-2-3-rem":"ft-2-3-rem","ft-2-4-em":"ft-2-4-em","ft-2-4-rem":"ft-2-4-rem","ft-2-5-em":"ft-2-5-em","ft-2-5-rem":"ft-2-5-rem","ft-2-6-em":"ft-2-6-em","ft-2-6-rem":"ft-2-6-rem","ft-2-7-em":"ft-2-7-em","ft-2-7-rem":"ft-2-7-rem","ft-2-8-em":"ft-2-8-em","ft-2-8-rem":"ft-2-8-rem","ft-2-9-em":"ft-2-9-em","ft-2-9-rem":"ft-2-9-rem","ft-minus-30":"ft-minus-30","ft-plus-30":"ft-plus-30","ft-3-em":"ft-3-em","ft-3-rem":"ft-3-rem","ft-3-1-em":"ft-3-1-em","ft-3-1-rem":"ft-3-1-rem","ft-3-2-em":"ft-3-2-em","ft-3-2-rem":"ft-3-2-rem","ft-3-3-em":"ft-3-3-em","ft-3-3-rem":"ft-3-3-rem","ft-3-4-em":"ft-3-4-em","ft-3-4-rem":"ft-3-4-rem","ft-3-5-em":"ft-3-5-em","ft-3-5-rem":"ft-3-5-rem","ft-3-6-em":"ft-3-6-em","ft-3-6-rem":"ft-3-6-rem","ft-3-7-em":"ft-3-7-em","ft-3-7-rem":"ft-3-7-rem","ft-3-8-em":"ft-3-8-em","ft-3-8-rem":"ft-3-8-rem","ft-3-9-em":"ft-3-9-em","ft-3-9-rem":"ft-3-9-rem","ft-minus-40":"ft-minus-40","ft-plus-40":"ft-plus-40","ft-4-em":"ft-4-em","ft-4-rem":"ft-4-rem","ft-4-1-em":"ft-4-1-em","ft-4-1-rem":"ft-4-1-rem","ft-4-2-em":"ft-4-2-em","ft-4-2-rem":"ft-4-2-rem","ft-4-3-em":"ft-4-3-em","ft-4-3-rem":"ft-4-3-rem","ft-4-4-em":"ft-4-4-em","ft-4-4-rem":"ft-4-4-rem","ft-4-5-em":"ft-4-5-em","ft-4-5-rem":"ft-4-5-rem","ft-4-6-em":"ft-4-6-em","ft-4-6-rem":"ft-4-6-rem","ft-4-7-em":"ft-4-7-em","ft-4-7-rem":"ft-4-7-rem","ft-4-8-em":"ft-4-8-em","ft-4-8-rem":"ft-4-8-rem","ft-4-9-em":"ft-4-9-em","ft-4-9-rem":"ft-4-9-rem","ft-minus-50":"ft-minus-50","ft-plus-50":"ft-plus-50","ft-5-em":"ft-5-em","ft-5-rem":"ft-5-rem","ft-5-1-em":"ft-5-1-em","ft-5-1-rem":"ft-5-1-rem","ft-5-2-em":"ft-5-2-em","ft-5-2-rem":"ft-5-2-rem","ft-5-3-em":"ft-5-3-em","ft-5-3-rem":"ft-5-3-rem","ft-5-4-em":"ft-5-4-em","ft-5-4-rem":"ft-5-4-rem","ft-5-5-em":"ft-5-5-em","ft-5-5-rem":"ft-5-5-rem","ft-5-6-em":"ft-5-6-em","ft-5-6-rem":"ft-5-6-rem","ft-5-7-em":"ft-5-7-em","ft-5-7-rem":"ft-5-7-rem","ft-5-8-em":"ft-5-8-em","ft-5-8-rem":"ft-5-8-rem","ft-5-9-em":"ft-5-9-em","ft-5-9-rem":"ft-5-9-rem","ft-minus-60":"ft-minus-60","ft-plus-60":"ft-plus-60","ft-6-em":"ft-6-em","ft-6-rem":"ft-6-rem","ft-6-1-em":"ft-6-1-em","ft-6-1-rem":"ft-6-1-rem","ft-6-2-em":"ft-6-2-em","ft-6-2-rem":"ft-6-2-rem","ft-6-3-em":"ft-6-3-em","ft-6-3-rem":"ft-6-3-rem","ft-6-4-em":"ft-6-4-em","ft-6-4-rem":"ft-6-4-rem","ft-6-5-em":"ft-6-5-em","ft-6-5-rem":"ft-6-5-rem","ft-6-6-em":"ft-6-6-em","ft-6-6-rem":"ft-6-6-rem","ft-6-7-em":"ft-6-7-em","ft-6-7-rem":"ft-6-7-rem","ft-6-8-em":"ft-6-8-em","ft-6-8-rem":"ft-6-8-rem","ft-6-9-em":"ft-6-9-em","ft-6-9-rem":"ft-6-9-rem","ft-minus-70":"ft-minus-70","ft-plus-70":"ft-plus-70","ft-7-em":"ft-7-em","ft-7-rem":"ft-7-rem","ft-7-1-em":"ft-7-1-em","ft-7-1-rem":"ft-7-1-rem","ft-7-2-em":"ft-7-2-em","ft-7-2-rem":"ft-7-2-rem","ft-7-3-em":"ft-7-3-em","ft-7-3-rem":"ft-7-3-rem","ft-7-4-em":"ft-7-4-em","ft-7-4-rem":"ft-7-4-rem","ft-7-5-em":"ft-7-5-em","ft-7-5-rem":"ft-7-5-rem","ft-7-6-em":"ft-7-6-em","ft-7-6-rem":"ft-7-6-rem","ft-7-7-em":"ft-7-7-em","ft-7-7-rem":"ft-7-7-rem","ft-7-8-em":"ft-7-8-em","ft-7-8-rem":"ft-7-8-rem","ft-7-9-em":"ft-7-9-em","ft-7-9-rem":"ft-7-9-rem","ft-minus-80":"ft-minus-80","ft-plus-80":"ft-plus-80","ft-8-em":"ft-8-em","ft-8-rem":"ft-8-rem","ft-8-1-em":"ft-8-1-em","ft-8-1-rem":"ft-8-1-rem","ft-8-2-em":"ft-8-2-em","ft-8-2-rem":"ft-8-2-rem","ft-8-3-em":"ft-8-3-em","ft-8-3-rem":"ft-8-3-rem","ft-8-4-em":"ft-8-4-em","ft-8-4-rem":"ft-8-4-rem","ft-8-5-em":"ft-8-5-em","ft-8-5-rem":"ft-8-5-rem","ft-8-6-em":"ft-8-6-em","ft-8-6-rem":"ft-8-6-rem","ft-8-7-em":"ft-8-7-em","ft-8-7-rem":"ft-8-7-rem","ft-8-8-em":"ft-8-8-em","ft-8-8-rem":"ft-8-8-rem","ft-8-9-em":"ft-8-9-em","ft-8-9-rem":"ft-8-9-rem","ft-minus-90":"ft-minus-90","ft-plus-90":"ft-plus-90","ft-9-em":"ft-9-em","ft-9-rem":"ft-9-rem","ft-9-1-em":"ft-9-1-em","ft-9-1-rem":"ft-9-1-rem","ft-9-2-em":"ft-9-2-em","ft-9-2-rem":"ft-9-2-rem","ft-9-3-em":"ft-9-3-em","ft-9-3-rem":"ft-9-3-rem","ft-9-4-em":"ft-9-4-em","ft-9-4-rem":"ft-9-4-rem","ft-9-5-em":"ft-9-5-em","ft-9-5-rem":"ft-9-5-rem","ft-9-6-em":"ft-9-6-em","ft-9-6-rem":"ft-9-6-rem","ft-9-7-em":"ft-9-7-em","ft-9-7-rem":"ft-9-7-rem","ft-9-8-em":"ft-9-8-em","ft-9-8-rem":"ft-9-8-rem","ft-9-9-em":"ft-9-9-em","ft-9-9-rem":"ft-9-9-rem","ft-minus-100":"ft-minus-100","ft-plus-100":"ft-plus-100","ft-10-em":"ft-10-em","ft-10-rem":"ft-10-rem","ft-10-1-em":"ft-10-1-em","ft-10-1-rem":"ft-10-1-rem","ft-10-2-em":"ft-10-2-em","ft-10-2-rem":"ft-10-2-rem","ft-10-3-em":"ft-10-3-em","ft-10-3-rem":"ft-10-3-rem","ft-10-4-em":"ft-10-4-em","ft-10-4-rem":"ft-10-4-rem","ft-10-5-em":"ft-10-5-em","ft-10-5-rem":"ft-10-5-rem","ft-10-6-em":"ft-10-6-em","ft-10-6-rem":"ft-10-6-rem","ft-10-7-em":"ft-10-7-em","ft-10-7-rem":"ft-10-7-rem","ft-10-8-em":"ft-10-8-em","ft-10-8-rem":"ft-10-8-rem","ft-10-9-em":"ft-10-9-em","ft-10-9-rem":"ft-10-9-rem","ft-blue":"ft-blue","ft-green":"ft-green","ft-orange":"ft-orange","ft-darkblue":"ft-darkblue","ft-gold":"ft-gold","ft-black":"ft-black","ft-blacklight":"ft-blacklight","ft-blacklighter":"ft-blacklighter","ft-greystronger":"ft-greystronger","ft-greystrong":"ft-greystrong","ft-grey":"ft-grey","ft-greylight":"ft-greylight","ft-greylighter":"ft-greylighter","ft-white":"ft-white","ft-none":"ft-none","rad":"rad","tags":"tags","rad-all":"rad-all","rad-top-left":"rad-top-left","rad-top":"rad-top","rad-left":"rad-left","rad-top-right":"rad-top-right","rad-right":"rad-right","rad-bottom-left":"rad-bottom-left","rad-bottom":"rad-bottom","rad-bottom-right":"rad-bottom-right","m-all":"m-all","m-all-0":"m-all-0","m-all-x2":"m-all-x2","p-all":"p-all","bd":"bd","bd-all":"bd-all","bd-0":"bd-0","bd-all-0":"bd-all-0","bd-1":"bd-1","bd-all-1":"bd-all-1","bd-2":"bd-2","bd-all-2":"bd-all-2","bd-3":"bd-3","bd-all-3":"bd-all-3","bd-4":"bd-4","bd-all-4":"bd-all-4","bd-5":"bd-5","bd-all-5":"bd-all-5","bd-6":"bd-6","bd-all-6":"bd-all-6","bd-7":"bd-7","bd-all-7":"bd-all-7","bd-8":"bd-8","bd-all-8":"bd-all-8","bd-9":"bd-9","bd-all-9":"bd-all-9","bd-10":"bd-10","bd-all-10":"bd-all-10","bd-blue":"bd-blue","bd-all-blue":"bd-all-blue","bd-blue-0":"bd-blue-0","bd-all-blue-0":"bd-all-blue-0","bd-blue-1":"bd-blue-1","bd-all-blue-1":"bd-all-blue-1","bd-blue-2":"bd-blue-2","bd-all-blue-2":"bd-all-blue-2","bd-blue-3":"bd-blue-3","bd-all-blue-3":"bd-all-blue-3","bd-blue-4":"bd-blue-4","bd-all-blue-4":"bd-all-blue-4","bd-blue-5":"bd-blue-5","bd-all-blue-5":"bd-all-blue-5","bd-blue-6":"bd-blue-6","bd-all-blue-6":"bd-all-blue-6","bd-blue-7":"bd-blue-7","bd-all-blue-7":"bd-all-blue-7","bd-blue-8":"bd-blue-8","bd-all-blue-8":"bd-all-blue-8","bd-blue-9":"bd-blue-9","bd-all-blue-9":"bd-all-blue-9","bd-blue-10":"bd-blue-10","bd-all-blue-10":"bd-all-blue-10","bd-green":"bd-green","bd-all-green":"bd-all-green","bd-green-0":"bd-green-0","bd-all-green-0":"bd-all-green-0","bd-green-1":"bd-green-1","bd-all-green-1":"bd-all-green-1","bd-green-2":"bd-green-2","bd-all-green-2":"bd-all-green-2","bd-green-3":"bd-green-3","bd-all-green-3":"bd-all-green-3","bd-green-4":"bd-green-4","bd-all-green-4":"bd-all-green-4","bd-green-5":"bd-green-5","bd-all-green-5":"bd-all-green-5","bd-green-6":"bd-green-6","bd-all-green-6":"bd-all-green-6","bd-green-7":"bd-green-7","bd-all-green-7":"bd-all-green-7","bd-green-8":"bd-green-8","bd-all-green-8":"bd-all-green-8","bd-green-9":"bd-green-9","bd-all-green-9":"bd-all-green-9","bd-green-10":"bd-green-10","bd-all-green-10":"bd-all-green-10","bd-orange":"bd-orange","bd-all-orange":"bd-all-orange","bd-orange-0":"bd-orange-0","bd-all-orange-0":"bd-all-orange-0","bd-orange-1":"bd-orange-1","bd-all-orange-1":"bd-all-orange-1","bd-orange-2":"bd-orange-2","bd-all-orange-2":"bd-all-orange-2","bd-orange-3":"bd-orange-3","bd-all-orange-3":"bd-all-orange-3","bd-orange-4":"bd-orange-4","bd-all-orange-4":"bd-all-orange-4","bd-orange-5":"bd-orange-5","bd-all-orange-5":"bd-all-orange-5","bd-orange-6":"bd-orange-6","bd-all-orange-6":"bd-all-orange-6","bd-orange-7":"bd-orange-7","bd-all-orange-7":"bd-all-orange-7","bd-orange-8":"bd-orange-8","bd-all-orange-8":"bd-all-orange-8","bd-orange-9":"bd-orange-9","bd-all-orange-9":"bd-all-orange-9","bd-orange-10":"bd-orange-10","bd-all-orange-10":"bd-all-orange-10","bd-darkblue":"bd-darkblue","bd-all-darkblue":"bd-all-darkblue","bd-darkblue-0":"bd-darkblue-0","bd-all-darkblue-0":"bd-all-darkblue-0","bd-darkblue-1":"bd-darkblue-1","bd-all-darkblue-1":"bd-all-darkblue-1","bd-darkblue-2":"bd-darkblue-2","bd-all-darkblue-2":"bd-all-darkblue-2","bd-darkblue-3":"bd-darkblue-3","bd-all-darkblue-3":"bd-all-darkblue-3","bd-darkblue-4":"bd-darkblue-4","bd-all-darkblue-4":"bd-all-darkblue-4","bd-darkblue-5":"bd-darkblue-5","bd-all-darkblue-5":"bd-all-darkblue-5","bd-darkblue-6":"bd-darkblue-6","bd-all-darkblue-6":"bd-all-darkblue-6","bd-darkblue-7":"bd-darkblue-7","bd-all-darkblue-7":"bd-all-darkblue-7","bd-darkblue-8":"bd-darkblue-8","bd-all-darkblue-8":"bd-all-darkblue-8","bd-darkblue-9":"bd-darkblue-9","bd-all-darkblue-9":"bd-all-darkblue-9","bd-darkblue-10":"bd-darkblue-10","bd-all-darkblue-10":"bd-all-darkblue-10","bd-gold":"bd-gold","bd-all-gold":"bd-all-gold","bd-gold-0":"bd-gold-0","bd-all-gold-0":"bd-all-gold-0","bd-gold-1":"bd-gold-1","bd-all-gold-1":"bd-all-gold-1","bd-gold-2":"bd-gold-2","bd-all-gold-2":"bd-all-gold-2","bd-gold-3":"bd-gold-3","bd-all-gold-3":"bd-all-gold-3","bd-gold-4":"bd-gold-4","bd-all-gold-4":"bd-all-gold-4","bd-gold-5":"bd-gold-5","bd-all-gold-5":"bd-all-gold-5","bd-gold-6":"bd-gold-6","bd-all-gold-6":"bd-all-gold-6","bd-gold-7":"bd-gold-7","bd-all-gold-7":"bd-all-gold-7","bd-gold-8":"bd-gold-8","bd-all-gold-8":"bd-all-gold-8","bd-gold-9":"bd-gold-9","bd-all-gold-9":"bd-all-gold-9","bd-gold-10":"bd-gold-10","bd-all-gold-10":"bd-all-gold-10","bd-black":"bd-black","bd-all-black":"bd-all-black","bd-black-0":"bd-black-0","bd-all-black-0":"bd-all-black-0","bd-black-1":"bd-black-1","bd-all-black-1":"bd-all-black-1","bd-black-2":"bd-black-2","bd-all-black-2":"bd-all-black-2","bd-black-3":"bd-black-3","bd-all-black-3":"bd-all-black-3","bd-black-4":"bd-black-4","bd-all-black-4":"bd-all-black-4","bd-black-5":"bd-black-5","bd-all-black-5":"bd-all-black-5","bd-black-6":"bd-black-6","bd-all-black-6":"bd-all-black-6","bd-black-7":"bd-black-7","bd-all-black-7":"bd-all-black-7","bd-black-8":"bd-black-8","bd-all-black-8":"bd-all-black-8","bd-black-9":"bd-black-9","bd-all-black-9":"bd-all-black-9","bd-black-10":"bd-black-10","bd-all-black-10":"bd-all-black-10","bd-blacklight":"bd-blacklight","bd-all-blacklight":"bd-all-blacklight","bd-blacklight-0":"bd-blacklight-0","bd-all-blacklight-0":"bd-all-blacklight-0","bd-blacklight-1":"bd-blacklight-1","bd-all-blacklight-1":"bd-all-blacklight-1","bd-blacklight-2":"bd-blacklight-2","bd-all-blacklight-2":"bd-all-blacklight-2","bd-blacklight-3":"bd-blacklight-3","bd-all-blacklight-3":"bd-all-blacklight-3","bd-blacklight-4":"bd-blacklight-4","bd-all-blacklight-4":"bd-all-blacklight-4","bd-blacklight-5":"bd-blacklight-5","bd-all-blacklight-5":"bd-all-blacklight-5","bd-blacklight-6":"bd-blacklight-6","bd-all-blacklight-6":"bd-all-blacklight-6","bd-blacklight-7":"bd-blacklight-7","bd-all-blacklight-7":"bd-all-blacklight-7","bd-blacklight-8":"bd-blacklight-8","bd-all-blacklight-8":"bd-all-blacklight-8","bd-blacklight-9":"bd-blacklight-9","bd-all-blacklight-9":"bd-all-blacklight-9","bd-blacklight-10":"bd-blacklight-10","bd-all-blacklight-10":"bd-all-blacklight-10","bd-blacklighter":"bd-blacklighter","bd-all-blacklighter":"bd-all-blacklighter","bd-blacklighter-0":"bd-blacklighter-0","bd-all-blacklighter-0":"bd-all-blacklighter-0","bd-blacklighter-1":"bd-blacklighter-1","bd-all-blacklighter-1":"bd-all-blacklighter-1","bd-blacklighter-2":"bd-blacklighter-2","bd-all-blacklighter-2":"bd-all-blacklighter-2","bd-blacklighter-3":"bd-blacklighter-3","bd-all-blacklighter-3":"bd-all-blacklighter-3","bd-blacklighter-4":"bd-blacklighter-4","bd-all-blacklighter-4":"bd-all-blacklighter-4","bd-blacklighter-5":"bd-blacklighter-5","bd-all-blacklighter-5":"bd-all-blacklighter-5","bd-blacklighter-6":"bd-blacklighter-6","bd-all-blacklighter-6":"bd-all-blacklighter-6","bd-blacklighter-7":"bd-blacklighter-7","bd-all-blacklighter-7":"bd-all-blacklighter-7","bd-blacklighter-8":"bd-blacklighter-8","bd-all-blacklighter-8":"bd-all-blacklighter-8","bd-blacklighter-9":"bd-blacklighter-9","bd-all-blacklighter-9":"bd-all-blacklighter-9","bd-blacklighter-10":"bd-blacklighter-10","bd-all-blacklighter-10":"bd-all-blacklighter-10","bd-greystronger":"bd-greystronger","bd-all-greystronger":"bd-all-greystronger","bd-greystronger-0":"bd-greystronger-0","bd-all-greystronger-0":"bd-all-greystronger-0","bd-greystronger-1":"bd-greystronger-1","bd-all-greystronger-1":"bd-all-greystronger-1","bd-greystronger-2":"bd-greystronger-2","bd-all-greystronger-2":"bd-all-greystronger-2","bd-greystronger-3":"bd-greystronger-3","bd-all-greystronger-3":"bd-all-greystronger-3","bd-greystronger-4":"bd-greystronger-4","bd-all-greystronger-4":"bd-all-greystronger-4","bd-greystronger-5":"bd-greystronger-5","bd-all-greystronger-5":"bd-all-greystronger-5","bd-greystronger-6":"bd-greystronger-6","bd-all-greystronger-6":"bd-all-greystronger-6","bd-greystronger-7":"bd-greystronger-7","bd-all-greystronger-7":"bd-all-greystronger-7","bd-greystronger-8":"bd-greystronger-8","bd-all-greystronger-8":"bd-all-greystronger-8","bd-greystronger-9":"bd-greystronger-9","bd-all-greystronger-9":"bd-all-greystronger-9","bd-greystronger-10":"bd-greystronger-10","bd-all-greystronger-10":"bd-all-greystronger-10","bd-greystrong":"bd-greystrong","bd-all-greystrong":"bd-all-greystrong","bd-greystrong-0":"bd-greystrong-0","bd-all-greystrong-0":"bd-all-greystrong-0","bd-greystrong-1":"bd-greystrong-1","bd-all-greystrong-1":"bd-all-greystrong-1","bd-greystrong-2":"bd-greystrong-2","bd-all-greystrong-2":"bd-all-greystrong-2","bd-greystrong-3":"bd-greystrong-3","bd-all-greystrong-3":"bd-all-greystrong-3","bd-greystrong-4":"bd-greystrong-4","bd-all-greystrong-4":"bd-all-greystrong-4","bd-greystrong-5":"bd-greystrong-5","bd-all-greystrong-5":"bd-all-greystrong-5","bd-greystrong-6":"bd-greystrong-6","bd-all-greystrong-6":"bd-all-greystrong-6","bd-greystrong-7":"bd-greystrong-7","bd-all-greystrong-7":"bd-all-greystrong-7","bd-greystrong-8":"bd-greystrong-8","bd-all-greystrong-8":"bd-all-greystrong-8","bd-greystrong-9":"bd-greystrong-9","bd-all-greystrong-9":"bd-all-greystrong-9","bd-greystrong-10":"bd-greystrong-10","bd-all-greystrong-10":"bd-all-greystrong-10","bd-grey":"bd-grey","bd-all-grey":"bd-all-grey","bd-grey-0":"bd-grey-0","bd-all-grey-0":"bd-all-grey-0","bd-grey-1":"bd-grey-1","bd-all-grey-1":"bd-all-grey-1","bd-grey-2":"bd-grey-2","bd-all-grey-2":"bd-all-grey-2","bd-grey-3":"bd-grey-3","bd-all-grey-3":"bd-all-grey-3","bd-grey-4":"bd-grey-4","bd-all-grey-4":"bd-all-grey-4","bd-grey-5":"bd-grey-5","bd-all-grey-5":"bd-all-grey-5","bd-grey-6":"bd-grey-6","bd-all-grey-6":"bd-all-grey-6","bd-grey-7":"bd-grey-7","bd-all-grey-7":"bd-all-grey-7","bd-grey-8":"bd-grey-8","bd-all-grey-8":"bd-all-grey-8","bd-grey-9":"bd-grey-9","bd-all-grey-9":"bd-all-grey-9","bd-grey-10":"bd-grey-10","bd-all-grey-10":"bd-all-grey-10","bd-greylight":"bd-greylight","bd-all-greylight":"bd-all-greylight","bd-greylight-0":"bd-greylight-0","bd-all-greylight-0":"bd-all-greylight-0","bd-greylight-1":"bd-greylight-1","bd-all-greylight-1":"bd-all-greylight-1","bd-greylight-2":"bd-greylight-2","bd-all-greylight-2":"bd-all-greylight-2","bd-greylight-3":"bd-greylight-3","bd-all-greylight-3":"bd-all-greylight-3","bd-greylight-4":"bd-greylight-4","bd-all-greylight-4":"bd-all-greylight-4","bd-greylight-5":"bd-greylight-5","bd-all-greylight-5":"bd-all-greylight-5","bd-greylight-6":"bd-greylight-6","bd-all-greylight-6":"bd-all-greylight-6","bd-greylight-7":"bd-greylight-7","bd-all-greylight-7":"bd-all-greylight-7","bd-greylight-8":"bd-greylight-8","bd-all-greylight-8":"bd-all-greylight-8","bd-greylight-9":"bd-greylight-9","bd-all-greylight-9":"bd-all-greylight-9","bd-greylight-10":"bd-greylight-10","bd-all-greylight-10":"bd-all-greylight-10","bd-greylighter":"bd-greylighter","bd-all-greylighter":"bd-all-greylighter","bd-greylighter-0":"bd-greylighter-0","bd-all-greylighter-0":"bd-all-greylighter-0","bd-greylighter-1":"bd-greylighter-1","bd-all-greylighter-1":"bd-all-greylighter-1","bd-greylighter-2":"bd-greylighter-2","bd-all-greylighter-2":"bd-all-greylighter-2","bd-greylighter-3":"bd-greylighter-3","bd-all-greylighter-3":"bd-all-greylighter-3","bd-greylighter-4":"bd-greylighter-4","bd-all-greylighter-4":"bd-all-greylighter-4","bd-greylighter-5":"bd-greylighter-5","bd-all-greylighter-5":"bd-all-greylighter-5","bd-greylighter-6":"bd-greylighter-6","bd-all-greylighter-6":"bd-all-greylighter-6","bd-greylighter-7":"bd-greylighter-7","bd-all-greylighter-7":"bd-all-greylighter-7","bd-greylighter-8":"bd-greylighter-8","bd-all-greylighter-8":"bd-all-greylighter-8","bd-greylighter-9":"bd-greylighter-9","bd-all-greylighter-9":"bd-all-greylighter-9","bd-greylighter-10":"bd-greylighter-10","bd-all-greylighter-10":"bd-all-greylighter-10","bd-white":"bd-white","bd-all-white":"bd-all-white","bd-white-0":"bd-white-0","bd-all-white-0":"bd-all-white-0","bd-white-1":"bd-white-1","bd-all-white-1":"bd-all-white-1","bd-white-2":"bd-white-2","bd-all-white-2":"bd-all-white-2","bd-white-3":"bd-white-3","bd-all-white-3":"bd-all-white-3","bd-white-4":"bd-white-4","bd-all-white-4":"bd-all-white-4","bd-white-5":"bd-white-5","bd-all-white-5":"bd-all-white-5","bd-white-6":"bd-white-6","bd-all-white-6":"bd-all-white-6","bd-white-7":"bd-white-7","bd-all-white-7":"bd-all-white-7","bd-white-8":"bd-white-8","bd-all-white-8":"bd-all-white-8","bd-white-9":"bd-white-9","bd-all-white-9":"bd-all-white-9","bd-white-10":"bd-white-10","bd-all-white-10":"bd-all-white-10","bd-none":"bd-none","bd-all-none":"bd-all-none","bd-none-0":"bd-none-0","bd-all-none-0":"bd-all-none-0","bd-none-1":"bd-none-1","bd-all-none-1":"bd-all-none-1","bd-none-2":"bd-none-2","bd-all-none-2":"bd-all-none-2","bd-none-3":"bd-none-3","bd-all-none-3":"bd-all-none-3","bd-none-4":"bd-none-4","bd-all-none-4":"bd-all-none-4","bd-none-5":"bd-none-5","bd-all-none-5":"bd-all-none-5","bd-none-6":"bd-none-6","bd-all-none-6":"bd-all-none-6","bd-none-7":"bd-none-7","bd-all-none-7":"bd-all-none-7","bd-none-8":"bd-none-8","bd-all-none-8":"bd-all-none-8","bd-none-9":"bd-none-9","bd-all-none-9":"bd-all-none-9","bd-none-10":"bd-none-10","bd-all-none-10":"bd-all-none-10","p-all-0":"p-all-0","p-all-x2":"p-all-x2","m-top":"m-top","m-y":"m-y","m-top-0":"m-top-0","m-y-0":"m-y-0","m-top-x2":"m-top-x2","m-y-x2":"m-y-x2","p-top":"p-top","p-y":"p-y","bd-top":"bd-top","bd-top-0":"bd-top-0","bd-top-1":"bd-top-1","bd-top-2":"bd-top-2","bd-top-3":"bd-top-3","bd-top-4":"bd-top-4","bd-top-5":"bd-top-5","bd-top-6":"bd-top-6","bd-top-7":"bd-top-7","bd-top-8":"bd-top-8","bd-top-9":"bd-top-9","bd-top-10":"bd-top-10","bd-top-blue":"bd-top-blue","bd-top-blue-0":"bd-top-blue-0","bd-top-blue-1":"bd-top-blue-1","bd-top-blue-2":"bd-top-blue-2","bd-top-blue-3":"bd-top-blue-3","bd-top-blue-4":"bd-top-blue-4","bd-top-blue-5":"bd-top-blue-5","bd-top-blue-6":"bd-top-blue-6","bd-top-blue-7":"bd-top-blue-7","bd-top-blue-8":"bd-top-blue-8","bd-top-blue-9":"bd-top-blue-9","bd-top-blue-10":"bd-top-blue-10","bd-top-green":"bd-top-green","bd-top-green-0":"bd-top-green-0","bd-top-green-1":"bd-top-green-1","bd-top-green-2":"bd-top-green-2","bd-top-green-3":"bd-top-green-3","bd-top-green-4":"bd-top-green-4","bd-top-green-5":"bd-top-green-5","bd-top-green-6":"bd-top-green-6","bd-top-green-7":"bd-top-green-7","bd-top-green-8":"bd-top-green-8","bd-top-green-9":"bd-top-green-9","bd-top-green-10":"bd-top-green-10","bd-top-orange":"bd-top-orange","bd-top-orange-0":"bd-top-orange-0","bd-top-orange-1":"bd-top-orange-1","bd-top-orange-2":"bd-top-orange-2","bd-top-orange-3":"bd-top-orange-3","bd-top-orange-4":"bd-top-orange-4","bd-top-orange-5":"bd-top-orange-5","bd-top-orange-6":"bd-top-orange-6","bd-top-orange-7":"bd-top-orange-7","bd-top-orange-8":"bd-top-orange-8","bd-top-orange-9":"bd-top-orange-9","bd-top-orange-10":"bd-top-orange-10","bd-top-darkblue":"bd-top-darkblue","bd-top-darkblue-0":"bd-top-darkblue-0","bd-top-darkblue-1":"bd-top-darkblue-1","bd-top-darkblue-2":"bd-top-darkblue-2","bd-top-darkblue-3":"bd-top-darkblue-3","bd-top-darkblue-4":"bd-top-darkblue-4","bd-top-darkblue-5":"bd-top-darkblue-5","bd-top-darkblue-6":"bd-top-darkblue-6","bd-top-darkblue-7":"bd-top-darkblue-7","bd-top-darkblue-8":"bd-top-darkblue-8","bd-top-darkblue-9":"bd-top-darkblue-9","bd-top-darkblue-10":"bd-top-darkblue-10","bd-top-gold":"bd-top-gold","bd-top-gold-0":"bd-top-gold-0","bd-top-gold-1":"bd-top-gold-1","bd-top-gold-2":"bd-top-gold-2","bd-top-gold-3":"bd-top-gold-3","bd-top-gold-4":"bd-top-gold-4","bd-top-gold-5":"bd-top-gold-5","bd-top-gold-6":"bd-top-gold-6","bd-top-gold-7":"bd-top-gold-7","bd-top-gold-8":"bd-top-gold-8","bd-top-gold-9":"bd-top-gold-9","bd-top-gold-10":"bd-top-gold-10","bd-top-black":"bd-top-black","bd-top-black-0":"bd-top-black-0","bd-top-black-1":"bd-top-black-1","bd-top-black-2":"bd-top-black-2","bd-top-black-3":"bd-top-black-3","bd-top-black-4":"bd-top-black-4","bd-top-black-5":"bd-top-black-5","bd-top-black-6":"bd-top-black-6","bd-top-black-7":"bd-top-black-7","bd-top-black-8":"bd-top-black-8","bd-top-black-9":"bd-top-black-9","bd-top-black-10":"bd-top-black-10","bd-top-blacklight":"bd-top-blacklight","bd-top-blacklight-0":"bd-top-blacklight-0","bd-top-blacklight-1":"bd-top-blacklight-1","bd-top-blacklight-2":"bd-top-blacklight-2","bd-top-blacklight-3":"bd-top-blacklight-3","bd-top-blacklight-4":"bd-top-blacklight-4","bd-top-blacklight-5":"bd-top-blacklight-5","bd-top-blacklight-6":"bd-top-blacklight-6","bd-top-blacklight-7":"bd-top-blacklight-7","bd-top-blacklight-8":"bd-top-blacklight-8","bd-top-blacklight-9":"bd-top-blacklight-9","bd-top-blacklight-10":"bd-top-blacklight-10","bd-top-blacklighter":"bd-top-blacklighter","bd-top-blacklighter-0":"bd-top-blacklighter-0","bd-top-blacklighter-1":"bd-top-blacklighter-1","bd-top-blacklighter-2":"bd-top-blacklighter-2","bd-top-blacklighter-3":"bd-top-blacklighter-3","bd-top-blacklighter-4":"bd-top-blacklighter-4","bd-top-blacklighter-5":"bd-top-blacklighter-5","bd-top-blacklighter-6":"bd-top-blacklighter-6","bd-top-blacklighter-7":"bd-top-blacklighter-7","bd-top-blacklighter-8":"bd-top-blacklighter-8","bd-top-blacklighter-9":"bd-top-blacklighter-9","bd-top-blacklighter-10":"bd-top-blacklighter-10","bd-top-greystronger":"bd-top-greystronger","bd-top-greystronger-0":"bd-top-greystronger-0","bd-top-greystronger-1":"bd-top-greystronger-1","bd-top-greystronger-2":"bd-top-greystronger-2","bd-top-greystronger-3":"bd-top-greystronger-3","bd-top-greystronger-4":"bd-top-greystronger-4","bd-top-greystronger-5":"bd-top-greystronger-5","bd-top-greystronger-6":"bd-top-greystronger-6","bd-top-greystronger-7":"bd-top-greystronger-7","bd-top-greystronger-8":"bd-top-greystronger-8","bd-top-greystronger-9":"bd-top-greystronger-9","bd-top-greystronger-10":"bd-top-greystronger-10","bd-top-greystrong":"bd-top-greystrong","bd-top-greystrong-0":"bd-top-greystrong-0","bd-top-greystrong-1":"bd-top-greystrong-1","bd-top-greystrong-2":"bd-top-greystrong-2","bd-top-greystrong-3":"bd-top-greystrong-3","bd-top-greystrong-4":"bd-top-greystrong-4","bd-top-greystrong-5":"bd-top-greystrong-5","bd-top-greystrong-6":"bd-top-greystrong-6","bd-top-greystrong-7":"bd-top-greystrong-7","bd-top-greystrong-8":"bd-top-greystrong-8","bd-top-greystrong-9":"bd-top-greystrong-9","bd-top-greystrong-10":"bd-top-greystrong-10","bd-top-grey":"bd-top-grey","bd-top-grey-0":"bd-top-grey-0","bd-top-grey-1":"bd-top-grey-1","bd-top-grey-2":"bd-top-grey-2","bd-top-grey-3":"bd-top-grey-3","bd-top-grey-4":"bd-top-grey-4","bd-top-grey-5":"bd-top-grey-5","bd-top-grey-6":"bd-top-grey-6","bd-top-grey-7":"bd-top-grey-7","bd-top-grey-8":"bd-top-grey-8","bd-top-grey-9":"bd-top-grey-9","bd-top-grey-10":"bd-top-grey-10","bd-top-greylight":"bd-top-greylight","bd-top-greylight-0":"bd-top-greylight-0","bd-top-greylight-1":"bd-top-greylight-1","bd-top-greylight-2":"bd-top-greylight-2","bd-top-greylight-3":"bd-top-greylight-3","bd-top-greylight-4":"bd-top-greylight-4","bd-top-greylight-5":"bd-top-greylight-5","bd-top-greylight-6":"bd-top-greylight-6","bd-top-greylight-7":"bd-top-greylight-7","bd-top-greylight-8":"bd-top-greylight-8","bd-top-greylight-9":"bd-top-greylight-9","bd-top-greylight-10":"bd-top-greylight-10","bd-top-greylighter":"bd-top-greylighter","bd-top-greylighter-0":"bd-top-greylighter-0","bd-top-greylighter-1":"bd-top-greylighter-1","bd-top-greylighter-2":"bd-top-greylighter-2","bd-top-greylighter-3":"bd-top-greylighter-3","bd-top-greylighter-4":"bd-top-greylighter-4","bd-top-greylighter-5":"bd-top-greylighter-5","bd-top-greylighter-6":"bd-top-greylighter-6","bd-top-greylighter-7":"bd-top-greylighter-7","bd-top-greylighter-8":"bd-top-greylighter-8","bd-top-greylighter-9":"bd-top-greylighter-9","bd-top-greylighter-10":"bd-top-greylighter-10","bd-top-white":"bd-top-white","bd-top-white-0":"bd-top-white-0","bd-top-white-1":"bd-top-white-1","bd-top-white-2":"bd-top-white-2","bd-top-white-3":"bd-top-white-3","bd-top-white-4":"bd-top-white-4","bd-top-white-5":"bd-top-white-5","bd-top-white-6":"bd-top-white-6","bd-top-white-7":"bd-top-white-7","bd-top-white-8":"bd-top-white-8","bd-top-white-9":"bd-top-white-9","bd-top-white-10":"bd-top-white-10","bd-top-none":"bd-top-none","bd-top-none-0":"bd-top-none-0","bd-top-none-1":"bd-top-none-1","bd-top-none-2":"bd-top-none-2","bd-top-none-3":"bd-top-none-3","bd-top-none-4":"bd-top-none-4","bd-top-none-5":"bd-top-none-5","bd-top-none-6":"bd-top-none-6","bd-top-none-7":"bd-top-none-7","bd-top-none-8":"bd-top-none-8","bd-top-none-9":"bd-top-none-9","bd-top-none-10":"bd-top-none-10","p-top-0":"p-top-0","p-y-0":"p-y-0","p-top-x2":"p-top-x2","p-y-x2":"p-y-x2","m-right":"m-right","m-x":"m-x","m-right-0":"m-right-0","m-x-0":"m-x-0","m-right-x2":"m-right-x2","m-x-x2":"m-x-x2","p-right":"p-right","p-x":"p-x","bd-right":"bd-right","bd-right-0":"bd-right-0","bd-right-1":"bd-right-1","bd-right-2":"bd-right-2","bd-right-3":"bd-right-3","bd-right-4":"bd-right-4","bd-right-5":"bd-right-5","bd-right-6":"bd-right-6","bd-right-7":"bd-right-7","bd-right-8":"bd-right-8","bd-right-9":"bd-right-9","bd-right-10":"bd-right-10","bd-right-blue":"bd-right-blue","bd-right-blue-0":"bd-right-blue-0","bd-right-blue-1":"bd-right-blue-1","bd-right-blue-2":"bd-right-blue-2","bd-right-blue-3":"bd-right-blue-3","bd-right-blue-4":"bd-right-blue-4","bd-right-blue-5":"bd-right-blue-5","bd-right-blue-6":"bd-right-blue-6","bd-right-blue-7":"bd-right-blue-7","bd-right-blue-8":"bd-right-blue-8","bd-right-blue-9":"bd-right-blue-9","bd-right-blue-10":"bd-right-blue-10","bd-right-green":"bd-right-green","bd-right-green-0":"bd-right-green-0","bd-right-green-1":"bd-right-green-1","bd-right-green-2":"bd-right-green-2","bd-right-green-3":"bd-right-green-3","bd-right-green-4":"bd-right-green-4","bd-right-green-5":"bd-right-green-5","bd-right-green-6":"bd-right-green-6","bd-right-green-7":"bd-right-green-7","bd-right-green-8":"bd-right-green-8","bd-right-green-9":"bd-right-green-9","bd-right-green-10":"bd-right-green-10","bd-right-orange":"bd-right-orange","bd-right-orange-0":"bd-right-orange-0","bd-right-orange-1":"bd-right-orange-1","bd-right-orange-2":"bd-right-orange-2","bd-right-orange-3":"bd-right-orange-3","bd-right-orange-4":"bd-right-orange-4","bd-right-orange-5":"bd-right-orange-5","bd-right-orange-6":"bd-right-orange-6","bd-right-orange-7":"bd-right-orange-7","bd-right-orange-8":"bd-right-orange-8","bd-right-orange-9":"bd-right-orange-9","bd-right-orange-10":"bd-right-orange-10","bd-right-darkblue":"bd-right-darkblue","bd-right-darkblue-0":"bd-right-darkblue-0","bd-right-darkblue-1":"bd-right-darkblue-1","bd-right-darkblue-2":"bd-right-darkblue-2","bd-right-darkblue-3":"bd-right-darkblue-3","bd-right-darkblue-4":"bd-right-darkblue-4","bd-right-darkblue-5":"bd-right-darkblue-5","bd-right-darkblue-6":"bd-right-darkblue-6","bd-right-darkblue-7":"bd-right-darkblue-7","bd-right-darkblue-8":"bd-right-darkblue-8","bd-right-darkblue-9":"bd-right-darkblue-9","bd-right-darkblue-10":"bd-right-darkblue-10","bd-right-gold":"bd-right-gold","bd-right-gold-0":"bd-right-gold-0","bd-right-gold-1":"bd-right-gold-1","bd-right-gold-2":"bd-right-gold-2","bd-right-gold-3":"bd-right-gold-3","bd-right-gold-4":"bd-right-gold-4","bd-right-gold-5":"bd-right-gold-5","bd-right-gold-6":"bd-right-gold-6","bd-right-gold-7":"bd-right-gold-7","bd-right-gold-8":"bd-right-gold-8","bd-right-gold-9":"bd-right-gold-9","bd-right-gold-10":"bd-right-gold-10","bd-right-black":"bd-right-black","bd-right-black-0":"bd-right-black-0","bd-right-black-1":"bd-right-black-1","bd-right-black-2":"bd-right-black-2","bd-right-black-3":"bd-right-black-3","bd-right-black-4":"bd-right-black-4","bd-right-black-5":"bd-right-black-5","bd-right-black-6":"bd-right-black-6","bd-right-black-7":"bd-right-black-7","bd-right-black-8":"bd-right-black-8","bd-right-black-9":"bd-right-black-9","bd-right-black-10":"bd-right-black-10","bd-right-blacklight":"bd-right-blacklight","bd-right-blacklight-0":"bd-right-blacklight-0","bd-right-blacklight-1":"bd-right-blacklight-1","bd-right-blacklight-2":"bd-right-blacklight-2","bd-right-blacklight-3":"bd-right-blacklight-3","bd-right-blacklight-4":"bd-right-blacklight-4","bd-right-blacklight-5":"bd-right-blacklight-5","bd-right-blacklight-6":"bd-right-blacklight-6","bd-right-blacklight-7":"bd-right-blacklight-7","bd-right-blacklight-8":"bd-right-blacklight-8","bd-right-blacklight-9":"bd-right-blacklight-9","bd-right-blacklight-10":"bd-right-blacklight-10","bd-right-blacklighter":"bd-right-blacklighter","bd-right-blacklighter-0":"bd-right-blacklighter-0","bd-right-blacklighter-1":"bd-right-blacklighter-1","bd-right-blacklighter-2":"bd-right-blacklighter-2","bd-right-blacklighter-3":"bd-right-blacklighter-3","bd-right-blacklighter-4":"bd-right-blacklighter-4","bd-right-blacklighter-5":"bd-right-blacklighter-5","bd-right-blacklighter-6":"bd-right-blacklighter-6","bd-right-blacklighter-7":"bd-right-blacklighter-7","bd-right-blacklighter-8":"bd-right-blacklighter-8","bd-right-blacklighter-9":"bd-right-blacklighter-9","bd-right-blacklighter-10":"bd-right-blacklighter-10","bd-right-greystronger":"bd-right-greystronger","bd-right-greystronger-0":"bd-right-greystronger-0","bd-right-greystronger-1":"bd-right-greystronger-1","bd-right-greystronger-2":"bd-right-greystronger-2","bd-right-greystronger-3":"bd-right-greystronger-3","bd-right-greystronger-4":"bd-right-greystronger-4","bd-right-greystronger-5":"bd-right-greystronger-5","bd-right-greystronger-6":"bd-right-greystronger-6","bd-right-greystronger-7":"bd-right-greystronger-7","bd-right-greystronger-8":"bd-right-greystronger-8","bd-right-greystronger-9":"bd-right-greystronger-9","bd-right-greystronger-10":"bd-right-greystronger-10","bd-right-greystrong":"bd-right-greystrong","bd-right-greystrong-0":"bd-right-greystrong-0","bd-right-greystrong-1":"bd-right-greystrong-1","bd-right-greystrong-2":"bd-right-greystrong-2","bd-right-greystrong-3":"bd-right-greystrong-3","bd-right-greystrong-4":"bd-right-greystrong-4","bd-right-greystrong-5":"bd-right-greystrong-5","bd-right-greystrong-6":"bd-right-greystrong-6","bd-right-greystrong-7":"bd-right-greystrong-7","bd-right-greystrong-8":"bd-right-greystrong-8","bd-right-greystrong-9":"bd-right-greystrong-9","bd-right-greystrong-10":"bd-right-greystrong-10","bd-right-grey":"bd-right-grey","bd-right-grey-0":"bd-right-grey-0","bd-right-grey-1":"bd-right-grey-1","bd-right-grey-2":"bd-right-grey-2","bd-right-grey-3":"bd-right-grey-3","bd-right-grey-4":"bd-right-grey-4","bd-right-grey-5":"bd-right-grey-5","bd-right-grey-6":"bd-right-grey-6","bd-right-grey-7":"bd-right-grey-7","bd-right-grey-8":"bd-right-grey-8","bd-right-grey-9":"bd-right-grey-9","bd-right-grey-10":"bd-right-grey-10","bd-right-greylight":"bd-right-greylight","bd-right-greylight-0":"bd-right-greylight-0","bd-right-greylight-1":"bd-right-greylight-1","bd-right-greylight-2":"bd-right-greylight-2","bd-right-greylight-3":"bd-right-greylight-3","bd-right-greylight-4":"bd-right-greylight-4","bd-right-greylight-5":"bd-right-greylight-5","bd-right-greylight-6":"bd-right-greylight-6","bd-right-greylight-7":"bd-right-greylight-7","bd-right-greylight-8":"bd-right-greylight-8","bd-right-greylight-9":"bd-right-greylight-9","bd-right-greylight-10":"bd-right-greylight-10","bd-right-greylighter":"bd-right-greylighter","bd-right-greylighter-0":"bd-right-greylighter-0","bd-right-greylighter-1":"bd-right-greylighter-1","bd-right-greylighter-2":"bd-right-greylighter-2","bd-right-greylighter-3":"bd-right-greylighter-3","bd-right-greylighter-4":"bd-right-greylighter-4","bd-right-greylighter-5":"bd-right-greylighter-5","bd-right-greylighter-6":"bd-right-greylighter-6","bd-right-greylighter-7":"bd-right-greylighter-7","bd-right-greylighter-8":"bd-right-greylighter-8","bd-right-greylighter-9":"bd-right-greylighter-9","bd-right-greylighter-10":"bd-right-greylighter-10","bd-right-white":"bd-right-white","bd-right-white-0":"bd-right-white-0","bd-right-white-1":"bd-right-white-1","bd-right-white-2":"bd-right-white-2","bd-right-white-3":"bd-right-white-3","bd-right-white-4":"bd-right-white-4","bd-right-white-5":"bd-right-white-5","bd-right-white-6":"bd-right-white-6","bd-right-white-7":"bd-right-white-7","bd-right-white-8":"bd-right-white-8","bd-right-white-9":"bd-right-white-9","bd-right-white-10":"bd-right-white-10","bd-right-none":"bd-right-none","bd-right-none-0":"bd-right-none-0","bd-right-none-1":"bd-right-none-1","bd-right-none-2":"bd-right-none-2","bd-right-none-3":"bd-right-none-3","bd-right-none-4":"bd-right-none-4","bd-right-none-5":"bd-right-none-5","bd-right-none-6":"bd-right-none-6","bd-right-none-7":"bd-right-none-7","bd-right-none-8":"bd-right-none-8","bd-right-none-9":"bd-right-none-9","bd-right-none-10":"bd-right-none-10","p-right-0":"p-right-0","p-x-0":"p-x-0","p-right-x2":"p-right-x2","p-x-x2":"p-x-x2","m-bottom":"m-bottom","m-bottom-0":"m-bottom-0","m-bottom-x2":"m-bottom-x2","p-bottom":"p-bottom","bd-bottom":"bd-bottom","bd-bottom-0":"bd-bottom-0","bd-bottom-1":"bd-bottom-1","bd-bottom-2":"bd-bottom-2","bd-bottom-3":"bd-bottom-3","bd-bottom-4":"bd-bottom-4","bd-bottom-5":"bd-bottom-5","bd-bottom-6":"bd-bottom-6","bd-bottom-7":"bd-bottom-7","bd-bottom-8":"bd-bottom-8","bd-bottom-9":"bd-bottom-9","bd-bottom-10":"bd-bottom-10","bd-bottom-blue":"bd-bottom-blue","bd-bottom-blue-0":"bd-bottom-blue-0","bd-bottom-blue-1":"bd-bottom-blue-1","bd-bottom-blue-2":"bd-bottom-blue-2","bd-bottom-blue-3":"bd-bottom-blue-3","bd-bottom-blue-4":"bd-bottom-blue-4","bd-bottom-blue-5":"bd-bottom-blue-5","bd-bottom-blue-6":"bd-bottom-blue-6","bd-bottom-blue-7":"bd-bottom-blue-7","bd-bottom-blue-8":"bd-bottom-blue-8","bd-bottom-blue-9":"bd-bottom-blue-9","bd-bottom-blue-10":"bd-bottom-blue-10","bd-bottom-green":"bd-bottom-green","bd-bottom-green-0":"bd-bottom-green-0","bd-bottom-green-1":"bd-bottom-green-1","bd-bottom-green-2":"bd-bottom-green-2","bd-bottom-green-3":"bd-bottom-green-3","bd-bottom-green-4":"bd-bottom-green-4","bd-bottom-green-5":"bd-bottom-green-5","bd-bottom-green-6":"bd-bottom-green-6","bd-bottom-green-7":"bd-bottom-green-7","bd-bottom-green-8":"bd-bottom-green-8","bd-bottom-green-9":"bd-bottom-green-9","bd-bottom-green-10":"bd-bottom-green-10","bd-bottom-orange":"bd-bottom-orange","bd-bottom-orange-0":"bd-bottom-orange-0","bd-bottom-orange-1":"bd-bottom-orange-1","bd-bottom-orange-2":"bd-bottom-orange-2","bd-bottom-orange-3":"bd-bottom-orange-3","bd-bottom-orange-4":"bd-bottom-orange-4","bd-bottom-orange-5":"bd-bottom-orange-5","bd-bottom-orange-6":"bd-bottom-orange-6","bd-bottom-orange-7":"bd-bottom-orange-7","bd-bottom-orange-8":"bd-bottom-orange-8","bd-bottom-orange-9":"bd-bottom-orange-9","bd-bottom-orange-10":"bd-bottom-orange-10","bd-bottom-darkblue":"bd-bottom-darkblue","bd-bottom-darkblue-0":"bd-bottom-darkblue-0","bd-bottom-darkblue-1":"bd-bottom-darkblue-1","bd-bottom-darkblue-2":"bd-bottom-darkblue-2","bd-bottom-darkblue-3":"bd-bottom-darkblue-3","bd-bottom-darkblue-4":"bd-bottom-darkblue-4","bd-bottom-darkblue-5":"bd-bottom-darkblue-5","bd-bottom-darkblue-6":"bd-bottom-darkblue-6","bd-bottom-darkblue-7":"bd-bottom-darkblue-7","bd-bottom-darkblue-8":"bd-bottom-darkblue-8","bd-bottom-darkblue-9":"bd-bottom-darkblue-9","bd-bottom-darkblue-10":"bd-bottom-darkblue-10","bd-bottom-gold":"bd-bottom-gold","bd-bottom-gold-0":"bd-bottom-gold-0","bd-bottom-gold-1":"bd-bottom-gold-1","bd-bottom-gold-2":"bd-bottom-gold-2","bd-bottom-gold-3":"bd-bottom-gold-3","bd-bottom-gold-4":"bd-bottom-gold-4","bd-bottom-gold-5":"bd-bottom-gold-5","bd-bottom-gold-6":"bd-bottom-gold-6","bd-bottom-gold-7":"bd-bottom-gold-7","bd-bottom-gold-8":"bd-bottom-gold-8","bd-bottom-gold-9":"bd-bottom-gold-9","bd-bottom-gold-10":"bd-bottom-gold-10","bd-bottom-black":"bd-bottom-black","bd-bottom-black-0":"bd-bottom-black-0","bd-bottom-black-1":"bd-bottom-black-1","bd-bottom-black-2":"bd-bottom-black-2","bd-bottom-black-3":"bd-bottom-black-3","bd-bottom-black-4":"bd-bottom-black-4","bd-bottom-black-5":"bd-bottom-black-5","bd-bottom-black-6":"bd-bottom-black-6","bd-bottom-black-7":"bd-bottom-black-7","bd-bottom-black-8":"bd-bottom-black-8","bd-bottom-black-9":"bd-bottom-black-9","bd-bottom-black-10":"bd-bottom-black-10","bd-bottom-blacklight":"bd-bottom-blacklight","bd-bottom-blacklight-0":"bd-bottom-blacklight-0","bd-bottom-blacklight-1":"bd-bottom-blacklight-1","bd-bottom-blacklight-2":"bd-bottom-blacklight-2","bd-bottom-blacklight-3":"bd-bottom-blacklight-3","bd-bottom-blacklight-4":"bd-bottom-blacklight-4","bd-bottom-blacklight-5":"bd-bottom-blacklight-5","bd-bottom-blacklight-6":"bd-bottom-blacklight-6","bd-bottom-blacklight-7":"bd-bottom-blacklight-7","bd-bottom-blacklight-8":"bd-bottom-blacklight-8","bd-bottom-blacklight-9":"bd-bottom-blacklight-9","bd-bottom-blacklight-10":"bd-bottom-blacklight-10","bd-bottom-blacklighter":"bd-bottom-blacklighter","bd-bottom-blacklighter-0":"bd-bottom-blacklighter-0","bd-bottom-blacklighter-1":"bd-bottom-blacklighter-1","bd-bottom-blacklighter-2":"bd-bottom-blacklighter-2","bd-bottom-blacklighter-3":"bd-bottom-blacklighter-3","bd-bottom-blacklighter-4":"bd-bottom-blacklighter-4","bd-bottom-blacklighter-5":"bd-bottom-blacklighter-5","bd-bottom-blacklighter-6":"bd-bottom-blacklighter-6","bd-bottom-blacklighter-7":"bd-bottom-blacklighter-7","bd-bottom-blacklighter-8":"bd-bottom-blacklighter-8","bd-bottom-blacklighter-9":"bd-bottom-blacklighter-9","bd-bottom-blacklighter-10":"bd-bottom-blacklighter-10","bd-bottom-greystronger":"bd-bottom-greystronger","bd-bottom-greystronger-0":"bd-bottom-greystronger-0","bd-bottom-greystronger-1":"bd-bottom-greystronger-1","bd-bottom-greystronger-2":"bd-bottom-greystronger-2","bd-bottom-greystronger-3":"bd-bottom-greystronger-3","bd-bottom-greystronger-4":"bd-bottom-greystronger-4","bd-bottom-greystronger-5":"bd-bottom-greystronger-5","bd-bottom-greystronger-6":"bd-bottom-greystronger-6","bd-bottom-greystronger-7":"bd-bottom-greystronger-7","bd-bottom-greystronger-8":"bd-bottom-greystronger-8","bd-bottom-greystronger-9":"bd-bottom-greystronger-9","bd-bottom-greystronger-10":"bd-bottom-greystronger-10","bd-bottom-greystrong":"bd-bottom-greystrong","bd-bottom-greystrong-0":"bd-bottom-greystrong-0","bd-bottom-greystrong-1":"bd-bottom-greystrong-1","bd-bottom-greystrong-2":"bd-bottom-greystrong-2","bd-bottom-greystrong-3":"bd-bottom-greystrong-3","bd-bottom-greystrong-4":"bd-bottom-greystrong-4","bd-bottom-greystrong-5":"bd-bottom-greystrong-5","bd-bottom-greystrong-6":"bd-bottom-greystrong-6","bd-bottom-greystrong-7":"bd-bottom-greystrong-7","bd-bottom-greystrong-8":"bd-bottom-greystrong-8","bd-bottom-greystrong-9":"bd-bottom-greystrong-9","bd-bottom-greystrong-10":"bd-bottom-greystrong-10","bd-bottom-grey":"bd-bottom-grey","bd-bottom-grey-0":"bd-bottom-grey-0","bd-bottom-grey-1":"bd-bottom-grey-1","bd-bottom-grey-2":"bd-bottom-grey-2","bd-bottom-grey-3":"bd-bottom-grey-3","bd-bottom-grey-4":"bd-bottom-grey-4","bd-bottom-grey-5":"bd-bottom-grey-5","bd-bottom-grey-6":"bd-bottom-grey-6","bd-bottom-grey-7":"bd-bottom-grey-7","bd-bottom-grey-8":"bd-bottom-grey-8","bd-bottom-grey-9":"bd-bottom-grey-9","bd-bottom-grey-10":"bd-bottom-grey-10","bd-bottom-greylight":"bd-bottom-greylight","bd-bottom-greylight-0":"bd-bottom-greylight-0","bd-bottom-greylight-1":"bd-bottom-greylight-1","bd-bottom-greylight-2":"bd-bottom-greylight-2","bd-bottom-greylight-3":"bd-bottom-greylight-3","bd-bottom-greylight-4":"bd-bottom-greylight-4","bd-bottom-greylight-5":"bd-bottom-greylight-5","bd-bottom-greylight-6":"bd-bottom-greylight-6","bd-bottom-greylight-7":"bd-bottom-greylight-7","bd-bottom-greylight-8":"bd-bottom-greylight-8","bd-bottom-greylight-9":"bd-bottom-greylight-9","bd-bottom-greylight-10":"bd-bottom-greylight-10","bd-bottom-greylighter":"bd-bottom-greylighter","bd-bottom-greylighter-0":"bd-bottom-greylighter-0","bd-bottom-greylighter-1":"bd-bottom-greylighter-1","bd-bottom-greylighter-2":"bd-bottom-greylighter-2","bd-bottom-greylighter-3":"bd-bottom-greylighter-3","bd-bottom-greylighter-4":"bd-bottom-greylighter-4","bd-bottom-greylighter-5":"bd-bottom-greylighter-5","bd-bottom-greylighter-6":"bd-bottom-greylighter-6","bd-bottom-greylighter-7":"bd-bottom-greylighter-7","bd-bottom-greylighter-8":"bd-bottom-greylighter-8","bd-bottom-greylighter-9":"bd-bottom-greylighter-9","bd-bottom-greylighter-10":"bd-bottom-greylighter-10","bd-bottom-white":"bd-bottom-white","bd-bottom-white-0":"bd-bottom-white-0","bd-bottom-white-1":"bd-bottom-white-1","bd-bottom-white-2":"bd-bottom-white-2","bd-bottom-white-3":"bd-bottom-white-3","bd-bottom-white-4":"bd-bottom-white-4","bd-bottom-white-5":"bd-bottom-white-5","bd-bottom-white-6":"bd-bottom-white-6","bd-bottom-white-7":"bd-bottom-white-7","bd-bottom-white-8":"bd-bottom-white-8","bd-bottom-white-9":"bd-bottom-white-9","bd-bottom-white-10":"bd-bottom-white-10","bd-bottom-none":"bd-bottom-none","bd-bottom-none-0":"bd-bottom-none-0","bd-bottom-none-1":"bd-bottom-none-1","bd-bottom-none-2":"bd-bottom-none-2","bd-bottom-none-3":"bd-bottom-none-3","bd-bottom-none-4":"bd-bottom-none-4","bd-bottom-none-5":"bd-bottom-none-5","bd-bottom-none-6":"bd-bottom-none-6","bd-bottom-none-7":"bd-bottom-none-7","bd-bottom-none-8":"bd-bottom-none-8","bd-bottom-none-9":"bd-bottom-none-9","bd-bottom-none-10":"bd-bottom-none-10","p-bottom-0":"p-bottom-0","p-bottom-x2":"p-bottom-x2","m-left":"m-left","m-left-0":"m-left-0","m-left-x2":"m-left-x2","p-left":"p-left","bd-left":"bd-left","bd-left-0":"bd-left-0","bd-left-1":"bd-left-1","bd-left-2":"bd-left-2","bd-left-3":"bd-left-3","bd-left-4":"bd-left-4","bd-left-5":"bd-left-5","bd-left-6":"bd-left-6","bd-left-7":"bd-left-7","bd-left-8":"bd-left-8","bd-left-9":"bd-left-9","bd-left-10":"bd-left-10","bd-left-blue":"bd-left-blue","bd-left-blue-0":"bd-left-blue-0","bd-left-blue-1":"bd-left-blue-1","bd-left-blue-2":"bd-left-blue-2","bd-left-blue-3":"bd-left-blue-3","bd-left-blue-4":"bd-left-blue-4","bd-left-blue-5":"bd-left-blue-5","bd-left-blue-6":"bd-left-blue-6","bd-left-blue-7":"bd-left-blue-7","bd-left-blue-8":"bd-left-blue-8","bd-left-blue-9":"bd-left-blue-9","bd-left-blue-10":"bd-left-blue-10","bd-left-green":"bd-left-green","bd-left-green-0":"bd-left-green-0","bd-left-green-1":"bd-left-green-1","bd-left-green-2":"bd-left-green-2","bd-left-green-3":"bd-left-green-3","bd-left-green-4":"bd-left-green-4","bd-left-green-5":"bd-left-green-5","bd-left-green-6":"bd-left-green-6","bd-left-green-7":"bd-left-green-7","bd-left-green-8":"bd-left-green-8","bd-left-green-9":"bd-left-green-9","bd-left-green-10":"bd-left-green-10","bd-left-orange":"bd-left-orange","bd-left-orange-0":"bd-left-orange-0","bd-left-orange-1":"bd-left-orange-1","bd-left-orange-2":"bd-left-orange-2","bd-left-orange-3":"bd-left-orange-3","bd-left-orange-4":"bd-left-orange-4","bd-left-orange-5":"bd-left-orange-5","bd-left-orange-6":"bd-left-orange-6","bd-left-orange-7":"bd-left-orange-7","bd-left-orange-8":"bd-left-orange-8","bd-left-orange-9":"bd-left-orange-9","bd-left-orange-10":"bd-left-orange-10","bd-left-darkblue":"bd-left-darkblue","bd-left-darkblue-0":"bd-left-darkblue-0","bd-left-darkblue-1":"bd-left-darkblue-1","bd-left-darkblue-2":"bd-left-darkblue-2","bd-left-darkblue-3":"bd-left-darkblue-3","bd-left-darkblue-4":"bd-left-darkblue-4","bd-left-darkblue-5":"bd-left-darkblue-5","bd-left-darkblue-6":"bd-left-darkblue-6","bd-left-darkblue-7":"bd-left-darkblue-7","bd-left-darkblue-8":"bd-left-darkblue-8","bd-left-darkblue-9":"bd-left-darkblue-9","bd-left-darkblue-10":"bd-left-darkblue-10","bd-left-gold":"bd-left-gold","bd-left-gold-0":"bd-left-gold-0","bd-left-gold-1":"bd-left-gold-1","bd-left-gold-2":"bd-left-gold-2","bd-left-gold-3":"bd-left-gold-3","bd-left-gold-4":"bd-left-gold-4","bd-left-gold-5":"bd-left-gold-5","bd-left-gold-6":"bd-left-gold-6","bd-left-gold-7":"bd-left-gold-7","bd-left-gold-8":"bd-left-gold-8","bd-left-gold-9":"bd-left-gold-9","bd-left-gold-10":"bd-left-gold-10","bd-left-black":"bd-left-black","bd-left-black-0":"bd-left-black-0","bd-left-black-1":"bd-left-black-1","bd-left-black-2":"bd-left-black-2","bd-left-black-3":"bd-left-black-3","bd-left-black-4":"bd-left-black-4","bd-left-black-5":"bd-left-black-5","bd-left-black-6":"bd-left-black-6","bd-left-black-7":"bd-left-black-7","bd-left-black-8":"bd-left-black-8","bd-left-black-9":"bd-left-black-9","bd-left-black-10":"bd-left-black-10","bd-left-blacklight":"bd-left-blacklight","bd-left-blacklight-0":"bd-left-blacklight-0","bd-left-blacklight-1":"bd-left-blacklight-1","bd-left-blacklight-2":"bd-left-blacklight-2","bd-left-blacklight-3":"bd-left-blacklight-3","bd-left-blacklight-4":"bd-left-blacklight-4","bd-left-blacklight-5":"bd-left-blacklight-5","bd-left-blacklight-6":"bd-left-blacklight-6","bd-left-blacklight-7":"bd-left-blacklight-7","bd-left-blacklight-8":"bd-left-blacklight-8","bd-left-blacklight-9":"bd-left-blacklight-9","bd-left-blacklight-10":"bd-left-blacklight-10","bd-left-blacklighter":"bd-left-blacklighter","bd-left-blacklighter-0":"bd-left-blacklighter-0","bd-left-blacklighter-1":"bd-left-blacklighter-1","bd-left-blacklighter-2":"bd-left-blacklighter-2","bd-left-blacklighter-3":"bd-left-blacklighter-3","bd-left-blacklighter-4":"bd-left-blacklighter-4","bd-left-blacklighter-5":"bd-left-blacklighter-5","bd-left-blacklighter-6":"bd-left-blacklighter-6","bd-left-blacklighter-7":"bd-left-blacklighter-7","bd-left-blacklighter-8":"bd-left-blacklighter-8","bd-left-blacklighter-9":"bd-left-blacklighter-9","bd-left-blacklighter-10":"bd-left-blacklighter-10","bd-left-greystronger":"bd-left-greystronger","bd-left-greystronger-0":"bd-left-greystronger-0","bd-left-greystronger-1":"bd-left-greystronger-1","bd-left-greystronger-2":"bd-left-greystronger-2","bd-left-greystronger-3":"bd-left-greystronger-3","bd-left-greystronger-4":"bd-left-greystronger-4","bd-left-greystronger-5":"bd-left-greystronger-5","bd-left-greystronger-6":"bd-left-greystronger-6","bd-left-greystronger-7":"bd-left-greystronger-7","bd-left-greystronger-8":"bd-left-greystronger-8","bd-left-greystronger-9":"bd-left-greystronger-9","bd-left-greystronger-10":"bd-left-greystronger-10","bd-left-greystrong":"bd-left-greystrong","bd-left-greystrong-0":"bd-left-greystrong-0","bd-left-greystrong-1":"bd-left-greystrong-1","bd-left-greystrong-2":"bd-left-greystrong-2","bd-left-greystrong-3":"bd-left-greystrong-3","bd-left-greystrong-4":"bd-left-greystrong-4","bd-left-greystrong-5":"bd-left-greystrong-5","bd-left-greystrong-6":"bd-left-greystrong-6","bd-left-greystrong-7":"bd-left-greystrong-7","bd-left-greystrong-8":"bd-left-greystrong-8","bd-left-greystrong-9":"bd-left-greystrong-9","bd-left-greystrong-10":"bd-left-greystrong-10","bd-left-grey":"bd-left-grey","bd-left-grey-0":"bd-left-grey-0","bd-left-grey-1":"bd-left-grey-1","bd-left-grey-2":"bd-left-grey-2","bd-left-grey-3":"bd-left-grey-3","bd-left-grey-4":"bd-left-grey-4","bd-left-grey-5":"bd-left-grey-5","bd-left-grey-6":"bd-left-grey-6","bd-left-grey-7":"bd-left-grey-7","bd-left-grey-8":"bd-left-grey-8","bd-left-grey-9":"bd-left-grey-9","bd-left-grey-10":"bd-left-grey-10","bd-left-greylight":"bd-left-greylight","bd-left-greylight-0":"bd-left-greylight-0","bd-left-greylight-1":"bd-left-greylight-1","bd-left-greylight-2":"bd-left-greylight-2","bd-left-greylight-3":"bd-left-greylight-3","bd-left-greylight-4":"bd-left-greylight-4","bd-left-greylight-5":"bd-left-greylight-5","bd-left-greylight-6":"bd-left-greylight-6","bd-left-greylight-7":"bd-left-greylight-7","bd-left-greylight-8":"bd-left-greylight-8","bd-left-greylight-9":"bd-left-greylight-9","bd-left-greylight-10":"bd-left-greylight-10","bd-left-greylighter":"bd-left-greylighter","bd-left-greylighter-0":"bd-left-greylighter-0","bd-left-greylighter-1":"bd-left-greylighter-1","bd-left-greylighter-2":"bd-left-greylighter-2","bd-left-greylighter-3":"bd-left-greylighter-3","bd-left-greylighter-4":"bd-left-greylighter-4","bd-left-greylighter-5":"bd-left-greylighter-5","bd-left-greylighter-6":"bd-left-greylighter-6","bd-left-greylighter-7":"bd-left-greylighter-7","bd-left-greylighter-8":"bd-left-greylighter-8","bd-left-greylighter-9":"bd-left-greylighter-9","bd-left-greylighter-10":"bd-left-greylighter-10","bd-left-white":"bd-left-white","bd-left-white-0":"bd-left-white-0","bd-left-white-1":"bd-left-white-1","bd-left-white-2":"bd-left-white-2","bd-left-white-3":"bd-left-white-3","bd-left-white-4":"bd-left-white-4","bd-left-white-5":"bd-left-white-5","bd-left-white-6":"bd-left-white-6","bd-left-white-7":"bd-left-white-7","bd-left-white-8":"bd-left-white-8","bd-left-white-9":"bd-left-white-9","bd-left-white-10":"bd-left-white-10","bd-left-none":"bd-left-none","bd-left-none-0":"bd-left-none-0","bd-left-none-1":"bd-left-none-1","bd-left-none-2":"bd-left-none-2","bd-left-none-3":"bd-left-none-3","bd-left-none-4":"bd-left-none-4","bd-left-none-5":"bd-left-none-5","bd-left-none-6":"bd-left-none-6","bd-left-none-7":"bd-left-none-7","bd-left-none-8":"bd-left-none-8","bd-left-none-9":"bd-left-none-9","bd-left-none-10":"bd-left-none-10","p-left-0":"p-left-0","p-left-x2":"p-left-x2","h1":"h1","sep-bottom":"sep-bottom","sep-top":"sep-top","sep-right":"sep-right","sep-left":"sep-left","h2":"h2","h3":"h3","h4":"h4","h5":"h5","h6":"h6","sep":"sep","reset":"reset","bg-blue":"bg-blue","bg-blue-o-10":"bg-blue-o-10","bg-blue-o-20":"bg-blue-o-20","bg-blue-o-30":"bg-blue-o-30","bg-blue-o-40":"bg-blue-o-40","bg-blue-o-50":"bg-blue-o-50","bg-blue-o-60":"bg-blue-o-60","bg-blue-o-70":"bg-blue-o-70","bg-blue-o-80":"bg-blue-o-80","bg-blue-o-90":"bg-blue-o-90","bg-blue-o-100":"bg-blue-o-100","text":"text","email":"email","password":"password","tel":"tel","url":"url","date":"date","range":"range","number":"number","select2-container":"select2-container","select2-selection":"select2-selection","focus":"focus","active":"active","checkbox":"checkbox","radio":"radio","bg-green":"bg-green","bg-green-o-10":"bg-green-o-10","bg-green-o-20":"bg-green-o-20","bg-green-o-30":"bg-green-o-30","bg-green-o-40":"bg-green-o-40","bg-green-o-50":"bg-green-o-50","bg-green-o-60":"bg-green-o-60","bg-green-o-70":"bg-green-o-70","bg-green-o-80":"bg-green-o-80","bg-green-o-90":"bg-green-o-90","bg-green-o-100":"bg-green-o-100","bg-orange":"bg-orange","bg-orange-o-10":"bg-orange-o-10","bg-orange-o-20":"bg-orange-o-20","bg-orange-o-30":"bg-orange-o-30","bg-orange-o-40":"bg-orange-o-40","bg-orange-o-50":"bg-orange-o-50","bg-orange-o-60":"bg-orange-o-60","bg-orange-o-70":"bg-orange-o-70","bg-orange-o-80":"bg-orange-o-80","bg-orange-o-90":"bg-orange-o-90","bg-orange-o-100":"bg-orange-o-100","bg-darkblue":"bg-darkblue","bg-darkblue-o-10":"bg-darkblue-o-10","bg-darkblue-o-20":"bg-darkblue-o-20","bg-darkblue-o-30":"bg-darkblue-o-30","bg-darkblue-o-40":"bg-darkblue-o-40","bg-darkblue-o-50":"bg-darkblue-o-50","bg-darkblue-o-60":"bg-darkblue-o-60","bg-darkblue-o-70":"bg-darkblue-o-70","bg-darkblue-o-80":"bg-darkblue-o-80","bg-darkblue-o-90":"bg-darkblue-o-90","bg-darkblue-o-100":"bg-darkblue-o-100","bg-gold":"bg-gold","bg-gold-o-10":"bg-gold-o-10","bg-gold-o-20":"bg-gold-o-20","bg-gold-o-30":"bg-gold-o-30","bg-gold-o-40":"bg-gold-o-40","bg-gold-o-50":"bg-gold-o-50","bg-gold-o-60":"bg-gold-o-60","bg-gold-o-70":"bg-gold-o-70","bg-gold-o-80":"bg-gold-o-80","bg-gold-o-90":"bg-gold-o-90","bg-gold-o-100":"bg-gold-o-100","bg-black":"bg-black","bg-black-o-10":"bg-black-o-10","bg-black-o-20":"bg-black-o-20","bg-black-o-30":"bg-black-o-30","bg-black-o-40":"bg-black-o-40","bg-black-o-50":"bg-black-o-50","bg-black-o-60":"bg-black-o-60","bg-black-o-70":"bg-black-o-70","bg-black-o-80":"bg-black-o-80","bg-black-o-90":"bg-black-o-90","bg-black-o-100":"bg-black-o-100","bg-blacklight":"bg-blacklight","bg-blacklight-o-10":"bg-blacklight-o-10","bg-blacklight-o-20":"bg-blacklight-o-20","bg-blacklight-o-30":"bg-blacklight-o-30","bg-blacklight-o-40":"bg-blacklight-o-40","bg-blacklight-o-50":"bg-blacklight-o-50","bg-blacklight-o-60":"bg-blacklight-o-60","bg-blacklight-o-70":"bg-blacklight-o-70","bg-blacklight-o-80":"bg-blacklight-o-80","bg-blacklight-o-90":"bg-blacklight-o-90","bg-blacklight-o-100":"bg-blacklight-o-100","bg-blacklighter":"bg-blacklighter","bg-blacklighter-o-10":"bg-blacklighter-o-10","bg-blacklighter-o-20":"bg-blacklighter-o-20","bg-blacklighter-o-30":"bg-blacklighter-o-30","bg-blacklighter-o-40":"bg-blacklighter-o-40","bg-blacklighter-o-50":"bg-blacklighter-o-50","bg-blacklighter-o-60":"bg-blacklighter-o-60","bg-blacklighter-o-70":"bg-blacklighter-o-70","bg-blacklighter-o-80":"bg-blacklighter-o-80","bg-blacklighter-o-90":"bg-blacklighter-o-90","bg-blacklighter-o-100":"bg-blacklighter-o-100","bg-greystronger":"bg-greystronger","bg-greystronger-o-10":"bg-greystronger-o-10","bg-greystronger-o-20":"bg-greystronger-o-20","bg-greystronger-o-30":"bg-greystronger-o-30","bg-greystronger-o-40":"bg-greystronger-o-40","bg-greystronger-o-50":"bg-greystronger-o-50","bg-greystronger-o-60":"bg-greystronger-o-60","bg-greystronger-o-70":"bg-greystronger-o-70","bg-greystronger-o-80":"bg-greystronger-o-80","bg-greystronger-o-90":"bg-greystronger-o-90","bg-greystronger-o-100":"bg-greystronger-o-100","bg-greystrong":"bg-greystrong","bg-greystrong-o-10":"bg-greystrong-o-10","bg-greystrong-o-20":"bg-greystrong-o-20","bg-greystrong-o-30":"bg-greystrong-o-30","bg-greystrong-o-40":"bg-greystrong-o-40","bg-greystrong-o-50":"bg-greystrong-o-50","bg-greystrong-o-60":"bg-greystrong-o-60","bg-greystrong-o-70":"bg-greystrong-o-70","bg-greystrong-o-80":"bg-greystrong-o-80","bg-greystrong-o-90":"bg-greystrong-o-90","bg-greystrong-o-100":"bg-greystrong-o-100","bg-grey":"bg-grey","bg-grey-o-10":"bg-grey-o-10","bg-grey-o-20":"bg-grey-o-20","bg-grey-o-30":"bg-grey-o-30","bg-grey-o-40":"bg-grey-o-40","bg-grey-o-50":"bg-grey-o-50","bg-grey-o-60":"bg-grey-o-60","bg-grey-o-70":"bg-grey-o-70","bg-grey-o-80":"bg-grey-o-80","bg-grey-o-90":"bg-grey-o-90","bg-grey-o-100":"bg-grey-o-100","bg-greylight":"bg-greylight","bg-greylight-o-10":"bg-greylight-o-10","bg-greylight-o-20":"bg-greylight-o-20","bg-greylight-o-30":"bg-greylight-o-30","bg-greylight-o-40":"bg-greylight-o-40","bg-greylight-o-50":"bg-greylight-o-50","bg-greylight-o-60":"bg-greylight-o-60","bg-greylight-o-70":"bg-greylight-o-70","bg-greylight-o-80":"bg-greylight-o-80","bg-greylight-o-90":"bg-greylight-o-90","bg-greylight-o-100":"bg-greylight-o-100","bg-greylighter":"bg-greylighter","bg-greylighter-o-10":"bg-greylighter-o-10","bg-greylighter-o-20":"bg-greylighter-o-20","bg-greylighter-o-30":"bg-greylighter-o-30","bg-greylighter-o-40":"bg-greylighter-o-40","bg-greylighter-o-50":"bg-greylighter-o-50","bg-greylighter-o-60":"bg-greylighter-o-60","bg-greylighter-o-70":"bg-greylighter-o-70","bg-greylighter-o-80":"bg-greylighter-o-80","bg-greylighter-o-90":"bg-greylighter-o-90","bg-greylighter-o-100":"bg-greylighter-o-100","bg-white":"bg-white","bg-white-o-10":"bg-white-o-10","bg-white-o-20":"bg-white-o-20","bg-white-o-30":"bg-white-o-30","bg-white-o-40":"bg-white-o-40","bg-white-o-50":"bg-white-o-50","bg-white-o-60":"bg-white-o-60","bg-white-o-70":"bg-white-o-70","bg-white-o-80":"bg-white-o-80","bg-white-o-90":"bg-white-o-90","bg-white-o-100":"bg-white-o-100","bg-none":"bg-none","bg-none-o-10":"bg-none-o-10","bg-none-o-20":"bg-none-o-20","bg-none-o-30":"bg-none-o-30","bg-none-o-40":"bg-none-o-40","bg-none-o-50":"bg-none-o-50","bg-none-o-60":"bg-none-o-60","bg-none-o-70":"bg-none-o-70","bg-none-o-80":"bg-none-o-80","bg-none-o-90":"bg-none-o-90","bg-none-o-100":"bg-none-o-100","btn-sm":"btn-sm","editor":"editor","btn-lg":"btn-lg","btn-bd-blue":"btn-bd-blue","btn-bg-blue":"btn-bg-blue","btn-bd-green":"btn-bd-green","btn-bg-green":"btn-bg-green","btn-bd-orange":"btn-bd-orange","btn-bg-orange":"btn-bg-orange","btn-bd-darkblue":"btn-bd-darkblue","btn-bg-darkblue":"btn-bg-darkblue","btn-bd-gold":"btn-bd-gold","btn-bg-gold":"btn-bg-gold","btn-bd-black":"btn-bd-black","btn-bg-black":"btn-bg-black","btn-bd-blacklight":"btn-bd-blacklight","btn-bg-blacklight":"btn-bg-blacklight","btn-bd-blacklighter":"btn-bd-blacklighter","btn-bg-blacklighter":"btn-bg-blacklighter","btn-bd-greystronger":"btn-bd-greystronger","btn-bg-greystronger":"btn-bg-greystronger","btn-bd-greystrong":"btn-bd-greystrong","btn-bg-greystrong":"btn-bg-greystrong","btn-bd-grey":"btn-bd-grey","btn-bg-grey":"btn-bg-grey","btn-bd-greylight":"btn-bd-greylight","btn-bg-greylight":"btn-bg-greylight","btn-bd-greylighter":"btn-bd-greylighter","btn-bg-greylighter":"btn-bg-greylighter","btn-bd-white":"btn-bd-white","btn-bg-white":"btn-bg-white","btn-bd-none":"btn-bd-none","btn-bg-none":"btn-bg-none","flex":"flex","alignself--flexstart":"alignself--flexstart","alignself--flexend":"alignself--flexend","alignself--center":"alignself--center","alignself--spacebetween":"alignself--spacebetween","alignself--spacearound":"alignself--spacearound","flexgrow--0":"flexgrow--0","flexgrow--1":"flexgrow--1","flexgrow--2":"flexgrow--2","flexgrow--3":"flexgrow--3","flexgrow--4":"flexgrow--4","flexgrow--5":"flexgrow--5","flexgrow--6":"flexgrow--6","flexgrow--7":"flexgrow--7","flexgrow--8":"flexgrow--8","flexgrow--9":"flexgrow--9","flexgrow--10":"flexgrow--10","nofill":"nofill","form-group":"form-group","toast-container":"toast-container","heroFW":"heroFW","width--content":"width--content","title--1":"title--1","title--2":"title--2","title--3":"title--3","title--4":"title--4","heroFW__wrapper":"heroFW__wrapper","heroFW__figure":"heroFW__figure","height--content":"height--content","figure__opacity--0":"figure__opacity--0","figure__opacity--1":"figure__opacity--1","figure__opacity--2":"figure__opacity--2","figure__opacity--3":"figure__opacity--3","figure__opacity--4":"figure__opacity--4","figure__opacity--5":"figure__opacity--5","figure__opacity--6":"figure__opacity--6","figure__opacity--7":"figure__opacity--7","figure__opacity--8":"figure__opacity--8","figure__opacity--9":"figure__opacity--9","figure__opacity--10":"figure__opacity--10","heroFW__content":"heroFW__content","content__bg--blue":"content__bg--blue","content__bg--green":"content__bg--green","content__bg--orange":"content__bg--orange","content__bg--darkblue":"content__bg--darkblue","content__bg--gold":"content__bg--gold","content__bg--black":"content__bg--black","content__bg--blacklight":"content__bg--blacklight","content__bg--blacklighter":"content__bg--blacklighter","content__bg--greystronger":"content__bg--greystronger","content__bg--greystrong":"content__bg--greystrong","content__bg--grey":"content__bg--grey","content__bg--greylight":"content__bg--greylight","content__bg--greylighter":"content__bg--greylighter","content__bg--white":"content__bg--white","content__bg--none":"content__bg--none","content__bg__opacity--0":"content__bg__opacity--0","content__bg__opacity--1":"content__bg__opacity--1","content__bg__opacity--2":"content__bg__opacity--2","content__bg__opacity--3":"content__bg__opacity--3","content__bg__opacity--4":"content__bg__opacity--4","content__bg__opacity--5":"content__bg__opacity--5","content__bg__opacity--6":"content__bg__opacity--6","content__bg__opacity--7":"content__bg__opacity--7","content__bg__opacity--8":"content__bg__opacity--8","content__bg__opacity--9":"content__bg__opacity--9","content__bg__opacity--10":"content__bg__opacity--10","sliderFW":"sliderFW","sliderFW__container":"sliderFW__container","sliderFW__rail":"sliderFW__rail","nav--hidden":"nav--hidden","nav--inner":"nav--inner","nav--top":"nav--top","sliderFW__item":"sliderFW__item","sliderFW__item__bg":"sliderFW__item__bg","sliderFW__item__content":"sliderFW__item__content","content__text--top":"content__text--top","content__text--center":"content__text--center","content--right":"content--right","content--center":"content--center","sliderFW__item__blur":"sliderFW__item__blur","content--noblur":"content--noblur","sliderFW__nav":"sliderFW__nav","nav--left":"nav--left","nav--right":"nav--right","nav--bottom":"nav--bottom","sliderFW__nav__item":"sliderFW__nav__item","tabs":"tabs","tabs__nav":"tabs__nav","tabs__content":"tabs__content","tab":"tab","foldingbox":"foldingbox","foldingbox__title":"foldingbox__title","foldingbox__item":"foldingbox__item","break":"break","foldingbox__container":"foldingbox__container","foldingbox__item__content":"foldingbox__item__content","foldingbox__item__bg":"foldingbox__item__bg","block-list":"block-list","headline--outer":"headline--outer","block-list__headline":"block-list__headline","block-list__content":"block-list__content","block-list__footer":"block-list__footer","block-list__category":"block-list__category","block-list__date":"block-list__date","headline--disable":"headline--disable","footer--disable":"footer--disable","block-list__title":"block-list__title","block-img":"block-img","block-img__content":"block-img__content","content--inner":"content--inner","content--fadein":"content--fadein","content--fadeout":"content--fadeout","content--top":"content--top","content--full":"content--full","content--fromtop":"content--fromtop","content--frombottom":"content--frombottom","content--fromleft":"content--fromleft","content--fromright":"content--fromright","content__text--left":"content__text--left","content__text--right":"content__text--right","content__text--bottom":"content__text--bottom","select2-container--default":"select2-container--default","select2-selection--single":"select2-selection--single","select2-selection__rendered":"select2-selection__rendered","select2-selection__arrow":"select2-selection__arrow","select2-container--open":"select2-container--open","select2-selection--multiple":"select2-selection--multiple","select2-selection__choice":"select2-selection__choice","select2-search--inline":"select2-search--inline","select2-search__field":"select2-search__field","select2-selection__choice__remove":"select2-selection__choice__remove","select2-dropdown":"select2-dropdown","content":"content","item":"item","tag":"tag","descIcon":"descIcon"};
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = {
-  themes: [],
-  components: ['heroFW', 'sliderFW',
-  // 'brick',
-  'tabs', 'foldingbox', 'block-list', 'block-std', 'block-img', 'select2FW', 'guideline']
-};
-
-/***/ }),
-/* 28 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function($, utils, global) {
-
-function Framway() {
-  var framway = this;
-  framway.components = [];
-  framway.themes = [];
-  framway.useNotif = true;
-  framway.$debug = $('<div id="debug"></div>').appendTo($('body'));
-  return framway;
-};
-
-/**
- * load the components passed in parameters
- * @param  {Array of Strings} arrComponents [array containing the components names]
- */
-Framway.prototype.loadComponents = function (arrComponents) {
-  var framway = this;
-  $.each(arrComponents, function (index, name) {
-    try {
-      __webpack_require__(31)("./" + name + '/' + name + '.js');
-      framway.components.push(name);
-    } catch (e) {
-      framway.log('Component ' + name + ' failed to load.\n' + e);
-    }
-  });
-  if (framway.components.length) framway.log('Component(s) sucessfully loaded: \n - ' + framway.components.join('\n - '));
-  return framway;
-};
-
-/**
- * load the components passed in parameters
- * @param  {Array of Strings} arrComponents [array containing the components names]
- */
-Framway.prototype.loadThemes = function (arrThemes) {
-  var framway = this;
-  $.each(arrThemes, function (index, name) {
-    try {
-      __webpack_require__(99)("./" + name + '/' + name + '.js');
-      framway.themes.push(name);
-    } catch (e) {
-      framway.log('Component ' + name + ' failed to load.\n' + e);
-    }
-  });
-  if (framway.themes.length) framway.log('Theme(s) sucessfully loaded: \n - ' + framway.themes.join('\n - '));
-  return framway;
-};
-
-/**
- * display things in the browser's console and in a custom debug window
- * @param  {[type]}  strLog
- * @param  {Boolean} blnDebug
- * TODO : style debug window
- */
-Framway.prototype.log = function (strLog) {
-  var blnDebug = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-  var framway = this;
-  if (blnDebug) {
-    var content = framway.$debug.html();
-    content += strLog.replace(/(?:\r\n|\r|\n)/g, '<br>') + '<br>';
-    framway.$debug.html(content).show();
-    framway.$debug.scrollTop(framway.$debug[0].scrollHeight);
-  }
-  console.log("------------------------------------");
-  console.log(strLog);
-  return framway;
-};
-
-/**
- * clear the custom debug window
- */
-Framway.prototype.clearLogs = function () {
-  var framway = this;
-  framway.$debug.html('').hide();
-  return framway;
-};
-
-$(function () {
-  $('body').on('click', 'pre .copy', function (e) {
-    var elem = $(this).parent().clone();
-    elem.find('.copy').remove();
-    if (utils.copyToClipboard(elem.get(0))) notif_fade.success('Copied to clipboard !');
-  });
-});
-
-__webpack_require__(101);
-__webpack_require__(102);
-global.app = new Framway();
-global.utils = utils;
-global.$ = global.jQuery = $;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2), __webpack_require__(3)))
-
-/***/ }),
-/* 29 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
- * Toastr
- * Copyright 2012-2015
- * Authors: John Papa, Hans Fjällemark, and Tim Ferrell.
- * All Rights Reserved.
- * Use, reproduction, distribution, and modification of this code is subject to the terms and
- * conditions of the MIT license, available at http://www.opensource.org/licenses/mit-license.php
- *
- * ARIA Support: Greta Krafsig
- *
- * Project: https://github.com/CodeSeven/toastr
- */
-/* global define */
-(function (define) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1)], __WEBPACK_AMD_DEFINE_RESULT__ = (function ($) {
-        return (function () {
-            var $container;
-            var listener;
-            var toastId = 0;
-            var toastType = {
-                error: 'error',
-                info: 'info',
-                success: 'success',
-                warning: 'warning'
-            };
-
-            var toastr = {
-                clear: clear,
-                remove: remove,
-                error: error,
-                getContainer: getContainer,
-                info: info,
-                options: {},
-                subscribe: subscribe,
-                success: success,
-                version: '2.1.4',
-                warning: warning
-            };
-
-            var previousToast;
-
-            return toastr;
-
-            ////////////////
-
-            function error(message, title, optionsOverride) {
-                return notify({
-                    type: toastType.error,
-                    iconClass: getOptions().iconClasses.error,
-                    message: message,
-                    optionsOverride: optionsOverride,
-                    title: title
-                });
-            }
-
-            function getContainer(options, create) {
-                if (!options) { options = getOptions(); }
-                $container = $('#' + options.containerId);
-                if ($container.length) {
-                    return $container;
-                }
-                if (create) {
-                    $container = createContainer(options);
-                }
-                return $container;
-            }
-
-            function info(message, title, optionsOverride) {
-                return notify({
-                    type: toastType.info,
-                    iconClass: getOptions().iconClasses.info,
-                    message: message,
-                    optionsOverride: optionsOverride,
-                    title: title
-                });
-            }
-
-            function subscribe(callback) {
-                listener = callback;
-            }
-
-            function success(message, title, optionsOverride) {
-                return notify({
-                    type: toastType.success,
-                    iconClass: getOptions().iconClasses.success,
-                    message: message,
-                    optionsOverride: optionsOverride,
-                    title: title
-                });
-            }
-
-            function warning(message, title, optionsOverride) {
-                return notify({
-                    type: toastType.warning,
-                    iconClass: getOptions().iconClasses.warning,
-                    message: message,
-                    optionsOverride: optionsOverride,
-                    title: title
-                });
-            }
-
-            function clear($toastElement, clearOptions) {
-                var options = getOptions();
-                if (!$container) { getContainer(options); }
-                if (!clearToast($toastElement, options, clearOptions)) {
-                    clearContainer(options);
-                }
-            }
-
-            function remove($toastElement) {
-                var options = getOptions();
-                if (!$container) { getContainer(options); }
-                if ($toastElement && $(':focus', $toastElement).length === 0) {
-                    removeToast($toastElement);
-                    return;
-                }
-                if ($container.children().length) {
-                    $container.remove();
-                }
-            }
-
-            // internal functions
-
-            function clearContainer (options) {
-                var toastsToClear = $container.children();
-                for (var i = toastsToClear.length - 1; i >= 0; i--) {
-                    clearToast($(toastsToClear[i]), options);
-                }
-            }
-
-            function clearToast ($toastElement, options, clearOptions) {
-                var force = clearOptions && clearOptions.force ? clearOptions.force : false;
-                if ($toastElement && (force || $(':focus', $toastElement).length === 0)) {
-                    $toastElement[options.hideMethod]({
-                        duration: options.hideDuration,
-                        easing: options.hideEasing,
-                        complete: function () { removeToast($toastElement); }
-                    });
-                    return true;
-                }
-                return false;
-            }
-
-            function createContainer(options) {
-                $container = $('<div/>')
-                    .attr('id', options.containerId)
-                    .addClass(options.positionClass);
-
-                $container.appendTo($(options.target));
-                return $container;
-            }
-
-            function getDefaults() {
-                return {
-                    tapToDismiss: true,
-                    toastClass: 'toast',
-                    containerId: 'toast-container',
-                    debug: false,
-
-                    showMethod: 'fadeIn', //fadeIn, slideDown, and show are built into jQuery
-                    showDuration: 300,
-                    showEasing: 'swing', //swing and linear are built into jQuery
-                    onShown: undefined,
-                    hideMethod: 'fadeOut',
-                    hideDuration: 1000,
-                    hideEasing: 'swing',
-                    onHidden: undefined,
-                    closeMethod: false,
-                    closeDuration: false,
-                    closeEasing: false,
-                    closeOnHover: true,
-
-                    extendedTimeOut: 1000,
-                    iconClasses: {
-                        error: 'toast-error',
-                        info: 'toast-info',
-                        success: 'toast-success',
-                        warning: 'toast-warning'
-                    },
-                    iconClass: 'toast-info',
-                    positionClass: 'toast-top-right',
-                    timeOut: 5000, // Set timeOut and extendedTimeOut to 0 to make it sticky
-                    titleClass: 'toast-title',
-                    messageClass: 'toast-message',
-                    escapeHtml: false,
-                    target: 'body',
-                    closeHtml: '<button type="button">&times;</button>',
-                    closeClass: 'toast-close-button',
-                    newestOnTop: true,
-                    preventDuplicates: false,
-                    progressBar: false,
-                    progressClass: 'toast-progress',
-                    rtl: false
-                };
-            }
-
-            function publish(args) {
-                if (!listener) { return; }
-                listener(args);
-            }
-
-            function notify(map) {
-                var options = getOptions();
-                var iconClass = map.iconClass || options.iconClass;
-
-                if (typeof (map.optionsOverride) !== 'undefined') {
-                    options = $.extend(options, map.optionsOverride);
-                    iconClass = map.optionsOverride.iconClass || iconClass;
-                }
-
-                if (shouldExit(options, map)) { return; }
-
-                toastId++;
-
-                $container = getContainer(options, true);
-
-                var intervalId = null;
-                var $toastElement = $('<div/>');
-                var $titleElement = $('<div/>');
-                var $messageElement = $('<div/>');
-                var $progressElement = $('<div/>');
-                var $closeElement = $(options.closeHtml);
-                var progressBar = {
-                    intervalId: null,
-                    hideEta: null,
-                    maxHideTime: null
-                };
-                var response = {
-                    toastId: toastId,
-                    state: 'visible',
-                    startTime: new Date(),
-                    options: options,
-                    map: map
-                };
-
-                personalizeToast();
-
-                displayToast();
-
-                handleEvents();
-
-                publish(response);
-
-                if (options.debug && console) {
-                    console.log(response);
-                }
-
-                return $toastElement;
-
-                function escapeHtml(source) {
-                    if (source == null) {
-                        source = '';
-                    }
-
-                    return source
-                        .replace(/&/g, '&amp;')
-                        .replace(/"/g, '&quot;')
-                        .replace(/'/g, '&#39;')
-                        .replace(/</g, '&lt;')
-                        .replace(/>/g, '&gt;');
-                }
-
-                function personalizeToast() {
-                    setIcon();
-                    setTitle();
-                    setMessage();
-                    setCloseButton();
-                    setProgressBar();
-                    setRTL();
-                    setSequence();
-                    setAria();
-                }
-
-                function setAria() {
-                    var ariaValue = '';
-                    switch (map.iconClass) {
-                        case 'toast-success':
-                        case 'toast-info':
-                            ariaValue =  'polite';
-                            break;
-                        default:
-                            ariaValue = 'assertive';
-                    }
-                    $toastElement.attr('aria-live', ariaValue);
-                }
-
-                function handleEvents() {
-                    if (options.closeOnHover) {
-                        $toastElement.hover(stickAround, delayedHideToast);
-                    }
-
-                    if (!options.onclick && options.tapToDismiss) {
-                        $toastElement.click(hideToast);
-                    }
-
-                    if (options.closeButton && $closeElement) {
-                        $closeElement.click(function (event) {
-                            if (event.stopPropagation) {
-                                event.stopPropagation();
-                            } else if (event.cancelBubble !== undefined && event.cancelBubble !== true) {
-                                event.cancelBubble = true;
-                            }
-
-                            if (options.onCloseClick) {
-                                options.onCloseClick(event);
-                            }
-
-                            hideToast(true);
-                        });
-                    }
-
-                    if (options.onclick) {
-                        $toastElement.click(function (event) {
-                            options.onclick(event);
-                            hideToast();
-                        });
-                    }
-                }
-
-                function displayToast() {
-                    $toastElement.hide();
-
-                    $toastElement[options.showMethod](
-                        {duration: options.showDuration, easing: options.showEasing, complete: options.onShown}
-                    );
-
-                    if (options.timeOut > 0) {
-                        intervalId = setTimeout(hideToast, options.timeOut);
-                        progressBar.maxHideTime = parseFloat(options.timeOut);
-                        progressBar.hideEta = new Date().getTime() + progressBar.maxHideTime;
-                        if (options.progressBar) {
-                            progressBar.intervalId = setInterval(updateProgress, 10);
-                        }
-                    }
-                }
-
-                function setIcon() {
-                    if (map.iconClass) {
-                        $toastElement.addClass(options.toastClass).addClass(iconClass);
-                    }
-                }
-
-                function setSequence() {
-                    if (options.newestOnTop) {
-                        $container.prepend($toastElement);
-                    } else {
-                        $container.append($toastElement);
-                    }
-                }
-
-                function setTitle() {
-                    if (map.title) {
-                        var suffix = map.title;
-                        if (options.escapeHtml) {
-                            suffix = escapeHtml(map.title);
-                        }
-                        $titleElement.append(suffix).addClass(options.titleClass);
-                        $toastElement.append($titleElement);
-                    }
-                }
-
-                function setMessage() {
-                    if (map.message) {
-                        var suffix = map.message;
-                        if (options.escapeHtml) {
-                            suffix = escapeHtml(map.message);
-                        }
-                        $messageElement.append(suffix).addClass(options.messageClass);
-                        $toastElement.append($messageElement);
-                    }
-                }
-
-                function setCloseButton() {
-                    if (options.closeButton) {
-                        $closeElement.addClass(options.closeClass).attr('role', 'button');
-                        $toastElement.prepend($closeElement);
-                    }
-                }
-
-                function setProgressBar() {
-                    if (options.progressBar) {
-                        $progressElement.addClass(options.progressClass);
-                        $toastElement.prepend($progressElement);
-                    }
-                }
-
-                function setRTL() {
-                    if (options.rtl) {
-                        $toastElement.addClass('rtl');
-                    }
-                }
-
-                function shouldExit(options, map) {
-                    if (options.preventDuplicates) {
-                        if (map.message === previousToast) {
-                            return true;
-                        } else {
-                            previousToast = map.message;
-                        }
-                    }
-                    return false;
-                }
-
-                function hideToast(override) {
-                    var method = override && options.closeMethod !== false ? options.closeMethod : options.hideMethod;
-                    var duration = override && options.closeDuration !== false ?
-                        options.closeDuration : options.hideDuration;
-                    var easing = override && options.closeEasing !== false ? options.closeEasing : options.hideEasing;
-                    if ($(':focus', $toastElement).length && !override) {
-                        return;
-                    }
-                    clearTimeout(progressBar.intervalId);
-                    return $toastElement[method]({
-                        duration: duration,
-                        easing: easing,
-                        complete: function () {
-                            removeToast($toastElement);
-                            clearTimeout(intervalId);
-                            if (options.onHidden && response.state !== 'hidden') {
-                                options.onHidden();
-                            }
-                            response.state = 'hidden';
-                            response.endTime = new Date();
-                            publish(response);
-                        }
-                    });
-                }
-
-                function delayedHideToast() {
-                    if (options.timeOut > 0 || options.extendedTimeOut > 0) {
-                        intervalId = setTimeout(hideToast, options.extendedTimeOut);
-                        progressBar.maxHideTime = parseFloat(options.extendedTimeOut);
-                        progressBar.hideEta = new Date().getTime() + progressBar.maxHideTime;
-                    }
-                }
-
-                function stickAround() {
-                    clearTimeout(intervalId);
-                    progressBar.hideEta = 0;
-                    $toastElement.stop(true, true)[options.showMethod](
-                        {duration: options.showDuration, easing: options.showEasing}
-                    );
-                }
-
-                function updateProgress() {
-                    var percentage = ((progressBar.hideEta - (new Date().getTime())) / progressBar.maxHideTime) * 100;
-                    $progressElement.width(percentage + '%');
-                }
-            }
-
-            function getOptions() {
-                return $.extend({}, getDefaults(), toastr.options);
-            }
-
-            function removeToast($toastElement) {
-                if (!$container) { $container = getContainer(); }
-                if ($toastElement.is(':visible')) {
-                    return;
-                }
-                $toastElement.remove();
-                $toastElement = null;
-                if ($container.children().length === 0) {
-                    $container.remove();
-                    previousToast = undefined;
-                }
-            }
-
-        })();
-    }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-}(__webpack_require__(30)));
-
-
-/***/ }),
-/* 30 */
-/***/ (function(module, exports) {
-
-module.exports = function() {
-	throw new Error("define cannot be used indirect");
-};
-
-
-/***/ }),
-/* 31 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./block-img/block-img.js": 32,
-	"./block-list/block-list.js": 33,
-	"./block-std/block-std.js": 34,
-	"./brick/brick.js": 35,
-	"./foldingbox/foldingbox.js": 38,
-	"./goto/goto.js": 39,
-	"./guideline/guideline.js": 40,
-	"./heroFW/heroFW.js": 96,
-	"./select2FW/select2FW.js": 114,
-	"./sliderFW/sliderFW.js": 97,
-	"./tabs/tabs.js": 98
-};
-function webpackContext(req) {
-	return __webpack_require__(webpackContextResolve(req));
-};
-function webpackContextResolve(req) {
-	var id = map[req];
-	if(!(id + 1)) // check for number or string
-		throw new Error("Cannot find module '" + req + "'.");
-	return id;
-};
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = 31;
-
-/***/ }),
-/* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/***/ }),
-/* 33 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/***/ }),
-/* 34 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/***/ }),
-/* 35 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function($, utils) {
-
-$.fn.Brick = function Brick() {
-  var htmlStud = __webpack_require__(36);
-  var htmlBrick = __webpack_require__(37);
-  $(this).each(function () {
-    var $brick = $(this);
-    var dim = {
-      rows: $brick.attr('rows'),
-      cols: $brick.attr('cols'),
-      studs: $brick.attr('rows') * $brick.attr('cols')
-    };
-    var pos = {
-      z: $brick.attr('z'),
-      x: $brick.attr('x'),
-      y: $brick.attr('y')
-    };
-    var text = $brick.attr('text') || false;
-    var $content = $(htmlBrick);
-
-    // brick construction
-    $brick.append($content);
-    for (var i = 0; i < dim.studs; i++) {
-      $brick.find('.top').append(htmlStud);
-    }
-    if (text) $brick.find('.front,.right,.back,.left').append(text);
-    // brick dimensionning
-    var unitWidth = $brick.outerWidth();
-    var unitHeight = $brick.outerHeight();
-    $brick.css({ 'width': unitWidth * dim.rows });
-    $brick.find('.top').css('height', unitWidth * dim.cols);
-    $brick.find('.left,.right').css('width', unitWidth * dim.cols);
-    $brick.find('.front,.back').css({
-      'height': unitHeight,
-      'width': $brick.find('.top').outerWidth()
-    });
-    // studs dimensionning
-    $brick.find('.stud').css({ 'width': 100 / dim.rows + '%', 'height': 100 / dim.cols + '%' });
-
-    // brick placement
-    if (dim.cols % 2 == 1) pos.y = +pos.y + 0.5;
-    if (dim.rows % 2 == 1) pos.x = +pos.x + 0.5;
-
-    var tZ = unitWidth * pos.y;
-    var tY = unitHeight * pos.z * -1;
-    var tX = unitWidth * pos.x;
-
-    $brick.css('transform', utils.mergeTransforms(this, 'translateZ(' + tZ + 'px) translateY(' + tY + 'px) translateX(' + tX + 'px)'));
-
-    // brick events listeners
-    this.addEventListener("animationstart", brickAnimListener, false);
-    this.addEventListener("animationiteration", brickAnimListener, false);
-    this.addEventListener("animationend", brickAnimListener, false);
-
-    utils.prefixedEvent(this, "animationstart", brickAnimListener);
-    utils.prefixedEvent(this, "animationiteration", brickAnimListener);
-    utils.prefixedEvent(this, "animationend", brickAnimListener);
-
-    $(this).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', brickAnimListener);
-  });
-
-  // grid dimensionning
-  if ($(this).closest('.grid').length) {
-    $(this).closest('.grid').wrapInner('<div class="wrapper"></div>'); // wrap the grid content so we can animate it separatly
-
-    var arrZ = $(this).map(function () {
-      return $(this).attr('z');
-    }).toArray();
-    var nbLayers = Math.max.apply(null, arrZ) + 1; // count one more for layer "0"
-    $(this).closest('.grid').height(nbLayers * $(this).outerHeight());
-
-    // grid events listeners
-    $(this).closest('.grid').each(function (index, grid) {
-      grid.addEventListener("animationstart", gridAnimListener, false);
-      grid.addEventListener("animationiteration", gridAnimListener, false);
-      grid.addEventListener("animationend", gridAnimListener, false);
-
-      utils.prefixedEvent(grid, "animationstart", gridAnimListener);
-      utils.prefixedEvent(grid, "animationiteration", gridAnimListener);
-      utils.prefixedEvent(grid, "animationend", gridAnimListener);
-
-      $(grid).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', gridAnimListener);
-    });
-  }
-
-  // scene dimensionning
-  if ($(this).closest('.scene').length) {
-    // add a bit of spacing to scene, to avoid clipping with other elements
-    $(this).closest('.scene').css('padding', $(this).outerHeight() + 'px 0');
-  }
-
-  // events
-  $(this).on('click', function () {
-    $(this).toggleClass('animate');
-  });
-
-  $(this).closest('.grid').on('click', function () {
-    // $(this).addClass('animate');
-  });
-  return this;
-};
-
-$(function () {
-  $('.brick').Brick();
-  utils.addHtmlHook('.brick', function (item) {
-    console.log("brick added to dom");
-    item.Brick();
-  });
-});
-
-function brickAnimListener(e) {
-  if (e.type == "animationend") {
-    console.log('Brick animation end');
-    $(this).removeClass('animate');
-  }
-}
-
-function gridAnimListener(e) {
-  if (e.type == "animationend") {
-    console.log('Grid animation end');
-    $(this).removeClass('animate');
-  }
-}
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
-
-/***/ }),
-/* 36 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"stud\">\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n</div>";
-
-/***/ }),
-/* 37 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"wrapper\">\n  <div class=\"side top\"></div>\n  <div class=\"side right\">\n      <div class=\"side front\"></div>\n      <div class=\"side back\"></div>\n  </div>\n  <div class=\"side left\"></div>\n</div>";
-
-/***/ }),
-/* 38 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function($, utils) {
-
-$.fn.foldingbox = function foldingbox() {
-  app._foldingbox = app._foldingbox || [];
-  $(this).each(function () {
-    app._foldingbox.push(new Foldingbox(this));
-  });
-  $(window).trigger('resize');
-};
-
-var Foldingbox = function Foldingbox(item) {
-  var foldingbox = this;
-  foldingbox.$el = $(item);
-  foldingbox.break = $(item).data('break');
-  foldingbox.title = { $el: $(item).children('.foldingbox__title'), text: $(item).children('.foldingbox__title').html() };
-  foldingbox.content = { $el: $(item).find('.foldingbox__container') };
-  foldingbox.content.items = foldingbox.content.$el.children('.foldingbox__item');
-
-  foldingbox.setHeight();
-
-  foldingbox.$el.on('destroyed', function () {
-    app._foldingbox.splice(app._foldingbox.indexOf(foldingbox), 1);
-    foldingbox = undefined;
-  });
-
-  return foldingbox;
-};
-
-Foldingbox.prototype.setHeight = function () {
-  var heightBox = 0;
-  if (this.$el.data('height') && this.$el.data('height') != "") {
-    heightBox = this.$el.data('height');
-  } else {
-    this.content.items.each(function (index, item) {
-      var $clone = $(item).children('.foldingbox__item__content').clone().css({
-        'transition': 'none',
-        'opacity': '1',
-        'visibility': 'hidden'
-      }).appendTo('body');
-      if ($clone.outerHeight() > heightBox) heightBox = $clone.outerHeight() + parseInt($(item).css('padding-top')) * 2;
-      $clone.remove();
-    });
-  }
-  this.content.items.height(heightBox);
-  return this;
-};
-
-Foldingbox.prototype.destroy = function () {
-  this.$el.remove();
-};
-
-var timerResize;
-Foldingbox.prototype.resize = function () {
-  var foldingbox = this;
-  clearTimeout(timerResize);
-  timerResize = setTimeout(function () {
-    foldingbox.setHeight();
-    if (typeof foldingbox.break == "number") {
-      if (foldingbox.$el.width() <= foldingbox.break) foldingbox.$el.addClass('break');else foldingbox.$el.removeClass('break');
-    }
-  }, 300);
-};
-
-$(function () {
-  $('.foldingbox').foldingbox();
-  utils.addHtmlHook('.foldingbox', function (item) {
-    item.foldingbox();
-  });
-
-  $(window).resize(function () {
-    $.each(app._foldingbox, function () {
-      this.resize();
-    });
-  });
-});
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
-
-/***/ }),
-/* 39 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function($) {
-
-$(function () {
-    $('body').on('click', '.goto', function (event) {
-        event.preventDefault();
-        var target = $(this).data('goto').split(',');
-        if (target.length == 1) target = target[0];else {
-            $.each(target, function (index, item) {
-                if ($('#' + item).length) {
-                    target = item;
-                    return false;
-                }
-            });
-        }
-        if ($('#' + target).length) {
-            var scrollValue = $('#' + target).offset().top - $('header').outerHeight();
-
-            $('body,html').animate({
-                scrollTop: scrollValue
-            }, 600).promise().then(function () {
-                window.location.hash = '#' + target;
-                window.location.replace(window.location);
-            });
-        }
-    });
-});
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 40 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function($, utils) {
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-if ($('#guideline').length) {
-  var applyConstructorChanges = function applyConstructorChanges($el) {
-    var editor = $el.closest('.item').find('.editor textarea');
-
-    var selector = $el.attr('name').split(',')[0];
-    var attr = $el.attr('name').split(',')[1];
-    var dummy = $(editor.val()).wrapAll('<div></div>');
-
-    var match = false;
-    var value = $el.val();
-    if ($el.hasClass('select')) {
-      match = [];
-      $el.find('option').each(function () {
-        if (this.value != '') match.push(this.value);
-      });
-      match = match.join(' ');
-    } else if ($el.hasClass('checkbox') && value == "undefined") {
-      value = $el.isChecked();
-    } else if ($el.hasClass('checkbox') && value != "undefined" && attr != "class") {
-      if ($el.isChecked()) value = $el.val();else value = '';
-    } else if ($el.hasClass('number')) {
-      match = [];
-      for (var i = $el.attr('min'); i <= $el.attr('max'); i++) {
-        match.push($el.data('prefix') + i);
-      }
-      match = match.join(' ');
-      if ($el.val()) value = $el.data('prefix') + $el.val();
-    }
-
-    if (attr == 'class') {
-      if (match) dummy.parent().find('.' + selector).removeClass(match);
-      dummy.parent().find('.' + selector).toggleClass(value);
-    } else {
-      dummy.parent().find('.' + selector).attr(attr, value);
-    }
-
-    editor.val(dummy.parent().get(0).innerHTML).trigger('keyup');
-  };
-
-  // Building functions
-  var buildComponents = function buildComponents() {
-    var components = { nav: '', content: '' };
-    components.nav += '<ul>';
-    $.each(app.components, function (index, component) {
-      var sampleText = '';
-      try {
-        sampleText = __webpack_require__(41)("./" + component + '/sample.html');
-      } catch (e) {
-        app.log('Failed to retrieve the ' + component + ' component sample.\n' + e);
-      }
-      if (sampleText != '') {
-        sampleText = $(sampleText).wrapAll('<div></div>');
-        var constructorText = '';
-        if (sampleText.parent().find('.constructor').length) {
-          sampleText.parent().find('.constructor').addClass('col-12 col-lg-6 ').find('.input').each(function () {
-            var ref = $(this);
-            var target = ref.data('attr');
-            var name = ref.data('label').replace(' ', '-').toLowerCase();
-            var desc = ref.html() || false;
-            var inputGroup = '<div class="form-group col-12 col-xl-6">';
-
-            if (desc) {
-              inputGroup += '<i class="descIcon fas fa-question-circle"></i>';
-              inputGroup += '<div class="descText">' + desc + '</div>';
-            }
-
-            if (ref.hasClass('select')) {
-              var arrVal = ref.data('value').split(',');
-              var arrOutput = ref.data('output').split(',');
-              if (arrVal[0].indexOf('#colors') != -1) {
-                var baseValue = arrVal[0].replace('#colors', '');
-                arrVal = [];
-                $.each(config.colors, function (key, color) {
-                  arrVal.push(baseValue + key);
-                });
-              }
-              if (arrOutput[0].indexOf('#colors') != -1) {
-                var baseValue = arrOutput[0].replace('#colors', '');
-                arrOutput = [];
-                $.each(config.colors, function (key, color) {
-                  arrOutput.push(baseValue + key);
-                });
-              }
-              inputGroup += '<label for="' + component + ',' + target + ',' + name + '">' + ref.data('label') + '</label>' + '<select class="select" name="' + component + ',' + target + ',' + name + '" id="' + component + ',' + target + ',' + name + '">' + '<option value=""> - </option>';
-              $.each(arrVal, function (index, val) {
-                if (val == ref.data('selected')) inputGroup += '<option value="' + val + '" selected>' + arrOutput[index] + '</option>';else inputGroup += '<option value="' + val + '">' + arrOutput[index] + '</option>';
-              });
-              inputGroup += '</select>';
-            } else if (ref.hasClass('checkbox')) {
-              inputGroup += '<input type="checkbox" value="' + ref.data('value') + '" class="checkbox" name="' + component + ',' + target + ',' + name + '" id="' + component + ',' + target + ',' + name + '" data-default="' + ref.data('selected') + '" >' + '<label for="' + component + ',' + target + ',' + name + '">' + ref.data('label') + '</label>';
-            } else if (ref.hasClass('number')) {
-              var range = ref.data('range').split('-');
-              inputGroup += '<label for="' + component + ',' + target + ',' + name + '">' + ref.data('label') + '</label>';
-              inputGroup += '<input type="number" min="' + range[0] + '" max="' + range[1] + '" data-prefix="' + ref.data('prefix') + '" value="' + ref.data('value') + '" class="number" name="' + component + ',' + target + ',' + name + '" id="' + component + ',' + target + ',' + name + '">';
-            }
-
-            inputGroup += '</div>';
-            ref.replaceWith(inputGroup);
-          });
-          constructorText = sampleText.parent().find('.constructor').wrapInner('<div class="row"></div>').remove().get(0).outerHTML;
-        }
-        sampleText = sampleText.parent().get(0).innerHTML;
-
-        if (typeof sampleText == 'undefined') sampleText = 'error while retrieving sample';
-
-        components.content += '<div class="item row" id="framway__components-' + component + '">' + '<h2 class="ft-i col-12 sep-bottom">' + component + '</h2>' + '<div class="col-12 editor-target">' + sampleText + '</div>' + '<div class="col">' + '<div class="editor"><button class="copy">Copy</button>' + '<textarea name="" id="">' + sampleText.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</textarea>' + '</div>' + '</div>' + constructorText + '</div>';
-        components.nav += '<li><a href="#framway__components-' + component + '">' + component + '</a></li>';
-      } else {
-        app.log('Failed to display the ' + component + ' component sample.\n');
-      }
-    });
-    components.nav += '</ul>';
-
-    if (app.components.length == 0) components.content = 'No components loaded';
-    return components;
-  };
-
-  var buildStyling = function buildStyling() {
-    var styling = { nav: '', content: '' };
-    var objConfig;
-
-    styling.nav += '<ul>';
-    // TEXTS
-    objConfig = { 'Default': 'texts' };
-    if (config['enable-bg'] == 'true') objConfig['Backgrounded'] = 'texts_bg';
-    if (config['enable-bd'] == 'true') objConfig['Bordered'] = 'texts_bd';
-    styling.nav += '<li><a href="#framway__styling-text">Texts</a></li>';
-    styling.content += '<div class="item active" id="framway__styling-text">' + '<h2 class="ft-i sep-bottom">Texts</h2>' + buildTabs(objConfig) + '</div>';
-
-    // TITLES
-    objConfig = { 'Default': 'titles', 'With separators': 'titles_sep' };
-    if (config['enable-bg'] == 'true') objConfig['Backgrounded'] = 'titles_bg';
-    styling.nav += '<li><a href="#framway__styling-titles">Titles</a></li>';
-    styling.content += '<div class="item" id="framway__styling-titles">' + '<h2 class="ft-i sep-bottom">Titles</h2>' + buildTabs(objConfig) + '</div>';
-    // BUTTONS
-    objConfig = { 'Default': 'buttons', 'Colored': 'buttons_colors' };
-    styling.nav += '<li><a href="#framway__styling-buttons">Buttons</a></li>';
-    styling.content += '<div class="item" id="framway__styling-buttons">' + '<h2 class="ft-i sep-bottom">Buttons</h2>' + buildTabs(objConfig) + '</div>';
-    // INPUTS
-    objConfig = { 'Type text': 'inputs', 'Type text extra': 'inputs_texts', 'Others': 'inputs_others' };
-    if (config['enable-bg'] == 'true') objConfig['Backgrounded'] = 'inputs_bg';
-    styling.nav += '<li><a href="#framway__styling-inputs">Inputs</a></li>';
-    styling.content += '<div class="item" id="framway__styling-inputs">' + '<h2 class="ft-i sep-bottom">Inputs</h2>' + buildTabs(objConfig) + '</div>';
-    // BACKGROUNDS
-    if (config['enable-bg'] == 'true') {
-      styling.nav += '<li><a href="#framway__styling-backgrounds">Backgrounds</a></li>';
-      styling.content += '<div class="item" id="framway__styling-backgrounds">' + '<h2 class="ft-i sep-bottom">Backgrounds</h2>';
-      $.each(config.colors, function (key, value) {
-        styling.content += __webpack_require__(7)({ color: key });
-      });
-      styling.content += '</div>';
-    }
-    // BORDERS
-    if (config['enable-bd'] == 'true') {
-      objConfig = { 'Default': 'borders', 'Colored': 'borders_colors' };
-      styling.nav += '<li><a href="#framway__styling-borders">Borders</a></li>';
-      styling.content += '<div class="item" id="framway__styling-borders">' + '<h2 class="ft-i sep-bottom">Borders</h2>' + buildTabs(objConfig) + '</div>';
-    }
-
-    styling.nav += '</ul>';
-
-    return styling;
-  };
-
-  var buildClasses = function buildClasses() {
-    var classes = { nav: '', content: '' };
-    var arrClasses = ['flex'];
-    $.each(arrClasses, function (index, className) {
-      classes.nav += '<ul>';
-      classes.nav += '<li><a href="#framway__classes-' + className + '">' + className.replace(className[0], className[0].toUpperCase()) + '</a></li>';
-      classes.content += '<div class="item active" id="framway__classes-' + className + '">' + '<h2 class="ft-i sep-bottom">' + className.replace(className[0], className[0].toUpperCase()) + '</h2>' + __webpack_require__(54)("./" + className + '.html')() + '</div>';
-    });
-
-    classes.nav += '</ul>';
-
-    return classes;
-  };
-
-  var buildTabs = function buildTabs(tabsConfig) {
-    var template = __webpack_require__(57);
-    var nav = '';
-    var content = '';
-
-    $.each(tabsConfig, function (title, templateName) {
-      nav += '<button class="btn-sm btn-bg-greystronger">' + title + '</button> ';
-      if (title.toLowerCase() != "bordered" && title.toLowerCase() != "backgrounded" && title.toLowerCase() != "colored") content += __webpack_require__(8)("./styling_" + templateName + '.html')();else {
-        content += '<div class="tab">';
-        $.each(config.colors, function (key, value) {
-          content += __webpack_require__(8)("./styling_" + templateName + '.html')({ color: key });
-        });
-        content += '</div>';
-      }
-    });
-
-    return template.render({}, { nav: nav, content: content });
-  };
-
-  var buildConfig = function buildConfig(obj) {
-    var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-
-    var template = __webpack_require__(87); // noShortcut is used to insert partials later into the final template
-    var rows = ''; // the partials mentionned above
-    var arrObjects = {}; // used to store and process later the sub-object of config
-    var htmlStack = ''; // used to stack the multiple results form arrObjects results
-    $.each(obj, function (key, value) {
-      if ((typeof value === 'undefined' ? 'undefined' : _typeof(value)) != 'object') {
-        var str = '<span class="ellipsis" title="' + key + '">' + key + ' :</span><span>' + value + '</span>';
-        if (value.indexOf('#') != -1) str = '<span class="ellipsis" title="' + key + '">' + key + ' :</span><span class="bd-bottom-' + utils.getObjKeyByValue(config.colors, value) + '-5 p-bottom-0">' + value + '</span>';
-        rows += __webpack_require__(89)({ str: str });
-      } else arrObjects[key] = value;
-    });
-    $.each(arrObjects, function (key, value) {
-      htmlStack += buildConfig(value, key);
-    });
-    return template.render({ title: title }, { rows: rows }) + htmlStack; // return the initial template filled with his rows PLUS the stack we get by processing recursively the config
-  };
-
-  var config = __webpack_require__(91);
-  $.each(app.themes, function (index, theme) {
-    config = Object.assign(config, __webpack_require__(92)("./" + theme + '/_config.scss'));
-  });
-
-  $.each(config, function (key, value) {
-    if (value[0] == '(' && value[value.length - 1] == ")") {
-      var objValue = value.replace('(', '{').replace(')', '}').replace(/ /g, '').replace(/([\w]+):/g, '"$1":').replace(/:([\w]+)/g, ':"$1"').replace(/:#([\w]+)/g, ':"#$1"').replace(/:([\d]+)/g, function (m, num) {
-        return ':' + parseFloat(num);
-      }).replace(/:([[{])/g, ':$1');
-      config[key] = JSON.parse(objValue);
-    }
-  });
-  var configHtml = buildConfig(config, 'global');
-  var stylingHtml = buildStyling();
-  var classesHtml = buildClasses();
-  var componentsHtml = buildComponents();
-
-  var html = __webpack_require__(94)({
-    config: configHtml,
-    classes: classesHtml,
-    styling: stylingHtml,
-    components: componentsHtml
-  });
-
-  html = $($.parseHTML(html));
-  html.find('.editor textarea').each(function (index, editor) {
-    var editorText = $(editor).val();
-    var timerEdit, timerEditValue;
-    $(editor).bind('keyup change', function (e, forced) {
-      timerEditValue = 500;
-      if (forced) timerEditValue = 0;
-      clearTimeout(timerEdit);
-      timerEdit = setTimeout(function () {
-        var val = $(editor).val();
-        if (val != editorText || forced) {
-          editorText = val;
-          $(editor).closest('.item').find('.editor-target').html(val);
-        }
-      }, timerEditValue);
-    });
-  });
-
-  html.find('.constructor').each(function (index, constructor) {
-    var editor = $(constructor).closest('.item').find('.editor textarea');
-    // SELECTS
-    $(constructor).find('select').bind('change', function (e) {
-      applyConstructorChanges($(this));
-    }).trigger('change');
-
-    // CHECKBOXES
-    $(constructor).find('.checkbox').bind('click', function (e) {
-      applyConstructorChanges($(this));
-    }).each(function () {
-      if ($(this).data('default')) $(this).trigger('click');
-    });
-
-    // NUMBERS
-    $(constructor).find('.number').bind('change', function (e) {
-      applyConstructorChanges($(this));
-    }).each(function () {
-      $(this).trigger('change');
-    });
-  });
-
-  $('#guideline').append(html);
-}
-
-$(function () {
-  $('#guideline nav a').bind('click', function (e) {
-    e.preventDefault();
-    var target = $(this).addClass('active').attr('href');
-    $('#guideline nav a').not(this).removeClass('active');
-    $('#guideline .content .item').removeClass('active');
-
-    $('#guideline .content .item' + target).addClass('active').find('.item').addClass('active');
-    if (target.split('-').length > 1) {
-      $.each(target.split('-'), function (index, tgt) {
-        $('#guideline .content .item#' + tgt.replace('#', '')).addClass('active');
-      });
-    }
-    $('#guideline .content .item' + target).find('.editor textarea').trigger('change', true);
-  });
-
-  $('.editor textarea').bind('keyup change', function (e) {
-    this.style.height = "auto";
-    this.style.height = this.scrollHeight + 10 + "px";
-  });
-
-  $('body').on('click', '.editor .copy', function (e) {
-    var elem = $(this).parent().find('textarea').get(0);
-    if (utils.copyToClipboard(elem)) notif_fade.success('Copied to clipboard !');
-  });
-
-  // $('#guideline nav a').eq(7).trigger('click');
-  // $('#guideline nav a').first().trigger('click');
-  $('#guideline nav a').last().trigger('click');
-});
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
-
-/***/ }),
-/* 41 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./block-img/sample.html": 42,
-	"./block-list/sample.html": 43,
-	"./block-std/sample.html": 44,
-	"./brick/sample.html": 45,
-	"./foldingbox/sample.html": 46,
-	"./goto/sample.html": 47,
-	"./heroFW/sample.html": 48,
-	"./select2FW/sample.html": 113,
-	"./sliderFW/sample.html": 49,
-	"./tabs/sample.html": 50
-};
-function webpackContext(req) {
-	return __webpack_require__(webpackContextResolve(req));
-};
-function webpackContextResolve(req) {
-	var id = map[req];
-	if(!(id + 1)) // check for number or string
-		throw new Error("Cannot find module '" + req + "'.");
-	return id;
-};
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = 41;
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = "<div class=\"row\">\n  <div class=\"block-img col-6\">\n    <a href=\"\" class=\"block-img__wrapper\">\n      <div class=\"block-img__figure\">\n        <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-img__content\">\n        Lorem ipsum dolor sit amet\n      </div>\n    </a>\n  </div>\n</div>\n<div class=\"constructor\">\n  <p>Image properties</p>\n  <div class=\"input select\" data-label=\"ratio\" data-attr=\"class\" data-value=\"r_1-1,r_2-1,r_1-2,r_16-9\" data-output=\"1:1,2:1,1:2,16:9\" data-selected=\"\"></div>\n  <p>Image alignement</p>\n  <div class=\"input select\" data-label=\"vertical\" data-attr=\"class\" data-value=\"img--top,img--bottom\" data-output=\"Top,Bottom\" data-selected=\"\">\n    Align the image only if cropped\n  </div>\n  <div class=\"input select\" data-label=\"horizontal\" data-attr=\"class\" data-value=\"img--left,img--right\" data-output=\"Left,Right\" data-selected=\"\">\n    Align the image only if cropped\n  </div>\n  <p>Image effects on hover</p>\n  <div class=\"input select\" data-label=\"zoom\" data-attr=\"class\" data-value=\"zoomin,zoomout\" data-output=\"Zoom in,Zoom out\" data-selected=\"\">\n    Apply a zoom effect on hover. Can be stack with other effects.\n  </div>\n  <div class=\"input select\" data-label=\"color fade\" data-attr=\"class\" data-value=\"fadetogrey,fadetocolor\" data-output=\"Fade to grey,Fade to color\" data-selected=\"\">\n    Apply a color effect on hover. Can be stack with other effects.\n  </div>\n  <p>Text alignement</p>\n  <div class=\"input select\" data-label=\"horizontal\" data-attr=\"class\" data-value=\"content__text--left,content__text--right\" data-output=\"Text left,Text right\" data-selected=\"\">\n    Align the text in its container.\n  </div>\n  <div class=\"input select\" data-label=\"vertical\" data-attr=\"class\" data-value=\"content__text--top,content__text--bottom\" data-output=\"Text top,Text bottom\" data-selected=\"\">\n    Align the text in its container. Only apply on a full height container.\n  </div>\n  <p>Content properties</p>\n  <div class=\"input select\" data-label=\"format\" data-attr=\"class\" data-value=\"content--inner,content--full\"  data-output=\"Inner,Full width\"  data-selected=\"content--inner\">\n    <b>Inner</b>: place the content container in the block. (over the image)<br>\n    <b>Full width</b>: the container will take all remaining space. (include <b>Inner</b>)\n  </div>\n  <div class=\"input select\" data-label=\"Font color\" data-attr=\"class\" data-value=\"ft-#colors\" data-output=\"#colors\" data-selected=\"\">\n    Set the content's font color\n  </div>\n  <div class=\"input select\" data-label=\"Background color\" data-attr=\"class\" data-value=\"content__bg--#colors\" data-output=\"#colors\" data-selected=\"\">\n    Set the content's background color\n  </div>\n  <div class=\"input number\" data-label=\"background opacity\" data-attr=\"class\" data-range=\"0-10\" data-value=\"\" data-prefix=\"content__bg__opacity--\">\n    Set transparency to the content's background. From 0 to 10, where 0 is non-visible and 10 is fully opaque.\n  </div>\n  <p>Content effects on hover</p>\n  <div class=\"input select\" data-label=\"translate\" data-attr=\"class\" data-value=\"content--fromtop,content--frombottom,content--fromleft,content--fromright\" data-output=\"From top,From bottom,From left,From right\" data-selected=\"\">\n    Make the content appears on hover from the indicated side. Non stackable with fade effects.<br>\n    Include: <b>Inner, Full width</b>\n  </div>\n  <div class=\"input select\" data-label=\"fade\" data-attr=\"class\" data-value=\"content--fadein,content--fadeout\" data-output=\"Fade in,Fade out\" data-selected=\"\">\n    Apply a fading effect on hover. Non stackable with translate effects.<br>\n    Include: <b>Inner</b>\n  </div>\n</div>\n";
-
-/***/ }),
-/* 43 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = "<div class=\"row\">\n  <div class=\"block-list col-4\">\n    <a href=\"\" class=\"block-list__wrapper\">\n      <div class=\"block-list__figure\">\n        <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-list__headline\">\n        <div class=\"block-list__category\">Article</div>\n        <div class=\"block-list__date\">01/01/1990</div>\n      </div>\n      <div class=\"block-list__content\">\n        <div class=\"block-list__title\">Lorem ipsum dolor</div>\n        <div class=\"block-list__text\">\n          <p>\n            Lorem ipsum dolor sit amet lorem ipsum dolor sit amet Lorem ipsum dolor sit amet lorem ipsum dolor sit amet\n            Lorem ipsum dolor sit amet...\n          </p>\n        </div>\n      </div>\n      <div class=\"block-list__footer\">\n        <div class=\"block-list__author\">par Machin Truc</div>\n      </div>\n    </a>\n  </div>\n  <div class=\"block-list col-4\">\n    <a href=\"\" class=\"block-list__wrapper\">\n      <div class=\"block-list__figure\">\n        <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-list__content\">\n        <div class=\"block-list__title\">Lorem ipsum dolor</div>\n        <div class=\"block-list__text\">\n          <p>\n            Lorem ipsum dolor sit amet lorem ipsum dolor sit amet Lorem ipsum dolor sit amet lorem ipsum dolor sit amet\n            Lorem ipsum dolor sit amet...\n          </p>\n        </div>\n      </div>\n      <div class=\"block-list__footer\">\n        <div class=\"block-list__author\">par Machin Truc</div>\n      </div>\n    </a>\n  </div>\n  <div class=\"block-list col-4\">\n    <a href=\"\" class=\"block-list__wrapper\">\n      <div class=\"block-list__headline\">\n        <div class=\"block-list__category\">Article</div>\n        <div class=\"block-list__date\">01/01/1990</div>\n      </div>\n      <div class=\"block-list__content\">\n        <div class=\"block-list__title\">Lorem ipsum dolor</div>\n        <div class=\"block-list__text\">\n          <p>\n            Lorem ipsum dolor sit amet lorem ipsum dolor sit amet Lorem ipsum dolor sit amet lorem ipsum dolor sit amet\n            Lorem ipsum dolor sit amet...\n          </p>\n        </div>\n      </div>\n      <div class=\"block-list__footer\">\n        <div class=\"block-list__author\">par Machin Truc</div>\n      </div>\n    </a>\n  </div>\n</div>\n\n\n<div class=\"constructor\">\n  <p>Image properties</p>\n  <div class=\"input select\" data-label=\"ratio\" data-attr=\"class\" data-value=\"r_1-1,r_2-1,r_1-2,r_16-9\" data-output=\"1:1,2:1,1:2,16:9\" data-selected=\"\"></div>\n  <p>Image alignement</p>\n  <div class=\"input select\" data-label=\"vertical\" data-attr=\"class\" data-value=\"img--top,img--bottom\" data-output=\"Top,Bottom\" data-selected=\"\">\n    Align the image only if cropped\n  </div>\n  <div class=\"input select\" data-label=\"horizontal\" data-attr=\"class\" data-value=\"img--left,img--right\" data-output=\"Left,Right\" data-selected=\"\">\n    Align the image only if cropped\n  </div>\n  <p>Image effects on hover</p>\n  <div class=\"input select\" data-label=\"zoom\" data-attr=\"class\" data-value=\"zoomin,zoomout\" data-output=\"Zoom in,Zoom out\" data-selected=\"\">\n    Apply a zoom effect on hover. Can be stack with other effects.\n  </div>\n  <div class=\"input select\" data-label=\"color fade\" data-attr=\"class\" data-value=\"fadetogrey,fadetocolor\" data-output=\"Fade to grey,Fade to color\" data-selected=\"\">\n    Apply a color effect on hover. Can be stack with other effects.\n  </div>\n  <p>Content properties</p>\n  <div class=\"input checkbox\" data-label=\"Headline disable\" data-attr=\"class\" data-value=\"headline--disable\" data-selected=\"\"></div>\n  <div class=\"input checkbox\" data-label=\"Footer disable\" data-attr=\"class\" data-value=\"footer--disable\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"Font color\" data-attr=\"class\" data-value=\"ft-#colors\" data-output=\"#colors\" data-selected=\"\">\n    Set the content's font color\n  </div>\n  <div class=\"input select\" data-label=\"Background color\" data-attr=\"class\" data-value=\"content__bg--#colors\" data-output=\"#colors\" data-selected=\"\">\n    Set the content's background color\n  </div>\n  <div class=\"input checkbox\" data-label=\"Headline outer\" data-attr=\"class\" data-value=\"headline--outer\" data-selected=\"\"></div>\n</div>";
-
-/***/ }),
-/* 44 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"block-std\">\n  <p>\n    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in felis a risus pellentesque pulvinar. Etiam vehicula molestie libero et sodales. Donec consequat ultrices est at vestibulum. Cras pretium felis vitae mi sodales, convallis finibus leo tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tincidunt egestas nunc, vitae pellentesque quam porttitor ut. Maecenas posuere pellentesque risus ut pulvinar.\n  </p>\n</div>";
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"scene\">\n  <div class=\"grid\">\n    <div class=\"brick\" rows=\"3\" cols=\"5\" color=\"blacklight\" z=\"1\" x=\"0\" y=\"0\" text=\"Text sample\"></div>\n    <div class=\"brick\" rows=\"2\" cols=\"3\" color=\"blacklighter\" z=\"2\" x=\"-0\" y=\"-1\"></div>\n    <div class=\"brick\" rows=\"1\" cols=\"1\" color=\"greystronger\" z=\"3\" x=\"0\" y=\"-2\"></div>\n    <div class=\"brick\" rows=\"3\" cols=\"2\" color=\"blue\" z=\"2\" x=\"0\" y=\"2\"></div>\n  </div>\n</div>";
-
-/***/ }),
-/* 46 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = "<div class=\"foldingbox\" data-height=\"\" data-break=\"md\">\n  <div class=\"foldingbox__title\">\n    <h2>LOREM IPSUM DOLOR</h2>\n  </div>\n  <div class=\"foldingbox__container\">\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(6) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>Lorem ipsum dolor sit amet</p>\n        <button>Lorem</button>\n      </div>\n    </div>\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(6) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n        </p>\n        <button>Lorem</button>\n      </div>\n    </div>\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(6) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>Lorem ipsum dolor sit amet</p>\n        <button>Lorem</button>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"constructor\">\n  <!-- <div class=\"input select\" data-label=\"hover zoom\" data-attr=\"class\" data-name=\"zoom\" data-value=\"zoomin,zoomout\" data-output=\"Zoom in,Zoom out\" data-selected=\"zoomin\"></div> -->\n</div>\n";
-
-/***/ }),
-/* 47 */
-/***/ (function(module, exports) {
-
-module.exports = "<button class=\"goto\" data-goto=\"anchorID_1,anchorID_2,anchorID_3\">\n  Click me, I'll take you to a special place\n</button>";
-
-/***/ }),
-/* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = "<div class=\"heroFW\" data-height=\"\">\n  <div class=\"heroFW__wrapper\">\n    <div class=\"heroFW__figure\">\n      <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n    </div>\n    <div class=\"heroFW__content\">\n      <div class=\"heroFW__content__wrapper\">\n        <h3>Lorem ipsum</h3>\n        <p>Lorem ipsum dolor sit amet</p>\n        <button>Lorem</button>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"constructor\">\n  <p>Image properties</p>\n  <div class=\"input number\" data-label=\"Image opacity\" data-attr=\"class\" data-range=\"0-10\" data-value=\"\" data-prefix=\"figure__opacity--\">\n    Set transparency to the background image. From 0 to 10, where 0 is non-visible and 10 is fully opaque.\n  </div>\n  <p>Image alignement</p>\n  <div class=\"input select\" data-label=\"vertical\" data-attr=\"class\" data-value=\"img--top,img--bottom\" data-output=\"Top,Bottom\" data-selected=\"\">\n    Align the image only if cropped\n  </div>\n  <div class=\"input select\" data-label=\"horizontal\" data-attr=\"class\" data-value=\"img--left,img--right\" data-output=\"Left,Right\" data-selected=\"\">\n    Align the image only if cropped\n  </div>\n  <p>Content properties</p>\n  <div class=\"input select\" data-label=\"Position\" data-attr=\"class\" data-value=\"content--left--top,content--left--center,content--left--bottom,content--right--top,content--right--center,content--right--bottom,content--center\"  data-output=\"Left Top,Left Center,Left Bottom,Rigth Top,Rigth Center,Rigth Bottom,Center Center\"  data-selected=\"\">\n    Adjust the content position in the block\n  </div>\n  <div class=\"input select\" data-label=\"Title modifier\" data-attr=\"class\" data-value=\"title--1,title--2,title--3,title--4\" data-output=\"Display 1,Display 2,Display 3,Display 4\" data-selected=\"title--3\">\n    Apply a style modifier to the title elements\n  </div>\n  <div class=\"input select\" data-label=\"Font color\" data-attr=\"class\" data-value=\"ft-#colors\" data-output=\"#colors\" data-selected=\"ft-white\">\n    Set the content's font color\n  </div>\n  <div class=\"w-100\"></div>\n  <div class=\"input select\" data-label=\"Background color\" data-attr=\"class\" data-value=\"content__bg--#colors\" data-output=\"#colors\" data-selected=\"content__bg--darkblue\">\n    Set the content's background color\n  </div>\n  <div class=\"input number\" data-label=\"background opacity\" data-attr=\"class\" data-range=\"0-10\" data-value=\"6\" data-prefix=\"content__bg__opacity--\">\n    Set transparency to the content's background. From 0 to 10, where 0 is non-visible and 10 is fully opaque.\n  </div>\n  <p>Misc</p>\n  <div class=\"input checkbox\" data-label=\"Force full width\" data-attr=\"class\" data-value=\"force-full\" data-selected=\"\">\n    By default, the element's width is 100% of its container. This option force the hero to take the <b>full viewport width</b>.\n  </div>\n  <div class=\"input checkbox\" data-label=\"Force full height\" data-attr=\"data-height\" data-value=\"viewport\" data-selected=\"\">\n    By default, the height is defined by the image's height. This option force the hero to take the <b>full viewport height</b>. Alternatively, you can fill the data-height attribute with the desired dimension.\n  </div>\n  <div class=\"input checkbox\" data-label=\"Height relative to content\" data-attr=\"class\" data-value=\"height--content\" data-selected=\"\">\n    By default, the height is defined by the image's height. This option force the hero to take the <b>content's height</b>. Alternatively, you can fill the data-height attribute with the desired dimension.\n  </div>\n  <div class=\"input checkbox\" data-label=\"Width relative to content\" data-attr=\"class\" data-value=\"width--content\" data-selected=\"\">\n    By default, the element's width is 100% of its container. This option force the hero to take the <b>content's width</b> and <b>content's height</b>.\n  </div>\n</div>";
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = "<div class=\"sliderFW\" data-height=\"400\" data-loop=\"\" data-auto=\"\">\n  <div class=\"sliderFW__container\">\n    <div class=\"sliderFW__rail\">\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(6) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(6) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"constructor\">\n  <p>Misc</p>\n  <div class=\"input checkbox\" data-label=\"Loop\" data-attr=\"data-loop\" data-selected=\"true\">\n    The user can loop throught the images\n  </div>\n  <div class=\"input checkbox\" data-label=\"Autoplay\" data-attr=\"data-auto\" data-selected=\"\"></div>\n  <div class=\"input checkbox\" data-label=\"Force full width\" data-attr=\"class\" data-value=\"force-full\" data-selected=\"\">\n    By default, the element's width is 100% of its container. This option force the hero to take the <b>full viewport width</b>.\n  </div>\n  <div class=\"input checkbox\" data-label=\"Force full height\" data-attr=\"data-height\" data-value=\"viewport\" data-selected=\"\">\n    By default, the height is defined by the image's height. This option force the hero to take the <b>full viewport height</b>. Alternatively, you can fill the data-height attribute with the desired dimension.\n  </div>\n  <p>Navigation</p>\n  <div class=\"input select\" data-label=\"nav vertical\" data-attr=\"class\" data-value=\"nav--bottom,nav--top\" data-output=\"bottom,top\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"nav horizontal\" data-attr=\"class\" data-value=\"nav--left,nav--right\" data-output=\"left,right\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"nav display\" data-attr=\"class\" data-value=\"nav--inner,nav--hidden\" data-output=\"inner,hidden\" data-selected=\"\"></div>\n  <p>Content</p>\n  <div class=\"input select\" data-label=\"content position\" data-attr=\"class\" data-value=\"content--right,content--center\" data-output=\"right,center\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"text position\" data-attr=\"class\" data-value=\"content__text--top,content__text--center\" data-output=\"top,center\" data-selected=\"\"></div>\n  <div class=\"input checkbox\" data-label=\"Remove content blur\" data-attr=\"class\" data-value=\"content--noblur\" data-selected=\"\"></div>\n</div>\n";
-
-/***/ }),
-/* 50 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"tabs\">\n  <div class=\"tabs__nav\">\n    <button>Lorem</button>\n    <button>Ipsum</button>\n    <button>Dolor</button>\n  </div>\n  <div class=\"tabs__content\">\n    <div class=\"tab\">\n      Lorem ipsum dolor sit amet\n    </div>\n    <div class=\"tab\">\n      Ipsum dolor sit amet lorem\n    </div>\n    <div class=\"tab\">\n      Dolor sit amet lorem ipsum\n    </div>\n  </div>\n</div>";
-
-/***/ }),
-/* 51 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"bg-{{color}} m-bottom\">\n  <h4>bg-{{color}}</h4>\n  <p class=\"clear\">\n    Zombies reversus ab inferno, nam malum cerebro. De carne animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n  </p>\n</div>";
-
-/***/ }),
-/* 52 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/*
- *  Copyright 2011 Twitter, Inc.
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *  http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- */
-
-(function (Hogan) {
-  // Setup regex  assignments
-  // remove whitespace according to Mustache spec
-  var rIsWhitespace = /\S/,
-      rQuot = /\"/g,
-      rNewline =  /\n/g,
-      rCr = /\r/g,
-      rSlash = /\\/g,
-      rLineSep = /\u2028/,
-      rParagraphSep = /\u2029/;
-
-  Hogan.tags = {
-    '#': 1, '^': 2, '<': 3, '$': 4,
-    '/': 5, '!': 6, '>': 7, '=': 8, '_v': 9,
-    '{': 10, '&': 11, '_t': 12
-  };
-
-  Hogan.scan = function scan(text, delimiters) {
-    var len = text.length,
-        IN_TEXT = 0,
-        IN_TAG_TYPE = 1,
-        IN_TAG = 2,
-        state = IN_TEXT,
-        tagType = null,
-        tag = null,
-        buf = '',
-        tokens = [],
-        seenTag = false,
-        i = 0,
-        lineStart = 0,
-        otag = '{{',
-        ctag = '}}';
-
-    function addBuf() {
-      if (buf.length > 0) {
-        tokens.push({tag: '_t', text: new String(buf)});
-        buf = '';
-      }
-    }
-
-    function lineIsWhitespace() {
-      var isAllWhitespace = true;
-      for (var j = lineStart; j < tokens.length; j++) {
-        isAllWhitespace =
-          (Hogan.tags[tokens[j].tag] < Hogan.tags['_v']) ||
-          (tokens[j].tag == '_t' && tokens[j].text.match(rIsWhitespace) === null);
-        if (!isAllWhitespace) {
-          return false;
-        }
-      }
-
-      return isAllWhitespace;
-    }
-
-    function filterLine(haveSeenTag, noNewLine) {
-      addBuf();
-
-      if (haveSeenTag && lineIsWhitespace()) {
-        for (var j = lineStart, next; j < tokens.length; j++) {
-          if (tokens[j].text) {
-            if ((next = tokens[j+1]) && next.tag == '>') {
-              // set indent to token value
-              next.indent = tokens[j].text.toString()
-            }
-            tokens.splice(j, 1);
-          }
-        }
-      } else if (!noNewLine) {
-        tokens.push({tag:'\n'});
-      }
-
-      seenTag = false;
-      lineStart = tokens.length;
-    }
-
-    function changeDelimiters(text, index) {
-      var close = '=' + ctag,
-          closeIndex = text.indexOf(close, index),
-          delimiters = trim(
-            text.substring(text.indexOf('=', index) + 1, closeIndex)
-          ).split(' ');
-
-      otag = delimiters[0];
-      ctag = delimiters[delimiters.length - 1];
-
-      return closeIndex + close.length - 1;
-    }
-
-    if (delimiters) {
-      delimiters = delimiters.split(' ');
-      otag = delimiters[0];
-      ctag = delimiters[1];
-    }
-
-    for (i = 0; i < len; i++) {
-      if (state == IN_TEXT) {
-        if (tagChange(otag, text, i)) {
-          --i;
-          addBuf();
-          state = IN_TAG_TYPE;
-        } else {
-          if (text.charAt(i) == '\n') {
-            filterLine(seenTag);
-          } else {
-            buf += text.charAt(i);
-          }
-        }
-      } else if (state == IN_TAG_TYPE) {
-        i += otag.length - 1;
-        tag = Hogan.tags[text.charAt(i + 1)];
-        tagType = tag ? text.charAt(i + 1) : '_v';
-        if (tagType == '=') {
-          i = changeDelimiters(text, i);
-          state = IN_TEXT;
-        } else {
-          if (tag) {
-            i++;
-          }
-          state = IN_TAG;
-        }
-        seenTag = i;
-      } else {
-        if (tagChange(ctag, text, i)) {
-          tokens.push({tag: tagType, n: trim(buf), otag: otag, ctag: ctag,
-                       i: (tagType == '/') ? seenTag - otag.length : i + ctag.length});
-          buf = '';
-          i += ctag.length - 1;
-          state = IN_TEXT;
-          if (tagType == '{') {
-            if (ctag == '}}') {
-              i++;
-            } else {
-              cleanTripleStache(tokens[tokens.length - 1]);
-            }
-          }
-        } else {
-          buf += text.charAt(i);
-        }
-      }
-    }
-
-    filterLine(seenTag, true);
-
-    return tokens;
-  }
-
-  function cleanTripleStache(token) {
-    if (token.n.substr(token.n.length - 1) === '}') {
-      token.n = token.n.substring(0, token.n.length - 1);
-    }
-  }
-
-  function trim(s) {
-    if (s.trim) {
-      return s.trim();
-    }
-
-    return s.replace(/^\s*|\s*$/g, '');
-  }
-
-  function tagChange(tag, text, index) {
-    if (text.charAt(index) != tag.charAt(0)) {
-      return false;
-    }
-
-    for (var i = 1, l = tag.length; i < l; i++) {
-      if (text.charAt(index + i) != tag.charAt(i)) {
-        return false;
-      }
-    }
-
-    return true;
-  }
-
-  // the tags allowed inside super templates
-  var allowedInSuper = {'_t': true, '\n': true, '$': true, '/': true};
-
-  function buildTree(tokens, kind, stack, customTags) {
-    var instructions = [],
-        opener = null,
-        tail = null,
-        token = null;
-
-    tail = stack[stack.length - 1];
-
-    while (tokens.length > 0) {
-      token = tokens.shift();
-
-      if (tail && tail.tag == '<' && !(token.tag in allowedInSuper)) {
-        throw new Error('Illegal content in < super tag.');
-      }
-
-      if (Hogan.tags[token.tag] <= Hogan.tags['$'] || isOpener(token, customTags)) {
-        stack.push(token);
-        token.nodes = buildTree(tokens, token.tag, stack, customTags);
-      } else if (token.tag == '/') {
-        if (stack.length === 0) {
-          throw new Error('Closing tag without opener: /' + token.n);
-        }
-        opener = stack.pop();
-        if (token.n != opener.n && !isCloser(token.n, opener.n, customTags)) {
-          throw new Error('Nesting error: ' + opener.n + ' vs. ' + token.n);
-        }
-        opener.end = token.i;
-        return instructions;
-      } else if (token.tag == '\n') {
-        token.last = (tokens.length == 0) || (tokens[0].tag == '\n');
-      }
-
-      instructions.push(token);
-    }
-
-    if (stack.length > 0) {
-      throw new Error('missing closing tag: ' + stack.pop().n);
-    }
-
-    return instructions;
-  }
-
-  function isOpener(token, tags) {
-    for (var i = 0, l = tags.length; i < l; i++) {
-      if (tags[i].o == token.n) {
-        token.tag = '#';
-        return true;
-      }
-    }
-  }
-
-  function isCloser(close, open, tags) {
-    for (var i = 0, l = tags.length; i < l; i++) {
-      if (tags[i].c == close && tags[i].o == open) {
-        return true;
-      }
-    }
-  }
-
-  function stringifySubstitutions(obj) {
-    var items = [];
-    for (var key in obj) {
-      items.push('"' + esc(key) + '": function(c,p,t,i) {' + obj[key] + '}');
-    }
-    return "{ " + items.join(",") + " }";
-  }
-
-  function stringifyPartials(codeObj) {
-    var partials = [];
-    for (var key in codeObj.partials) {
-      partials.push('"' + esc(key) + '":{name:"' + esc(codeObj.partials[key].name) + '", ' + stringifyPartials(codeObj.partials[key]) + "}");
-    }
-    return "partials: {" + partials.join(",") + "}, subs: " + stringifySubstitutions(codeObj.subs);
-  }
-
-  Hogan.stringify = function(codeObj, text, options) {
-    return "{code: function (c,p,i) { " + Hogan.wrapMain(codeObj.code) + " }," + stringifyPartials(codeObj) +  "}";
-  }
-
-  var serialNo = 0;
-  Hogan.generate = function(tree, text, options) {
-    serialNo = 0;
-    var context = { code: '', subs: {}, partials: {} };
-    Hogan.walk(tree, context);
-
-    if (options.asString) {
-      return this.stringify(context, text, options);
-    }
-
-    return this.makeTemplate(context, text, options);
-  }
-
-  Hogan.wrapMain = function(code) {
-    return 'var t=this;t.b(i=i||"");' + code + 'return t.fl();';
-  }
-
-  Hogan.template = Hogan.Template;
-
-  Hogan.makeTemplate = function(codeObj, text, options) {
-    var template = this.makePartials(codeObj);
-    template.code = new Function('c', 'p', 'i', this.wrapMain(codeObj.code));
-    return new this.template(template, text, this, options);
-  }
-
-  Hogan.makePartials = function(codeObj) {
-    var key, template = {subs: {}, partials: codeObj.partials, name: codeObj.name};
-    for (key in template.partials) {
-      template.partials[key] = this.makePartials(template.partials[key]);
-    }
-    for (key in codeObj.subs) {
-      template.subs[key] = new Function('c', 'p', 't', 'i', codeObj.subs[key]);
-    }
-    return template;
-  }
-
-  function esc(s) {
-    return s.replace(rSlash, '\\\\')
-            .replace(rQuot, '\\\"')
-            .replace(rNewline, '\\n')
-            .replace(rCr, '\\r')
-            .replace(rLineSep, '\\u2028')
-            .replace(rParagraphSep, '\\u2029');
-  }
-
-  function chooseMethod(s) {
-    return (~s.indexOf('.')) ? 'd' : 'f';
-  }
-
-  function createPartial(node, context) {
-    var prefix = "<" + (context.prefix || "");
-    var sym = prefix + node.n + serialNo++;
-    context.partials[sym] = {name: node.n, partials: {}};
-    context.code += 't.b(t.rp("' +  esc(sym) + '",c,p,"' + (node.indent || '') + '"));';
-    return sym;
-  }
-
-  Hogan.codegen = {
-    '#': function(node, context) {
-      context.code += 'if(t.s(t.' + chooseMethod(node.n) + '("' + esc(node.n) + '",c,p,1),' +
-                      'c,p,0,' + node.i + ',' + node.end + ',"' + node.otag + " " + node.ctag + '")){' +
-                      't.rs(c,p,' + 'function(c,p,t){';
-      Hogan.walk(node.nodes, context);
-      context.code += '});c.pop();}';
-    },
-
-    '^': function(node, context) {
-      context.code += 'if(!t.s(t.' + chooseMethod(node.n) + '("' + esc(node.n) + '",c,p,1),c,p,1,0,0,"")){';
-      Hogan.walk(node.nodes, context);
-      context.code += '};';
-    },
-
-    '>': createPartial,
-    '<': function(node, context) {
-      var ctx = {partials: {}, code: '', subs: {}, inPartial: true};
-      Hogan.walk(node.nodes, ctx);
-      var template = context.partials[createPartial(node, context)];
-      template.subs = ctx.subs;
-      template.partials = ctx.partials;
-    },
-
-    '$': function(node, context) {
-      var ctx = {subs: {}, code: '', partials: context.partials, prefix: node.n};
-      Hogan.walk(node.nodes, ctx);
-      context.subs[node.n] = ctx.code;
-      if (!context.inPartial) {
-        context.code += 't.sub("' + esc(node.n) + '",c,p,i);';
-      }
-    },
-
-    '\n': function(node, context) {
-      context.code += write('"\\n"' + (node.last ? '' : ' + i'));
-    },
-
-    '_v': function(node, context) {
-      context.code += 't.b(t.v(t.' + chooseMethod(node.n) + '("' + esc(node.n) + '",c,p,0)));';
-    },
-
-    '_t': function(node, context) {
-      context.code += write('"' + esc(node.text) + '"');
-    },
-
-    '{': tripleStache,
-
-    '&': tripleStache
-  }
-
-  function tripleStache(node, context) {
-    context.code += 't.b(t.t(t.' + chooseMethod(node.n) + '("' + esc(node.n) + '",c,p,0)));';
-  }
-
-  function write(s) {
-    return 't.b(' + s + ');';
-  }
-
-  Hogan.walk = function(nodelist, context) {
-    var func;
-    for (var i = 0, l = nodelist.length; i < l; i++) {
-      func = Hogan.codegen[nodelist[i].tag];
-      func && func(nodelist[i], context);
-    }
-    return context;
-  }
-
-  Hogan.parse = function(tokens, text, options) {
-    options = options || {};
-    return buildTree(tokens, '', [], options.sectionTags || []);
-  }
-
-  Hogan.cache = {};
-
-  Hogan.cacheKey = function(text, options) {
-    return [text, !!options.asString, !!options.disableLambda, options.delimiters, !!options.modelGet].join('||');
-  }
-
-  Hogan.compile = function(text, options) {
-    options = options || {};
-    var key = Hogan.cacheKey(text, options);
-    var template = this.cache[key];
-
-    if (template) {
-      var partials = template.partials;
-      for (var name in partials) {
-        delete partials[name].instance;
-      }
-      return template;
-    }
-
-    template = this.generate(this.parse(this.scan(text, options.delimiters), text, options), text, options);
-    return this.cache[key] = template;
-  }
-})( true ? exports : Hogan);
-
-
-/***/ }),
-/* 53 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/*
- *  Copyright 2011 Twitter, Inc.
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *  http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- */
-
-var Hogan = {};
-
-(function (Hogan) {
-  Hogan.Template = function (codeObj, text, compiler, options) {
-    codeObj = codeObj || {};
-    this.r = codeObj.code || this.r;
-    this.c = compiler;
-    this.options = options || {};
-    this.text = text || '';
-    this.partials = codeObj.partials || {};
-    this.subs = codeObj.subs || {};
-    this.buf = '';
-  }
-
-  Hogan.Template.prototype = {
-    // render: replaced by generated code.
-    r: function (context, partials, indent) { return ''; },
-
-    // variable escaping
-    v: hoganEscape,
-
-    // triple stache
-    t: coerceToString,
-
-    render: function render(context, partials, indent) {
-      return this.ri([context], partials || {}, indent);
-    },
-
-    // render internal -- a hook for overrides that catches partials too
-    ri: function (context, partials, indent) {
-      return this.r(context, partials, indent);
-    },
-
-    // ensurePartial
-    ep: function(symbol, partials) {
-      var partial = this.partials[symbol];
-
-      // check to see that if we've instantiated this partial before
-      var template = partials[partial.name];
-      if (partial.instance && partial.base == template) {
-        return partial.instance;
-      }
-
-      if (typeof template == 'string') {
-        if (!this.c) {
-          throw new Error("No compiler available.");
-        }
-        template = this.c.compile(template, this.options);
-      }
-
-      if (!template) {
-        return null;
-      }
-
-      // We use this to check whether the partials dictionary has changed
-      this.partials[symbol].base = template;
-
-      if (partial.subs) {
-        // Make sure we consider parent template now
-        if (!partials.stackText) partials.stackText = {};
-        for (key in partial.subs) {
-          if (!partials.stackText[key]) {
-            partials.stackText[key] = (this.activeSub !== undefined && partials.stackText[this.activeSub]) ? partials.stackText[this.activeSub] : this.text;
-          }
-        }
-        template = createSpecializedPartial(template, partial.subs, partial.partials,
-          this.stackSubs, this.stackPartials, partials.stackText);
-      }
-      this.partials[symbol].instance = template;
-
-      return template;
-    },
-
-    // tries to find a partial in the current scope and render it
-    rp: function(symbol, context, partials, indent) {
-      var partial = this.ep(symbol, partials);
-      if (!partial) {
-        return '';
-      }
-
-      return partial.ri(context, partials, indent);
-    },
-
-    // render a section
-    rs: function(context, partials, section) {
-      var tail = context[context.length - 1];
-
-      if (!isArray(tail)) {
-        section(context, partials, this);
-        return;
-      }
-
-      for (var i = 0; i < tail.length; i++) {
-        context.push(tail[i]);
-        section(context, partials, this);
-        context.pop();
-      }
-    },
-
-    // maybe start a section
-    s: function(val, ctx, partials, inverted, start, end, tags) {
-      var pass;
-
-      if (isArray(val) && val.length === 0) {
-        return false;
-      }
-
-      if (typeof val == 'function') {
-        val = this.ms(val, ctx, partials, inverted, start, end, tags);
-      }
-
-      pass = !!val;
-
-      if (!inverted && pass && ctx) {
-        ctx.push((typeof val == 'object') ? val : ctx[ctx.length - 1]);
-      }
-
-      return pass;
-    },
-
-    // find values with dotted names
-    d: function(key, ctx, partials, returnFound) {
-      var found,
-          names = key.split('.'),
-          val = this.f(names[0], ctx, partials, returnFound),
-          doModelGet = this.options.modelGet,
-          cx = null;
-
-      if (key === '.' && isArray(ctx[ctx.length - 2])) {
-        val = ctx[ctx.length - 1];
-      } else {
-        for (var i = 1; i < names.length; i++) {
-          found = findInScope(names[i], val, doModelGet);
-          if (found !== undefined) {
-            cx = val;
-            val = found;
-          } else {
-            val = '';
-          }
-        }
-      }
-
-      if (returnFound && !val) {
-        return false;
-      }
-
-      if (!returnFound && typeof val == 'function') {
-        ctx.push(cx);
-        val = this.mv(val, ctx, partials);
-        ctx.pop();
-      }
-
-      return val;
-    },
-
-    // find values with normal names
-    f: function(key, ctx, partials, returnFound) {
-      var val = false,
-          v = null,
-          found = false,
-          doModelGet = this.options.modelGet;
-
-      for (var i = ctx.length - 1; i >= 0; i--) {
-        v = ctx[i];
-        val = findInScope(key, v, doModelGet);
-        if (val !== undefined) {
-          found = true;
-          break;
-        }
-      }
-
-      if (!found) {
-        return (returnFound) ? false : "";
-      }
-
-      if (!returnFound && typeof val == 'function') {
-        val = this.mv(val, ctx, partials);
-      }
-
-      return val;
-    },
-
-    // higher order templates
-    ls: function(func, cx, partials, text, tags) {
-      var oldTags = this.options.delimiters;
-
-      this.options.delimiters = tags;
-      this.b(this.ct(coerceToString(func.call(cx, text)), cx, partials));
-      this.options.delimiters = oldTags;
-
-      return false;
-    },
-
-    // compile text
-    ct: function(text, cx, partials) {
-      if (this.options.disableLambda) {
-        throw new Error('Lambda features disabled.');
-      }
-      return this.c.compile(text, this.options).render(cx, partials);
-    },
-
-    // template result buffering
-    b: function(s) { this.buf += s; },
-
-    fl: function() { var r = this.buf; this.buf = ''; return r; },
-
-    // method replace section
-    ms: function(func, ctx, partials, inverted, start, end, tags) {
-      var textSource,
-          cx = ctx[ctx.length - 1],
-          result = func.call(cx);
-
-      if (typeof result == 'function') {
-        if (inverted) {
-          return true;
-        } else {
-          textSource = (this.activeSub && this.subsText && this.subsText[this.activeSub]) ? this.subsText[this.activeSub] : this.text;
-          return this.ls(result, cx, partials, textSource.substring(start, end), tags);
-        }
-      }
-
-      return result;
-    },
-
-    // method replace variable
-    mv: function(func, ctx, partials) {
-      var cx = ctx[ctx.length - 1];
-      var result = func.call(cx);
-
-      if (typeof result == 'function') {
-        return this.ct(coerceToString(result.call(cx)), cx, partials);
-      }
-
-      return result;
-    },
-
-    sub: function(name, context, partials, indent) {
-      var f = this.subs[name];
-      if (f) {
-        this.activeSub = name;
-        f(context, partials, this, indent);
-        this.activeSub = false;
-      }
-    }
-
-  };
-
-  //Find a key in an object
-  function findInScope(key, scope, doModelGet) {
-    var val;
-
-    if (scope && typeof scope == 'object') {
-
-      if (scope[key] !== undefined) {
-        val = scope[key];
-
-      // try lookup with get for backbone or similar model data
-      } else if (doModelGet && scope.get && typeof scope.get == 'function') {
-        val = scope.get(key);
-      }
-    }
-
-    return val;
-  }
-
-  function createSpecializedPartial(instance, subs, partials, stackSubs, stackPartials, stackText) {
-    function PartialTemplate() {};
-    PartialTemplate.prototype = instance;
-    function Substitutions() {};
-    Substitutions.prototype = instance.subs;
-    var key;
-    var partial = new PartialTemplate();
-    partial.subs = new Substitutions();
-    partial.subsText = {};  //hehe. substext.
-    partial.buf = '';
-
-    stackSubs = stackSubs || {};
-    partial.stackSubs = stackSubs;
-    partial.subsText = stackText;
-    for (key in subs) {
-      if (!stackSubs[key]) stackSubs[key] = subs[key];
-    }
-    for (key in stackSubs) {
-      partial.subs[key] = stackSubs[key];
-    }
-
-    stackPartials = stackPartials || {};
-    partial.stackPartials = stackPartials;
-    for (key in partials) {
-      if (!stackPartials[key]) stackPartials[key] = partials[key];
-    }
-    for (key in stackPartials) {
-      partial.partials[key] = stackPartials[key];
-    }
-
-    return partial;
-  }
-
-  var rAmp = /&/g,
-      rLt = /</g,
-      rGt = />/g,
-      rApos = /\'/g,
-      rQuot = /\"/g,
-      hChars = /[&<>\"\']/;
-
-  function coerceToString(val) {
-    return String((val === null || val === undefined) ? '' : val);
-  }
-
-  function hoganEscape(str) {
-    str = coerceToString(str);
-    return hChars.test(str) ?
-      str
-        .replace(rAmp, '&amp;')
-        .replace(rLt, '&lt;')
-        .replace(rGt, '&gt;')
-        .replace(rApos, '&#39;')
-        .replace(rQuot, '&quot;') :
-      str;
-  }
-
-  var isArray = Array.isArray || function(a) {
-    return Object.prototype.toString.call(a) === '[object Array]';
-  };
-
-})( true ? exports : Hogan);
-
-
-/***/ }),
-/* 54 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./flex.html": 55
-};
-function webpackContext(req) {
-	return __webpack_require__(webpackContextResolve(req));
-};
-function webpackContextResolve(req) {
-	var id = map[req];
-	if(!(id + 1)) // check for number or string
-		throw new Error("Cannot find module '" + req + "'.");
-	return id;
-};
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = 54;
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(56)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 56 */
-/***/ (function(module, exports) {
-
-module.exports = "<h3>Syntax</h3>\n<div class=\"block-std center txt-center\">flex <span class=\"tag\">-valueofbooleanlikeproperty</span><span class=\"tag\">-propertyname--propertyvalue</span><span class=\"tag\">...</span></div>\n<h3>Example</h3>\n<div class=\"block-std center txt-center\"><span class=\"tag\">flex-wrap-justifycontent--center-alignitems--flexend</span></div>\n<h3>Rules</h3>\n<div class=\"block-std\">\n  <ul class=\"m-top\">\n    <li class=\"m-bottom\">\n      Each property name or value has to be normalized: lowercase, no space, no <span class=\"tag\"> - </span> or <span class=\"tag\"> _ </span> <br>\n      <i>Example: <span class=\"tag\">justify-content</span> become <span class=\"tag\">justifycontent</span>, <span class=\"tag\">flex-start</span> become <span class=\"tag\">flexstart</span>, etc...</i>\n    </li>\n    <li class=\"m-bottom\">\n      Properties which are boolean-like (flex-wrap, flex-direction, ..) are directly specified by their values.<br>\n      <i>Example: <span class=\"tag\">flex-wrap-column</span>, <span class=\"tag\">flex-nowrap-row</span></i>\n    </li>\n    <li class=\"m-bottom\">\n      flex-grow property applied on container affect all children. <br>\n      <i>Example: <span class=\"tag\">flex-flexgrow--1</span> mean all the children's flex-grow is set to 1.</i>\n    </li>\n    <li class=\"m-bottom\">\n      Children's related property can be set on them, with the same syntax but without the flex- prefix :<br>\n      <p class=\"txt-center\">flexgrow--<span class=\"tag\">number</span>, alignself--<span class=\"tag\">propertyvalue</span></p>\n      <i>Example: <span class=\"tag\">flexgrow--1</span>, <span class=\"tag\">alignself--flexend</span></i>\n    </li>\n  </ul>\n</div>";
-
-/***/ }),
-/* 57 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(58)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T; }();
-
-/***/ }),
-/* 58 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"tabs\">\n  <div class=\"tabs__nav\">\n    {{> nav}}\n  </div>\n  <div class=\"tabs__content\">\n    {{> content}}\n  </div>\n</div>";
-
-/***/ }),
-/* 59 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(60)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 60 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"tab\">\n  <div class=\"bd m-bottom\"><h5 class=\"\">bd</h5> Lorem ipsum dolor sit amet</div>\n  <div class=\"bd-top m-bottom\"><h5 class=\"\">bd-top</h5> Lorem ipsum dolor sit amet</div>\n  <div class=-bottom\"bd m-bottom\"><h5 class=\"\">bd-bottom</h5> Lorem ipsum dolor sit amet</div>\n  <div class=\"bd-left m-bottom\">\n    <h5 class=\"txt-center\">bd-left</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n  <div class=\"bd-right m-bottom\">\n    <h5 class=\"txt-center\">bd-right</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n  <div class=\"bd-left bd-top-green m-bottom\">\n    <h5 class=\"txt-center\">bd-left bd-top-green</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n  <div class=\"bd-right bd-bottom-green m-bottom\">\n    <h5 class=\"txt-center\">bd-right bd-bottom-green</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n  <div class=\"bd-10 bd-left-grey-5 bd-bottom-orange bd-right-green-2 m-bottom\">\n    <h5 class=\"txt-center\">bd-10 bd-grey-left-5 bd-bottom-orange bd-right-green-2</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n</div>";
-
-/***/ }),
-/* 61 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(62)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 62 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"bd-{{color}} m-bottom\"> Lorem ipsum dolor sit amet - bd-{{color}}</div>";
-
-/***/ }),
-/* 63 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(64)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 64 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"tab\">\n  <h3>Buttons</h3>\n  <div class=\"\">\n    <button class=\"btn-sm\">btn-sm (button)</button><br>\n    <button class=\"\">btn (button)</button><br>\n    <button class=\"btn-lg\">btn-lg (button)</button>\n  </div>\n  <h3>Buttons inputs</h3>\n  <div>\n    <input type=\"button\" class=\"btn-sm\" value=\"btn-sm (input type button)\"><br>\n    <input type=\"button\" class=\"\" value=\"btn (input type button)\"><br>\n    <input type=\"button\" class=\"btn-lg\" value=\"btn-lg (input type button)\"><br>\n    <input type=\"submit\" class=\"btn-sm\" value=\"btn-sm (input type submit)\"><br>\n    <input type=\"submit\" class=\"\" value=\"btn (input type submit)\"><br>\n    <input type=\"submit\" class=\"btn-lg\" value=\"btn-lg (input type submit)\">\n  </div>\n  <h3>Buttons a</h3>\n  <div  class=\"\">\n    <a href=\"#\" class=\"btn-sm\">btn-sm (a)</a><br>\n    <a href=\"#\" class=\"btn\">btn (a)</a><br>\n    <a href=\"#\" class=\"btn-lg\">btn-lg (a)</a>\n  </div>\n</div>";
-
-/***/ }),
-/* 65 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(66)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 66 */
-/***/ (function(module, exports) {
-
-module.exports = "<div>\n  <button class=\"btn-bg-{{color}}\">btn-bg-{{color}}</button>\n  <button class=\"btn-bd-{{color}}\">btn-bd-{{color}}</button>\n</div>";
-
-/***/ }),
-/* 67 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(68)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 68 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"tab\">\n  <input type=\"text\" placeholder=\"Input solo\">\n  <div class=\"form-group\">\n    <input type=\"text\" placeholder=\"Input in a form-group, without label\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input1\">Label ipsum</label>\n    <input id=\"input1\" type=\"text\" placeholder=\"Input in a form-group, with label\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input2\">Input without placeholder</label>\n    <input id=\"input2\" type=\"text\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input3\">Input with value already set</label>\n    <input id=\"input3\" type=\"text\" placeholder=\"Placeholder ipsum\" value=\"Value ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input4\">Input focused</label>\n    <input id=\"input4\" type=\"text\" class=\"focus\" placeholder=\"Placeholder ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input5\">Input required</label>\n    <input id=\"input5\" type=\"text\" placeholder=\"Placeholder ipsum\" required>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input6\">Input required and valid</label>\n    <input id=\"input6\" type=\"text\" placeholder=\"Placeholder ipsum\" value=\"Valid value ipsum\" required>\n  </div>\n</div>";
-
-/***/ }),
-/* 69 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(70)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 70 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"bg-{{color}} m-bottom\">\n  <span class=\"fl-right\">bg-{{color}}</span>\n  <div class=\"form-group clear\">\n    <label for=\"input21\">Label ipsum</label>\n    <input id=\"input21\" type=\"text\" placeholder=\"Input in a form-group\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input22\">Label ipsum required invalid</label>\n    <input id=\"input22\" type=\"text\" required placeholder=\"Input in a form-group\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input23\">Label ipsum required valid</label>\n    <input id=\"input23\" type=\"text\" required value=\"Value Ipsum\" placeholder=\"Input in a form-group\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input37\">Input range</label> - todo: script récupération et affichage valeur sélectionnée\n    <input id=\"input37\" type=\"range\" min=\"0\" max=\"100\" value=\"50\" step=\"5\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"\">Checkboxes</label>\n    <input id=\"input38\" type=\"checkbox\" checked>\n    <label for=\"input38\">Label checkbox</label>\n    <input id=\"input39\" type=\"checkbox\">\n    <label for=\"input39\">Label checkbox</label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"\">Radios</label>\n    <input name=\"inputRadio\" id=\"input40\" type=\"radio\" checked>\n    <label for=\"input40\">Label radio</label>\n    <input name=\"inputRadio\" id=\"input41\" type=\"radio\">\n    <label for=\"input41\">Label radio</label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input42\">Select</label> - todo: custom script dropdown\n    <select name=\"\" id=\"input42\">\n      <option value=\"1\">value 1</option>\n      <option value=\"2\">value 2</option>\n      <option value=\"3\">value 3</option>\n    </select>\n  </div>\n</div>";
-
-/***/ }),
-/* 71 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(72)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 72 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"tab\">\n  <div class=\"form-group\">\n    <label for=\"input14\">Input range</label> - todo: script récupération et affichage valeur sélectionnée\n    <input id=\"input14\" type=\"range\" min=\"0\" max=\"100\" value=\"50\" step=\"5\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input19\">Input number</label><br>\n    <input id=\"input19\" type=\"number\" min=\"0\" max=\"10\" value=\"5\" step=\"1\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"\">Checkboxes</label>\n    <input id=\"input15\" type=\"checkbox\" checked>\n    <label for=\"input15\">Label checkbox</label>\n    <input id=\"input16\" type=\"checkbox\">\n    <label for=\"input16\">Label checkbox</label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"\">Radios</label>\n    <input name=\"inputRadio\" id=\"input17\" type=\"radio\" checked>\n    <label for=\"input17\">Label radio</label>\n    <input name=\"inputRadio\" id=\"input18\" type=\"radio\">\n    <label for=\"input18\">Label radio</label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input20\">Select</label> - todo: custom script dropdown\n    <select name=\"\" id=\"input20\">\n      <option value=\"1\">value 1</option>\n      <option value=\"2\">value 2</option>\n      <option value=\"3\">value 3</option>\n    </select>\n  </div>\n</div>";
-
-/***/ }),
-/* 73 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(74)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 74 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"tab\">\n  <div class=\"form-group\">\n    <label for=\"input19\">Textarea</label>\n    <textarea name=\"\" id=\"input19\"></textarea>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input7\">Input password</label>\n    <input id=\"input7\" type=\"password\" placeholder=\"Placeholder ipsum\" value=\"passwordipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input8\">Input email</label>\n    <input id=\"input8\" type=\"email\" placeholder=\"Placeholder ipsum\" value=\"lorem@ipsum.dolor\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input9\">Input email with invalid value</label>\n    <input id=\"input9\" type=\"email\" placeholder=\"Placeholder ipsum\" value=\"loremipsum.dolor\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input10\">Input tel</label> - todo: script ajoutant pattern (contextuel localité) ?\n    <input id=\"input10\" type=\"tel\" placeholder=\"Placeholder ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input11\">Input url</label> - todo: script ajoutant \"http://\" automatiquement au début de l'input\n    <input id=\"input11\" type=\"url\" placeholder=\"Placeholder ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input12\">Input date</label>\n    <input id=\"input12\" type=\"date\" placeholder=\"Placeholder ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input13\">Input number</label>\n    <input id=\"input13\" type=\"number\">\n  </div>\n</div>";
-
-/***/ }),
-/* 75 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(76)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 76 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"tab\">\n  <h4>lorem ipsum dolor sit amet (H4)</h4>\n  <p>\n    Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n  </p>\n  <div class=\"txt-center\">\n    <h4>lorem ipsum dolor sit amet (H4) - txt-center</h4>\n    <p>\n      Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n    </p>\n  </div>\n  <div class=\"txt-right\">\n    <h4>lorem ipsum dolor sit amet (H4) - txt-right</h4>\n    <p>\n      Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n    </p>\n  </div>\n  <ul>\n    <li>Lorem ipsum dolor sit amet</li>\n    <li>Lorem ipsum dolor sit amet</li>\n    <li>Lorem ipsum dolor sit amet</li>\n    <ul>\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Lorem ipsum dolor sit amet</li>\n      <ul>\n        <li>Lorem ipsum dolor sit amet</li>\n        <li>Lorem ipsum dolor sit amet</li>\n      </ul>\n      <li>Lorem ipsum dolor sit amet</li>\n    </ul>\n    <li>Lorem ipsum dolor sit amet</li>\n  </ul>\n  <ol>\n    <li>Lorem ipsum dolor sit amet</li>\n    <li>Lorem ipsum dolor sit amet</li>\n    <li>Lorem ipsum dolor sit amet</li>\n    <ol>\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Lorem ipsum dolor sit amet</li>\n      <ol>\n        <li>Lorem ipsum dolor sit amet</li>\n        <li>Lorem ipsum dolor sit amet</li>\n      </ol>\n      <li>Lorem ipsum dolor sit amet</li>\n    </ol>\n    <li>Lorem ipsum dolor sit amet</li>\n  </ol>\n</div>";
-
-/***/ }),
-/* 77 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(78)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 78 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"bd-{{color}} m-bottom\">\n  <h4>lorem ipsum dolor sit amet (H4) - bd-{{color}}</h4>\n  <p>\n    Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n  </p>\n</div>";
-
-/***/ }),
-/* 79 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(80)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 80 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"bg-{{color}} m-bottom\">\n  <h4>lorem ipsum dolor sit amet (H4) - bg-{{color}}</h4>\n  <p>\n    Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n  </p>\n</div>";
-
-/***/ }),
-/* 81 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(82)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 82 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"tab\">\n  <h1>lorem ipsum dolor sit amet (H1)</h1>\n  <h2>lorem ipsum dolor sit amet (H2)</h2>\n  <h3>lorem ipsum dolor sit amet (H3)</h3>\n  <h4>lorem ipsum dolor sit amet (H4)</h4>\n  <h5>lorem ipsum dolor sit amet (H5)</h5>\n  <h6>lorem ipsum dolor sit amet (H6)</h6>\n</div>";
-
-/***/ }),
-/* 83 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(84)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 84 */
-/***/ (function(module, exports) {
-
-module.exports = "<h4 class=\"bg-{{color}}\">lorem ipsum (h4) - bg-{{color}}</h4>";
-
-/***/ }),
-/* 85 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(86)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 86 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"tab\">\n  <h4 class=\"sep-top\">lorem ipsum (h4) - sep-top</h4>\n  <h4 class=\"sep-bottom\">lorem ipsum (h4) - sep-bottom</h4>\n  <h4 class=\"sep-top sep-bottom\">lorem ipsum (h4) - sep-top sep-bottom</h4>\n\n  <h4 class=\"sep-left\">lorem ipsum (h4) - sep-left</h4>\n  <h4 class=\"sep-right\">lorem ipsum (h4) - sep-right</h4>\n  <h4 class=\"sep-left sep-right\">lorem ipsum (h4) - sep-left sep-right</h4>\n</div>";
-
-/***/ }),
-/* 87 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(88)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T; }();
-
-/***/ }),
-/* 88 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"col-12 col-md-6 col-lg-4 flex-column-flexgrow--1\">\n  <div class=\"ft-b txt-center flexgrow--0\">- {{title}} -</div>\n  <ul class=\"bd-right bd-bottom p-left-0\">\n    {{> rows}}\n  </ul>\n</div>";
-
-/***/ }),
-/* 89 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(90)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 90 */
-/***/ (function(module, exports) {
-
-module.exports = "<li class=\"bd-bottom-grey-1 p-bottom-0 flex-justifycontent--spacebetween\">\n  {{{str}}}\n</li>";
-
-/***/ }),
-/* 91 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-module.exports = {"radius":"2px","spacing":"30px","border-default-size":"2px","border-default-color":"#000000","colors":"(\"blue\": #004C79, \"green\": #5cb85c, \"orange\": #DC6053, \"darkblue\": #0a1d29, \"gold\": #edbe5f, \"black\": #000000, \"blacklight\": #111414, \"blacklighter\": #222222, \"greystronger\": #424041, \"greystrong\": #535052, \"grey\": #7A7778, \"greylight\": #DDDDDD, \"greylighter\": #EEEEEE, \"white\": #ffffff, \"none\": transparent)","breakpoints":"(\"xl\": 1400px, \"lg\": 1200px, \"md\": 992px, \"sm\": 768px, \"xs\": 620px, \"xxs\": 520px)","body":"(\"background\": #ffffff, \"font-color\": #424041, \"font-size\": 20px, \"title-font-color\": #111414)","header":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","footer":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","input":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #424041, \"border-size\": 1px, \"placeholder-font-color\": #7A7778, \"radius\": false)","input-focus":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #424041)","input-valid":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #5cb85c)","input-invalid":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #DC6053)","link":"(\"font-color\": #DC6053, \"font-color-hover\": #DC6053, \"font-color-focus\": #DC6053)","btn":"(\"background\": #424041, \"font-color\": #ffffff, \"border-size\": 2px, \"radius\": true, \"extend\": \".btn-bg-darkblue\")","enable-bg":"true","enable-bg-extended":"false","enable-bd":"true"};
-
-/***/ }),
-/* 92 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./user/_config.scss": 93
-};
-function webpackContext(req) {
-	return __webpack_require__(webpackContextResolve(req));
-};
-function webpackContextResolve(req) {
-	var id = map[req];
-	if(!(id + 1)) // check for number or string
-		throw new Error("Cannot find module '" + req + "'.");
-	return id;
-};
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = 92;
-
-/***/ }),
-/* 93 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-module.exports = {"radius":"2px","spacing":"30px","border-default-size":"2px","border-default-color":"#000000","colors":"(\"blue\": #004C79, \"green\": #5cb85c, \"orange\": #DC6053, \"darkblue\": #0a1d29, \"gold\": #edbe5f, \"black\": #000000, \"blacklight\": #111414, \"blacklighter\": #222222, \"greystronger\": #424041, \"greystrong\": #535052, \"grey\": #7A7778, \"greylight\": #DDDDDD, \"greylighter\": #EEEEEE, \"white\": #ffffff, \"none\": transparent)","breakpoints":"(\"xl\": 1400px, \"lg\": 1200px, \"md\": 992px, \"sm\": 768px, \"xs\": 620px, \"xxs\": 520px)","body":"(\"background\": #ffffff, \"font-color\": #424041, \"font-size\": 20px, \"title-font-color\": #111414)","header":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","footer":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","input":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #424041, \"border-size\": 2px, \"placeholder-font-color\": #7A7778, \"radius\": true)","input-focus":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #424041)","input-valid":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #5cb85c)","input-invalid":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #DC6053)","link":"(\"font-color\": #DC6053, \"font-color-hover\": #DC6053, \"font-color-focus\": #DC6053)","btn":"(\"background\": #424041, \"font-color\": #ffffff, \"border-size\": 2px, \"radius\": true, \"extend\": \".btn-bg-darkblue\")","enable-bg":"true","enable-bg-extended":"false","enable-bd":"true"};
-
-/***/ }),
-/* 94 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(95)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 95 */
-/***/ (function(module, exports) {
-
-module.exports = "<nav class=\"bg-greystronger\">\n  <ul>\n    <li><a href=\"#framway__config\">Config</a></li>\n    <li>\n      <a href=\"#framway__classes\">Classes</a>\n      {{{classes.nav}}}\n    </li>\n    <li>\n      <a href=\"#framway__styling\">Examples</a>\n      {{{styling.nav}}}\n    </li>\n    <li>\n      <a href=\"#framway__components\">Components</a>\n      {{{components.nav}}}\n    </li>\n  </ul>\n</nav>\n<div class=\"content container-fluid p-x-x2 p-top\">\n  <h1>Framway's config & guideline</h1>\n  <div class=\"item\" id=\"framway__config\">\n    <div class=\"row\">\n      {{{config}}}\n    </div>\n  </div>\n  <div class=\"item\" id=\"framway__classes\">\n      {{{classes.content}}}\n  </div>\n  <div class=\"item\" id=\"framway__styling\">\n      {{{styling.content}}}\n  </div>\n  <div class=\"item\" id=\"framway__components\">\n      {{{components.content}}}\n  </div>\n</div>";
-
-/***/ }),
-/* 96 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function($, utils) {
-
-$.fn.heroFW = function heroFW() {
-  app._heroFW = app._heroFW || [];
-  $(this).each(function () {
-    app._heroFW.push(new HeroFW(this));
-  });
-};
-
-var HeroFW = function HeroFW(item) {
-  var heroFW = this;
-  heroFW.$el = $(item);
-  heroFW.content = { $el: $(item).find('.heroFW__content') };
-
-  heroFW.setHeight();
-
-  heroFW.$el.on('destroyed', function () {
-    app._heroFW.splice(app._heroFW.indexOf(heroFW), 1);
-    heroFW = undefined;
-  });
-
-  return heroFW;
-};
-
-HeroFW.prototype.setHeight = function () {
-  var heightBox = 0;
-  if (this.$el.data('height') && this.$el.data('height') != "") {
-    heightBox = this.$el.data('height');
-    if (this.$el.data('height') == "viewport") {
-      heightBox = viewport.height - $('#header').outerHeight();
-    }
-  }
-  if (heightBox != 0) this.$el.height(heightBox);
-  return this;
-};
-
-HeroFW.prototype.destroy = function () {
-  this.$el.remove();
-};
-
-var timerResize;
-HeroFW.prototype.resize = function () {
-  var heroFW = this;
-  clearTimeout(timerResize);
-  timerResize = setTimeout(function () {
-    heroFW.setHeight();
-  }, 300);
-};
-
-$(function () {
-  $('.heroFW').heroFW();
-  utils.addHtmlHook('.heroFW', function (item) {
-    item.heroFW();
-  });
-
-  $(window).resize(function () {
-    $.each(app._heroFW, function () {
-      this.resize();
-    });
-  });
-});
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
-
-/***/ }),
-/* 97 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22422,7 +22555,7 @@ $(function () {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
 
 /***/ }),
-/* 98 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22487,11 +22620,11 @@ $(function () {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
 
 /***/ }),
-/* 99 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./user/user.js": 100
+	"./user/user.js": 105
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -22507,10 +22640,10 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 99;
+webpackContext.id = 104;
 
 /***/ }),
-/* 100 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22520,7 +22653,7 @@ $(function () {});
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 101 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22572,72 +22705,126 @@ if (!Array.prototype.find) {
 }
 
 /***/ }),
-/* 102 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(utils, $) {
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-/***/ }),
-/* 103 */,
-/* 104 */,
-/* 105 */,
-/* 106 */,
-/* 107 */,
-/* 108 */,
-/* 109 */,
-/* 110 */,
-/* 111 */,
-/* 112 */,
-/* 113 */
-/***/ (function(module, exports) {
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-module.exports = "<select name=\"\" id=\"\" multiple>\n    <option value=\"\" selected>Option 1</option>\n    <option value=\"\" >Option 2</option>\n    <option value=\"\">Option 3</option>\n</select>\n<select name=\"\" id=\"\">\n    <option value=\"\">Option 1</option>\n    <option value=\"\">Option 2</option>\n    <option value=\"\">Option 3</option>\n    <option value=\"\">Option 4</option>\n    <option value=\"\">Option 5</option>\n</select>\n<select name=\"\" id=\"\">\n  <optgroup label=\"Group 1\">\n    <option value=\"\">Option 1</option>\n  </optgroup>\n  <optgroup label=\"Group 2\">\n    <option value=\"\">Option 2</option>\n    <option value=\"\">Option 3</option>\n    <option value=\"\">Option 4</option>\n    <option value=\"\">Option 5</option>\n  </optgroup>\n</select>";
+// constructor
+var Component = function Component(name) {
+  var $name = utils.lowerize(name);
 
-/***/ }),
-/* 114 */
-/***/ (function(module, exports, __webpack_require__) {
+  // component's class creation
+  var component = _defineProperty({}, name, function (el) {
+    var obj = this;
+    obj.$el = $(el);
+    obj.type = name;
 
-"use strict";
-/* WEBPACK VAR INJECTION */(function($, utils) {
-
-__webpack_require__(22);
-
-$.fn.select2FW = function select2FW() {
-  app._select2FW = app._select2FW || [];
-  $(this).each(function () {
-    app._select2FW.push(new Select2FW(this));
+    // event destroyed
+    obj.$el.on('destroyed', function () {
+      obj.log('destroyed');
+      app.components_loaded['_' + $name].splice(app.components_loaded['_' + $name].indexOf(obj), 1);
+      obj = undefined;
+    });
   });
+  component = component[name];
+  component.prototype = Object.create(Component.prototype);
+  component.prototype.constructor = component;
+
+  // component's private vars and stuff
+  component.debug = app.debug;
+
+  // component's jQuery plugin creation
+  $.fn[$name] = function () {
+    app.components_loaded['_' + $name] = app.components_loaded['_' + $name] || [];
+    $(this).each(function () {
+      var obj = new component(this);
+      app.components_loaded['_' + $name].push(obj);
+      obj.onCreate();
+    });
+  };
+
+  // component's events
+  $(function () {
+    if (component.debug) {
+      console.groupCollapsed('COMPONENT ' + name + ' DEBUG DISPLAY');
+      console.group('Methods');
+      console.log('Owned :', Object.getOwnPropertyNames(component.prototype));
+      console.log('Inherited :', Object.getOwnPropertyNames(Object.getPrototypeOf(component.prototype)));
+      console.groupEnd();
+      // console.log('Methods :',utils.mergeArrays(Object.getOwnPropertyNames(Object.getPrototypeOf(component.prototype)),Object.getOwnPropertyNames(component.prototype)));
+      console.group('Attributes');
+      for (var prop in component) {
+        console.log(prop + ' [' + _typeof(component[prop]) + '] : ', component[prop]);
+      }
+      console.groupEnd();
+      console.groupEnd();
+    }
+    // dom initialisation hook
+    $('.' + $name)[$name]();
+    utils.addHtmlHook('.' + $name, function (item) {
+      item[$name]();
+    });
+
+    // resize hook
+    var timerResize;
+    $(window).resize(function () {
+      clearTimeout(timerResize);
+      timerResize = setTimeout(function () {
+        $.each(app.components_loaded['_' + $name], function (index, obj) {
+          obj.onResize();
+        });
+      }, 300);
+    });
+  });
+
+  return component;
 };
 
-var Select2FW = function Select2FW(item) {
-  var select2FW = this;
-  select2FW.$el = $(item);
-
-  select2FW.$el.select2({
-    minimumResultsForSearch: 5,
-    width: '100%'
-  });
-
-  select2FW.$el.on('destroyed', function () {
-    app._select2FW.splice(app._select2FW.indexOf(select2FW), 1);
-    select2FW = undefined;
-  });
-
-  return select2FW;
-};
-
-Select2FW.prototype.destroy = function () {
+/**
+ * remove the component from the dom
+ */
+Component.prototype.destroy = function () {
   this.$el.remove();
 };
 
-$(function () {
-  $('select').not('.custom').select2FW();
-  utils.addHtmlHook('select:not(.custom)', function (item) {
-    item.select2FW();
-  });
-});
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
+/**
+ * callback on resize event
+ */
+Component.prototype.onResize = function () {
+  this.log('resized', 'This is the callback on resize event. You can overwrite it by redefining ' + this.type + '.prototype.onResize');
+};
+
+/**
+ * callback on component's creation
+ */
+Component.prototype.onCreate = function () {
+  this.log('created', 'This is the callback on the component\'s creation. You can overwrite it by redefining ' + this.type + '.prototype.onCreate');
+};
+
+/**
+ * Display logs in console, if debug mode is enable
+ * @param  {String} action [describe the action that was logged]
+ */
+Component.prototype.log = function (title) {
+  var msg = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+  if (this.constructor.debug) {
+    var tstamp = new Date();
+    tstamp = '[' + tstamp.getHours() + ':' + tstamp.getMinutes() + ':' + tstamp.getSeconds() + ']';
+    app.log(tstamp + " Component " + this.type + ": " + title);
+    if (msg) console.log(msg);
+    console.log(this);
+  }
+};
+
+module.exports = Component;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(1)))
 
 /***/ })
 /******/ ]);

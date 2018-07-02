@@ -1,0 +1,11 @@
+<button class="btn-load" data-text="Loading..." data-icon="true" data-process="processFunction">Click me !</button>
+
+<script>
+  var processFunction = function processFunction(){
+    return new Promise(function(resolve,reject){
+        setTimeout(function(){
+          resolve();
+        },3000);
+    });
+  }
+</script>

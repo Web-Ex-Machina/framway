@@ -61,6 +61,11 @@ var Utils = function Utils(){
     return strResult;
   }
 
+
+  utils.mergeArrays = function(arr1,arr2){
+    return [... new Set([...arr1,...arr2])];
+  }
+
   /**
    * return an array of a function's parameters. Works only if the parameters don't have defaults values
    * @param  {Function} fn
@@ -223,6 +228,14 @@ var Utils = function Utils(){
   }
 
 
+  utils.capitalize = function(str){
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+  utils.lowerize = function(str){
+    return str.charAt(0).toLowerCase() + str.slice(1);
+  }
+
+
   // NOTIFICATIONS SETUP
   global.toastr = require('toastr');
   var toastrDefault = {"newestOnTop": false, "closeButton": true, "timeOut": 0, "extendedTimeOut": 0, "showMethod": "slideDown", "positionClass": "toast-bottom-left", "progressBar": false };
@@ -287,7 +300,7 @@ var Utils = function Utils(){
 
   global.viewport = utils.getDimensions();
   return utils;
-}
+};
 /**
  * return a object containing the viewport width and height
  * @return {Object}

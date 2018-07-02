@@ -11,6 +11,7 @@ module.exports = {
     'block-std',
     'block-img',
     'select2FW',
+    'btn-load',
     'guideline',
   ],
 }

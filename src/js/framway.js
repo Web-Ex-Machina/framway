@@ -1,12 +1,13 @@
 function Framway(){
   var framway = this;
   framway.components = [];
+  framway.components_loaded = {};
   framway.themes = [];
-  framway.useNotif = true;
   framway.$debug = $('<div id="debug"></div>').appendTo($('body'));
+  framway.debug = false;
+  framway.useNotif = true;
   return framway;
 };
-
 /**
  * load the components passed in parameters
  * @param  {Array of Strings} arrComponents [array containing the components names]
@@ -60,7 +61,7 @@ Framway.prototype.log = function(strLog, blnDebug = false){
       framway.$debug.html(content).show();
       framway.$debug.scrollTop(framway.$debug[0].scrollHeight);
   }
-  console.log("------------------------------------");
+  console.log('─'.repeat(15));
   console.log(strLog);
   return framway;
 };
@@ -84,7 +85,7 @@ $(function () {
 });
 
 require('../js/polyfills.js');
-require('../js/component.js');
+global.Component = require('../js/component.js');
 global.app = new Framway();
 global.utils = utils;
 global.$ = global.jQuery = $;
