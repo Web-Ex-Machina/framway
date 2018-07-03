@@ -14635,22 +14635,29 @@ BtnLoad.icon = '<i class="' + BtnLoad.iconSelector.replace(/\./g, ' ').trim() + 
 
 BtnLoad.prototype.onCreate = function () {
   var btn = this;
-  btn.process = window[btn.$el.data('process')];
-  btn.icon = btn.$el.data('icon');
+  btn.process = window[btn.getData('process')];
+  btn.icon = btn.getData('icon', true);
+  btn.result = btn.getData('result', true);
+  btn.reset = btn.getData('reset', true);
   btn.textIdle = btn.$el.text();
-  btn.textLoading = btn.$el.data('text') || btn.$el.text();
+  btn.textLoading = btn.getData('text', btn.$el.text());
   if (btn.icon) btn.textLoading += BtnLoad.icon;
 
-  btn.$el.bind('click', function () {
+  var btnClick = function btnClick() {
     if (typeof btn.process == "function") {
+      btn.$el.off('click');
       btn.toggleState();
       btn.process().then(function (data) {
         btn.toggleState('idle');
+        if (btn.reset) btn.$el.on('click', btnClick);
       }).catch(function (data) {
         btn.toggleState('failed');
+        if (btn.reset) btn.$el.on('click', btnClick);
       });
     }
-  });
+  };
+  btn.$el.on('click', btnClick);
+
   btn.log('created');
 };
 
@@ -14658,22 +14665,20 @@ BtnLoad.prototype.toggleState = function (state) {
   var btn = this;
   switch (state) {
     case 'idle':
-      btn.$el.html(btn.textIdle);
+      if (btn.result) btn.$el.html(btn.textIdle + '<i class="fas fa-check ft-green"></i>');else btn.$el.html(btn.textIdle);
       break;
     case 'failed':
-      btn.$el.html(btn.textIdle);
+      if (btn.result) btn.$el.html(btn.textIdle + '<i class="fas fa-exclamation-triangle ft-orange" title="An error occured. Please retry or reload the page."></i>');else btn.$el.html(btn.textIdle);
       break;
     case 'loading':
     default:
       btn.$el.html(btn.textLoading);
-      if (btn.icon) {
-        btn.$el.find(BtnLoad.iconSelector).css({
-          'margin-left': parseInt(btn.$el.css('padding-right')) / 2,
-          'margin-right': parseInt(btn.$el.css('padding-right')) / -2
-        });
-      }
       break;
   }
+  btn.$el.find('i').css({
+    'margin-left': parseInt(btn.$el.css('padding-right')) / 2,
+    'margin-right': parseInt(btn.$el.css('padding-right')) / -2
+  });
 };
 
 /***/ }),
@@ -15082,39 +15087,50 @@ if ($('#guideline').length) {
     });
   });
 
-  $('#guideline').append(html);
-}
+  ;
 
-$(function () {
-  $('#guideline nav a').bind('click', function (e) {
-    e.preventDefault();
-    var target = $(this).addClass('active').attr('href');
-    $('#guideline nav a').not(this).removeClass('active');
-    $('#guideline .content .item').removeClass('active');
+  $('#guideline').append(html);;
 
-    $('#guideline .content .item' + target).addClass('active').find('.item').addClass('active');
-    if (target.split('-').length > 1) {
-      $.each(target.split('-'), function (index, tgt) {
-        $('#guideline .content .item#' + tgt.replace('#', '')).addClass('active');
-      });
-    }
-    $('#guideline .content .item' + target).find('.editor textarea').trigger('change', true);
+  ;
+
+  ;
+
+  ;
+
+  ;
+
+  $(function () {
+    $('#guideline nav a').bind('click', function (e) {
+      e.preventDefault();
+      var target = $(this).addClass('active').attr('href');
+      $('#guideline nav a').not(this).removeClass('active');
+      $('#guideline .content .item').removeClass('active');
+
+      window.location.hash = target;
+      window.location.replace(window.location);
+
+      $('#guideline .content .item' + target).addClass('active').find('.item').addClass('active');
+      if (target.split('-').length > 1) {
+        $.each(target.split('-'), function (index, tgt) {
+          $('#guideline .content .item#' + tgt.replace('#', '')).addClass('active');
+        });
+      }
+      $('#guideline .content .item' + target).find('.editor textarea').trigger('change', true);
+    });
+
+    $('.editor textarea').bind('keyup change', function (e) {
+      this.style.height = "auto";
+      this.style.height = this.scrollHeight + 10 + "px";
+    });
+
+    $('body').on('click', '.editor .copy', function (e) {
+      var elem = $(this).parent().find('textarea').get(0);
+      if (utils.copyToClipboard(elem)) notif_fade.success('Copied to clipboard !');
+    });
+
+    if (window.location.hash != "") $('#guideline nav a[href="' + window.location.hash + '"]').trigger('click');else $('#guideline nav a').first().trigger('click');
   });
-
-  $('.editor textarea').bind('keyup change', function (e) {
-    this.style.height = "auto";
-    this.style.height = this.scrollHeight + 10 + "px";
-  });
-
-  $('body').on('click', '.editor .copy', function (e) {
-    var elem = $(this).parent().find('textarea').get(0);
-    if (utils.copyToClipboard(elem)) notif_fade.success('Copied to clipboard !');
-  });
-
-  // $('#guideline nav a').eq(7).trigger('click');
-  // $('#guideline nav a').first().trigger('click');
-  $('#guideline nav a').last().trigger('click');
-});
+};
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
 
 /***/ }),
@@ -15178,7 +15194,7 @@ module.exports = "<div class=\"scene\">\n  <div class=\"grid\">\n    <div class=
 /* 47 */
 /***/ (function(module, exports) {
 
-module.exports = "<button class=\"btn-load\" data-text=\"Loading...\" data-icon=\"true\" data-process=\"processFunction\">Click me !</button>\n\n<script>\n  var processFunction = function processFunction(){\n    return new Promise(function(resolve,reject){\n        setTimeout(function(){\n          resolve();\n        },3000);\n    });\n  }\n</script>";
+module.exports = "<button class=\"btn-load\" data-text=\"Loading...\" data-icon=\"false\" data-result=\"false\" data-reset=\"false\" data-process=\"processFunction\">Click me !</button>\n<button class=\"btn-load\" data-text=\"Loading...\" data-process=\"processFunctionReject\">Click me !</button>\n\n<script>\n  var processFunction = function processFunction(){\n    return new Promise(function(resolve,reject){\n        setTimeout(function(){\n          resolve();\n        },1000);\n    });\n  }\n\n  var processFunctionReject = function processFunction(){\n    return new Promise(function(resolve,reject){\n        setTimeout(function(){\n          reject();\n        },1000);\n    });\n  }\n</script>";
 
 /***/ }),
 /* 48 */
@@ -22821,6 +22837,13 @@ Component.prototype.log = function (title) {
     if (msg) console.log(msg);
     console.log(this);
   }
+};
+
+Component.prototype.getData = function (label) {
+  var placeholder = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
+
+  var component = this;
+  if (component.$el.data(label) !== undefined && component.$el.data(label) !== "") return component.$el.data(label);else return placeholder;
 };
 
 module.exports = Component;

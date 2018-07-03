@@ -111,7 +111,7 @@ if($('#guideline').length){
     }
 
     editor.val(dummy.parent().get(0).innerHTML).trigger('keyup');
-  }
+  };
 
   $('#guideline').append(html);
 
@@ -210,7 +210,7 @@ if($('#guideline').length){
     if(app.components.length == 0)
       components.content = 'No components loaded';
     return components;
-  }
+  };
 
   function buildStyling(){
     var styling = {nav : '', content : ''};
@@ -273,7 +273,7 @@ if($('#guideline').length){
     styling.nav += '</ul>';
 
     return styling;
-  }
+  };
 
   function buildClasses(){
     var classes = {nav : '', content : ''};
@@ -290,7 +290,7 @@ if($('#guideline').length){
     classes.nav += '</ul>';
 
     return classes;
-  }
+  };
 
   function buildTabs(tabsConfig){
     var template = require('mustache-loader?noShortcut!html-loader?interpolate!./templates/tabs.html');
@@ -311,7 +311,7 @@ if($('#guideline').length){
     });
 
     return template.render({},{nav: nav,content: content});
-  }
+  };
 
   function buildConfig(obj,title = ''){
     var template = require('mustache-loader?noShortcut!html-loader?interpolate!./templates/config_section.html');  // noShortcut is used to insert partials later into the final template
@@ -332,38 +332,42 @@ if($('#guideline').length){
       htmlStack += buildConfig(value, key);
     });
     return template.render({title: title},{rows: rows})+htmlStack; // return the initial template filled with his rows PLUS the stack we get by processing recursively the config
-  }
-}
+  };
 
-$(function () {
-  $('#guideline nav a').bind('click',function(e){
-    e.preventDefault();
-    var target = $(this).addClass('active').attr('href');
-    $('#guideline nav a').not(this).removeClass('active');
-    $('#guideline .content .item').removeClass('active');
 
-    $('#guideline .content .item'+target).addClass('active').find('.item').addClass('active');
-    if(target.split('-').length > 1){
-      $.each(target.split('-'),function(index,tgt){
-        $('#guideline .content .item#'+tgt.replace('#','')).addClass('active');
-      })
-    }
-    $('#guideline .content .item'+target).find('.editor textarea').trigger('change',true);
+  $(function () {
+    $('#guideline nav a').bind('click',function(e){
+      e.preventDefault();
+      var target = $(this).addClass('active').attr('href');
+      $('#guideline nav a').not(this).removeClass('active');
+      $('#guideline .content .item').removeClass('active');
+
+      window.location.hash = target;
+      window.location.replace(window.location);
+
+      $('#guideline .content .item'+target).addClass('active').find('.item').addClass('active');
+      if(target.split('-').length > 1){
+        $.each(target.split('-'),function(index,tgt){
+          $('#guideline .content .item#'+tgt.replace('#','')).addClass('active');
+        })
+      }
+      $('#guideline .content .item'+target).find('.editor textarea').trigger('change',true);
+    });
+
+    $('.editor textarea').bind('keyup change',function(e){
+      this.style.height = "auto";
+      this.style.height = (this.scrollHeight + 10) + "px";
+    });
+
+    $('body').on('click','.editor .copy',function(e){
+      var elem = $(this).parent().find('textarea').get(0);
+      if(utils.copyToClipboard(elem))
+        notif_fade.success('Copied to clipboard !');
+    });
+
+    if(window.location.hash != "")
+      $('#guideline nav a[href="'+window.location.hash+'"]').trigger('click');
+    else
+      $('#guideline nav a').first().trigger('click');
   });
-
-  $('.editor textarea').bind('keyup change',function(e){
-    this.style.height = "auto";
-    this.style.height = (this.scrollHeight + 10) + "px";
-  });
-
-  $('body').on('click','.editor .copy',function(e){
-    var elem = $(this).parent().find('textarea').get(0);
-    if(utils.copyToClipboard(elem))
-      notif_fade.success('Copied to clipboard !');
-  });
-
-  // $('#guideline nav a').eq(7).trigger('click');
-  // $('#guideline nav a').first().trigger('click');
-  $('#guideline nav a').last().trigger('click');
-
-});
+};

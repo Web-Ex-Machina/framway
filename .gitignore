@@ -36,3 +36,6 @@ scss-lint-report.xml
 bower_components
 node_modules
 build
+
+# dev files
+sftp-config.json

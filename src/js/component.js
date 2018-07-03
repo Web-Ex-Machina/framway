@@ -108,4 +108,12 @@ Component.prototype.log = function(title,msg = false){
   }
 }
 
+Component.prototype.getData = function(label, placeholder = undefined){
+  var component = this;
+  if(component.$el.data(label) !== undefined && component.$el.data(label) !== "")
+      return component.$el.data(label);
+    else
+      return placeholder;
+}
+
 module.exports = Component;
