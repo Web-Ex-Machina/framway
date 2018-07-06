@@ -58,6 +58,8 @@ if($('#guideline').length){
     }).each(function(){
       if($(this).data('default'))
         $(this).trigger('click');
+      else
+        applyConstructorChanges($(this));
     });
 
     // NUMBERS

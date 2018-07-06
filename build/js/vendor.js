@@ -64,8 +64,7 @@
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */,
-/* 1 */
+/* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10436,6 +10435,7 @@ return jQuery;
 
 
 /***/ }),
+/* 1 */,
 /* 2 */,
 /* 3 */
 /***/ (function(module, exports) {
@@ -10728,7 +10728,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 (function (global, factory) {
-	 true ? factory(exports, __webpack_require__(1), __webpack_require__(11)) :
+	 true ? factory(exports, __webpack_require__(0), __webpack_require__(11)) :
 	typeof define === 'function' && define.amd ? define(['exports', 'jquery', 'popper.js'], factory) :
 	(factory((global.bootstrap = {}),global.jQuery,global.Popper));
 }(this, (function (exports,$,Popper) { 'use strict';

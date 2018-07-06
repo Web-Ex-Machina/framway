@@ -1,0 +1,24 @@
+%lock{
+  & .accordionFW__title{pointer-events: none;
+    &:after{visibility: hidden;}
+  }
+}
+
+.accordionFW{ margin-bottom: $spacing; background-color: color(white); @extend %paper !optional;
+  & .accordionFW__item{ border-bottom: 1px solid rgba(color(black),0.2);
+    &:last-child{border-bottom: 0;}
+    & .accordionFW__title{padding: 0.6rem 1rem; cursor: pointer; position: relative; font-size: 1.1em;transform-style: preserve-3d;
+      &:after{@include pseudo(); border: $border-default-size solid rgba(body(font-color),0.5); border-left: 0; border-top: 0; @include size(20px); border-bottom-right-radius: 2px; transform: rotate(45deg); right: 1.2rem; top: 0.7rem; transition: all 0.4s;}
+      &:hover:after{border-color: body(font-color);}
+    }
+    & .accordionFW__content{overflow: hidden; height: 0; transition: all 0.4s; font-size: 0.9em; color:rgba(body(font-color),0.8);
+      & .accordionFW__content__wrapper{padding: .5rem 2rem 1.5rem;}
+      & p:last-child{margin-bottom: 0;}
+    }
+    &.active{
+      & .accordionFW__title:after{transform: translateY(50%) rotateX(-180deg) rotateZ(45deg); border-color: body(font-color);}
+    }
+    &.lock{@extend %lock;}
+  }
+  &[data-collapsible="false"]{@extend %lock;}
+}

@@ -12,6 +12,7 @@ module.exports = {
     'block-img',
     'select2FW',
     'btn-load',
+    'accordionFW',
     'guideline',
   ],
 }

@@ -67,33 +67,6 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/*
- *  Copyright 2011 Twitter, Inc.
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *  http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
- */
-
-// This file is for use with Node.js. See dist/ for browser files.
-
-var Hogan = __webpack_require__(55);
-Hogan.Template = __webpack_require__(56).Template;
-Hogan.template = Hogan.Template;
-module.exports = Hogan;
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
  * jQuery JavaScript Library v3.3.1
  * https://jquery.com/
@@ -10462,6 +10435,33 @@ return jQuery;
 
 
 /***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+ *  Copyright 2011 Twitter, Inc.
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+
+// This file is for use with Node.js. See dist/ for browser files.
+
+var Hogan = __webpack_require__(57);
+Hogan.Template = __webpack_require__(58).Template;
+Hogan.template = Hogan.Template;
+module.exports = Hogan;
+
+
+/***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10813,7 +10813,7 @@ $(function () {
 });
 
 module.exports = new Utils();
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(3)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(3)))
 
 /***/ }),
 /* 3 */
@@ -10859,8 +10859,8 @@ module.exports = __webpack_require__.p + "img/tramway_lego.jpg";
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var result = __webpack_require__(54)
-var H = __webpack_require__(0);
+var result = __webpack_require__(56)
+var H = __webpack_require__(1);
 window.Hogan = H;
 module.exports = function() {
 var T = H.compile(result, {});
@@ -10872,20 +10872,20 @@ return T.render.apply(T, arguments); };
 
 var map = {
 	"./styling_backgrounds.html": 7,
-	"./styling_borders.html": 62,
-	"./styling_borders_colors.html": 64,
-	"./styling_buttons.html": 66,
-	"./styling_buttons_colors.html": 68,
-	"./styling_inputs.html": 70,
-	"./styling_inputs_bg.html": 72,
-	"./styling_inputs_others.html": 74,
-	"./styling_inputs_texts.html": 76,
-	"./styling_texts.html": 78,
-	"./styling_texts_bd.html": 80,
-	"./styling_texts_bg.html": 82,
-	"./styling_titles.html": 84,
-	"./styling_titles_bg.html": 86,
-	"./styling_titles_sep.html": 88
+	"./styling_borders.html": 64,
+	"./styling_borders_colors.html": 66,
+	"./styling_buttons.html": 68,
+	"./styling_buttons_colors.html": 70,
+	"./styling_inputs.html": 72,
+	"./styling_inputs_bg.html": 74,
+	"./styling_inputs_others.html": 76,
+	"./styling_inputs_texts.html": 78,
+	"./styling_texts.html": 80,
+	"./styling_texts_bd.html": 82,
+	"./styling_texts_bg.html": 84,
+	"./styling_titles.html": 86,
+	"./styling_titles_bg.html": 88,
+	"./styling_titles_sep.html": 90
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -10937,7 +10937,7 @@ app.loadComponents(config.components);
 $(function () {
   app.log(app);
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 24 */
@@ -13604,7 +13604,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 (function (factory) {
     if ( true ) {
         // AMD. Register as an anonymous module.
-        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(0)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -13824,7 +13824,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"radius":"2px","spacing":"30px","border-default-size":"2px","border-default-color":"#000000","colors":"(\"blue\": #004C79, \"green\": #5cb85c, \"orange\": #DC6053, \"darkblue\": #0a1d29, \"gold\": #edbe5f, \"black\": #000000, \"blacklight\": #111414, \"blacklighter\": #222222, \"greystronger\": #424041, \"greystrong\": #535052, \"grey\": #7A7778, \"greylight\": #DDDDDD, \"greylighter\": #EEEEEE, \"white\": #ffffff, \"none\": transparent)","breakpoints":"(\"xl\": 1400px, \"lg\": 1200px, \"md\": 992px, \"sm\": 768px, \"xs\": 620px, \"xxs\": 520px)","body":"(\"background\": #ffffff, \"font-color\": #424041, \"font-size\": 20px, \"title-font-color\": #111414)","header":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","footer":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","input":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #424041, \"border-size\": 1px, \"placeholder-font-color\": #7A7778, \"radius\": false)","input-focus":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #424041)","input-valid":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #5cb85c)","input-invalid":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #DC6053)","link":"(\"font-color\": #DC6053, \"font-color-hover\": #DC6053, \"font-color-focus\": #DC6053)","btn":"btn","enable-bg":"true","enable-bg-extended":"false","enable-bd":"true","disabled":"disabled","zoomin":"zoomin","zoomout":"zoomout","fadetogrey":"fadetogrey","fadetocolor":"fadetocolor","copy":"copy","no-events":"no-events","no-transition":"no-transition","no-overflow":"no-overflow","hidden":"hidden","invisible":"invisible","ellipsis":"ellipsis","center":"center","center-block":"center-block","fl-left":"fl-left","float-left":"float-left","fl-right":"fl-right","float-right":"float-right","clear":"clear","clear-left":"clear-left","clear-right":"clear-right","clear-after":"clear-after","clear-before":"clear-before","clear-no":"clear-no","text-right":"text-right","txt-right":"txt-right","text-left":"text-left","txt-left":"txt-left","text-center":"text-center","txt-center":"txt-center","force-full":"force-full","block-list__figure":"block-list__figure","block-img__figure":"block-img__figure","img--right":"img--right","img--top":"img--top","img--bottom":"img--bottom","img--left":"img--left","r_16-9":"r_16-9","r_2-1":"r_2-1","r_1-1":"r_1-1","r_1-2":"r_1-2","block-list__wrapper":"block-list__wrapper","block-std":"block-std","block-img__wrapper":"block-img__wrapper","guideline":"guideline","descText":"descText","ft-light":"ft-light","ft-normal":"ft-normal","ft-bold":"ft-bold","ft-bolder":"ft-bolder","ft-i":"ft-i","ft-b":"ft-b","ft-u":"ft-u","ft-u-no":"ft-u-no","ft-upper":"ft-upper","ft-lower":"ft-lower","ft-0-em":"ft-0-em","ft-0-rem":"ft-0-rem","ft-0-1-em":"ft-0-1-em","ft-0-1-rem":"ft-0-1-rem","ft-0-2-em":"ft-0-2-em","ft-0-2-rem":"ft-0-2-rem","ft-0-3-em":"ft-0-3-em","ft-0-3-rem":"ft-0-3-rem","ft-0-4-em":"ft-0-4-em","ft-0-4-rem":"ft-0-4-rem","ft-0-5-em":"ft-0-5-em","ft-0-5-rem":"ft-0-5-rem","ft-0-6-em":"ft-0-6-em","ft-0-6-rem":"ft-0-6-rem","ft-0-7-em":"ft-0-7-em","ft-0-7-rem":"ft-0-7-rem","ft-0-8-em":"ft-0-8-em","ft-0-8-rem":"ft-0-8-rem","ft-0-9-em":"ft-0-9-em","ft-0-9-rem":"ft-0-9-rem","ft-minus-10":"ft-minus-10","ft-plus-10":"ft-plus-10","ft-1-em":"ft-1-em","ft-1-rem":"ft-1-rem","ft-1-1-em":"ft-1-1-em","ft-1-1-rem":"ft-1-1-rem","ft-1-2-em":"ft-1-2-em","ft-1-2-rem":"ft-1-2-rem","ft-1-3-em":"ft-1-3-em","ft-1-3-rem":"ft-1-3-rem","ft-1-4-em":"ft-1-4-em","ft-1-4-rem":"ft-1-4-rem","ft-1-5-em":"ft-1-5-em","ft-1-5-rem":"ft-1-5-rem","ft-1-6-em":"ft-1-6-em","ft-1-6-rem":"ft-1-6-rem","ft-1-7-em":"ft-1-7-em","ft-1-7-rem":"ft-1-7-rem","ft-1-8-em":"ft-1-8-em","ft-1-8-rem":"ft-1-8-rem","ft-1-9-em":"ft-1-9-em","ft-1-9-rem":"ft-1-9-rem","ft-minus-20":"ft-minus-20","ft-plus-20":"ft-plus-20","ft-2-em":"ft-2-em","ft-2-rem":"ft-2-rem","ft-2-1-em":"ft-2-1-em","ft-2-1-rem":"ft-2-1-rem","ft-2-2-em":"ft-2-2-em","ft-2-2-rem":"ft-2-2-rem","ft-2-3-em":"ft-2-3-em","ft-2-3-rem":"ft-2-3-rem","ft-2-4-em":"ft-2-4-em","ft-2-4-rem":"ft-2-4-rem","ft-2-5-em":"ft-2-5-em","ft-2-5-rem":"ft-2-5-rem","ft-2-6-em":"ft-2-6-em","ft-2-6-rem":"ft-2-6-rem","ft-2-7-em":"ft-2-7-em","ft-2-7-rem":"ft-2-7-rem","ft-2-8-em":"ft-2-8-em","ft-2-8-rem":"ft-2-8-rem","ft-2-9-em":"ft-2-9-em","ft-2-9-rem":"ft-2-9-rem","ft-minus-30":"ft-minus-30","ft-plus-30":"ft-plus-30","ft-3-em":"ft-3-em","ft-3-rem":"ft-3-rem","ft-3-1-em":"ft-3-1-em","ft-3-1-rem":"ft-3-1-rem","ft-3-2-em":"ft-3-2-em","ft-3-2-rem":"ft-3-2-rem","ft-3-3-em":"ft-3-3-em","ft-3-3-rem":"ft-3-3-rem","ft-3-4-em":"ft-3-4-em","ft-3-4-rem":"ft-3-4-rem","ft-3-5-em":"ft-3-5-em","ft-3-5-rem":"ft-3-5-rem","ft-3-6-em":"ft-3-6-em","ft-3-6-rem":"ft-3-6-rem","ft-3-7-em":"ft-3-7-em","ft-3-7-rem":"ft-3-7-rem","ft-3-8-em":"ft-3-8-em","ft-3-8-rem":"ft-3-8-rem","ft-3-9-em":"ft-3-9-em","ft-3-9-rem":"ft-3-9-rem","ft-minus-40":"ft-minus-40","ft-plus-40":"ft-plus-40","ft-4-em":"ft-4-em","ft-4-rem":"ft-4-rem","ft-4-1-em":"ft-4-1-em","ft-4-1-rem":"ft-4-1-rem","ft-4-2-em":"ft-4-2-em","ft-4-2-rem":"ft-4-2-rem","ft-4-3-em":"ft-4-3-em","ft-4-3-rem":"ft-4-3-rem","ft-4-4-em":"ft-4-4-em","ft-4-4-rem":"ft-4-4-rem","ft-4-5-em":"ft-4-5-em","ft-4-5-rem":"ft-4-5-rem","ft-4-6-em":"ft-4-6-em","ft-4-6-rem":"ft-4-6-rem","ft-4-7-em":"ft-4-7-em","ft-4-7-rem":"ft-4-7-rem","ft-4-8-em":"ft-4-8-em","ft-4-8-rem":"ft-4-8-rem","ft-4-9-em":"ft-4-9-em","ft-4-9-rem":"ft-4-9-rem","ft-minus-50":"ft-minus-50","ft-plus-50":"ft-plus-50","ft-5-em":"ft-5-em","ft-5-rem":"ft-5-rem","ft-5-1-em":"ft-5-1-em","ft-5-1-rem":"ft-5-1-rem","ft-5-2-em":"ft-5-2-em","ft-5-2-rem":"ft-5-2-rem","ft-5-3-em":"ft-5-3-em","ft-5-3-rem":"ft-5-3-rem","ft-5-4-em":"ft-5-4-em","ft-5-4-rem":"ft-5-4-rem","ft-5-5-em":"ft-5-5-em","ft-5-5-rem":"ft-5-5-rem","ft-5-6-em":"ft-5-6-em","ft-5-6-rem":"ft-5-6-rem","ft-5-7-em":"ft-5-7-em","ft-5-7-rem":"ft-5-7-rem","ft-5-8-em":"ft-5-8-em","ft-5-8-rem":"ft-5-8-rem","ft-5-9-em":"ft-5-9-em","ft-5-9-rem":"ft-5-9-rem","ft-minus-60":"ft-minus-60","ft-plus-60":"ft-plus-60","ft-6-em":"ft-6-em","ft-6-rem":"ft-6-rem","ft-6-1-em":"ft-6-1-em","ft-6-1-rem":"ft-6-1-rem","ft-6-2-em":"ft-6-2-em","ft-6-2-rem":"ft-6-2-rem","ft-6-3-em":"ft-6-3-em","ft-6-3-rem":"ft-6-3-rem","ft-6-4-em":"ft-6-4-em","ft-6-4-rem":"ft-6-4-rem","ft-6-5-em":"ft-6-5-em","ft-6-5-rem":"ft-6-5-rem","ft-6-6-em":"ft-6-6-em","ft-6-6-rem":"ft-6-6-rem","ft-6-7-em":"ft-6-7-em","ft-6-7-rem":"ft-6-7-rem","ft-6-8-em":"ft-6-8-em","ft-6-8-rem":"ft-6-8-rem","ft-6-9-em":"ft-6-9-em","ft-6-9-rem":"ft-6-9-rem","ft-minus-70":"ft-minus-70","ft-plus-70":"ft-plus-70","ft-7-em":"ft-7-em","ft-7-rem":"ft-7-rem","ft-7-1-em":"ft-7-1-em","ft-7-1-rem":"ft-7-1-rem","ft-7-2-em":"ft-7-2-em","ft-7-2-rem":"ft-7-2-rem","ft-7-3-em":"ft-7-3-em","ft-7-3-rem":"ft-7-3-rem","ft-7-4-em":"ft-7-4-em","ft-7-4-rem":"ft-7-4-rem","ft-7-5-em":"ft-7-5-em","ft-7-5-rem":"ft-7-5-rem","ft-7-6-em":"ft-7-6-em","ft-7-6-rem":"ft-7-6-rem","ft-7-7-em":"ft-7-7-em","ft-7-7-rem":"ft-7-7-rem","ft-7-8-em":"ft-7-8-em","ft-7-8-rem":"ft-7-8-rem","ft-7-9-em":"ft-7-9-em","ft-7-9-rem":"ft-7-9-rem","ft-minus-80":"ft-minus-80","ft-plus-80":"ft-plus-80","ft-8-em":"ft-8-em","ft-8-rem":"ft-8-rem","ft-8-1-em":"ft-8-1-em","ft-8-1-rem":"ft-8-1-rem","ft-8-2-em":"ft-8-2-em","ft-8-2-rem":"ft-8-2-rem","ft-8-3-em":"ft-8-3-em","ft-8-3-rem":"ft-8-3-rem","ft-8-4-em":"ft-8-4-em","ft-8-4-rem":"ft-8-4-rem","ft-8-5-em":"ft-8-5-em","ft-8-5-rem":"ft-8-5-rem","ft-8-6-em":"ft-8-6-em","ft-8-6-rem":"ft-8-6-rem","ft-8-7-em":"ft-8-7-em","ft-8-7-rem":"ft-8-7-rem","ft-8-8-em":"ft-8-8-em","ft-8-8-rem":"ft-8-8-rem","ft-8-9-em":"ft-8-9-em","ft-8-9-rem":"ft-8-9-rem","ft-minus-90":"ft-minus-90","ft-plus-90":"ft-plus-90","ft-9-em":"ft-9-em","ft-9-rem":"ft-9-rem","ft-9-1-em":"ft-9-1-em","ft-9-1-rem":"ft-9-1-rem","ft-9-2-em":"ft-9-2-em","ft-9-2-rem":"ft-9-2-rem","ft-9-3-em":"ft-9-3-em","ft-9-3-rem":"ft-9-3-rem","ft-9-4-em":"ft-9-4-em","ft-9-4-rem":"ft-9-4-rem","ft-9-5-em":"ft-9-5-em","ft-9-5-rem":"ft-9-5-rem","ft-9-6-em":"ft-9-6-em","ft-9-6-rem":"ft-9-6-rem","ft-9-7-em":"ft-9-7-em","ft-9-7-rem":"ft-9-7-rem","ft-9-8-em":"ft-9-8-em","ft-9-8-rem":"ft-9-8-rem","ft-9-9-em":"ft-9-9-em","ft-9-9-rem":"ft-9-9-rem","ft-minus-100":"ft-minus-100","ft-plus-100":"ft-plus-100","ft-10-em":"ft-10-em","ft-10-rem":"ft-10-rem","ft-10-1-em":"ft-10-1-em","ft-10-1-rem":"ft-10-1-rem","ft-10-2-em":"ft-10-2-em","ft-10-2-rem":"ft-10-2-rem","ft-10-3-em":"ft-10-3-em","ft-10-3-rem":"ft-10-3-rem","ft-10-4-em":"ft-10-4-em","ft-10-4-rem":"ft-10-4-rem","ft-10-5-em":"ft-10-5-em","ft-10-5-rem":"ft-10-5-rem","ft-10-6-em":"ft-10-6-em","ft-10-6-rem":"ft-10-6-rem","ft-10-7-em":"ft-10-7-em","ft-10-7-rem":"ft-10-7-rem","ft-10-8-em":"ft-10-8-em","ft-10-8-rem":"ft-10-8-rem","ft-10-9-em":"ft-10-9-em","ft-10-9-rem":"ft-10-9-rem","ft-blue":"ft-blue","ft-green":"ft-green","ft-orange":"ft-orange","ft-darkblue":"ft-darkblue","ft-gold":"ft-gold","ft-black":"ft-black","ft-blacklight":"ft-blacklight","ft-blacklighter":"ft-blacklighter","ft-greystronger":"ft-greystronger","ft-greystrong":"ft-greystrong","ft-grey":"ft-grey","ft-greylight":"ft-greylight","ft-greylighter":"ft-greylighter","ft-white":"ft-white","ft-none":"ft-none","rad":"rad","tags":"tags","rad-all":"rad-all","rad-top-left":"rad-top-left","rad-top":"rad-top","rad-left":"rad-left","rad-top-right":"rad-top-right","rad-right":"rad-right","rad-bottom-left":"rad-bottom-left","rad-bottom":"rad-bottom","rad-bottom-right":"rad-bottom-right","m-all":"m-all","m-all-0":"m-all-0","m-all-x2":"m-all-x2","p-all":"p-all","bd":"bd","bd-all":"bd-all","bd-0":"bd-0","bd-all-0":"bd-all-0","bd-1":"bd-1","bd-all-1":"bd-all-1","bd-2":"bd-2","bd-all-2":"bd-all-2","bd-3":"bd-3","bd-all-3":"bd-all-3","bd-4":"bd-4","bd-all-4":"bd-all-4","bd-5":"bd-5","bd-all-5":"bd-all-5","bd-6":"bd-6","bd-all-6":"bd-all-6","bd-7":"bd-7","bd-all-7":"bd-all-7","bd-8":"bd-8","bd-all-8":"bd-all-8","bd-9":"bd-9","bd-all-9":"bd-all-9","bd-10":"bd-10","bd-all-10":"bd-all-10","bd-blue":"bd-blue","bd-all-blue":"bd-all-blue","bd-blue-0":"bd-blue-0","bd-all-blue-0":"bd-all-blue-0","bd-blue-1":"bd-blue-1","bd-all-blue-1":"bd-all-blue-1","bd-blue-2":"bd-blue-2","bd-all-blue-2":"bd-all-blue-2","bd-blue-3":"bd-blue-3","bd-all-blue-3":"bd-all-blue-3","bd-blue-4":"bd-blue-4","bd-all-blue-4":"bd-all-blue-4","bd-blue-5":"bd-blue-5","bd-all-blue-5":"bd-all-blue-5","bd-blue-6":"bd-blue-6","bd-all-blue-6":"bd-all-blue-6","bd-blue-7":"bd-blue-7","bd-all-blue-7":"bd-all-blue-7","bd-blue-8":"bd-blue-8","bd-all-blue-8":"bd-all-blue-8","bd-blue-9":"bd-blue-9","bd-all-blue-9":"bd-all-blue-9","bd-blue-10":"bd-blue-10","bd-all-blue-10":"bd-all-blue-10","bd-green":"bd-green","bd-all-green":"bd-all-green","bd-green-0":"bd-green-0","bd-all-green-0":"bd-all-green-0","bd-green-1":"bd-green-1","bd-all-green-1":"bd-all-green-1","bd-green-2":"bd-green-2","bd-all-green-2":"bd-all-green-2","bd-green-3":"bd-green-3","bd-all-green-3":"bd-all-green-3","bd-green-4":"bd-green-4","bd-all-green-4":"bd-all-green-4","bd-green-5":"bd-green-5","bd-all-green-5":"bd-all-green-5","bd-green-6":"bd-green-6","bd-all-green-6":"bd-all-green-6","bd-green-7":"bd-green-7","bd-all-green-7":"bd-all-green-7","bd-green-8":"bd-green-8","bd-all-green-8":"bd-all-green-8","bd-green-9":"bd-green-9","bd-all-green-9":"bd-all-green-9","bd-green-10":"bd-green-10","bd-all-green-10":"bd-all-green-10","bd-orange":"bd-orange","bd-all-orange":"bd-all-orange","bd-orange-0":"bd-orange-0","bd-all-orange-0":"bd-all-orange-0","bd-orange-1":"bd-orange-1","bd-all-orange-1":"bd-all-orange-1","bd-orange-2":"bd-orange-2","bd-all-orange-2":"bd-all-orange-2","bd-orange-3":"bd-orange-3","bd-all-orange-3":"bd-all-orange-3","bd-orange-4":"bd-orange-4","bd-all-orange-4":"bd-all-orange-4","bd-orange-5":"bd-orange-5","bd-all-orange-5":"bd-all-orange-5","bd-orange-6":"bd-orange-6","bd-all-orange-6":"bd-all-orange-6","bd-orange-7":"bd-orange-7","bd-all-orange-7":"bd-all-orange-7","bd-orange-8":"bd-orange-8","bd-all-orange-8":"bd-all-orange-8","bd-orange-9":"bd-orange-9","bd-all-orange-9":"bd-all-orange-9","bd-orange-10":"bd-orange-10","bd-all-orange-10":"bd-all-orange-10","bd-darkblue":"bd-darkblue","bd-all-darkblue":"bd-all-darkblue","bd-darkblue-0":"bd-darkblue-0","bd-all-darkblue-0":"bd-all-darkblue-0","bd-darkblue-1":"bd-darkblue-1","bd-all-darkblue-1":"bd-all-darkblue-1","bd-darkblue-2":"bd-darkblue-2","bd-all-darkblue-2":"bd-all-darkblue-2","bd-darkblue-3":"bd-darkblue-3","bd-all-darkblue-3":"bd-all-darkblue-3","bd-darkblue-4":"bd-darkblue-4","bd-all-darkblue-4":"bd-all-darkblue-4","bd-darkblue-5":"bd-darkblue-5","bd-all-darkblue-5":"bd-all-darkblue-5","bd-darkblue-6":"bd-darkblue-6","bd-all-darkblue-6":"bd-all-darkblue-6","bd-darkblue-7":"bd-darkblue-7","bd-all-darkblue-7":"bd-all-darkblue-7","bd-darkblue-8":"bd-darkblue-8","bd-all-darkblue-8":"bd-all-darkblue-8","bd-darkblue-9":"bd-darkblue-9","bd-all-darkblue-9":"bd-all-darkblue-9","bd-darkblue-10":"bd-darkblue-10","bd-all-darkblue-10":"bd-all-darkblue-10","bd-gold":"bd-gold","bd-all-gold":"bd-all-gold","bd-gold-0":"bd-gold-0","bd-all-gold-0":"bd-all-gold-0","bd-gold-1":"bd-gold-1","bd-all-gold-1":"bd-all-gold-1","bd-gold-2":"bd-gold-2","bd-all-gold-2":"bd-all-gold-2","bd-gold-3":"bd-gold-3","bd-all-gold-3":"bd-all-gold-3","bd-gold-4":"bd-gold-4","bd-all-gold-4":"bd-all-gold-4","bd-gold-5":"bd-gold-5","bd-all-gold-5":"bd-all-gold-5","bd-gold-6":"bd-gold-6","bd-all-gold-6":"bd-all-gold-6","bd-gold-7":"bd-gold-7","bd-all-gold-7":"bd-all-gold-7","bd-gold-8":"bd-gold-8","bd-all-gold-8":"bd-all-gold-8","bd-gold-9":"bd-gold-9","bd-all-gold-9":"bd-all-gold-9","bd-gold-10":"bd-gold-10","bd-all-gold-10":"bd-all-gold-10","bd-black":"bd-black","bd-all-black":"bd-all-black","bd-black-0":"bd-black-0","bd-all-black-0":"bd-all-black-0","bd-black-1":"bd-black-1","bd-all-black-1":"bd-all-black-1","bd-black-2":"bd-black-2","bd-all-black-2":"bd-all-black-2","bd-black-3":"bd-black-3","bd-all-black-3":"bd-all-black-3","bd-black-4":"bd-black-4","bd-all-black-4":"bd-all-black-4","bd-black-5":"bd-black-5","bd-all-black-5":"bd-all-black-5","bd-black-6":"bd-black-6","bd-all-black-6":"bd-all-black-6","bd-black-7":"bd-black-7","bd-all-black-7":"bd-all-black-7","bd-black-8":"bd-black-8","bd-all-black-8":"bd-all-black-8","bd-black-9":"bd-black-9","bd-all-black-9":"bd-all-black-9","bd-black-10":"bd-black-10","bd-all-black-10":"bd-all-black-10","bd-blacklight":"bd-blacklight","bd-all-blacklight":"bd-all-blacklight","bd-blacklight-0":"bd-blacklight-0","bd-all-blacklight-0":"bd-all-blacklight-0","bd-blacklight-1":"bd-blacklight-1","bd-all-blacklight-1":"bd-all-blacklight-1","bd-blacklight-2":"bd-blacklight-2","bd-all-blacklight-2":"bd-all-blacklight-2","bd-blacklight-3":"bd-blacklight-3","bd-all-blacklight-3":"bd-all-blacklight-3","bd-blacklight-4":"bd-blacklight-4","bd-all-blacklight-4":"bd-all-blacklight-4","bd-blacklight-5":"bd-blacklight-5","bd-all-blacklight-5":"bd-all-blacklight-5","bd-blacklight-6":"bd-blacklight-6","bd-all-blacklight-6":"bd-all-blacklight-6","bd-blacklight-7":"bd-blacklight-7","bd-all-blacklight-7":"bd-all-blacklight-7","bd-blacklight-8":"bd-blacklight-8","bd-all-blacklight-8":"bd-all-blacklight-8","bd-blacklight-9":"bd-blacklight-9","bd-all-blacklight-9":"bd-all-blacklight-9","bd-blacklight-10":"bd-blacklight-10","bd-all-blacklight-10":"bd-all-blacklight-10","bd-blacklighter":"bd-blacklighter","bd-all-blacklighter":"bd-all-blacklighter","bd-blacklighter-0":"bd-blacklighter-0","bd-all-blacklighter-0":"bd-all-blacklighter-0","bd-blacklighter-1":"bd-blacklighter-1","bd-all-blacklighter-1":"bd-all-blacklighter-1","bd-blacklighter-2":"bd-blacklighter-2","bd-all-blacklighter-2":"bd-all-blacklighter-2","bd-blacklighter-3":"bd-blacklighter-3","bd-all-blacklighter-3":"bd-all-blacklighter-3","bd-blacklighter-4":"bd-blacklighter-4","bd-all-blacklighter-4":"bd-all-blacklighter-4","bd-blacklighter-5":"bd-blacklighter-5","bd-all-blacklighter-5":"bd-all-blacklighter-5","bd-blacklighter-6":"bd-blacklighter-6","bd-all-blacklighter-6":"bd-all-blacklighter-6","bd-blacklighter-7":"bd-blacklighter-7","bd-all-blacklighter-7":"bd-all-blacklighter-7","bd-blacklighter-8":"bd-blacklighter-8","bd-all-blacklighter-8":"bd-all-blacklighter-8","bd-blacklighter-9":"bd-blacklighter-9","bd-all-blacklighter-9":"bd-all-blacklighter-9","bd-blacklighter-10":"bd-blacklighter-10","bd-all-blacklighter-10":"bd-all-blacklighter-10","bd-greystronger":"bd-greystronger","bd-all-greystronger":"bd-all-greystronger","bd-greystronger-0":"bd-greystronger-0","bd-all-greystronger-0":"bd-all-greystronger-0","bd-greystronger-1":"bd-greystronger-1","bd-all-greystronger-1":"bd-all-greystronger-1","bd-greystronger-2":"bd-greystronger-2","bd-all-greystronger-2":"bd-all-greystronger-2","bd-greystronger-3":"bd-greystronger-3","bd-all-greystronger-3":"bd-all-greystronger-3","bd-greystronger-4":"bd-greystronger-4","bd-all-greystronger-4":"bd-all-greystronger-4","bd-greystronger-5":"bd-greystronger-5","bd-all-greystronger-5":"bd-all-greystronger-5","bd-greystronger-6":"bd-greystronger-6","bd-all-greystronger-6":"bd-all-greystronger-6","bd-greystronger-7":"bd-greystronger-7","bd-all-greystronger-7":"bd-all-greystronger-7","bd-greystronger-8":"bd-greystronger-8","bd-all-greystronger-8":"bd-all-greystronger-8","bd-greystronger-9":"bd-greystronger-9","bd-all-greystronger-9":"bd-all-greystronger-9","bd-greystronger-10":"bd-greystronger-10","bd-all-greystronger-10":"bd-all-greystronger-10","bd-greystrong":"bd-greystrong","bd-all-greystrong":"bd-all-greystrong","bd-greystrong-0":"bd-greystrong-0","bd-all-greystrong-0":"bd-all-greystrong-0","bd-greystrong-1":"bd-greystrong-1","bd-all-greystrong-1":"bd-all-greystrong-1","bd-greystrong-2":"bd-greystrong-2","bd-all-greystrong-2":"bd-all-greystrong-2","bd-greystrong-3":"bd-greystrong-3","bd-all-greystrong-3":"bd-all-greystrong-3","bd-greystrong-4":"bd-greystrong-4","bd-all-greystrong-4":"bd-all-greystrong-4","bd-greystrong-5":"bd-greystrong-5","bd-all-greystrong-5":"bd-all-greystrong-5","bd-greystrong-6":"bd-greystrong-6","bd-all-greystrong-6":"bd-all-greystrong-6","bd-greystrong-7":"bd-greystrong-7","bd-all-greystrong-7":"bd-all-greystrong-7","bd-greystrong-8":"bd-greystrong-8","bd-all-greystrong-8":"bd-all-greystrong-8","bd-greystrong-9":"bd-greystrong-9","bd-all-greystrong-9":"bd-all-greystrong-9","bd-greystrong-10":"bd-greystrong-10","bd-all-greystrong-10":"bd-all-greystrong-10","bd-grey":"bd-grey","bd-all-grey":"bd-all-grey","bd-grey-0":"bd-grey-0","bd-all-grey-0":"bd-all-grey-0","bd-grey-1":"bd-grey-1","bd-all-grey-1":"bd-all-grey-1","bd-grey-2":"bd-grey-2","bd-all-grey-2":"bd-all-grey-2","bd-grey-3":"bd-grey-3","bd-all-grey-3":"bd-all-grey-3","bd-grey-4":"bd-grey-4","bd-all-grey-4":"bd-all-grey-4","bd-grey-5":"bd-grey-5","bd-all-grey-5":"bd-all-grey-5","bd-grey-6":"bd-grey-6","bd-all-grey-6":"bd-all-grey-6","bd-grey-7":"bd-grey-7","bd-all-grey-7":"bd-all-grey-7","bd-grey-8":"bd-grey-8","bd-all-grey-8":"bd-all-grey-8","bd-grey-9":"bd-grey-9","bd-all-grey-9":"bd-all-grey-9","bd-grey-10":"bd-grey-10","bd-all-grey-10":"bd-all-grey-10","bd-greylight":"bd-greylight","bd-all-greylight":"bd-all-greylight","bd-greylight-0":"bd-greylight-0","bd-all-greylight-0":"bd-all-greylight-0","bd-greylight-1":"bd-greylight-1","bd-all-greylight-1":"bd-all-greylight-1","bd-greylight-2":"bd-greylight-2","bd-all-greylight-2":"bd-all-greylight-2","bd-greylight-3":"bd-greylight-3","bd-all-greylight-3":"bd-all-greylight-3","bd-greylight-4":"bd-greylight-4","bd-all-greylight-4":"bd-all-greylight-4","bd-greylight-5":"bd-greylight-5","bd-all-greylight-5":"bd-all-greylight-5","bd-greylight-6":"bd-greylight-6","bd-all-greylight-6":"bd-all-greylight-6","bd-greylight-7":"bd-greylight-7","bd-all-greylight-7":"bd-all-greylight-7","bd-greylight-8":"bd-greylight-8","bd-all-greylight-8":"bd-all-greylight-8","bd-greylight-9":"bd-greylight-9","bd-all-greylight-9":"bd-all-greylight-9","bd-greylight-10":"bd-greylight-10","bd-all-greylight-10":"bd-all-greylight-10","bd-greylighter":"bd-greylighter","bd-all-greylighter":"bd-all-greylighter","bd-greylighter-0":"bd-greylighter-0","bd-all-greylighter-0":"bd-all-greylighter-0","bd-greylighter-1":"bd-greylighter-1","bd-all-greylighter-1":"bd-all-greylighter-1","bd-greylighter-2":"bd-greylighter-2","bd-all-greylighter-2":"bd-all-greylighter-2","bd-greylighter-3":"bd-greylighter-3","bd-all-greylighter-3":"bd-all-greylighter-3","bd-greylighter-4":"bd-greylighter-4","bd-all-greylighter-4":"bd-all-greylighter-4","bd-greylighter-5":"bd-greylighter-5","bd-all-greylighter-5":"bd-all-greylighter-5","bd-greylighter-6":"bd-greylighter-6","bd-all-greylighter-6":"bd-all-greylighter-6","bd-greylighter-7":"bd-greylighter-7","bd-all-greylighter-7":"bd-all-greylighter-7","bd-greylighter-8":"bd-greylighter-8","bd-all-greylighter-8":"bd-all-greylighter-8","bd-greylighter-9":"bd-greylighter-9","bd-all-greylighter-9":"bd-all-greylighter-9","bd-greylighter-10":"bd-greylighter-10","bd-all-greylighter-10":"bd-all-greylighter-10","bd-white":"bd-white","bd-all-white":"bd-all-white","bd-white-0":"bd-white-0","bd-all-white-0":"bd-all-white-0","bd-white-1":"bd-white-1","bd-all-white-1":"bd-all-white-1","bd-white-2":"bd-white-2","bd-all-white-2":"bd-all-white-2","bd-white-3":"bd-white-3","bd-all-white-3":"bd-all-white-3","bd-white-4":"bd-white-4","bd-all-white-4":"bd-all-white-4","bd-white-5":"bd-white-5","bd-all-white-5":"bd-all-white-5","bd-white-6":"bd-white-6","bd-all-white-6":"bd-all-white-6","bd-white-7":"bd-white-7","bd-all-white-7":"bd-all-white-7","bd-white-8":"bd-white-8","bd-all-white-8":"bd-all-white-8","bd-white-9":"bd-white-9","bd-all-white-9":"bd-all-white-9","bd-white-10":"bd-white-10","bd-all-white-10":"bd-all-white-10","bd-none":"bd-none","bd-all-none":"bd-all-none","bd-none-0":"bd-none-0","bd-all-none-0":"bd-all-none-0","bd-none-1":"bd-none-1","bd-all-none-1":"bd-all-none-1","bd-none-2":"bd-none-2","bd-all-none-2":"bd-all-none-2","bd-none-3":"bd-none-3","bd-all-none-3":"bd-all-none-3","bd-none-4":"bd-none-4","bd-all-none-4":"bd-all-none-4","bd-none-5":"bd-none-5","bd-all-none-5":"bd-all-none-5","bd-none-6":"bd-none-6","bd-all-none-6":"bd-all-none-6","bd-none-7":"bd-none-7","bd-all-none-7":"bd-all-none-7","bd-none-8":"bd-none-8","bd-all-none-8":"bd-all-none-8","bd-none-9":"bd-none-9","bd-all-none-9":"bd-all-none-9","bd-none-10":"bd-none-10","bd-all-none-10":"bd-all-none-10","p-all-0":"p-all-0","p-all-x2":"p-all-x2","m-top":"m-top","m-y":"m-y","m-top-0":"m-top-0","m-y-0":"m-y-0","m-top-x2":"m-top-x2","m-y-x2":"m-y-x2","p-top":"p-top","p-y":"p-y","bd-top":"bd-top","bd-top-0":"bd-top-0","bd-top-1":"bd-top-1","bd-top-2":"bd-top-2","bd-top-3":"bd-top-3","bd-top-4":"bd-top-4","bd-top-5":"bd-top-5","bd-top-6":"bd-top-6","bd-top-7":"bd-top-7","bd-top-8":"bd-top-8","bd-top-9":"bd-top-9","bd-top-10":"bd-top-10","bd-top-blue":"bd-top-blue","bd-top-blue-0":"bd-top-blue-0","bd-top-blue-1":"bd-top-blue-1","bd-top-blue-2":"bd-top-blue-2","bd-top-blue-3":"bd-top-blue-3","bd-top-blue-4":"bd-top-blue-4","bd-top-blue-5":"bd-top-blue-5","bd-top-blue-6":"bd-top-blue-6","bd-top-blue-7":"bd-top-blue-7","bd-top-blue-8":"bd-top-blue-8","bd-top-blue-9":"bd-top-blue-9","bd-top-blue-10":"bd-top-blue-10","bd-top-green":"bd-top-green","bd-top-green-0":"bd-top-green-0","bd-top-green-1":"bd-top-green-1","bd-top-green-2":"bd-top-green-2","bd-top-green-3":"bd-top-green-3","bd-top-green-4":"bd-top-green-4","bd-top-green-5":"bd-top-green-5","bd-top-green-6":"bd-top-green-6","bd-top-green-7":"bd-top-green-7","bd-top-green-8":"bd-top-green-8","bd-top-green-9":"bd-top-green-9","bd-top-green-10":"bd-top-green-10","bd-top-orange":"bd-top-orange","bd-top-orange-0":"bd-top-orange-0","bd-top-orange-1":"bd-top-orange-1","bd-top-orange-2":"bd-top-orange-2","bd-top-orange-3":"bd-top-orange-3","bd-top-orange-4":"bd-top-orange-4","bd-top-orange-5":"bd-top-orange-5","bd-top-orange-6":"bd-top-orange-6","bd-top-orange-7":"bd-top-orange-7","bd-top-orange-8":"bd-top-orange-8","bd-top-orange-9":"bd-top-orange-9","bd-top-orange-10":"bd-top-orange-10","bd-top-darkblue":"bd-top-darkblue","bd-top-darkblue-0":"bd-top-darkblue-0","bd-top-darkblue-1":"bd-top-darkblue-1","bd-top-darkblue-2":"bd-top-darkblue-2","bd-top-darkblue-3":"bd-top-darkblue-3","bd-top-darkblue-4":"bd-top-darkblue-4","bd-top-darkblue-5":"bd-top-darkblue-5","bd-top-darkblue-6":"bd-top-darkblue-6","bd-top-darkblue-7":"bd-top-darkblue-7","bd-top-darkblue-8":"bd-top-darkblue-8","bd-top-darkblue-9":"bd-top-darkblue-9","bd-top-darkblue-10":"bd-top-darkblue-10","bd-top-gold":"bd-top-gold","bd-top-gold-0":"bd-top-gold-0","bd-top-gold-1":"bd-top-gold-1","bd-top-gold-2":"bd-top-gold-2","bd-top-gold-3":"bd-top-gold-3","bd-top-gold-4":"bd-top-gold-4","bd-top-gold-5":"bd-top-gold-5","bd-top-gold-6":"bd-top-gold-6","bd-top-gold-7":"bd-top-gold-7","bd-top-gold-8":"bd-top-gold-8","bd-top-gold-9":"bd-top-gold-9","bd-top-gold-10":"bd-top-gold-10","bd-top-black":"bd-top-black","bd-top-black-0":"bd-top-black-0","bd-top-black-1":"bd-top-black-1","bd-top-black-2":"bd-top-black-2","bd-top-black-3":"bd-top-black-3","bd-top-black-4":"bd-top-black-4","bd-top-black-5":"bd-top-black-5","bd-top-black-6":"bd-top-black-6","bd-top-black-7":"bd-top-black-7","bd-top-black-8":"bd-top-black-8","bd-top-black-9":"bd-top-black-9","bd-top-black-10":"bd-top-black-10","bd-top-blacklight":"bd-top-blacklight","bd-top-blacklight-0":"bd-top-blacklight-0","bd-top-blacklight-1":"bd-top-blacklight-1","bd-top-blacklight-2":"bd-top-blacklight-2","bd-top-blacklight-3":"bd-top-blacklight-3","bd-top-blacklight-4":"bd-top-blacklight-4","bd-top-blacklight-5":"bd-top-blacklight-5","bd-top-blacklight-6":"bd-top-blacklight-6","bd-top-blacklight-7":"bd-top-blacklight-7","bd-top-blacklight-8":"bd-top-blacklight-8","bd-top-blacklight-9":"bd-top-blacklight-9","bd-top-blacklight-10":"bd-top-blacklight-10","bd-top-blacklighter":"bd-top-blacklighter","bd-top-blacklighter-0":"bd-top-blacklighter-0","bd-top-blacklighter-1":"bd-top-blacklighter-1","bd-top-blacklighter-2":"bd-top-blacklighter-2","bd-top-blacklighter-3":"bd-top-blacklighter-3","bd-top-blacklighter-4":"bd-top-blacklighter-4","bd-top-blacklighter-5":"bd-top-blacklighter-5","bd-top-blacklighter-6":"bd-top-blacklighter-6","bd-top-blacklighter-7":"bd-top-blacklighter-7","bd-top-blacklighter-8":"bd-top-blacklighter-8","bd-top-blacklighter-9":"bd-top-blacklighter-9","bd-top-blacklighter-10":"bd-top-blacklighter-10","bd-top-greystronger":"bd-top-greystronger","bd-top-greystronger-0":"bd-top-greystronger-0","bd-top-greystronger-1":"bd-top-greystronger-1","bd-top-greystronger-2":"bd-top-greystronger-2","bd-top-greystronger-3":"bd-top-greystronger-3","bd-top-greystronger-4":"bd-top-greystronger-4","bd-top-greystronger-5":"bd-top-greystronger-5","bd-top-greystronger-6":"bd-top-greystronger-6","bd-top-greystronger-7":"bd-top-greystronger-7","bd-top-greystronger-8":"bd-top-greystronger-8","bd-top-greystronger-9":"bd-top-greystronger-9","bd-top-greystronger-10":"bd-top-greystronger-10","bd-top-greystrong":"bd-top-greystrong","bd-top-greystrong-0":"bd-top-greystrong-0","bd-top-greystrong-1":"bd-top-greystrong-1","bd-top-greystrong-2":"bd-top-greystrong-2","bd-top-greystrong-3":"bd-top-greystrong-3","bd-top-greystrong-4":"bd-top-greystrong-4","bd-top-greystrong-5":"bd-top-greystrong-5","bd-top-greystrong-6":"bd-top-greystrong-6","bd-top-greystrong-7":"bd-top-greystrong-7","bd-top-greystrong-8":"bd-top-greystrong-8","bd-top-greystrong-9":"bd-top-greystrong-9","bd-top-greystrong-10":"bd-top-greystrong-10","bd-top-grey":"bd-top-grey","bd-top-grey-0":"bd-top-grey-0","bd-top-grey-1":"bd-top-grey-1","bd-top-grey-2":"bd-top-grey-2","bd-top-grey-3":"bd-top-grey-3","bd-top-grey-4":"bd-top-grey-4","bd-top-grey-5":"bd-top-grey-5","bd-top-grey-6":"bd-top-grey-6","bd-top-grey-7":"bd-top-grey-7","bd-top-grey-8":"bd-top-grey-8","bd-top-grey-9":"bd-top-grey-9","bd-top-grey-10":"bd-top-grey-10","bd-top-greylight":"bd-top-greylight","bd-top-greylight-0":"bd-top-greylight-0","bd-top-greylight-1":"bd-top-greylight-1","bd-top-greylight-2":"bd-top-greylight-2","bd-top-greylight-3":"bd-top-greylight-3","bd-top-greylight-4":"bd-top-greylight-4","bd-top-greylight-5":"bd-top-greylight-5","bd-top-greylight-6":"bd-top-greylight-6","bd-top-greylight-7":"bd-top-greylight-7","bd-top-greylight-8":"bd-top-greylight-8","bd-top-greylight-9":"bd-top-greylight-9","bd-top-greylight-10":"bd-top-greylight-10","bd-top-greylighter":"bd-top-greylighter","bd-top-greylighter-0":"bd-top-greylighter-0","bd-top-greylighter-1":"bd-top-greylighter-1","bd-top-greylighter-2":"bd-top-greylighter-2","bd-top-greylighter-3":"bd-top-greylighter-3","bd-top-greylighter-4":"bd-top-greylighter-4","bd-top-greylighter-5":"bd-top-greylighter-5","bd-top-greylighter-6":"bd-top-greylighter-6","bd-top-greylighter-7":"bd-top-greylighter-7","bd-top-greylighter-8":"bd-top-greylighter-8","bd-top-greylighter-9":"bd-top-greylighter-9","bd-top-greylighter-10":"bd-top-greylighter-10","bd-top-white":"bd-top-white","bd-top-white-0":"bd-top-white-0","bd-top-white-1":"bd-top-white-1","bd-top-white-2":"bd-top-white-2","bd-top-white-3":"bd-top-white-3","bd-top-white-4":"bd-top-white-4","bd-top-white-5":"bd-top-white-5","bd-top-white-6":"bd-top-white-6","bd-top-white-7":"bd-top-white-7","bd-top-white-8":"bd-top-white-8","bd-top-white-9":"bd-top-white-9","bd-top-white-10":"bd-top-white-10","bd-top-none":"bd-top-none","bd-top-none-0":"bd-top-none-0","bd-top-none-1":"bd-top-none-1","bd-top-none-2":"bd-top-none-2","bd-top-none-3":"bd-top-none-3","bd-top-none-4":"bd-top-none-4","bd-top-none-5":"bd-top-none-5","bd-top-none-6":"bd-top-none-6","bd-top-none-7":"bd-top-none-7","bd-top-none-8":"bd-top-none-8","bd-top-none-9":"bd-top-none-9","bd-top-none-10":"bd-top-none-10","p-top-0":"p-top-0","p-y-0":"p-y-0","p-top-x2":"p-top-x2","p-y-x2":"p-y-x2","m-right":"m-right","m-x":"m-x","m-right-0":"m-right-0","m-x-0":"m-x-0","m-right-x2":"m-right-x2","m-x-x2":"m-x-x2","p-right":"p-right","p-x":"p-x","bd-right":"bd-right","bd-right-0":"bd-right-0","bd-right-1":"bd-right-1","bd-right-2":"bd-right-2","bd-right-3":"bd-right-3","bd-right-4":"bd-right-4","bd-right-5":"bd-right-5","bd-right-6":"bd-right-6","bd-right-7":"bd-right-7","bd-right-8":"bd-right-8","bd-right-9":"bd-right-9","bd-right-10":"bd-right-10","bd-right-blue":"bd-right-blue","bd-right-blue-0":"bd-right-blue-0","bd-right-blue-1":"bd-right-blue-1","bd-right-blue-2":"bd-right-blue-2","bd-right-blue-3":"bd-right-blue-3","bd-right-blue-4":"bd-right-blue-4","bd-right-blue-5":"bd-right-blue-5","bd-right-blue-6":"bd-right-blue-6","bd-right-blue-7":"bd-right-blue-7","bd-right-blue-8":"bd-right-blue-8","bd-right-blue-9":"bd-right-blue-9","bd-right-blue-10":"bd-right-blue-10","bd-right-green":"bd-right-green","bd-right-green-0":"bd-right-green-0","bd-right-green-1":"bd-right-green-1","bd-right-green-2":"bd-right-green-2","bd-right-green-3":"bd-right-green-3","bd-right-green-4":"bd-right-green-4","bd-right-green-5":"bd-right-green-5","bd-right-green-6":"bd-right-green-6","bd-right-green-7":"bd-right-green-7","bd-right-green-8":"bd-right-green-8","bd-right-green-9":"bd-right-green-9","bd-right-green-10":"bd-right-green-10","bd-right-orange":"bd-right-orange","bd-right-orange-0":"bd-right-orange-0","bd-right-orange-1":"bd-right-orange-1","bd-right-orange-2":"bd-right-orange-2","bd-right-orange-3":"bd-right-orange-3","bd-right-orange-4":"bd-right-orange-4","bd-right-orange-5":"bd-right-orange-5","bd-right-orange-6":"bd-right-orange-6","bd-right-orange-7":"bd-right-orange-7","bd-right-orange-8":"bd-right-orange-8","bd-right-orange-9":"bd-right-orange-9","bd-right-orange-10":"bd-right-orange-10","bd-right-darkblue":"bd-right-darkblue","bd-right-darkblue-0":"bd-right-darkblue-0","bd-right-darkblue-1":"bd-right-darkblue-1","bd-right-darkblue-2":"bd-right-darkblue-2","bd-right-darkblue-3":"bd-right-darkblue-3","bd-right-darkblue-4":"bd-right-darkblue-4","bd-right-darkblue-5":"bd-right-darkblue-5","bd-right-darkblue-6":"bd-right-darkblue-6","bd-right-darkblue-7":"bd-right-darkblue-7","bd-right-darkblue-8":"bd-right-darkblue-8","bd-right-darkblue-9":"bd-right-darkblue-9","bd-right-darkblue-10":"bd-right-darkblue-10","bd-right-gold":"bd-right-gold","bd-right-gold-0":"bd-right-gold-0","bd-right-gold-1":"bd-right-gold-1","bd-right-gold-2":"bd-right-gold-2","bd-right-gold-3":"bd-right-gold-3","bd-right-gold-4":"bd-right-gold-4","bd-right-gold-5":"bd-right-gold-5","bd-right-gold-6":"bd-right-gold-6","bd-right-gold-7":"bd-right-gold-7","bd-right-gold-8":"bd-right-gold-8","bd-right-gold-9":"bd-right-gold-9","bd-right-gold-10":"bd-right-gold-10","bd-right-black":"bd-right-black","bd-right-black-0":"bd-right-black-0","bd-right-black-1":"bd-right-black-1","bd-right-black-2":"bd-right-black-2","bd-right-black-3":"bd-right-black-3","bd-right-black-4":"bd-right-black-4","bd-right-black-5":"bd-right-black-5","bd-right-black-6":"bd-right-black-6","bd-right-black-7":"bd-right-black-7","bd-right-black-8":"bd-right-black-8","bd-right-black-9":"bd-right-black-9","bd-right-black-10":"bd-right-black-10","bd-right-blacklight":"bd-right-blacklight","bd-right-blacklight-0":"bd-right-blacklight-0","bd-right-blacklight-1":"bd-right-blacklight-1","bd-right-blacklight-2":"bd-right-blacklight-2","bd-right-blacklight-3":"bd-right-blacklight-3","bd-right-blacklight-4":"bd-right-blacklight-4","bd-right-blacklight-5":"bd-right-blacklight-5","bd-right-blacklight-6":"bd-right-blacklight-6","bd-right-blacklight-7":"bd-right-blacklight-7","bd-right-blacklight-8":"bd-right-blacklight-8","bd-right-blacklight-9":"bd-right-blacklight-9","bd-right-blacklight-10":"bd-right-blacklight-10","bd-right-blacklighter":"bd-right-blacklighter","bd-right-blacklighter-0":"bd-right-blacklighter-0","bd-right-blacklighter-1":"bd-right-blacklighter-1","bd-right-blacklighter-2":"bd-right-blacklighter-2","bd-right-blacklighter-3":"bd-right-blacklighter-3","bd-right-blacklighter-4":"bd-right-blacklighter-4","bd-right-blacklighter-5":"bd-right-blacklighter-5","bd-right-blacklighter-6":"bd-right-blacklighter-6","bd-right-blacklighter-7":"bd-right-blacklighter-7","bd-right-blacklighter-8":"bd-right-blacklighter-8","bd-right-blacklighter-9":"bd-right-blacklighter-9","bd-right-blacklighter-10":"bd-right-blacklighter-10","bd-right-greystronger":"bd-right-greystronger","bd-right-greystronger-0":"bd-right-greystronger-0","bd-right-greystronger-1":"bd-right-greystronger-1","bd-right-greystronger-2":"bd-right-greystronger-2","bd-right-greystronger-3":"bd-right-greystronger-3","bd-right-greystronger-4":"bd-right-greystronger-4","bd-right-greystronger-5":"bd-right-greystronger-5","bd-right-greystronger-6":"bd-right-greystronger-6","bd-right-greystronger-7":"bd-right-greystronger-7","bd-right-greystronger-8":"bd-right-greystronger-8","bd-right-greystronger-9":"bd-right-greystronger-9","bd-right-greystronger-10":"bd-right-greystronger-10","bd-right-greystrong":"bd-right-greystrong","bd-right-greystrong-0":"bd-right-greystrong-0","bd-right-greystrong-1":"bd-right-greystrong-1","bd-right-greystrong-2":"bd-right-greystrong-2","bd-right-greystrong-3":"bd-right-greystrong-3","bd-right-greystrong-4":"bd-right-greystrong-4","bd-right-greystrong-5":"bd-right-greystrong-5","bd-right-greystrong-6":"bd-right-greystrong-6","bd-right-greystrong-7":"bd-right-greystrong-7","bd-right-greystrong-8":"bd-right-greystrong-8","bd-right-greystrong-9":"bd-right-greystrong-9","bd-right-greystrong-10":"bd-right-greystrong-10","bd-right-grey":"bd-right-grey","bd-right-grey-0":"bd-right-grey-0","bd-right-grey-1":"bd-right-grey-1","bd-right-grey-2":"bd-right-grey-2","bd-right-grey-3":"bd-right-grey-3","bd-right-grey-4":"bd-right-grey-4","bd-right-grey-5":"bd-right-grey-5","bd-right-grey-6":"bd-right-grey-6","bd-right-grey-7":"bd-right-grey-7","bd-right-grey-8":"bd-right-grey-8","bd-right-grey-9":"bd-right-grey-9","bd-right-grey-10":"bd-right-grey-10","bd-right-greylight":"bd-right-greylight","bd-right-greylight-0":"bd-right-greylight-0","bd-right-greylight-1":"bd-right-greylight-1","bd-right-greylight-2":"bd-right-greylight-2","bd-right-greylight-3":"bd-right-greylight-3","bd-right-greylight-4":"bd-right-greylight-4","bd-right-greylight-5":"bd-right-greylight-5","bd-right-greylight-6":"bd-right-greylight-6","bd-right-greylight-7":"bd-right-greylight-7","bd-right-greylight-8":"bd-right-greylight-8","bd-right-greylight-9":"bd-right-greylight-9","bd-right-greylight-10":"bd-right-greylight-10","bd-right-greylighter":"bd-right-greylighter","bd-right-greylighter-0":"bd-right-greylighter-0","bd-right-greylighter-1":"bd-right-greylighter-1","bd-right-greylighter-2":"bd-right-greylighter-2","bd-right-greylighter-3":"bd-right-greylighter-3","bd-right-greylighter-4":"bd-right-greylighter-4","bd-right-greylighter-5":"bd-right-greylighter-5","bd-right-greylighter-6":"bd-right-greylighter-6","bd-right-greylighter-7":"bd-right-greylighter-7","bd-right-greylighter-8":"bd-right-greylighter-8","bd-right-greylighter-9":"bd-right-greylighter-9","bd-right-greylighter-10":"bd-right-greylighter-10","bd-right-white":"bd-right-white","bd-right-white-0":"bd-right-white-0","bd-right-white-1":"bd-right-white-1","bd-right-white-2":"bd-right-white-2","bd-right-white-3":"bd-right-white-3","bd-right-white-4":"bd-right-white-4","bd-right-white-5":"bd-right-white-5","bd-right-white-6":"bd-right-white-6","bd-right-white-7":"bd-right-white-7","bd-right-white-8":"bd-right-white-8","bd-right-white-9":"bd-right-white-9","bd-right-white-10":"bd-right-white-10","bd-right-none":"bd-right-none","bd-right-none-0":"bd-right-none-0","bd-right-none-1":"bd-right-none-1","bd-right-none-2":"bd-right-none-2","bd-right-none-3":"bd-right-none-3","bd-right-none-4":"bd-right-none-4","bd-right-none-5":"bd-right-none-5","bd-right-none-6":"bd-right-none-6","bd-right-none-7":"bd-right-none-7","bd-right-none-8":"bd-right-none-8","bd-right-none-9":"bd-right-none-9","bd-right-none-10":"bd-right-none-10","p-right-0":"p-right-0","p-x-0":"p-x-0","p-right-x2":"p-right-x2","p-x-x2":"p-x-x2","m-bottom":"m-bottom","m-bottom-0":"m-bottom-0","m-bottom-x2":"m-bottom-x2","p-bottom":"p-bottom","bd-bottom":"bd-bottom","bd-bottom-0":"bd-bottom-0","bd-bottom-1":"bd-bottom-1","bd-bottom-2":"bd-bottom-2","bd-bottom-3":"bd-bottom-3","bd-bottom-4":"bd-bottom-4","bd-bottom-5":"bd-bottom-5","bd-bottom-6":"bd-bottom-6","bd-bottom-7":"bd-bottom-7","bd-bottom-8":"bd-bottom-8","bd-bottom-9":"bd-bottom-9","bd-bottom-10":"bd-bottom-10","bd-bottom-blue":"bd-bottom-blue","bd-bottom-blue-0":"bd-bottom-blue-0","bd-bottom-blue-1":"bd-bottom-blue-1","bd-bottom-blue-2":"bd-bottom-blue-2","bd-bottom-blue-3":"bd-bottom-blue-3","bd-bottom-blue-4":"bd-bottom-blue-4","bd-bottom-blue-5":"bd-bottom-blue-5","bd-bottom-blue-6":"bd-bottom-blue-6","bd-bottom-blue-7":"bd-bottom-blue-7","bd-bottom-blue-8":"bd-bottom-blue-8","bd-bottom-blue-9":"bd-bottom-blue-9","bd-bottom-blue-10":"bd-bottom-blue-10","bd-bottom-green":"bd-bottom-green","bd-bottom-green-0":"bd-bottom-green-0","bd-bottom-green-1":"bd-bottom-green-1","bd-bottom-green-2":"bd-bottom-green-2","bd-bottom-green-3":"bd-bottom-green-3","bd-bottom-green-4":"bd-bottom-green-4","bd-bottom-green-5":"bd-bottom-green-5","bd-bottom-green-6":"bd-bottom-green-6","bd-bottom-green-7":"bd-bottom-green-7","bd-bottom-green-8":"bd-bottom-green-8","bd-bottom-green-9":"bd-bottom-green-9","bd-bottom-green-10":"bd-bottom-green-10","bd-bottom-orange":"bd-bottom-orange","bd-bottom-orange-0":"bd-bottom-orange-0","bd-bottom-orange-1":"bd-bottom-orange-1","bd-bottom-orange-2":"bd-bottom-orange-2","bd-bottom-orange-3":"bd-bottom-orange-3","bd-bottom-orange-4":"bd-bottom-orange-4","bd-bottom-orange-5":"bd-bottom-orange-5","bd-bottom-orange-6":"bd-bottom-orange-6","bd-bottom-orange-7":"bd-bottom-orange-7","bd-bottom-orange-8":"bd-bottom-orange-8","bd-bottom-orange-9":"bd-bottom-orange-9","bd-bottom-orange-10":"bd-bottom-orange-10","bd-bottom-darkblue":"bd-bottom-darkblue","bd-bottom-darkblue-0":"bd-bottom-darkblue-0","bd-bottom-darkblue-1":"bd-bottom-darkblue-1","bd-bottom-darkblue-2":"bd-bottom-darkblue-2","bd-bottom-darkblue-3":"bd-bottom-darkblue-3","bd-bottom-darkblue-4":"bd-bottom-darkblue-4","bd-bottom-darkblue-5":"bd-bottom-darkblue-5","bd-bottom-darkblue-6":"bd-bottom-darkblue-6","bd-bottom-darkblue-7":"bd-bottom-darkblue-7","bd-bottom-darkblue-8":"bd-bottom-darkblue-8","bd-bottom-darkblue-9":"bd-bottom-darkblue-9","bd-bottom-darkblue-10":"bd-bottom-darkblue-10","bd-bottom-gold":"bd-bottom-gold","bd-bottom-gold-0":"bd-bottom-gold-0","bd-bottom-gold-1":"bd-bottom-gold-1","bd-bottom-gold-2":"bd-bottom-gold-2","bd-bottom-gold-3":"bd-bottom-gold-3","bd-bottom-gold-4":"bd-bottom-gold-4","bd-bottom-gold-5":"bd-bottom-gold-5","bd-bottom-gold-6":"bd-bottom-gold-6","bd-bottom-gold-7":"bd-bottom-gold-7","bd-bottom-gold-8":"bd-bottom-gold-8","bd-bottom-gold-9":"bd-bottom-gold-9","bd-bottom-gold-10":"bd-bottom-gold-10","bd-bottom-black":"bd-bottom-black","bd-bottom-black-0":"bd-bottom-black-0","bd-bottom-black-1":"bd-bottom-black-1","bd-bottom-black-2":"bd-bottom-black-2","bd-bottom-black-3":"bd-bottom-black-3","bd-bottom-black-4":"bd-bottom-black-4","bd-bottom-black-5":"bd-bottom-black-5","bd-bottom-black-6":"bd-bottom-black-6","bd-bottom-black-7":"bd-bottom-black-7","bd-bottom-black-8":"bd-bottom-black-8","bd-bottom-black-9":"bd-bottom-black-9","bd-bottom-black-10":"bd-bottom-black-10","bd-bottom-blacklight":"bd-bottom-blacklight","bd-bottom-blacklight-0":"bd-bottom-blacklight-0","bd-bottom-blacklight-1":"bd-bottom-blacklight-1","bd-bottom-blacklight-2":"bd-bottom-blacklight-2","bd-bottom-blacklight-3":"bd-bottom-blacklight-3","bd-bottom-blacklight-4":"bd-bottom-blacklight-4","bd-bottom-blacklight-5":"bd-bottom-blacklight-5","bd-bottom-blacklight-6":"bd-bottom-blacklight-6","bd-bottom-blacklight-7":"bd-bottom-blacklight-7","bd-bottom-blacklight-8":"bd-bottom-blacklight-8","bd-bottom-blacklight-9":"bd-bottom-blacklight-9","bd-bottom-blacklight-10":"bd-bottom-blacklight-10","bd-bottom-blacklighter":"bd-bottom-blacklighter","bd-bottom-blacklighter-0":"bd-bottom-blacklighter-0","bd-bottom-blacklighter-1":"bd-bottom-blacklighter-1","bd-bottom-blacklighter-2":"bd-bottom-blacklighter-2","bd-bottom-blacklighter-3":"bd-bottom-blacklighter-3","bd-bottom-blacklighter-4":"bd-bottom-blacklighter-4","bd-bottom-blacklighter-5":"bd-bottom-blacklighter-5","bd-bottom-blacklighter-6":"bd-bottom-blacklighter-6","bd-bottom-blacklighter-7":"bd-bottom-blacklighter-7","bd-bottom-blacklighter-8":"bd-bottom-blacklighter-8","bd-bottom-blacklighter-9":"bd-bottom-blacklighter-9","bd-bottom-blacklighter-10":"bd-bottom-blacklighter-10","bd-bottom-greystronger":"bd-bottom-greystronger","bd-bottom-greystronger-0":"bd-bottom-greystronger-0","bd-bottom-greystronger-1":"bd-bottom-greystronger-1","bd-bottom-greystronger-2":"bd-bottom-greystronger-2","bd-bottom-greystronger-3":"bd-bottom-greystronger-3","bd-bottom-greystronger-4":"bd-bottom-greystronger-4","bd-bottom-greystronger-5":"bd-bottom-greystronger-5","bd-bottom-greystronger-6":"bd-bottom-greystronger-6","bd-bottom-greystronger-7":"bd-bottom-greystronger-7","bd-bottom-greystronger-8":"bd-bottom-greystronger-8","bd-bottom-greystronger-9":"bd-bottom-greystronger-9","bd-bottom-greystronger-10":"bd-bottom-greystronger-10","bd-bottom-greystrong":"bd-bottom-greystrong","bd-bottom-greystrong-0":"bd-bottom-greystrong-0","bd-bottom-greystrong-1":"bd-bottom-greystrong-1","bd-bottom-greystrong-2":"bd-bottom-greystrong-2","bd-bottom-greystrong-3":"bd-bottom-greystrong-3","bd-bottom-greystrong-4":"bd-bottom-greystrong-4","bd-bottom-greystrong-5":"bd-bottom-greystrong-5","bd-bottom-greystrong-6":"bd-bottom-greystrong-6","bd-bottom-greystrong-7":"bd-bottom-greystrong-7","bd-bottom-greystrong-8":"bd-bottom-greystrong-8","bd-bottom-greystrong-9":"bd-bottom-greystrong-9","bd-bottom-greystrong-10":"bd-bottom-greystrong-10","bd-bottom-grey":"bd-bottom-grey","bd-bottom-grey-0":"bd-bottom-grey-0","bd-bottom-grey-1":"bd-bottom-grey-1","bd-bottom-grey-2":"bd-bottom-grey-2","bd-bottom-grey-3":"bd-bottom-grey-3","bd-bottom-grey-4":"bd-bottom-grey-4","bd-bottom-grey-5":"bd-bottom-grey-5","bd-bottom-grey-6":"bd-bottom-grey-6","bd-bottom-grey-7":"bd-bottom-grey-7","bd-bottom-grey-8":"bd-bottom-grey-8","bd-bottom-grey-9":"bd-bottom-grey-9","bd-bottom-grey-10":"bd-bottom-grey-10","bd-bottom-greylight":"bd-bottom-greylight","bd-bottom-greylight-0":"bd-bottom-greylight-0","bd-bottom-greylight-1":"bd-bottom-greylight-1","bd-bottom-greylight-2":"bd-bottom-greylight-2","bd-bottom-greylight-3":"bd-bottom-greylight-3","bd-bottom-greylight-4":"bd-bottom-greylight-4","bd-bottom-greylight-5":"bd-bottom-greylight-5","bd-bottom-greylight-6":"bd-bottom-greylight-6","bd-bottom-greylight-7":"bd-bottom-greylight-7","bd-bottom-greylight-8":"bd-bottom-greylight-8","bd-bottom-greylight-9":"bd-bottom-greylight-9","bd-bottom-greylight-10":"bd-bottom-greylight-10","bd-bottom-greylighter":"bd-bottom-greylighter","bd-bottom-greylighter-0":"bd-bottom-greylighter-0","bd-bottom-greylighter-1":"bd-bottom-greylighter-1","bd-bottom-greylighter-2":"bd-bottom-greylighter-2","bd-bottom-greylighter-3":"bd-bottom-greylighter-3","bd-bottom-greylighter-4":"bd-bottom-greylighter-4","bd-bottom-greylighter-5":"bd-bottom-greylighter-5","bd-bottom-greylighter-6":"bd-bottom-greylighter-6","bd-bottom-greylighter-7":"bd-bottom-greylighter-7","bd-bottom-greylighter-8":"bd-bottom-greylighter-8","bd-bottom-greylighter-9":"bd-bottom-greylighter-9","bd-bottom-greylighter-10":"bd-bottom-greylighter-10","bd-bottom-white":"bd-bottom-white","bd-bottom-white-0":"bd-bottom-white-0","bd-bottom-white-1":"bd-bottom-white-1","bd-bottom-white-2":"bd-bottom-white-2","bd-bottom-white-3":"bd-bottom-white-3","bd-bottom-white-4":"bd-bottom-white-4","bd-bottom-white-5":"bd-bottom-white-5","bd-bottom-white-6":"bd-bottom-white-6","bd-bottom-white-7":"bd-bottom-white-7","bd-bottom-white-8":"bd-bottom-white-8","bd-bottom-white-9":"bd-bottom-white-9","bd-bottom-white-10":"bd-bottom-white-10","bd-bottom-none":"bd-bottom-none","bd-bottom-none-0":"bd-bottom-none-0","bd-bottom-none-1":"bd-bottom-none-1","bd-bottom-none-2":"bd-bottom-none-2","bd-bottom-none-3":"bd-bottom-none-3","bd-bottom-none-4":"bd-bottom-none-4","bd-bottom-none-5":"bd-bottom-none-5","bd-bottom-none-6":"bd-bottom-none-6","bd-bottom-none-7":"bd-bottom-none-7","bd-bottom-none-8":"bd-bottom-none-8","bd-bottom-none-9":"bd-bottom-none-9","bd-bottom-none-10":"bd-bottom-none-10","p-bottom-0":"p-bottom-0","p-bottom-x2":"p-bottom-x2","m-left":"m-left","m-left-0":"m-left-0","m-left-x2":"m-left-x2","p-left":"p-left","bd-left":"bd-left","bd-left-0":"bd-left-0","bd-left-1":"bd-left-1","bd-left-2":"bd-left-2","bd-left-3":"bd-left-3","bd-left-4":"bd-left-4","bd-left-5":"bd-left-5","bd-left-6":"bd-left-6","bd-left-7":"bd-left-7","bd-left-8":"bd-left-8","bd-left-9":"bd-left-9","bd-left-10":"bd-left-10","bd-left-blue":"bd-left-blue","bd-left-blue-0":"bd-left-blue-0","bd-left-blue-1":"bd-left-blue-1","bd-left-blue-2":"bd-left-blue-2","bd-left-blue-3":"bd-left-blue-3","bd-left-blue-4":"bd-left-blue-4","bd-left-blue-5":"bd-left-blue-5","bd-left-blue-6":"bd-left-blue-6","bd-left-blue-7":"bd-left-blue-7","bd-left-blue-8":"bd-left-blue-8","bd-left-blue-9":"bd-left-blue-9","bd-left-blue-10":"bd-left-blue-10","bd-left-green":"bd-left-green","bd-left-green-0":"bd-left-green-0","bd-left-green-1":"bd-left-green-1","bd-left-green-2":"bd-left-green-2","bd-left-green-3":"bd-left-green-3","bd-left-green-4":"bd-left-green-4","bd-left-green-5":"bd-left-green-5","bd-left-green-6":"bd-left-green-6","bd-left-green-7":"bd-left-green-7","bd-left-green-8":"bd-left-green-8","bd-left-green-9":"bd-left-green-9","bd-left-green-10":"bd-left-green-10","bd-left-orange":"bd-left-orange","bd-left-orange-0":"bd-left-orange-0","bd-left-orange-1":"bd-left-orange-1","bd-left-orange-2":"bd-left-orange-2","bd-left-orange-3":"bd-left-orange-3","bd-left-orange-4":"bd-left-orange-4","bd-left-orange-5":"bd-left-orange-5","bd-left-orange-6":"bd-left-orange-6","bd-left-orange-7":"bd-left-orange-7","bd-left-orange-8":"bd-left-orange-8","bd-left-orange-9":"bd-left-orange-9","bd-left-orange-10":"bd-left-orange-10","bd-left-darkblue":"bd-left-darkblue","bd-left-darkblue-0":"bd-left-darkblue-0","bd-left-darkblue-1":"bd-left-darkblue-1","bd-left-darkblue-2":"bd-left-darkblue-2","bd-left-darkblue-3":"bd-left-darkblue-3","bd-left-darkblue-4":"bd-left-darkblue-4","bd-left-darkblue-5":"bd-left-darkblue-5","bd-left-darkblue-6":"bd-left-darkblue-6","bd-left-darkblue-7":"bd-left-darkblue-7","bd-left-darkblue-8":"bd-left-darkblue-8","bd-left-darkblue-9":"bd-left-darkblue-9","bd-left-darkblue-10":"bd-left-darkblue-10","bd-left-gold":"bd-left-gold","bd-left-gold-0":"bd-left-gold-0","bd-left-gold-1":"bd-left-gold-1","bd-left-gold-2":"bd-left-gold-2","bd-left-gold-3":"bd-left-gold-3","bd-left-gold-4":"bd-left-gold-4","bd-left-gold-5":"bd-left-gold-5","bd-left-gold-6":"bd-left-gold-6","bd-left-gold-7":"bd-left-gold-7","bd-left-gold-8":"bd-left-gold-8","bd-left-gold-9":"bd-left-gold-9","bd-left-gold-10":"bd-left-gold-10","bd-left-black":"bd-left-black","bd-left-black-0":"bd-left-black-0","bd-left-black-1":"bd-left-black-1","bd-left-black-2":"bd-left-black-2","bd-left-black-3":"bd-left-black-3","bd-left-black-4":"bd-left-black-4","bd-left-black-5":"bd-left-black-5","bd-left-black-6":"bd-left-black-6","bd-left-black-7":"bd-left-black-7","bd-left-black-8":"bd-left-black-8","bd-left-black-9":"bd-left-black-9","bd-left-black-10":"bd-left-black-10","bd-left-blacklight":"bd-left-blacklight","bd-left-blacklight-0":"bd-left-blacklight-0","bd-left-blacklight-1":"bd-left-blacklight-1","bd-left-blacklight-2":"bd-left-blacklight-2","bd-left-blacklight-3":"bd-left-blacklight-3","bd-left-blacklight-4":"bd-left-blacklight-4","bd-left-blacklight-5":"bd-left-blacklight-5","bd-left-blacklight-6":"bd-left-blacklight-6","bd-left-blacklight-7":"bd-left-blacklight-7","bd-left-blacklight-8":"bd-left-blacklight-8","bd-left-blacklight-9":"bd-left-blacklight-9","bd-left-blacklight-10":"bd-left-blacklight-10","bd-left-blacklighter":"bd-left-blacklighter","bd-left-blacklighter-0":"bd-left-blacklighter-0","bd-left-blacklighter-1":"bd-left-blacklighter-1","bd-left-blacklighter-2":"bd-left-blacklighter-2","bd-left-blacklighter-3":"bd-left-blacklighter-3","bd-left-blacklighter-4":"bd-left-blacklighter-4","bd-left-blacklighter-5":"bd-left-blacklighter-5","bd-left-blacklighter-6":"bd-left-blacklighter-6","bd-left-blacklighter-7":"bd-left-blacklighter-7","bd-left-blacklighter-8":"bd-left-blacklighter-8","bd-left-blacklighter-9":"bd-left-blacklighter-9","bd-left-blacklighter-10":"bd-left-blacklighter-10","bd-left-greystronger":"bd-left-greystronger","bd-left-greystronger-0":"bd-left-greystronger-0","bd-left-greystronger-1":"bd-left-greystronger-1","bd-left-greystronger-2":"bd-left-greystronger-2","bd-left-greystronger-3":"bd-left-greystronger-3","bd-left-greystronger-4":"bd-left-greystronger-4","bd-left-greystronger-5":"bd-left-greystronger-5","bd-left-greystronger-6":"bd-left-greystronger-6","bd-left-greystronger-7":"bd-left-greystronger-7","bd-left-greystronger-8":"bd-left-greystronger-8","bd-left-greystronger-9":"bd-left-greystronger-9","bd-left-greystronger-10":"bd-left-greystronger-10","bd-left-greystrong":"bd-left-greystrong","bd-left-greystrong-0":"bd-left-greystrong-0","bd-left-greystrong-1":"bd-left-greystrong-1","bd-left-greystrong-2":"bd-left-greystrong-2","bd-left-greystrong-3":"bd-left-greystrong-3","bd-left-greystrong-4":"bd-left-greystrong-4","bd-left-greystrong-5":"bd-left-greystrong-5","bd-left-greystrong-6":"bd-left-greystrong-6","bd-left-greystrong-7":"bd-left-greystrong-7","bd-left-greystrong-8":"bd-left-greystrong-8","bd-left-greystrong-9":"bd-left-greystrong-9","bd-left-greystrong-10":"bd-left-greystrong-10","bd-left-grey":"bd-left-grey","bd-left-grey-0":"bd-left-grey-0","bd-left-grey-1":"bd-left-grey-1","bd-left-grey-2":"bd-left-grey-2","bd-left-grey-3":"bd-left-grey-3","bd-left-grey-4":"bd-left-grey-4","bd-left-grey-5":"bd-left-grey-5","bd-left-grey-6":"bd-left-grey-6","bd-left-grey-7":"bd-left-grey-7","bd-left-grey-8":"bd-left-grey-8","bd-left-grey-9":"bd-left-grey-9","bd-left-grey-10":"bd-left-grey-10","bd-left-greylight":"bd-left-greylight","bd-left-greylight-0":"bd-left-greylight-0","bd-left-greylight-1":"bd-left-greylight-1","bd-left-greylight-2":"bd-left-greylight-2","bd-left-greylight-3":"bd-left-greylight-3","bd-left-greylight-4":"bd-left-greylight-4","bd-left-greylight-5":"bd-left-greylight-5","bd-left-greylight-6":"bd-left-greylight-6","bd-left-greylight-7":"bd-left-greylight-7","bd-left-greylight-8":"bd-left-greylight-8","bd-left-greylight-9":"bd-left-greylight-9","bd-left-greylight-10":"bd-left-greylight-10","bd-left-greylighter":"bd-left-greylighter","bd-left-greylighter-0":"bd-left-greylighter-0","bd-left-greylighter-1":"bd-left-greylighter-1","bd-left-greylighter-2":"bd-left-greylighter-2","bd-left-greylighter-3":"bd-left-greylighter-3","bd-left-greylighter-4":"bd-left-greylighter-4","bd-left-greylighter-5":"bd-left-greylighter-5","bd-left-greylighter-6":"bd-left-greylighter-6","bd-left-greylighter-7":"bd-left-greylighter-7","bd-left-greylighter-8":"bd-left-greylighter-8","bd-left-greylighter-9":"bd-left-greylighter-9","bd-left-greylighter-10":"bd-left-greylighter-10","bd-left-white":"bd-left-white","bd-left-white-0":"bd-left-white-0","bd-left-white-1":"bd-left-white-1","bd-left-white-2":"bd-left-white-2","bd-left-white-3":"bd-left-white-3","bd-left-white-4":"bd-left-white-4","bd-left-white-5":"bd-left-white-5","bd-left-white-6":"bd-left-white-6","bd-left-white-7":"bd-left-white-7","bd-left-white-8":"bd-left-white-8","bd-left-white-9":"bd-left-white-9","bd-left-white-10":"bd-left-white-10","bd-left-none":"bd-left-none","bd-left-none-0":"bd-left-none-0","bd-left-none-1":"bd-left-none-1","bd-left-none-2":"bd-left-none-2","bd-left-none-3":"bd-left-none-3","bd-left-none-4":"bd-left-none-4","bd-left-none-5":"bd-left-none-5","bd-left-none-6":"bd-left-none-6","bd-left-none-7":"bd-left-none-7","bd-left-none-8":"bd-left-none-8","bd-left-none-9":"bd-left-none-9","bd-left-none-10":"bd-left-none-10","p-left-0":"p-left-0","p-left-x2":"p-left-x2","h1":"h1","sep-bottom":"sep-bottom","sep-top":"sep-top","sep-right":"sep-right","sep-left":"sep-left","h2":"h2","h3":"h3","h4":"h4","h5":"h5","h6":"h6","sep":"sep","reset":"reset","bg-blue":"bg-blue","bg-blue-o-10":"bg-blue-o-10","bg-blue-o-20":"bg-blue-o-20","bg-blue-o-30":"bg-blue-o-30","bg-blue-o-40":"bg-blue-o-40","bg-blue-o-50":"bg-blue-o-50","bg-blue-o-60":"bg-blue-o-60","bg-blue-o-70":"bg-blue-o-70","bg-blue-o-80":"bg-blue-o-80","bg-blue-o-90":"bg-blue-o-90","bg-blue-o-100":"bg-blue-o-100","text":"text","email":"email","password":"password","tel":"tel","url":"url","date":"date","range":"range","number":"number","select2-container":"select2-container","select2-selection":"select2-selection","focus":"focus","active":"active","checkbox":"checkbox","radio":"radio","bg-green":"bg-green","bg-green-o-10":"bg-green-o-10","bg-green-o-20":"bg-green-o-20","bg-green-o-30":"bg-green-o-30","bg-green-o-40":"bg-green-o-40","bg-green-o-50":"bg-green-o-50","bg-green-o-60":"bg-green-o-60","bg-green-o-70":"bg-green-o-70","bg-green-o-80":"bg-green-o-80","bg-green-o-90":"bg-green-o-90","bg-green-o-100":"bg-green-o-100","bg-orange":"bg-orange","bg-orange-o-10":"bg-orange-o-10","bg-orange-o-20":"bg-orange-o-20","bg-orange-o-30":"bg-orange-o-30","bg-orange-o-40":"bg-orange-o-40","bg-orange-o-50":"bg-orange-o-50","bg-orange-o-60":"bg-orange-o-60","bg-orange-o-70":"bg-orange-o-70","bg-orange-o-80":"bg-orange-o-80","bg-orange-o-90":"bg-orange-o-90","bg-orange-o-100":"bg-orange-o-100","bg-darkblue":"bg-darkblue","bg-darkblue-o-10":"bg-darkblue-o-10","bg-darkblue-o-20":"bg-darkblue-o-20","bg-darkblue-o-30":"bg-darkblue-o-30","bg-darkblue-o-40":"bg-darkblue-o-40","bg-darkblue-o-50":"bg-darkblue-o-50","bg-darkblue-o-60":"bg-darkblue-o-60","bg-darkblue-o-70":"bg-darkblue-o-70","bg-darkblue-o-80":"bg-darkblue-o-80","bg-darkblue-o-90":"bg-darkblue-o-90","bg-darkblue-o-100":"bg-darkblue-o-100","bg-gold":"bg-gold","bg-gold-o-10":"bg-gold-o-10","bg-gold-o-20":"bg-gold-o-20","bg-gold-o-30":"bg-gold-o-30","bg-gold-o-40":"bg-gold-o-40","bg-gold-o-50":"bg-gold-o-50","bg-gold-o-60":"bg-gold-o-60","bg-gold-o-70":"bg-gold-o-70","bg-gold-o-80":"bg-gold-o-80","bg-gold-o-90":"bg-gold-o-90","bg-gold-o-100":"bg-gold-o-100","bg-black":"bg-black","bg-black-o-10":"bg-black-o-10","bg-black-o-20":"bg-black-o-20","bg-black-o-30":"bg-black-o-30","bg-black-o-40":"bg-black-o-40","bg-black-o-50":"bg-black-o-50","bg-black-o-60":"bg-black-o-60","bg-black-o-70":"bg-black-o-70","bg-black-o-80":"bg-black-o-80","bg-black-o-90":"bg-black-o-90","bg-black-o-100":"bg-black-o-100","bg-blacklight":"bg-blacklight","bg-blacklight-o-10":"bg-blacklight-o-10","bg-blacklight-o-20":"bg-blacklight-o-20","bg-blacklight-o-30":"bg-blacklight-o-30","bg-blacklight-o-40":"bg-blacklight-o-40","bg-blacklight-o-50":"bg-blacklight-o-50","bg-blacklight-o-60":"bg-blacklight-o-60","bg-blacklight-o-70":"bg-blacklight-o-70","bg-blacklight-o-80":"bg-blacklight-o-80","bg-blacklight-o-90":"bg-blacklight-o-90","bg-blacklight-o-100":"bg-blacklight-o-100","bg-blacklighter":"bg-blacklighter","bg-blacklighter-o-10":"bg-blacklighter-o-10","bg-blacklighter-o-20":"bg-blacklighter-o-20","bg-blacklighter-o-30":"bg-blacklighter-o-30","bg-blacklighter-o-40":"bg-blacklighter-o-40","bg-blacklighter-o-50":"bg-blacklighter-o-50","bg-blacklighter-o-60":"bg-blacklighter-o-60","bg-blacklighter-o-70":"bg-blacklighter-o-70","bg-blacklighter-o-80":"bg-blacklighter-o-80","bg-blacklighter-o-90":"bg-blacklighter-o-90","bg-blacklighter-o-100":"bg-blacklighter-o-100","bg-greystronger":"bg-greystronger","bg-greystronger-o-10":"bg-greystronger-o-10","bg-greystronger-o-20":"bg-greystronger-o-20","bg-greystronger-o-30":"bg-greystronger-o-30","bg-greystronger-o-40":"bg-greystronger-o-40","bg-greystronger-o-50":"bg-greystronger-o-50","bg-greystronger-o-60":"bg-greystronger-o-60","bg-greystronger-o-70":"bg-greystronger-o-70","bg-greystronger-o-80":"bg-greystronger-o-80","bg-greystronger-o-90":"bg-greystronger-o-90","bg-greystronger-o-100":"bg-greystronger-o-100","bg-greystrong":"bg-greystrong","bg-greystrong-o-10":"bg-greystrong-o-10","bg-greystrong-o-20":"bg-greystrong-o-20","bg-greystrong-o-30":"bg-greystrong-o-30","bg-greystrong-o-40":"bg-greystrong-o-40","bg-greystrong-o-50":"bg-greystrong-o-50","bg-greystrong-o-60":"bg-greystrong-o-60","bg-greystrong-o-70":"bg-greystrong-o-70","bg-greystrong-o-80":"bg-greystrong-o-80","bg-greystrong-o-90":"bg-greystrong-o-90","bg-greystrong-o-100":"bg-greystrong-o-100","bg-grey":"bg-grey","bg-grey-o-10":"bg-grey-o-10","bg-grey-o-20":"bg-grey-o-20","bg-grey-o-30":"bg-grey-o-30","bg-grey-o-40":"bg-grey-o-40","bg-grey-o-50":"bg-grey-o-50","bg-grey-o-60":"bg-grey-o-60","bg-grey-o-70":"bg-grey-o-70","bg-grey-o-80":"bg-grey-o-80","bg-grey-o-90":"bg-grey-o-90","bg-grey-o-100":"bg-grey-o-100","bg-greylight":"bg-greylight","bg-greylight-o-10":"bg-greylight-o-10","bg-greylight-o-20":"bg-greylight-o-20","bg-greylight-o-30":"bg-greylight-o-30","bg-greylight-o-40":"bg-greylight-o-40","bg-greylight-o-50":"bg-greylight-o-50","bg-greylight-o-60":"bg-greylight-o-60","bg-greylight-o-70":"bg-greylight-o-70","bg-greylight-o-80":"bg-greylight-o-80","bg-greylight-o-90":"bg-greylight-o-90","bg-greylight-o-100":"bg-greylight-o-100","bg-greylighter":"bg-greylighter","bg-greylighter-o-10":"bg-greylighter-o-10","bg-greylighter-o-20":"bg-greylighter-o-20","bg-greylighter-o-30":"bg-greylighter-o-30","bg-greylighter-o-40":"bg-greylighter-o-40","bg-greylighter-o-50":"bg-greylighter-o-50","bg-greylighter-o-60":"bg-greylighter-o-60","bg-greylighter-o-70":"bg-greylighter-o-70","bg-greylighter-o-80":"bg-greylighter-o-80","bg-greylighter-o-90":"bg-greylighter-o-90","bg-greylighter-o-100":"bg-greylighter-o-100","bg-white":"bg-white","bg-white-o-10":"bg-white-o-10","bg-white-o-20":"bg-white-o-20","bg-white-o-30":"bg-white-o-30","bg-white-o-40":"bg-white-o-40","bg-white-o-50":"bg-white-o-50","bg-white-o-60":"bg-white-o-60","bg-white-o-70":"bg-white-o-70","bg-white-o-80":"bg-white-o-80","bg-white-o-90":"bg-white-o-90","bg-white-o-100":"bg-white-o-100","bg-none":"bg-none","bg-none-o-10":"bg-none-o-10","bg-none-o-20":"bg-none-o-20","bg-none-o-30":"bg-none-o-30","bg-none-o-40":"bg-none-o-40","bg-none-o-50":"bg-none-o-50","bg-none-o-60":"bg-none-o-60","bg-none-o-70":"bg-none-o-70","bg-none-o-80":"bg-none-o-80","bg-none-o-90":"bg-none-o-90","bg-none-o-100":"bg-none-o-100","btn-sm":"btn-sm","editor":"editor","btn-lg":"btn-lg","btn-bd-blue":"btn-bd-blue","btn-bg-blue":"btn-bg-blue","btn-bd-green":"btn-bd-green","btn-bg-green":"btn-bg-green","btn-bd-orange":"btn-bd-orange","btn-bg-orange":"btn-bg-orange","btn-bd-darkblue":"btn-bd-darkblue","btn-bg-darkblue":"btn-bg-darkblue","btn-bd-gold":"btn-bd-gold","btn-bg-gold":"btn-bg-gold","btn-bd-black":"btn-bd-black","btn-bg-black":"btn-bg-black","btn-bd-blacklight":"btn-bd-blacklight","btn-bg-blacklight":"btn-bg-blacklight","btn-bd-blacklighter":"btn-bd-blacklighter","btn-bg-blacklighter":"btn-bg-blacklighter","btn-bd-greystronger":"btn-bd-greystronger","btn-bg-greystronger":"btn-bg-greystronger","btn-bd-greystrong":"btn-bd-greystrong","btn-bg-greystrong":"btn-bg-greystrong","btn-bd-grey":"btn-bd-grey","btn-bg-grey":"btn-bg-grey","btn-bd-greylight":"btn-bd-greylight","btn-bg-greylight":"btn-bg-greylight","btn-bd-greylighter":"btn-bd-greylighter","btn-bg-greylighter":"btn-bg-greylighter","btn-bd-white":"btn-bd-white","btn-bg-white":"btn-bg-white","btn-bd-none":"btn-bd-none","btn-bg-none":"btn-bg-none","flex":"flex","alignself--flexstart":"alignself--flexstart","alignself--flexend":"alignself--flexend","alignself--center":"alignself--center","alignself--spacebetween":"alignself--spacebetween","alignself--spacearound":"alignself--spacearound","flexgrow--0":"flexgrow--0","flexgrow--1":"flexgrow--1","flexgrow--2":"flexgrow--2","flexgrow--3":"flexgrow--3","flexgrow--4":"flexgrow--4","flexgrow--5":"flexgrow--5","flexgrow--6":"flexgrow--6","flexgrow--7":"flexgrow--7","flexgrow--8":"flexgrow--8","flexgrow--9":"flexgrow--9","flexgrow--10":"flexgrow--10","nofill":"nofill","form-group":"form-group","toast-container":"toast-container","heroFW":"heroFW","width--content":"width--content","title--1":"title--1","title--2":"title--2","title--3":"title--3","title--4":"title--4","heroFW__wrapper":"heroFW__wrapper","heroFW__figure":"heroFW__figure","height--content":"height--content","figure__opacity--0":"figure__opacity--0","figure__opacity--1":"figure__opacity--1","figure__opacity--2":"figure__opacity--2","figure__opacity--3":"figure__opacity--3","figure__opacity--4":"figure__opacity--4","figure__opacity--5":"figure__opacity--5","figure__opacity--6":"figure__opacity--6","figure__opacity--7":"figure__opacity--7","figure__opacity--8":"figure__opacity--8","figure__opacity--9":"figure__opacity--9","figure__opacity--10":"figure__opacity--10","heroFW__content":"heroFW__content","content__bg--blue":"content__bg--blue","content__bg--green":"content__bg--green","content__bg--orange":"content__bg--orange","content__bg--darkblue":"content__bg--darkblue","content__bg--gold":"content__bg--gold","content__bg--black":"content__bg--black","content__bg--blacklight":"content__bg--blacklight","content__bg--blacklighter":"content__bg--blacklighter","content__bg--greystronger":"content__bg--greystronger","content__bg--greystrong":"content__bg--greystrong","content__bg--grey":"content__bg--grey","content__bg--greylight":"content__bg--greylight","content__bg--greylighter":"content__bg--greylighter","content__bg--white":"content__bg--white","content__bg--none":"content__bg--none","content__bg__opacity--0":"content__bg__opacity--0","content__bg__opacity--1":"content__bg__opacity--1","content__bg__opacity--2":"content__bg__opacity--2","content__bg__opacity--3":"content__bg__opacity--3","content__bg__opacity--4":"content__bg__opacity--4","content__bg__opacity--5":"content__bg__opacity--5","content__bg__opacity--6":"content__bg__opacity--6","content__bg__opacity--7":"content__bg__opacity--7","content__bg__opacity--8":"content__bg__opacity--8","content__bg__opacity--9":"content__bg__opacity--9","content__bg__opacity--10":"content__bg__opacity--10","sliderFW":"sliderFW","sliderFW__container":"sliderFW__container","sliderFW__rail":"sliderFW__rail","nav--hidden":"nav--hidden","nav--inner":"nav--inner","nav--top":"nav--top","sliderFW__item":"sliderFW__item","sliderFW__item__bg":"sliderFW__item__bg","sliderFW__item__content":"sliderFW__item__content","content__text--top":"content__text--top","content__text--center":"content__text--center","content--right":"content--right","content--center":"content--center","sliderFW__item__blur":"sliderFW__item__blur","content--noblur":"content--noblur","sliderFW__nav":"sliderFW__nav","nav--left":"nav--left","nav--right":"nav--right","nav--bottom":"nav--bottom","sliderFW__nav__item":"sliderFW__nav__item","tabs":"tabs","tabs__nav":"tabs__nav","tabs__content":"tabs__content","tab":"tab","foldingbox":"foldingbox","foldingbox__title":"foldingbox__title","foldingbox__item":"foldingbox__item","break":"break","foldingbox__container":"foldingbox__container","foldingbox__item__content":"foldingbox__item__content","foldingbox__item__bg":"foldingbox__item__bg","block-list":"block-list","headline--outer":"headline--outer","block-list__headline":"block-list__headline","block-list__content":"block-list__content","block-list__footer":"block-list__footer","block-list__category":"block-list__category","block-list__date":"block-list__date","headline--disable":"headline--disable","footer--disable":"footer--disable","block-list__title":"block-list__title","block-img":"block-img","block-img__content":"block-img__content","content--inner":"content--inner","content--fadein":"content--fadein","content--fadeout":"content--fadeout","content--top":"content--top","content--full":"content--full","content--fromtop":"content--fromtop","content--frombottom":"content--frombottom","content--fromleft":"content--fromleft","content--fromright":"content--fromright","content__text--left":"content__text--left","content__text--right":"content__text--right","content__text--bottom":"content__text--bottom","select2-container--default":"select2-container--default","select2-selection--single":"select2-selection--single","select2-selection__rendered":"select2-selection__rendered","select2-selection__arrow":"select2-selection__arrow","select2-container--open":"select2-container--open","select2-selection--multiple":"select2-selection--multiple","select2-selection__choice":"select2-selection__choice","select2-search--inline":"select2-search--inline","select2-search__field":"select2-search__field","select2-selection__choice__remove":"select2-selection__choice__remove","select2-dropdown":"select2-dropdown","btn-load":"btn-load","content":"content","item":"item","tag":"tag","descIcon":"descIcon"};
+module.exports = {"radius":"2px","spacing":"30px","border-default-size":"2px","border-default-color":"#000000","colors":"(\"blue\": #004C79, \"green\": #5cb85c, \"orange\": #DC6053, \"darkblue\": #0a1d29, \"gold\": #edbe5f, \"black\": #000000, \"blacklight\": #111414, \"blacklighter\": #222222, \"greystronger\": #424041, \"greystrong\": #535052, \"grey\": #7A7778, \"greylight\": #DDDDDD, \"greylighter\": #EEEEEE, \"white\": #ffffff, \"none\": transparent)","breakpoints":"(\"xl\": 1400px, \"lg\": 1200px, \"md\": 992px, \"sm\": 768px, \"xs\": 620px, \"xxs\": 520px)","body":"(\"background\": #ffffff, \"font-color\": #424041, \"font-size\": 20px, \"title-font-color\": #111414)","header":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","footer":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","input":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #424041, \"border-size\": 1px, \"placeholder-font-color\": #7A7778, \"radius\": false)","input-focus":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #424041)","input-valid":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #5cb85c)","input-invalid":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #DC6053)","link":"(\"font-color\": #DC6053, \"font-color-hover\": #DC6053, \"font-color-focus\": #DC6053)","btn":"btn","enable-bg":"true","enable-bg-extended":"false","enable-bd":"true","disabled":"disabled","zoomin":"zoomin","zoomout":"zoomout","fadetogrey":"fadetogrey","fadetocolor":"fadetocolor","copy":"copy","no-events":"no-events","no-transition":"no-transition","no-overflow":"no-overflow","hidden":"hidden","invisible":"invisible","ellipsis":"ellipsis","center":"center","center-block":"center-block","fl-left":"fl-left","float-left":"float-left","fl-right":"fl-right","float-right":"float-right","clear":"clear","clear-left":"clear-left","clear-right":"clear-right","clear-after":"clear-after","clear-before":"clear-before","clear-no":"clear-no","text-right":"text-right","txt-right":"txt-right","text-left":"text-left","txt-left":"txt-left","text-center":"text-center","txt-center":"txt-center","force-full":"force-full","block-list__figure":"block-list__figure","block-img__figure":"block-img__figure","img--right":"img--right","img--top":"img--top","img--bottom":"img--bottom","img--left":"img--left","r_16-9":"r_16-9","r_2-1":"r_2-1","r_1-1":"r_1-1","r_1-2":"r_1-2","block-list__wrapper":"block-list__wrapper","block-std":"block-std","block-img__wrapper":"block-img__wrapper","accordionFW":"accordionFW","guideline":"guideline","descText":"descText","ft-light":"ft-light","ft-normal":"ft-normal","ft-bold":"ft-bold","ft-bolder":"ft-bolder","ft-i":"ft-i","ft-b":"ft-b","ft-u":"ft-u","ft-u-no":"ft-u-no","ft-upper":"ft-upper","ft-lower":"ft-lower","ft-0-em":"ft-0-em","ft-0-rem":"ft-0-rem","ft-0-1-em":"ft-0-1-em","ft-0-1-rem":"ft-0-1-rem","ft-0-2-em":"ft-0-2-em","ft-0-2-rem":"ft-0-2-rem","ft-0-3-em":"ft-0-3-em","ft-0-3-rem":"ft-0-3-rem","ft-0-4-em":"ft-0-4-em","ft-0-4-rem":"ft-0-4-rem","ft-0-5-em":"ft-0-5-em","ft-0-5-rem":"ft-0-5-rem","ft-0-6-em":"ft-0-6-em","ft-0-6-rem":"ft-0-6-rem","ft-0-7-em":"ft-0-7-em","ft-0-7-rem":"ft-0-7-rem","ft-0-8-em":"ft-0-8-em","ft-0-8-rem":"ft-0-8-rem","ft-0-9-em":"ft-0-9-em","ft-0-9-rem":"ft-0-9-rem","ft-minus-10":"ft-minus-10","ft-plus-10":"ft-plus-10","ft-1-em":"ft-1-em","ft-1-rem":"ft-1-rem","ft-1-1-em":"ft-1-1-em","ft-1-1-rem":"ft-1-1-rem","ft-1-2-em":"ft-1-2-em","ft-1-2-rem":"ft-1-2-rem","ft-1-3-em":"ft-1-3-em","ft-1-3-rem":"ft-1-3-rem","ft-1-4-em":"ft-1-4-em","ft-1-4-rem":"ft-1-4-rem","ft-1-5-em":"ft-1-5-em","ft-1-5-rem":"ft-1-5-rem","ft-1-6-em":"ft-1-6-em","ft-1-6-rem":"ft-1-6-rem","ft-1-7-em":"ft-1-7-em","ft-1-7-rem":"ft-1-7-rem","ft-1-8-em":"ft-1-8-em","ft-1-8-rem":"ft-1-8-rem","ft-1-9-em":"ft-1-9-em","ft-1-9-rem":"ft-1-9-rem","ft-minus-20":"ft-minus-20","ft-plus-20":"ft-plus-20","ft-2-em":"ft-2-em","ft-2-rem":"ft-2-rem","ft-2-1-em":"ft-2-1-em","ft-2-1-rem":"ft-2-1-rem","ft-2-2-em":"ft-2-2-em","ft-2-2-rem":"ft-2-2-rem","ft-2-3-em":"ft-2-3-em","ft-2-3-rem":"ft-2-3-rem","ft-2-4-em":"ft-2-4-em","ft-2-4-rem":"ft-2-4-rem","ft-2-5-em":"ft-2-5-em","ft-2-5-rem":"ft-2-5-rem","ft-2-6-em":"ft-2-6-em","ft-2-6-rem":"ft-2-6-rem","ft-2-7-em":"ft-2-7-em","ft-2-7-rem":"ft-2-7-rem","ft-2-8-em":"ft-2-8-em","ft-2-8-rem":"ft-2-8-rem","ft-2-9-em":"ft-2-9-em","ft-2-9-rem":"ft-2-9-rem","ft-minus-30":"ft-minus-30","ft-plus-30":"ft-plus-30","ft-3-em":"ft-3-em","ft-3-rem":"ft-3-rem","ft-3-1-em":"ft-3-1-em","ft-3-1-rem":"ft-3-1-rem","ft-3-2-em":"ft-3-2-em","ft-3-2-rem":"ft-3-2-rem","ft-3-3-em":"ft-3-3-em","ft-3-3-rem":"ft-3-3-rem","ft-3-4-em":"ft-3-4-em","ft-3-4-rem":"ft-3-4-rem","ft-3-5-em":"ft-3-5-em","ft-3-5-rem":"ft-3-5-rem","ft-3-6-em":"ft-3-6-em","ft-3-6-rem":"ft-3-6-rem","ft-3-7-em":"ft-3-7-em","ft-3-7-rem":"ft-3-7-rem","ft-3-8-em":"ft-3-8-em","ft-3-8-rem":"ft-3-8-rem","ft-3-9-em":"ft-3-9-em","ft-3-9-rem":"ft-3-9-rem","ft-minus-40":"ft-minus-40","ft-plus-40":"ft-plus-40","ft-4-em":"ft-4-em","ft-4-rem":"ft-4-rem","ft-4-1-em":"ft-4-1-em","ft-4-1-rem":"ft-4-1-rem","ft-4-2-em":"ft-4-2-em","ft-4-2-rem":"ft-4-2-rem","ft-4-3-em":"ft-4-3-em","ft-4-3-rem":"ft-4-3-rem","ft-4-4-em":"ft-4-4-em","ft-4-4-rem":"ft-4-4-rem","ft-4-5-em":"ft-4-5-em","ft-4-5-rem":"ft-4-5-rem","ft-4-6-em":"ft-4-6-em","ft-4-6-rem":"ft-4-6-rem","ft-4-7-em":"ft-4-7-em","ft-4-7-rem":"ft-4-7-rem","ft-4-8-em":"ft-4-8-em","ft-4-8-rem":"ft-4-8-rem","ft-4-9-em":"ft-4-9-em","ft-4-9-rem":"ft-4-9-rem","ft-minus-50":"ft-minus-50","ft-plus-50":"ft-plus-50","ft-5-em":"ft-5-em","ft-5-rem":"ft-5-rem","ft-5-1-em":"ft-5-1-em","ft-5-1-rem":"ft-5-1-rem","ft-5-2-em":"ft-5-2-em","ft-5-2-rem":"ft-5-2-rem","ft-5-3-em":"ft-5-3-em","ft-5-3-rem":"ft-5-3-rem","ft-5-4-em":"ft-5-4-em","ft-5-4-rem":"ft-5-4-rem","ft-5-5-em":"ft-5-5-em","ft-5-5-rem":"ft-5-5-rem","ft-5-6-em":"ft-5-6-em","ft-5-6-rem":"ft-5-6-rem","ft-5-7-em":"ft-5-7-em","ft-5-7-rem":"ft-5-7-rem","ft-5-8-em":"ft-5-8-em","ft-5-8-rem":"ft-5-8-rem","ft-5-9-em":"ft-5-9-em","ft-5-9-rem":"ft-5-9-rem","ft-minus-60":"ft-minus-60","ft-plus-60":"ft-plus-60","ft-6-em":"ft-6-em","ft-6-rem":"ft-6-rem","ft-6-1-em":"ft-6-1-em","ft-6-1-rem":"ft-6-1-rem","ft-6-2-em":"ft-6-2-em","ft-6-2-rem":"ft-6-2-rem","ft-6-3-em":"ft-6-3-em","ft-6-3-rem":"ft-6-3-rem","ft-6-4-em":"ft-6-4-em","ft-6-4-rem":"ft-6-4-rem","ft-6-5-em":"ft-6-5-em","ft-6-5-rem":"ft-6-5-rem","ft-6-6-em":"ft-6-6-em","ft-6-6-rem":"ft-6-6-rem","ft-6-7-em":"ft-6-7-em","ft-6-7-rem":"ft-6-7-rem","ft-6-8-em":"ft-6-8-em","ft-6-8-rem":"ft-6-8-rem","ft-6-9-em":"ft-6-9-em","ft-6-9-rem":"ft-6-9-rem","ft-minus-70":"ft-minus-70","ft-plus-70":"ft-plus-70","ft-7-em":"ft-7-em","ft-7-rem":"ft-7-rem","ft-7-1-em":"ft-7-1-em","ft-7-1-rem":"ft-7-1-rem","ft-7-2-em":"ft-7-2-em","ft-7-2-rem":"ft-7-2-rem","ft-7-3-em":"ft-7-3-em","ft-7-3-rem":"ft-7-3-rem","ft-7-4-em":"ft-7-4-em","ft-7-4-rem":"ft-7-4-rem","ft-7-5-em":"ft-7-5-em","ft-7-5-rem":"ft-7-5-rem","ft-7-6-em":"ft-7-6-em","ft-7-6-rem":"ft-7-6-rem","ft-7-7-em":"ft-7-7-em","ft-7-7-rem":"ft-7-7-rem","ft-7-8-em":"ft-7-8-em","ft-7-8-rem":"ft-7-8-rem","ft-7-9-em":"ft-7-9-em","ft-7-9-rem":"ft-7-9-rem","ft-minus-80":"ft-minus-80","ft-plus-80":"ft-plus-80","ft-8-em":"ft-8-em","ft-8-rem":"ft-8-rem","ft-8-1-em":"ft-8-1-em","ft-8-1-rem":"ft-8-1-rem","ft-8-2-em":"ft-8-2-em","ft-8-2-rem":"ft-8-2-rem","ft-8-3-em":"ft-8-3-em","ft-8-3-rem":"ft-8-3-rem","ft-8-4-em":"ft-8-4-em","ft-8-4-rem":"ft-8-4-rem","ft-8-5-em":"ft-8-5-em","ft-8-5-rem":"ft-8-5-rem","ft-8-6-em":"ft-8-6-em","ft-8-6-rem":"ft-8-6-rem","ft-8-7-em":"ft-8-7-em","ft-8-7-rem":"ft-8-7-rem","ft-8-8-em":"ft-8-8-em","ft-8-8-rem":"ft-8-8-rem","ft-8-9-em":"ft-8-9-em","ft-8-9-rem":"ft-8-9-rem","ft-minus-90":"ft-minus-90","ft-plus-90":"ft-plus-90","ft-9-em":"ft-9-em","ft-9-rem":"ft-9-rem","ft-9-1-em":"ft-9-1-em","ft-9-1-rem":"ft-9-1-rem","ft-9-2-em":"ft-9-2-em","ft-9-2-rem":"ft-9-2-rem","ft-9-3-em":"ft-9-3-em","ft-9-3-rem":"ft-9-3-rem","ft-9-4-em":"ft-9-4-em","ft-9-4-rem":"ft-9-4-rem","ft-9-5-em":"ft-9-5-em","ft-9-5-rem":"ft-9-5-rem","ft-9-6-em":"ft-9-6-em","ft-9-6-rem":"ft-9-6-rem","ft-9-7-em":"ft-9-7-em","ft-9-7-rem":"ft-9-7-rem","ft-9-8-em":"ft-9-8-em","ft-9-8-rem":"ft-9-8-rem","ft-9-9-em":"ft-9-9-em","ft-9-9-rem":"ft-9-9-rem","ft-minus-100":"ft-minus-100","ft-plus-100":"ft-plus-100","ft-10-em":"ft-10-em","ft-10-rem":"ft-10-rem","ft-10-1-em":"ft-10-1-em","ft-10-1-rem":"ft-10-1-rem","ft-10-2-em":"ft-10-2-em","ft-10-2-rem":"ft-10-2-rem","ft-10-3-em":"ft-10-3-em","ft-10-3-rem":"ft-10-3-rem","ft-10-4-em":"ft-10-4-em","ft-10-4-rem":"ft-10-4-rem","ft-10-5-em":"ft-10-5-em","ft-10-5-rem":"ft-10-5-rem","ft-10-6-em":"ft-10-6-em","ft-10-6-rem":"ft-10-6-rem","ft-10-7-em":"ft-10-7-em","ft-10-7-rem":"ft-10-7-rem","ft-10-8-em":"ft-10-8-em","ft-10-8-rem":"ft-10-8-rem","ft-10-9-em":"ft-10-9-em","ft-10-9-rem":"ft-10-9-rem","ft-blue":"ft-blue","ft-green":"ft-green","ft-orange":"ft-orange","ft-darkblue":"ft-darkblue","ft-gold":"ft-gold","ft-black":"ft-black","ft-blacklight":"ft-blacklight","ft-blacklighter":"ft-blacklighter","ft-greystronger":"ft-greystronger","ft-greystrong":"ft-greystrong","ft-grey":"ft-grey","ft-greylight":"ft-greylight","ft-greylighter":"ft-greylighter","ft-white":"ft-white","ft-none":"ft-none","rad":"rad","tags":"tags","rad-all":"rad-all","rad-top-left":"rad-top-left","rad-top":"rad-top","rad-left":"rad-left","rad-top-right":"rad-top-right","rad-right":"rad-right","rad-bottom-left":"rad-bottom-left","rad-bottom":"rad-bottom","rad-bottom-right":"rad-bottom-right","m-all":"m-all","m-all-0":"m-all-0","m-all-x2":"m-all-x2","p-all":"p-all","bd":"bd","bd-all":"bd-all","bd-0":"bd-0","bd-all-0":"bd-all-0","bd-1":"bd-1","bd-all-1":"bd-all-1","bd-2":"bd-2","bd-all-2":"bd-all-2","bd-3":"bd-3","bd-all-3":"bd-all-3","bd-4":"bd-4","bd-all-4":"bd-all-4","bd-5":"bd-5","bd-all-5":"bd-all-5","bd-6":"bd-6","bd-all-6":"bd-all-6","bd-7":"bd-7","bd-all-7":"bd-all-7","bd-8":"bd-8","bd-all-8":"bd-all-8","bd-9":"bd-9","bd-all-9":"bd-all-9","bd-10":"bd-10","bd-all-10":"bd-all-10","bd-blue":"bd-blue","bd-all-blue":"bd-all-blue","bd-blue-0":"bd-blue-0","bd-all-blue-0":"bd-all-blue-0","bd-blue-1":"bd-blue-1","bd-all-blue-1":"bd-all-blue-1","bd-blue-2":"bd-blue-2","bd-all-blue-2":"bd-all-blue-2","bd-blue-3":"bd-blue-3","bd-all-blue-3":"bd-all-blue-3","bd-blue-4":"bd-blue-4","bd-all-blue-4":"bd-all-blue-4","bd-blue-5":"bd-blue-5","bd-all-blue-5":"bd-all-blue-5","bd-blue-6":"bd-blue-6","bd-all-blue-6":"bd-all-blue-6","bd-blue-7":"bd-blue-7","bd-all-blue-7":"bd-all-blue-7","bd-blue-8":"bd-blue-8","bd-all-blue-8":"bd-all-blue-8","bd-blue-9":"bd-blue-9","bd-all-blue-9":"bd-all-blue-9","bd-blue-10":"bd-blue-10","bd-all-blue-10":"bd-all-blue-10","bd-green":"bd-green","bd-all-green":"bd-all-green","bd-green-0":"bd-green-0","bd-all-green-0":"bd-all-green-0","bd-green-1":"bd-green-1","bd-all-green-1":"bd-all-green-1","bd-green-2":"bd-green-2","bd-all-green-2":"bd-all-green-2","bd-green-3":"bd-green-3","bd-all-green-3":"bd-all-green-3","bd-green-4":"bd-green-4","bd-all-green-4":"bd-all-green-4","bd-green-5":"bd-green-5","bd-all-green-5":"bd-all-green-5","bd-green-6":"bd-green-6","bd-all-green-6":"bd-all-green-6","bd-green-7":"bd-green-7","bd-all-green-7":"bd-all-green-7","bd-green-8":"bd-green-8","bd-all-green-8":"bd-all-green-8","bd-green-9":"bd-green-9","bd-all-green-9":"bd-all-green-9","bd-green-10":"bd-green-10","bd-all-green-10":"bd-all-green-10","bd-orange":"bd-orange","bd-all-orange":"bd-all-orange","bd-orange-0":"bd-orange-0","bd-all-orange-0":"bd-all-orange-0","bd-orange-1":"bd-orange-1","bd-all-orange-1":"bd-all-orange-1","bd-orange-2":"bd-orange-2","bd-all-orange-2":"bd-all-orange-2","bd-orange-3":"bd-orange-3","bd-all-orange-3":"bd-all-orange-3","bd-orange-4":"bd-orange-4","bd-all-orange-4":"bd-all-orange-4","bd-orange-5":"bd-orange-5","bd-all-orange-5":"bd-all-orange-5","bd-orange-6":"bd-orange-6","bd-all-orange-6":"bd-all-orange-6","bd-orange-7":"bd-orange-7","bd-all-orange-7":"bd-all-orange-7","bd-orange-8":"bd-orange-8","bd-all-orange-8":"bd-all-orange-8","bd-orange-9":"bd-orange-9","bd-all-orange-9":"bd-all-orange-9","bd-orange-10":"bd-orange-10","bd-all-orange-10":"bd-all-orange-10","bd-darkblue":"bd-darkblue","bd-all-darkblue":"bd-all-darkblue","bd-darkblue-0":"bd-darkblue-0","bd-all-darkblue-0":"bd-all-darkblue-0","bd-darkblue-1":"bd-darkblue-1","bd-all-darkblue-1":"bd-all-darkblue-1","bd-darkblue-2":"bd-darkblue-2","bd-all-darkblue-2":"bd-all-darkblue-2","bd-darkblue-3":"bd-darkblue-3","bd-all-darkblue-3":"bd-all-darkblue-3","bd-darkblue-4":"bd-darkblue-4","bd-all-darkblue-4":"bd-all-darkblue-4","bd-darkblue-5":"bd-darkblue-5","bd-all-darkblue-5":"bd-all-darkblue-5","bd-darkblue-6":"bd-darkblue-6","bd-all-darkblue-6":"bd-all-darkblue-6","bd-darkblue-7":"bd-darkblue-7","bd-all-darkblue-7":"bd-all-darkblue-7","bd-darkblue-8":"bd-darkblue-8","bd-all-darkblue-8":"bd-all-darkblue-8","bd-darkblue-9":"bd-darkblue-9","bd-all-darkblue-9":"bd-all-darkblue-9","bd-darkblue-10":"bd-darkblue-10","bd-all-darkblue-10":"bd-all-darkblue-10","bd-gold":"bd-gold","bd-all-gold":"bd-all-gold","bd-gold-0":"bd-gold-0","bd-all-gold-0":"bd-all-gold-0","bd-gold-1":"bd-gold-1","bd-all-gold-1":"bd-all-gold-1","bd-gold-2":"bd-gold-2","bd-all-gold-2":"bd-all-gold-2","bd-gold-3":"bd-gold-3","bd-all-gold-3":"bd-all-gold-3","bd-gold-4":"bd-gold-4","bd-all-gold-4":"bd-all-gold-4","bd-gold-5":"bd-gold-5","bd-all-gold-5":"bd-all-gold-5","bd-gold-6":"bd-gold-6","bd-all-gold-6":"bd-all-gold-6","bd-gold-7":"bd-gold-7","bd-all-gold-7":"bd-all-gold-7","bd-gold-8":"bd-gold-8","bd-all-gold-8":"bd-all-gold-8","bd-gold-9":"bd-gold-9","bd-all-gold-9":"bd-all-gold-9","bd-gold-10":"bd-gold-10","bd-all-gold-10":"bd-all-gold-10","bd-black":"bd-black","bd-all-black":"bd-all-black","bd-black-0":"bd-black-0","bd-all-black-0":"bd-all-black-0","bd-black-1":"bd-black-1","bd-all-black-1":"bd-all-black-1","bd-black-2":"bd-black-2","bd-all-black-2":"bd-all-black-2","bd-black-3":"bd-black-3","bd-all-black-3":"bd-all-black-3","bd-black-4":"bd-black-4","bd-all-black-4":"bd-all-black-4","bd-black-5":"bd-black-5","bd-all-black-5":"bd-all-black-5","bd-black-6":"bd-black-6","bd-all-black-6":"bd-all-black-6","bd-black-7":"bd-black-7","bd-all-black-7":"bd-all-black-7","bd-black-8":"bd-black-8","bd-all-black-8":"bd-all-black-8","bd-black-9":"bd-black-9","bd-all-black-9":"bd-all-black-9","bd-black-10":"bd-black-10","bd-all-black-10":"bd-all-black-10","bd-blacklight":"bd-blacklight","bd-all-blacklight":"bd-all-blacklight","bd-blacklight-0":"bd-blacklight-0","bd-all-blacklight-0":"bd-all-blacklight-0","bd-blacklight-1":"bd-blacklight-1","bd-all-blacklight-1":"bd-all-blacklight-1","bd-blacklight-2":"bd-blacklight-2","bd-all-blacklight-2":"bd-all-blacklight-2","bd-blacklight-3":"bd-blacklight-3","bd-all-blacklight-3":"bd-all-blacklight-3","bd-blacklight-4":"bd-blacklight-4","bd-all-blacklight-4":"bd-all-blacklight-4","bd-blacklight-5":"bd-blacklight-5","bd-all-blacklight-5":"bd-all-blacklight-5","bd-blacklight-6":"bd-blacklight-6","bd-all-blacklight-6":"bd-all-blacklight-6","bd-blacklight-7":"bd-blacklight-7","bd-all-blacklight-7":"bd-all-blacklight-7","bd-blacklight-8":"bd-blacklight-8","bd-all-blacklight-8":"bd-all-blacklight-8","bd-blacklight-9":"bd-blacklight-9","bd-all-blacklight-9":"bd-all-blacklight-9","bd-blacklight-10":"bd-blacklight-10","bd-all-blacklight-10":"bd-all-blacklight-10","bd-blacklighter":"bd-blacklighter","bd-all-blacklighter":"bd-all-blacklighter","bd-blacklighter-0":"bd-blacklighter-0","bd-all-blacklighter-0":"bd-all-blacklighter-0","bd-blacklighter-1":"bd-blacklighter-1","bd-all-blacklighter-1":"bd-all-blacklighter-1","bd-blacklighter-2":"bd-blacklighter-2","bd-all-blacklighter-2":"bd-all-blacklighter-2","bd-blacklighter-3":"bd-blacklighter-3","bd-all-blacklighter-3":"bd-all-blacklighter-3","bd-blacklighter-4":"bd-blacklighter-4","bd-all-blacklighter-4":"bd-all-blacklighter-4","bd-blacklighter-5":"bd-blacklighter-5","bd-all-blacklighter-5":"bd-all-blacklighter-5","bd-blacklighter-6":"bd-blacklighter-6","bd-all-blacklighter-6":"bd-all-blacklighter-6","bd-blacklighter-7":"bd-blacklighter-7","bd-all-blacklighter-7":"bd-all-blacklighter-7","bd-blacklighter-8":"bd-blacklighter-8","bd-all-blacklighter-8":"bd-all-blacklighter-8","bd-blacklighter-9":"bd-blacklighter-9","bd-all-blacklighter-9":"bd-all-blacklighter-9","bd-blacklighter-10":"bd-blacklighter-10","bd-all-blacklighter-10":"bd-all-blacklighter-10","bd-greystronger":"bd-greystronger","bd-all-greystronger":"bd-all-greystronger","bd-greystronger-0":"bd-greystronger-0","bd-all-greystronger-0":"bd-all-greystronger-0","bd-greystronger-1":"bd-greystronger-1","bd-all-greystronger-1":"bd-all-greystronger-1","bd-greystronger-2":"bd-greystronger-2","bd-all-greystronger-2":"bd-all-greystronger-2","bd-greystronger-3":"bd-greystronger-3","bd-all-greystronger-3":"bd-all-greystronger-3","bd-greystronger-4":"bd-greystronger-4","bd-all-greystronger-4":"bd-all-greystronger-4","bd-greystronger-5":"bd-greystronger-5","bd-all-greystronger-5":"bd-all-greystronger-5","bd-greystronger-6":"bd-greystronger-6","bd-all-greystronger-6":"bd-all-greystronger-6","bd-greystronger-7":"bd-greystronger-7","bd-all-greystronger-7":"bd-all-greystronger-7","bd-greystronger-8":"bd-greystronger-8","bd-all-greystronger-8":"bd-all-greystronger-8","bd-greystronger-9":"bd-greystronger-9","bd-all-greystronger-9":"bd-all-greystronger-9","bd-greystronger-10":"bd-greystronger-10","bd-all-greystronger-10":"bd-all-greystronger-10","bd-greystrong":"bd-greystrong","bd-all-greystrong":"bd-all-greystrong","bd-greystrong-0":"bd-greystrong-0","bd-all-greystrong-0":"bd-all-greystrong-0","bd-greystrong-1":"bd-greystrong-1","bd-all-greystrong-1":"bd-all-greystrong-1","bd-greystrong-2":"bd-greystrong-2","bd-all-greystrong-2":"bd-all-greystrong-2","bd-greystrong-3":"bd-greystrong-3","bd-all-greystrong-3":"bd-all-greystrong-3","bd-greystrong-4":"bd-greystrong-4","bd-all-greystrong-4":"bd-all-greystrong-4","bd-greystrong-5":"bd-greystrong-5","bd-all-greystrong-5":"bd-all-greystrong-5","bd-greystrong-6":"bd-greystrong-6","bd-all-greystrong-6":"bd-all-greystrong-6","bd-greystrong-7":"bd-greystrong-7","bd-all-greystrong-7":"bd-all-greystrong-7","bd-greystrong-8":"bd-greystrong-8","bd-all-greystrong-8":"bd-all-greystrong-8","bd-greystrong-9":"bd-greystrong-9","bd-all-greystrong-9":"bd-all-greystrong-9","bd-greystrong-10":"bd-greystrong-10","bd-all-greystrong-10":"bd-all-greystrong-10","bd-grey":"bd-grey","bd-all-grey":"bd-all-grey","bd-grey-0":"bd-grey-0","bd-all-grey-0":"bd-all-grey-0","bd-grey-1":"bd-grey-1","bd-all-grey-1":"bd-all-grey-1","bd-grey-2":"bd-grey-2","bd-all-grey-2":"bd-all-grey-2","bd-grey-3":"bd-grey-3","bd-all-grey-3":"bd-all-grey-3","bd-grey-4":"bd-grey-4","bd-all-grey-4":"bd-all-grey-4","bd-grey-5":"bd-grey-5","bd-all-grey-5":"bd-all-grey-5","bd-grey-6":"bd-grey-6","bd-all-grey-6":"bd-all-grey-6","bd-grey-7":"bd-grey-7","bd-all-grey-7":"bd-all-grey-7","bd-grey-8":"bd-grey-8","bd-all-grey-8":"bd-all-grey-8","bd-grey-9":"bd-grey-9","bd-all-grey-9":"bd-all-grey-9","bd-grey-10":"bd-grey-10","bd-all-grey-10":"bd-all-grey-10","bd-greylight":"bd-greylight","bd-all-greylight":"bd-all-greylight","bd-greylight-0":"bd-greylight-0","bd-all-greylight-0":"bd-all-greylight-0","bd-greylight-1":"bd-greylight-1","bd-all-greylight-1":"bd-all-greylight-1","bd-greylight-2":"bd-greylight-2","bd-all-greylight-2":"bd-all-greylight-2","bd-greylight-3":"bd-greylight-3","bd-all-greylight-3":"bd-all-greylight-3","bd-greylight-4":"bd-greylight-4","bd-all-greylight-4":"bd-all-greylight-4","bd-greylight-5":"bd-greylight-5","bd-all-greylight-5":"bd-all-greylight-5","bd-greylight-6":"bd-greylight-6","bd-all-greylight-6":"bd-all-greylight-6","bd-greylight-7":"bd-greylight-7","bd-all-greylight-7":"bd-all-greylight-7","bd-greylight-8":"bd-greylight-8","bd-all-greylight-8":"bd-all-greylight-8","bd-greylight-9":"bd-greylight-9","bd-all-greylight-9":"bd-all-greylight-9","bd-greylight-10":"bd-greylight-10","bd-all-greylight-10":"bd-all-greylight-10","bd-greylighter":"bd-greylighter","bd-all-greylighter":"bd-all-greylighter","bd-greylighter-0":"bd-greylighter-0","bd-all-greylighter-0":"bd-all-greylighter-0","bd-greylighter-1":"bd-greylighter-1","bd-all-greylighter-1":"bd-all-greylighter-1","bd-greylighter-2":"bd-greylighter-2","bd-all-greylighter-2":"bd-all-greylighter-2","bd-greylighter-3":"bd-greylighter-3","bd-all-greylighter-3":"bd-all-greylighter-3","bd-greylighter-4":"bd-greylighter-4","bd-all-greylighter-4":"bd-all-greylighter-4","bd-greylighter-5":"bd-greylighter-5","bd-all-greylighter-5":"bd-all-greylighter-5","bd-greylighter-6":"bd-greylighter-6","bd-all-greylighter-6":"bd-all-greylighter-6","bd-greylighter-7":"bd-greylighter-7","bd-all-greylighter-7":"bd-all-greylighter-7","bd-greylighter-8":"bd-greylighter-8","bd-all-greylighter-8":"bd-all-greylighter-8","bd-greylighter-9":"bd-greylighter-9","bd-all-greylighter-9":"bd-all-greylighter-9","bd-greylighter-10":"bd-greylighter-10","bd-all-greylighter-10":"bd-all-greylighter-10","bd-white":"bd-white","bd-all-white":"bd-all-white","bd-white-0":"bd-white-0","bd-all-white-0":"bd-all-white-0","bd-white-1":"bd-white-1","bd-all-white-1":"bd-all-white-1","bd-white-2":"bd-white-2","bd-all-white-2":"bd-all-white-2","bd-white-3":"bd-white-3","bd-all-white-3":"bd-all-white-3","bd-white-4":"bd-white-4","bd-all-white-4":"bd-all-white-4","bd-white-5":"bd-white-5","bd-all-white-5":"bd-all-white-5","bd-white-6":"bd-white-6","bd-all-white-6":"bd-all-white-6","bd-white-7":"bd-white-7","bd-all-white-7":"bd-all-white-7","bd-white-8":"bd-white-8","bd-all-white-8":"bd-all-white-8","bd-white-9":"bd-white-9","bd-all-white-9":"bd-all-white-9","bd-white-10":"bd-white-10","bd-all-white-10":"bd-all-white-10","bd-none":"bd-none","bd-all-none":"bd-all-none","bd-none-0":"bd-none-0","bd-all-none-0":"bd-all-none-0","bd-none-1":"bd-none-1","bd-all-none-1":"bd-all-none-1","bd-none-2":"bd-none-2","bd-all-none-2":"bd-all-none-2","bd-none-3":"bd-none-3","bd-all-none-3":"bd-all-none-3","bd-none-4":"bd-none-4","bd-all-none-4":"bd-all-none-4","bd-none-5":"bd-none-5","bd-all-none-5":"bd-all-none-5","bd-none-6":"bd-none-6","bd-all-none-6":"bd-all-none-6","bd-none-7":"bd-none-7","bd-all-none-7":"bd-all-none-7","bd-none-8":"bd-none-8","bd-all-none-8":"bd-all-none-8","bd-none-9":"bd-none-9","bd-all-none-9":"bd-all-none-9","bd-none-10":"bd-none-10","bd-all-none-10":"bd-all-none-10","p-all-0":"p-all-0","p-all-x2":"p-all-x2","m-top":"m-top","m-y":"m-y","m-top-0":"m-top-0","m-y-0":"m-y-0","m-top-x2":"m-top-x2","m-y-x2":"m-y-x2","p-top":"p-top","p-y":"p-y","bd-top":"bd-top","bd-top-0":"bd-top-0","bd-top-1":"bd-top-1","bd-top-2":"bd-top-2","bd-top-3":"bd-top-3","bd-top-4":"bd-top-4","bd-top-5":"bd-top-5","bd-top-6":"bd-top-6","bd-top-7":"bd-top-7","bd-top-8":"bd-top-8","bd-top-9":"bd-top-9","bd-top-10":"bd-top-10","bd-top-blue":"bd-top-blue","bd-top-blue-0":"bd-top-blue-0","bd-top-blue-1":"bd-top-blue-1","bd-top-blue-2":"bd-top-blue-2","bd-top-blue-3":"bd-top-blue-3","bd-top-blue-4":"bd-top-blue-4","bd-top-blue-5":"bd-top-blue-5","bd-top-blue-6":"bd-top-blue-6","bd-top-blue-7":"bd-top-blue-7","bd-top-blue-8":"bd-top-blue-8","bd-top-blue-9":"bd-top-blue-9","bd-top-blue-10":"bd-top-blue-10","bd-top-green":"bd-top-green","bd-top-green-0":"bd-top-green-0","bd-top-green-1":"bd-top-green-1","bd-top-green-2":"bd-top-green-2","bd-top-green-3":"bd-top-green-3","bd-top-green-4":"bd-top-green-4","bd-top-green-5":"bd-top-green-5","bd-top-green-6":"bd-top-green-6","bd-top-green-7":"bd-top-green-7","bd-top-green-8":"bd-top-green-8","bd-top-green-9":"bd-top-green-9","bd-top-green-10":"bd-top-green-10","bd-top-orange":"bd-top-orange","bd-top-orange-0":"bd-top-orange-0","bd-top-orange-1":"bd-top-orange-1","bd-top-orange-2":"bd-top-orange-2","bd-top-orange-3":"bd-top-orange-3","bd-top-orange-4":"bd-top-orange-4","bd-top-orange-5":"bd-top-orange-5","bd-top-orange-6":"bd-top-orange-6","bd-top-orange-7":"bd-top-orange-7","bd-top-orange-8":"bd-top-orange-8","bd-top-orange-9":"bd-top-orange-9","bd-top-orange-10":"bd-top-orange-10","bd-top-darkblue":"bd-top-darkblue","bd-top-darkblue-0":"bd-top-darkblue-0","bd-top-darkblue-1":"bd-top-darkblue-1","bd-top-darkblue-2":"bd-top-darkblue-2","bd-top-darkblue-3":"bd-top-darkblue-3","bd-top-darkblue-4":"bd-top-darkblue-4","bd-top-darkblue-5":"bd-top-darkblue-5","bd-top-darkblue-6":"bd-top-darkblue-6","bd-top-darkblue-7":"bd-top-darkblue-7","bd-top-darkblue-8":"bd-top-darkblue-8","bd-top-darkblue-9":"bd-top-darkblue-9","bd-top-darkblue-10":"bd-top-darkblue-10","bd-top-gold":"bd-top-gold","bd-top-gold-0":"bd-top-gold-0","bd-top-gold-1":"bd-top-gold-1","bd-top-gold-2":"bd-top-gold-2","bd-top-gold-3":"bd-top-gold-3","bd-top-gold-4":"bd-top-gold-4","bd-top-gold-5":"bd-top-gold-5","bd-top-gold-6":"bd-top-gold-6","bd-top-gold-7":"bd-top-gold-7","bd-top-gold-8":"bd-top-gold-8","bd-top-gold-9":"bd-top-gold-9","bd-top-gold-10":"bd-top-gold-10","bd-top-black":"bd-top-black","bd-top-black-0":"bd-top-black-0","bd-top-black-1":"bd-top-black-1","bd-top-black-2":"bd-top-black-2","bd-top-black-3":"bd-top-black-3","bd-top-black-4":"bd-top-black-4","bd-top-black-5":"bd-top-black-5","bd-top-black-6":"bd-top-black-6","bd-top-black-7":"bd-top-black-7","bd-top-black-8":"bd-top-black-8","bd-top-black-9":"bd-top-black-9","bd-top-black-10":"bd-top-black-10","bd-top-blacklight":"bd-top-blacklight","bd-top-blacklight-0":"bd-top-blacklight-0","bd-top-blacklight-1":"bd-top-blacklight-1","bd-top-blacklight-2":"bd-top-blacklight-2","bd-top-blacklight-3":"bd-top-blacklight-3","bd-top-blacklight-4":"bd-top-blacklight-4","bd-top-blacklight-5":"bd-top-blacklight-5","bd-top-blacklight-6":"bd-top-blacklight-6","bd-top-blacklight-7":"bd-top-blacklight-7","bd-top-blacklight-8":"bd-top-blacklight-8","bd-top-blacklight-9":"bd-top-blacklight-9","bd-top-blacklight-10":"bd-top-blacklight-10","bd-top-blacklighter":"bd-top-blacklighter","bd-top-blacklighter-0":"bd-top-blacklighter-0","bd-top-blacklighter-1":"bd-top-blacklighter-1","bd-top-blacklighter-2":"bd-top-blacklighter-2","bd-top-blacklighter-3":"bd-top-blacklighter-3","bd-top-blacklighter-4":"bd-top-blacklighter-4","bd-top-blacklighter-5":"bd-top-blacklighter-5","bd-top-blacklighter-6":"bd-top-blacklighter-6","bd-top-blacklighter-7":"bd-top-blacklighter-7","bd-top-blacklighter-8":"bd-top-blacklighter-8","bd-top-blacklighter-9":"bd-top-blacklighter-9","bd-top-blacklighter-10":"bd-top-blacklighter-10","bd-top-greystronger":"bd-top-greystronger","bd-top-greystronger-0":"bd-top-greystronger-0","bd-top-greystronger-1":"bd-top-greystronger-1","bd-top-greystronger-2":"bd-top-greystronger-2","bd-top-greystronger-3":"bd-top-greystronger-3","bd-top-greystronger-4":"bd-top-greystronger-4","bd-top-greystronger-5":"bd-top-greystronger-5","bd-top-greystronger-6":"bd-top-greystronger-6","bd-top-greystronger-7":"bd-top-greystronger-7","bd-top-greystronger-8":"bd-top-greystronger-8","bd-top-greystronger-9":"bd-top-greystronger-9","bd-top-greystronger-10":"bd-top-greystronger-10","bd-top-greystrong":"bd-top-greystrong","bd-top-greystrong-0":"bd-top-greystrong-0","bd-top-greystrong-1":"bd-top-greystrong-1","bd-top-greystrong-2":"bd-top-greystrong-2","bd-top-greystrong-3":"bd-top-greystrong-3","bd-top-greystrong-4":"bd-top-greystrong-4","bd-top-greystrong-5":"bd-top-greystrong-5","bd-top-greystrong-6":"bd-top-greystrong-6","bd-top-greystrong-7":"bd-top-greystrong-7","bd-top-greystrong-8":"bd-top-greystrong-8","bd-top-greystrong-9":"bd-top-greystrong-9","bd-top-greystrong-10":"bd-top-greystrong-10","bd-top-grey":"bd-top-grey","bd-top-grey-0":"bd-top-grey-0","bd-top-grey-1":"bd-top-grey-1","bd-top-grey-2":"bd-top-grey-2","bd-top-grey-3":"bd-top-grey-3","bd-top-grey-4":"bd-top-grey-4","bd-top-grey-5":"bd-top-grey-5","bd-top-grey-6":"bd-top-grey-6","bd-top-grey-7":"bd-top-grey-7","bd-top-grey-8":"bd-top-grey-8","bd-top-grey-9":"bd-top-grey-9","bd-top-grey-10":"bd-top-grey-10","bd-top-greylight":"bd-top-greylight","bd-top-greylight-0":"bd-top-greylight-0","bd-top-greylight-1":"bd-top-greylight-1","bd-top-greylight-2":"bd-top-greylight-2","bd-top-greylight-3":"bd-top-greylight-3","bd-top-greylight-4":"bd-top-greylight-4","bd-top-greylight-5":"bd-top-greylight-5","bd-top-greylight-6":"bd-top-greylight-6","bd-top-greylight-7":"bd-top-greylight-7","bd-top-greylight-8":"bd-top-greylight-8","bd-top-greylight-9":"bd-top-greylight-9","bd-top-greylight-10":"bd-top-greylight-10","bd-top-greylighter":"bd-top-greylighter","bd-top-greylighter-0":"bd-top-greylighter-0","bd-top-greylighter-1":"bd-top-greylighter-1","bd-top-greylighter-2":"bd-top-greylighter-2","bd-top-greylighter-3":"bd-top-greylighter-3","bd-top-greylighter-4":"bd-top-greylighter-4","bd-top-greylighter-5":"bd-top-greylighter-5","bd-top-greylighter-6":"bd-top-greylighter-6","bd-top-greylighter-7":"bd-top-greylighter-7","bd-top-greylighter-8":"bd-top-greylighter-8","bd-top-greylighter-9":"bd-top-greylighter-9","bd-top-greylighter-10":"bd-top-greylighter-10","bd-top-white":"bd-top-white","bd-top-white-0":"bd-top-white-0","bd-top-white-1":"bd-top-white-1","bd-top-white-2":"bd-top-white-2","bd-top-white-3":"bd-top-white-3","bd-top-white-4":"bd-top-white-4","bd-top-white-5":"bd-top-white-5","bd-top-white-6":"bd-top-white-6","bd-top-white-7":"bd-top-white-7","bd-top-white-8":"bd-top-white-8","bd-top-white-9":"bd-top-white-9","bd-top-white-10":"bd-top-white-10","bd-top-none":"bd-top-none","bd-top-none-0":"bd-top-none-0","bd-top-none-1":"bd-top-none-1","bd-top-none-2":"bd-top-none-2","bd-top-none-3":"bd-top-none-3","bd-top-none-4":"bd-top-none-4","bd-top-none-5":"bd-top-none-5","bd-top-none-6":"bd-top-none-6","bd-top-none-7":"bd-top-none-7","bd-top-none-8":"bd-top-none-8","bd-top-none-9":"bd-top-none-9","bd-top-none-10":"bd-top-none-10","p-top-0":"p-top-0","p-y-0":"p-y-0","p-top-x2":"p-top-x2","p-y-x2":"p-y-x2","m-right":"m-right","m-x":"m-x","m-right-0":"m-right-0","m-x-0":"m-x-0","m-right-x2":"m-right-x2","m-x-x2":"m-x-x2","p-right":"p-right","p-x":"p-x","bd-right":"bd-right","bd-right-0":"bd-right-0","bd-right-1":"bd-right-1","bd-right-2":"bd-right-2","bd-right-3":"bd-right-3","bd-right-4":"bd-right-4","bd-right-5":"bd-right-5","bd-right-6":"bd-right-6","bd-right-7":"bd-right-7","bd-right-8":"bd-right-8","bd-right-9":"bd-right-9","bd-right-10":"bd-right-10","bd-right-blue":"bd-right-blue","bd-right-blue-0":"bd-right-blue-0","bd-right-blue-1":"bd-right-blue-1","bd-right-blue-2":"bd-right-blue-2","bd-right-blue-3":"bd-right-blue-3","bd-right-blue-4":"bd-right-blue-4","bd-right-blue-5":"bd-right-blue-5","bd-right-blue-6":"bd-right-blue-6","bd-right-blue-7":"bd-right-blue-7","bd-right-blue-8":"bd-right-blue-8","bd-right-blue-9":"bd-right-blue-9","bd-right-blue-10":"bd-right-blue-10","bd-right-green":"bd-right-green","bd-right-green-0":"bd-right-green-0","bd-right-green-1":"bd-right-green-1","bd-right-green-2":"bd-right-green-2","bd-right-green-3":"bd-right-green-3","bd-right-green-4":"bd-right-green-4","bd-right-green-5":"bd-right-green-5","bd-right-green-6":"bd-right-green-6","bd-right-green-7":"bd-right-green-7","bd-right-green-8":"bd-right-green-8","bd-right-green-9":"bd-right-green-9","bd-right-green-10":"bd-right-green-10","bd-right-orange":"bd-right-orange","bd-right-orange-0":"bd-right-orange-0","bd-right-orange-1":"bd-right-orange-1","bd-right-orange-2":"bd-right-orange-2","bd-right-orange-3":"bd-right-orange-3","bd-right-orange-4":"bd-right-orange-4","bd-right-orange-5":"bd-right-orange-5","bd-right-orange-6":"bd-right-orange-6","bd-right-orange-7":"bd-right-orange-7","bd-right-orange-8":"bd-right-orange-8","bd-right-orange-9":"bd-right-orange-9","bd-right-orange-10":"bd-right-orange-10","bd-right-darkblue":"bd-right-darkblue","bd-right-darkblue-0":"bd-right-darkblue-0","bd-right-darkblue-1":"bd-right-darkblue-1","bd-right-darkblue-2":"bd-right-darkblue-2","bd-right-darkblue-3":"bd-right-darkblue-3","bd-right-darkblue-4":"bd-right-darkblue-4","bd-right-darkblue-5":"bd-right-darkblue-5","bd-right-darkblue-6":"bd-right-darkblue-6","bd-right-darkblue-7":"bd-right-darkblue-7","bd-right-darkblue-8":"bd-right-darkblue-8","bd-right-darkblue-9":"bd-right-darkblue-9","bd-right-darkblue-10":"bd-right-darkblue-10","bd-right-gold":"bd-right-gold","bd-right-gold-0":"bd-right-gold-0","bd-right-gold-1":"bd-right-gold-1","bd-right-gold-2":"bd-right-gold-2","bd-right-gold-3":"bd-right-gold-3","bd-right-gold-4":"bd-right-gold-4","bd-right-gold-5":"bd-right-gold-5","bd-right-gold-6":"bd-right-gold-6","bd-right-gold-7":"bd-right-gold-7","bd-right-gold-8":"bd-right-gold-8","bd-right-gold-9":"bd-right-gold-9","bd-right-gold-10":"bd-right-gold-10","bd-right-black":"bd-right-black","bd-right-black-0":"bd-right-black-0","bd-right-black-1":"bd-right-black-1","bd-right-black-2":"bd-right-black-2","bd-right-black-3":"bd-right-black-3","bd-right-black-4":"bd-right-black-4","bd-right-black-5":"bd-right-black-5","bd-right-black-6":"bd-right-black-6","bd-right-black-7":"bd-right-black-7","bd-right-black-8":"bd-right-black-8","bd-right-black-9":"bd-right-black-9","bd-right-black-10":"bd-right-black-10","bd-right-blacklight":"bd-right-blacklight","bd-right-blacklight-0":"bd-right-blacklight-0","bd-right-blacklight-1":"bd-right-blacklight-1","bd-right-blacklight-2":"bd-right-blacklight-2","bd-right-blacklight-3":"bd-right-blacklight-3","bd-right-blacklight-4":"bd-right-blacklight-4","bd-right-blacklight-5":"bd-right-blacklight-5","bd-right-blacklight-6":"bd-right-blacklight-6","bd-right-blacklight-7":"bd-right-blacklight-7","bd-right-blacklight-8":"bd-right-blacklight-8","bd-right-blacklight-9":"bd-right-blacklight-9","bd-right-blacklight-10":"bd-right-blacklight-10","bd-right-blacklighter":"bd-right-blacklighter","bd-right-blacklighter-0":"bd-right-blacklighter-0","bd-right-blacklighter-1":"bd-right-blacklighter-1","bd-right-blacklighter-2":"bd-right-blacklighter-2","bd-right-blacklighter-3":"bd-right-blacklighter-3","bd-right-blacklighter-4":"bd-right-blacklighter-4","bd-right-blacklighter-5":"bd-right-blacklighter-5","bd-right-blacklighter-6":"bd-right-blacklighter-6","bd-right-blacklighter-7":"bd-right-blacklighter-7","bd-right-blacklighter-8":"bd-right-blacklighter-8","bd-right-blacklighter-9":"bd-right-blacklighter-9","bd-right-blacklighter-10":"bd-right-blacklighter-10","bd-right-greystronger":"bd-right-greystronger","bd-right-greystronger-0":"bd-right-greystronger-0","bd-right-greystronger-1":"bd-right-greystronger-1","bd-right-greystronger-2":"bd-right-greystronger-2","bd-right-greystronger-3":"bd-right-greystronger-3","bd-right-greystronger-4":"bd-right-greystronger-4","bd-right-greystronger-5":"bd-right-greystronger-5","bd-right-greystronger-6":"bd-right-greystronger-6","bd-right-greystronger-7":"bd-right-greystronger-7","bd-right-greystronger-8":"bd-right-greystronger-8","bd-right-greystronger-9":"bd-right-greystronger-9","bd-right-greystronger-10":"bd-right-greystronger-10","bd-right-greystrong":"bd-right-greystrong","bd-right-greystrong-0":"bd-right-greystrong-0","bd-right-greystrong-1":"bd-right-greystrong-1","bd-right-greystrong-2":"bd-right-greystrong-2","bd-right-greystrong-3":"bd-right-greystrong-3","bd-right-greystrong-4":"bd-right-greystrong-4","bd-right-greystrong-5":"bd-right-greystrong-5","bd-right-greystrong-6":"bd-right-greystrong-6","bd-right-greystrong-7":"bd-right-greystrong-7","bd-right-greystrong-8":"bd-right-greystrong-8","bd-right-greystrong-9":"bd-right-greystrong-9","bd-right-greystrong-10":"bd-right-greystrong-10","bd-right-grey":"bd-right-grey","bd-right-grey-0":"bd-right-grey-0","bd-right-grey-1":"bd-right-grey-1","bd-right-grey-2":"bd-right-grey-2","bd-right-grey-3":"bd-right-grey-3","bd-right-grey-4":"bd-right-grey-4","bd-right-grey-5":"bd-right-grey-5","bd-right-grey-6":"bd-right-grey-6","bd-right-grey-7":"bd-right-grey-7","bd-right-grey-8":"bd-right-grey-8","bd-right-grey-9":"bd-right-grey-9","bd-right-grey-10":"bd-right-grey-10","bd-right-greylight":"bd-right-greylight","bd-right-greylight-0":"bd-right-greylight-0","bd-right-greylight-1":"bd-right-greylight-1","bd-right-greylight-2":"bd-right-greylight-2","bd-right-greylight-3":"bd-right-greylight-3","bd-right-greylight-4":"bd-right-greylight-4","bd-right-greylight-5":"bd-right-greylight-5","bd-right-greylight-6":"bd-right-greylight-6","bd-right-greylight-7":"bd-right-greylight-7","bd-right-greylight-8":"bd-right-greylight-8","bd-right-greylight-9":"bd-right-greylight-9","bd-right-greylight-10":"bd-right-greylight-10","bd-right-greylighter":"bd-right-greylighter","bd-right-greylighter-0":"bd-right-greylighter-0","bd-right-greylighter-1":"bd-right-greylighter-1","bd-right-greylighter-2":"bd-right-greylighter-2","bd-right-greylighter-3":"bd-right-greylighter-3","bd-right-greylighter-4":"bd-right-greylighter-4","bd-right-greylighter-5":"bd-right-greylighter-5","bd-right-greylighter-6":"bd-right-greylighter-6","bd-right-greylighter-7":"bd-right-greylighter-7","bd-right-greylighter-8":"bd-right-greylighter-8","bd-right-greylighter-9":"bd-right-greylighter-9","bd-right-greylighter-10":"bd-right-greylighter-10","bd-right-white":"bd-right-white","bd-right-white-0":"bd-right-white-0","bd-right-white-1":"bd-right-white-1","bd-right-white-2":"bd-right-white-2","bd-right-white-3":"bd-right-white-3","bd-right-white-4":"bd-right-white-4","bd-right-white-5":"bd-right-white-5","bd-right-white-6":"bd-right-white-6","bd-right-white-7":"bd-right-white-7","bd-right-white-8":"bd-right-white-8","bd-right-white-9":"bd-right-white-9","bd-right-white-10":"bd-right-white-10","bd-right-none":"bd-right-none","bd-right-none-0":"bd-right-none-0","bd-right-none-1":"bd-right-none-1","bd-right-none-2":"bd-right-none-2","bd-right-none-3":"bd-right-none-3","bd-right-none-4":"bd-right-none-4","bd-right-none-5":"bd-right-none-5","bd-right-none-6":"bd-right-none-6","bd-right-none-7":"bd-right-none-7","bd-right-none-8":"bd-right-none-8","bd-right-none-9":"bd-right-none-9","bd-right-none-10":"bd-right-none-10","p-right-0":"p-right-0","p-x-0":"p-x-0","p-right-x2":"p-right-x2","p-x-x2":"p-x-x2","m-bottom":"m-bottom","m-bottom-0":"m-bottom-0","m-bottom-x2":"m-bottom-x2","p-bottom":"p-bottom","bd-bottom":"bd-bottom","bd-bottom-0":"bd-bottom-0","bd-bottom-1":"bd-bottom-1","bd-bottom-2":"bd-bottom-2","bd-bottom-3":"bd-bottom-3","bd-bottom-4":"bd-bottom-4","bd-bottom-5":"bd-bottom-5","bd-bottom-6":"bd-bottom-6","bd-bottom-7":"bd-bottom-7","bd-bottom-8":"bd-bottom-8","bd-bottom-9":"bd-bottom-9","bd-bottom-10":"bd-bottom-10","bd-bottom-blue":"bd-bottom-blue","bd-bottom-blue-0":"bd-bottom-blue-0","bd-bottom-blue-1":"bd-bottom-blue-1","bd-bottom-blue-2":"bd-bottom-blue-2","bd-bottom-blue-3":"bd-bottom-blue-3","bd-bottom-blue-4":"bd-bottom-blue-4","bd-bottom-blue-5":"bd-bottom-blue-5","bd-bottom-blue-6":"bd-bottom-blue-6","bd-bottom-blue-7":"bd-bottom-blue-7","bd-bottom-blue-8":"bd-bottom-blue-8","bd-bottom-blue-9":"bd-bottom-blue-9","bd-bottom-blue-10":"bd-bottom-blue-10","bd-bottom-green":"bd-bottom-green","bd-bottom-green-0":"bd-bottom-green-0","bd-bottom-green-1":"bd-bottom-green-1","bd-bottom-green-2":"bd-bottom-green-2","bd-bottom-green-3":"bd-bottom-green-3","bd-bottom-green-4":"bd-bottom-green-4","bd-bottom-green-5":"bd-bottom-green-5","bd-bottom-green-6":"bd-bottom-green-6","bd-bottom-green-7":"bd-bottom-green-7","bd-bottom-green-8":"bd-bottom-green-8","bd-bottom-green-9":"bd-bottom-green-9","bd-bottom-green-10":"bd-bottom-green-10","bd-bottom-orange":"bd-bottom-orange","bd-bottom-orange-0":"bd-bottom-orange-0","bd-bottom-orange-1":"bd-bottom-orange-1","bd-bottom-orange-2":"bd-bottom-orange-2","bd-bottom-orange-3":"bd-bottom-orange-3","bd-bottom-orange-4":"bd-bottom-orange-4","bd-bottom-orange-5":"bd-bottom-orange-5","bd-bottom-orange-6":"bd-bottom-orange-6","bd-bottom-orange-7":"bd-bottom-orange-7","bd-bottom-orange-8":"bd-bottom-orange-8","bd-bottom-orange-9":"bd-bottom-orange-9","bd-bottom-orange-10":"bd-bottom-orange-10","bd-bottom-darkblue":"bd-bottom-darkblue","bd-bottom-darkblue-0":"bd-bottom-darkblue-0","bd-bottom-darkblue-1":"bd-bottom-darkblue-1","bd-bottom-darkblue-2":"bd-bottom-darkblue-2","bd-bottom-darkblue-3":"bd-bottom-darkblue-3","bd-bottom-darkblue-4":"bd-bottom-darkblue-4","bd-bottom-darkblue-5":"bd-bottom-darkblue-5","bd-bottom-darkblue-6":"bd-bottom-darkblue-6","bd-bottom-darkblue-7":"bd-bottom-darkblue-7","bd-bottom-darkblue-8":"bd-bottom-darkblue-8","bd-bottom-darkblue-9":"bd-bottom-darkblue-9","bd-bottom-darkblue-10":"bd-bottom-darkblue-10","bd-bottom-gold":"bd-bottom-gold","bd-bottom-gold-0":"bd-bottom-gold-0","bd-bottom-gold-1":"bd-bottom-gold-1","bd-bottom-gold-2":"bd-bottom-gold-2","bd-bottom-gold-3":"bd-bottom-gold-3","bd-bottom-gold-4":"bd-bottom-gold-4","bd-bottom-gold-5":"bd-bottom-gold-5","bd-bottom-gold-6":"bd-bottom-gold-6","bd-bottom-gold-7":"bd-bottom-gold-7","bd-bottom-gold-8":"bd-bottom-gold-8","bd-bottom-gold-9":"bd-bottom-gold-9","bd-bottom-gold-10":"bd-bottom-gold-10","bd-bottom-black":"bd-bottom-black","bd-bottom-black-0":"bd-bottom-black-0","bd-bottom-black-1":"bd-bottom-black-1","bd-bottom-black-2":"bd-bottom-black-2","bd-bottom-black-3":"bd-bottom-black-3","bd-bottom-black-4":"bd-bottom-black-4","bd-bottom-black-5":"bd-bottom-black-5","bd-bottom-black-6":"bd-bottom-black-6","bd-bottom-black-7":"bd-bottom-black-7","bd-bottom-black-8":"bd-bottom-black-8","bd-bottom-black-9":"bd-bottom-black-9","bd-bottom-black-10":"bd-bottom-black-10","bd-bottom-blacklight":"bd-bottom-blacklight","bd-bottom-blacklight-0":"bd-bottom-blacklight-0","bd-bottom-blacklight-1":"bd-bottom-blacklight-1","bd-bottom-blacklight-2":"bd-bottom-blacklight-2","bd-bottom-blacklight-3":"bd-bottom-blacklight-3","bd-bottom-blacklight-4":"bd-bottom-blacklight-4","bd-bottom-blacklight-5":"bd-bottom-blacklight-5","bd-bottom-blacklight-6":"bd-bottom-blacklight-6","bd-bottom-blacklight-7":"bd-bottom-blacklight-7","bd-bottom-blacklight-8":"bd-bottom-blacklight-8","bd-bottom-blacklight-9":"bd-bottom-blacklight-9","bd-bottom-blacklight-10":"bd-bottom-blacklight-10","bd-bottom-blacklighter":"bd-bottom-blacklighter","bd-bottom-blacklighter-0":"bd-bottom-blacklighter-0","bd-bottom-blacklighter-1":"bd-bottom-blacklighter-1","bd-bottom-blacklighter-2":"bd-bottom-blacklighter-2","bd-bottom-blacklighter-3":"bd-bottom-blacklighter-3","bd-bottom-blacklighter-4":"bd-bottom-blacklighter-4","bd-bottom-blacklighter-5":"bd-bottom-blacklighter-5","bd-bottom-blacklighter-6":"bd-bottom-blacklighter-6","bd-bottom-blacklighter-7":"bd-bottom-blacklighter-7","bd-bottom-blacklighter-8":"bd-bottom-blacklighter-8","bd-bottom-blacklighter-9":"bd-bottom-blacklighter-9","bd-bottom-blacklighter-10":"bd-bottom-blacklighter-10","bd-bottom-greystronger":"bd-bottom-greystronger","bd-bottom-greystronger-0":"bd-bottom-greystronger-0","bd-bottom-greystronger-1":"bd-bottom-greystronger-1","bd-bottom-greystronger-2":"bd-bottom-greystronger-2","bd-bottom-greystronger-3":"bd-bottom-greystronger-3","bd-bottom-greystronger-4":"bd-bottom-greystronger-4","bd-bottom-greystronger-5":"bd-bottom-greystronger-5","bd-bottom-greystronger-6":"bd-bottom-greystronger-6","bd-bottom-greystronger-7":"bd-bottom-greystronger-7","bd-bottom-greystronger-8":"bd-bottom-greystronger-8","bd-bottom-greystronger-9":"bd-bottom-greystronger-9","bd-bottom-greystronger-10":"bd-bottom-greystronger-10","bd-bottom-greystrong":"bd-bottom-greystrong","bd-bottom-greystrong-0":"bd-bottom-greystrong-0","bd-bottom-greystrong-1":"bd-bottom-greystrong-1","bd-bottom-greystrong-2":"bd-bottom-greystrong-2","bd-bottom-greystrong-3":"bd-bottom-greystrong-3","bd-bottom-greystrong-4":"bd-bottom-greystrong-4","bd-bottom-greystrong-5":"bd-bottom-greystrong-5","bd-bottom-greystrong-6":"bd-bottom-greystrong-6","bd-bottom-greystrong-7":"bd-bottom-greystrong-7","bd-bottom-greystrong-8":"bd-bottom-greystrong-8","bd-bottom-greystrong-9":"bd-bottom-greystrong-9","bd-bottom-greystrong-10":"bd-bottom-greystrong-10","bd-bottom-grey":"bd-bottom-grey","bd-bottom-grey-0":"bd-bottom-grey-0","bd-bottom-grey-1":"bd-bottom-grey-1","bd-bottom-grey-2":"bd-bottom-grey-2","bd-bottom-grey-3":"bd-bottom-grey-3","bd-bottom-grey-4":"bd-bottom-grey-4","bd-bottom-grey-5":"bd-bottom-grey-5","bd-bottom-grey-6":"bd-bottom-grey-6","bd-bottom-grey-7":"bd-bottom-grey-7","bd-bottom-grey-8":"bd-bottom-grey-8","bd-bottom-grey-9":"bd-bottom-grey-9","bd-bottom-grey-10":"bd-bottom-grey-10","bd-bottom-greylight":"bd-bottom-greylight","bd-bottom-greylight-0":"bd-bottom-greylight-0","bd-bottom-greylight-1":"bd-bottom-greylight-1","bd-bottom-greylight-2":"bd-bottom-greylight-2","bd-bottom-greylight-3":"bd-bottom-greylight-3","bd-bottom-greylight-4":"bd-bottom-greylight-4","bd-bottom-greylight-5":"bd-bottom-greylight-5","bd-bottom-greylight-6":"bd-bottom-greylight-6","bd-bottom-greylight-7":"bd-bottom-greylight-7","bd-bottom-greylight-8":"bd-bottom-greylight-8","bd-bottom-greylight-9":"bd-bottom-greylight-9","bd-bottom-greylight-10":"bd-bottom-greylight-10","bd-bottom-greylighter":"bd-bottom-greylighter","bd-bottom-greylighter-0":"bd-bottom-greylighter-0","bd-bottom-greylighter-1":"bd-bottom-greylighter-1","bd-bottom-greylighter-2":"bd-bottom-greylighter-2","bd-bottom-greylighter-3":"bd-bottom-greylighter-3","bd-bottom-greylighter-4":"bd-bottom-greylighter-4","bd-bottom-greylighter-5":"bd-bottom-greylighter-5","bd-bottom-greylighter-6":"bd-bottom-greylighter-6","bd-bottom-greylighter-7":"bd-bottom-greylighter-7","bd-bottom-greylighter-8":"bd-bottom-greylighter-8","bd-bottom-greylighter-9":"bd-bottom-greylighter-9","bd-bottom-greylighter-10":"bd-bottom-greylighter-10","bd-bottom-white":"bd-bottom-white","bd-bottom-white-0":"bd-bottom-white-0","bd-bottom-white-1":"bd-bottom-white-1","bd-bottom-white-2":"bd-bottom-white-2","bd-bottom-white-3":"bd-bottom-white-3","bd-bottom-white-4":"bd-bottom-white-4","bd-bottom-white-5":"bd-bottom-white-5","bd-bottom-white-6":"bd-bottom-white-6","bd-bottom-white-7":"bd-bottom-white-7","bd-bottom-white-8":"bd-bottom-white-8","bd-bottom-white-9":"bd-bottom-white-9","bd-bottom-white-10":"bd-bottom-white-10","bd-bottom-none":"bd-bottom-none","bd-bottom-none-0":"bd-bottom-none-0","bd-bottom-none-1":"bd-bottom-none-1","bd-bottom-none-2":"bd-bottom-none-2","bd-bottom-none-3":"bd-bottom-none-3","bd-bottom-none-4":"bd-bottom-none-4","bd-bottom-none-5":"bd-bottom-none-5","bd-bottom-none-6":"bd-bottom-none-6","bd-bottom-none-7":"bd-bottom-none-7","bd-bottom-none-8":"bd-bottom-none-8","bd-bottom-none-9":"bd-bottom-none-9","bd-bottom-none-10":"bd-bottom-none-10","p-bottom-0":"p-bottom-0","p-bottom-x2":"p-bottom-x2","m-left":"m-left","m-left-0":"m-left-0","m-left-x2":"m-left-x2","p-left":"p-left","bd-left":"bd-left","bd-left-0":"bd-left-0","bd-left-1":"bd-left-1","bd-left-2":"bd-left-2","bd-left-3":"bd-left-3","bd-left-4":"bd-left-4","bd-left-5":"bd-left-5","bd-left-6":"bd-left-6","bd-left-7":"bd-left-7","bd-left-8":"bd-left-8","bd-left-9":"bd-left-9","bd-left-10":"bd-left-10","bd-left-blue":"bd-left-blue","bd-left-blue-0":"bd-left-blue-0","bd-left-blue-1":"bd-left-blue-1","bd-left-blue-2":"bd-left-blue-2","bd-left-blue-3":"bd-left-blue-3","bd-left-blue-4":"bd-left-blue-4","bd-left-blue-5":"bd-left-blue-5","bd-left-blue-6":"bd-left-blue-6","bd-left-blue-7":"bd-left-blue-7","bd-left-blue-8":"bd-left-blue-8","bd-left-blue-9":"bd-left-blue-9","bd-left-blue-10":"bd-left-blue-10","bd-left-green":"bd-left-green","bd-left-green-0":"bd-left-green-0","bd-left-green-1":"bd-left-green-1","bd-left-green-2":"bd-left-green-2","bd-left-green-3":"bd-left-green-3","bd-left-green-4":"bd-left-green-4","bd-left-green-5":"bd-left-green-5","bd-left-green-6":"bd-left-green-6","bd-left-green-7":"bd-left-green-7","bd-left-green-8":"bd-left-green-8","bd-left-green-9":"bd-left-green-9","bd-left-green-10":"bd-left-green-10","bd-left-orange":"bd-left-orange","bd-left-orange-0":"bd-left-orange-0","bd-left-orange-1":"bd-left-orange-1","bd-left-orange-2":"bd-left-orange-2","bd-left-orange-3":"bd-left-orange-3","bd-left-orange-4":"bd-left-orange-4","bd-left-orange-5":"bd-left-orange-5","bd-left-orange-6":"bd-left-orange-6","bd-left-orange-7":"bd-left-orange-7","bd-left-orange-8":"bd-left-orange-8","bd-left-orange-9":"bd-left-orange-9","bd-left-orange-10":"bd-left-orange-10","bd-left-darkblue":"bd-left-darkblue","bd-left-darkblue-0":"bd-left-darkblue-0","bd-left-darkblue-1":"bd-left-darkblue-1","bd-left-darkblue-2":"bd-left-darkblue-2","bd-left-darkblue-3":"bd-left-darkblue-3","bd-left-darkblue-4":"bd-left-darkblue-4","bd-left-darkblue-5":"bd-left-darkblue-5","bd-left-darkblue-6":"bd-left-darkblue-6","bd-left-darkblue-7":"bd-left-darkblue-7","bd-left-darkblue-8":"bd-left-darkblue-8","bd-left-darkblue-9":"bd-left-darkblue-9","bd-left-darkblue-10":"bd-left-darkblue-10","bd-left-gold":"bd-left-gold","bd-left-gold-0":"bd-left-gold-0","bd-left-gold-1":"bd-left-gold-1","bd-left-gold-2":"bd-left-gold-2","bd-left-gold-3":"bd-left-gold-3","bd-left-gold-4":"bd-left-gold-4","bd-left-gold-5":"bd-left-gold-5","bd-left-gold-6":"bd-left-gold-6","bd-left-gold-7":"bd-left-gold-7","bd-left-gold-8":"bd-left-gold-8","bd-left-gold-9":"bd-left-gold-9","bd-left-gold-10":"bd-left-gold-10","bd-left-black":"bd-left-black","bd-left-black-0":"bd-left-black-0","bd-left-black-1":"bd-left-black-1","bd-left-black-2":"bd-left-black-2","bd-left-black-3":"bd-left-black-3","bd-left-black-4":"bd-left-black-4","bd-left-black-5":"bd-left-black-5","bd-left-black-6":"bd-left-black-6","bd-left-black-7":"bd-left-black-7","bd-left-black-8":"bd-left-black-8","bd-left-black-9":"bd-left-black-9","bd-left-black-10":"bd-left-black-10","bd-left-blacklight":"bd-left-blacklight","bd-left-blacklight-0":"bd-left-blacklight-0","bd-left-blacklight-1":"bd-left-blacklight-1","bd-left-blacklight-2":"bd-left-blacklight-2","bd-left-blacklight-3":"bd-left-blacklight-3","bd-left-blacklight-4":"bd-left-blacklight-4","bd-left-blacklight-5":"bd-left-blacklight-5","bd-left-blacklight-6":"bd-left-blacklight-6","bd-left-blacklight-7":"bd-left-blacklight-7","bd-left-blacklight-8":"bd-left-blacklight-8","bd-left-blacklight-9":"bd-left-blacklight-9","bd-left-blacklight-10":"bd-left-blacklight-10","bd-left-blacklighter":"bd-left-blacklighter","bd-left-blacklighter-0":"bd-left-blacklighter-0","bd-left-blacklighter-1":"bd-left-blacklighter-1","bd-left-blacklighter-2":"bd-left-blacklighter-2","bd-left-blacklighter-3":"bd-left-blacklighter-3","bd-left-blacklighter-4":"bd-left-blacklighter-4","bd-left-blacklighter-5":"bd-left-blacklighter-5","bd-left-blacklighter-6":"bd-left-blacklighter-6","bd-left-blacklighter-7":"bd-left-blacklighter-7","bd-left-blacklighter-8":"bd-left-blacklighter-8","bd-left-blacklighter-9":"bd-left-blacklighter-9","bd-left-blacklighter-10":"bd-left-blacklighter-10","bd-left-greystronger":"bd-left-greystronger","bd-left-greystronger-0":"bd-left-greystronger-0","bd-left-greystronger-1":"bd-left-greystronger-1","bd-left-greystronger-2":"bd-left-greystronger-2","bd-left-greystronger-3":"bd-left-greystronger-3","bd-left-greystronger-4":"bd-left-greystronger-4","bd-left-greystronger-5":"bd-left-greystronger-5","bd-left-greystronger-6":"bd-left-greystronger-6","bd-left-greystronger-7":"bd-left-greystronger-7","bd-left-greystronger-8":"bd-left-greystronger-8","bd-left-greystronger-9":"bd-left-greystronger-9","bd-left-greystronger-10":"bd-left-greystronger-10","bd-left-greystrong":"bd-left-greystrong","bd-left-greystrong-0":"bd-left-greystrong-0","bd-left-greystrong-1":"bd-left-greystrong-1","bd-left-greystrong-2":"bd-left-greystrong-2","bd-left-greystrong-3":"bd-left-greystrong-3","bd-left-greystrong-4":"bd-left-greystrong-4","bd-left-greystrong-5":"bd-left-greystrong-5","bd-left-greystrong-6":"bd-left-greystrong-6","bd-left-greystrong-7":"bd-left-greystrong-7","bd-left-greystrong-8":"bd-left-greystrong-8","bd-left-greystrong-9":"bd-left-greystrong-9","bd-left-greystrong-10":"bd-left-greystrong-10","bd-left-grey":"bd-left-grey","bd-left-grey-0":"bd-left-grey-0","bd-left-grey-1":"bd-left-grey-1","bd-left-grey-2":"bd-left-grey-2","bd-left-grey-3":"bd-left-grey-3","bd-left-grey-4":"bd-left-grey-4","bd-left-grey-5":"bd-left-grey-5","bd-left-grey-6":"bd-left-grey-6","bd-left-grey-7":"bd-left-grey-7","bd-left-grey-8":"bd-left-grey-8","bd-left-grey-9":"bd-left-grey-9","bd-left-grey-10":"bd-left-grey-10","bd-left-greylight":"bd-left-greylight","bd-left-greylight-0":"bd-left-greylight-0","bd-left-greylight-1":"bd-left-greylight-1","bd-left-greylight-2":"bd-left-greylight-2","bd-left-greylight-3":"bd-left-greylight-3","bd-left-greylight-4":"bd-left-greylight-4","bd-left-greylight-5":"bd-left-greylight-5","bd-left-greylight-6":"bd-left-greylight-6","bd-left-greylight-7":"bd-left-greylight-7","bd-left-greylight-8":"bd-left-greylight-8","bd-left-greylight-9":"bd-left-greylight-9","bd-left-greylight-10":"bd-left-greylight-10","bd-left-greylighter":"bd-left-greylighter","bd-left-greylighter-0":"bd-left-greylighter-0","bd-left-greylighter-1":"bd-left-greylighter-1","bd-left-greylighter-2":"bd-left-greylighter-2","bd-left-greylighter-3":"bd-left-greylighter-3","bd-left-greylighter-4":"bd-left-greylighter-4","bd-left-greylighter-5":"bd-left-greylighter-5","bd-left-greylighter-6":"bd-left-greylighter-6","bd-left-greylighter-7":"bd-left-greylighter-7","bd-left-greylighter-8":"bd-left-greylighter-8","bd-left-greylighter-9":"bd-left-greylighter-9","bd-left-greylighter-10":"bd-left-greylighter-10","bd-left-white":"bd-left-white","bd-left-white-0":"bd-left-white-0","bd-left-white-1":"bd-left-white-1","bd-left-white-2":"bd-left-white-2","bd-left-white-3":"bd-left-white-3","bd-left-white-4":"bd-left-white-4","bd-left-white-5":"bd-left-white-5","bd-left-white-6":"bd-left-white-6","bd-left-white-7":"bd-left-white-7","bd-left-white-8":"bd-left-white-8","bd-left-white-9":"bd-left-white-9","bd-left-white-10":"bd-left-white-10","bd-left-none":"bd-left-none","bd-left-none-0":"bd-left-none-0","bd-left-none-1":"bd-left-none-1","bd-left-none-2":"bd-left-none-2","bd-left-none-3":"bd-left-none-3","bd-left-none-4":"bd-left-none-4","bd-left-none-5":"bd-left-none-5","bd-left-none-6":"bd-left-none-6","bd-left-none-7":"bd-left-none-7","bd-left-none-8":"bd-left-none-8","bd-left-none-9":"bd-left-none-9","bd-left-none-10":"bd-left-none-10","p-left-0":"p-left-0","p-left-x2":"p-left-x2","h1":"h1","sep-bottom":"sep-bottom","sep-top":"sep-top","sep-right":"sep-right","sep-left":"sep-left","h2":"h2","h3":"h3","h4":"h4","h5":"h5","h6":"h6","sep":"sep","reset":"reset","bg-blue":"bg-blue","bg-blue-o-10":"bg-blue-o-10","bg-blue-o-20":"bg-blue-o-20","bg-blue-o-30":"bg-blue-o-30","bg-blue-o-40":"bg-blue-o-40","bg-blue-o-50":"bg-blue-o-50","bg-blue-o-60":"bg-blue-o-60","bg-blue-o-70":"bg-blue-o-70","bg-blue-o-80":"bg-blue-o-80","bg-blue-o-90":"bg-blue-o-90","bg-blue-o-100":"bg-blue-o-100","text":"text","email":"email","password":"password","tel":"tel","url":"url","date":"date","range":"range","number":"number","select2-container":"select2-container","select2-selection":"select2-selection","focus":"focus","active":"active","checkbox":"checkbox","radio":"radio","bg-green":"bg-green","bg-green-o-10":"bg-green-o-10","bg-green-o-20":"bg-green-o-20","bg-green-o-30":"bg-green-o-30","bg-green-o-40":"bg-green-o-40","bg-green-o-50":"bg-green-o-50","bg-green-o-60":"bg-green-o-60","bg-green-o-70":"bg-green-o-70","bg-green-o-80":"bg-green-o-80","bg-green-o-90":"bg-green-o-90","bg-green-o-100":"bg-green-o-100","bg-orange":"bg-orange","bg-orange-o-10":"bg-orange-o-10","bg-orange-o-20":"bg-orange-o-20","bg-orange-o-30":"bg-orange-o-30","bg-orange-o-40":"bg-orange-o-40","bg-orange-o-50":"bg-orange-o-50","bg-orange-o-60":"bg-orange-o-60","bg-orange-o-70":"bg-orange-o-70","bg-orange-o-80":"bg-orange-o-80","bg-orange-o-90":"bg-orange-o-90","bg-orange-o-100":"bg-orange-o-100","bg-darkblue":"bg-darkblue","bg-darkblue-o-10":"bg-darkblue-o-10","bg-darkblue-o-20":"bg-darkblue-o-20","bg-darkblue-o-30":"bg-darkblue-o-30","bg-darkblue-o-40":"bg-darkblue-o-40","bg-darkblue-o-50":"bg-darkblue-o-50","bg-darkblue-o-60":"bg-darkblue-o-60","bg-darkblue-o-70":"bg-darkblue-o-70","bg-darkblue-o-80":"bg-darkblue-o-80","bg-darkblue-o-90":"bg-darkblue-o-90","bg-darkblue-o-100":"bg-darkblue-o-100","bg-gold":"bg-gold","bg-gold-o-10":"bg-gold-o-10","bg-gold-o-20":"bg-gold-o-20","bg-gold-o-30":"bg-gold-o-30","bg-gold-o-40":"bg-gold-o-40","bg-gold-o-50":"bg-gold-o-50","bg-gold-o-60":"bg-gold-o-60","bg-gold-o-70":"bg-gold-o-70","bg-gold-o-80":"bg-gold-o-80","bg-gold-o-90":"bg-gold-o-90","bg-gold-o-100":"bg-gold-o-100","bg-black":"bg-black","bg-black-o-10":"bg-black-o-10","bg-black-o-20":"bg-black-o-20","bg-black-o-30":"bg-black-o-30","bg-black-o-40":"bg-black-o-40","bg-black-o-50":"bg-black-o-50","bg-black-o-60":"bg-black-o-60","bg-black-o-70":"bg-black-o-70","bg-black-o-80":"bg-black-o-80","bg-black-o-90":"bg-black-o-90","bg-black-o-100":"bg-black-o-100","bg-blacklight":"bg-blacklight","bg-blacklight-o-10":"bg-blacklight-o-10","bg-blacklight-o-20":"bg-blacklight-o-20","bg-blacklight-o-30":"bg-blacklight-o-30","bg-blacklight-o-40":"bg-blacklight-o-40","bg-blacklight-o-50":"bg-blacklight-o-50","bg-blacklight-o-60":"bg-blacklight-o-60","bg-blacklight-o-70":"bg-blacklight-o-70","bg-blacklight-o-80":"bg-blacklight-o-80","bg-blacklight-o-90":"bg-blacklight-o-90","bg-blacklight-o-100":"bg-blacklight-o-100","bg-blacklighter":"bg-blacklighter","bg-blacklighter-o-10":"bg-blacklighter-o-10","bg-blacklighter-o-20":"bg-blacklighter-o-20","bg-blacklighter-o-30":"bg-blacklighter-o-30","bg-blacklighter-o-40":"bg-blacklighter-o-40","bg-blacklighter-o-50":"bg-blacklighter-o-50","bg-blacklighter-o-60":"bg-blacklighter-o-60","bg-blacklighter-o-70":"bg-blacklighter-o-70","bg-blacklighter-o-80":"bg-blacklighter-o-80","bg-blacklighter-o-90":"bg-blacklighter-o-90","bg-blacklighter-o-100":"bg-blacklighter-o-100","bg-greystronger":"bg-greystronger","bg-greystronger-o-10":"bg-greystronger-o-10","bg-greystronger-o-20":"bg-greystronger-o-20","bg-greystronger-o-30":"bg-greystronger-o-30","bg-greystronger-o-40":"bg-greystronger-o-40","bg-greystronger-o-50":"bg-greystronger-o-50","bg-greystronger-o-60":"bg-greystronger-o-60","bg-greystronger-o-70":"bg-greystronger-o-70","bg-greystronger-o-80":"bg-greystronger-o-80","bg-greystronger-o-90":"bg-greystronger-o-90","bg-greystronger-o-100":"bg-greystronger-o-100","bg-greystrong":"bg-greystrong","bg-greystrong-o-10":"bg-greystrong-o-10","bg-greystrong-o-20":"bg-greystrong-o-20","bg-greystrong-o-30":"bg-greystrong-o-30","bg-greystrong-o-40":"bg-greystrong-o-40","bg-greystrong-o-50":"bg-greystrong-o-50","bg-greystrong-o-60":"bg-greystrong-o-60","bg-greystrong-o-70":"bg-greystrong-o-70","bg-greystrong-o-80":"bg-greystrong-o-80","bg-greystrong-o-90":"bg-greystrong-o-90","bg-greystrong-o-100":"bg-greystrong-o-100","bg-grey":"bg-grey","bg-grey-o-10":"bg-grey-o-10","bg-grey-o-20":"bg-grey-o-20","bg-grey-o-30":"bg-grey-o-30","bg-grey-o-40":"bg-grey-o-40","bg-grey-o-50":"bg-grey-o-50","bg-grey-o-60":"bg-grey-o-60","bg-grey-o-70":"bg-grey-o-70","bg-grey-o-80":"bg-grey-o-80","bg-grey-o-90":"bg-grey-o-90","bg-grey-o-100":"bg-grey-o-100","bg-greylight":"bg-greylight","bg-greylight-o-10":"bg-greylight-o-10","bg-greylight-o-20":"bg-greylight-o-20","bg-greylight-o-30":"bg-greylight-o-30","bg-greylight-o-40":"bg-greylight-o-40","bg-greylight-o-50":"bg-greylight-o-50","bg-greylight-o-60":"bg-greylight-o-60","bg-greylight-o-70":"bg-greylight-o-70","bg-greylight-o-80":"bg-greylight-o-80","bg-greylight-o-90":"bg-greylight-o-90","bg-greylight-o-100":"bg-greylight-o-100","bg-greylighter":"bg-greylighter","bg-greylighter-o-10":"bg-greylighter-o-10","bg-greylighter-o-20":"bg-greylighter-o-20","bg-greylighter-o-30":"bg-greylighter-o-30","bg-greylighter-o-40":"bg-greylighter-o-40","bg-greylighter-o-50":"bg-greylighter-o-50","bg-greylighter-o-60":"bg-greylighter-o-60","bg-greylighter-o-70":"bg-greylighter-o-70","bg-greylighter-o-80":"bg-greylighter-o-80","bg-greylighter-o-90":"bg-greylighter-o-90","bg-greylighter-o-100":"bg-greylighter-o-100","bg-white":"bg-white","bg-white-o-10":"bg-white-o-10","bg-white-o-20":"bg-white-o-20","bg-white-o-30":"bg-white-o-30","bg-white-o-40":"bg-white-o-40","bg-white-o-50":"bg-white-o-50","bg-white-o-60":"bg-white-o-60","bg-white-o-70":"bg-white-o-70","bg-white-o-80":"bg-white-o-80","bg-white-o-90":"bg-white-o-90","bg-white-o-100":"bg-white-o-100","bg-none":"bg-none","bg-none-o-10":"bg-none-o-10","bg-none-o-20":"bg-none-o-20","bg-none-o-30":"bg-none-o-30","bg-none-o-40":"bg-none-o-40","bg-none-o-50":"bg-none-o-50","bg-none-o-60":"bg-none-o-60","bg-none-o-70":"bg-none-o-70","bg-none-o-80":"bg-none-o-80","bg-none-o-90":"bg-none-o-90","bg-none-o-100":"bg-none-o-100","btn-sm":"btn-sm","editor":"editor","btn-lg":"btn-lg","btn-bd-blue":"btn-bd-blue","btn-bg-blue":"btn-bg-blue","btn-bd-green":"btn-bd-green","btn-bg-green":"btn-bg-green","btn-bd-orange":"btn-bd-orange","btn-bg-orange":"btn-bg-orange","btn-bd-darkblue":"btn-bd-darkblue","btn-bg-darkblue":"btn-bg-darkblue","btn-bd-gold":"btn-bd-gold","btn-bg-gold":"btn-bg-gold","btn-bd-black":"btn-bd-black","btn-bg-black":"btn-bg-black","btn-bd-blacklight":"btn-bd-blacklight","btn-bg-blacklight":"btn-bg-blacklight","btn-bd-blacklighter":"btn-bd-blacklighter","btn-bg-blacklighter":"btn-bg-blacklighter","btn-bd-greystronger":"btn-bd-greystronger","btn-bg-greystronger":"btn-bg-greystronger","btn-bd-greystrong":"btn-bd-greystrong","btn-bg-greystrong":"btn-bg-greystrong","btn-bd-grey":"btn-bd-grey","btn-bg-grey":"btn-bg-grey","btn-bd-greylight":"btn-bd-greylight","btn-bg-greylight":"btn-bg-greylight","btn-bd-greylighter":"btn-bd-greylighter","btn-bg-greylighter":"btn-bg-greylighter","btn-bd-white":"btn-bd-white","btn-bg-white":"btn-bg-white","btn-bd-none":"btn-bd-none","btn-bg-none":"btn-bg-none","flex":"flex","alignself--flexstart":"alignself--flexstart","alignself--flexend":"alignself--flexend","alignself--center":"alignself--center","alignself--spacebetween":"alignself--spacebetween","alignself--spacearound":"alignself--spacearound","flexgrow--0":"flexgrow--0","flexgrow--1":"flexgrow--1","flexgrow--2":"flexgrow--2","flexgrow--3":"flexgrow--3","flexgrow--4":"flexgrow--4","flexgrow--5":"flexgrow--5","flexgrow--6":"flexgrow--6","flexgrow--7":"flexgrow--7","flexgrow--8":"flexgrow--8","flexgrow--9":"flexgrow--9","flexgrow--10":"flexgrow--10","nofill":"nofill","form-group":"form-group","toast-container":"toast-container","heroFW":"heroFW","width--content":"width--content","title--1":"title--1","title--2":"title--2","title--3":"title--3","title--4":"title--4","heroFW__wrapper":"heroFW__wrapper","heroFW__figure":"heroFW__figure","height--content":"height--content","figure__opacity--0":"figure__opacity--0","figure__opacity--1":"figure__opacity--1","figure__opacity--2":"figure__opacity--2","figure__opacity--3":"figure__opacity--3","figure__opacity--4":"figure__opacity--4","figure__opacity--5":"figure__opacity--5","figure__opacity--6":"figure__opacity--6","figure__opacity--7":"figure__opacity--7","figure__opacity--8":"figure__opacity--8","figure__opacity--9":"figure__opacity--9","figure__opacity--10":"figure__opacity--10","heroFW__content":"heroFW__content","content__bg--blue":"content__bg--blue","content__bg--green":"content__bg--green","content__bg--orange":"content__bg--orange","content__bg--darkblue":"content__bg--darkblue","content__bg--gold":"content__bg--gold","content__bg--black":"content__bg--black","content__bg--blacklight":"content__bg--blacklight","content__bg--blacklighter":"content__bg--blacklighter","content__bg--greystronger":"content__bg--greystronger","content__bg--greystrong":"content__bg--greystrong","content__bg--grey":"content__bg--grey","content__bg--greylight":"content__bg--greylight","content__bg--greylighter":"content__bg--greylighter","content__bg--white":"content__bg--white","content__bg--none":"content__bg--none","content__bg__opacity--0":"content__bg__opacity--0","content__bg__opacity--1":"content__bg__opacity--1","content__bg__opacity--2":"content__bg__opacity--2","content__bg__opacity--3":"content__bg__opacity--3","content__bg__opacity--4":"content__bg__opacity--4","content__bg__opacity--5":"content__bg__opacity--5","content__bg__opacity--6":"content__bg__opacity--6","content__bg__opacity--7":"content__bg__opacity--7","content__bg__opacity--8":"content__bg__opacity--8","content__bg__opacity--9":"content__bg__opacity--9","content__bg__opacity--10":"content__bg__opacity--10","sliderFW":"sliderFW","sliderFW__container":"sliderFW__container","sliderFW__rail":"sliderFW__rail","nav--hidden":"nav--hidden","nav--inner":"nav--inner","nav--top":"nav--top","sliderFW__item":"sliderFW__item","sliderFW__item__bg":"sliderFW__item__bg","sliderFW__item__content":"sliderFW__item__content","content__text--top":"content__text--top","content__text--center":"content__text--center","content--right":"content--right","content--center":"content--center","sliderFW__item__blur":"sliderFW__item__blur","content--noblur":"content--noblur","sliderFW__nav":"sliderFW__nav","nav--left":"nav--left","nav--right":"nav--right","nav--bottom":"nav--bottom","sliderFW__nav__item":"sliderFW__nav__item","tabs":"tabs","tabs__nav":"tabs__nav","tabs__content":"tabs__content","tab":"tab","foldingbox":"foldingbox","foldingbox__title":"foldingbox__title","foldingbox__item":"foldingbox__item","break":"break","foldingbox__container":"foldingbox__container","foldingbox__item__content":"foldingbox__item__content","foldingbox__item__bg":"foldingbox__item__bg","block-list":"block-list","headline--outer":"headline--outer","block-list__headline":"block-list__headline","block-list__content":"block-list__content","block-list__footer":"block-list__footer","block-list__category":"block-list__category","block-list__date":"block-list__date","headline--disable":"headline--disable","footer--disable":"footer--disable","block-list__title":"block-list__title","block-img":"block-img","block-img__content":"block-img__content","content--inner":"content--inner","content--fadein":"content--fadein","content--fadeout":"content--fadeout","content--top":"content--top","content--full":"content--full","content--fromtop":"content--fromtop","content--frombottom":"content--frombottom","content--fromleft":"content--fromleft","content--fromright":"content--fromright","content__text--left":"content__text--left","content__text--right":"content__text--right","content__text--bottom":"content__text--bottom","select2-container--default":"select2-container--default","select2-selection--single":"select2-selection--single","select2-selection__rendered":"select2-selection__rendered","select2-selection__arrow":"select2-selection__arrow","select2-container--open":"select2-container--open","select2-selection--multiple":"select2-selection--multiple","select2-selection__choice":"select2-selection__choice","select2-search--inline":"select2-search--inline","select2-search__field":"select2-search__field","select2-selection__choice__remove":"select2-selection__choice__remove","select2-dropdown":"select2-dropdown","btn-load":"btn-load","accordionFW__item":"accordionFW__item","lock":"lock","accordionFW__title":"accordionFW__title","accordionFW__content":"accordionFW__content","accordionFW__content__wrapper":"accordionFW__content__wrapper","content":"content","item":"item","tag":"tag","descIcon":"descIcon"};
 
 /***/ }),
 /* 27 */
@@ -13837,7 +13837,7 @@ module.exports = {
   themes: [],
   components: ['heroFW', 'sliderFW',
   // 'brick',
-  'tabs', 'foldingbox', 'block-list', 'block-std', 'block-img', 'select2FW', 'btn-load', 'guideline']
+  'tabs', 'foldingbox', 'block-list', 'block-std', 'block-img', 'select2FW', 'btn-load', 'accordionFW', 'guideline']
 };
 
 /***/ }),
@@ -13883,7 +13883,7 @@ Framway.prototype.loadThemes = function (arrThemes) {
   var framway = this;
   $.each(arrThemes, function (index, name) {
     try {
-      __webpack_require__(104)("./" + name + '/' + name + '.js');
+      __webpack_require__(106)("./" + name + '/' + name + '.js');
       framway.themes.push(name);
     } catch (e) {
       framway.log('Component ' + name + ' failed to load.\n' + e);
@@ -13931,12 +13931,12 @@ $(function () {
   });
 });
 
-__webpack_require__(106);
-global.Component = __webpack_require__(107);
+__webpack_require__(108);
+global.Component = __webpack_require__(109);
 global.app = new Framway();
 global.utils = utils;
 global.$ = global.jQuery = $;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2), __webpack_require__(3)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(2), __webpack_require__(3)))
 
 /***/ }),
 /* 29 */
@@ -13956,7 +13956,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
  */
 /* global define */
 (function (define) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1)], __WEBPACK_AMD_DEFINE_RESULT__ = (function ($) {
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(0)], __WEBPACK_AMD_DEFINE_RESULT__ = (function ($) {
         return (function () {
             var $container;
             var listener;
@@ -14429,18 +14429,19 @@ module.exports = function() {
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./block-img/block-img.js": 32,
-	"./block-list/block-list.js": 33,
-	"./block-std/block-std.js": 34,
-	"./brick/brick.js": 35,
-	"./btn-load/btn-load.js": 38,
-	"./foldingbox/foldingbox.js": 39,
-	"./goto/goto.js": 40,
-	"./guideline/guideline.js": 41,
-	"./heroFW/heroFW.js": 99,
-	"./select2FW/select2FW.js": 100,
-	"./sliderFW/sliderFW.js": 102,
-	"./tabs/tabs.js": 103
+	"./accordionFW/accordionFW.js": 32,
+	"./block-img/block-img.js": 33,
+	"./block-list/block-list.js": 34,
+	"./block-std/block-std.js": 35,
+	"./brick/brick.js": 36,
+	"./btn-load/btn-load.js": 39,
+	"./foldingbox/foldingbox.js": 40,
+	"./goto/goto.js": 41,
+	"./guideline/guideline.js": 42,
+	"./heroFW/heroFW.js": 101,
+	"./select2FW/select2FW.js": 102,
+	"./sliderFW/sliderFW.js": 104,
+	"./tabs/tabs.js": 105
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -14463,7 +14464,65 @@ webpackContext.id = 31;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function($) {
 
+var AccordionFW = new Component("accordionFW");
+AccordionFW.debug = true;
+
+AccordionFW.prototype.onCreate = function () {
+  var acc = this;
+  acc.$el.find('.accordionFW__content').wrapInner('<div class="accordionFW__content__wrapper"></div>');
+  acc.$items = acc.$el.find('.accordionFW__item');
+  acc.deployall = acc.getData('deployall', false);
+  acc.collapsible = acc.getData('collapsible', true);
+  acc.autocollapse = acc.getData('autocollapse', false);
+
+  if (acc.deployall || !acc.collapsible) acc.deployItem(acc.$items);
+
+  acc.$el.find('.accordionFW__title').on('click', function () {
+    if (acc.autocollapse) acc.collapseItem(acc.$items.not($(this).closest('.accordionFW__item')));
+    acc.toggleItem($(this).closest('.accordionFW__item'));
+  });
+
+  acc.$items.each(function (index, item) {
+    if ($(item).hasClass('lock')) acc.deployItem($(item));
+  });
+};
+
+AccordionFW.prototype.onResize = function () {
+  this.resizeItem(this.$items);
+};
+
+AccordionFW.prototype.toggleItem = function ($items) {
+  var acc = this;
+  $items.each(function (index, $item) {
+    $item = $($item);
+    if ($item.hasClass('active')) acc.collapseItem($item);else acc.deployItem($item);
+  });
+  return acc;
+};
+
+AccordionFW.prototype.deployItem = function ($item) {
+  $item.addClass('active');
+  this.resizeItem($item);
+  return this;
+};
+AccordionFW.prototype.collapseItem = function ($item) {
+  $item.removeClass('active');
+  this.resizeItem($item);
+  return this;
+};
+AccordionFW.prototype.resizeItem = function ($items) {
+  var acc = acc;
+  $items.each(function (index, $item) {
+    $item = $($item);
+    if ($item.hasClass('active') || $item.hasClass('lock')) {
+      $item.find('.accordionFW__content').css('height', $item.find('.accordionFW__content__wrapper').get(0).scrollHeight);
+    } else $item.find('.accordionFW__content').css('height', 0);
+  });
+  return acc;
+};
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 33 */
@@ -14484,11 +14543,18 @@ webpackContext.id = 31;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function($, utils) {
 
 $.fn.Brick = function Brick() {
-  var htmlStud = __webpack_require__(36);
-  var htmlBrick = __webpack_require__(37);
+  var htmlStud = __webpack_require__(37);
+  var htmlBrick = __webpack_require__(38);
   $(this).each(function () {
     var $brick = $(this);
     var dim = {
@@ -14607,22 +14673,22 @@ function gridAnimListener(e) {
     $(this).removeClass('animate');
   }
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
-
-/***/ }),
-/* 36 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"stud\">\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n</div>";
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(2)))
 
 /***/ }),
 /* 37 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"wrapper\">\n  <div class=\"side top\"></div>\n  <div class=\"side right\">\n      <div class=\"side front\"></div>\n      <div class=\"side back\"></div>\n  </div>\n  <div class=\"side left\"></div>\n</div>";
+module.exports = "<div class=\"stud\">\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n    <div class=\"strip\"></div>\n</div>";
 
 /***/ }),
 /* 38 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"wrapper\">\n  <div class=\"side top\"></div>\n  <div class=\"side right\">\n      <div class=\"side front\"></div>\n      <div class=\"side back\"></div>\n  </div>\n  <div class=\"side left\"></div>\n</div>";
+
+/***/ }),
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14682,7 +14748,7 @@ BtnLoad.prototype.toggleState = function (state) {
 };
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14761,10 +14827,10 @@ $(function () {
     });
   });
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(2)))
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14794,10 +14860,10 @@ $(function () {
         }
     });
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14851,7 +14917,7 @@ if ($('#guideline').length) {
     $.each(app.components, function (index, component) {
       var sampleText = '';
       try {
-        sampleText = __webpack_require__(42)("./" + component + '/sample.html');
+        sampleText = __webpack_require__(43)("./" + component + '/sample.html');
       } catch (e) {
         app.log('Failed to retrieve the ' + component + ' component sample.\n' + e);
       }
@@ -14975,7 +15041,7 @@ if ($('#guideline').length) {
     $.each(arrClasses, function (index, className) {
       classes.nav += '<ul>';
       classes.nav += '<li><a href="#framway__classes-' + className + '">' + className.replace(className[0], className[0].toUpperCase()) + '</a></li>';
-      classes.content += '<div class="item active" id="framway__classes-' + className + '">' + '<h2 class="ft-i sep-bottom">' + className.replace(className[0], className[0].toUpperCase()) + '</h2>' + __webpack_require__(57)("./" + className + '.html')() + '</div>';
+      classes.content += '<div class="item active" id="framway__classes-' + className + '">' + '<h2 class="ft-i sep-bottom">' + className.replace(className[0], className[0].toUpperCase()) + '</h2>' + __webpack_require__(59)("./" + className + '.html')() + '</div>';
     });
 
     classes.nav += '</ul>';
@@ -14984,7 +15050,7 @@ if ($('#guideline').length) {
   };
 
   var buildTabs = function buildTabs(tabsConfig) {
-    var template = __webpack_require__(60);
+    var template = __webpack_require__(62);
     var nav = '';
     var content = '';
 
@@ -15005,7 +15071,7 @@ if ($('#guideline').length) {
   var buildConfig = function buildConfig(obj) {
     var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
 
-    var template = __webpack_require__(90); // noShortcut is used to insert partials later into the final template
+    var template = __webpack_require__(92); // noShortcut is used to insert partials later into the final template
     var rows = ''; // the partials mentionned above
     var arrObjects = {}; // used to store and process later the sub-object of config
     var htmlStack = ''; // used to stack the multiple results form arrObjects results
@@ -15013,7 +15079,7 @@ if ($('#guideline').length) {
       if ((typeof value === 'undefined' ? 'undefined' : _typeof(value)) != 'object') {
         var str = '<span class="ellipsis" title="' + key + '">' + key + ' :</span><span>' + value + '</span>';
         if (value.indexOf('#') != -1) str = '<span class="ellipsis" title="' + key + '">' + key + ' :</span><span class="bd-bottom-' + utils.getObjKeyByValue(config.colors, value) + '-5 p-bottom-0">' + value + '</span>';
-        rows += __webpack_require__(92)({ str: str });
+        rows += __webpack_require__(94)({ str: str });
       } else arrObjects[key] = value;
     });
     $.each(arrObjects, function (key, value) {
@@ -15022,9 +15088,9 @@ if ($('#guideline').length) {
     return template.render({ title: title }, { rows: rows }) + htmlStack; // return the initial template filled with his rows PLUS the stack we get by processing recursively the config
   };
 
-  var config = __webpack_require__(94);
+  var config = __webpack_require__(96);
   $.each(app.themes, function (index, theme) {
-    config = Object.assign(config, __webpack_require__(95)("./" + theme + '/_config.scss'));
+    config = Object.assign(config, __webpack_require__(97)("./" + theme + '/_config.scss'));
   });
 
   $.each(config, function (key, value) {
@@ -15040,7 +15106,7 @@ if ($('#guideline').length) {
   var classesHtml = buildClasses();
   var componentsHtml = buildComponents();
 
-  var html = __webpack_require__(97)({
+  var html = __webpack_require__(99)({
     config: configHtml,
     classes: classesHtml,
     styling: stylingHtml,
@@ -15076,7 +15142,7 @@ if ($('#guideline').length) {
     $(constructor).find('.checkbox').bind('click', function (e) {
       applyConstructorChanges($(this));
     }).each(function () {
-      if ($(this).data('default')) $(this).trigger('click');
+      if ($(this).data('default')) $(this).trigger('click');else applyConstructorChanges($(this));
     });
 
     // NUMBERS
@@ -15131,24 +15197,25 @@ if ($('#guideline').length) {
     if (window.location.hash != "") $('#guideline nav a[href="' + window.location.hash + '"]').trigger('click');else $('#guideline nav a').first().trigger('click');
   });
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(2)))
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./block-img/sample.html": 43,
-	"./block-list/sample.html": 44,
-	"./block-std/sample.html": 45,
-	"./brick/sample.html": 46,
-	"./btn-load/sample.html": 47,
-	"./foldingbox/sample.html": 48,
-	"./goto/sample.html": 49,
-	"./heroFW/sample.html": 50,
-	"./select2FW/sample.html": 51,
-	"./sliderFW/sample.html": 52,
-	"./tabs/sample.html": 53
+	"./accordionFW/sample.html": 44,
+	"./block-img/sample.html": 45,
+	"./block-list/sample.html": 46,
+	"./block-std/sample.html": 47,
+	"./brick/sample.html": 48,
+	"./btn-load/sample.html": 49,
+	"./foldingbox/sample.html": 50,
+	"./goto/sample.html": 51,
+	"./heroFW/sample.html": 52,
+	"./select2FW/sample.html": 53,
+	"./sliderFW/sample.html": 54,
+	"./tabs/sample.html": 55
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -15164,82 +15231,88 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 42;
+webpackContext.id = 43;
 
 /***/ }),
-/* 43 */
+/* 44 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"accordionFW\">\n  <div class=\"accordionFW__item \">\n    <div class=\"accordionFW__title\">Accordion title</div>\n    <div class=\"accordionFW__content\">\n      <p>\n        Zombies reversus ab inferno, This is a link nam malum cerebro. De carne This is a disabled link animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n      </p>\n    </div>\n  </div>\n  <div class=\"accordionFW__item lock\">\n    <div class=\"accordionFW__title\">Accordion title (locked)</div>\n    <div class=\"accordionFW__content\">\n      <p>\n        Zombies reversus ab inferno, This is a link nam malum cerebro. De carne This is a disabled link animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n      </p>\n    </div>\n  </div>\n  <div class=\"accordionFW__item\">\n    <div class=\"accordionFW__title\">Accordion title</div>\n    <div class=\"accordionFW__content\">\n      <p>\n        Zombies reversus ab inferno, This is a link nam malum cerebro. De carne This is a disabled link animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n      </p>\n    </div>\n  </div>\n</div>\n\n<div class=\"constructor\">\n  <p>Misc</p>\n  <div class=\"input checkbox\" data-label=\"Deploy all\" data-attr=\"data-deployall\" data-selected=\"false\">\n    Deploy all items at start (default to false)\n  </div>\n  <div class=\"input checkbox\" data-label=\"Collapsible\" data-attr=\"data-collapsible\" data-selected=\"true\">\n    Define if items are collapsible or not (default to true)\n  </div>\n  <div class=\"input checkbox\" data-label=\"Auto collapse\" data-attr=\"data-autocollapse\" data-selected=\"false\">\n    Collapse every other items when deploying one (default to false)\n  </div>\n</div>\n";
+
+/***/ }),
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = "<div class=\"row\">\n  <div class=\"block-img col-6\">\n    <a href=\"\" class=\"block-img__wrapper\">\n      <div class=\"block-img__figure\">\n        <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-img__content\">\n        Lorem ipsum dolor sit amet\n      </div>\n    </a>\n  </div>\n</div>\n<div class=\"constructor\">\n  <p>Image properties</p>\n  <div class=\"input select\" data-label=\"ratio\" data-attr=\"class\" data-value=\"r_1-1,r_2-1,r_1-2,r_16-9\" data-output=\"1:1,2:1,1:2,16:9\" data-selected=\"\"></div>\n  <p>Image alignement</p>\n  <div class=\"input select\" data-label=\"vertical\" data-attr=\"class\" data-value=\"img--top,img--bottom\" data-output=\"Top,Bottom\" data-selected=\"\">\n    Align the image only if cropped\n  </div>\n  <div class=\"input select\" data-label=\"horizontal\" data-attr=\"class\" data-value=\"img--left,img--right\" data-output=\"Left,Right\" data-selected=\"\">\n    Align the image only if cropped\n  </div>\n  <p>Image effects on hover</p>\n  <div class=\"input select\" data-label=\"zoom\" data-attr=\"class\" data-value=\"zoomin,zoomout\" data-output=\"Zoom in,Zoom out\" data-selected=\"\">\n    Apply a zoom effect on hover. Can be stack with other effects.\n  </div>\n  <div class=\"input select\" data-label=\"color fade\" data-attr=\"class\" data-value=\"fadetogrey,fadetocolor\" data-output=\"Fade to grey,Fade to color\" data-selected=\"\">\n    Apply a color effect on hover. Can be stack with other effects.\n  </div>\n  <p>Text alignement</p>\n  <div class=\"input select\" data-label=\"horizontal\" data-attr=\"class\" data-value=\"content__text--left,content__text--right\" data-output=\"Text left,Text right\" data-selected=\"\">\n    Align the text in its container.\n  </div>\n  <div class=\"input select\" data-label=\"vertical\" data-attr=\"class\" data-value=\"content__text--top,content__text--bottom\" data-output=\"Text top,Text bottom\" data-selected=\"\">\n    Align the text in its container. Only apply on a full height container.\n  </div>\n  <p>Content properties</p>\n  <div class=\"input select\" data-label=\"format\" data-attr=\"class\" data-value=\"content--inner,content--full\"  data-output=\"Inner,Full width\"  data-selected=\"content--inner\">\n    <b>Inner</b>: place the content container in the block. (over the image)<br>\n    <b>Full width</b>: the container will take all remaining space. (include <b>Inner</b>)\n  </div>\n  <div class=\"input select\" data-label=\"Font color\" data-attr=\"class\" data-value=\"ft-#colors\" data-output=\"#colors\" data-selected=\"\">\n    Set the content's font color\n  </div>\n  <div class=\"input select\" data-label=\"Background color\" data-attr=\"class\" data-value=\"content__bg--#colors\" data-output=\"#colors\" data-selected=\"\">\n    Set the content's background color\n  </div>\n  <div class=\"input number\" data-label=\"background opacity\" data-attr=\"class\" data-range=\"0-10\" data-value=\"\" data-prefix=\"content__bg__opacity--\">\n    Set transparency to the content's background. From 0 to 10, where 0 is non-visible and 10 is fully opaque.\n  </div>\n  <p>Content effects on hover</p>\n  <div class=\"input select\" data-label=\"translate\" data-attr=\"class\" data-value=\"content--fromtop,content--frombottom,content--fromleft,content--fromright\" data-output=\"From top,From bottom,From left,From right\" data-selected=\"\">\n    Make the content appears on hover from the indicated side. Non stackable with fade effects.<br>\n    Include: <b>Inner, Full width</b>\n  </div>\n  <div class=\"input select\" data-label=\"fade\" data-attr=\"class\" data-value=\"content--fadein,content--fadeout\" data-output=\"Fade in,Fade out\" data-selected=\"\">\n    Apply a fading effect on hover. Non stackable with translate effects.<br>\n    Include: <b>Inner</b>\n  </div>\n</div>\n";
 
 /***/ }),
-/* 44 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = "<div class=\"row\">\n  <div class=\"block-list col-4\">\n    <a href=\"\" class=\"block-list__wrapper\">\n      <div class=\"block-list__figure\">\n        <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-list__headline\">\n        <div class=\"block-list__category\">Article</div>\n        <div class=\"block-list__date\">01/01/1990</div>\n      </div>\n      <div class=\"block-list__content\">\n        <div class=\"block-list__title\">Lorem ipsum dolor</div>\n        <div class=\"block-list__text\">\n          <p>\n            Lorem ipsum dolor sit amet lorem ipsum dolor sit amet Lorem ipsum dolor sit amet lorem ipsum dolor sit amet\n            Lorem ipsum dolor sit amet...\n          </p>\n        </div>\n      </div>\n      <div class=\"block-list__footer\">\n        <div class=\"block-list__author\">par Machin Truc</div>\n      </div>\n    </a>\n  </div>\n  <div class=\"block-list col-4\">\n    <a href=\"\" class=\"block-list__wrapper\">\n      <div class=\"block-list__figure\">\n        <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"block-list__content\">\n        <div class=\"block-list__title\">Lorem ipsum dolor</div>\n        <div class=\"block-list__text\">\n          <p>\n            Lorem ipsum dolor sit amet lorem ipsum dolor sit amet Lorem ipsum dolor sit amet lorem ipsum dolor sit amet\n            Lorem ipsum dolor sit amet...\n          </p>\n        </div>\n      </div>\n      <div class=\"block-list__footer\">\n        <div class=\"block-list__author\">par Machin Truc</div>\n      </div>\n    </a>\n  </div>\n  <div class=\"block-list col-4\">\n    <a href=\"\" class=\"block-list__wrapper\">\n      <div class=\"block-list__headline\">\n        <div class=\"block-list__category\">Article</div>\n        <div class=\"block-list__date\">01/01/1990</div>\n      </div>\n      <div class=\"block-list__content\">\n        <div class=\"block-list__title\">Lorem ipsum dolor</div>\n        <div class=\"block-list__text\">\n          <p>\n            Lorem ipsum dolor sit amet lorem ipsum dolor sit amet Lorem ipsum dolor sit amet lorem ipsum dolor sit amet\n            Lorem ipsum dolor sit amet...\n          </p>\n        </div>\n      </div>\n      <div class=\"block-list__footer\">\n        <div class=\"block-list__author\">par Machin Truc</div>\n      </div>\n    </a>\n  </div>\n</div>\n\n\n<div class=\"constructor\">\n  <p>Image properties</p>\n  <div class=\"input select\" data-label=\"ratio\" data-attr=\"class\" data-value=\"r_1-1,r_2-1,r_1-2,r_16-9\" data-output=\"1:1,2:1,1:2,16:9\" data-selected=\"\"></div>\n  <p>Image alignement</p>\n  <div class=\"input select\" data-label=\"vertical\" data-attr=\"class\" data-value=\"img--top,img--bottom\" data-output=\"Top,Bottom\" data-selected=\"\">\n    Align the image only if cropped\n  </div>\n  <div class=\"input select\" data-label=\"horizontal\" data-attr=\"class\" data-value=\"img--left,img--right\" data-output=\"Left,Right\" data-selected=\"\">\n    Align the image only if cropped\n  </div>\n  <p>Image effects on hover</p>\n  <div class=\"input select\" data-label=\"zoom\" data-attr=\"class\" data-value=\"zoomin,zoomout\" data-output=\"Zoom in,Zoom out\" data-selected=\"\">\n    Apply a zoom effect on hover. Can be stack with other effects.\n  </div>\n  <div class=\"input select\" data-label=\"color fade\" data-attr=\"class\" data-value=\"fadetogrey,fadetocolor\" data-output=\"Fade to grey,Fade to color\" data-selected=\"\">\n    Apply a color effect on hover. Can be stack with other effects.\n  </div>\n  <p>Content properties</p>\n  <div class=\"input checkbox\" data-label=\"Headline disable\" data-attr=\"class\" data-value=\"headline--disable\" data-selected=\"\"></div>\n  <div class=\"input checkbox\" data-label=\"Footer disable\" data-attr=\"class\" data-value=\"footer--disable\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"Font color\" data-attr=\"class\" data-value=\"ft-#colors\" data-output=\"#colors\" data-selected=\"\">\n    Set the content's font color\n  </div>\n  <div class=\"input select\" data-label=\"Background color\" data-attr=\"class\" data-value=\"content__bg--#colors\" data-output=\"#colors\" data-selected=\"\">\n    Set the content's background color\n  </div>\n  <div class=\"input checkbox\" data-label=\"Headline outer\" data-attr=\"class\" data-value=\"headline--outer\" data-selected=\"\"></div>\n</div>";
 
 /***/ }),
-/* 45 */
+/* 47 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"block-std\">\n  <p>\n    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in felis a risus pellentesque pulvinar. Etiam vehicula molestie libero et sodales. Donec consequat ultrices est at vestibulum. Cras pretium felis vitae mi sodales, convallis finibus leo tincidunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tincidunt egestas nunc, vitae pellentesque quam porttitor ut. Maecenas posuere pellentesque risus ut pulvinar.\n  </p>\n</div>";
 
 /***/ }),
-/* 46 */
+/* 48 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"scene\">\n  <div class=\"grid\">\n    <div class=\"brick\" rows=\"3\" cols=\"5\" color=\"blacklight\" z=\"1\" x=\"0\" y=\"0\" text=\"Text sample\"></div>\n    <div class=\"brick\" rows=\"2\" cols=\"3\" color=\"blacklighter\" z=\"2\" x=\"-0\" y=\"-1\"></div>\n    <div class=\"brick\" rows=\"1\" cols=\"1\" color=\"greystronger\" z=\"3\" x=\"0\" y=\"-2\"></div>\n    <div class=\"brick\" rows=\"3\" cols=\"2\" color=\"blue\" z=\"2\" x=\"0\" y=\"2\"></div>\n  </div>\n</div>";
 
 /***/ }),
-/* 47 */
+/* 49 */
 /***/ (function(module, exports) {
 
 module.exports = "<button class=\"btn-load\" data-text=\"Loading...\" data-icon=\"false\" data-result=\"false\" data-reset=\"false\" data-process=\"processFunction\">Click me !</button>\n<button class=\"btn-load\" data-text=\"Loading...\" data-process=\"processFunctionReject\">Click me !</button>\n\n<script>\n  var processFunction = function processFunction(){\n    return new Promise(function(resolve,reject){\n        setTimeout(function(){\n          resolve();\n        },1000);\n    });\n  }\n\n  var processFunctionReject = function processFunction(){\n    return new Promise(function(resolve,reject){\n        setTimeout(function(){\n          reject();\n        },1000);\n    });\n  }\n</script>";
 
 /***/ }),
-/* 48 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = "<div class=\"foldingbox\" data-height=\"\" data-break=\"md\">\n  <div class=\"foldingbox__title\">\n    <h2>LOREM IPSUM DOLOR</h2>\n  </div>\n  <div class=\"foldingbox__container\">\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(6) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>Lorem ipsum dolor sit amet</p>\n        <button>Lorem</button>\n      </div>\n    </div>\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(6) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n            Lorem ipsum dolor sit amet<br>\n        </p>\n        <button>Lorem</button>\n      </div>\n    </div>\n    <div class=\"foldingbox__item\">\n      <div class=\"foldingbox__item__bg\">\n        <img src=\"" + __webpack_require__(6) + "\" alt=\"sample image\">\n      </div>\n      <div class=\"foldingbox__item__content\">\n        <h3>Lorem ipsum</h3>\n        <p>Lorem ipsum dolor sit amet</p>\n        <button>Lorem</button>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"constructor\">\n  <!-- <div class=\"input select\" data-label=\"hover zoom\" data-attr=\"class\" data-name=\"zoom\" data-value=\"zoomin,zoomout\" data-output=\"Zoom in,Zoom out\" data-selected=\"zoomin\"></div> -->\n</div>\n";
 
 /***/ }),
-/* 49 */
+/* 51 */
 /***/ (function(module, exports) {
 
 module.exports = "<button class=\"goto\" data-goto=\"anchorID_1,anchorID_2,anchorID_3\">\n  Click me, I'll take you to a special place\n</button>";
 
 /***/ }),
-/* 50 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = "<div class=\"heroFW\" data-height=\"\">\n  <div class=\"heroFW__wrapper\">\n    <div class=\"heroFW__figure\">\n      <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n    </div>\n    <div class=\"heroFW__content\">\n      <div class=\"heroFW__content__wrapper\">\n        <h3>Lorem ipsum</h3>\n        <p>Lorem ipsum dolor sit amet</p>\n        <button>Lorem</button>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"constructor\">\n  <p>Image properties</p>\n  <div class=\"input number\" data-label=\"Image opacity\" data-attr=\"class\" data-range=\"0-10\" data-value=\"\" data-prefix=\"figure__opacity--\">\n    Set transparency to the background image. From 0 to 10, where 0 is non-visible and 10 is fully opaque.\n  </div>\n  <p>Image alignement</p>\n  <div class=\"input select\" data-label=\"vertical\" data-attr=\"class\" data-value=\"img--top,img--bottom\" data-output=\"Top,Bottom\" data-selected=\"\">\n    Align the image only if cropped\n  </div>\n  <div class=\"input select\" data-label=\"horizontal\" data-attr=\"class\" data-value=\"img--left,img--right\" data-output=\"Left,Right\" data-selected=\"\">\n    Align the image only if cropped\n  </div>\n  <p>Content properties</p>\n  <div class=\"input select\" data-label=\"Position\" data-attr=\"class\" data-value=\"content--left--top,content--left--center,content--left--bottom,content--right--top,content--right--center,content--right--bottom,content--center\"  data-output=\"Left Top,Left Center,Left Bottom,Rigth Top,Rigth Center,Rigth Bottom,Center Center\"  data-selected=\"\">\n    Adjust the content position in the block\n  </div>\n  <div class=\"input select\" data-label=\"Title modifier\" data-attr=\"class\" data-value=\"title--1,title--2,title--3,title--4\" data-output=\"Display 1,Display 2,Display 3,Display 4\" data-selected=\"title--3\">\n    Apply a style modifier to the title elements\n  </div>\n  <div class=\"input select\" data-label=\"Font color\" data-attr=\"class\" data-value=\"ft-#colors\" data-output=\"#colors\" data-selected=\"ft-white\">\n    Set the content's font color\n  </div>\n  <div class=\"w-100\"></div>\n  <div class=\"input select\" data-label=\"Background color\" data-attr=\"class\" data-value=\"content__bg--#colors\" data-output=\"#colors\" data-selected=\"content__bg--darkblue\">\n    Set the content's background color\n  </div>\n  <div class=\"input number\" data-label=\"background opacity\" data-attr=\"class\" data-range=\"0-10\" data-value=\"6\" data-prefix=\"content__bg__opacity--\">\n    Set transparency to the content's background. From 0 to 10, where 0 is non-visible and 10 is fully opaque.\n  </div>\n  <p>Misc</p>\n  <div class=\"input checkbox\" data-label=\"Force full width\" data-attr=\"class\" data-value=\"force-full\" data-selected=\"\">\n    By default, the element's width is 100% of its container. This option force the hero to take the <b>full viewport width</b>.\n  </div>\n  <div class=\"input checkbox\" data-label=\"Force full height\" data-attr=\"data-height\" data-value=\"viewport\" data-selected=\"\">\n    By default, the height is defined by the image's height. This option force the hero to take the <b>full viewport height</b>. Alternatively, you can fill the data-height attribute with the desired dimension.\n  </div>\n  <div class=\"input checkbox\" data-label=\"Height relative to content\" data-attr=\"class\" data-value=\"height--content\" data-selected=\"\">\n    By default, the height is defined by the image's height. This option force the hero to take the <b>content's height</b>. Alternatively, you can fill the data-height attribute with the desired dimension.\n  </div>\n  <div class=\"input checkbox\" data-label=\"Width relative to content\" data-attr=\"class\" data-value=\"width--content\" data-selected=\"\">\n    By default, the element's width is 100% of its container. This option force the hero to take the <b>content's width</b> and <b>content's height</b>.\n  </div>\n</div>";
 
 /***/ }),
-/* 51 */
+/* 53 */
 /***/ (function(module, exports) {
 
 module.exports = "<select name=\"\" id=\"\" multiple>\n    <option value=\"\" selected>Option 1</option>\n    <option value=\"\" >Option 2</option>\n    <option value=\"\">Option 3</option>\n</select>\n<select name=\"\" id=\"\">\n    <option value=\"\">Option 1</option>\n    <option value=\"\">Option 2</option>\n    <option value=\"\">Option 3</option>\n    <option value=\"\">Option 4</option>\n    <option value=\"\">Option 5</option>\n</select>\n<select name=\"\" id=\"\">\n  <optgroup label=\"Group 1\">\n    <option value=\"\">Option 1</option>\n  </optgroup>\n  <optgroup label=\"Group 2\">\n    <option value=\"\">Option 2</option>\n    <option value=\"\">Option 3</option>\n    <option value=\"\">Option 4</option>\n    <option value=\"\">Option 5</option>\n  </optgroup>\n</select>";
 
 /***/ }),
-/* 52 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = "<div class=\"sliderFW\" data-height=\"400\" data-loop=\"\" data-auto=\"\">\n  <div class=\"sliderFW__container\">\n    <div class=\"sliderFW__rail\">\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(6) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(5) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n      <div class=\"sliderFW__item\">\n        <div class=\"sliderFW__item__bg\">\n          <img src=\"" + __webpack_require__(6) + "\" alt=\"sample image\">\n        </div>\n        <div class=\"sliderFW__item__content\">\n          <h3>Lorem ipsum</h3>\n          <p>Lorem ipsum dolor sit amet</p>\n          <button>Lorem</button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"constructor\">\n  <p>Misc</p>\n  <div class=\"input checkbox\" data-label=\"Loop\" data-attr=\"data-loop\" data-selected=\"true\">\n    The user can loop throught the images\n  </div>\n  <div class=\"input checkbox\" data-label=\"Autoplay\" data-attr=\"data-auto\" data-selected=\"\"></div>\n  <div class=\"input checkbox\" data-label=\"Force full width\" data-attr=\"class\" data-value=\"force-full\" data-selected=\"\">\n    By default, the element's width is 100% of its container. This option force the hero to take the <b>full viewport width</b>.\n  </div>\n  <div class=\"input checkbox\" data-label=\"Force full height\" data-attr=\"data-height\" data-value=\"viewport\" data-selected=\"\">\n    By default, the height is defined by the image's height. This option force the hero to take the <b>full viewport height</b>. Alternatively, you can fill the data-height attribute with the desired dimension.\n  </div>\n  <p>Navigation</p>\n  <div class=\"input select\" data-label=\"nav vertical\" data-attr=\"class\" data-value=\"nav--bottom,nav--top\" data-output=\"bottom,top\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"nav horizontal\" data-attr=\"class\" data-value=\"nav--left,nav--right\" data-output=\"left,right\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"nav display\" data-attr=\"class\" data-value=\"nav--inner,nav--hidden\" data-output=\"inner,hidden\" data-selected=\"\"></div>\n  <p>Content</p>\n  <div class=\"input select\" data-label=\"content position\" data-attr=\"class\" data-value=\"content--right,content--center\" data-output=\"right,center\" data-selected=\"\"></div>\n  <div class=\"input select\" data-label=\"text position\" data-attr=\"class\" data-value=\"content__text--top,content__text--center\" data-output=\"top,center\" data-selected=\"\"></div>\n  <div class=\"input checkbox\" data-label=\"Remove content blur\" data-attr=\"class\" data-value=\"content--noblur\" data-selected=\"\"></div>\n</div>\n";
 
 /***/ }),
-/* 53 */
+/* 55 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"tabs\">\n  <div class=\"tabs__nav\">\n    <button>Lorem</button>\n    <button>Ipsum</button>\n    <button>Dolor</button>\n  </div>\n  <div class=\"tabs__content\">\n    <div class=\"tab\">\n      Lorem ipsum dolor sit amet\n    </div>\n    <div class=\"tab\">\n      Ipsum dolor sit amet lorem\n    </div>\n    <div class=\"tab\">\n      Dolor sit amet lorem ipsum\n    </div>\n  </div>\n</div>";
 
 /***/ }),
-/* 54 */
+/* 56 */
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"bg-{{color}} m-bottom\">\n  <h4>bg-{{color}}</h4>\n  <p class=\"clear\">\n    Zombies reversus ab inferno, nam malum cerebro. De carne animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n  </p>\n</div>";
 
 /***/ }),
-/* 55 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -15668,7 +15741,7 @@ module.exports = "<div class=\"bg-{{color}} m-bottom\">\n  <h4>bg-{{color}}</h4>
 
 
 /***/ }),
-/* 56 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -16015,11 +16088,11 @@ var Hogan = {};
 
 
 /***/ }),
-/* 57 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./flex.html": 58
+	"./flex.html": 60
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -16035,65 +16108,48 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 57;
-
-/***/ }),
-/* 58 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(59)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T.render.apply(T, arguments); };
-
-/***/ }),
-/* 59 */
-/***/ (function(module, exports) {
-
-module.exports = "<h3>Syntax</h3>\n<div class=\"block-std center txt-center\">flex <span class=\"tag\">-valueofbooleanlikeproperty</span><span class=\"tag\">-propertyname--propertyvalue</span><span class=\"tag\">...</span></div>\n<h3>Example</h3>\n<div class=\"block-std center txt-center\"><span class=\"tag\">flex-wrap-justifycontent--center-alignitems--flexend</span></div>\n<h3>Rules</h3>\n<div class=\"block-std\">\n  <ul class=\"m-top\">\n    <li class=\"m-bottom\">\n      Each property name or value has to be normalized: lowercase, no space, no <span class=\"tag\"> - </span> or <span class=\"tag\"> _ </span> <br>\n      <i>Example: <span class=\"tag\">justify-content</span> become <span class=\"tag\">justifycontent</span>, <span class=\"tag\">flex-start</span> become <span class=\"tag\">flexstart</span>, etc...</i>\n    </li>\n    <li class=\"m-bottom\">\n      Properties which are boolean-like (flex-wrap, flex-direction, ..) are directly specified by their values.<br>\n      <i>Example: <span class=\"tag\">flex-wrap-column</span>, <span class=\"tag\">flex-nowrap-row</span></i>\n    </li>\n    <li class=\"m-bottom\">\n      flex-grow property applied on container affect all children. <br>\n      <i>Example: <span class=\"tag\">flex-flexgrow--1</span> mean all the children's flex-grow is set to 1.</i>\n    </li>\n    <li class=\"m-bottom\">\n      Children's related property can be set on them, with the same syntax but without the flex- prefix :<br>\n      <p class=\"txt-center\">flexgrow--<span class=\"tag\">number</span>, alignself--<span class=\"tag\">propertyvalue</span></p>\n      <i>Example: <span class=\"tag\">flexgrow--1</span>, <span class=\"tag\">alignself--flexend</span></i>\n    </li>\n  </ul>\n</div>";
+webpackContext.id = 59;
 
 /***/ }),
 /* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var result = __webpack_require__(61)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T; }();
-
-/***/ }),
-/* 61 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"tabs\">\n  <div class=\"tabs__nav\">\n    {{> nav}}\n  </div>\n  <div class=\"tabs__content\">\n    {{> content}}\n  </div>\n</div>";
-
-/***/ }),
-/* 62 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(63)
-var H = __webpack_require__(0);
+var H = __webpack_require__(1);
 window.Hogan = H;
 module.exports = function() {
 var T = H.compile(result, {});
 return T.render.apply(T, arguments); };
 
 /***/ }),
+/* 61 */
+/***/ (function(module, exports) {
+
+module.exports = "<h3>Syntax</h3>\n<div class=\"block-std center txt-center\">flex <span class=\"tag\">-valueofbooleanlikeproperty</span><span class=\"tag\">-propertyname--propertyvalue</span><span class=\"tag\">...</span></div>\n<h3>Example</h3>\n<div class=\"block-std center txt-center\"><span class=\"tag\">flex-wrap-justifycontent--center-alignitems--flexend</span></div>\n<h3>Rules</h3>\n<div class=\"block-std\">\n  <ul class=\"m-top\">\n    <li class=\"m-bottom\">\n      Each property name or value has to be normalized: lowercase, no space, no <span class=\"tag\"> - </span> or <span class=\"tag\"> _ </span> <br>\n      <i>Example: <span class=\"tag\">justify-content</span> become <span class=\"tag\">justifycontent</span>, <span class=\"tag\">flex-start</span> become <span class=\"tag\">flexstart</span>, etc...</i>\n    </li>\n    <li class=\"m-bottom\">\n      Properties which are boolean-like (flex-wrap, flex-direction, ..) are directly specified by their values.<br>\n      <i>Example: <span class=\"tag\">flex-wrap-column</span>, <span class=\"tag\">flex-nowrap-row</span></i>\n    </li>\n    <li class=\"m-bottom\">\n      flex-grow property applied on container affect all children. <br>\n      <i>Example: <span class=\"tag\">flex-flexgrow--1</span> mean all the children's flex-grow is set to 1.</i>\n    </li>\n    <li class=\"m-bottom\">\n      Children's related property can be set on them, with the same syntax but without the flex- prefix :<br>\n      <p class=\"txt-center\">flexgrow--<span class=\"tag\">number</span>, alignself--<span class=\"tag\">propertyvalue</span></p>\n      <i>Example: <span class=\"tag\">flexgrow--1</span>, <span class=\"tag\">alignself--flexend</span></i>\n    </li>\n  </ul>\n</div>";
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(63)
+var H = __webpack_require__(1);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T; }();
+
+/***/ }),
 /* 63 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"tab\">\n  <div class=\"bd m-bottom\"><h5 class=\"\">bd</h5> Lorem ipsum dolor sit amet</div>\n  <div class=\"bd-top m-bottom\"><h5 class=\"\">bd-top</h5> Lorem ipsum dolor sit amet</div>\n  <div class=-bottom\"bd m-bottom\"><h5 class=\"\">bd-bottom</h5> Lorem ipsum dolor sit amet</div>\n  <div class=\"bd-left m-bottom\">\n    <h5 class=\"txt-center\">bd-left</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n  <div class=\"bd-right m-bottom\">\n    <h5 class=\"txt-center\">bd-right</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n  <div class=\"bd-left bd-top-green m-bottom\">\n    <h5 class=\"txt-center\">bd-left bd-top-green</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n  <div class=\"bd-right bd-bottom-green m-bottom\">\n    <h5 class=\"txt-center\">bd-right bd-bottom-green</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n  <div class=\"bd-10 bd-left-grey-5 bd-bottom-orange bd-right-green-2 m-bottom\">\n    <h5 class=\"txt-center\">bd-10 bd-grey-left-5 bd-bottom-orange bd-right-green-2</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n</div>";
+module.exports = "<div class=\"tabs\">\n  <div class=\"tabs__nav\">\n    {{> nav}}\n  </div>\n  <div class=\"tabs__content\">\n    {{> content}}\n  </div>\n</div>";
 
 /***/ }),
 /* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var result = __webpack_require__(65)
-var H = __webpack_require__(0);
+var H = __webpack_require__(1);
 window.Hogan = H;
 module.exports = function() {
 var T = H.compile(result, {});
@@ -16103,14 +16159,14 @@ return T.render.apply(T, arguments); };
 /* 65 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bd-{{color}} m-bottom\"> Lorem ipsum dolor sit amet - bd-{{color}}</div>";
+module.exports = "<div class=\"tab\">\n  <div class=\"bd m-bottom\"><h5 class=\"\">bd</h5> Lorem ipsum dolor sit amet</div>\n  <div class=\"bd-top m-bottom\"><h5 class=\"\">bd-top</h5> Lorem ipsum dolor sit amet</div>\n  <div class=-bottom\"bd m-bottom\"><h5 class=\"\">bd-bottom</h5> Lorem ipsum dolor sit amet</div>\n  <div class=\"bd-left m-bottom\">\n    <h5 class=\"txt-center\">bd-left</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n  <div class=\"bd-right m-bottom\">\n    <h5 class=\"txt-center\">bd-right</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n  <div class=\"bd-left bd-top-green m-bottom\">\n    <h5 class=\"txt-center\">bd-left bd-top-green</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n  <div class=\"bd-right bd-bottom-green m-bottom\">\n    <h5 class=\"txt-center\">bd-right bd-bottom-green</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n  <div class=\"bd-10 bd-left-grey-5 bd-bottom-orange bd-right-green-2 m-bottom\">\n    <h5 class=\"txt-center\">bd-10 bd-grey-left-5 bd-bottom-orange bd-right-green-2</h5>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n    Lorem ipsum dolor sit amet<br>\n  </div>\n</div>";
 
 /***/ }),
 /* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var result = __webpack_require__(67)
-var H = __webpack_require__(0);
+var H = __webpack_require__(1);
 window.Hogan = H;
 module.exports = function() {
 var T = H.compile(result, {});
@@ -16120,14 +16176,14 @@ return T.render.apply(T, arguments); };
 /* 67 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"tab\">\n  <h3>Buttons</h3>\n  <div class=\"\">\n    <button class=\"btn-sm\">btn-sm (button)</button><br>\n    <button class=\"\">btn (button)</button><br>\n    <button class=\"btn-lg\">btn-lg (button)</button>\n  </div>\n  <h3>Buttons inputs</h3>\n  <div>\n    <input type=\"button\" class=\"btn-sm\" value=\"btn-sm (input type button)\"><br>\n    <input type=\"button\" class=\"\" value=\"btn (input type button)\"><br>\n    <input type=\"button\" class=\"btn-lg\" value=\"btn-lg (input type button)\"><br>\n    <input type=\"submit\" class=\"btn-sm\" value=\"btn-sm (input type submit)\"><br>\n    <input type=\"submit\" class=\"\" value=\"btn (input type submit)\"><br>\n    <input type=\"submit\" class=\"btn-lg\" value=\"btn-lg (input type submit)\">\n  </div>\n  <h3>Buttons a</h3>\n  <div  class=\"\">\n    <a href=\"#\" class=\"btn-sm\">btn-sm (a)</a><br>\n    <a href=\"#\" class=\"btn\">btn (a)</a><br>\n    <a href=\"#\" class=\"btn-lg\">btn-lg (a)</a>\n  </div>\n</div>";
+module.exports = "<div class=\"bd-{{color}} m-bottom\"> Lorem ipsum dolor sit amet - bd-{{color}}</div>";
 
 /***/ }),
 /* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var result = __webpack_require__(69)
-var H = __webpack_require__(0);
+var H = __webpack_require__(1);
 window.Hogan = H;
 module.exports = function() {
 var T = H.compile(result, {});
@@ -16137,14 +16193,14 @@ return T.render.apply(T, arguments); };
 /* 69 */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <button class=\"btn-bg-{{color}}\">btn-bg-{{color}}</button>\n  <button class=\"btn-bd-{{color}}\">btn-bd-{{color}}</button>\n</div>";
+module.exports = "<div class=\"tab\">\n  <h3>Buttons</h3>\n  <div class=\"\">\n    <button class=\"btn-sm\">btn-sm (button)</button><br>\n    <button class=\"\">btn (button)</button><br>\n    <button class=\"btn-lg\">btn-lg (button)</button>\n  </div>\n  <h3>Buttons inputs</h3>\n  <div>\n    <input type=\"button\" class=\"btn-sm\" value=\"btn-sm (input type button)\"><br>\n    <input type=\"button\" class=\"\" value=\"btn (input type button)\"><br>\n    <input type=\"button\" class=\"btn-lg\" value=\"btn-lg (input type button)\"><br>\n    <input type=\"submit\" class=\"btn-sm\" value=\"btn-sm (input type submit)\"><br>\n    <input type=\"submit\" class=\"\" value=\"btn (input type submit)\"><br>\n    <input type=\"submit\" class=\"btn-lg\" value=\"btn-lg (input type submit)\">\n  </div>\n  <h3>Buttons a</h3>\n  <div  class=\"\">\n    <a href=\"#\" class=\"btn-sm\">btn-sm (a)</a><br>\n    <a href=\"#\" class=\"btn\">btn (a)</a><br>\n    <a href=\"#\" class=\"btn-lg\">btn-lg (a)</a>\n  </div>\n</div>";
 
 /***/ }),
 /* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var result = __webpack_require__(71)
-var H = __webpack_require__(0);
+var H = __webpack_require__(1);
 window.Hogan = H;
 module.exports = function() {
 var T = H.compile(result, {});
@@ -16154,14 +16210,14 @@ return T.render.apply(T, arguments); };
 /* 71 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"tab\">\n  <input type=\"text\" placeholder=\"Input solo\">\n  <div class=\"form-group\">\n    <input type=\"text\" placeholder=\"Input in a form-group, without label\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input1\">Label ipsum</label>\n    <input id=\"input1\" type=\"text\" placeholder=\"Input in a form-group, with label\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input2\">Input without placeholder</label>\n    <input id=\"input2\" type=\"text\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input3\">Input with value already set</label>\n    <input id=\"input3\" type=\"text\" placeholder=\"Placeholder ipsum\" value=\"Value ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input4\">Input focused</label>\n    <input id=\"input4\" type=\"text\" class=\"focus\" placeholder=\"Placeholder ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input5\">Input required</label>\n    <input id=\"input5\" type=\"text\" placeholder=\"Placeholder ipsum\" required>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input6\">Input required and valid</label>\n    <input id=\"input6\" type=\"text\" placeholder=\"Placeholder ipsum\" value=\"Valid value ipsum\" required>\n  </div>\n</div>";
+module.exports = "<div>\n  <button class=\"btn-bg-{{color}}\">btn-bg-{{color}}</button>\n  <button class=\"btn-bd-{{color}}\">btn-bd-{{color}}</button>\n</div>";
 
 /***/ }),
 /* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var result = __webpack_require__(73)
-var H = __webpack_require__(0);
+var H = __webpack_require__(1);
 window.Hogan = H;
 module.exports = function() {
 var T = H.compile(result, {});
@@ -16171,14 +16227,14 @@ return T.render.apply(T, arguments); };
 /* 73 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg-{{color}} m-bottom\">\n  <span class=\"fl-right\">bg-{{color}}</span>\n  <div class=\"form-group clear\">\n    <label for=\"input21\">Label ipsum</label>\n    <input id=\"input21\" type=\"text\" placeholder=\"Input in a form-group\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input22\">Label ipsum required invalid</label>\n    <input id=\"input22\" type=\"text\" required placeholder=\"Input in a form-group\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input23\">Label ipsum required valid</label>\n    <input id=\"input23\" type=\"text\" required value=\"Value Ipsum\" placeholder=\"Input in a form-group\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input37\">Input range</label> - todo: script récupération et affichage valeur sélectionnée\n    <input id=\"input37\" type=\"range\" min=\"0\" max=\"100\" value=\"50\" step=\"5\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"\">Checkboxes</label>\n    <input id=\"input38\" type=\"checkbox\" checked>\n    <label for=\"input38\">Label checkbox</label>\n    <input id=\"input39\" type=\"checkbox\">\n    <label for=\"input39\">Label checkbox</label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"\">Radios</label>\n    <input name=\"inputRadio\" id=\"input40\" type=\"radio\" checked>\n    <label for=\"input40\">Label radio</label>\n    <input name=\"inputRadio\" id=\"input41\" type=\"radio\">\n    <label for=\"input41\">Label radio</label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input42\">Select</label> - todo: custom script dropdown\n    <select name=\"\" id=\"input42\">\n      <option value=\"1\">value 1</option>\n      <option value=\"2\">value 2</option>\n      <option value=\"3\">value 3</option>\n    </select>\n  </div>\n</div>";
+module.exports = "<div class=\"tab\">\n  <input type=\"text\" placeholder=\"Input solo\">\n  <div class=\"form-group\">\n    <input type=\"text\" placeholder=\"Input in a form-group, without label\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input1\">Label ipsum</label>\n    <input id=\"input1\" type=\"text\" placeholder=\"Input in a form-group, with label\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input2\">Input without placeholder</label>\n    <input id=\"input2\" type=\"text\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input3\">Input with value already set</label>\n    <input id=\"input3\" type=\"text\" placeholder=\"Placeholder ipsum\" value=\"Value ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input4\">Input focused</label>\n    <input id=\"input4\" type=\"text\" class=\"focus\" placeholder=\"Placeholder ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input5\">Input required</label>\n    <input id=\"input5\" type=\"text\" placeholder=\"Placeholder ipsum\" required>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input6\">Input required and valid</label>\n    <input id=\"input6\" type=\"text\" placeholder=\"Placeholder ipsum\" value=\"Valid value ipsum\" required>\n  </div>\n</div>";
 
 /***/ }),
 /* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var result = __webpack_require__(75)
-var H = __webpack_require__(0);
+var H = __webpack_require__(1);
 window.Hogan = H;
 module.exports = function() {
 var T = H.compile(result, {});
@@ -16188,14 +16244,14 @@ return T.render.apply(T, arguments); };
 /* 75 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"tab\">\n  <div class=\"form-group\">\n    <label for=\"input14\">Input range</label> - todo: script récupération et affichage valeur sélectionnée\n    <input id=\"input14\" type=\"range\" min=\"0\" max=\"100\" value=\"50\" step=\"5\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input19\">Input number</label><br>\n    <input id=\"input19\" type=\"number\" min=\"0\" max=\"10\" value=\"5\" step=\"1\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"\">Checkboxes</label>\n    <input id=\"input15\" type=\"checkbox\" checked>\n    <label for=\"input15\">Label checkbox</label>\n    <input id=\"input16\" type=\"checkbox\">\n    <label for=\"input16\">Label checkbox</label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"\">Radios</label>\n    <input name=\"inputRadio\" id=\"input17\" type=\"radio\" checked>\n    <label for=\"input17\">Label radio</label>\n    <input name=\"inputRadio\" id=\"input18\" type=\"radio\">\n    <label for=\"input18\">Label radio</label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input20\">Select</label> - todo: custom script dropdown\n    <select name=\"\" id=\"input20\">\n      <option value=\"1\">value 1</option>\n      <option value=\"2\">value 2</option>\n      <option value=\"3\">value 3</option>\n    </select>\n  </div>\n</div>";
+module.exports = "<div class=\"bg-{{color}} m-bottom\">\n  <span class=\"fl-right\">bg-{{color}}</span>\n  <div class=\"form-group clear\">\n    <label for=\"input21\">Label ipsum</label>\n    <input id=\"input21\" type=\"text\" placeholder=\"Input in a form-group\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input22\">Label ipsum required invalid</label>\n    <input id=\"input22\" type=\"text\" required placeholder=\"Input in a form-group\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input23\">Label ipsum required valid</label>\n    <input id=\"input23\" type=\"text\" required value=\"Value Ipsum\" placeholder=\"Input in a form-group\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input37\">Input range</label> - todo: script récupération et affichage valeur sélectionnée\n    <input id=\"input37\" type=\"range\" min=\"0\" max=\"100\" value=\"50\" step=\"5\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"\">Checkboxes</label>\n    <input id=\"input38\" type=\"checkbox\" checked>\n    <label for=\"input38\">Label checkbox</label>\n    <input id=\"input39\" type=\"checkbox\">\n    <label for=\"input39\">Label checkbox</label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"\">Radios</label>\n    <input name=\"inputRadio\" id=\"input40\" type=\"radio\" checked>\n    <label for=\"input40\">Label radio</label>\n    <input name=\"inputRadio\" id=\"input41\" type=\"radio\">\n    <label for=\"input41\">Label radio</label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input42\">Select</label> - todo: custom script dropdown\n    <select name=\"\" id=\"input42\">\n      <option value=\"1\">value 1</option>\n      <option value=\"2\">value 2</option>\n      <option value=\"3\">value 3</option>\n    </select>\n  </div>\n</div>";
 
 /***/ }),
 /* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var result = __webpack_require__(77)
-var H = __webpack_require__(0);
+var H = __webpack_require__(1);
 window.Hogan = H;
 module.exports = function() {
 var T = H.compile(result, {});
@@ -16205,14 +16261,14 @@ return T.render.apply(T, arguments); };
 /* 77 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"tab\">\n  <div class=\"form-group\">\n    <label for=\"input19\">Textarea</label>\n    <textarea name=\"\" id=\"input19\"></textarea>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input7\">Input password</label>\n    <input id=\"input7\" type=\"password\" placeholder=\"Placeholder ipsum\" value=\"passwordipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input8\">Input email</label>\n    <input id=\"input8\" type=\"email\" placeholder=\"Placeholder ipsum\" value=\"lorem@ipsum.dolor\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input9\">Input email with invalid value</label>\n    <input id=\"input9\" type=\"email\" placeholder=\"Placeholder ipsum\" value=\"loremipsum.dolor\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input10\">Input tel</label> - todo: script ajoutant pattern (contextuel localité) ?\n    <input id=\"input10\" type=\"tel\" placeholder=\"Placeholder ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input11\">Input url</label> - todo: script ajoutant \"http://\" automatiquement au début de l'input\n    <input id=\"input11\" type=\"url\" placeholder=\"Placeholder ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input12\">Input date</label>\n    <input id=\"input12\" type=\"date\" placeholder=\"Placeholder ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input13\">Input number</label>\n    <input id=\"input13\" type=\"number\">\n  </div>\n</div>";
+module.exports = "<div class=\"tab\">\n  <div class=\"form-group\">\n    <label for=\"input14\">Input range</label> - todo: script récupération et affichage valeur sélectionnée\n    <input id=\"input14\" type=\"range\" min=\"0\" max=\"100\" value=\"50\" step=\"5\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input19\">Input number</label><br>\n    <input id=\"input19\" type=\"number\" min=\"0\" max=\"10\" value=\"5\" step=\"1\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"\">Checkboxes</label>\n    <input id=\"input15\" type=\"checkbox\" checked>\n    <label for=\"input15\">Label checkbox</label>\n    <input id=\"input16\" type=\"checkbox\">\n    <label for=\"input16\">Label checkbox</label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"\">Radios</label>\n    <input name=\"inputRadio\" id=\"input17\" type=\"radio\" checked>\n    <label for=\"input17\">Label radio</label>\n    <input name=\"inputRadio\" id=\"input18\" type=\"radio\">\n    <label for=\"input18\">Label radio</label>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input20\">Select</label> - todo: custom script dropdown\n    <select name=\"\" id=\"input20\">\n      <option value=\"1\">value 1</option>\n      <option value=\"2\">value 2</option>\n      <option value=\"3\">value 3</option>\n    </select>\n  </div>\n</div>";
 
 /***/ }),
 /* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var result = __webpack_require__(79)
-var H = __webpack_require__(0);
+var H = __webpack_require__(1);
 window.Hogan = H;
 module.exports = function() {
 var T = H.compile(result, {});
@@ -16222,14 +16278,14 @@ return T.render.apply(T, arguments); };
 /* 79 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"tab\">\n  <h4>lorem ipsum dolor sit amet (H4)</h4>\n  <p>\n    Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n  </p>\n  <div class=\"txt-center\">\n    <h4>lorem ipsum dolor sit amet (H4) - txt-center</h4>\n    <p>\n      Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n    </p>\n  </div>\n  <div class=\"txt-right\">\n    <h4>lorem ipsum dolor sit amet (H4) - txt-right</h4>\n    <p>\n      Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n    </p>\n  </div>\n  <ul>\n    <li>Lorem ipsum dolor sit amet</li>\n    <li>Lorem ipsum dolor sit amet</li>\n    <li>Lorem ipsum dolor sit amet</li>\n    <ul>\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Lorem ipsum dolor sit amet</li>\n      <ul>\n        <li>Lorem ipsum dolor sit amet</li>\n        <li>Lorem ipsum dolor sit amet</li>\n      </ul>\n      <li>Lorem ipsum dolor sit amet</li>\n    </ul>\n    <li>Lorem ipsum dolor sit amet</li>\n  </ul>\n  <ol>\n    <li>Lorem ipsum dolor sit amet</li>\n    <li>Lorem ipsum dolor sit amet</li>\n    <li>Lorem ipsum dolor sit amet</li>\n    <ol>\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Lorem ipsum dolor sit amet</li>\n      <ol>\n        <li>Lorem ipsum dolor sit amet</li>\n        <li>Lorem ipsum dolor sit amet</li>\n      </ol>\n      <li>Lorem ipsum dolor sit amet</li>\n    </ol>\n    <li>Lorem ipsum dolor sit amet</li>\n  </ol>\n</div>";
+module.exports = "<div class=\"tab\">\n  <div class=\"form-group\">\n    <label for=\"input19\">Textarea</label>\n    <textarea name=\"\" id=\"input19\"></textarea>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input7\">Input password</label>\n    <input id=\"input7\" type=\"password\" placeholder=\"Placeholder ipsum\" value=\"passwordipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input8\">Input email</label>\n    <input id=\"input8\" type=\"email\" placeholder=\"Placeholder ipsum\" value=\"lorem@ipsum.dolor\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input9\">Input email with invalid value</label>\n    <input id=\"input9\" type=\"email\" placeholder=\"Placeholder ipsum\" value=\"loremipsum.dolor\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input10\">Input tel</label> - todo: script ajoutant pattern (contextuel localité) ?\n    <input id=\"input10\" type=\"tel\" placeholder=\"Placeholder ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input11\">Input url</label> - todo: script ajoutant \"http://\" automatiquement au début de l'input\n    <input id=\"input11\" type=\"url\" placeholder=\"Placeholder ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input12\">Input date</label>\n    <input id=\"input12\" type=\"date\" placeholder=\"Placeholder ipsum\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"input13\">Input number</label>\n    <input id=\"input13\" type=\"number\">\n  </div>\n</div>";
 
 /***/ }),
 /* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var result = __webpack_require__(81)
-var H = __webpack_require__(0);
+var H = __webpack_require__(1);
 window.Hogan = H;
 module.exports = function() {
 var T = H.compile(result, {});
@@ -16239,14 +16295,14 @@ return T.render.apply(T, arguments); };
 /* 81 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bd-{{color}} m-bottom\">\n  <h4>lorem ipsum dolor sit amet (H4) - bd-{{color}}</h4>\n  <p>\n    Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n  </p>\n</div>";
+module.exports = "<div class=\"tab\">\n  <h4>lorem ipsum dolor sit amet (H4)</h4>\n  <p>\n    Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n  </p>\n  <div class=\"txt-center\">\n    <h4>lorem ipsum dolor sit amet (H4) - txt-center</h4>\n    <p>\n      Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n    </p>\n  </div>\n  <div class=\"txt-right\">\n    <h4>lorem ipsum dolor sit amet (H4) - txt-right</h4>\n    <p>\n      Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n    </p>\n  </div>\n  <ul>\n    <li>Lorem ipsum dolor sit amet</li>\n    <li>Lorem ipsum dolor sit amet</li>\n    <li>Lorem ipsum dolor sit amet</li>\n    <ul>\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Lorem ipsum dolor sit amet</li>\n      <ul>\n        <li>Lorem ipsum dolor sit amet</li>\n        <li>Lorem ipsum dolor sit amet</li>\n      </ul>\n      <li>Lorem ipsum dolor sit amet</li>\n    </ul>\n    <li>Lorem ipsum dolor sit amet</li>\n  </ul>\n  <ol>\n    <li>Lorem ipsum dolor sit amet</li>\n    <li>Lorem ipsum dolor sit amet</li>\n    <li>Lorem ipsum dolor sit amet</li>\n    <ol>\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Lorem ipsum dolor sit amet</li>\n      <ol>\n        <li>Lorem ipsum dolor sit amet</li>\n        <li>Lorem ipsum dolor sit amet</li>\n      </ol>\n      <li>Lorem ipsum dolor sit amet</li>\n    </ol>\n    <li>Lorem ipsum dolor sit amet</li>\n  </ol>\n</div>";
 
 /***/ }),
 /* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var result = __webpack_require__(83)
-var H = __webpack_require__(0);
+var H = __webpack_require__(1);
 window.Hogan = H;
 module.exports = function() {
 var T = H.compile(result, {});
@@ -16256,14 +16312,14 @@ return T.render.apply(T, arguments); };
 /* 83 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"bg-{{color}} m-bottom\">\n  <h4>lorem ipsum dolor sit amet (H4) - bg-{{color}}</h4>\n  <p>\n    Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n  </p>\n</div>";
+module.exports = "<div class=\"bd-{{color}} m-bottom\">\n  <h4>lorem ipsum dolor sit amet (H4) - bd-{{color}}</h4>\n  <p>\n    Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n  </p>\n</div>";
 
 /***/ }),
 /* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var result = __webpack_require__(85)
-var H = __webpack_require__(0);
+var H = __webpack_require__(1);
 window.Hogan = H;
 module.exports = function() {
 var T = H.compile(result, {});
@@ -16273,14 +16329,14 @@ return T.render.apply(T, arguments); };
 /* 85 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"tab\">\n  <h1>lorem ipsum dolor sit amet (H1)</h1>\n  <h2>lorem ipsum dolor sit amet (H2)</h2>\n  <h3>lorem ipsum dolor sit amet (H3)</h3>\n  <h4>lorem ipsum dolor sit amet (H4)</h4>\n  <h5>lorem ipsum dolor sit amet (H5)</h5>\n  <h6>lorem ipsum dolor sit amet (H6)</h6>\n</div>";
+module.exports = "<div class=\"bg-{{color}} m-bottom\">\n  <h4>lorem ipsum dolor sit amet (H4) - bg-{{color}}</h4>\n  <p>\n    Zombies reversus ab inferno, <a href=\"#\">This is a link</a> nam malum cerebro. De carne <a href=\"#\" disabled>This is a disabled link</a> animata corpora quaeritis. Summus sit​​, morbo vel maleficia? De Apocalypsi undead dictum mauris. Hi mortuis soulless creaturas, imo monstra adventus vultus comedat cerebella viventium. Qui offenderit rapto, terribilem incessu. The voodoo sacerdos suscitat mortuos comedere carnem. Search for solum oculi eorum defunctis cerebro. Nescio an Undead zombies. Sicut malus movie horror.\n  </p>\n</div>";
 
 /***/ }),
 /* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var result = __webpack_require__(87)
-var H = __webpack_require__(0);
+var H = __webpack_require__(1);
 window.Hogan = H;
 module.exports = function() {
 var T = H.compile(result, {});
@@ -16290,14 +16346,14 @@ return T.render.apply(T, arguments); };
 /* 87 */
 /***/ (function(module, exports) {
 
-module.exports = "<h4 class=\"bg-{{color}}\">lorem ipsum (h4) - bg-{{color}}</h4>";
+module.exports = "<div class=\"tab\">\n  <h1>lorem ipsum dolor sit amet (H1)</h1>\n  <h2>lorem ipsum dolor sit amet (H2)</h2>\n  <h3>lorem ipsum dolor sit amet (H3)</h3>\n  <h4>lorem ipsum dolor sit amet (H4)</h4>\n  <h5>lorem ipsum dolor sit amet (H5)</h5>\n  <h6>lorem ipsum dolor sit amet (H6)</h6>\n</div>";
 
 /***/ }),
 /* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var result = __webpack_require__(89)
-var H = __webpack_require__(0);
+var H = __webpack_require__(1);
 window.Hogan = H;
 module.exports = function() {
 var T = H.compile(result, {});
@@ -16307,55 +16363,72 @@ return T.render.apply(T, arguments); };
 /* 89 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"tab\">\n  <h4 class=\"sep-top\">lorem ipsum (h4) - sep-top</h4>\n  <h4 class=\"sep-bottom\">lorem ipsum (h4) - sep-bottom</h4>\n  <h4 class=\"sep-top sep-bottom\">lorem ipsum (h4) - sep-top sep-bottom</h4>\n\n  <h4 class=\"sep-left\">lorem ipsum (h4) - sep-left</h4>\n  <h4 class=\"sep-right\">lorem ipsum (h4) - sep-right</h4>\n  <h4 class=\"sep-left sep-right\">lorem ipsum (h4) - sep-left sep-right</h4>\n</div>";
+module.exports = "<h4 class=\"bg-{{color}}\">lorem ipsum (h4) - bg-{{color}}</h4>";
 
 /***/ }),
 /* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var result = __webpack_require__(91)
-var H = __webpack_require__(0);
-window.Hogan = H;
-module.exports = function() {
-var T = H.compile(result, {});
-return T; }();
-
-/***/ }),
-/* 91 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"col-12 col-md-6 col-lg-4 flex-column-flexgrow--1\">\n  <div class=\"ft-b txt-center flexgrow--0\">- {{title}} -</div>\n  <ul class=\"bd-right bd-bottom p-left-0\">\n    {{> rows}}\n  </ul>\n</div>";
-
-/***/ }),
-/* 92 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var result = __webpack_require__(93)
-var H = __webpack_require__(0);
+var H = __webpack_require__(1);
 window.Hogan = H;
 module.exports = function() {
 var T = H.compile(result, {});
 return T.render.apply(T, arguments); };
 
 /***/ }),
+/* 91 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"tab\">\n  <h4 class=\"sep-top\">lorem ipsum (h4) - sep-top</h4>\n  <h4 class=\"sep-bottom\">lorem ipsum (h4) - sep-bottom</h4>\n  <h4 class=\"sep-top sep-bottom\">lorem ipsum (h4) - sep-top sep-bottom</h4>\n\n  <h4 class=\"sep-left\">lorem ipsum (h4) - sep-left</h4>\n  <h4 class=\"sep-right\">lorem ipsum (h4) - sep-right</h4>\n  <h4 class=\"sep-left sep-right\">lorem ipsum (h4) - sep-left sep-right</h4>\n</div>";
+
+/***/ }),
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(93)
+var H = __webpack_require__(1);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T; }();
+
+/***/ }),
 /* 93 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"col-12 col-md-6 col-lg-4 flex-column-flexgrow--1\">\n  <div class=\"ft-b txt-center flexgrow--0\">- {{title}} -</div>\n  <ul class=\"bd-right bd-bottom p-left-0\">\n    {{> rows}}\n  </ul>\n</div>";
+
+/***/ }),
+/* 94 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var result = __webpack_require__(95)
+var H = __webpack_require__(1);
+window.Hogan = H;
+module.exports = function() {
+var T = H.compile(result, {});
+return T.render.apply(T, arguments); };
+
+/***/ }),
+/* 95 */
 /***/ (function(module, exports) {
 
 module.exports = "<li class=\"bd-bottom-grey-1 p-bottom-0 flex-justifycontent--spacebetween\">\n  {{{str}}}\n</li>";
 
 /***/ }),
-/* 94 */
+/* 96 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 module.exports = {"radius":"2px","spacing":"30px","border-default-size":"2px","border-default-color":"#000000","colors":"(\"blue\": #004C79, \"green\": #5cb85c, \"orange\": #DC6053, \"darkblue\": #0a1d29, \"gold\": #edbe5f, \"black\": #000000, \"blacklight\": #111414, \"blacklighter\": #222222, \"greystronger\": #424041, \"greystrong\": #535052, \"grey\": #7A7778, \"greylight\": #DDDDDD, \"greylighter\": #EEEEEE, \"white\": #ffffff, \"none\": transparent)","breakpoints":"(\"xl\": 1400px, \"lg\": 1200px, \"md\": 992px, \"sm\": 768px, \"xs\": 620px, \"xxs\": 520px)","body":"(\"background\": #ffffff, \"font-color\": #424041, \"font-size\": 20px, \"title-font-color\": #111414)","header":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","footer":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","input":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #424041, \"border-size\": 1px, \"placeholder-font-color\": #7A7778, \"radius\": false)","input-focus":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #424041)","input-valid":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #5cb85c)","input-invalid":"(\"background\": #ffffff, \"font-color\": #424041, \"border-color\": #DC6053)","link":"(\"font-color\": #DC6053, \"font-color-hover\": #DC6053, \"font-color-focus\": #DC6053)","btn":"(\"background\": #424041, \"font-color\": #ffffff, \"border-size\": 2px, \"radius\": true, \"extend\": \".btn-bg-darkblue\")","enable-bg":"true","enable-bg-extended":"false","enable-bd":"true"};
 
 /***/ }),
-/* 95 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./user/_config.scss": 96
+	"./user/_config.scss": 98
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -16371,34 +16444,34 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 95;
+webpackContext.id = 97;
 
 /***/ }),
-/* 96 */
+/* 98 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 module.exports = {"radius":"2px","spacing":"30px","border-default-size":"2px","border-default-color":"#000000","colors":"(\"blue\": #004C79, \"green\": #5cb85c, \"orange\": #DC6053, \"darkblue\": #0a1d29, \"gold\": #edbe5f, \"black\": #000000, \"blacklight\": #111414, \"blacklighter\": #222222, \"greystronger\": #424041, \"greystrong\": #535052, \"grey\": #7A7778, \"greylight\": #DDDDDD, \"greylighter\": #EEEEEE, \"white\": #ffffff, \"none\": transparent)","breakpoints":"(\"xl\": 1400px, \"lg\": 1200px, \"md\": 992px, \"sm\": 768px, \"xs\": 620px, \"xxs\": 520px)","body":"(\"background\": #ffffff, \"font-color\": #424041, \"font-size\": 20px, \"title-font-color\": #111414)","header":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","footer":"(\"background\": #ffffff, \"font-color\": #ffffff, \"font-size\": 20px)","input":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #424041, \"border-size\": 2px, \"placeholder-font-color\": #7A7778, \"radius\": true)","input-focus":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #424041)","input-valid":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #5cb85c)","input-invalid":"(\"background\": transparent, \"font-color\": #424041, \"border-color\": #DC6053)","link":"(\"font-color\": #DC6053, \"font-color-hover\": #DC6053, \"font-color-focus\": #DC6053)","btn":"(\"background\": #424041, \"font-color\": #ffffff, \"border-size\": 2px, \"radius\": true, \"extend\": \".btn-bg-darkblue\")","enable-bg":"true","enable-bg-extended":"false","enable-bd":"true"};
 
 /***/ }),
-/* 97 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var result = __webpack_require__(98)
-var H = __webpack_require__(0);
+var result = __webpack_require__(100)
+var H = __webpack_require__(1);
 window.Hogan = H;
 module.exports = function() {
 var T = H.compile(result, {});
 return T.render.apply(T, arguments); };
 
 /***/ }),
-/* 98 */
+/* 100 */
 /***/ (function(module, exports) {
 
 module.exports = "<nav class=\"bg-greystronger\">\n  <ul>\n    <li><a href=\"#framway__config\">Config</a></li>\n    <li>\n      <a href=\"#framway__classes\">Classes</a>\n      {{{classes.nav}}}\n    </li>\n    <li>\n      <a href=\"#framway__styling\">Examples</a>\n      {{{styling.nav}}}\n    </li>\n    <li>\n      <a href=\"#framway__components\">Components</a>\n      {{{components.nav}}}\n    </li>\n  </ul>\n</nav>\n<div class=\"content container-fluid p-x-x2 p-top\">\n  <h1>Framway's config & guideline</h1>\n  <div class=\"item\" id=\"framway__config\">\n    <div class=\"row\">\n      {{{config}}}\n    </div>\n  </div>\n  <div class=\"item\" id=\"framway__classes\">\n      {{{classes.content}}}\n  </div>\n  <div class=\"item\" id=\"framway__styling\">\n      {{{styling.content}}}\n  </div>\n  <div class=\"item\" id=\"framway__components\">\n      {{{components.content}}}\n  </div>\n</div>";
 
 /***/ }),
-/* 99 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16463,16 +16536,16 @@ $(function () {
     });
   });
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(2)))
 
 /***/ }),
-/* 100 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function($, utils) {
 
-__webpack_require__(101);
+__webpack_require__(103);
 
 $.fn.select2FW = function select2FW() {
   app._select2FW = app._select2FW || [];
@@ -16508,10 +16581,10 @@ $(function () {
     item.select2FW();
   });
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(2)))
 
 /***/ }),
-/* 101 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;var require;/*!
@@ -16524,7 +16597,7 @@ $(function () {
 ;(function (factory) {
   if (true) {
     // AMD. Register as an anonymous module.
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(0)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -22365,10 +22438,10 @@ S2.define('jquery.select2',[
   return select2;
 }));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 102 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22568,10 +22641,10 @@ $(function () {
     });
   });
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(2)))
 
 /***/ }),
-/* 103 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22633,14 +22706,14 @@ $(function () {
     });
   });
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(2)))
 
 /***/ }),
-/* 104 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./user/user.js": 105
+	"./user/user.js": 107
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -22656,20 +22729,20 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 104;
+webpackContext.id = 106;
 
 /***/ }),
-/* 105 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function($) {
 
 $(function () {});
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 106 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22721,7 +22794,7 @@ if (!Array.prototype.find) {
 }
 
 /***/ }),
-/* 107 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22847,7 +22920,7 @@ Component.prototype.getData = function (label) {
 };
 
 module.exports = Component;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(0)))
 
 /***/ })
 /******/ ]);
