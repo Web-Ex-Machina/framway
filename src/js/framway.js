@@ -61,7 +61,7 @@ Framway.prototype.log = function(strLog, blnDebug = false){
       framway.$debug.html(content).show();
       framway.$debug.scrollTop(framway.$debug[0].scrollHeight);
   }
-  console.log('─'.repeat(15));
+  console.log('───────────────');
   console.log(strLog);
   return framway;
 };

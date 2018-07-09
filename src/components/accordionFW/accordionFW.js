@@ -1,15 +1,15 @@
 var AccordionFW = new Component("accordionFW");
-AccordionFW.debug = true;
+AccordionFW.debug = false;
 
 AccordionFW.prototype.onCreate = function(){
   var acc = this;
   acc.$el.find('.accordionFW__content').wrapInner('<div class="accordionFW__content__wrapper"></div>');
   acc.$items = acc.$el.find('.accordionFW__item');
   acc.deployall = acc.getData('deployall',false);
-  acc.collapsible = acc.getData('collapsible',true);
+  acc.disable = acc.getData('disable',false);
   acc.autocollapse = acc.getData('autocollapse',false);
 
-  if(acc.deployall || !acc.collapsible)
+  if(acc.deployall || acc.disable)
     acc.deployItem(acc.$items);
 
   acc.$el.find('.accordionFW__title').on('click',function(){
@@ -19,7 +19,7 @@ AccordionFW.prototype.onCreate = function(){
   })
 
   acc.$items.each(function(index,item){
-    if($(item).hasClass('lock'))
+    if($(item).hasClass('active') || $(item).hasClass('lock'))
       acc.deployItem($(item));
   });
 }
