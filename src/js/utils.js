@@ -234,6 +234,9 @@ var Utils = function Utils(){
   utils.lowerize = function(str){
     return str.charAt(0).toLowerCase() + str.slice(1);
   }
+  utils.normalize = function(str){
+    return str.toLowerCase().replace(/ |\./g,'_');
+  }
 
 
   // NOTIFICATIONS SETUP

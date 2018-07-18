@@ -13,6 +13,7 @@ module.exports = {
     'select2FW',
     'btn-load',
     'accordionFW',
+    'headerFW',
     'guideline',
   ],
 }

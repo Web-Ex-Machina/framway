@@ -36,14 +36,14 @@ $body: (
 
 $header: (
   'background': color(white),
-  'font-color': color(white),
+  'font-color': color(greystronger),
   'font-size': body(font-size),
 );
 @function header($property) {@return map-get($header, '#{$property}'); }
 
 $footer: (
   'background': color(white),
-  'font-color': color(white),
+  'font-color': color(greystronger),
   'font-size': body(font-size),
 );
 @function footer($property) {@return map-get($footer, '#{$property}'); }

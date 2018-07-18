@@ -55,7 +55,7 @@ pre .copy{position: absolute; right: $spacing; @extend .btn-sm;}
 .no-overflow{overflow:hidden;}
 
 .hidden,
-.invisible{display: none;}
+.invisible{display: none !important;}
 
 .ellipsis{@include ellipsis();}
 

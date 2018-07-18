@@ -1,8 +1,8 @@
 #guideline{@include flex-container();
   &:before{ content:""; display: block; background: url('./../img/san_francisco_tramway.jpg') center center no-repeat; background-size: cover; position: absolute; top: 0; bottom: 0; right: 0; left: 0; z-index: -1; opacity: 0.3; @include filter(blur(2px)) }
 }
-#guideline nav{ padding: $spacing $spacing $spacing $spacing/2;}
-#guideline nav a{text-decoration: none; &.active{text-decoration: underline;}}
+#guideline>nav{ padding: $spacing $spacing $spacing $spacing/2;}
+#guideline>nav a{text-decoration: none; &.active{text-decoration: underline;}}
 #guideline .content{height: 100vh;width: 100%; overflow: auto;}
 
 #guideline .content .item{ padding: $spacing 0 $spacing;
