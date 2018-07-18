@@ -10,6 +10,7 @@ module.exports = {
     'block-list',
     'block-std',
     'block-img',
+    'block-flip',
     'select2FW',
     'btn-load',
     'accordionFW',

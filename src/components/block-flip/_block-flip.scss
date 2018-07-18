@@ -1,0 +1,27 @@
+.block-flip{@extend .block-list !optional;}
+.block-flip__wrapper{@extend .block-list__wrapper !optional;}
+.block-flip__front{@extend .block-list__figure !optional;}
+.block-flip__back{@extend .block-list__content !optional;}
+
+.block-flip{ perspective: 1000px; transform-style: preserve-3d; z-index: 1;
+  &:hover,&.hover,&.active{
+    .block-flip__wrapper{transform: rotateY(-180deg);}
+  }
+}
+.block-flip__wrapper{transition: all 0.6s; position: relative; transform-style: preserve-3d; width: 100%; background: none;
+  &:after,&:before{backface-visibility: hidden;}
+}
+.block-flip__front,
+.block-flip__back{backface-visibility: hidden; transition: all 0.6s; }
+.block-flip__front{transform: rotateY(0deg); z-index: 1;
+  .front--backface &{backface-visibility: visible;}
+}
+.block-flip__back{transform: rotateY(-180deg); position: absolute; top: 0; left: 0;right: 0;bottom: 0;
+  &:after{@include pseudo(); top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-color: body(background);}
+  @each $key, $value in $colors{
+    .back__bg--#{$key} &:after{ background-color: $value;}
+  }
+  @for $index from 0 through 10 {
+    .back__bg__opacity--#{$index} &:after{opacity: $index*.1;}
+  }
+}

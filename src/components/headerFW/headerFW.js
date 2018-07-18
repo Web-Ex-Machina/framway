@@ -1,5 +1,5 @@
 var HeaderFW = new Component("headerFW");
-HeaderFW.debug = true;
+HeaderFW.debug = false;
 
 HeaderFW.prototype.onCreate = function(){
   var header = this;
@@ -70,9 +70,9 @@ HeaderFW.prototype.onCreate = function(){
   });
 
   delete Hammer.defaults.cssProps.userSelect;
-  var menuSwipe = new Hammer($('body').get(0));
-  menuSwipe.get('swipe').set({ direction: Hammer.DIRECTION_HORIZONTAL, threshold: 150 });
-  var menuEvents = function(event){
+  header.menuSwipe = new Hammer($('body').get(0));
+  header.menuSwipe.get('swipe').set({ direction: Hammer.DIRECTION_HORIZONTAL, threshold: 150 });
+  header.menuEvents = function(event){
       switch(event.type){
           case 'swipeleft':
             if(header.$navPanel.hasClass('active'))
@@ -95,18 +95,7 @@ HeaderFW.prototype.onCreate = function(){
   }, true);
 
   $(window).resize(function(){
-    var isOffset = false;
-    if((header.$nav.position().left + header.$navInline.children().outerWidth()).toFixed(2) > header.$el.outerWidth() || header.$nav.position().left < 0)
-      isOffset = true;
-    if(isOffset){
-      header.$el.addClass('reduced');
-      menuSwipe.on('swipeleft swiperight', menuEvents);
-    }
-    else{
-      if(!header.$navPanel.hasClass('active'))
-        header.$el.removeClass('reduced');
-      menuSwipe.off('swipeleft swiperight');
-    }
+    header.resizeOnTheFly();
   });
 
   // PANEL INIT STATE
@@ -116,6 +105,21 @@ HeaderFW.prototype.onCreate = function(){
 };
 
 
+HeaderFW.prototype.resizeOnTheFly = function(){
+  var header = this;
+  var isOffset = false;
+  if((header.$nav.position().left + header.$navInline.children().outerWidth()).toFixed(2) > header.$el.outerWidth() || header.$nav.position().left < 0)
+    isOffset = true;
+  if(isOffset){
+    header.$el.addClass('reduced');
+    header.menuSwipe.on('swipeleft swiperight', header.menuEvents);
+  }
+  else{
+    if(!header.$navPanel.hasClass('active'))
+      header.$el.removeClass('reduced');
+    header.menuSwipe.off('swipeleft swiperight');
+  }
+};
 HeaderFW.prototype.onResize = function(){
   var header = this;
   header.$navInline.find('ul ul').addClass('no-transition').removeClass('offset-right').each(function(){
