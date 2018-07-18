@@ -1,4 +1,4 @@
-.block-list{ display: flex; font-size: 0.9rem;
+.block-list{ display: flex; font-size: 0.9rem; margin-bottom: $spacing;
   & .block-list__wrapper{ display: flex; flex-direction: column; padding: 0; text-decoration: none; color: inherit; position: relative;
     &:hover{color: inherit;text-decoration: none;}
     & .block-list__figure{flex-grow: 0; }
@@ -7,10 +7,7 @@
 .block-list__wrapper{@extend
   %paper,
   %lift,
-  .bg-white,
-  .m-bottom,
-  .p-all
-  !optional;
+  .bg-white;
   @each $key, $value in $colors{
     .content__bg--#{$key} &{ background-color: $value; }
     .headline--outer.content__bg--#{$key} & .block-list__headline>div{ background-color: rgba($value,1); }
