@@ -13,7 +13,7 @@
 }
 .block-flip__front,
 .block-flip__back{backface-visibility: hidden; transition: all 0.6s; }
-.block-flip__front{transform: rotateY(0deg); z-index: 1;
+.block-flip__front{transform: translateZ(1px) rotateY(0deg); z-index: 1;
   .front--backface &{backface-visibility: visible;}
 }
 .block-flip__back{transform: rotateY(-180deg); position: absolute; top: 0; left: 0;right: 0;bottom: 0;
