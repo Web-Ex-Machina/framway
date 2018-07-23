@@ -3,6 +3,7 @@ HeaderFW.debug = false;
 
 HeaderFW.prototype.onCreate = function(){
   var header = this;
+  header.clone = header.$el.clone().attr('id','headerFW--clone').insertAfter(header.$el).find('nav').addClass('active');
   header.$headbanner = header.$el.find('.headerFW__headbanner');
   header.$nav = header.$el.find('.headerFW__nav');
   header.$navInline = header.$nav.find('.headerFW__nav__inline');
@@ -89,7 +90,7 @@ HeaderFW.prototype.onCreate = function(){
   // scroll listener
   window.addEventListener('scroll', function(){
     header.$el.removeClass('stick');
-    if(header.$el.offset().top <= 0 || header.$navPanel.hasClass('active')) header.$el.addClass('stick');
+    if(header.$el.offset().top - $(window).scrollTop() < 0 || header.$navPanel.hasClass('active')) header.$el.addClass('stick');
     else header.$el.removeClass('stick');
     $(window).trigger('resize');
   }, true);
@@ -101,6 +102,7 @@ HeaderFW.prototype.onCreate = function(){
   // PANEL INIT STATE
   header.navPanelMenus.root.$el.addClass('active');
   $(window).trigger('resize');
+  header.onResize();
   // setTimeout(function(){header.$toggler.trigger('click');},1);
 };
 

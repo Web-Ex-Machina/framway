@@ -118,17 +118,19 @@ $z_header : 100;
   }
   // ARROWED
   &.nav--arrowed{
-    & .headerFW__nav__inline{
-      & ul ul{ top:100%;
-        &:before{@include pseudo(); @include size(30px); top: 1px; left: 50%; transform: translate(-50%,-50%) rotate(45deg); background: #fff; filter: drop-shadow(-3px -3px 2px rgba(0,0,0,.2));
-          @if header(background) {background: linear-gradient(to right bottom ,header(background) 50%, transparent 0); }
+    & .headerFW__nav{
+      & .headerFW__nav__inline{
+        & ul ul{ top:100%;
+          &:before{@include pseudo(); @include size(30px); top: 1px; left: 50%; transform: translate(-50%,-50%) rotate(45deg); background: #fff; filter: drop-shadow(-3px -3px 2px rgba(0,0,0,.2));
+            @if header(background) {background: linear-gradient(to right bottom ,header(background) 50%, transparent 0); }
+          }
+          &.offset-right:before{left: auto; right: 15%; transform: translateX(0) translateY(-50%) rotate(45deg); }
         }
-        &.offset-right:before{left: auto; right: 15%; transform: translateX(0) translateY(-50%) rotate(45deg); }
-      }
-      & ul ul ul{left:100%; top: -0.6rem;
-        &.offset-right{left: auto; right: 100%;}
-        &:before{ transform: translate(-50%,-50%) rotate(-45deg); top: 22%; left:1px; @include size(20px); }
-        &.offset-right:before{left: auto; right: 1px; transform: translate(50%,-50%) rotate(135deg); }
+        & ul ul ul{left:100%; top: -0.6rem;
+          &.offset-right{left: auto; right: 100%;}
+          &:before{ transform: translate(-50%,-50%) rotate(-45deg); top: 22%; left:1px; @include size(20px); }
+          &.offset-right:before{left: auto; right: 1px; transform: translate(50%,-50%) rotate(135deg); }
+        }
       }
     }
   }
@@ -156,7 +158,8 @@ $z_header : 100;
     }
   }
   // HEADER STICK STATE
-  &.stick{ position: fixed; top: 0; left: 0; right: 0;
-
-  }
+  &.stick{ position: fixed; top: 0; left: 0; right: 0; }
 }
+
+.headerFW+.headerFW{width: 100%; position: absolute; z-index: 0; pointer-events: none; opacity: 0; visibility: hidden;}
+.headerFW.stick+.headerFW{position: relative;}
