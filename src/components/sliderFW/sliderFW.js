@@ -14,6 +14,7 @@ var SliderFW = function SliderFW(item){
   slider.content.items.each(function(){
     $('<span class="sliderFW__nav__item"></span>').appendTo(slider.$nav);
   });
+  slider.arrowed = slider.$el.data('arrows') || false;
   slider.loop = slider.$el.data('loop') || false;
   slider.auto = slider.$el.data('auto') || false;
 
@@ -41,6 +42,16 @@ var SliderFW = function SliderFW(item){
       }
     });
     slider.$nav.children().first().trigger('click');
+  }
+
+  if(slider.arrowed){
+    slider.content.$el.append('<div class="sliderFW__arrow prev"></div><div class="sliderFW__arrow next"></div>');
+    slider.$el.find('.sliderFW__arrow').bind('click',function(e){
+      if($(this).hasClass('prev'))
+        slider.goToPrev();
+      if($(this).hasClass('next'))
+        slider.goToNext();
+    });
   }
 
   slider.setHeight();

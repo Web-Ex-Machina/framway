@@ -141,7 +141,7 @@ $z_header : 100;
       & .headerFW__nav__inline{min-height: 0; height: 0;}
     }
     &.nav--center{
-      & .headerFW__nav{margin: auto;}
+      & .headerFW__nav{width: 100%; justify-content: center;}
     }
   }
   &.headbanner--allowcontent{
@@ -158,7 +158,14 @@ $z_header : 100;
     }
   }
   // HEADER STICK STATE
-  &.stick{ position: fixed; top: 0; left: 0; right: 0; }
+  &.stick{ position: fixed; top: 0; left: 0; right: 0;
+    &.headbanner--above {
+      &.reduced{min-height: 80px;
+        & .headerFW__nav{height: 0;}
+      }
+      & .headerFW__headbanner{display: none;}
+    }
+  }
 }
 
 .headerFW+.headerFW{width: 100%; position: absolute; z-index: 0; pointer-events: none; opacity: 0; visibility: hidden;}

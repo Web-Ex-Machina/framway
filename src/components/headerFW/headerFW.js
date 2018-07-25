@@ -3,13 +3,19 @@ HeaderFW.debug = false;
 
 HeaderFW.prototype.onCreate = function(){
   var header = this;
-  header.clone = header.$el.clone().attr('id','headerFW--clone').insertAfter(header.$el).find('nav').addClass('active');
+  header.$clone = header.$el.clone().attr('id','headerFW--clone').insertAfter(header.$el);
   header.$headbanner = header.$el.find('.headerFW__headbanner');
   header.$nav = header.$el.find('.headerFW__nav');
   header.$navInline = header.$nav.find('.headerFW__nav__inline');
   header.$navPanel = $('<div class="headerFW__nav__panel"></div>').appendTo(header.$nav);
   header.$toggler = $('<div class="headerFW__nav__toggler"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>').appendTo(header.$nav);
   header.$loader = $('<div class="loader"><i class="fas fa-circle-notch fa-spin"></i></div>').insertAfter(header.$nav);
+  header.hasStick = header.getData('stick',true);
+  header.$stickyEl = header.$el;
+  if(header.$el.hasClass('headbanner--above'))
+    header.$stickyEl = header.$nav;
+
+  header.$clone.find('nav').addClass('active');
 
   // PANEL CONSTRUCT
   header.navPanelMenus = {};
@@ -50,10 +56,15 @@ HeaderFW.prototype.onCreate = function(){
   header.$toggler.on('click',function(e){
     header.$toggler.toggleClass('active');
     header.$navPanel.toggleClass('active');
-    if(header.$toggler.hasClass('active'))
-      header.$el.addClass('stick reduced');
+    if(header.$toggler.hasClass('active')){
+      if(header.hasStick)
+        header.$el.addClass('stick');
+      header.$clone.addClass('reduced');
+      header.$el.addClass('reduced');
+    }
     else{
-      header.$el.removeClass('stick');
+      if(header.hasStick)
+        header.$el.removeClass('stick');
       window.dispatchEvent( new Event('scroll') );
     }
   });
@@ -89,9 +100,11 @@ HeaderFW.prototype.onCreate = function(){
 
   // scroll listener
   window.addEventListener('scroll', function(){
-    header.$el.removeClass('stick');
-    if(header.$el.offset().top - $(window).scrollTop() < 0 || header.$navPanel.hasClass('active')) header.$el.addClass('stick');
-    else header.$el.removeClass('stick');
+    if(header.hasStick){
+      header.$el.removeClass('stick');
+      if(header.$stickyEl.offset().top - $(window).scrollTop() < 0 || header.$navPanel.hasClass('active'))
+        header.$el.addClass('stick');
+    }
     $(window).trigger('resize');
   }, true);
 
@@ -110,15 +123,18 @@ HeaderFW.prototype.onCreate = function(){
 HeaderFW.prototype.resizeOnTheFly = function(){
   var header = this;
   var isOffset = false;
-  if((header.$nav.position().left + header.$navInline.children().outerWidth()).toFixed(2) > header.$el.outerWidth() || header.$nav.position().left < 0)
+  if((header.$nav.position().left + header.$navInline.children().outerWidth()).toFixed(2) > header.$el.outerWidth() || header.$nav.position().left.toFixed(2) < 0)
     isOffset = true;
   if(isOffset){
+    header.$clone.addClass('reduced');
     header.$el.addClass('reduced');
     header.menuSwipe.on('swipeleft swiperight', header.menuEvents);
   }
   else{
-    if(!header.$navPanel.hasClass('active'))
+    if(!header.$navPanel.hasClass('active')){
+      header.$clone.removeClass('reduced');
       header.$el.removeClass('reduced');
+    }
     header.menuSwipe.off('swipeleft swiperight');
   }
 };
