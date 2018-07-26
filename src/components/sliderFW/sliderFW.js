@@ -143,18 +143,13 @@ SliderFW.prototype.setHeight = function() {
     heightBox = slider.$el.data('height');
   }
   else{
+    slider.$el.find('.sliderFW__item__content').css('height','auto');
     slider.content.items.each(function(index,item){
-      var $clone = $(item).children('.sliderFW__item__content').clone().css({
-        'height': 'auto',
-        'transition':'none',
-        'opacity':'1',
-        'visibility':'hidden'
-      }).appendTo('body');
-      if($clone.outerHeight() > heightBox){
-        heightBox = $clone.outerHeight() + slider.$nav.height();
+      if($(item).children('.sliderFW__item__content').get(0).scrollHeight > heightBox){
+        heightBox = $(item).children('.sliderFW__item__content').get(0).scrollHeight + slider.$nav.height();
       }
-      $clone.remove();
     });
+    slider.$el.find('.sliderFW__item__content').css('height','100%');
   }
   if(this.$el.data('height') == "viewport"){
     heightBox = viewport.height - $('#header').outerHeight();

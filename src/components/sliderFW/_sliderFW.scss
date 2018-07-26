@@ -1,6 +1,11 @@
 .sliderFW{margin-bottom: $spacing;
   &.preset--testimonial{@extend .content--center,.content__text--center,.content--noblur;
-    & .sliderFW__item__content{background: none; min-width: 70%; padding: $spacing 4rem; text-align: center; font-style: italic; font-size: 1.1rem; color: rgba(body(font-color),0.8);}
+    & .sliderFW__item__content{background: none; width: fit-content; max-width: 800px; padding: $spacing 4rem; text-align: center;
+      & .author{@extend .quote;text-align: right; color: body(title-font-color); margin-right: -2rem;
+        &:after,
+        &:before{content:" - "; opacity: 0.8;}
+      }
+    }
   }
   &[data-arrows="true"]{@extend .nav--hidden;}
 }
@@ -59,7 +64,7 @@
   .nav--top &{bottom: auto; top: 0;}
 }
 .sliderFW__arrow{width: 4rem;  position: absolute; z-index: 1; cursor: pointer; top: 0; bottom: 0;
-  &:after{@include pseudo();opacity: 0.5; border: 4px solid rgba(body(font-color),1); border-left: 0; border-top: 0; @include size(3rem); border-bottom-right-radius: 2px; top: 50%; left: 60%; transition: all 0.4s; transform: translate(-50%,-50%) rotateX(0deg) rotateZ(135deg) skew(-20deg,-20deg); margin-top: 0;}
+  &:after{@include pseudo();opacity: 0.3; border: 4px solid rgba(body(font-color),1); border-left: 0; border-top: 0; @include size(3rem); border-bottom-right-radius: 2px; top: 50%; left: 60%; transition: all 0.4s; transform: translate(-50%,-50%) rotateX(0deg) rotateZ(135deg) skew(-20deg,-20deg); margin-top: 0;}
   &:hover:after{opacity: 1;}
   &.prev{left: 0;}
   &.next{right: 0;
