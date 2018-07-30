@@ -8,7 +8,9 @@ require('./js/framway.js');
 app.loadThemes(config.themes);
 app.loadComponents(config.components);
 
-
 $(function(){
-  app.log(app);
+  setTimeout(function(){
+    app.log('APP READY');
+    console.log(app);
+  });
 })

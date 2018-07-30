@@ -1,7 +1,7 @@
 function Framway(){
   var framway = this;
   framway.components = [];
-  framway.components_loaded = {};
+  framway.components_active = {};
   framway.themes = [];
   framway.$debug = $('<div id="debug"></div>').appendTo($('body'));
   framway.debug = false;
@@ -14,17 +14,19 @@ function Framway(){
  */
 Framway.prototype.loadComponents = function(arrComponents){
   var framway = this;
-  $.each(arrComponents,function(index,name){
-    try{
-      require('../components/'+name+'/'+name+'.js');
-      framway.components.push(name);
-    } catch(e){
-      framway.log('Component '+ name + ' failed to load.\n'+e);
-    }
+  return new Promise(function(resolve,reject){
+    $.each(arrComponents,function(index,name){
+      try{
+        require('../components/'+name+'/'+name+'.js');
+        framway.components.push(name);
+      } catch(e){
+        framway.log('Component '+ name + ' failed to load.\n'+e);
+      }
+    });
+    if(framway.components.length)
+      framway.log('Component(s) sucessfully loaded: \n - '+ framway.components.join('\n - '));
+    resolve();
   });
-  if(framway.components.length)
-    framway.log('Component(s) sucessfully loaded: \n - '+ framway.components.join('\n - '));
-  return framway;
 };
 
 /**
@@ -33,17 +35,19 @@ Framway.prototype.loadComponents = function(arrComponents){
  */
 Framway.prototype.loadThemes = function(arrThemes){
   var framway = this;
-  $.each(arrThemes,function(index,name){
-    try{
-      require('../themes/'+name+'/'+name+'.js');
-      framway.themes.push(name);
-    } catch(e){
-      framway.log('Component '+ name + ' failed to load.\n'+e);
-    }
+  return new Promise(function(resolve,reject){
+    $.each(arrThemes,function(index,name){
+      try{
+        require('../themes/'+name+'/'+name+'.js');
+        framway.themes.push(name);
+      } catch(e){
+        framway.log('Component '+ name + ' failed to load.\n'+e);
+      }
+    });
+    if(framway.themes.length)
+      framway.log('Theme(s) sucessfully loaded: \n - '+ framway.themes.join('\n - '));
+    resolve();
   });
-  if(framway.themes.length)
-    framway.log('Theme(s) sucessfully loaded: \n - '+ framway.themes.join('\n - '));
-  return framway;
 };
 
 

@@ -6,17 +6,18 @@
 /* Core styles */
 @import 'core';
 /* Components styles */
-@import '../components/heroFW/heroFW';
-@import '../components/sliderFW/sliderFW';
-@import '../components/tabs/tabs';
-@import '../components/foldingbox/foldingbox';
 @import '../components/block-list/block-list';
 @import '../components/block-std/block-std';
 @import '../components/block-img/block-img';
 @import '../components/block-flip/block-flip';
-@import '../components/select2FW/select2FW';
 @import '../components/btn-load/btn-load';
 @import '../components/accordionFW/accordionFW';
 @import '../components/headerFW/headerFW';
+@import '../components/heroFW/heroFW';
+@import '../components/sliderFW/sliderFW';
+@import '../components/select2FW/select2FW';
+@import '../components/foldingbox/foldingbox';
+@import '../components/tabs/tabs';
+@import '../components/goto/goto';
 @import '../components/guideline/guideline';
 /* Themes styles override */

@@ -1,23 +1,15 @@
-$.fn.heroFW = function heroFW(){
-  app._heroFW = app._heroFW || [];
-  $(this).each(function(){
-    app._heroFW.push(new HeroFW(this));
-  });
-};
+var HeroFW = new Component("heroFW");
+HeroFW.debug = false;
 
-var HeroFW = function HeroFW(item){
+HeroFW.prototype.onCreate = function(){
   var heroFW = this;
-  heroFW.$el = $(item);
-  heroFW.content = {$el : $(item).find('.heroFW__content'),};
-
+  heroFW.content = {$el : heroFW.$el.find('.heroFW__content'),};
   heroFW.setHeight();
+}
 
-  heroFW.$el.on('destroyed',function(){
-    app._heroFW.splice(app._heroFW.indexOf(heroFW),1);
-    heroFW = undefined;
-  });
-
-  return heroFW;
+HeroFW.prototype.onResize = function(){
+  var heroFW = this;
+  heroFW.setHeight();
 }
 
 HeroFW.prototype.setHeight = function() {
@@ -32,29 +24,3 @@ HeroFW.prototype.setHeight = function() {
     this.$el.height(heightBox);
   return this;
 };
-
-HeroFW.prototype.destroy = function() {
-  this.$el.remove();
-};
-
-var timerResize;
-HeroFW.prototype.resize = function() {
-  var heroFW = this;
-  clearTimeout(timerResize);
-  timerResize = setTimeout(function(){
-    heroFW.setHeight();
-  },300);
-};
-
-$(function () {
-  $('.heroFW').heroFW();
-  utils.addHtmlHook('.heroFW', function(item){
-    item.heroFW();
-  });
-
-  $(window).resize(function(){
-    $.each(app._heroFW, function(){
-      this.resize();
-    });
-  });
-});

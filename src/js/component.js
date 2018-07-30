@@ -12,7 +12,7 @@ var Component = function Component(name){
       // event destroyed
       obj.$el.on('destroyed',function(){
         obj.log('destroyed');
-        app.components_loaded['_'+$name].splice(app.components_loaded['_'+$name].indexOf(obj),1);
+        app.components_active[$name].splice(app.components_active[$name].indexOf(obj),1);
         obj = undefined;
       });
     }
@@ -24,14 +24,37 @@ var Component = function Component(name){
   // component's private vars and stuff
   component.debug = app.debug;
 
+
   // component's jQuery plugin creation
-  $.fn[$name] = function(){
-    app.components_loaded['_'+$name] = app.components_loaded['_'+$name] || [];
-    $(this).each(function(){
-      var obj = new component(this);
-      app.components_loaded['_'+$name].push(obj);
-      obj.onCreate();
-    });
+  $.fn[$name] = function(args = false){
+    if(actions[args]){
+      return actions[args].apply(this, arguments);
+    } else if(typeof args === 'object' || !args){
+      return actions.init.apply(this,arguments);
+    } else{
+      throw new Error('Unknown argument provided on jQuery.'+$name+': '+args);
+    }
+  }
+  // component's actions
+  var actions = {
+    init: function(){
+      app.components_active[$name] = app.components_active[$name] || [];
+      $(this).each(function(){
+        var obj = new component(this);
+        app.components_active[$name].push(obj);
+        obj.onCreate();
+      });
+    },
+    get: function(){
+      var arrResult = [];
+      $(this).each(function(){
+        arrResult.push(utils.getObjBy(app.components_active[$name],'$el',$(this)));
+      });
+      if(arrResult.length > 1)
+        return arrResult;
+      else
+        return arrResult[0];
+    },
   }
 
   // component's events
@@ -61,12 +84,11 @@ var Component = function Component(name){
     $(window).resize(function(){
       clearTimeout(timerResize);
       timerResize = setTimeout(function(){
-        $.each(app.components_loaded['_'+$name], function(index,obj){
+        $.each(app.components_active[$name], function(index,obj){
           obj.onResize();
         });
       },300);
     });
-
   });
 
   return component;

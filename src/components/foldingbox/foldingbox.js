@@ -1,36 +1,35 @@
-$.fn.foldingbox = function foldingbox(){
-  app._foldingbox = app._foldingbox || [];
-  $(this).each(function(){
-    app._foldingbox.push(new Foldingbox(this));
-  });
-  $(window).trigger('resize');
-};
+var Foldingbox = new Component("foldingbox");
+Foldingbox.debug = false;
 
-var Foldingbox = function Foldingbox(item){
+Foldingbox.prototype.onCreate = function(){
   var foldingbox = this;
-  foldingbox.$el = $(item);
-  foldingbox.break =$(item).data('break');
-  foldingbox.title ={$el : $(item).children('.foldingbox__title'), text: $(item).children('.foldingbox__title').html()};
-  foldingbox.content = {$el : $(item).find('.foldingbox__container'),};
+  foldingbox.break =foldingbox.$el.data('break');
+  foldingbox.title ={$el : foldingbox.$el.children('.foldingbox__title'), text: foldingbox.$el.children('.foldingbox__title').html()};
+  foldingbox.content = {$el : foldingbox.$el.find('.foldingbox__container'),};
   foldingbox.content.items = foldingbox.content.$el.children('.foldingbox__item');
 
   foldingbox.setHeight();
+}
 
-  foldingbox.$el.on('destroyed',function(){
-    app._foldingbox.splice(app._foldingbox.indexOf(foldingbox),1);
-    foldingbox = undefined;
-  });
-
-  return foldingbox;
+Foldingbox.prototype.onResize = function(){
+  var foldingbox = this;
+  foldingbox.setHeight();
+  if(typeof foldingbox.break == "number"){
+    if(foldingbox.$el.width() <= foldingbox.break)
+      foldingbox.$el.addClass('break');
+    else
+      foldingbox.$el.removeClass('break');
+  }
 }
 
 Foldingbox.prototype.setHeight = function() {
+  var foldingbox = this;
   var heightBox = 0;
-  if(this.$el.data('height') && this.$el.data('height') != ""){
-    heightBox = this.$el.data('height');
+  if(foldingbox.$el.data('height') && foldingbox.$el.data('height') != ""){
+    heightBox = foldingbox.$el.data('height');
   }
   else{
-    this.content.items.each(function(index,item){
+    foldingbox.content.items.each(function(index,item){
       var $clone = $(item).children('.foldingbox__item__content').clone().css({
         'transition':'none',
         'opacity':'1',
@@ -41,38 +40,5 @@ Foldingbox.prototype.setHeight = function() {
       $clone.remove();
     });
   }
-  this.content.items.height(heightBox);
-  return this;
+  foldingbox.content.items.height(heightBox);
 };
-
-Foldingbox.prototype.destroy = function() {
-  this.$el.remove();
-};
-
-var timerResize;
-Foldingbox.prototype.resize = function() {
-  var foldingbox = this;
-  clearTimeout(timerResize);
-  timerResize = setTimeout(function(){
-    foldingbox.setHeight();
-    if(typeof foldingbox.break == "number"){
-      if(foldingbox.$el.width() <= foldingbox.break)
-        foldingbox.$el.addClass('break');
-      else
-        foldingbox.$el.removeClass('break');
-    }
-  },300);
-};
-
-$(function () {
-  $('.foldingbox').foldingbox();
-  utils.addHtmlHook('.foldingbox', function(item){
-    item.foldingbox();
-  });
-
-  $(window).resize(function(){
-    $.each(app._foldingbox, function(){
-      this.resize();
-    });
-  });
-});

@@ -106,6 +106,9 @@ var Utils = function Utils(){
     var items;
     if (Array.isArray(arrObj)) {
         items = arrObj.filter(function (obj) {
+          if(obj[property] instanceof jQuery && value instanceof jQuery)
+            return obj[property].is(value);
+          else
             return obj[property] == value;
         });
         if (items.length > 1) return items;else return items[0];
