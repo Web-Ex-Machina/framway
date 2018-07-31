@@ -1,10 +1,8 @@
-.block-std{ max-width: 100%;
+.block-std{ max-width: 100%; margin-bottom: $spacing; padding: $spacing;
   @extend
   %paper,
   %lift,
-  .bg-white,
-  .m-bottom,
-  .p-all
+  .bg-white
   !optional;
   &>*:last-child:not([class*="m-bottom"]){margin-bottom: 0;}
 }
