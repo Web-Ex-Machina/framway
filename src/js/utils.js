@@ -32,6 +32,10 @@ var Utils = function Utils(){
     }
   }
 
+  utils.isImageUrl = function(url){
+    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+  }
+
   /**
    * Build a string for css transforms, combining the existent properties of an element and the new string provided
    * @param  {jQuery} el  [can be a jQuery object or a Dom element]

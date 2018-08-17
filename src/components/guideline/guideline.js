@@ -17,17 +17,18 @@ if($('#guideline').length){
   });
   var configHtml = buildConfig(config,'global');
   var stylingHtml = buildStyling();
-  var classesHtml = buildClasses();
+  var manualHtml = buildManual();
   var componentsHtml = buildComponents();
 
   var html = require('mustache-loader!html-loader?interpolate!./templates/index.html')({
     config: configHtml,
-    classes: classesHtml,
+    manual: manualHtml,
     styling: stylingHtml,
     components: componentsHtml,
   });
 
-  html = $($.parseHTML(html));
+  // html = $($.parseHTML(html));
+  html = $(html);
   html.find('.editor textarea').each(function(index,editor){
     var editorText = $(editor).val();
     var timerEdit,timerEditValue;
@@ -275,21 +276,28 @@ if($('#guideline').length){
     return styling;
   };
 
-  function buildClasses(){
-    var classes = {nav : '', content : ''};
-    var arrClasses = ['flex'];
-    $.each(arrClasses,function(index,className){
-      classes.nav += '<ul>';
-      classes.nav += '<li><a href="#framway__classes-'+className+'">'+className.replace(className[0], className[0].toUpperCase())+'</a></li>';
-      classes.content += '<div class="item active" id="framway__classes-'+className+'">'
+  function buildManual(){
+    var manual = {nav : '', content : ''};
+    var arrManuals = ['flex'];
+    if(app.components.indexOf('modalFW')!=-1)
+      arrManuals.push('modalFW');
+    manual.nav += '<ul>';
+    $.each(arrManuals,function(index,className){
+      manual.nav += '<li><a href="#framway__manual-'+className+'">'+className.replace(className[0], className[0].toUpperCase())+'</a></li>';
+      manual.content += '<div class="item active" id="framway__manual-'+className+'">'
                         + '<h2 class="ft-i sep-bottom">'+className.replace(className[0], className[0].toUpperCase())+'</h2>'
-                        + require('mustache-loader!html-loader?interpolate!./classes/'+className+'.html')()
+                        + require('mustache-loader!html-loader?interpolate!./manuals/'+className+'.html')()
                         + '</div>';
     });
-
-    classes.nav += '</ul>';
-
-    return classes;
+    manual.nav += '</ul>';
+    $(manual.content).find('pre').each(function(){
+      var trimHtml = $(this).html().split('\n').map(function(line){
+        if(line.substr(0,4) == '    ') return line.substr(4);
+        else return line;
+      }).join('\n');
+      manual.content = manual.content.replace($(this).html(),trimHtml.replace(/</g,'&lt;').trim());
+    });
+    return manual;
   };
 
   function buildTabs(tabsConfig){

@@ -1,0 +1,246 @@
+<h3>How it works</h3>
+<p>
+  ModalFW are lightboxes with many usages, built with html, css and javascript. <br>
+  They can be added directly to the DOM with html, or created with javascript calls.
+</p>
+<p>
+  They are fixed on top of everything, centered horizontally and vertically. <br>
+  Clicking on the close button or the backdrop will close it.
+</p>
+<p>
+  Any content can be displayed in them, from simple text to complex page layout running javascript.<br>
+  Since they are scrollable, it's possible to add very long content.
+</p>
+
+
+<h3>Basic usages</h3>
+<p>
+  The most basic requirement to create a modal is a div with the <span class="tag">modalFW</span> class, and a <span class="tag">data-name</span> attribute.<br>
+  This <span class="tag">data-name</span> must be unique in order to create a new modal.<br>
+  A button or any dom element can be used to trigger the modal opening by setting a <span class="tag">data-modal</span> attribute, with the corresponding<span class="tag">data-name</span> as value.
+</p>
+<div class="block-std">
+  <button data-modal="sampleModal" class="m-bottom">Open</button>
+  <div class="modalFW" data-name="sampleModal">
+    <p>
+      Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.
+    </p>
+  </div>
+  <pre>
+    <button data-modal="sampleModal">Open</button>
+    <div class="modalFW" data-name="sampleModal">
+      <p>
+        Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.
+      </p>
+    </div>
+  </pre>
+</div>
+<p>
+  Alternatively, modals can be created jut from a trigger filled with attributes (see the paramaters section for details). The <span class="tag">data-content</span> attribute is required in this case.
+</p>
+<div class="block-std">
+  <button data-modal="sampleModal_2" data-content="Modal created from a trigger :)" class="m-bottom">Open</button>
+  <pre>
+    <button data-modal="sampleModal_2" data-content="Modal created from a trigger :)">Open</button>
+  </pre>
+</div>
+<p>
+  Modals can also be created from a javascript object, allowing more options and usages, with callbacks and events (see the paramaters section for details).
+</p>
+<div class="block-std">
+  <script>
+    var modalScript = new ModalFW({
+      name : 'sampleModal_3',
+      content: 'Modal created from a javascript object :)',
+    });
+  </script>
+  <button data-modal="sampleModal_3" class="m-bottom">Open</button>
+  <pre>
+    <script>
+      var modalScript = new ModalFW({
+        name : 'sampleModal_3',
+        content: 'Modal created from a javascript object :)'
+      });
+    </script>
+    <button data-modal="sampleModal_3">Open</button>
+  </pre>
+</div>
+
+<h3>Parameters</h3>
+<p>
+  Modals accept some parameters, allowing you more control over their behavior and customization. <br>
+  However, some of them are not available for all contruction methods listed above. <br>
+  The table below describe this parameters and their possible values, as well as their availability. <br>
+  Take note that the syntax here is the one used for the javascript object declaration. To be used in html structure, you must prefix them with <span class="tag">data-</span>.
+</p>
+
+<div class="table-responsive">
+<table class="table table-bordered block-std ">
+  <tr class="txt-center">
+    <th rowspan="2">Param</th>
+    <th rowspan="2">Value(s)</th>
+    <th rowspan="2">Description</th>
+    <th colspan="3">Availability</th>
+  </tr>
+  <tr class="txt-center">
+    <td>HTML</td>
+    <td>Trigger</td>
+    <td>Javascript</td>
+  </tr>
+  <tr>
+    <th class="txt-center">name</th>
+    <td>String</td>
+    <td>Name of the modal. Mandatory. Should be unique to create a new one.</td>
+    <td class="txt-center">Yes</td>
+    <td class="txt-center">Yes</td>
+    <td class="txt-center">Yes</td>
+  </tr>
+  <tr>
+    <th class="txt-center">content</th>
+    <td>String / HTML / jQuery</td>
+    <td>
+      Content displayed in the modal. <br> Required unless <span class="tag">url</span> is provided.<br>
+      In a raw html structure, <span class="tag">content</span> is not required, since content is the html inside the <span class="tag">.modalFW</span> div.
+    </td>
+    <td class="txt-center">No</td>
+    <td class="txt-center">Yes</td>
+    <td class="txt-center">Yes</td>
+  </tr>
+  <tr>
+    <th class="txt-center">url</th>
+    <td>String</td>
+    <td>
+      Url of an external content to display in the modal. If this content is an image, the modal will take a borderless aspect.<br>
+      If <span class="tag">url</span> is provided, <span class="tag">content</span> will be ignored.
+    </td>
+    <td class="txt-center">Yes</td>
+    <td class="txt-center">Yes</td>
+    <td class="txt-center">Yes</td>
+  </tr>
+  <tr>
+    <th class="txt-center">title</th>
+    <td>String</td>
+    <td>Add a title to the modal's header</td>
+    <td class="txt-center">Yes</td>
+    <td class="txt-center">Yes</td>
+    <td class="txt-center">Yes</td>
+  </tr>
+  <tr>
+    <th class="txt-center">width</th>
+    <td>String</td>
+    <td>Force the width of the modal. However, it will never exceed the width of the document.</td>
+    <td class="txt-center">Yes</td>
+    <td class="txt-center">Yes</td>
+    <td class="txt-center">Yes</td>
+  </tr>
+  <tr>
+    <th class="txt-center">blnAutoload</th>
+    <td>Bool<br> (default true)</td>
+    <td>
+      Define if the modal will load its content when created or not.<br>
+      If set to false, the content will only be loaded when opening the modal.<br>
+    </td>
+    <td class="txt-center">Yes<br><span class="tag">data-autoload</span></td>
+    <td class="txt-center">Yes<br><span class="tag">data-autoload</span></td>
+    <td class="txt-center">Yes</td>
+  </tr>
+  <tr>
+    <th class="txt-center">blnOpen</th>
+    <td>Bool<br> (default false)</td>
+    <td>Define if the modal automatically opens when created.</td>
+    <td class="txt-center">Yes<br><span class="tag">data-open</span></td>
+    <td class="txt-center">Yes<br><span class="tag">data-open</span></td>
+    <td class="txt-center">Yes</td>
+  </tr>
+  <tr>
+    <th class="txt-center">blnRefresh</th>
+    <td>Bool<br> (default false)</td>
+    <td>Add a button to the modal's header. Allow the modal's content to be refreshed</td>
+    <td class="txt-center">Yes<br><span class="tag">data-refresh</span></td>
+    <td class="txt-center">Yes<br><span class="tag">data-refresh</span></td>
+    <td class="txt-center">Yes</td>
+  </tr>
+  <tr>
+    <th class="txt-center">buttons</th>
+    <td>
+      Object<br><br>
+      <pre>{
+      buttonName : {
+          label   : 'buttonLabel',
+          classes : 'buttonClasses',
+          action  :  fnButton,
+          url     : 'urlButton'
+      },
+      ...
+    }</pre>
+    </td>
+    <td>
+      Add any number of buttons to the modal's footer.<br>
+      If <span class="tag">label</span> is not defined, <span class="tag">buttonName</span> will be used instead. <br>
+      <span class="tag">classes</span> accept a string of classes, added to the button.<br>
+      <span class="tag">action</span> is the callback fired when the button is clicked.<br>
+      If <span class="tag">url</span> is provided, the button become a link leading to the url when clicked<br>
+    </td>
+    <td class="txt-center">No</td>
+    <td class="txt-center">No</td>
+    <td class="txt-center">Yes</td>
+  </tr>
+  <tr>
+    <th class="txt-center">onOpen</th>
+    <td>Function</td>
+    <td>Add a callback executed when the modal is opened</td>
+    <td class="txt-center">No</td>
+    <td class="txt-center">No</td>
+    <td class="txt-center">Yes</td>
+  </tr>
+  <tr>
+    <th class="txt-center">onClose</th>
+    <td>Function</td>
+    <td>Add a callback executed when the modal is closed</td>
+    <td class="txt-center">No</td>
+    <td class="txt-center">No</td>
+    <td class="txt-center">Yes</td>
+  </tr>
+  <tr>
+    <th class="txt-center">onRefresh</th>
+    <td>Function</td>
+    <td>Add a callback executed when the modal is refreshed</td>
+    <td class="txt-center">No</td>
+    <td class="txt-center">No</td>
+    <td class="txt-center">Yes</td>
+  </tr>
+</table>
+</div>
+
+<h3>Methods</h3>
+<p>
+  Modals dispose of methods allowing to manually act on them. To use them, you must have access to the modal Object.<br>
+  If you created the modal with a javascript call, you already have the Object, but if you created it with html, you can get it with jQuery, like this: <div class="block-std center">var modalObject = $(modalSelector).modalFW('get');</div>
+</p>
+<div class="table-responsive">
+  <table class="table table-bordered block-std">
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <th>open()</th>
+      <td>Open the modal</td>
+    </tr>
+    <tr>
+      <th>close()</th>
+      <td>Close the modal</td>
+    </tr>
+    <tr>
+      <th>refresh()</th>
+      <td>Refresh the modal's content</td>
+    </tr>
+    <tr>
+      <th>destroy()</th>
+      <td>Destroy the modal Object and the dom element</td>
+    </tr>
+  </table>
+</div>
+
+
+<h3>Advanced usages</h3>

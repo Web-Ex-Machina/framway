@@ -32,6 +32,8 @@
   font-size: 0.9em;
 }
 
+#guideline .table-responsive .table{width: auto; min-width: 100%;}
+
 #guideline *[class*="constructor"]{
   & p{ width: 100%; border-bottom: 1px solid #666; margin: 0 15px 1rem; padding-bottom: 1rem; font-weight: bold;}
   & label{font-size: 0.8rem;}

@@ -6,15 +6,27 @@ var Component = function Component(name){
   var component = {
     [name]: function(el){
       var obj = this;
-      obj.$el = $(el);
+      if(el instanceof HTMLElement || el instanceof jQuery)
+        obj.$el = $(el);
+      else{
+        obj.$el = $('<div></div>').addClass($name);
+        if(typeof el === 'object'){
+          $.each(el,function(attr,value){
+            obj[attr] = value;
+          });
+        }
+      }
       obj.type = name;
 
       // event destroyed
       obj.$el.on('destroyed',function(){
-        obj.log('destroyed');
         app.components_active[$name].splice(app.components_active[$name].indexOf(obj),1);
         obj = undefined;
       });
+
+      app.components_active[$name] = app.components_active[$name] || [];
+      app.components_active[$name].push(obj);
+      obj.onCreate();
     }
   };
   component = component[name];
@@ -38,17 +50,15 @@ var Component = function Component(name){
   // component's actions
   var actions = {
     init: function(){
-      app.components_active[$name] = app.components_active[$name] || [];
       $(this).each(function(){
         var obj = new component(this);
-        app.components_active[$name].push(obj);
-        obj.onCreate();
       });
     },
     get: function(){
       var arrResult = [];
       $(this).each(function(){
-        arrResult.push(utils.getObjBy(app.components_active[$name],'$el',$(this)));
+        if(utils.getObjBy(app.components_active[$name],'$el',$(this)))
+          arrResult.push(utils.getObjBy(app.components_active[$name],'$el',$(this)));
       });
       if(arrResult.length > 1)
         return arrResult;
@@ -99,6 +109,13 @@ var Component = function Component(name){
  */
 Component.prototype.destroy = function() {
   this.$el.remove();
+  this.onDestroy();
+};
+/**
+ * callback on destroy event
+ */
+Component.prototype.onDestroy = function(){
+  this.log('destroyed','This is the callback on destroy event. You can overwrite it by redefining '+this.type+'.prototype.onDestroy');
 };
 
 /**

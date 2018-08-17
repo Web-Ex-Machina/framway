@@ -15,6 +15,7 @@ module.exports = {
     'foldingbox',
     'tabs',
     'goto',
+    'modalFW',
     'guideline',
   ],
 }
