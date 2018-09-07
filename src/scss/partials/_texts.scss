@@ -1,0 +1,25 @@
+a{color: link(font-color); text-decoration: underline;
+  &:hover{color: link(font-color-hover); text-decoration: none;};
+  &:focus{color: link(font-color-focus); outline: none;};
+  &.disabled,&[disabled]{@extend .no-events; text-decoration: line-through;}
+}
+ul,ol,
+p{margin-bottom: 1rem;margin-top: 0;}
+/*-----------------------------------------------------------------------------------------------------------------------------*/
+// TITLES
+@for $index from 1 through 6{
+  h#{$index},
+  .h#{$index}{color: body(title-font-color); line-height: inherit;
+    &.sep-bottom{margin-bottom: 0; &:after{margin-top: 1rem;}}
+    &.sep-top{margin-top: 0; &:before{margin-bottom: .4rem;}}
+    &.sep-right,
+    &.sep-left{@include flex-container(row,nowrap,center,center); }
+  }
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------------*/
+// LISTS
+ul.reset{list-style: none; padding:0; margin:0;}
+ul.reset>li{display: inline-block;}
+ul.tags{@extend .reset;}
+ul.tags>li{padding: 3px 8px 5px; background: btn(background); color: btn(font-color);display:block; float: left; margin: 2px; @extend .rad; }

@@ -1,4 +1,4 @@
-/* Primary vars */
+// Primary vars
 $spacing: 30px;
 $radius: 2px;
 
@@ -24,8 +24,8 @@ $colors: (
 $border-default-size : 2px;
 $border-default-color : color(black);
 
-/* STYLING VARS */
-/* structure */
+// STYLING VARS
+// structure
 $body: (
   'background': color(white),
   'font-color': color(greystronger),
@@ -35,54 +35,52 @@ $body: (
 @function body($property) {@return map-get($body, '#{$property}'); }
 
 $header: (
-  'background': color(white),
+  'background': color(blue),
   'font-color': color(white),
-  'font-size': body(font-size),
 );
 @function header($property) {@return map-get($header, '#{$property}'); }
 
 $footer: (
-  'background': color(white),
-  'font-color': color(white),
-  'font-size': body(font-size),
+  'background': color(greystronger),
+  'font-color': color(greylight),
 );
 @function footer($property) {@return map-get($footer, '#{$property}'); }
 
-/* inputs */
+// inputs
 $input: (
-  'background': color(none),
+  'background': color(white),
   'font-color': color(greystronger),
   'border-color': color(greystronger),
-  'border-size': $border-default-size ,
+  'border-size': 1px ,
   'placeholder-font-color': color(grey),
-  'radius': true,
+  'radius': false,
 );
 @function input($property) {@return map-get($input, '#{$property}'); }
 
-/* inputs focus */
+// inputs focus
 $input-focus: (
-  'background': color(none),
+  'background': color(white),
   'font-color': input(font-color),
   'border-color': input(border-color),
 );
 @function input-focus($property) {@return map-get($input-focus, '#{$property}'); }
 
-/* inputs validations */
+// inputs validations
 $input-valid: (
-  'background': color(none),
+  'background': color(white),
   'font-color': input(font-color),
   'border-color': color(green),
 );
 @function input-valid($property) {@return map-get($input-valid, '#{$property}'); }
 
 $input-invalid: (
-  'background': color(none),
+  'background': color(white),
   'font-color': input(font-color),
   'border-color': color(orange),
 );
 @function input-invalid($property) {@return map-get($input-invalid, '#{$property}'); }
 
-/* links */
+// links
 $link: (
   'font-color': color(orange),
   'font-color-hover': color(orange),
@@ -90,7 +88,7 @@ $link: (
 );
 @function link($property) {@return map-get($link, '#{$property}'); }
 
-/* buttons */
+// buttons
 $btn: (
   'background': body(font-color),
   'font-color': body(background),
@@ -101,7 +99,7 @@ $btn: (
 @function btn($property) {@return map-get($btn, '#{$property}'); }
 
 
-/* Responsive vars */
+// Responsive vars
 $breakpoints: (
   'xl' : 1400px,
   'lg' : 1200px,
@@ -113,13 +111,13 @@ $breakpoints: (
 @function breakpoint($breakpoint) {@return map-get($breakpoints, '#{$breakpoint}'); }
 
 
-/* Configuration booleans */
+// Configuration booleans
 $enable-bg: true;
 $enable-bg-extended: false;
 $enable-bd: true;
 
 
-/* exportation */
+// exportation
 :export {
   radius: $radius;
   spacing: $spacing;

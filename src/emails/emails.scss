@@ -1,0 +1,8 @@
+/* Default configuration & mixins */
+@import '../scss/mixins';
+@import '../scss/vars';
+@import '../scss/config';
+/* Themes configuration override */
+@import '../themes/sample/config';
+/* Core styles */
+@import 'core';

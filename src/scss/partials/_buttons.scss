@@ -1,0 +1,99 @@
+/*-----------------------------------------------------------------------------------------------------------------------------*/
+// BUTTONS
+.btn {
+  display: inline-block;
+  text-align: center;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: .4em 1.5em .5em;
+  font-size: 1em;
+  line-height: 1.5em;
+  border-radius: 0;
+  @if btn(radius) == true{
+    border-radius: $radius;
+  }
+  outline: none;
+  border: btn(border-size) solid btn(background);
+  background-color: btn(background);
+  color: btn(font-color);
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: none;
+  @extend .ft-normal;
+  @include transition(all .2s ease-in-out);
+  &:not([class*="m-"]){margin-top: 3px; margin-bottom: 3px;}
+  &:focus{color: btn(font-color); text-decoration: none; outline: none; @include box-shadow(none);}
+  &:hover{color: btn(font-color); text-decoration: none;}
+  &>a{padding: .4em 1.5em .5em; margin: -.4em -1.5em -.5em;}
+}
+
+.btn-sm{font-size: .8em; padding: .4em 1.2em .5em;
+  &>a{padding: .4em 1.2em .5em; margin: -.4em -1.2em -.5em;}
+}
+.btn-lg{font-size: 1.25em; }
+
+
+@each $key, $value in $colors{
+  .btn-bd-#{$key}{
+    border-color: $value;
+    @if $value != transparent{color: $value; }
+    @else{color: contrast(btn(font-color),$value); }
+    background-color: transparent;
+    &:hover,&:active,&.active{
+      background: $value;
+      text-decoration: none;
+      color: contrast(btn(font-color),$value);
+    }
+    &:focus{
+      // color: $value;
+      &:hover,&:active,&.active{
+        color: contrast(btn(font-color),$value);
+      }
+    }
+  }
+  .btn-bg-#{$key}{
+    border-color: $value;
+    background-color: $value;
+    color: contrast(btn(font-color),$value);
+    &:hover,&:focus,&:active,&.active{
+      text-decoration: none;
+      @if lightness($value) > 60{
+        color: contrast(btn(font-color),scale-color($value,$lightness:-5));
+        background-color: scale-color($value,$lightness:-15);
+        border-color: scale-color($value,$lightness:-15);
+      }
+      @else{
+        color: contrast(btn(font-color),scale-color($value,$lightness:5));
+        background-color: scale-color($value,$lightness:15);
+        border-color: scale-color($value,$lightness:15);
+      }
+    }
+  }
+}
+
+// button:not([class*="btn-bg"]):not([class*="btn-bd"]):not([class*="toast"]),
+input[type="submit"],
+input[type="button"],
+button,
+*[class*="btn"]{@extend .btn;}
+
+input[type="submit"].btn-sm,
+input[type="button"].btn-sm,
+button.btn-sm{@extend .btn-sm;}
+
+input[type="submit"].btn-lg,
+input[type="button"].btn-lg,
+button.btn-lg{@extend .btn-lg;}
+
+@if btn(extend) != '' {
+  input[type="submit"]:not([class*="btn-bg"]):not([class*="btn-bd"]),
+  input[type="button"]:not([class*="btn-bg"]):not([class*="btn-bd"]),
+  button:not([class*="btn-bg"]):not([class*="btn-bd"]):not([class*="toast"]),
+  *[class*="btn"]:not([class*="btn-bg"]):not([class*="btn-bd"]){@extend #{btn(extend)} !optional;}
+}

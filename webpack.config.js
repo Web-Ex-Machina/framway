@@ -1,25 +1,51 @@
-/*
-* This file was generated with webpack-create-config version 1.0.0
-* please run the following command to install dependencies
-* npm install --save-dev webpack babel-loader babel-core babel-preset-es2015 style-loader css-loader
-* or with yarn
-* yarn add webpack babel-loader babel-core babel-preset-es2015 style-loader css-loader
-*/
+const framwayConfig = require('./framway.config.js');
+
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var HtmlWebpackInlineStylePlugin = require('html-webpack-inline-style-plugin');
 var LiveReloadPlugin = require('webpack-livereload-plugin');
 var WebpackSynchronizableShellPlugin = require('webpack-synchronizable-shell-plugin');
+
 const webpack = require('webpack'); //to access built-in plugins
 const path = require('path');
+const fs = require('fs');
+
+function generateHtmlPlugins (templateDir,targetPath = '') {
+  const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir))
+  const arrResults = [];
+  templateFiles.forEach(function(item){
+    const parts = item.split('.')
+    const name = parts[0]
+    const ext = parts[1]
+    if(ext == 'html'){
+        arrResults.push(
+            new HtmlWebpackPlugin({
+                filename: `${targetPath}${name}.${ext}`,
+                template: `${templateDir}${name}.${ext}`,
+                inject: false
+            })
+        );
+    }
+  });
+  return arrResults;
+}
+
+var htmlEmails = generateHtmlPlugins('./src/emails/','emails/');
+fs.readdirSync(path.resolve(__dirname, './src/themes/')).forEach(function(theme){
+    if(framwayConfig.themes.indexOf(theme) != -1)
+        htmlEmails = htmlEmails.concat(generateHtmlPlugins('./src/themes/'+theme+'/emails/','emails/'))
+})
+
+
 module.exports = {
     entry: {
-        vendor : './vendor', // split vendors from app's file, in order to optimize the building process
-        framway : './src'
+        vendor  : './vendor', // split vendors from app's file, in order to optimize the building process
+        framway : './src',
     },
     output: {
-        filename: 'js/[name].js',
-        path: path.resolve(__dirname, './build'),
-        publicPath: './'
+        filename   : 'js/[name].js',
+        path       : path.resolve(__dirname, './build'),
+        publicPath : './'
     },
     module: {
         rules: [
@@ -35,6 +61,7 @@ module.exports = {
             },
             {
                 test: /\.s?css$/,  // will watch either for css or scss files
+                exclude: /(emails)/,
                 use: ExtractTextPlugin.extract({
                     fallback: "style-loader",
                     use: [
@@ -53,6 +80,13 @@ module.exports = {
                 })
             },
             {
+                test: /\.html$/,  // will watch either for css or scss files
+                include: /(emails)/,
+                use: [{
+                    loader: 'html-loader?interpolate=require'
+                }]
+            },
+            {
                 test: /\.(jpe?g|png|gif|svg)$/i,
                 use: [{
                     loader: 'file-loader',
@@ -60,7 +94,7 @@ module.exports = {
                         name: 'img/[name].[ext]'
                     }
                 }]
-            }
+            },
         ],
     },
     devtool: 'source-map',
@@ -81,9 +115,6 @@ module.exports = {
             dev: false,
         }),
         new LiveReloadPlugin(),
-        new ExtractTextPlugin({
-            filename : "css/[name].css",
-        }),
         new webpack.ProvidePlugin({
             utils: 'utils',
             $: "jquery",
@@ -91,12 +122,17 @@ module.exports = {
             Tether: 'tether',
             tether: 'tether' // enable tether as global variable (required by bootstrap 4)
         }),
+        new ExtractTextPlugin({filename : "css/[name].css"}),
         new HtmlWebpackPlugin({
             title: 'Framway\'s home',
             template: './src/index.html',
             filename: './index.html',
             chunks: ['vendor', 'framway'],
             chunksSortMode: 'manual',
-        })
+        }),
+        new HtmlWebpackInlineStylePlugin(), // used to report styles in <style> to their respective tag's style attribute
     ]
+    .concat(htmlEmails)
 };
+
+// console.log('\n ---------------- \n '+framwayConfig.themes.indexOf(theme)+' \n ---------------- \n');

@@ -1,4 +1,4 @@
-/* Primary vars */
+// Primary vars
 $spacing: 30px;
 $radius: 2px;
 
@@ -24,8 +24,8 @@ $colors: (
 $border-default-size : 2px;
 $border-default-color : color(black);
 
-/* STYLING VARS */
-/* structure */
+// STYLING VARS
+// structure
 $body: (
   'background': color(white),
   'font-color': color(greystronger),
@@ -48,7 +48,7 @@ $footer: (
 );
 @function footer($property) {@return map-get($footer, '#{$property}'); }
 
-/* inputs */
+// inputs
 $input: (
   'background': color(white),
   'font-color': color(greystronger),
@@ -59,7 +59,7 @@ $input: (
 );
 @function input($property) {@return map-get($input, '#{$property}'); }
 
-/* inputs focus */
+// inputs focus
 $input-focus: (
   'background': color(white),
   'font-color': input(font-color),
@@ -67,7 +67,7 @@ $input-focus: (
 );
 @function input-focus($property) {@return map-get($input-focus, '#{$property}'); }
 
-/* inputs validations */
+// inputs validations
 $input-valid: (
   'background': color(white),
   'font-color': input(font-color),
@@ -82,7 +82,7 @@ $input-invalid: (
 );
 @function input-invalid($property) {@return map-get($input-invalid, '#{$property}'); }
 
-/* links */
+// links
 $link: (
   'font-color': color(orange),
   'font-color-hover': color(orange),
@@ -90,7 +90,7 @@ $link: (
 );
 @function link($property) {@return map-get($link, '#{$property}'); }
 
-/* buttons */
+// buttons
 $btn: (
   'background': body(font-color),
   'font-color': body(background),
@@ -101,7 +101,7 @@ $btn: (
 @function btn($property) {@return map-get($btn, '#{$property}'); }
 
 
-/* Responsive vars */
+// Responsive vars
 $breakpoints: (
   'xl' : 1400px,
   'lg' : 1200px,
@@ -113,13 +113,13 @@ $breakpoints: (
 @function breakpoint($breakpoint) {@return map-get($breakpoints, '#{$breakpoint}'); }
 
 
-/* Configuration booleans */
+// Configuration booleans
 $enable-bg: true;
 $enable-bg-extended: false;
 $enable-bd: true;
 
 
-/* exportation */
+// exportation
 :export {
   radius: $radius;
   spacing: $spacing;

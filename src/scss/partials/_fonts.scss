@@ -1,0 +1,37 @@
+/*-----------------------------------------------------------------------------------------------------------------------------*/
+// FONTS CLASSES
+.ft-light{font-weight: 300;}
+.ft-normal{font-weight: 400;}
+.ft-bold{font-weight: 600;}
+.ft-bolder{font-weight: 800;}
+
+.ft-i{font-style: italic;}
+.ft-b{font-weight: bold;}
+.ft-u{text-decoration: underline;}
+.ft-u-no{text-decoration: none;}
+
+.ft-upper{text-transform: uppercase;}
+.ft-lower{text-transform: lowercase;}
+
+@for $index from 0 through 10 {
+  @if $index != 0 {
+    .ft-minus-#{$index}#{0}{font-size: #{1 - ($index * 0.10)}em;}
+    .ft-plus-#{$index}#{0}{font-size: #{1 + ($index * 0.10)}em;}
+  }
+  .ft-#{$index}-em{font-size: #{$index}em;}
+  .ft-#{$index}-rem{font-size: #{$index}rem;}
+  @for $index2 from 1 through 9 {
+    .ft-#{$index}-#{$index2}-em{font-size: unquote("#{$index}.#{$index2}em");}
+    .ft-#{$index}-#{$index2}-rem{font-size: unquote("#{$index}.#{$index2}rem");}
+  }
+}
+
+@each $key, $value in $colors{
+  .ft-#{$key},
+  .ft-#{$key}[class*="btn"],
+  .ft-#{$key}[class*="btn"]:not([class*="btn-bg"]):not([class*="btn-bd"]),
+  button.ft-#{$key}:not([class*="btn-bg"]):not([class*="btn-bd"]),
+  input[type=button].ft-#{$key}:not([class*=btn-bg]):not([class*=btn-bd]),
+  input[type=submit].ft-#{$key}:not([class*=btn-bg]):not([class*=btn-bd]),
+  .ft-#{$key}[class*="bg-"]{color: $value;}
+}

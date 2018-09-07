@@ -1,0 +1,36 @@
+
+/*-----------------------------------------------------------------------------------------------------------------------------*/
+/* EFFECTS */
+%paper { position: relative; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset; }
+%paper %paper {box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset; }
+%paper%lift:before,
+%paper%lift:after {
+  position: absolute;
+  width: 40%;
+  max-width: 230px;
+  height: 10px;
+  content: "";
+  left: 12px;
+  bottom: 10px;
+  background: transparent;
+  z-index: -1;
+  transition: all 0.3s ease-in-out;
+  transform: skew(-5deg) rotate(-5deg);
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.5);
+}
+%paper%lift:after {left: auto; right: 12px; transform: skew(5deg) rotate(5deg);}
+%paper%lift:hover::before,
+%paper%lift:hover::after {box-shadow: 0 2px 14px rgba(0,0,0,0.4);}
+%paper%lift:hover::before {left: 5px;}
+%paper%lift:hover::after {right: 5px;}
+
+%ripple {
+  position: relative; overflow: hidden;
+  &:after {content: ""; display: block; position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; background-image: radial-gradient(circle, #000 10%, transparent 10.01%); background-repeat: no-repeat; background-position: 50%; transform: scale(10,10); opacity: 0; transition: transform .5s, opacity 1s; }
+  &:active:after {transform: scale(0,0); opacity: .2; transition: 0s; }
+}
+
+.quote{font-style: italic; font-size: 1.1rem; color: rgba(body(font-color),0.8);
+  &:before{content:"« ";}
+  &:after{content:" »";}
+}

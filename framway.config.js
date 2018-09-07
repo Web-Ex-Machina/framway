@@ -1,5 +1,6 @@
 module.exports = {
   themes:[
+    'sample'
   ],
   components:[
     'block-list',

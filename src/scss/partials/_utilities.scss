@@ -1,0 +1,54 @@
+/*-----------------------------------------------------------------------------------------------------------------------------*/
+/* UTILITY CLASSES */
+.no-events{pointer-events: none;}
+.no-transition{transition: none !important;}
+.no-overflow{overflow:hidden;}
+
+.hidden,
+.invisible{display: none !important;}
+
+.ellipsis{@include ellipsis();}
+
+.center{margin: auto; width: fit-content;}
+.center-block{margin: auto; display: block;}
+
+.fl-left, .float-left{float: left;}
+.fl-right, .float-right{float: right;}
+
+.clear{clear:both;}
+.clear-left{clear: left;}
+.clear-right{clear: right;}
+.clear-after{&:after{content: ""; display: block; width: 100%; height: 0px; clear: both;}}
+.clear-before:before{content: ""; display: block; width: 100%; height: 0px; clear: both;}
+.clear-no{clear:none;}
+
+.text-right, .txt-right{text-align: right;}
+.text-left, .txt-left{text-align: left;}
+.text-center, .txt-center{text-align: center;}
+
+.force-full{width: 100vw; position: relative; left: 50%; transform: translateX(-50%);}
+
+/*-----------------------------------------------------------------------------------------------------------------------------*/
+// RADIUS
+.rad,.rad-all{border-radius: $radius}
+.rad-top-left{border-top-left-radius: $radius; }
+.rad-top-right{border-top-right-radius: $radius; }
+.rad-bottom-left{border-bottom-left-radius: $radius; }
+.rad-bottom-right{border-bottom-right-radius: $radius; }
+
+.rad-top{@extend .rad-top-left,.rad-top-right;}
+.rad-bottom{@extend .rad-bottom-left,.rad-bottom-right;}
+
+.rad-left{@extend .rad-top-left,.rad-bottom-left;}
+.rad-right{@extend .rad-top-right,.rad-bottom-right;}
+
+/*-----------------------------------------------------------------------------------------------------------------------------*/
+// SEPARATORS
+.sep{ display:inline-block; width: 100%; margin: $spacing 0 $spacing; clear: both;  height: $border-default-size; background: body(font-color);}
+.sep-top:before,
+.sep-bottom:after{content:""; @extend .sep}
+
+.sep-left:before{content:""; @extend .sep; width: auto; @include flex-grow(1); margin-top: 0; margin-bottom: 0; margin-right: $spacing;}
+.sep-right:after{content:""; @extend .sep; width: auto; @include flex-grow(1); margin-top: 0; margin-bottom: 0; margin-left: $spacing;}
+
+hr{@extend .sep; border:0; }

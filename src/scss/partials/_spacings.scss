@@ -1,0 +1,52 @@
+/*-----------------------------------------------------------------------------------------------------------------------------*/
+// MARGINS - PADDINGS
+@each $side in $sides {
+  @if $side != 'all' {
+    .m-#{$side}{margin-#{$side}: $spacing !important;}
+    .m-#{$side}-0{margin-#{$side}: 0 !important;}
+    .m-#{$side}-x2{margin-#{$side}: $spacing * 2 !important;}
+
+    .p-#{$side}{padding-#{$side}: $spacing !important;}
+    .p-#{$side}-0{padding-#{$side}: 0 !important;}
+    .p-#{$side}-x2{padding-#{$side}: $spacing * 2 !important;}
+  }
+  @else {
+    .m-#{$side}{margin: $spacing !important;}
+    .m-#{$side}-0{margin: 0 !important;}
+    .m-#{$side}-x2{margin: $spacing * 2 !important;}
+
+    .p-#{$side}{padding: $spacing !important;}
+    .p-#{$side}-0{padding: 0 !important;}
+    .p-#{$side}-x2{padding: $spacing * 2 !important;}
+  }
+}
+.m-x{@extend .m-right,.m-left !optional;}
+.m-x-0{@extend .m-right-0,.m-left-0 !optional;}
+.m-x-x2{@extend .m-right-x2,.m-left-x2 !optional;}
+
+.m-y{@extend .m-top,.m-bottom !optional;}
+.m-y-0{@extend .m-top-0,.m-bottom-0 !optional;}
+.m-y-x2{@extend .m-top-x2,.m-bottom-x2 !optional;}
+
+.p-x{@extend .p-right,.p-left !optional;}
+.p-x-0{@extend .p-right-0,.p-left-0 !optional;}
+.p-x-x2{@extend .p-right-x2,.p-left-x2 !optional;}
+
+.p-y{@extend .p-top,.p-bottom !optional;}
+.p-y-0{@extend .p-top-0,.p-bottom-0 !optional;}
+.p-y-x2{@extend .p-top-x2,.p-bottom-x2 !optional;}
+
+@each $side in $sides {
+  @if $side != 'all' {
+    .counter-#{$side}{margin-#{$side}: -$spacing !important;
+      @include media-max(xs){margin-#{$side}: -$spacing/2 !important;}
+    }
+  }
+  @else{
+    .counter-#{$side}{margin: -$spacing !important;
+      @include media-max(xs){margin: -$spacing/2 !important;}
+    }
+  }
+}
+.counter-y{@extend .counter-top,.counter-bottom;}
+.counter-x{@extend .counter-left,.counter-right;}

@@ -1,4 +1,4 @@
-/*---------------------------------------- UTILITY FUNCTIONS -------------------------------------------- */
+// ---------------------------------------- UTILITY FUNCTIONS --------------------------------------------
 
 @mixin size($width, $height: $width) {
   width: $width;
@@ -107,12 +107,12 @@
 }
 
 
-/*
-  This mixin can be used to set the object-fit:
-  @include object-fit(contain);
-  or object-fit and object-position:
-  @include object-fit(cover, top);
-*/
+
+  // This mixin can be used to set the object-fit:
+  // @include object-fit(contain);
+  // or object-fit and object-position:
+  // @include object-fit(cover, top);
+
 @mixin object-fit($fit: cover, $position: null){
   -o-object-fit: $fit;
      object-fit: $fit;
@@ -153,7 +153,7 @@
 }
 
 
-/*---------------------------------------- RESPONSIVE FUNCTIONS -------------------------------------------- */
+// ---------------------------------------- RESPONSIVE FUNCTIONS --------------------------------------------
 @mixin media-max($breakpoint) {
   @media (max-width: breakpoint($breakpoint)) {
     @content;
@@ -173,7 +173,7 @@
 }
 
 
-/*---------------------------------------- FLEX FUNCTIONS -------------------------------------------- */
+// ---------------------------------------- FLEX FUNCTIONS --------------------------------------------
 
 @mixin flex-container($direction : '', $wrap : '', $justify : '', $align : '')
 {
@@ -272,7 +272,7 @@
   order: $order;
 }
 
-/*---------------------------------------- ELLIPSIS FUNCTIONS -------------------------------------------- */
+// ---------------------------------------- ELLIPSIS FUNCTIONS --------------------------------------------
 
 /// applique un ellipsis multiligne sur un block
 /// $font-size -> taille de la police
@@ -304,7 +304,7 @@
   max-width: 100%;
 }
 
-/*---------------------------------------- TRANSITIONS FUNCTIONS -------------------------------------------- */
+// ---------------------------------------- TRANSITIONS FUNCTIONS --------------------------------------------
 
 @mixin transition($transition...) {
     -moz-transition:    $transition;
@@ -314,7 +314,7 @@
 }
 
 
-/*---------------------------------------- TRANSFORM FUNCTIONS -------------------------------------------- */
+// ---------------------------------------- TRANSFORM FUNCTIONS --------------------------------------------
 
 @mixin rotate($degrees:0) {
     -webkit-transform: rotate(#{$degrees}deg);
@@ -376,14 +376,14 @@
 }
 
 
-/*----------------------------------------- SHADOWS FUNCTIONS ---------------------------------------------- */
+// ----------------------------------------- SHADOWS FUNCTIONS ----------------------------------------------
 @mixin box-shadow($shadow) {
     -webkit-box-shadow: $shadow;
             box-shadow: $shadow;
 }
 
 
-/*---------------------------------------- ANIMATIONS FUNCTIONS -------------------------------------------- */
+// ---------------------------------------- ANIMATIONS FUNCTIONS --------------------------------------------
 
 @mixin keyframes($name) {
     @-webkit-keyframes #{$name} {
@@ -425,7 +425,7 @@
             box-sizing: $sizing;
 }
 
-/*---------------------------------------- MATHS FUNCTIONS -------------------------------------------- */
+// ---------------------------------------- MATHS FUNCTIONS --------------------------------------------
 
 @function pow($number, $exp) {
   $value: 1;

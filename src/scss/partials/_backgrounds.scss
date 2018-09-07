@@ -1,0 +1,114 @@
+/*-----------------------------------------------------------------------------------------------------------------------------*/
+// BACKGROUNDS
+@if $enable-bg{
+  *[class*='bg-']:not([class*='bg--']):not([class*='btn-']){@extend .p-all;}
+  *[class*='bg-']:not([class*='bg--']):not([class*='btn-'])>*:last-child{margin-bottom:0;}
+  @each $key, $value in $colors{
+    .bg-#{$key}{background-color: $value; color: body(font-color); color: contrast(body(font-color), $value);}
+    // *[class~="bg-#{$key}"],
+    // *[class|="bg-#{$key}"]{color: body(font-color); color: contrast(body(font-color), $value);}
+    @for $index from 1 through 10{
+      /* OPACITY */
+      .bg-#{$key}-o-#{$index}#{0}{background-color: rgba($value, $index * 0.1);}
+
+      /* LIGHTEN - DARKEN - OPACITY */
+      @if $enable-bg-extended{
+        .bg-#{$key}-minus-#{$index}#{0}{ background-color : lighten($value, $index * 10);}
+        .bg-#{$key}-plus-#{$index}#{0}{ background-color : darken($value, $index * 10);}
+        @for $index2 from 1 through 9{
+          @if $index2 != 0{
+            .bg-#{$key}-minus-#{$index}#{0}-o-#{$index2}#{0}{ background : rgba(lighten($value, $index * 10), $index2 * 0.1);}
+            .bg-#{$key}-plus-#{$index}#{0}-o-#{$index2}#{0}{ background : rgba(darken($value, $index * 10), $index2 * 0.1);}
+          }
+          @else{
+            .bg-#{$key}-minus-#{$index}#{0}-o-#{$index2}{ background : rgba(lighten($value, $index * 10), $index2 * 0.1);}
+            .bg-#{$key}-plus-#{$index}#{0}-o-#{$index2}{ background : rgba(darken($value, $index * 10), $index2 * 0.1);}
+          }
+        }
+      }
+    }
+    // Changes applied to elements inside a bg class container
+
+    /* separators */
+    .bg-#{$key} .sep{ background: contrast(body(font-color), $value);}
+
+    /* titles */
+    @for $index from 1 through 6{
+      h#{$index}.bg-#{$key},
+      .h#{$index}.bg-#{$key},
+      .bg-#{$key} h#{$index},
+      .bg-#{$key} .h#{$index}{
+        color: contrast(body(title-font-color),$value);
+      }
+    }
+
+    /* links */
+    .bg-#{$key} a{color: contrast(link(font-color),$value); &:hover{color:contrast(link(font-color-hover),$value);}; &:focus{color: contrast(link(font-color-focus),$value); outline: none;};}
+
+    /* inputs */
+    .bg-#{$key} %input{
+      border-color: contrast(input(border-color),$value) ;
+      @if(input(background) == transparent){color: contrast(input(font-color),$value); }
+      &:focus,&.focus,&.active{
+        border-color: contrast( input-focus(border-color),$value);
+        @if(input-focus(background) == transparent){color: contrast(input-focus(font-color),$value); }
+      }
+      &[required]{
+        &:valid{
+          @if(input-valid(border-color) == $value){border-color: darken($value, 20);}
+          @if(input-valid(background) == transparent){color: contrast(input-valid(font-color),$value); }
+        }
+        &:invalid{
+          @if(input-invalid(border-color) == $value){border-color: darken($value, 20);}
+          @if(input-invalid(background) == transparent){color: contrast(input-invalid(font-color),$value); }
+        }
+      }
+    }
+    .bg-#{$key} %checkbox, .bg-#{$key} %radio{
+      &+label{
+        &:before{
+          border-color: contrast(input(border-color),$value);
+        }
+        &:after{
+          border-color: contrast(input(font-color),$value);
+          border-top-color: color(none);
+          border-right-color: color(none);
+        }
+      }
+    }
+    .bg-#{$key} %radio{
+      &:checked+label{
+        &:after{ background-color: contrast(input(font-color),$value);}
+      }
+    }
+    .bg-#{$key} input[type="range"]:after,
+    .bg-#{$key} input[type="range"]:before {color: contrast(body(font-color),$value); }
+    /* inputs placeholders */
+    @if(input(background) == transparent){
+      .bg-#{$key} option{color: contrast(body(font-color),color(none));}
+
+      .bg-#{$key} input:placeholder-shown{color: contrast(input(placeholder-font-color),$value);}
+      .bg-#{$key} input::-webkit-input-placeholder{color: contrast(input(placeholder-font-color),$value);}
+      .bg-#{$key} input::-moz-placeholder{color: contrast(input(placeholder-font-color),$value);}
+      .bg-#{$key} input:-ms-input-placeholder{color: contrast(input(placeholder-font-color),$value);}
+      .bg-#{$key} input::placeholder{color: contrast(input(placeholder-font-color),$value);}
+    }
+    @if(input-focus(background) == transparent){
+      .bg-#{$key} input:focus:placeholder-shown,
+      .bg-#{$key} input.focus:placeholder-shown,
+      .bg-#{$key} input.active:placeholder-shown{color: contrast(input(placeholder-font-color),$value);}
+      .bg-#{$key} input:focus::-webkit-input-placeholder,
+      .bg-#{$key} input.focus::-webkit-input-placeholder,
+      .bg-#{$key} input.active::-webkit-input-placeholder{color: contrast(input(placeholder-font-color),$value);}
+      .bg-#{$key} input:focus::-moz-placeholder,
+      .bg-#{$key} input.focus::-moz-placeholder,
+      .bg-#{$key} input.active::-moz-placeholder{color: contrast(input(placeholder-font-color),$value);}
+      .bg-#{$key} input:focus:-ms-input-placeholder,
+      .bg-#{$key} input.focus:-ms-input-placeholder,
+      .bg-#{$key} input.active:-ms-input-placeholder{color: contrast(input(placeholder-font-color),$value);}
+      .bg-#{$key} input:focus::placeholder,
+      .bg-#{$key} input.focus::placeholder,
+      .bg-#{$key} input.active::placeholder{color: contrast(input(placeholder-font-color),$value);}
+    }
+  }
+}

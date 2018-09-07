@@ -1,0 +1,70 @@
+@import '../scss/partials/utilities';
+@import '../scss/partials/spacings';
+@import '../scss/partials/texts';
+@import '../scss/partials/fonts';
+@import '../scss/partials/buttons';
+@import '../scss/partials/fx';
+
+p{margin: 0; margin-bottom: 14px;
+  &.ul{
+    & .li{display:block;width: 100%;}
+  }
+}
+.last,
+p:last-child{margin-bottom: 0;}
+table{border-collapse: collapse; width: 100%;}
+tr,td{max-width: 100%;}
+
+.spacer-x{width: $spacing;
+  @include media-max(xs){width: $spacing/2 !important;}
+}
+.spacer-y{height: $spacing;
+  @include media-max(xs){height: $spacing/2 !important;}
+}
+
+@for $index from 1 through 6{
+  h#{$index},
+  .h#{$index}{color: inherit; line-height: inherit; margin: 0 0 .5rem;}
+}
+
+body{margin: 0; padding: 0;}
+body,
+#body{background: #e5e5e5; color:body(font-color);font-size: 18px;
+  @if variable-exists(font-family){font-family:$font-family; }
+  @else {font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;}
+}
+#container{max-width: 100%; width: 800px; background: body(background); @extend %paper;
+  @include media-max(md){width: 80% !important;}
+  @include media-max(sm){width: 90% !important;}
+  @include media-max(xs){width: 100% !important;}
+}
+#header{
+  @if header(background){background-color: header(background); }
+  @if header(font-color){color: header(font-color); }
+  & h3{margin-bottom: 0;}
+  & td{
+    @include media-max(xs){display: block;}
+  }
+  & #logo{
+    & img{ width: 300px;
+      @include media-max(md){width: 200px !important;}
+      @include media-max(xs){width: auto !important; max-width: 80%;}
+    }
+    @include media-max(xs){width: auto;}
+  }
+  & #headline{text-align: right;
+    @include media-max(xs){text-align: center !important; max-width: 90% !important; margin: auto;}
+  }
+}
+#footer{
+  @if footer(background){background-color: footer(background); }
+  @if footer(font-color){color: footer(font-color); }
+  & td{
+    @include media-max(xxs){display: block; width: fit-content; margin: auto;}
+  }
+  & .ul{width: auto; width: fit-content; margin-left: auto;margin-right: auto; margin-bottom: 14px;}
+}
+#subfooter{font-size:14px; color: rgba(body(font-color),0.8);
+  & .spacer-x{width: $spacing/2; }
+  & .spacer-y{height: $spacing/2; }
+}

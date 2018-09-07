@@ -1,0 +1,24 @@
+/*-----------------------------------------------------------------------------------------------------------------------------*/
+// FLEX
+.flex{@include flex-container();}
+
+*[class*='flex-']:not([class*="-grow"]){@extend .flex;}
+*[class*='flex-'][class*='-row']{@include flex-direction(row);}
+*[class*='flex-'][class*='-column']{@include flex-direction(column);}
+
+*[class*='flex-'][class*='-wrap']{@include flex-wrap();}
+*[class*='flex-'][class*='-nowrap']{@include flex-wrap(nowrap);}
+
+@each $value in $flexvalues{
+  $valueflat : str-replace($value,'-','');
+  *[class*='flex-'][class*='-justifycontent--#{$valueflat}']{justify-content: $value;}
+  *[class*='flex-'][class*='-alignitems--#{$valueflat}']{align-items: $value;}
+
+  .alignself--#{$valueflat}{align-self: $value;}
+}
+
+@for $index from 0 through 10 {
+  .flexgrow--#{$index},
+  *[class*='flex-'][class*='-flexgrow']>*[class*="flexgrow--#{$index}"],
+  *[class*='flex-'][class*='-flexgrow--#{$index}']>*{@include flex-grow($index);}
+}

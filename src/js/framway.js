@@ -6,6 +6,7 @@ function Framway(){
   framway.$debug = $('<div id="debug"></div>').appendTo($('body'));
   framway.debug = false;
   framway.useNotif = true;
+
   return framway;
 };
 /**
@@ -41,7 +42,7 @@ Framway.prototype.loadThemes = function(arrThemes){
         require('../themes/'+name+'/'+name+'.js');
         framway.themes.push(name);
       } catch(e){
-        framway.log('Component '+ name + ' failed to load.\n'+e);
+        framway.log('Theme '+ name + ' failed to load.\n'+e);
       }
     });
     if(framway.themes.length)
@@ -50,6 +51,9 @@ Framway.prototype.loadThemes = function(arrThemes){
   });
 };
 
+var requireAll = function(r){
+  r.keys().forEach(r);
+}
 
 /**
  * display things in the browser's console and in a custom debug window
