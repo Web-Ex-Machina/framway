@@ -42,10 +42,10 @@ if(strFramway != fs.readFileSync('src/scss/framway.scss', 'utf8')){
 }
 
 if(strEmails != fs.readFileSync('src/emails/emails.scss', 'utf8')){
-    var stream = fs.createWriteStream("src/emails/emails.scss");
-    stream.once('open', (fd) => {
-        stream.write(strEmails);
+    var streamEmail = fs.createWriteStream("src/emails/emails.scss");
+    streamEmail.once('open', (fd) => {
+        streamEmail.write(strEmails);
         // Important to close the stream when you're ready
-        stream.end();
+        streamEmail.end();
     });
 }
