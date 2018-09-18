@@ -21,5 +21,5 @@ p{margin-bottom: 1rem;margin-top: 0;}
 // LISTS
 ul.reset{list-style: none; padding:0; margin:0;}
 ul.reset>li{display: inline-block;}
-ul.tags{@extend .reset;}
+ul.tags{@extend .reset; overflow: hidden;}
 ul.tags>li{padding: 3px 8px 5px; background: btn(background); color: btn(font-color);display:block; float: left; margin: 2px; @extend .rad; }

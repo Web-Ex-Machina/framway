@@ -1,7 +1,7 @@
-.modalFW{position: fixed; top: 0;left: 0; z-index: 100000; background: rgba(#000,0.6); pointer-events: none; width: 100vw;height: 100vh; overflow: auto; color: body(font-color); word-break: break-word; opacity: 0; visibility: hidden; transition: opacity 0.3s; display: flex;padding: 10vh 0;
+.modalFW{position: fixed; top: 0;left: 0; z-index: -1; background: rgba(#000,0.6); pointer-events: none; width: 100vw;height: 100vh; overflow: auto; color: body(font-color); word-break: break-word; opacity: 0; visibility: hidden; transition: opacity 0.3s; display: flex;padding: 10vh 0;
   @include media-max(xs){padding: 5vw 0;}
   @include media-max(xxs){padding: 0;}
-  &.active{opacity: 1;visibility: visible; pointer-events: all;}
+  &.active{opacity: 1;visibility: visible; pointer-events: all;  z-index: 100000;}
 }
 .modalFW__wrapper{@extend %paper !optional; position: relative;  opacity: 0; visibility: hidden; transform: translateY(-50%); transition: all 0.4s; background: body(background); border-radius: $radius; min-height: 0; width: 100%; width: fit-content; margin: auto;
   max-width: 60vw;

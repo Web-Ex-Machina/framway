@@ -25,9 +25,10 @@
   cursor: pointer;
   font-family: inherit;
   text-decoration: none;
+  margin-top: 3px;
+  margin-bottom: 3px;
   @extend .ft-normal;
   @include transition(all .2s ease-in-out);
-  &:not([class*="m-"]){margin-top: 3px; margin-bottom: 3px;}
   &:focus{color: btn(font-color); text-decoration: none; outline: none; @include box-shadow(none);}
   &:hover{color: btn(font-color); text-decoration: none;}
   &>a{padding: .4em 1.5em .5em; margin: -.4em -1.5em -.5em;}

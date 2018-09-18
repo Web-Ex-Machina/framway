@@ -15,6 +15,7 @@ ModalFW.prototype.onCreate = function(){
   modal.title       = modal.title       || modal.getData('title',false);
   modal.width       = modal.width       || modal.getData('width',false);
   modal.url         = modal.url         || modal.getData('url',false);
+  modal.selector    = modal.selector    || modal.getData('selector',false);
   modal.blnAutoload = modal.blnAutoload || modal.getData('autoload',true);
   modal.blnOpen     = modal.blnOpen     || modal.getData('open',false);
   modal.blnRefresh  = modal.blnRefresh  || modal.getData('refresh',false);
@@ -122,6 +123,8 @@ ModalFW.prototype.setContent = function(){
           .done(function(result){resolve(result)})
           .fail(function(error) {reject()});
         }).then(function(result){
+          if(modal.selector && $(result).find(modal.selector).length)
+            result = $(result).find(modal.selector);
           modal.$content.html(result);
           modal.$el.addClass('ready');
         }).catch(function(error){
@@ -137,6 +140,10 @@ ModalFW.prototype.setContent = function(){
   });
 };
 ModalFW.prototype.open = function(){
+  $('.modalFW').not(this).each(function(){
+    $(this).modalFW('get').close();
+  });
+  $('html').addClass('no-overflow');
   this.$el.addClass('active');
   this.isOpen = true;
   if(!this.autoload && !this.$el.hasClass('ready'))
@@ -146,6 +153,7 @@ ModalFW.prototype.open = function(){
   return this;
 };
 ModalFW.prototype.close = function(){
+  $('html').removeClass('no-overflow');
   this.$el.removeClass('active');
   this.isOpen = false;
   if(this.onClose)
@@ -200,7 +208,7 @@ $(function () {
   });
   $('body').on('click','.modalFW__trigger',function(e){
     e.preventDefault();
-    console.log($('.modalFW[data-name="'+$(this).data('modal')+'"]'));
+    // console.log($('.modalFW[data-name="'+$(this).data('modal')+'"]'));
     $('.modalFW[data-name="'+$(this).data('modal')+'"]').modalFW('get').open();
   });
   $('body').on('click','.modalFW',function(e){
