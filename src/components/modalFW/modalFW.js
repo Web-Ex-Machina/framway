@@ -140,10 +140,9 @@ ModalFW.prototype.setContent = function(){
   });
 };
 ModalFW.prototype.open = function(){
-  $('.modalFW').not(this).each(function(){
-    $(this).modalFW('get').close();
-  });
+  $('.modalFW').not(this).each(function(){$(this).modalFW('get').close(); });
   $('html').addClass('no-overflow');
+  this.$el.scrollTop(0);
   this.$el.addClass('active');
   this.isOpen = true;
   if(!this.autoload && !this.$el.hasClass('ready'))
