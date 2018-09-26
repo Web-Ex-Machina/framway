@@ -1,4 +1,4 @@
-var AccordionFW = new Component("accordionFW");
+var AccordionFW = Object.getPrototypeOf(app).AccordionFW = new Component("accordionFW");
 AccordionFW.debug = false;
 
 AccordionFW.prototype.onCreate = function(){

@@ -1,4 +1,4 @@
-global.ModalFW = new Component("modalFW");
+var ModalFW = Object.getPrototypeOf(app).ModalFW = new Component("modalFW");
 // ModalFW.debug = true;
 
 ModalFW.prototype.onResize = function(){};

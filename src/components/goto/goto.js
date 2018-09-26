@@ -1,4 +1,4 @@
-var Goto = new Component("goto");
+var Goto = Object.getPrototypeOf(app).Goto = new Component("goto");
 Goto.debug = false;
 
 Goto.prototype.onCreate = function(){

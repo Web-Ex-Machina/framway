@@ -1,4 +1,4 @@
-var SliderFW = new Component("sliderFW");
+var SliderFW = Object.getPrototypeOf(app).SliderFW = new Component("sliderFW");
 SliderFW.debug = false;
 
 SliderFW.prototype.onCreate = function(){

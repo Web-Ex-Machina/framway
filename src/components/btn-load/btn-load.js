@@ -1,4 +1,4 @@
-var BtnLoad = new Component("btn-load");
+var BtnLoad = Object.getPrototypeOf(app).BtnLoad = new Component("btn-load");
 // BtnLoad.debug = true;
 BtnLoad.iconSelector = '.fas.fa-spinner.fa-pulse';
 BtnLoad.icon = '<i class="'+BtnLoad.iconSelector.replace(/\./g,' ').trim()+'"></i>';

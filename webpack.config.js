@@ -32,7 +32,7 @@ function generateHtmlPlugins (templateDir,targetPath = '') {
 
 var htmlEmails = generateHtmlPlugins('./src/emails/','emails/');
 fs.readdirSync(path.resolve(__dirname, './src/themes/')).forEach(function(theme){
-    if(framwayConfig.themes.indexOf(theme) != -1)
+    if(framwayConfig.themes.indexOf(theme) != -1 && fs.existsSync('./src/themes/'+theme+'/emails/'))
         htmlEmails = htmlEmails.concat(generateHtmlPlugins('./src/themes/'+theme+'/emails/','emails/'))
 })
 

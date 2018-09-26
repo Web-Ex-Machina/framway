@@ -1,4 +1,4 @@
-var HeaderFW = new Component("headerFW");
+var HeaderFW = Object.getPrototypeOf(app).HeaderFW = new Component("headerFW");
 HeaderFW.debug = false;
 
 HeaderFW.prototype.onCreate = function(){

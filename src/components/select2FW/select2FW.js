@@ -1,5 +1,5 @@
 require('select2');
-var Select2FW = new Component("select2FW");
+var Select2FW = Object.getPrototypeOf(app).Select2FW = new Component("select2FW");
 Select2FW.debug = false;
 
 Select2FW.prototype.onCreate = function(){

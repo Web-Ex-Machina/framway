@@ -1,4 +1,4 @@
-var Foldingbox = new Component("foldingbox");
+var Foldingbox = Object.getPrototypeOf(app).Foldingbox = new Component("foldingbox");
 Foldingbox.debug = false;
 
 Foldingbox.prototype.onCreate = function(){

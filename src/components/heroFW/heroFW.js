@@ -1,4 +1,4 @@
-var HeroFW = new Component("heroFW");
+var HeroFW = Object.getPrototypeOf(app).HeroFW = new Component("heroFW");
 HeroFW.debug = false;
 
 HeroFW.prototype.onCreate = function(){

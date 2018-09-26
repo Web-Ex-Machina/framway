@@ -14,7 +14,7 @@ else{
         className += name.split('-')[i].charAt(0).toUpperCase() + name.split('-')[i].slice(1);
       }
       fs.appendFileSync('./src/components/'+name+'/_'+name+'.scss','.'+name+'{}');
-      fs.appendFileSync('./src/components/'+name+'/'+name+'.js',`var `+className+` = new Component("`+name+`");
+      fs.appendFileSync('./src/components/'+name+'/'+name+'.js',`var `+className+` = Object.getPrototypeOf(app).`+className+` = new Component("`+name+`");
 `+className+`.debug = true;
 
 // `+className+`.prototype.onCreate = function(){
