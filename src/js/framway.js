@@ -94,6 +94,6 @@ $(function () {
 
 require('../js/polyfills.js');
 global.Component = require('../js/component.js');
-global.app = new Framway();
 global.utils = utils;
 global.$ = global.jQuery = $;
+global.app = new Framway();

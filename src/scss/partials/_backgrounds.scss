@@ -1,7 +1,7 @@
 /*-----------------------------------------------------------------------------------------------------------------------------*/
 // BACKGROUNDS
 @if $enable-bg{
-  *[class*='bg-']:not([class*='bg--']):not([class*='btn-']){@extend .p-all;}
+  *[class*='bg-']:not([class*='bg--']):not([class*='btn-']){padding: $spacing;}
   *[class*='bg-']:not([class*='bg--']):not([class*='btn-'])>*:last-child{margin-bottom:0;}
   @each $key, $value in $colors{
     .bg-#{$key}{background-color: $value; color: body(font-color); color: contrast(body(font-color), $value);}

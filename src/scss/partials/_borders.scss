@@ -4,23 +4,23 @@
   @each $side in $sides {
     @if $side == 'all'{
       .bd,
-      .bd-#{$side}{border: $border-default-size solid $border-default-color; @extend .p-all;}
+      .bd-#{$side}{border: $border-default-size solid $border-default-color; padding: $spacing;}
     }
     @else{
       .bd-#{$side}[class*="bd-"],
       .bd-#{$side}{border-#{$side}: $border-default-size solid $border-default-color;
-        &:not([class*="p-#{$side}"]){@extend .p-#{$side};}
+        &:not([class*="p-#{$side}"]){padding-#{$side}: $spacing;}
       }
     }
     @for $index from 0 through 10 {
       @if $side == 'all'{
         .bd-#{$index},
-        .bd-#{$side}-#{$index}{border: #{$index}px solid $border-default-color; @extend .p-all;}
+        .bd-#{$side}-#{$index}{border: #{$index}px solid $border-default-color; padding: $spacing;}
       }
       @else{
         .bd-#{$side}-#{$index}[class*="bd-"],
         .bd-#{$side}-#{$index}{border-#{$side}: #{$index}px solid $border-default-color;
-          &:not([class*="p-#{$side}"]){@extend .p-#{$side};}
+          &:not([class*="p-#{$side}"]){padding-#{$side}: $spacing;}
         }
       }
     }
@@ -28,23 +28,23 @@
     @each $key, $value in $colors{
       @if $side == 'all'{
         .bd-#{$key},
-        .bd-#{$side}-#{$key}{border: $border-default-size solid $value; @extend .p-all;}
+        .bd-#{$side}-#{$key}{border: $border-default-size solid $value; padding: $spacing;}
       }
       @else{
         .bd-#{$side}-#{$key}[class*="bd-"],
         .bd-#{$side}-#{$key} { border-#{$side}: $border-default-size solid $value;
-          &:not([class*="p-#{$side}"]) {@extend .p-#{$side}; }
+          &:not([class*="p-#{$side}"]) {padding-#{$side}: $spacing; }
         }
       }
       @for $index from 0 through 10 {
         @if $side == 'all'{
           .bd-#{$key}-#{$index},
-          .bd-#{$side}-#{$key}-#{$index}{border: #{$index}px solid $value; @extend .p-all;}
+          .bd-#{$side}-#{$key}-#{$index}{border: #{$index}px solid $value; padding: $spacing;}
         }
         @else{
           .bd-#{$side}-#{$key}-#{$index}[class*="bd-"],
           .bd-#{$side}-#{$key}-#{$index}{border-#{$side}: #{$index}px solid $value;
-            &:not([class*="p-#{$side}"]){@extend .p-#{$side};}
+            &:not([class*="p-#{$side}"]){padding-#{$side}: $spacing;}
           }
         }
       }
