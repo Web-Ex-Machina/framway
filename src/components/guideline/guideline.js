@@ -278,7 +278,7 @@ if($('#guideline').length){
 
   function buildManual(){
     var manual = {nav : '', content : ''};
-    var arrManuals = ['flex'];
+    var arrManuals = ['flex','opacity','margin-padding'];
     if(app.components.indexOf('modalFW')!=-1)
       arrManuals.push('modalFW');
     manual.nav += '<ul>';

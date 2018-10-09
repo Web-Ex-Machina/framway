@@ -1,0 +1,37 @@
+<h3>Syntax</h3>
+<div class="block-std center txt-center"><span class="tag">m/p</span>-<span class="tag">side</span><span class="tag">-modifier</span></div>
+<h3>Example</h3>
+<div class="block-std center txt-center"><span class="tag">m-top-x2</span></div>
+<h3>Rules</h3>
+<div class="block-std">
+  <ul class="m-top">
+    <li class="m-bottom">
+      Margins & paddings default value is set in the framway's config, from the <span class="tag">spacing</span> var.
+    </li>
+    <li class="m-bottom">
+      Those utility classes use the <span class="tag">!important</span> css flag. We assume you know what you're doing.
+    </li>
+    <li class="m-bottom">
+      <span class="tag">m/p</span> is replaced by <span class="tag">m</span> for margin, or <span class="tag">p</span> for padding.
+    </li>
+    <li class="m-bottom">
+      <span class="tag">side</span> is replaced by the side's keyword where we want to apply a margin/padding. <br>
+      Those keywords are: <span class="tag">top</span>, <span class="tag">bottom</span>, <span class="tag">left</span>, <span class="tag">right</span>. <br>
+      Aliases can be used to group multiple sides at the same time:
+      <ul>
+        <li><span class="tag">all</span> : means the margin/padding will be applied on all ellement's sides</li>
+        <li><span class="tag">x</span> : means the margin/padding will be applied on <span class="tag">left</span> and <span class="tag">right</span></li>
+        <li><span class="tag">y</span> : means the margin/padding will be applied on <span class="tag">top</span> and <span class="tag">bottom</span></li>
+      </ul>
+      <i>Examples : <span class="tag">m-x</span> <span class="tag">p-all</span></i>
+    </li>
+    <li class="m-bottom">
+      <span class="tag">-modifier</span> is an optionnal keyword which changes the margins & paddings values.
+      <ul>
+        <li><span class="tag">-x2</span> will double the default value (<span class="tag">spacing</span>*2 )</li>
+        <li><span class="tag">-0</span> will force a margin/padding to 0</li>
+      </ul>
+      <i>Examples : <span class="tag">m-top-x2</span> <span class="tag">p-all-0</span></i>
+    </li>
+  </ul>
+</div>

@@ -1,8 +1,9 @@
 $z_header : 100;
-.headerFW{ z-index: $z_header; position: relative; @include flex-container(row,nowrap,space-between); box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.06) inset;
-    @if header(background){background-color: header(background); }
-    @if header(font-color){color: header(font-color); }
-    @if header(font-size){font-size: header(font-size); }
+.headerFW{ z-index: $z_header; position: relative; @include flex-container(row,nowrap,space-between); box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.06) inset; top: 1px;
+  @if header(background){background-color: header(background); }
+  @if header(font-color){color: header(font-color); }
+  @if header(font-size){font-size: header(font-size); }
+  &:before{@include pseudo(); top:-1px; width: 100%; background-color: inherit; height: 1px;}
   // BANNER
   & .headerFW__headbanner{@include flex-container(row,nowrap,flex-start,center);flex-shrink: 0; max-width: 100%;
     & #logo{ padding: 0 1rem; }

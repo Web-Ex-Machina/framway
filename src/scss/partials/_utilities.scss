@@ -44,11 +44,27 @@
 
 /*-----------------------------------------------------------------------------------------------------------------------------*/
 // SEPARATORS
-.sep{ display:inline-block; width: 100%; margin: $spacing 0 $spacing; clear: both;  height: $border-default-size; background: body(font-color);}
-.sep-top:before,
-.sep-bottom:after{content:""; @extend .sep}
+.sep{ display:inline-block; width: 100%; margin: $spacing 0 $spacing; clear: both;  height: $border-default-size; background: body(font-color); }
+@each $key, $value in $colors{
+  .sep-#{$key}{@extend .sep; background: $value;}
+}
+*[class*="sep-top"]:before{content:""; @extend .sep;}
+*[class*="sep-bottom"]:after{content:""; @extend .sep;}
+*[class*="sep-left"]:before{content:""; @extend .sep; width: auto; @include flex-grow(1); margin-top: 0; margin-bottom: 0; margin-right: $spacing;}
+*[class*="sep-right"]:after{content:""; @extend .sep; width: auto; @include flex-grow(1); margin-top: 0; margin-bottom: 0; margin-left: $spacing;}
 
-.sep-left:before{content:""; @extend .sep; width: auto; @include flex-grow(1); margin-top: 0; margin-bottom: 0; margin-right: $spacing;}
-.sep-right:after{content:""; @extend .sep; width: auto; @include flex-grow(1); margin-top: 0; margin-bottom: 0; margin-left: $spacing;}
+@each $key, $value in $colors{
+  *[class*="sep-top-#{$key}"]:before,
+  *[class*="sep-bottom-#{$key}"]:after,
+  *[class*="sep-left-#{$key}"]:before,
+  *[class*="sep-right-#{$key}"]:after{background: $value;}
+}
 
 hr{@extend .sep; border:0; }
+
+/*-----------------------------------------------------------------------------------------------------------------------------*/
+// OPACITY
+
+@for $index from 0 through 9{
+  .opa-#{$index}{opacity: #{"."+$index} !important;}
+}

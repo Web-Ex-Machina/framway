@@ -3,7 +3,6 @@
 @import 'vars';
 @import 'config';
 /* Themes configuration override */
-@import '../themes/sample/config';
 /* Core styles */
 @import 'core';
 /* Components styles */
@@ -23,4 +22,3 @@
 @import '../components/modalFW/modalFW';
 @import '../components/guideline/guideline';
 /* Themes styles override */
-@import '../themes/sample/sample';

@@ -10,10 +10,10 @@ p{margin-bottom: 1rem;margin-top: 0;}
 @for $index from 1 through 6{
   h#{$index},
   .h#{$index}{color: body(title-font-color); line-height: inherit;
-    &.sep-bottom{margin-bottom: 0; &:after{margin-top: 1rem;}}
-    &.sep-top{margin-top: 0; &:before{margin-bottom: .4rem;}}
-    &.sep-right,
-    &.sep-left{@include flex-container(row,nowrap,center,center); }
+    &[class*="sep-bottom"]{margin-bottom: 0; &:after{margin-top: 1rem;}}
+    &[class*="sep-top"]{margin-top: 0; &:before{margin-bottom: .4rem;}}
+    &[class*="sep-right"],
+    &[class*="sep-left"]{@include flex-container(row,nowrap,center,center); }
   }
 }
 

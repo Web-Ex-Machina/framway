@@ -30,7 +30,7 @@ $body: (
   'background': color(white),
   'font-color': color(greystronger),
   'font-size': 20px,
-  'title-font-color': color(blacklight),
+  'title-font-color': color(blacklighter),
 );
 @function body($property) {@return map-get($body, '#{$property}'); }
 
@@ -100,7 +100,6 @@ $btn: (
 );
 @function btn($property) {@return map-get($btn, '#{$property}'); }
 
-
 // Responsive vars
 $breakpoints: (
   'xl' : 1400px,
@@ -112,12 +111,10 @@ $breakpoints: (
 );
 @function breakpoint($breakpoint) {@return map-get($breakpoints, '#{$breakpoint}'); }
 
-
 // Configuration booleans
 $enable-bg: true;
 $enable-bg-extended: false;
 $enable-bd: true;
-
 
 // exportation
 :export {

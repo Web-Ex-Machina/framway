@@ -1,5 +1,5 @@
 .block-list{ display: flex; font-size: 0.9rem; margin-bottom: $spacing;
-  & .block-list__wrapper{ display: flex; flex-direction: column; padding: 0; text-decoration: none; color: inherit; position: relative;
+  & .block-list__wrapper{ display: flex; flex-direction: column; padding: 0; text-decoration: none; color: inherit; position: relative; width: 100%;
     &:hover{color: inherit;text-decoration: none;}
     & .block-list__figure{flex-grow: 0; }
   }
