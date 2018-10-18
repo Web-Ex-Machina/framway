@@ -4,7 +4,7 @@ function Framway(){
   framway.components_active = {};
   framway.themes = [];
   framway.$debug = $('<div id="debug"></div>').appendTo($('body'));
-  framway.debug = false;
+  framway.debug = true;
   framway.useNotif = true;
 
   return framway;
@@ -24,7 +24,7 @@ Framway.prototype.loadComponents = function(arrComponents){
         framway.log('Component '+ name + ' failed to load.\n'+e);
       }
     });
-    if(framway.components.length)
+    if(framway.components.length && framway.debug)
       framway.log('Component(s) sucessfully loaded: \n - '+ framway.components.join('\n - '));
     resolve();
   });
@@ -45,7 +45,7 @@ Framway.prototype.loadThemes = function(arrThemes){
         framway.log('Theme '+ name + ' failed to load.\n'+e);
       }
     });
-    if(framway.themes.length)
+    if(framway.themes.length && framway.debug)
       framway.log('Theme(s) sucessfully loaded: \n - '+ framway.themes.join('\n - '));
     resolve();
   });

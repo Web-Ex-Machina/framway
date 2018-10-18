@@ -1,0 +1,46 @@
+.priceCard{ text-align: center; height: 100%; @include flex-container(); }
+.priceCard__wrapper{ @extend .block-std !optional; padding: 0;  @include flex-container(column); width: 100%; color: inherit;
+  &>*{padding: 1rem;}
+}
+.priceCard__title{font-weight: bold; font-size: 1.2em;
+  .priceCard:not([class*="ft-"]) &{color: $secondary;}
+}
+.priceCard__price{padding: 1.5rem 1rem;}
+.priceCard__price__currency{ font-weight: 300;}
+.priceCard__price__amount{font-size: 2.8em; line-height: 1;}
+.priceCard__price__period{text-transform: uppercase; font-size: 0.8em; opacity: 0.6; font-weight: 300; line-height: 1;}
+.priceCard__price{background-color: $secondary; color: color(white);}
+.priceCard__content{font-size: 0.9em; opacity: 0.8; flex-grow: 1;}
+.priceCard__content__item{margin: 1rem 0; padding: 0 0.5rem 1rem; border-bottom: 1px solid rgba(color(grey),0.3);
+  &:last-child{margin-bottom: 0; border-bottom: 0; padding-bottom: 0;}
+}
+.priceCard__cta{
+  &>*{width: 100%;}
+}
+
+.priceCard{
+  &[class*="bg-"]{padding: 0 !important; background-color: transparent;}
+  @each $key, $value in $colors{
+    &.bg--#{$key}{
+      &:not([class*="ft-"]){
+        color:contrast(body(font-color),$value);
+        &:not([class*="content--"]) .priceCard__title{ color:contrast( $secondary,$value);}
+      }
+      @each $key2, $value2 in $colors{
+        &.ft-#{$key2}{
+          color:contrast($value2,$value);
+          & .priceCard__title{ color:contrast( $value2,$value);}
+        }
+        &.content--#{$key2}{
+          & .priceCard__title{ color:contrast($value2,$value);}
+        }
+      }
+      & .priceCard__wrapper{background-color: $value; }
+      & .priceCard__content__item{border-color: rgba(contrast(color(grey),$value),0.3); }
+    }
+    &.content--#{$key}{
+      & .priceCard__price{ background-color:$value; color: contrast( white,$value);}
+      & .priceCard__title{ color: $value;}
+    }
+  }
+}

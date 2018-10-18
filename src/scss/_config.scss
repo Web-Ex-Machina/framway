@@ -21,6 +21,10 @@ $colors: (
 );
 @function color($color) {@return map-get($colors, '#{$color}'); }
 
+$primary: color(darkblue);
+$secondary: color(blue);
+$tertiary: color(greystronger);
+
 $border-default-size : 2px;
 $border-default-color : color(black);
 
@@ -122,6 +126,9 @@ $enable-bd: true;
   spacing: $spacing;
   border-default-size: $border-default-size ;
   border-default-color: $border-default-color ;
+  primary: $primary ;
+  secondary: $secondary ;
+  tertiary: $tertiary ;
 
   colors: #{$colors};
   breakpoints: #{$breakpoints};

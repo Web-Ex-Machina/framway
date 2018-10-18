@@ -8,5 +8,5 @@ tabs__content,
 .tabs__content{position: relative; display: block;}
 tabs__content tab,
 .tabs__content .tab{opacity: 0; visibility: hidden; height:0; overflow: hidden; display: block;
-  &.active{visibility: visible; opacity: 1; position: relative; height: auto; overflow: visible;}
+  &.active{visibility: visible; opacity: 1; position: relative; height: auto;}
 }

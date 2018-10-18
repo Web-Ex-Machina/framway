@@ -17,6 +17,7 @@ module.exports = {
     'tabs',
     'goto',
     'modalFW',
+    'priceCard',
     'guideline',
   ],
 }

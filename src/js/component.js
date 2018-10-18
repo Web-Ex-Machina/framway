@@ -34,7 +34,7 @@ var Component = function Component(name){
   component.prototype.constructor = component;
 
   // component's private vars and stuff
-  component.debug = app.debug;
+  component.debug = false;
 
 
   // component's jQuery plugin creation

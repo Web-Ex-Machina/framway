@@ -30,7 +30,8 @@
   &:active:after {transform: scale(0,0); opacity: .2; transition: 0s; }
 }
 
-.quote{font-style: italic; font-size: 1.1rem; color: rgba(body(font-color),0.8);
+.quote{font-style: italic; font-size: 1.1rem; color: rgba(body(font-color),0.8); margin-bottom: 1rem;
+  &>*{display: inline;}
   &:before{content:"« ";}
   &:after{content:" »";}
 }
