@@ -16,7 +16,7 @@
 .block-flip__front{transform: translateZ(1px) rotateY(0deg); z-index: 1;
   .front--backface &{backface-visibility: visible;}
 }
-.block-flip__back{transform: rotateY(-180deg); position: absolute; top: 0; left: 0;right: 0;bottom: 0;
+.block-flip__back{transform: rotateY(-180deg); position: absolute; top: 0; left: 0;right: 0;bottom: 0; overflow: hidden;
   &:after{@include pseudo(); top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-color: body(background);}
   @each $key, $value in $colors{
     .back__bg--#{$key} &:after{ background-color: $value;}
