@@ -39,6 +39,6 @@
 
 .block-list.content--inline{ flex-basis: 100%; max-width: none;
   & .block-list__wrapper{flex-direction: row;}
-  & .block-list__figure{flex-basis: 33%;}
-  & .block-list__wrapper__inner{@include flex-container(column); flex-grow: 1;}
+  & .block-list__figure{flex-basis: 33%; flex-shrink: 0;}
+  & .block-list__wrapper__inner{@include flex-container(column); flex-grow: 1; width: 100%;}
 }

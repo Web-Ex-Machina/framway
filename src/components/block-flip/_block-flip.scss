@@ -25,3 +25,5 @@
     .back__bg__opacity--#{$index} &:after{opacity: $index*.1;}
   }
 }
+
+.block-flip__back__wrapper{overflow: auto; margin: -$spacing; padding: $spacing;}
