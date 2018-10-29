@@ -1,6 +1,9 @@
-.priceCard{ text-align: center; height: 100%; @include flex-container(); }
-.priceCard__wrapper{ @extend .block-std !optional; padding: 0;  @include flex-container(column); width: 100%; color: inherit;
+.priceCard{ text-align: center; height: 100%; @include flex-container();
+  &.main{transform: translate3d(0,0,0) scale(1.05);}
+}
+.priceCard__wrapper{ @extend .block-std !optional; padding: 0;  @include flex-container(column); width: 100%; color: inherit; border-radius: $radius ;
   &>*{padding: 1rem;}
+  .main &{ border: 5px solid $secondary;}
 }
 .priceCard__title{font-weight: bold; font-size: 1.2em;
   .priceCard:not([class*="ft-"]) &{color: $secondary;}
@@ -41,6 +44,9 @@
     &.content--#{$key}{
       & .priceCard__price{ background-color:$value; color: contrast( white,$value);}
       & .priceCard__title{ color: $value;}
+      &.main{
+        & .priceCard__wrapper{border-color: $value;}
+      }
     }
   }
 }

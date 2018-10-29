@@ -129,7 +129,7 @@ $z_header : 100;
         }
         & ul ul ul{left:100%; top: -0.6rem;
           &.offset-right{left: auto; right: 100%;}
-          &:before{ transform: translate(-50%,-50%) rotate(-45deg); top: 22%; left:1px; @include size(20px); }
+          &:before{ transform: translate(-50%,-50%) rotate(-45deg); top: 1.9rem; left:1px; @include size(20px); }
           &.offset-right:before{left: auto; right: 1px; transform: translate(50%,-50%) rotate(135deg); }
         }
       }
