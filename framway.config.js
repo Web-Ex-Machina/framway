@@ -18,6 +18,7 @@ module.exports = {
     'goto',
     'modalFW',
     'priceCard',
+    'countUpFW',
     'guideline',
   ],
 }
