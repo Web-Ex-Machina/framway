@@ -3,6 +3,7 @@ module.exports = {
     // 'sample'
   ],
   components:[
+    'modalFW',
     'block-list',
     'block-std',
     'block-img',
@@ -16,7 +17,6 @@ module.exports = {
     'foldingbox',
     'tabs',
     'goto',
-    'modalFW',
     'priceCard',
     'countUpFW',
     'guideline',
