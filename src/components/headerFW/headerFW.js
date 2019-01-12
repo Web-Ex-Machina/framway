@@ -3,7 +3,7 @@ HeaderFW.debug = false;
 
 HeaderFW.prototype.onCreate = function(){
   var header = this;
-  header.$clone = header.$el.clone().attr('id','headerFW--clone').insertAfter(header.$el);
+  header.$clone = header.$el.clone().attr('id','headerFW--clone').addClass('stick').insertAfter(header.$el);
   header.$headbanner = header.$el.find('.headerFW__headbanner');
   header.$nav = header.$el.find('.headerFW__nav');
   header.$navInline = header.$nav.find('.headerFW__nav__inline');
@@ -57,8 +57,8 @@ HeaderFW.prototype.onCreate = function(){
     header.$toggler.toggleClass('active');
     header.$navPanel.toggleClass('active');
     if(header.$toggler.hasClass('active')){
-      if(header.hasStick)
-        header.$el.addClass('stick');
+      // if(header.hasStick)
+        // header.$el.addClass('stick');
       header.$clone.addClass('reduced');
       header.$el.addClass('reduced');
     }
@@ -105,7 +105,8 @@ HeaderFW.prototype.onCreate = function(){
       if(header.$stickyEl.offset().top - $(window).scrollTop() < 0 || header.$navPanel.hasClass('active'))
         header.$el.addClass('stick');
     }
-    $(window).trigger('resize');
+    // $(window).trigger('resize');
+    header.resizeOnTheFly();
   }, true);
 
   $(window).resize(function(){

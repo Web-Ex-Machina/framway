@@ -1,6 +1,6 @@
 .heroFW{ margin-bottom: $spacing; padding: 0; background-color: body(background); font-size: 1.25rem; font-weight: 300;
   &.width--content{width: fit-content;}
-  &[class*="ft-"] *{color: inherit;}
+  &[class*="ft-"] .heroFW__content *{color: inherit;}
   @for $index from 1 through 6{
     &.title--1{
       & h#{$index},

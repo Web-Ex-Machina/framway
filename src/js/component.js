@@ -21,9 +21,9 @@ var Component = function Component(name){
       // event destroyed
       obj.$el.on('destroyed',function(){
         app.components_active[$name].splice(app.components_active[$name].indexOf(obj),1);
+        obj.onDestroy();
         obj = undefined;
       });
-
       app.components_active[$name] = app.components_active[$name] || [];
       app.components_active[$name].push(obj);
       obj.onCreate();
@@ -35,7 +35,6 @@ var Component = function Component(name){
 
   // component's private vars and stuff
   component.debug = false;
-
 
   // component's jQuery plugin creation
   $.fn[$name] = function(args = false){
@@ -109,7 +108,6 @@ var Component = function Component(name){
  */
 Component.prototype.destroy = function() {
   this.$el.remove();
-  this.onDestroy();
 };
 /**
  * callback on destroy event
