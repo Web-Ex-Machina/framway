@@ -1,4 +1,4 @@
-<h3>How it works</h3>
+<h4>How it works</h4>
 <p>
   ModalFW are lightboxes with many usages, built with html, css and javascript. <br>
   They can be added directly to the DOM with html, or created with javascript calls.
@@ -14,7 +14,7 @@
 </p>
 
 
-<h3>Basic usages</h3>
+<h4>Basic usages</h4>
 <p>
   The most basic requirement to create a modal is a div with the <span class="tag">modalFW</span> class, and a <span class="tag">data-name</span> attribute.<br>
   This <span class="tag">data-name</span> must be unique in order to create a new modal.<br>
@@ -69,7 +69,7 @@
   </pre>
 </div>
 
-<h3>Parameters</h3>
+<h4>Parameters</h4>
 <p>
   Modals accept some parameters, allowing you more control over their behavior and customization. <br>
   However, some of them are not available for all contruction methods listed above. <br>
@@ -77,8 +77,8 @@
   Take note that the syntax here is the one used for the javascript object declaration. To be used in html structure, you must prefix them with <span class="tag">data-</span>.
 </p>
 
-<div class="table-responsive">
-<table class="table table-bordered block-std ">
+<div class="table-responsive m-bottom">
+<table class="table table-bordered m-0 ">
   <tr class="txt-center">
     <th rowspan="2">Param</th>
     <th rowspan="2">Value(s)</th>
@@ -226,13 +226,13 @@
 </table>
 </div>
 
-<h3>Methods</h3>
+<h4>Methods</h4>
 <p>
   Modals dispose of methods allowing to manually act on them. To use them, you must have access to the modal Object.<br>
   If you created the modal with a javascript call, you already have the Object, but if you created it with html, you can get it with jQuery, like this: <div class="block-std center">var modalObject = $(modalSelector).modalFW('get');</div>
 </p>
-<div class="table-responsive">
-  <table class="table table-bordered block-std">
+<div class="table-responsive m-bottom">
+  <table class="table table-bordered m-0">
     <tr>
       <th>Method</th>
       <th>Description</th>
@@ -255,6 +255,4 @@
     </tr>
   </table>
 </div>
-
-
-<h3>Advanced usages</h3>
+<!-- <h4>Advanced usages</h4> -->

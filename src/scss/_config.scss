@@ -31,7 +31,7 @@ $border-default-color : color(black);
 // STYLING VARS
 // structure
 $body: (
-  'background': color(white),
+  'background': color(greylighter),
   'font-color': color(greystronger),
   'font-size': 20px,
   'title-font-color': color(blacklighter),
@@ -88,9 +88,9 @@ $input-invalid: (
 
 // links
 $link: (
-  'font-color': color(orange),
-  'font-color-hover': color(orange),
-  'font-color-focus': color(orange),
+  'font-color': color(blue),
+  'font-color-hover': color(blue),
+  'font-color-focus': color(blue),
 );
 @function link($property) {@return map-get($link, '#{$property}'); }
 

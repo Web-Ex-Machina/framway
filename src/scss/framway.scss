@@ -6,6 +6,7 @@
 /* Core styles */
 @import 'core';
 /* Components styles */
+@import '../components/modalFW/modalFW';
 @import '../components/block-list/block-list';
 @import '../components/block-std/block-std';
 @import '../components/block-img/block-img';
@@ -19,7 +20,6 @@
 @import '../components/foldingbox/foldingbox';
 @import '../components/tabs/tabs';
 @import '../components/goto/goto';
-@import '../components/modalFW/modalFW';
 @import '../components/priceCard/priceCard';
 @import '../components/countUpFW/countUpFW';
 @import '../components/guideline/guideline';
