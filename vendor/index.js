@@ -5,10 +5,10 @@ import 'bootstrap'; // importing bootstrap.js
 import bs_style from 'bootstrap/scss/bootstrap.scss';
 
 // FONT-AWESOME
-import fontawesome from '@fortawesome/fontawesome';
-import fasolid from '@fortawesome/fontawesome-free-solid';
-import faregular from '@fortawesome/fontawesome-free-regular';
-import fabrands from '@fortawesome/fontawesome-free-brands';
+import fontawesome from '@fortawesome/fontawesome-free/js/all.js';
+import fasolid from '@fortawesome/free-solid-svg-icons';
+import faregular from '@fortawesome/free-regular-svg-icons';
+import fabrands from '@fortawesome/free-brands-svg-icons';
 
 // PROMISES
 import "native-promise-only";
