@@ -26,6 +26,14 @@
   @return $string;
 }
 
+@function repeat($str, $nb) {
+  $result: "";
+  @for $i from 1 through $nb {
+      $result: $result + $str;
+  }
+  @return $result;
+}
+
 @function webkitAlign($align) {
   @if $align == space-around{
     $align : distribute;

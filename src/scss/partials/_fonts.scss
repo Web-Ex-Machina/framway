@@ -15,6 +15,8 @@
 .ft-upper{text-transform: uppercase;}
 .ft-lower{text-transform: lowercase;}
 
+.ft-nowrap{white-space: nowrap;}
+
 @for $index from 0 through 10 {
   @if $index != 0 {
     .ft-minus-#{$index}#{0}{font-size: #{1 - ($index * 0.10)}em;}

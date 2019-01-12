@@ -26,7 +26,9 @@
 .text-left, .txt-left{text-align: left;}
 .text-center, .txt-center{text-align: center;}
 
-.force-full{width: 100vw; position: relative; left: 50%; transform: translateX(-50%);}
+.force-full,
+.w-full{width: 100vw; position: relative; left: 50%; transform: translateX(-50%);}
+.w-fit{width: fit-content;}
 
 /*-----------------------------------------------------------------------------------------------------------------------------*/
 // RADIUS
@@ -45,19 +47,33 @@
 /*-----------------------------------------------------------------------------------------------------------------------------*/
 // SEPARATORS
 .sep{ display:inline-block; width: 100%; margin: $spacing 0 $spacing; clear: both;  height: $border-default-size; background: body(font-color); }
+
+
 @each $key, $value in $colors{
   .sep-#{$key}{@extend .sep; background: $value;}
 }
-*[class*="sep-top"]:before{content:""; @extend .sep;}
-*[class*="sep-bottom"]:after{content:""; @extend .sep;}
-*[class*="sep-left"]:before{content:""; @extend .sep; width: auto; @include flex-grow(1); margin-top: 0; margin-bottom: 0; margin-right: $spacing;}
-*[class*="sep-right"]:after{content:""; @extend .sep; width: auto; @include flex-grow(1); margin-top: 0; margin-bottom: 0; margin-left: $spacing;}
+.sep-top:before,
+.sep-bottom:after,
+.sep-left:before,
+.sep-right:after{content:""; @extend .sep;}
 
-@each $key, $value in $colors{
-  *[class*="sep-top-#{$key}"]:before,
-  *[class*="sep-bottom-#{$key}"]:after,
-  *[class*="sep-left-#{$key}"]:before,
-  *[class*="sep-right-#{$key}"]:after{background: $value;}
+.sep-left:before{ content:""; @extend .sep; width: auto; @include flex-grow(1); margin-top: 0; margin-bottom: 0; margin-right: $spacing; }
+.sep-right:after{ content:""; @extend .sep; width: auto; @include flex-grow(1); margin-top: 0; margin-bottom: 0; margin-left: $spacing; }
+
+@each $side in $sides {
+  @if $side != 'all' {
+    @each $key, $value in $colors{
+      .sep-#{$side}-#{$key}{
+        @extend .sep-#{$side};
+        @if $side == 'top' or $side == 'left'{
+          &:before{background: $value;}
+        }
+        @if $side == 'bottom' or $side == 'right'{
+          &:after{background: $value;}
+        }
+      }
+    }
+  }
 }
 
 hr{@extend .sep; border:0; }

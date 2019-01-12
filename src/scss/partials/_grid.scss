@@ -1,0 +1,23 @@
+.d-grid{display: grid; gap: 1rem; grid-gap: 1rem;
+  @for $index from 1 through 12{
+    &.cols-#{$index}{grid-template-columns: #{repeat('1fr ',$index)};}
+    &.rows-#{$index}{grid-template-rows: #{repeat('1fr ',$index)};}
+  }
+  @each $key, $value in $breakpoints{
+    @include media-max($key){
+      @for $index from 1 through 12{
+        &.cols-#{$key}-#{$index}{grid-template-columns: #{repeat('1fr ',$index)};}
+        &.rows-#{$key}-#{$index}{grid-template-rows: #{repeat('1fr ',$index)};}
+      }
+    }
+  }
+  & figure{@extend %img-container; margin-bottom: 0; height: 100%;
+    & a{@extend %img-container; display: block; height: 100%;}
+  }
+  &>*{
+    @for $index from 1 through 12{
+      &.cols-span-#{$index}{grid-column: span $index;}
+      &.rows-span-#{$index}{grid-row: span $index;}
+    }
+  }
+}

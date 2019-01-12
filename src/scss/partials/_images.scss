@@ -58,3 +58,4 @@ img{
   .r_1-1 &:before,&.r_1-1:before {padding-top: 100%;}
   .r_1-2 &:before,&.r_1-2:before {padding-top: 200%;}
 }
+.img-container{@extend %img-container;}
