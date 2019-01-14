@@ -291,6 +291,10 @@ var Utils = function Utils(){
     return str.toLowerCase().replace(/ |\./g,'_');
   }
 
+  utils.versionToInt = function(strVersion){
+    return parseInt(strVersion.replace(/\./g,''));
+  }
+
 
   // NOTIFICATIONS SETUP
   global.toastr = require('toastr');

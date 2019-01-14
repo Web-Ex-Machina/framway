@@ -1,34 +1,42 @@
-<nav class="bg-greystronger">
-  <ul>
-    <li><a href="#framway__config">Config</a></li>
-    <li>
-      <a href="#framway__manual">Manual</a>
-      {{{manual.nav}}}
-    </li>
-    <li>
-      <a href="#framway__styling">Styles</a>
-      {{{styling.nav}}}
-    </li>
-    <li>
-      <a href="#framway__components">Components</a>
-      {{{components.nav}}}
-    </li>
-  </ul>
-</nav>
-<div class="content container-fluid p-x-x2 p-top">
-  <h1>Framway's config & guideline</h1>
-  <div class="item" id="framway__config">
-    <div class="row">
-      {{{config}}}
+<div class="headerFW nav--arrowed headbanner--above nav--center">
+  <div class="headerFW__headbanner">
+    <h1 id="logo" class="w-100 txt-center ft-1-8-rem ft-b ft-u-no m-bottom-0">
+      <i class="fas fa-subway"></i>
+      <span class="ft-1-4-em">FRAMWAY</span>
+    </h1>
+  </div>
+  <nav class="headerFW__nav">
+    <div class="headerFW__nav__inline">
+      <ul>
+        <li><a href="#framway__dashboard">Dashboard</a></li>
+        <li><a href="#framway__manuals">Documentation</a></li>
+        <li><a href="#framway__examples">Examples</a></li>
+        <li><a href="#framway__components">Components</a></li>
+      </ul>
     </div>
+  </nav>
+</div>
+
+<div class="content container">
+  <div class="item block-std" id="framway__dashboard">
+    <h2 class="item__headline">Infos</h2>
+    <div class="txt-center m-bottom lead">
+      <a target="_blank" href="https://framway.webexmachina.fr">Website</a>
+       -
+      <a target="_blank" href="https://github.com/Web-Ex-Machina/framway">Github</a>
+    </div>
+    {{{config}}}
   </div>
-  <div class="item" id="framway__manual">
-      {{{manual.content}}}
+  <div class="item block-std flex-justifycontent--flexend" id="framway__manuals">
+    <nav class="">{{{manual.nav}}}</nav>
+    <div class="col">{{{manual.content}}}</div>
   </div>
-  <div class="item" id="framway__styling">
-      {{{styling.content}}}
+  <div class="item block-std flex-justifycontent--flexend" id="framway__examples">
+    <nav class="">{{{styling.nav}}}</nav>
+    <div class="col">{{{styling.content}}}</div>
   </div>
-  <div class="item" id="framway__components">
-      {{{components.content}}}
+  <div class="item block-std flex-justifycontent--flexend" id="framway__components">
+    <nav class="">{{{components.nav}}}</nav>
+    <div class="col">{{{components.content}}}</div>
   </div>
 </div>

@@ -1,5 +1,5 @@
 var Tabs = Object.getPrototypeOf(app).Tabs = new Component("tabs");
-Tabs.debug = false;
+// Tabs.debug = true;
 
 Tabs.prototype.onCreate = function(){
   var tabs = this;

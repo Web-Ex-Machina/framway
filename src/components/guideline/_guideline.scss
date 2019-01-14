@@ -1,13 +1,60 @@
-#guideline{@include flex-container();
-  &:before{ content:""; display: block; background: url('./../img/san_francisco_tramway.jpg') center center no-repeat; background-size: cover; position: absolute; top: 0; bottom: 0; right: 0; left: 0; z-index: -1; opacity: 0.3; @include filter(blur(2px)) }
+#guideline{
+  & #logo{ text-decoration: none;
+    &:hover{text-decoration: none;}
+    & svg{vertical-align: baseline;}
+  }
+  // @include flex-container();
+  // &:before{ content:""; display: block; background: url('./../img/san_francisco_tramway.jpg') center center no-repeat; background-size: cover; position: absolute; top: 0; bottom: 0; right: 0; left: 0; z-index: -1; opacity: 0.3; @include filter(blur(2px)) }
 }
-#guideline>nav{ padding: $spacing $spacing $spacing $spacing/2;}
-#guideline>nav a{text-decoration: none; white-space: nowrap; &.active{text-decoration: underline;}}
-#guideline .content{height: 100vh;width: 100%; overflow: auto;}
+// #guideline>nav{ padding: $spacing $spacing $spacing $spacing/2;}
+// #guideline>nav a{text-decoration: none; white-space: nowrap; &.active{text-decoration: underline;}}
+// #guideline .content{min-height: 100vh;width: 100%; overflow: auto;}
 
-#guideline .content .item{ padding: $spacing 0 $spacing;
+#guideline .content .item{padding-top: 15px;
   &:not(.active){display: none;}
-  &>.item{padding: 0;}
+  & .item{}
+  & .item__headline{border-top: 4px dashed color(greystrong);border-bottom: 4px dashed color(greystrong); text-align: center; font-style: italic; line-height: 1.5; margin-bottom: 2rem;margin-top: 1rem; padding: 0 2rem 5px; @extend .center; font-weight: 400;}
+  &#framway__components{
+    & .item__headline{margin-left: 0; margin-right: 1rem; margin-bottom: 1rem; padding: 0 0.5rem 5px;}
+    & .item__infos{text-align: right;}
+  }
+  &#framway__manuals,
+  &#framway__examples,
+  &#framway__components{
+    // @include flex-container(); @extend .counter-top; padding: 0;
+    // & .item{ @extend .sep-bottom;}
+    &>nav{
+      // height: 100vh; flex-shrink:0; overflow: auto; padding: 0 1.5rem; border-right: 1px solid color(grey);
+      position: fixed; left: 0; padding: 0; transition: top 0.4s; font-size: 1.2em; z-index: 99;
+      // @include media-max(sm){position: relative;left: auto; top: auto !important; margin-top: 15px; padding:0; width: 100%;}
+      & ul{list-style: none; padding: 0; margin: 0;padding: 1rem 2rem; overflow: auto; @extend %paper; background-color: color(white); width: fit-content; margin: auto;
+        // @include media-max(sm){max-height: none !important; padding: 0 $spacing/2; background: none; box-shadow: none; display: flex; flex-wrap: wrap; }
+        & li{ margin-bottom: 0.3rem;
+          // @include media-max(sm){background: btn(background); color: btn(font-color); margin: 2px; border-radius: 2px; flex-grow: 1; text-align: center;}
+          & a{text-decoration: none; color: inherit;
+            // @include media-max(sm){display: block; padding: 3px 8px 5px;}
+          }
+          &:hover,
+          &.active{text-decoration: underline; color: link(font-color-hover);}
+        }
+      }
+      &.inline{position: relative;left: auto; top: auto !important; margin-top: 15px; padding:0;width: 100%;
+        & ul{max-height: none !important; padding: 0 $spacing/2; background: none; box-shadow: none; display: flex; flex-wrap: wrap;
+          & li{background: btn(background); color: btn(font-color); margin: 2px; border-radius: 2px; flex-grow: 1; text-align: center;
+            & a{display: block; padding: 3px 8px 5px;}
+          }
+        }
+      }
+      &.aside{transition: all 0.4s; left: auto !important; right: 100% !important;
+        &.hover,
+        &:hover{transform: translateX(100%) !important;}
+        & .more{display: block;}
+      }
+      & .more{display: none; font-size: 2.5rem; position: absolute; top: 15px; left:100%; background-color: white; height: 2.5rem; line-height: 2rem; width: 2.5rem; text-align: center; @extend %paper !optional; z-index: -1;
+        &:after{content:"+";}
+      }
+    }
+  }
 }
 
 .editor{position: relative;font-size: 0.8em;}
@@ -33,9 +80,10 @@
 }
 
 #guideline .table-responsive .table{width: auto; min-width: 100%;}
+#guideline .table.block-std{border: 0;}
 
 #guideline *[class*="constructor"]{
-  & p{ width: 100%; border-bottom: 1px solid #666; margin: 0 15px 1rem; padding-bottom: 1rem; font-weight: bold;}
+  & p{ width: 100%; border-bottom: 1px solid #666; margin: 0 15px 1em; font-weight: bold;}
   & label{font-size: 0.8rem;}
   & .descIcon{float: right; font-size: 1.2em; margin: 0.3em; cursor: pointer;
     &:hover+.descText{opacity: 1;visibility: visible;}

@@ -1,5 +1,9 @@
 if($('#guideline').length){
   var config = require('../../scss/_config.scss');
+  var arrManuals = ['flex','opacity','margin-padding'];
+  if(app.components.indexOf('modalFW')!=-1)
+      arrManuals.push('modalFW');
+
   $.each(app.themes,function(index,theme){
     config = Object.assign(config,require('../../themes/'+theme+'/_config.scss'));
   });
@@ -15,12 +19,14 @@ if($('#guideline').length){
       config[key] = JSON.parse(objValue);
     }
   });
-  var configHtml = buildConfig(config,'global');
+  var dashboardHtml = buildDashboard();
+  var configHtml = buildConfig();
   var stylingHtml = buildStyling();
   var manualHtml = buildManual();
   var componentsHtml = buildComponents();
 
   var html = require('mustache-loader!html-loader?interpolate!./templates/index.html')({
+    dashboard: dashboardHtml,
     config: configHtml,
     manual: manualHtml,
     styling: stylingHtml,
@@ -131,7 +137,7 @@ if($('#guideline').length){
         sampleText = $(sampleText).wrapAll('<div></div>');
         var constructorText = '';
         if(sampleText.parent().find('.constructor').length){
-          sampleText.parent().find('.constructor').addClass('col-12 col-lg-6 ').find('.input').each(function(){
+          sampleText.parent().find('.constructor').addClass('col-12 col-lg-6 ft-0-8-em').find('.input').each(function(){
             var ref = $(this);
             var target = ref.data('attr');
             var name = ref.data('label').replace(' ','-').toLowerCase();
@@ -189,17 +195,29 @@ if($('#guideline').length){
         if(typeof sampleText == 'undefined')
           sampleText = 'error while retrieving sample';
 
-        components.content += '<div class="item row" id="framway__components-'+component+'">'
-                           + '<h2 class="ft-i col-12 sep-bottom">'+component+'</h2>'
+        var className = '';
+        for (var i in component.split('-')) {
+          className += component.split('-')[i].charAt(0).toUpperCase() + component.split('-')[i].slice(1);
+        }
+        components.content += '<div class="item" id="framway__components-'+component+'">'
+                           + '<div class="row">'
+                           + '<div class="col-12 flex-wrap-justifycontent--spacebetween-alignitems--center m-bottom">'
+                           + '<h2 class="item__headline">'+component+' <span class="ft-grey ft-0-6-em">['+((app[className].version !== undefined) ? 'v'+app[className].version : 'unknown version') +']</span></h2>'
+                           + '<div class="item__infos">'
+                           + '<span class="ft-grey">Created : </span><b>'+((app[className].createdAt !== undefined) ? app[className].createdAt : 'unknown') +'</b><br />'
+                           + '<span class="ft-grey">Updated : </span><b>'+((app[className].lastUpdate !== undefined) ? app[className].lastUpdate : 'unknown') +'</b>'
+                           +'</div>'
+                           +'</div>'
                            + '<div class="col-12 editor-target">'
                            + sampleText
                            + '</div>'
-                           + '<div class="col">'
+                           + '<div class="col ft-0-8-em">'
                            + '<div class="editor"><button class="copy">Copy</button>'
                            + '<textarea name="" id="">'+sampleText.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</textarea>'
                            + '</div>'
                            + '</div>'
                            + constructorText
+                           + '</div>'
                            + '</div>'
         components.nav += '<li><a href="#framway__components-'+component+'">'+component+'</a></li>';
       } else {
@@ -222,40 +240,40 @@ if($('#guideline').length){
     objConfig = {'Default': 'texts'};
     if(config['enable-bg'] == 'true') objConfig['Backgrounded'] = 'texts_bg';
     if(config['enable-bd'] == 'true') objConfig['Bordered'] = 'texts_bd';
-    styling.nav += '<li><a href="#framway__styling-text">Texts</a></li>';
-    styling.content += '<div class="item active" id="framway__styling-text">'
-                      + '<h2 class="ft-i sep-bottom">Texts</h2>'
+    styling.nav += '<li><a href="#framway__examples-text">Texts</a></li>';
+    styling.content += '<div class="item active" id="framway__examples-text">'
+                      + '<h2 class="item__headline">Texts</h2>'
                       + buildTabs(objConfig)
                       +  '</div>';
 
     // TITLES
     objConfig = {'Default': 'titles','With separators' : 'titles_sep',};
     if(config['enable-bg'] == 'true') objConfig['Backgrounded'] = 'titles_bg';
-    styling.nav += '<li><a href="#framway__styling-titles">Titles</a></li>';
-    styling.content += '<div class="item" id="framway__styling-titles">'
-                      + '<h2 class="ft-i sep-bottom">Titles</h2>'
+    styling.nav += '<li><a href="#framway__examples-titles">Titles</a></li>';
+    styling.content += '<div class="item" id="framway__examples-titles">'
+                      + '<h2 class="item__headline">Titles</h2>'
                       + buildTabs(objConfig)
                       + '</div>';
     // BUTTONS
     objConfig = {'Default': 'buttons', 'Colored' : 'buttons_colors',};
-    styling.nav += '<li><a href="#framway__styling-buttons">Buttons</a></li>';
-    styling.content += '<div class="item" id="framway__styling-buttons">'
-                      + '<h2 class="ft-i sep-bottom">Buttons</h2>'
+    styling.nav += '<li><a href="#framway__examples-buttons">Buttons</a></li>';
+    styling.content += '<div class="item" id="framway__examples-buttons">'
+                      + '<h2 class="item__headline">Buttons</h2>'
                       + buildTabs(objConfig)
                       + '</div>';
     // INPUTS
     objConfig = {'Type text': 'inputs', 'Type text extra' : 'inputs_texts', 'Others' : 'inputs_others'};
     if(config['enable-bg'] == 'true') objConfig['Backgrounded'] = 'inputs_bg';
-    styling.nav += '<li><a href="#framway__styling-inputs">Inputs</a></li>';
-    styling.content += '<div class="item" id="framway__styling-inputs">'
-                      + '<h2 class="ft-i sep-bottom">Inputs</h2>'
+    styling.nav += '<li><a href="#framway__examples-inputs">Inputs</a></li>';
+    styling.content += '<div class="item" id="framway__examples-inputs">'
+                      + '<h2 class="item__headline">Inputs</h2>'
                       + buildTabs(objConfig)
                       + '</div>';
     // BACKGROUNDS
     if(config['enable-bg'] == 'true'){
-      styling.nav += '<li><a href="#framway__styling-backgrounds">Backgrounds</a></li>';
-      styling.content += '<div class="item" id="framway__styling-backgrounds">'
-                        + '<h2 class="ft-i sep-bottom">Backgrounds</h2>';
+      styling.nav += '<li><a href="#framway__examples-backgrounds">Backgrounds</a></li>';
+      styling.content += '<div class="item" id="framway__examples-backgrounds">'
+                        + '<h2 class="item__headline">Backgrounds</h2>';
       $.each(config.colors,function(key,value){
         styling.content += require('mustache-loader!html-loader?interpolate!./templates/styling_backgrounds.html')({color: key});
       })
@@ -264,9 +282,9 @@ if($('#guideline').length){
     // BORDERS
     if(config['enable-bd'] == 'true'){
       objConfig = {'Default': 'borders', 'Colored' : 'borders_colors',};
-      styling.nav += '<li><a href="#framway__styling-borders">Borders</a></li>';
-      styling.content += '<div class="item" id="framway__styling-borders">'
-                        + '<h2 class="ft-i sep-bottom">Borders</h2>'
+      styling.nav += '<li><a href="#framway__examples-borders">Borders</a></li>';
+      styling.content += '<div class="item" id="framway__examples-borders">'
+                        + '<h2 class="item__headline">Borders</h2>'
                         + buildTabs(objConfig)
                         + '</div>';
     }
@@ -278,14 +296,11 @@ if($('#guideline').length){
 
   function buildManual(){
     var manual = {nav : '', content : ''};
-    var arrManuals = ['flex','opacity','margin-padding'];
-    if(app.components.indexOf('modalFW')!=-1)
-      arrManuals.push('modalFW');
     manual.nav += '<ul>';
     $.each(arrManuals,function(index,className){
-      manual.nav += '<li><a href="#framway__manual-'+className+'">'+className.replace(className[0], className[0].toUpperCase())+'</a></li>';
-      manual.content += '<div class="item active" id="framway__manual-'+className+'">'
-                        + '<h2 class="ft-i sep-bottom">'+className.replace(className[0], className[0].toUpperCase())+'</h2>'
+      manual.nav += '<li><a href="#framway__manuals-'+className+'">'+className.replace(className[0], className[0].toUpperCase())+'</a></li>';
+      manual.content += '<div class="item active" id="framway__manuals-'+className+'">'
+                        + '<h2 class="item__headline">'+className.replace(className[0], className[0].toUpperCase())+'</h2>'
                         + require('mustache-loader!html-loader?interpolate!./manuals/'+className+'.html')()
                         + '</div>';
     });
@@ -298,6 +313,11 @@ if($('#guideline').length){
       manual.content = manual.content.replace($(this).html(),trimHtml.replace(/</g,'&lt;').trim());
     });
     return manual;
+  };
+  function buildDashboard(){
+    var dashboard = {content : ''};
+
+    return dashboard;
   };
 
   function buildTabs(tabsConfig){
@@ -321,7 +341,33 @@ if($('#guideline').length){
     return template.render({},{nav: nav,content: content});
   };
 
-  function buildConfig(obj,title = ''){
+  function buildConfig(){
+    var strConfig = '';
+    strConfig += '<table class="table table-bordered block-std m-bottom">';
+    strConfig += '<tbody>';
+    strConfig += '<tr><td><i>Version</i></td><td><strong>'+app.version+'</strong></td></tr>';
+    strConfig += '<tr><td><i>Debug mode</i></td><td><strong>'+app.debug+'</strong></td></tr>';
+    strConfig += '<tr><td><i>Component(s) loaded</i> <strong class="fl-right">['+(app.components.length-1)+']</strong></td><td><nav><ul class="m-bottom-0">';
+    for (var i = 0; i <= app.components.length-1; i++) {
+      strConfig += '<li><a href="#framway__components-'+app.components[i]+'">'+app.components[i]+'</a></li>'
+    }
+    strConfig += '</ul></nav></td></tr>';
+    strConfig += '<tr><td><i>Theme(s) loaded</i> <strong class="fl-right">['+(app.themes.length)+']</strong></td><td><ul class="m-bottom-0">';
+    for (var i = 0; i <= app.themes.length-1; i++) {
+      strConfig += '<li>'+app.themes[i]+'</li>'
+    }
+    strConfig += '</ul></td></tr>';
+    strConfig += '</tbody>';
+    strConfig += '</table><br>';
+
+
+    strConfig += '<h2 class="item__headline">Variables</h2>';
+    strConfig += '<div class="row">';
+    strConfig += getConfigVars(config,'global');
+    strConfig += '</div>';
+    return strConfig;
+  }
+  function getConfigVars(obj,title = ''){
     var template = require('mustache-loader?noShortcut!html-loader?interpolate!./templates/config_section.html');  // noShortcut is used to insert partials later into the final template
     var rows = ''; // the partials mentionned above
     var arrObjects = {}; // used to store and process later the sub-object of config
@@ -337,7 +383,7 @@ if($('#guideline').length){
         arrObjects[key] = value;
     });
     $.each(arrObjects,function(key,value){
-      htmlStack += buildConfig(value, key);
+      htmlStack += getConfigVars(value, key);
     });
     return template.render({title: title},{rows: rows})+htmlStack; // return the initial template filled with his rows PLUS the stack we get by processing recursively the config
   };
@@ -346,8 +392,9 @@ if($('#guideline').length){
   $(function () {
     $('#guideline nav a').bind('click',function(e){
       e.preventDefault();
-      var target = $(this).addClass('active').attr('href');
-      $('#guideline nav a').not(this).removeClass('active');
+      var target = $(this).attr('href');
+      $(this).parent().addClass('active');
+      $('#guideline nav a').not(this).parent().removeClass('active');
       $('#guideline .content .item').removeClass('active');
 
       window.location.hash = target;
@@ -360,6 +407,7 @@ if($('#guideline').length){
         })
       }
       $('#guideline .content .item'+target).find('.editor textarea').trigger('change',true);
+      setLateralNav();
     });
 
     $('.editor textarea').bind('keyup change',function(e){
@@ -373,9 +421,41 @@ if($('#guideline').length){
         notif_fade.success('Copied to clipboard !');
     });
 
+    // lateral nav managment
+    var header = app.components_active.headerFW[0];
+    var setLateralNav = function (){
+      var spaceAllowed = (viewport.width - $('#guideline>.content').outerWidth()) / 2;
+      $('#guideline .item>nav').css('top',header.$el.position().top + header.$el.outerHeight());
+      $('#guideline .item>nav').each(function(){
+        if(!$('html').hasClass('no-nav-scroll')){
+          $(this).css('left',(spaceAllowed-$(this).outerWidth())/2);
+          $(this).removeClass('aside');
+          if(spaceAllowed < $(this).outerWidth())
+            $(this).addClass('aside');
+          else
+            $(this).removeClass('aside')
+        }
+        $(this).children('ul').css('max-height',viewport.height - header.$el.outerHeight());
+      });
+    }
+    window.addEventListener('scroll', function(){
+      if(header.hasStick){
+        setLateralNav()
+      }
+    }, true);
+    $(window).resize(function(){
+      setLateralNav();
+    });
+    $('#guideline .item>nav').bind('mouseenter',function(){
+      $('html').addClass('no-nav-scroll');
+    }).bind('mouseleave',function(){
+      $('html').removeClass('no-nav-scroll');
+    }).append('<div class="more"></div>');
+
     if(window.location.hash != "")
-      $('#guideline nav a[href="'+window.location.hash+'"]').trigger('click');
+      $('#guideline nav a[href="'+window.location.hash+'"]').first().trigger('click');
     else
       $('#guideline nav a').first().trigger('click');
+    $('html,body').animate({ scrollTop: 0 }, 300);
   });
 };

@@ -5,6 +5,8 @@ if(!name){
   console.log('\n Missing component\'s name \n');
 }
 else{
+  json = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+  version = json.version;
   fs.mkdir('./src/components/'+name,function(err){
     if(err)
       console.log('\n'+err.message+'\n');
@@ -16,6 +18,10 @@ else{
       fs.appendFileSync('./src/components/'+name+'/_'+name+'.scss','.'+name+'{}');
       fs.appendFileSync('./src/components/'+name+'/'+name+'.js',`var `+className+` = Object.getPrototypeOf(app).`+className+` = new Component("`+name+`");
 `+className+`.debug = true;
+`+className+`.createdAt      = "`+version+`";
+`+className+`.lastUpdate     = "`+version+`";
+`+className+`.version        = "1";
+// `+className+`.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 // `+className+`.prototype.onCreate = function(){
   // do thing after element's creation

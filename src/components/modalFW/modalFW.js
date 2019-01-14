@@ -1,5 +1,10 @@
 var ModalFW = Object.getPrototypeOf(app).ModalFW = new Component("modalFW");
 // ModalFW.debug = true;
+ModalFW.createdAt      = "1.3.7";
+ModalFW.lastUpdate     = "1.3.8";
+ModalFW.version        = "1";
+// ModalFW.loadingMsg     = "This message will display in the console when component will be loaded.";
+
 
 ModalFW.prototype.onResize = function(){};
 ModalFW.prototype.onDestroy = function(){
@@ -61,6 +66,7 @@ ModalFW.prototype.onCreate = function(){
       'width' : modal.width,
       'max-width' : '100%'
     });
+
   modal.$el.html('').append(modal.$wrapper);
   modal.$el.appendTo($('body'));
 

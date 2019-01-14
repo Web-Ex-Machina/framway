@@ -6,6 +6,7 @@ function Framway(){
   framway.$debug = $('<div id="debug"></div>').appendTo($('body'));
   framway.debug = true;
   framway.useNotif = true;
+  framway.version = require('../../package.json').version;
 
   return framway;
 };
@@ -16,9 +17,21 @@ function Framway(){
 Framway.prototype.loadComponents = function(arrComponents){
   var framway = this;
   return new Promise(function(resolve,reject){
+    var className = '';
     $.each(arrComponents,function(index,name){
       try{
-        require('../components/'+name+'/'+name+'.js');
+        for (var i in name.split('-')){
+          className += name.split('-')[i].charAt(0).toUpperCase() + name.split('-')[i].slice(1);
+        }
+        var component = require('../components/'+name+'/'+name+'.js');
+        if(framway[className]){
+          if(utils.versionToInt(framway.version) < utils.versionToInt(framway[className].createdAt))
+            throw 'This component was created in a later framway\'s version ('+framway[className].createdAt+'). Please update the framway before using this component.\nFramway\'s current version: '+framway.version+'';
+          if(utils.versionToInt(framway.version) < utils.versionToInt(framway[className].lastUpdate))
+            framway.log('Component '+ name + ' is compatible with the current version of the framway, but was updated in a later iteration ('+framway[className].lastUpdate+'). Be aware that problems might occur when using it without upgrading the framway first.\nFramway\'s current version: '+framway.version+'');
+          if(framway[className].loadingMsg)
+            framway.log('Component '+ name +': \n'+framway[className].loadingMsg);
+        }
         framway.components.push(name);
       } catch(e){
         framway.log('Component '+ name + ' failed to load.\n'+e);

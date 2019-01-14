@@ -1,6 +1,6 @@
 var CountUp = require('countUp');
 var CountUpFW = Object.getPrototypeOf(app).CountUpFW = new Component("countUpFW");
-CountUpFW.debug = true;
+// CountUpFW.debug = true;
 
 CountUpFW.prototype.onCreate = function(){
   var countUp = this;
