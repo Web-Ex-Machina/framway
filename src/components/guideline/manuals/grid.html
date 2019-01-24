@@ -1,0 +1,80 @@
+<i class="center-block w-fit txt-center m-bottom text-danger">
+  <b>Disclaimer</b><br>
+   The following makes use of the css grid properties, and thus may or may not fail in shitty browsers.
+</i>
+<h4>Syntax</h4>
+<div class="m-bottom ">d-grid cols-<span class="tag">numberColumns</span> rows-<span class="tag">numberRows</span><span class="tag">...</span></div>
+<h4>Example</h4>
+<div class="m-bottom "><span class="tag">d-grid cols-3 rows-3</span></div>
+<div class="d-grid cols-3 rows-3 m-bottom">
+  <div class="item_grid" style="height:2rem; background:grey"></div>
+  <div class="item_grid" style="background:grey"></div>
+  <div class="item_grid" style="background:grey"></div>
+  <div class="item_grid" style="background:grey"></div>
+  <div class="item_grid" style="background:grey"></div>
+  <div class="item_grid" style="background:grey"></div>
+  <div class="item_grid" style="background:grey"></div>
+  <div class="item_grid" style="background:grey"></div>
+  <div class="item_grid" style="background:grey"></div>
+</div>
+<h4>Rules</h4>
+<div class="m-bottom">
+  <ul class="m-top">
+    <li class="m-bottom">
+      Grid's columns and rows are defined by the cols- and rows- classes. If none of them are defined, the grid has one column and infinite rows by default.<br>
+      <i>Example: <span class="tag">d-grid cols-3</span>, <span class="tag">d-grid rows-5</span>, <span class="tag">d-grid cols-3 rows-5</span></i>
+    </li>
+    <li class="m-bottom">
+      Defining a number of rows will add as much rows as expected, which mean that if you're requesting 3 rows, but fill up only 2, the 3rd will be there, empty.<br>
+      On another side, if you request 3 rows and fill them up all, any subsequent row will be added with no constraint.<br>
+      <i>Example: <span class="tag">d-grid cols-2 rows-3</span></i>
+      <div class="d-grid cols-2 rows-3 m-bottom m-top">
+        <div class="item_grid" style="height:2rem; background:grey"></div>
+        <div class="item_grid" style="background:grey"></div>
+        <div class="item_grid" style="background:grey"></div>
+        <div class="item_grid" style="background:grey"></div>
+        <div class="item_grid ft-i txt-center" style="background:transparent; border:3px dashed grey;">Empty space</div>
+        <div class="item_grid ft-i txt-center" style="background:transparent; border:3px dashed grey;">Empty space</div>
+      </div>
+      <i class="center-block w-fit">or</i>
+      <div class="d-grid cols-2 rows-3 m-bottom m-top">
+        <div class="item_grid" style="height:2rem; background:grey"></div>
+        <div class="item_grid" style="background:grey"></div>
+        <div class="item_grid" style="background:grey"></div>
+        <div class="item_grid" style="background:grey"></div>
+        <div class="item_grid" style="background:grey"></div>
+        <div class="item_grid" style="background:grey"></div>
+        <div class="item_grid ft-i txt-center" style="height: 2rem;background:grey;">Subsequent item</div>
+        <div class="item_grid ft-i txt-center" style="height: 2rem;background:grey;">Subsequent item</div>
+      </div>
+    </li>
+    <li class="m-bottom">
+      Cols and rows can be defined responsively, by adding classes like this:<br> <span class="tag">cols/rows</span>-<span class="tag">breakpoint</span>-<span class="tag">numberColumns/numberRows</span><br>
+      <i>Example: <span class="tag">d-grid cols-3 cols-md-2 cols-sm-1</span> (resize your viewport to see in action)</i>
+      <div class="d-grid cols-3 cols-md-2 cols-sm-1 m-bottom m-top">
+        <div class="item_grid" style="height:2rem; background:grey"></div>
+        <div class="item_grid" style="height:2rem; background:grey"></div>
+        <div class="item_grid" style="height:2rem; background:grey"></div>
+        <div class="item_grid" style="height:2rem; background:grey"></div>
+        <div class="item_grid" style="height:2rem; background:grey"></div>
+        <div class="item_grid" style="height:2rem; background:grey"></div>
+      </div>
+    </li>
+    <li class="m-bottom">
+      You can tell to grid items to span across cols and/or rows, by adding them classes like this: <br> <span class="tag">cols/rows</span>-<span class="tag">span</span>-<span class="tag">numberColumns/numberRows</span><br>
+      Note that rows spanning works better when a number of rows is defined. <br>
+      <i>Example: <span class="tag">d-grid cols-3 d-grid cols-3 rows-4</span></i>
+      <div class="d-grid cols-3 rows-4 m-bottom m-top">
+        <div class="item_grid cols-span-2 txt-center" style="height:2rem; background:grey">cols-span-2</div>
+        <div class="item_grid" style="height:2rem; background:grey"></div>
+        <div class="item_grid rows-span-3 txt-center" style="background:grey">rows-span-3</div>
+        <div class="item_grid rows-span-2 cols-span-2 txt-center" style=" background:grey">rows-span-2 cols-span-2</div>
+        <div class="item_grid" style="height:2rem; background:grey"></div>
+        <div class="item_grid" style="height:2rem; background:grey"></div>
+        <div class="item_grid" style="height:2rem; background:grey"></div>
+        <div class="item_grid" style="height:2rem; background:grey"></div>
+        <div class="item_grid" style="height:2rem; background:grey"></div>
+      </div>
+    </li>
+  </ul>
+</div>

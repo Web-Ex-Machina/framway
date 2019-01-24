@@ -1,12 +1,12 @@
 <div class="row">
-  <div class="block-list col-4">
+  <div class="block-list col">
     <a href="" class="block-list__wrapper">
       <div class="block-list__figure">
         <img src="../../img/san_francisco_tramway.jpg" alt="sample image">
       </div>
       <div class="block-list__headline">
-        <div class="block-list__category">Article</div>
-        <div class="block-list__date">01/01/1990</div>
+        <div class="">Article</div>
+        <div class="">01/01/1990</div>
       </div>
       <div class="block-list__content">
         <div class="block-list__title">Lorem ipsum dolor</div>
@@ -22,7 +22,7 @@
       </div>
     </a>
   </div>
-  <div class="block-list col-4">
+  <div class="block-list col">
     <a href="" class="block-list__wrapper">
       <div class="block-list__figure">
         <img src="../../img/san_francisco_tramway.jpg" alt="sample image">
@@ -41,11 +41,11 @@
       </div>
     </a>
   </div>
-  <div class="block-list col-4">
+  <div class="block-list col">
     <a href="" class="block-list__wrapper">
       <div class="block-list__headline">
-        <div class="block-list__category">Article</div>
-        <div class="block-list__date">01/01/1990</div>
+        <div class="">Article</div>
+        <div class="">01/01/1990</div>
       </div>
       <div class="block-list__content">
         <div class="block-list__title">Lorem ipsum dolor</div>
@@ -66,8 +66,11 @@
 
 <div class="constructor">
   <p>Misc</p>
-  <div class="input select" data-label="presets" data-attr="class" data-value="content--inline" data-output="inline" data-selected="content--inline"></div>
+  <div class="input select" data-label="presets" data-attr="class" data-value="content--inline" data-output="inline" data-selected=""></div>
   <div class="input select" data-label="Image ratio" data-attr="class" data-value="r_1-1,r_2-1,r_1-2,r_16-9" data-output="1:1,2:1,1:2,16:9" data-selected=""></div>
+  <div class="input checkbox" data-label="Auto size" data-attr="class" data-value="autoSize" data-selected="autoSize">
+    set a default size of 33.33% of the container (has to be flex), and a minimum size of 300px
+  </div>
   <p>Image alignement</p>
   <div class="input select" data-label="vertical" data-attr="class" data-value="img--top,img--bottom" data-output="Top,Bottom" data-selected="">
     Align the image only if cropped
@@ -85,11 +88,12 @@
   <p>Content properties</p>
   <div class="input checkbox" data-label="Headline disable" data-attr="class" data-value="headline--disable" data-selected=""></div>
   <div class="input checkbox" data-label="Footer disable" data-attr="class" data-value="footer--disable" data-selected=""></div>
+  <div class="input checkbox" data-label="Headline outer" data-attr="class" data-value="headline--outer" data-selected=""></div>
+  <div class="w-100"></div>
   <div class="input select" data-label="Font color" data-attr="class" data-value="ft-#colors" data-output="#colors" data-selected="">
     Set the content's font color
   </div>
   <div class="input select" data-label="Background color" data-attr="class" data-value="content__bg--#colors" data-output="#colors" data-selected="">
     Set the content's background color
   </div>
-  <div class="input checkbox" data-label="Headline outer" data-attr="class" data-value="headline--outer" data-selected=""></div>
 </div>

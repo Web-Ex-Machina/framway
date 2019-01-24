@@ -1,6 +1,6 @@
 if($('#guideline').length){
   var config = require('../../scss/_config.scss');
-  var arrManuals = ['flex','opacity','margin-padding'];
+  var arrManuals = ['flex','grid','opacity','margin-padding'];
   if(app.components.indexOf('modalFW')!=-1)
       arrManuals.push('modalFW');
 

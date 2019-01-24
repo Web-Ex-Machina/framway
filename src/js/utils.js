@@ -177,6 +177,19 @@ var Utils = function Utils(){
   };
 
   /**
+   * return true or false whether the object submitted has a key or not
+   * @param  {Object}  obj
+   * @param  {String}  key
+   * @return {Boolean}
+   */
+  Object.hasKey = function(obj,key){
+   if(Object.keys(obj).indexOf(key) != -1)
+     return true;
+   else
+     return false;
+  }
+
+  /**
    * return the size of an Object
    * @param  {Object} obj
    * @return {Integer}
@@ -372,6 +385,17 @@ Utils.prototype.getDimensions = function(){
   }
 };
 
+/**
+ * return a set of jQuery object filtered by the data attribute value submitted
+ * @param  {[type]} prop [description]
+ * @param  {[type]} val  [description]
+ * @return {[type]}      [description]
+ */
+$.fn.filterByData = function(prop, val) {
+ return this.filter(
+     function() { return $(this).data(prop)==val; }
+ );
+}
 
 // check end of scrolling
 $.fn.scrollEnd = function (callback, timeout) {
