@@ -6,6 +6,10 @@ var HtmlWebpackInlineStylePlugin = require('html-webpack-inline-style-plugin');
 var LiveReloadPlugin = require('webpack-livereload-plugin');
 var WebpackSynchronizableShellPlugin = require('webpack-synchronizable-shell-plugin');
 
+const WebpackBar = require('webpackbar');
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+const smp = new SpeedMeasurePlugin();
+
 const webpack = require('webpack'); //to access built-in plugins
 const path = require('path');
 const fs = require('fs');
@@ -37,6 +41,7 @@ fs.readdirSync(path.resolve(__dirname, './src/themes/')).forEach(function(theme)
 })
 
 
+// module.exports = smp.wrap({
 module.exports = {
     entry: {
         vendor  : './vendor', // split vendors from app's file, in order to optimize the building process
@@ -68,13 +73,15 @@ module.exports = {
                         {loader: "css-loader",
                             options:{
                                 sourceMap:true, // enable sourcemap
-                                minimize: true, // minimize css
-                                module: true,  // enable use of imported css as js object
+                                context: '/',
+                                // minimize: true, // minimize css
+                                // module: true,  // enable use of imported css as js object
+                                modules: true,  // enable use of imported css as js object
                                 localIdentName: '[local]', // used to keep the right name of a css class instead of a hash
                             }
                         },
                         {loader: "postcss-loader", options:{sourceMap:true}},
-                        {loader: "sass-loader", options:{sourceMap:true}},
+                        {loader: "fast-sass-loader", options:{sourceMap:true}},
                     ],
                     publicPath: '../'
                 })
@@ -105,6 +112,7 @@ module.exports = {
         }
     },
     plugins: [
+        new WebpackBar(),
         new WebpackSynchronizableShellPlugin({
             onBuildStart:{
                 scripts: ['npm run prepare'],
@@ -134,5 +142,6 @@ module.exports = {
     ]
     .concat(htmlEmails)
 };
+// });
 
 // console.log('\n ---------------- \n '+framwayConfig.themes.indexOf(theme)+' \n ---------------- \n');
