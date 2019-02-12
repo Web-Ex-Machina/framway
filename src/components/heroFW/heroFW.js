@@ -17,7 +17,7 @@ HeroFW.prototype.setHeight = function() {
   if(this.$el.data('height') && this.$el.data('height') != ""){
     heightBox = this.$el.data('height');
     if(this.$el.data('height') == "viewport"){
-      heightBox = viewport.height - $('#header').outerHeight();
+      heightBox = viewport.height - ($('#header').outerHeight() || 0);
     }
   }
   if(heightBox != 0)

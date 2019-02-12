@@ -114,7 +114,10 @@ HeaderFW.prototype.onCreate = function(){
   });
 
   // PANEL INIT STATE
-  header.navPanelMenus.root.$el.addClass('active');
+  if(utils.getObjSize(header.navPanelMenus) > 0)
+    header.navPanelMenus.root.$el.addClass('active');
+  else
+    header.$el.addClass('no-items');
   $(window).trigger('resize');
   header.onResize();
   // setTimeout(function(){header.$toggler.trigger('click');},1);
