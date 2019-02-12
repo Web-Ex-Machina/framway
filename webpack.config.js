@@ -1,6 +1,7 @@
 const framwayConfig = require('./framway.config.js');
 
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HtmlWebpackInlineStylePlugin = require('html-webpack-inline-style-plugin');
 var LiveReloadPlugin = require('webpack-livereload-plugin');
@@ -43,6 +44,8 @@ fs.readdirSync(path.resolve(__dirname, './src/themes/')).forEach(function(theme)
 
 // module.exports = smp.wrap({
 module.exports = {
+    mode: 'development',
+    // mode: 'production',
     entry: {
         vendor  : './vendor', // split vendors from app's file, in order to optimize the building process
         framway : './src',
@@ -67,24 +70,17 @@ module.exports = {
             {
                 test: /\.s?css$/,  // will watch either for css or scss files
                 exclude: /(emails)/,
-                use: ExtractTextPlugin.extract({
-                    fallback: "style-loader",
-                    use: [
-                        {loader: "css-loader",
-                            options:{
-                                sourceMap:true, // enable sourcemap
-                                context: '/',
-                                // minimize: true, // minimize css
-                                // module: true,  // enable use of imported css as js object
-                                modules: true,  // enable use of imported css as js object
-                                localIdentName: '[local]', // used to keep the right name of a css class instead of a hash
-                            }
-                        },
-                        {loader: "postcss-loader", options:{sourceMap:true}},
-                        {loader: "fast-sass-loader", options:{sourceMap:true}},
-                    ],
-                    publicPath: '../'
-                })
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            publicPath: '../'
+                        }
+                    },
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader',
+                ]
             },
             {
                 test: /\.html$/,  // will watch either for css or scss files
@@ -130,7 +126,10 @@ module.exports = {
             Tether: 'tether',
             tether: 'tether' // enable tether as global variable (required by bootstrap 4)
         }),
-        new ExtractTextPlugin({filename : "css/[name].css"}),
+        // new ExtractTextPlugin({filename : "css/[name].css"}),
+        new MiniCssExtractPlugin({
+          filename : "css/[name].css",
+        }),
         new HtmlWebpackPlugin({
             title: 'Framway\'s home',
             template: './src/index.html',
