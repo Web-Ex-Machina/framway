@@ -2,7 +2,7 @@ var HeaderFW = Object.getPrototypeOf(app).HeaderFW = new Component("headerFW");
 // HeaderFW.debug = false;
 HeaderFW.createdAt      = "1.0.0";
 HeaderFW.lastUpdate     = "1.4.4";
-HeaderFW.version        = "1";
+HeaderFW.version        = "1.2";
 // HeaderFW.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 HeaderFW.prototype.onCreate = function(){
@@ -20,7 +20,7 @@ HeaderFW.prototype.onCreate = function(){
     header.$stickyEl = header.$nav;
 
   header.$clone.find('.headerFW__nav').addClass('active');
-  header.$clone.find('a,nav,h1').each(function(index,item){
+  $.each(header.$clone.find('a,nav,h1').toArray().reverse(),function(index,item){
     $(item).replaceWith($('<span/>').addClass(item.className).attr('id',item.id).html($(item).html()));
   });
   header.$clone.find("[itemtype],[itemscope],[itemprop]").removeAttr('itemtype itemscope itemprop');
