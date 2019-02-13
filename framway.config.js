@@ -19,6 +19,7 @@ module.exports = {
     'goto',
     'priceCard',
     'countUpFW',
+    'ipsum',
     'guideline',
   ],
 }
