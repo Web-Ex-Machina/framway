@@ -1,5 +1,9 @@
 var AccordionFW = Object.getPrototypeOf(app).AccordionFW = new Component("accordionFW");
 AccordionFW.debug = false;
+AccordionFW.createdAt      = "1.0.0";
+AccordionFW.lastUpdate     = "1.4.3";
+AccordionFW.version        = "1";
+// AccordionFW.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 AccordionFW.prototype.onCreate = function(){
   var acc = this;

@@ -1,5 +1,9 @@
 var Tabs = Object.getPrototypeOf(app).Tabs = new Component("tabs");
 // Tabs.debug = true;
+Tabs.createdAt      = "1.0.0";
+Tabs.lastUpdate     = "1.4.3";
+Tabs.version        = "1";
+// Tabs.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 Tabs.prototype.onCreate = function(){
   var tabs = this;

@@ -1,5 +1,9 @@
 var HeaderFW = Object.getPrototypeOf(app).HeaderFW = new Component("headerFW");
-HeaderFW.debug = false;
+// HeaderFW.debug = false;
+HeaderFW.createdAt      = "1.0.0";
+HeaderFW.lastUpdate     = "1.4.3";
+HeaderFW.version        = "1";
+// HeaderFW.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 HeaderFW.prototype.onCreate = function(){
   var header = this;

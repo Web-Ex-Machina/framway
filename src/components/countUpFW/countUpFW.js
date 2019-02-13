@@ -1,6 +1,10 @@
 var CountUp = require('countUp');
 var CountUpFW = Object.getPrototypeOf(app).CountUpFW = new Component("countUpFW");
 // CountUpFW.debug = true;
+CountUpFW.createdAt      = "1.0.0";
+CountUpFW.lastUpdate     = "1.4.3";
+CountUpFW.version        = "1";
+// CountUpFW.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 CountUpFW.prototype.onCreate = function(){
   var countUp = this;

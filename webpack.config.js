@@ -73,9 +73,9 @@ module.exports = {
                         {loader: "css-loader",
                             options:{
                                 sourceMap:true, // enable sourcemap
-                                context: '/',
                                 // minimize: true, // minimize css
                                 // module: true,  // enable use of imported css as js object
+                                context: '/',
                                 modules: true,  // enable use of imported css as js object
                                 localIdentName: '[local]', // used to keep the right name of a css class instead of a hash
                             }

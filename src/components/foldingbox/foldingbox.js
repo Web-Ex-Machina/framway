@@ -1,5 +1,9 @@
 var Foldingbox = Object.getPrototypeOf(app).Foldingbox = new Component("foldingbox");
 Foldingbox.debug = false;
+Foldingbox.createdAt      = "1.0.0";
+Foldingbox.lastUpdate     = "1.4.3";
+Foldingbox.version        = "1";
+// Foldingbox.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 Foldingbox.prototype.onCreate = function(){
   var foldingbox = this;

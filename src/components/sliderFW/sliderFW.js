@@ -1,5 +1,9 @@
 var SliderFW = Object.getPrototypeOf(app).SliderFW = new Component("sliderFW");
 SliderFW.debug = false;
+SliderFW.createdAt      = "1.0.0";
+SliderFW.lastUpdate     = "1.4.3";
+SliderFW.version        = "1";
+// SliderFW.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 SliderFW.prototype.onCreate = function(){
   var slider = this;

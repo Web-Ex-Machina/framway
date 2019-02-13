@@ -1,5 +1,9 @@
 var Goto = Object.getPrototypeOf(app).Goto = new Component("goto");
 Goto.debug = false;
+Goto.createdAt      = "1.0.0";
+Goto.lastUpdate     = "1.4.3";
+Goto.version        = "1";
+// Goto.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 Goto.prototype.onCreate = function(){
   var goto = this;

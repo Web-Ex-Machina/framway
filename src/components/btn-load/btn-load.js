@@ -1,5 +1,10 @@
 var BtnLoad = Object.getPrototypeOf(app).BtnLoad = new Component("btn-load");
 // BtnLoad.debug = true;
+BtnLoad.createdAt      = "1.0.0";
+BtnLoad.lastUpdate     = "1.4.3";
+BtnLoad.version        = "1";
+// BtnLoad.loadingMsg     = "This message will display in the console when component will be loaded.";
+//
 BtnLoad.iconSelector = '.fas.fa-spinner.fa-pulse';
 BtnLoad.icon = '<i class="'+BtnLoad.iconSelector.replace(/\./g,' ').trim()+'"></i>';
 
