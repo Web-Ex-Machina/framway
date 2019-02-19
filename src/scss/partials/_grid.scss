@@ -11,9 +11,6 @@
       }
     }
   }
-  & figure{@extend %img-container; margin-bottom: 0; height: 100%;
-    & a{@extend %img-container; display: block; height: 100%;}
-  }
   &>*{
     @for $index from 1 through 12{
       &.cols-span-#{$index}{grid-column: span $index;}
