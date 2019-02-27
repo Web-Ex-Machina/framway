@@ -2,22 +2,38 @@
 // MARGINS - PADDINGS
 @each $side in $sides {
   @if $side != 'all' {
-    .m-#{$side}{margin-#{$side}: $spacing !important;}
-    .m-#{$side}-0{margin-#{$side}: 0 !important;}
-    .m-#{$side}-x2{margin-#{$side}: $spacing * 2 !important;}
+    .m-#{$side}{margin-#{$side}: $spacing !important;
+      @include media-max(xs){margin-#{$side}: $spacing/2 !important;}
+    }
+    .m-#{$side}-0{margin-#{$side}: 0 !important; }
+    .m-#{$side}-x2{margin-#{$side}: $spacing * 2 !important;
+      @include media-max(xs){margin-#{$side}: $spacing !important;}
+    }
 
-    .p-#{$side}{padding-#{$side}: $spacing !important;}
+    .p-#{$side}{padding-#{$side}: $spacing !important;
+        @include media-max(xs){padding-#{$side}: $spacing / 2 !important; }
+     }
     .p-#{$side}-0{padding-#{$side}: 0 !important;}
-    .p-#{$side}-x2{padding-#{$side}: $spacing * 2 !important;}
+    .p-#{$side}-x2{padding-#{$side}: $spacing * 2 !important;
+        @include media-max(xs){padding-#{$side}: $spacing !important; }
+     }
   }
   @else {
-    .m-#{$side}{margin: $spacing !important;}
-    .m-#{$side}-0{margin: 0 !important;}
-    .m-#{$side}-x2{margin: $spacing * 2 !important;}
+    .m-#{$side}{margin: $spacing !important;
+      @include media-max(xs){margin: $spacing/2 !important;}
+    }
+    .m-#{$side}-0{margin: 0 !important; }
+    .m-#{$side}-x2{margin: $spacing * 2 !important;
+      @include media-max(xs){margin: $spacing !important;}
+    }
 
-    .p-#{$side}{padding: $spacing !important;}
+    .p-#{$side}{padding: $spacing !important;
+        @include media-max(xs){padding: $spacing / 2 !important; }
+     }
     .p-#{$side}-0{padding: 0 !important;}
-    .p-#{$side}-x2{padding: $spacing * 2 !important;}
+    .p-#{$side}-x2{padding: $spacing * 2 !important;
+        @include media-max(xs){padding: $spacing !important; }
+     }
   }
 }
 .m-x{@extend .m-right,.m-left !optional;}
