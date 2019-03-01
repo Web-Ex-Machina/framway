@@ -17,9 +17,16 @@
   .nav--top.nav--hidden &,
   .nav--top.nav--inner &{bottom: 0; top: 0;}
 }
-.sliderFW__item{@include size(100%); position: relative; @include flex-shrink(0); cursor: grab; }
+.sliderFW__item{@include size(100%); position: relative; @include flex-shrink(0); cursor: grab;  z-index: 0;
+  .sliderFW[data-swipe="false"] &{cursor: auto;}
+  .sliderFW[data-transition="none"] &,
+  .sliderFW[data-transition="fade"] & {position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 1s;
+    &.active{z-index: 1; opacity: 1;}
+  }
+  .sliderFW[data-transition="none"] &{transition: none;}
+}
 .sliderFW__item__bg{ @include size(100%); position: absolute; top: 0; left: 0; z-index: -1; overflow: hidden;
-  & img{object-fit: cover; @include size(100%);}
+  & img{object-fit: cover; @include size(100%); pointer-events:none;}
   @each $key, $value in $colors{
     .item__bg--#{$key} &{ background-color: $value;}
   }
@@ -36,7 +43,7 @@
   & p:last-child{margin-bottom: 0;}
   @include media-max(md){left: 0; margin-right: 0;}
 }
-.sliderFW__item__blur{position: absolute; top: 0; left: 5em; bottom: 0; filter: blur(8px); overflow: hidden;
+.sliderFW__item__blur{position: absolute; top: -8px; left: 5em; bottom: 0; filter: blur(8px); overflow: hidden;
   .content--noblur &{display: none;}
   .content--right &{left: auto; right: 5em;
     @include media-max(md){right: 0; margin-left: 0;}

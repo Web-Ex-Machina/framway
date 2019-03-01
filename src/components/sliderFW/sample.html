@@ -1,23 +1,12 @@
-<div class="sliderFW" data-height="" data-loop="" data-auto="" data-arrows="">
+<div class="sliderFW" data-height="" data-loop="" data-auto="" data-arrows="" data-transition="" data-swipe="">
   <div class="sliderFW__container">
     <div class="sliderFW__rail">
-      <div class="sliderFW__item">
-        <div class="sliderFW__item__bg">
-          <!-- <img src="../../img/tramway_lego.jpg" alt="sample image"> -->
-        </div>
-        <div class="sliderFW__item__content">
-          <p class="quote">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in felis a risus pellentesque pulvinar. Etiam vehicula molestie libero et sodales. Donec consequat ultrices est at vestibulum. Cras pretium felis vitae mi sodales, convallis finibus leo tincidunt.
-          </p>
-          <p class="author">Lorem ipsum</p>
-        </div>
-      </div>
       <div class="sliderFW__item">
         <div class="sliderFW__item__bg">
           <img src="../../img/san_francisco_tramway.jpg" alt="sample image">
         </div>
         <div class="sliderFW__item__content">
-          <h3>Lorem ipsum</h3>
+          <h3>Lorem ipsum 1 </h3>
           <p>Lorem ipsum dolor sit amet</p>
           <button>Lorem</button>
         </div>
@@ -27,7 +16,17 @@
           <img src="../../img/tramway_lego.jpg" alt="sample image">
         </div>
         <div class="sliderFW__item__content">
-          <h3>Lorem ipsum</h3>
+          <h3>Lorem ipsum 2</h3>
+          <p>Lorem ipsum dolor sit amet</p>
+          <button>Lorem</button>
+        </div>
+      </div>
+      <div class="sliderFW__item">
+        <div class="sliderFW__item__bg">
+          <img src="../../img/san_francisco_tramway.jpg" alt="sample image">
+        </div>
+        <div class="sliderFW__item__content">
+          <h3>Lorem ipsum 3</h3>
           <p>Lorem ipsum dolor sit amet</p>
           <button>Lorem</button>
         </div>
@@ -38,7 +37,7 @@
 <div class="constructor">
   <p>Misc</p>
   <div class="input checkbox" data-label="Loop" data-attr="data-loop" data-selected="true">
-    The user can loop throught the images
+    The user can loop throught the slider items
   </div>
   <div class="input checkbox" data-label="Autoplay" data-attr="data-auto" data-selected=""></div>
   <div class="input checkbox" data-label="Force full width" data-attr="class" data-value="force-full" data-selected="">
@@ -46,6 +45,9 @@
   </div>
   <div class="input checkbox" data-label="Force full height" data-attr="data-height" data-value="viewport" data-selected="">
     By default, the height is defined by the image's height. This option force the hero to take the <b>full viewport height</b>. Alternatively, you can fill the data-height attribute with the desired dimension.
+  </div>
+  <div class="input select" data-label="Transition" data-attr="data-transition" data-value="translate,fade,none" data-output="translate,fade,none" data-selected="fade">
+    Define the type of transition between items (default translate)
   </div>
   <div class="input select" data-label="Presets" data-attr="class" data-value="preset--testimonial" data-output="Testimonial" data-selected=""></div>
   <div class="input select" data-label="Background color" data-attr="class" data-value="item__bg--#colors" data-output="#colors" data-selected="">
@@ -55,6 +57,10 @@
   <div class="input select" data-label="nav vertical" data-attr="class" data-value="nav--bottom,nav--top" data-output="bottom,top" data-selected=""></div>
   <div class="input select" data-label="nav horizontal" data-attr="class" data-value="nav--left,nav--right" data-output="left,right" data-selected=""></div>
   <div class="input select" data-label="nav display" data-attr="class" data-value="nav--inner,nav--hidden" data-output="inner,hidden" data-selected=""></div>
+  <div class="w-100"></div>
+  <div class="input checkbox" data-label="Swipe" data-attr="data-swipe" data-selected="true">
+    Activate/deactivate swipe events navigation  (default to true)
+  </div>
   <div class="input checkbox" data-label="Arrows" data-attr="data-arrows" data-selected="">
     Replace the bullet navigation type by lateral arrows
   </div>
@@ -63,3 +69,4 @@
   <div class="input select" data-label="text position" data-attr="class" data-value="content__text--top,content__text--center" data-output="top,center" data-selected=""></div>
   <div class="input checkbox" data-label="Remove content blur" data-attr="class" data-value="content--noblur" data-selected=""></div>
 </div>
+

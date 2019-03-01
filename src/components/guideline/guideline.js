@@ -137,7 +137,7 @@ if($('#guideline').length){
         sampleText = $(sampleText).wrapAll('<div></div>');
         var constructorText = '';
         if(sampleText.parent().find('.constructor').length){
-          sampleText.parent().find('.constructor').addClass('col-12 col-lg-6 ft-0-8-em').find('.input').each(function(){
+          sampleText.parent().find('.constructor').addClass('col-12 col-lg-6 ft-0-8-em m-bottom').find('.input').each(function(){
             var ref = $(this);
             var target = ref.data('attr');
             var name = ref.data('label').replace(' ','-').toLowerCase();
@@ -211,12 +211,12 @@ if($('#guideline').length){
                            + '<div class="col-12 editor-target">'
                            + sampleText
                            + '</div>'
+                           + constructorText
                            + '<div class="col ft-0-8-em">'
                            + '<div class="editor"><button class="copy">Copy</button>'
                            + '<textarea name="" id="">'+sampleText.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</textarea>'
                            + '</div>'
                            + '</div>'
-                           + constructorText
                            + '</div>'
                            + '</div>'
         components.nav += '<li><a href="#framway__components-'+component+'">'+component+'</a></li>';
