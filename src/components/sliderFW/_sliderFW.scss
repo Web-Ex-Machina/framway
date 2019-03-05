@@ -25,7 +25,7 @@
   }
   .sliderFW[data-transition="none"] &{transition: none;}
 }
-.sliderFW__item__bg{ @include size(100%); position: absolute; top: 0; left: 0; z-index: -1; overflow: hidden;
+.sliderFW__item__bg{ @include size(100%); position: absolute; top: 0; left: 0; z-index: -1; overflow: hidden; user-select: none;
   & img{object-fit: cover; @include size(100%); pointer-events:none;}
   @each $key, $value in $colors{
     .item__bg--#{$key} &{ background-color: $value;}

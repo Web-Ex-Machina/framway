@@ -1,16 +1,14 @@
 var ModalFW = Object.getPrototypeOf(app).ModalFW = new Component("modalFW");
 // ModalFW.debug = true;
 ModalFW.createdAt      = "1.0.0";
-ModalFW.lastUpdate     = "1.3.8";
-ModalFW.version        = "1";
+ModalFW.lastUpdate     = "1.4.8";
+ModalFW.version        = "1.0.1";
 // ModalFW.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 
 ModalFW.prototype.onResize = function(){};
 ModalFW.prototype.onDestroy = function(){
   var modal = this;
-  app.components_active.modalFW.splice(app.components_active.modalFW.indexOf(modal),1);
-  modal = undefined;
   if(ModalFW.debug) console.log('Modal '+this.name+' has been destroyed \n ');
 };
 ModalFW.prototype.onCreate = function(){
@@ -35,7 +33,7 @@ ModalFW.prototype.onCreate = function(){
   // abort if the modal already exist
   if(utils.getObjBy(app.components_active.modalFW,'name',modal.name).length){
     if(ModalFW.debug) console.log("Modal "+modal.name+" has been detected a duplicate and will be destroyed");
-    modal.$el = modal.$el.clone().remove();
+    modal.destroy();
     return false;
   }
 
@@ -146,24 +144,26 @@ ModalFW.prototype.setContent = function(){
   });
 };
 ModalFW.prototype.open = function(){
-  $.each(app.components_active.modalFW,function(){this.close(); });
+  var modal = this;
+  $.each(app.components_active.modalFW.filter(function(item){return !Object.is(item,modal);}),function(){ this.close(); });
   $('html').addClass('no-overflow');
-  this.$el.scrollTop(0);
-  this.$el.addClass('active');
-  this.isOpen = true;
-  if(!this.autoload && !this.$el.hasClass('ready'))
-    this.setContent();
-  if(this.onOpen)
-    this.onOpen();
-  return this;
+  modal.$el.scrollTop(0);
+  modal.$el.addClass('active');
+  modal.isOpen = true;
+  if(!modal.autoload && !this.$el.hasClass('ready'))
+    modal.setContent();
+  if(modal.onOpen)
+    modal.onOpen();
+  return modal;
 };
 ModalFW.prototype.close = function(){
+  var modal = this;
   $('html').removeClass('no-overflow');
-  this.$el.removeClass('active');
-  this.isOpen = false;
-  if(this.onClose)
-    this.onClose();
-  return this;
+  modal.$el.removeClass('active');
+  modal.isOpen = false;
+  if(modal.onClose)
+    modal.onClose();
+  return modal;
 };
 ModalFW.prototype.refresh = function(){
   var modal = this;
@@ -173,6 +173,7 @@ ModalFW.prototype.refresh = function(){
   });
   return modal;
 };
+
 
 var createModalFromTrigger = function($trigger){
   $trigger = $($trigger).addClass('modalFW__trigger');
@@ -215,7 +216,8 @@ $(function () {
   $('body').on('click','.modalFW__trigger',function(e){
     e.preventDefault();
     // console.log($('.modalFW[data-name="'+$(this).data('modal')+'"]'));
-    $('.modalFW[data-name="'+$(this).data('modal')+'"]').modalFW('get').open();
+    if($('.modalFW[data-name="'+$(this).data('modal')+'"]').length)
+      $('.modalFW[data-name="'+$(this).data('modal')+'"]').modalFW('get').open();
   });
   $('body').on('click','.modalFW',function(e){
     if(!$(e.target).attr('href'))

@@ -1,3 +1,5 @@
+
+
 <a href="" class="btn" data-modal="customModal">Open Modal 1</a>
 <div class="modalFW" data-name="customModal" data-autoload="true" data-open="false" data-refresh="true" data-title="This modal is generated from raw html">
   <p>
@@ -6,6 +8,27 @@
 </div>
 
 
+<!-- <script>
+  $(function(){
+    var modal = new app.ModalFW({
+      name : 'sampleModal_test',
+      content: 'Modal created from a javascript object :)',
+      onClose: function(){
+        console.log('closed');
+        this.destroy();
+      },
+      onOpen: function(){
+        console.log('opened');
+      },
+      onRefresh: function(){
+        console.log('refreshed');
+      },
+    });
+  });
+</script>
+<button data-modal="sampleModal_test">button</button>
+
+ -->
 
 <!--
 <a href="http://vansteenequentin.com/test.html" class="btn" data-refresh="true" data-modal="customModal_4">Open modal 4</a>

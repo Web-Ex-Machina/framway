@@ -4,6 +4,6 @@
   %paper,
   %lift
   !optional;
-  &:not([class*="bg-"]){background-color: body(background);}
+  &:not([class*="bg-"]){background-color: color(white);}
   &>*:last-child:not([class*="m-bottom"]){margin-bottom: 0;}
 }

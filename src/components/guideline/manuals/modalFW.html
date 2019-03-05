@@ -52,17 +52,21 @@
 </p>
 <div class="block-std">
   <script>
-    var modalScript = new app.ModalFW({
-      name : 'sampleModal_3',
-      content: 'Modal created from a javascript object :)',
+    $(function(){
+      var modalScript = new app.ModalFW({
+        name : 'sampleModal_3',
+        content: 'Modal created from a javascript object :)',
+      });
     });
   </script>
   <button data-modal="sampleModal_3" class="m-bottom">Open</button>
   <pre>
     <script>
-      var modalScript = new app.ModalFW({
-        name : 'sampleModal_3',
-        content: 'Modal created from a javascript object :)'
+      $(function(){
+        var modalScript = new app.ModalFW({
+          name : 'sampleModal_3',
+          content: 'Modal created from a javascript object :)'
+        });
       });
     </script>
     <button data-modal="sampleModal_3">Open</button>
