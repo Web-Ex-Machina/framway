@@ -2,15 +2,16 @@ require('select2');
 var Select2FW = Object.getPrototypeOf(app).Select2FW = new Component("select2FW");
 // Select2FW.debug = true;
 Select2FW.createdAt      = "1.0.0";
-Select2FW.lastUpdate     = "1.4.3";
-Select2FW.version        = "1";
+Select2FW.lastUpdate     = "1.4.9";
+Select2FW.version        = "1.1.0";
 // Select2FW.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 Select2FW.prototype.onCreate = function(){
   var select2FW = this;
   select2FW.$el.select2({
     minimumResultsForSearch: 5,
-    width: '100%'
+    width: '100%',
+    dropdownParent: select2FW.$el.parent()
   });
   if(Select2FW.debug) console.log('Select2FW has been created \n ',select2FW);
 }

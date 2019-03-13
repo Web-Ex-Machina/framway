@@ -1,13 +1,13 @@
 var HeaderFW = Object.getPrototypeOf(app).HeaderFW = new Component("headerFW");
 // HeaderFW.debug = false;
 HeaderFW.createdAt      = "1.0.0";
-HeaderFW.lastUpdate     = "1.4.4";
-HeaderFW.version        = "1.2";
+HeaderFW.lastUpdate     = "1.4.9";
+HeaderFW.version        = "1.2.1";
 // HeaderFW.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 HeaderFW.prototype.onCreate = function(){
   var header = this;
-  header.$clone = header.$el.clone().attr('id','headerFW--clone').addClass('stick').insertAfter(header.$el);
+  header.$clone = header.$el.clone().attr('id','headerFW--clone').insertAfter(header.$el);
   header.$headbanner = header.$el.find('.headerFW__headbanner');
   header.$nav = header.$el.find('.headerFW__nav');
   header.$navInline = header.$nav.find('.headerFW__nav__inline');
@@ -135,7 +135,7 @@ HeaderFW.prototype.onCreate = function(){
 HeaderFW.prototype.resizeOnTheFly = function(){
   var header = this;
   var isOffset = false;
-  if((header.$nav.position().left + header.$navInline.children().outerWidth()).toFixed(2) > header.$el.outerWidth() || header.$nav.position().left.toFixed(2) < 0)
+  if((header.$nav.position().left + header.$navInline.outerWidth()).toFixed(2) > header.$el.outerWidth() || header.$nav.position().left.toFixed(2) < 0)
     isOffset = true;
   if(isOffset){
     header.$clone.addClass('reduced');
