@@ -6,14 +6,14 @@
     &.gap-#{$index}-rem{gap: 1rem*$index ;}
   }
   @for $index from 1 through 12{
-    &.cols-#{$index}{grid-template-columns: #{repeat('1fr ',$index)};}
-    &.rows-#{$index}{grid-template-rows: #{repeat('1fr ',$index)};}
+    &.cols-#{$index}{grid-template-columns: #{repeat('minmax(#{100%/$index - 1},1fr) ',$index)};}
+    &.rows-#{$index}{grid-template-rows: #{repeat('minmax(#{100%/$index - 1},1fr) ',$index)};}
   }
   @each $key, $value in $breakpoints{
     @include media-max($key){
       @for $index from 1 through 12{
-        &.cols-#{$key}-#{$index}{grid-template-columns: #{repeat('1fr ',$index)};}
-        &.rows-#{$key}-#{$index}{grid-template-rows: #{repeat('1fr ',$index)};}
+        &.cols-#{$key}-#{$index}{grid-template-columns: #{repeat('minmax(#{100%/$index - 1},1fr) ',$index)};}
+        &.rows-#{$key}-#{$index}{grid-template-rows: #{repeat('minmax(#{100%/$index - 1},1fr) ',$index)};}
       }
     }
   }
@@ -21,6 +21,14 @@
     @for $index from 1 through 12{
       &.cols-span-#{$index}{grid-column: span $index;}
       &.rows-span-#{$index}{grid-row: span $index;}
+      @each $key, $value in $breakpoints{
+        @include media-max($key){
+          @for $index from 1 through 12{
+            &.cols-span-#{$key}-#{$index}{grid-column: span $index;}
+            &.rows-span-#{$key}-#{$index}{grid-row: span $index;}
+          }
+        }
+      }
     }
   }
 }
