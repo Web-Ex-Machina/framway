@@ -16,6 +16,10 @@
   width: 100%;
   margin-bottom: $spacing;
   margin-right: $spacing;
+  @include media-max(xs){
+    margin-bottom: $spacing/2;
+    margin-right: $spacing/2;
+  }
   padding: .4em .6em .4em;
   font-size: 1em;
   line-height: 1.5em;
@@ -156,3 +160,5 @@ input.active::placeholder{color: contrast(input(placeholder-font-color),input-fo
 .form-group label:first-child+%radio,
 .form-group label:first-child+%checkbox{display: block; }
 .form-group:last-child>*:last-child{margin-bottom: 0;}
+
+label{margin-bottom: 0.2rem;}

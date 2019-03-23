@@ -1,5 +1,5 @@
 var Foldingbox = Object.getPrototypeOf(app).Foldingbox = new Component("foldingbox");
-Foldingbox.debug = false;
+// Foldingbox.debug = true;
 Foldingbox.createdAt      = "1.0.0";
 Foldingbox.lastUpdate     = "1.4.3";
 Foldingbox.version        = "1";

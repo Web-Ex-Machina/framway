@@ -1,9 +1,10 @@
 module.exports = {
   themes:[
-    // 'sample'
+    // 'themeName'
   ],
   components:[
     'modalFW',
+    'block-editable',
     'block-list',
     'block-std',
     'block-img',
@@ -20,6 +21,7 @@ module.exports = {
     'priceCard',
     'countUpFW',
     'ipsum',
+    'input-number',
     'guideline',
   ],
 }

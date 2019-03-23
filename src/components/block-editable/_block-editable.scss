@@ -1,0 +1,8 @@
+.block-editable__wrapper{position: relative;padding: 0.5em; border: 2px dashed rgba(body(font-color),0.6); margin-bottom: 0.5rem;}
+.block-editable__buttons{position: absolute; top: 0px; right: 1em; z-index: 1; padding: 0.1em; border: 2px dashed rgba(body(font-color),0.6); transform: translateY(-100%); border-bottom-color: white; border-bottom-style: solid; border-bottom-width: 3px;
+  .block-editable__wrapper:hover &,
+  .block-editable__wrapper.hover &{}
+  &>button,
+  &>.btn{ padding: 0.2em; height: 35px; width: 35px; margin: 0 0.1em; font-size: 0.8em;}
+}
+.block-editable{}

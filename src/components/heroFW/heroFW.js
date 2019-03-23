@@ -1,5 +1,5 @@
 var HeroFW = Object.getPrototypeOf(app).HeroFW = new Component("heroFW");
-HeroFW.debug = false;
+// HeroFW.debug = true;
 HeroFW.createdAt      = "1.0.0";
 HeroFW.lastUpdate     = "1.4.3";
 HeroFW.version        = "1";

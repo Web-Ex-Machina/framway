@@ -7,6 +7,7 @@
 @import 'core';
 /* Components styles */
 @import '../components/modalFW/modalFW';
+@import '../components/block-editable/block-editable';
 @import '../components/block-list/block-list';
 @import '../components/block-std/block-std';
 @import '../components/block-img/block-img';
@@ -23,5 +24,6 @@
 @import '../components/priceCard/priceCard';
 @import '../components/countUpFW/countUpFW';
 @import '../components/ipsum/ipsum';
+@import '../components/input-number/input-number';
 @import '../components/guideline/guideline';
 /* Themes styles override */

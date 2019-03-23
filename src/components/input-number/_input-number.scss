@@ -1,0 +1,17 @@
+input[type=number] {-moz-appearance: textfield; margin: 0; }
+/* Chrome */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {-webkit-appearance: none; margin:0; }
+/* Opéra*/
+input::-o-inner-spin-button,
+input::-o-outer-spin-button {-o-appearance: none; margin:0 }
+
+.input-number__container{position: relative;width: 100%; margin-bottom: $spacing; margin-right: $spacing;
+  @include media-max(xs){margin-bottom: $spacing/2; margin-right: $spacing/2;}
+}
+.input-number__input{width: 100%; margin: 0;}
+.input-number__buttonsContainer{position: absolute; right: 0; top: 0; height: 100%; display: flex;flex-direction: column;}
+.input-number__btn{margin: 0; padding: 0; border:0; border-radius: 0; display: block; line-height: 1; height: 50%; font-size: 0.8em; width: 1.8rem;  flex-grow: 1; font-weight: bold;
+  &.plus{line-height: 1.4;}
+  &.minus{line-height: 0.7; font-size: 1.2em;}
+}
