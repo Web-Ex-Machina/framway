@@ -46,7 +46,7 @@
 
 /*-----------------------------------------------------------------------------------------------------------------------------*/
 // SEPARATORS
-.sep{ display:inline-block; width: 100%; margin: $spacing 0 $spacing; clear: both;  height: $border-default-size; background: body(font-color); }
+.sep{ display:inline-block; width: 100%; margin: $spacing 0 $spacing; clear: both;  height: $border-default-size; background: $border-default-color; }
 
 
 @each $key, $value in $colors{
