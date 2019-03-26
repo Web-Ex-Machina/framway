@@ -6,7 +6,9 @@ $z_header : 100;
   &:before{@include pseudo(); top:-1px; width: 100%; background-color: inherit; height: 1px;}
   // BANNER
   & .headerFW__headbanner{@include flex-container(row,nowrap,flex-start,center);flex-shrink: 0; max-width: 100%;
-    & #logo{ padding: 0 1rem; }
+    & #logo{ padding: 0 1rem;
+      @include media-max(xs){padding: 0 0.5rem ;}
+    }
     &>*:not(#logo){display: none;}
   }
   // LOADER
@@ -31,11 +33,12 @@ $z_header : 100;
       margin: auto $spacing;
       transform-style: preserve-3d;
       transform: translate3d(0, 0, 0);
+      @include media-max(xxs){ margin: auto $spacing/2; width: 35px; }
       & .bar{
         height: 4px; width: 100%; background: body(font-color); border-radius: 10px; transition: all 0.4s; position: absolute;transform: translate3d(0,0,0);
-        &:nth-child(1){top: 13px;}
+        &:nth-child(1){top: 13px; @include media-max(xxs){top: 16px;} }
         &:nth-child(2){top: 28px}
-        &:nth-child(3){top: 43px;}
+        &:nth-child(3){top: 43px; @include media-max(xxs){top: 40px;}}
       }
       &.active .bar{
         &:nth-child(1){top: 28px;transform: rotate3d(0,0,1,-45deg);}
@@ -91,14 +94,15 @@ $z_header : 100;
       }
     }
     // NAV PANEL
-    & .headerFW__nav__panel{display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; font-size: 1.2rem; text-align: center; flex-direction: column; justify-content: center; align-items: center; transition: transform 0.6s; transform: translate3d(-100%,0,0); box-shadow: 0 5px 10px rgba(0,0,0,.3), inset 0 0 40px rgba(0,0,0,.06); background-color: #fff;
+    & .headerFW__nav__panel{display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; padding: 80px 0 1rem; font-size: 1.2rem; text-align: center; flex-direction: column; justify-content: center; align-items: center; transition: transform 0.6s; transform: translate3d(-100%,0,0); box-shadow: 0 5px 10px rgba(0,0,0,.3), inset 0 0 40px rgba(0,0,0,.06); background-color: #fff;
       @if header(background) {background-color: header(background); }
       &.active{transform: translate3d(0,0,0);}
-      & ul{list-style: none;  padding: 0;width: auto; width: fit-content; min-width: 50%; margin-bottom: 0; position: relative; opacity: 0;visibility: hidden; height: 0; pointer-events: none; transition: all 0.8s; overflow: hidden;
-        & li{position: relative; @include flex-container(row,wrap,center); margin: 0 60px;
-          &>*:not(ul){color:inherit; text-decoration: none; font-weight: normal; padding: 0.6em 2rem; display: block; width: 100%;}
+      & ul{display: flex; flex-direction: column;justify-content: center; flex-wrap: nowrap; list-style: none;  padding: 0;width: auto;min-width: 50%; margin: auto; margin-bottom: 0; position: relative; opacity: 0;visibility: hidden; height: 0; pointer-events: none; transition: all 0.8s; overflow: hidden;
+        & li{position: relative; @include flex-container(row,wrap,center); margin: 0 80px;
+          @include media-max(xxs){ margin: 0 60px;}
+          &>*:not(ul){color:inherit; text-decoration: none; font-weight: normal; padding: 0.6em; display: block; width: 100%;}
           &>.toggler{ width: 60px; padding: 0; height: 100%;  cursor: pointer; position: absolute; right:-60px;
-            &:after{@include pseudo(); border: $border-default-size solid rgba(body(font-color),1); opacity: 0.5; border-left: 0; border-top: 0; @include size(20px); border-bottom-right-radius: 2px;right: 20px; top: 1rem; transition: all 0.4s; transform: translateY(0%) rotateX(0deg) rotateZ(45deg); margin-top: 0;}
+            &:after{@include pseudo(); border: 4px solid rgba(body(font-color),1); opacity: 0.5; border-left: 0; border-top: 0; @include size(20px); border-bottom-right-radius: 2px;right: 20px; transition: all 0.4s; transform: translateX(-8px) rotateZ(-45deg); top: 0;bottom: 0;margin: auto;}
             &:hover:after{opacity: 1;}
           }
           &.active>*,
@@ -109,8 +113,9 @@ $z_header : 100;
           }
           &.trail>.toggler:after{border-color: link(font-color); opacity: 1;}
         }
-        &.active{opacity: 1; visibility: visible; height: auto; height: fit-content; pointer-events: all;}
-        & .toggler--parent{position: absolute; top: 0;bottom: 0; right: 100%; width: 60px; font-size: 1.5em;height: auto; height: fit-content; margin: auto;  margin-right: -60px; cursor: pointer; transition: all 0.4s; opacity: 0.6;
+        &.active{opacity: 1; visibility: visible; height: auto; height: fit-content; min-height: 100%; pointer-events: all;}
+        & .toggler--parent{position: absolute; right: 100%; width: 60px; font-size: 1.5em;height: auto; height: fit-content; margin: auto;  margin-right: -80px; cursor: pointer; transition: all 0.4s; opacity: 0.6;
+          @include media-max(xxs){margin-right: -60px;}
           & span{font-size: 0.4em; font-style: italic; display: block; margin-top: -0.8em;}
           &:hover{opacity: 1;}
         }
@@ -136,9 +141,9 @@ $z_header : 100;
     }
   }
   // HEADBANNER VARIANTS
-  &.headbanner--above{ flex-wrap: wrap; justify-content: flex-end;
-    & .headerFW__headbanner{width: 100%;}
-    &.reduced{
+  &.headbanner--above{ flex-wrap: wrap; @extend .nav--center;
+    &.headbanner--center{justify-content: center; }
+    &.reduced{ justify-content: flex-start;
       & .headerFW__nav__inline{min-height: 0; height: 0;}
     }
     &.nav--center{
@@ -150,9 +155,14 @@ $z_header : 100;
   }
   // HEADER REDUCED STATE
   &.reduced{
+    & .headerFW__headbanner{ max-width: calc(100% - ( 35px + #{$spacing} ));  min-height: 60px;
+      & #logo{ height: 100%; width: 100%; display: block;
+        &>img{ @include media-max(xxs){height: 100%; width: 100%; object-fit: cover; object-position: center left;}}
+      }
+    }
     & .headerFW__nav{overflow: hidden;}
     & .headerFW__nav__inline{opacity: 0; visibility: hidden; pointer-events: none;}
-    & .headerFW__nav__panel{display: flex;}
+    & .headerFW__nav__panel{display: block; overflow: auto;}
     & .headerFW__nav__toggler{opacity: 0.6; visibility: visible;
       &.active,
       &:hover{opacity: 1;}
@@ -161,10 +171,16 @@ $z_header : 100;
   // HEADER STICK STATE
   &.stick{ position: fixed; top: 0; left: 0; right: 0;
     &.headbanner--above {
-      &.reduced{min-height: 80px;
+      &.reduced{min-height: 60px;
         & .headerFW__nav{height: 0;}
+        & .headerFW__headbanner{display: flex;}
       }
       & .headerFW__headbanner{display: none;}
+    }
+    & .headerFW__headbanner{max-height: 80px;
+      & #logo{ height: 100%; width: 100%; display: block;
+        &>img{height: 100%; width: 100%; object-fit: cover; object-position: center left;}
+      }
     }
   }
 }

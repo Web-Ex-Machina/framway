@@ -1,8 +1,8 @@
 var HeaderFW = Object.getPrototypeOf(app).HeaderFW = new Component("headerFW");
 // HeaderFW.debug = false;
 HeaderFW.createdAt      = "1.0.0";
-HeaderFW.lastUpdate     = "1.4.9";
-HeaderFW.version        = "1.2.1";
+HeaderFW.lastUpdate     = "1.4.10";
+HeaderFW.version        = "1.3.1";
 // HeaderFW.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 HeaderFW.prototype.onCreate = function(){
@@ -54,6 +54,7 @@ HeaderFW.prototype.onCreate = function(){
       }
       else
         header.navPanelMenus[ID].parentID = 'root';
+      var label = 'Retour ';
       header.navPanelMenus[ID].$el.prepend('<div class="toggler--parent" data-parent="'+header.navPanelMenus[ID].parentID+'"><i class="fas fa-long-arrow-alt-left"></i><span>'+label+'</span></div>');
     }
     header.$navPanel.append(header.navPanelMenus[ID].$el);
@@ -73,8 +74,8 @@ HeaderFW.prototype.onCreate = function(){
     else{
       if(header.hasStick)
         header.$el.removeClass('stick');
-      window.dispatchEvent( new Event('scroll') );
     }
+    window.dispatchEvent( new Event('scroll') );
   });
 
   // click on submenu toggler
@@ -141,11 +142,15 @@ HeaderFW.prototype.resizeOnTheFly = function(){
     header.$clone.addClass('reduced');
     header.$el.addClass('reduced');
     header.menuSwipe.on('swipeleft swiperight', header.menuEvents);
+    if(header.$el.hasClass('headbanner--above'))
+      header.$stickyEl = header.$el;
   }
   else{
     if(!header.$navPanel.hasClass('active')){
       header.$clone.removeClass('reduced');
       header.$el.removeClass('reduced');
+      if(header.$el.hasClass('headbanner--above'))
+        header.$stickyEl = header.$nav;
     }
     header.menuSwipe.off('swipeleft swiperight');
   }
