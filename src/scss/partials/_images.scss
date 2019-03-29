@@ -28,6 +28,13 @@ img{
   &.fadetogrey:hover {filter: grayscale(100%);}
 }
 
+$ratios : (
+  '16-9': 56.25,
+  '2-1' : 50,
+  '1-1' : 100,
+  '1-2' : 200,
+  '4-3' : 75,
+);
 
 %img-container{position: relative; overflow: hidden; @include flex-grow();  width: 100%;
   & img{height: 100%; width: 100%; object-fit: cover;
@@ -53,9 +60,12 @@ img{
       }
     }
   }
-  .r_16-9 &:before,&.r_16-9:before{padding-top: 56.25%;}
-  .r_2-1 &:before,&.r_2-1:before {padding-top: 50%;}
-  .r_1-1 &:before,&.r_1-1:before {padding-top: 100%;}
-  .r_1-2 &:before,&.r_1-2:before {padding-top: 200%;}
+  @each $key, $value in $ratios {
+    .r_#{$key} &:before,&.r_#{$key}:before{padding-top: #{$value+'%'};}
+  }
 }
+@each $key, $value in $ratios {
+  .r_#{$key}{@extend [class*="r_"];}
+}
+
 .img-container{@extend %img-container;}

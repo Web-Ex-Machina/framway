@@ -6,7 +6,7 @@ input::-webkit-outer-spin-button {-webkit-appearance: none; margin:0; }
 input::-o-inner-spin-button,
 input::-o-outer-spin-button {-o-appearance: none; margin:0 }
 
-.input-number__container{position: relative;width: 100%; margin-bottom: $spacing; margin-right: $spacing;
+.input-number__container{position: relative; display: inline-block; width: 100%; margin-bottom: $spacing; margin-right: $spacing;
   @include media-max(xs){margin-bottom: $spacing/2; margin-right: $spacing/2;}
 }
 .input-number__input{width: 100%; margin: 0;}
