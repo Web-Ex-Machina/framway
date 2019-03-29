@@ -43,7 +43,7 @@
     }
 
     /* links */
-    .bg-#{$key} a{color: contrast(link(font-color),$value); &:hover{color:contrast(link(font-color-hover),$value);}; &:focus{color: contrast(link(font-color-focus),$value); outline: none;};}
+    .bg-#{$key} a:not([class*="btn"]){color: contrast(link(font-color),$value); &:hover{color:contrast(link(font-color-hover),$value);}; &:focus{color: contrast(link(font-color-focus),$value); outline: none;};}
 
     /* inputs */
     .bg-#{$key} %input{

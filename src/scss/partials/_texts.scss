@@ -1,4 +1,4 @@
-a{color: link(font-color); text-decoration: underline;
+a:not([class*="btn"]){color: link(font-color); text-decoration: underline;
   &:hover{color: link(font-color-hover); text-decoration: none;};
   &:focus{color: link(font-color-focus); outline: none;};
   &.disabled,&[disabled]{@extend .no-events; text-decoration: line-through;}
