@@ -1,5 +1,5 @@
 var Konami = Object.getPrototypeOf(app).Konami = new Component("konami");
-Konami.debug = true;
+// Konami.debug = true;
 Konami.createdAt      = "1.4.11";
 Konami.lastUpdate     = "1.4.11";
 Konami.version        = "1";

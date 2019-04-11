@@ -5,10 +5,14 @@
   }
   &.autoSize{flex-basis: 33.33%; min-width: 300px; flex-grow: 1; max-width: 100%;}
 }
-.block-list__wrapper{@extend
+.block-list__wrapper{max-width: 100%; margin-bottom: $spacing; padding: $spacing;
+  @include media-max(sm){margin-bottom: $spacing/2; padding: $spacing/2;}
+  @extend
   %paper,
-  %lift,
-  .bg-white;
+  %lift
+  !optional;
+  &:not([class*="bg-"]){background-color: color(white);}
+  &>*:last-child:not([class*="m-bottom"]){margin-bottom: 0;}
   @each $key, $value in $colors{
     .content__bg--#{$key} &{ background-color: $value; }
     .headline--outer.content__bg--#{$key} & .block-list__headline>div{ background-color: rgba($value,1); }
