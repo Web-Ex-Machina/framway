@@ -155,9 +155,9 @@ $z_header : 100;
   }
   // HEADER REDUCED STATE
   &.reduced{
-    & .headerFW__headbanner{ max-width: calc(100% - ( 35px + #{$spacing} ));  min-height: 60px;
-      & #logo{ height: 100%; width: 100%; display: block;
-        &>img{ @include media-max(xxs){height: 100%; width: 100%; object-fit: cover; object-position: center left;}}
+    & .headerFW__headbanner{   min-height: 60px;
+      & #logo{ max-width: calc(100% - ( 35px + #{$spacing} )); height: 100%;
+        &>img{ @include media-max(xxs){height: 100%; width: 100%; object-fit: contain; object-position: center left;}}
       }
     }
     & .headerFW__nav{overflow: hidden;}
@@ -178,8 +178,9 @@ $z_header : 100;
       & .headerFW__headbanner{display: none;}
     }
     & .headerFW__headbanner{max-height: 80px;
-      & #logo{ height: 100%; width: 100%; display: block;
-        &>img{height: 100%; width: 100%; object-fit: cover; object-position: center left;}
+      & #logo{
+        // height: 100%; width: 100%; display: block;
+        &>img{height: 100%; width: 100%; object-fit: contain; object-position: center left;}
       }
     }
   }
