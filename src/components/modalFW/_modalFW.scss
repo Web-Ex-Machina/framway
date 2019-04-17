@@ -1,4 +1,4 @@
-.modalFW{position: fixed; top: 0;left: 0; z-index: 100000; background: rgba(#000,0.6); pointer-events: none; width: 100vw;height: 100vh; overflow: auto; color: body(font-color); word-break: break-word; opacity: 0; visibility: hidden; transition: opacity 0.3s; display: flex;padding: 10vh 0;
+.modalFW{position: fixed; top: 0;left: 0; z-index: 100000; background: rgba(#000,0.6); pointer-events: none; width: 100vw;height: 100vh; overflow: auto; color: body(font-color); word-break: break-word; opacity: 0; visibility: hidden; transition: opacity 0.3s; display: flex;padding: 10vh 0; transform: translateZ(0);
   @include media-max(xs){padding: 5vw 0;}
   @include media-max(xxs){padding: 0;}
   &:not(.active) *{pointer-events: none !important;}
