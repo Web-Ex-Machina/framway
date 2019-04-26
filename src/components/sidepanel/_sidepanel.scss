@@ -1,0 +1,31 @@
+.sidepanel{ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 100; background: none; pointer-events: none;  opacity: 0; transition: opacity 0.3s; transition-delay: 0.3s; overflow: auto; overflow-x: hidden;
+  &:not(.active) *{pointer-events: none !important;}
+  &.active{opacity: 1; pointer-events: all; transition-delay: 0s;}
+}
+.sidepanel__backdrop{display: block;height: 100%;width: 100%;position: fixed; top: 0;left: 0; overflow: hidden; z-index: 1; background: rgba(#000,0.6);}
+.sidepanel__content{ padding: 2.5rem; transition: all 0.6s; transform: translate3d(0,0,0);position: absolute; z-index: 2;
+  &:not([class*="bg-"]){background-color: color(white);}
+  &[class*=bg-]:not([class*=bg--]):not([class*=btn-]){padding: 2.5rem; }
+  &:not([class*="from--"]){@extend .from--left;}
+
+  &.from--left,
+  &.from--right{top: 0; min-width: 300px; width: auto; width: fit-content; max-width: 100%; min-height: 100vh;}
+  &.from--top,
+  &.from--bottom{left: 0; height: auto; height: fit-content;  width: 100%;}
+
+  &.from--left{left: 0; transform: translate3d(-100%,0,0);}
+  &.from--right{right: 0; transform: translate3d(100%,0,0);}
+  &.from--top{top: 0; transform: translate3d(0,-100%,0);}
+  &.from--bottom{bottom: 0; transform: translate3d(0,100%,0);
+    &.forced--top{top: 0;}
+  }
+
+  &>*:last-child{margin-bottom: 0;}
+
+  .sidepanel.active &{ transform: translate3d(0,0,0); }
+}
+
+.sidepanel__close{display: block; text-align: center; font-size: 1.5rem; @include size(1.5rem); line-height: 1.5rem; opacity: 0.6; cursor: pointer; transition: all 0.3s; position: absolute; top: 0.5rem; right: 0.5rem;
+  & svg{pointer-events:none;}
+  &:hover{opacity: 1;}
+}
