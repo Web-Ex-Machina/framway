@@ -6,9 +6,7 @@ $z_header : 100;
   &:before{@include pseudo(); top:-1px; width: 100%; background-color: inherit; height: 1px;}
   // BANNER
   & .headerFW__headbanner{@include flex-container(row,nowrap,flex-start,center);flex-shrink: 0; max-width: 100%;
-    & #logo{ padding: 0 1rem;
-      @include media-max(xs){padding: 0 0.5rem ;}
-    }
+    & #logo{ padding: 0.5rem; }
     &>*:not(#logo){display: none;}
   }
   // LOADER
@@ -156,8 +154,8 @@ $z_header : 100;
   // HEADER REDUCED STATE
   &.reduced{
     & .headerFW__headbanner{   min-height: 60px;
-      & #logo{ max-width: calc(100% - ( 35px + #{$spacing} )); height: 100%;
-        &>img{ @include media-max(xxs){height: 100%; width: 100%; object-fit: contain; object-position: center left;}}
+      & #logo{ max-width: calc(100vw - 100px); height: 100%;
+        &>img{ @include media-max(xxs){height: 100%; width: 100%; object-fit: contain; object-position: center;}}
       }
     }
     & .headerFW__nav{overflow: hidden;}
@@ -180,7 +178,7 @@ $z_header : 100;
     & .headerFW__headbanner{max-height: 80px;
       & #logo{
         // height: 100%; width: 100%; display: block;
-        &>img{height: 100%; width: 100%; object-fit: contain; object-position: center left;}
+        &>img{height: 100%; width: 100%; object-fit: contain; object-position: center;}
       }
     }
   }

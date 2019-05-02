@@ -22,6 +22,8 @@ module.exports = {
     'countUpFW',
     'ipsum',
     'input-number',
+    'sidepanel',
     'guideline',
+    'konami',
   ],
 }
