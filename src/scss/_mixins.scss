@@ -45,6 +45,18 @@
 }
 
 
+@mixin linear-grad($colorsMap,$direction : 'to right'){
+  $strGradient : 'linear-gradient('+$direction+', ';
+  $i : 0;
+  @each $color in $colorsMap{
+    @if $i != 0{ $strGradient : $strGradient+','; }
+    $strGradient : $strGradient+rgba(nth($color,1),nth($color,3))+' '+nth($color,2);
+    $i : $i+1;
+  }
+  $strGradient : $strGradient+');';
+  background: #{$strGradient};
+};
+
 @function brightness($color) {
   @return ((red($color) * .299) + (green($color) * .587) + (blue($color) * .114));
 }

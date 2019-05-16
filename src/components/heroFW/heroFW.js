@@ -1,8 +1,8 @@
 var HeroFW = Object.getPrototypeOf(app).HeroFW = new Component("heroFW");
 // HeroFW.debug = true;
 HeroFW.createdAt      = "1.0.0";
-HeroFW.lastUpdate     = "1.4.3";
-HeroFW.version        = "1";
+HeroFW.lastUpdate     = "1.4.13";
+HeroFW.version        = "1.1";
 // HeroFW.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 HeroFW.prototype.onCreate = function(){

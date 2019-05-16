@@ -1,8 +1,8 @@
 var BlockList = Object.getPrototypeOf(app).BlockList = new Component("block-list");
 BlockList.debug = false;
 BlockList.createdAt      = "1.0.0";
-BlockList.lastUpdate     = "1.4.1";
-BlockList.version        = "1.1";
+BlockList.lastUpdate     = "1.4.12";
+BlockList.version        = "1.2";
 
 BlockList.prototype.onCreate = function(){
   var block = this;

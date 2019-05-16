@@ -32,6 +32,7 @@
   &:focus{color: btn(font-color); text-decoration: none; outline: none; @include box-shadow(none);}
   &:hover{color: btn(font-color); text-decoration: none;}
   &>a{padding: .4em 1.5em .5em; margin: -.4em -1.5em -.5em;}
+  &.center{display: block;}
 }
 
 .btn-sm{font-size: .8em; padding: .4em 1.2em .5em;
