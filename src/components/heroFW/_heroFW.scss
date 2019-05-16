@@ -1,4 +1,4 @@
-.heroFW{ margin-bottom: $spacing; padding: 0; background-color: body(background); font-size: 1.25rem; font-weight: 300;
+.heroFW{ margin-bottom: $spacing; padding: 0; background-color: body(background); font-size: 1.25rem; font-weight: 300; @extend .text--extrud;
   &.width--content{width: fit-content;}
   &[class*="ft-"] .heroFW__content *{color: inherit;}
   @for $index from 1 through 6{
