@@ -1,6 +1,6 @@
 {
   "name": "framway",
-  "version": "1.4.12",
+  "version": "1.4.13",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -61,6 +61,7 @@
     "countup": "^1.8.2",
     "hammerjs": "^2.0.8",
     "jquery": "^3.3.1",
+    "jquery-datetimepicker": "^2.5.21",
     "jquery-mousewheel": "^3.1.13",
     "native-promise-only": "^0.8.1",
     "object-fit-images": "^3.2.4",

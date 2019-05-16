@@ -40,15 +40,15 @@ $body: (
 
 $header: (
   'background': color(white),
-  'font-color': color(greystronger),
-  'font-size': body(font-size),
+  // 'font-color': color(greystronger),
+  // 'font-size': body(font-size),
 );
 @function header($property) {@return map-get($header, '#{$property}'); }
 
 $footer: (
   'background': color(white),
-  'font-color': color(greystronger),
-  'font-size': body(font-size),
+  // 'font-color': color(greystronger),
+  // 'font-size': body(font-size),
 );
 @function footer($property) {@return map-get($footer, '#{$property}'); }
 
@@ -57,30 +57,30 @@ $input: (
   'background': color(white),
   'font-color': color(greystronger),
   'border-color': color(greystronger),
-  'border-size': 1px ,
+  'border-size': $border-default-size,
   'placeholder-font-color': color(grey),
   'radius': false,
 );
 @function input($property) {@return map-get($input, '#{$property}'); }
 
-// inputs focus
+/* inputs focus */
 $input-focus: (
-  'background': color(white),
+  'background': input(background),
   'font-color': input(font-color),
   'border-color': input(border-color),
 );
 @function input-focus($property) {@return map-get($input-focus, '#{$property}'); }
 
-// inputs validations
+/* inputs validations */
 $input-valid: (
-  'background': color(white),
+  'background': input(background),
   'font-color': input(font-color),
-  'border-color': color(green),
+  'border-color': input(border-color),
 );
 @function input-valid($property) {@return map-get($input-valid, '#{$property}'); }
 
 $input-invalid: (
-  'background': color(white),
+  'background': input(background),
   'font-color': input(font-color),
   'border-color': color(orange),
 );
@@ -88,9 +88,9 @@ $input-invalid: (
 
 // links
 $link: (
-  'font-color': color(blue),
-  'font-color-hover': color(blue),
-  'font-color-focus': color(blue),
+  'font-color': $primary,
+  'font-color-hover': $primary,
+  'font-color-focus': $primary,
 );
 @function link($property) {@return map-get($link, '#{$property}'); }
 
