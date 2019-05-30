@@ -155,7 +155,7 @@ $z_header : 100;
   &.reduced{
     & .headerFW__headbanner{   min-height: 60px;
       & #logo{ max-width: calc(100vw - 100px); height: 100%;
-        &>img{ @include media-max(xxs){height: 100%; width: 100%; object-fit: contain; object-position: center;}}
+        &>img{ @include media-max(xxs){height: 100%; width: 100%; object-fit: contain; object-position: left;}}
       }
     }
     & .headerFW__nav{overflow: hidden;}
@@ -178,7 +178,7 @@ $z_header : 100;
     & .headerFW__headbanner{max-height: 80px;
       & #logo{
         // height: 100%; width: 100%; display: block;
-        &>img{height: 100%; width: 100%; object-fit: contain; object-position: center;}
+        &>img{height: 100%; width: 100%; object-fit: contain; object-position: left;}
       }
     }
   }
