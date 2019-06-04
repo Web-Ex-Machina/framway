@@ -1,8 +1,8 @@
 var SliderFW = Object.getPrototypeOf(app).SliderFW = new Component("sliderFW");
 // SliderFW.debug = true;
 SliderFW.createdAt      = "1.0.0";
-SliderFW.lastUpdate     = "1.4.8";
-SliderFW.version        = "1.1.1";
+SliderFW.lastUpdate     = "1.4.13";
+SliderFW.version        = "1.1.2";
 // SliderFW.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 SliderFW.prototype.onCreate = function(){
@@ -96,14 +96,17 @@ SliderFW.prototype.setTransitions = function(transition = this.transition){
     case 'translate':
       slider.transitionStart = function(){
         if(SliderFW.debug) slider.log('transition started - '+transition)
+
         if(slider.loop && slider.swipe)
           swipeSlide.off('swipeleft swiperight', swipeEvents);
-        slider.$rail.css('transform', 'translate3d('+ (-slider.content.items.filter('.active').get(0).offsetLeft) +'px,0,0)');
+        // slider.railSwap().then(function(){
+          slider.$rail.css('transform', 'translate3d('+ (-slider.content.items.filter('.active').get(0).offsetLeft + (slider.content.$el.outerWidth() - slider.content.items.filter('.active').outerWidth())/2) +'px,0,0)');
+        // });
       };
 
       slider.transitionEnd = function(){
         if(SliderFW.debug) slider.log('transition ended - '+transition)
-        slider.$rail.css('transform', 'translate3d('+ (-slider.content.items.filter('.active').get(0).offsetLeft) +'px,0,0)');
+        slider.$rail.css('transform', 'translate3d('+ (-slider.content.items.filter('.active').get(0).offsetLeft + (slider.content.$el.outerWidth() - slider.content.items.filter('.active').outerWidth())/2) +'px,0,0)');
         if(slider.loop && slider.swipe)
           swipeSlide.on('swipeleft swiperight', swipeEvents);
       };
@@ -146,31 +149,33 @@ SliderFW.prototype.autoTrigger = function() {
 };
 
 SliderFW.prototype.goToNext = function() {
-  if(this.loop){
-    if(this.$nav.find('.sliderFW__nav__item.active').next('.sliderFW__nav__item').length)
-      this.$nav.find('.sliderFW__nav__item.active').next('.sliderFW__nav__item').trigger('click');
+  var slider = this;
+  if(slider.loop){
+    if(slider.$nav.find('.sliderFW__nav__item.active').next('.sliderFW__nav__item').length)
+      slider.$nav.find('.sliderFW__nav__item.active').next('.sliderFW__nav__item').trigger('click');
     else
-      this.$nav.find('.sliderFW__nav__item').first().trigger('click');
+      slider.$nav.find('.sliderFW__nav__item').first().trigger('click');
   } else{
-    this.$nav.find('.sliderFW__nav__item.active').next('.sliderFW__nav__item').trigger('click');
+    slider.$nav.find('.sliderFW__nav__item.active').next('.sliderFW__nav__item').trigger('click');
   }
-  if(this.auto){
-    clearTimeout(this.timerAuto);
-    this.autoTrigger();
+  if(slider.auto){
+    clearTimeout(slider.timerAuto);
+    slider.autoTrigger();
   }
 };
 SliderFW.prototype.goToPrev = function() {
-  if(this.loop){
-    if(this.$nav.find('.sliderFW__nav__item.active').prev('.sliderFW__nav__item').length)
-      this.$nav.find('.sliderFW__nav__item.active').prev('.sliderFW__nav__item').trigger('click');
+  var slider = this;
+  if(slider.loop){
+    if(slider.$nav.find('.sliderFW__nav__item.active').prev('.sliderFW__nav__item').length)
+      slider.$nav.find('.sliderFW__nav__item.active').prev('.sliderFW__nav__item').trigger('click');
     else
-      this.$nav.find('.sliderFW__nav__item').last().trigger('click');
+      slider.$nav.find('.sliderFW__nav__item').last().trigger('click');
   } else{
-    this.$nav.find('.sliderFW__nav__item.active').prev('.sliderFW__nav__item').trigger('click');
+    slider.$nav.find('.sliderFW__nav__item.active').prev('.sliderFW__nav__item').trigger('click');
   }
-  if(this.auto){
-    clearTimeout(this.timerAuto);
-    this.autoTrigger();
+  if(slider.auto){
+    clearTimeout(slider.timerAuto);
+    slider.autoTrigger();
   }
 };
 
