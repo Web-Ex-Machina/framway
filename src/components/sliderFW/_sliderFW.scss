@@ -63,7 +63,7 @@
   @include media-max(md){left: 0; margin-right: 0;}
 }
 
-.sliderFW__nav{@include flex-container(row,wrap,center); position: absolute; bottom: 0; width: 100%;
+.sliderFW__nav{@include flex-container(row,wrap,center); position: absolute; bottom: 0; width: 100%; z-index: 1;
   .nav--hidden &{display: none;}
   .nav--left &{@include justify-content(flex-start);}
   .nav--right &{@include justify-content(flex-end);}

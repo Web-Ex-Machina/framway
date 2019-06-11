@@ -55,6 +55,8 @@ SliderFW.prototype.onCreate = function(){
     if(slider.blur) slider.setBlur();
   });
   $(document).on('keyup',function(event){ slider.keyEvent(event); });
+
+  slider.onResize();
 }
 
 SliderFW.prototype.railSwap = function(){
