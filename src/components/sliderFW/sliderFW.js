@@ -2,7 +2,7 @@ var SliderFW = Object.getPrototypeOf(app).SliderFW = new Component("sliderFW");
 // SliderFW.debug = true;
 SliderFW.createdAt      = "1.0.0";
 SliderFW.lastUpdate     = "1.4.13";
-SliderFW.version        = "1.1.2";
+SliderFW.version        = "1.1.3";
 // SliderFW.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 SliderFW.prototype.onCreate = function(){
@@ -182,13 +182,15 @@ SliderFW.prototype.goToPrev = function() {
 SliderFW.prototype.setBlur = function() {
   var slider = this;
   slider.content.items.each(function(index,item){
-    if($(item).find('.sliderFW__item__blur').length){
-      $(item).find('.sliderFW__item__blur').width($(item).find('.sliderFW__item__content').outerWidth());
-      $(item).find('.sliderFW__item__blur img').width($(item).find('.sliderFW__item__bg img').outerWidth());
-    } else {
-      var container = $(item).find('.sliderFW__item__bg');
-      var imgClone = $('<div class="sliderFW__item__blur"></div>').append($(item).find('.sliderFW__item__bg img').clone()).appendTo(container);
-      slider.setBlur();
+    if($(item).find('.sliderFW__item__content').length){
+      if($(item).find('.sliderFW__item__blur').length){
+        $(item).find('.sliderFW__item__blur').width($(item).find('.sliderFW__item__content').outerWidth());
+        $(item).find('.sliderFW__item__blur img').width($(item).find('.sliderFW__item__bg img').outerWidth());
+      } else {
+        var container = $(item).find('.sliderFW__item__bg');
+        var imgClone = $('<div class="sliderFW__item__blur"></div>').append($(item).find('.sliderFW__item__bg img').clone()).appendTo(container);
+        slider.setBlur();
+      }
     }
   })
 };
@@ -209,7 +211,7 @@ SliderFW.prototype.setHeight = function() {
     slider.$el.find('.sliderFW__item__content').css('height','100%');
   }
   if(this.$el.data('height') == "viewport"){
-    heightBox = viewport.height - $('#header').outerHeight();
+    heightBox = viewport.height - ($('#header').outerHeight() || 0) - ($('.topbar').outerHeight() || 0);
   }
   slider.content.$el.height(heightBox);
   return this;
