@@ -10,7 +10,7 @@
   &[data-arrows="true"]{@extend .nav--hidden;}
 }
 .sliderFW__container{position: relative; overflow: hidden;  width: 100%; height: 400px;}
-.sliderFW__rail{position: absolute; left:0; min-width: 100%; top: 0;@include flex-container(); @include transition(all 0.8s); bottom: 45px;
+.sliderFW__rail{position: absolute; left:0; min-width: 100%; top: 0;@include flex-container(); @include transition(all 1s); bottom: 45px;
   .nav--hidden &,
   .nav--inner &{bottom: 0;}
   .nav--top &{bottom: 0; top: 45px;}
@@ -20,7 +20,7 @@
 .sliderFW__item{@include size(100%); position: relative; @include flex-shrink(0); cursor: grab;  z-index: 0;
   .sliderFW[data-swipe="false"] &{cursor: auto;}
   .sliderFW[data-transition="none"] &,
-  .sliderFW[data-transition="fade"] & {position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 1s;
+  .sliderFW[data-transition="fade"] & {position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 1.5s;
     &.active{z-index: 1; opacity: 1;}
   }
   .sliderFW[data-transition="none"] &{transition: none;}

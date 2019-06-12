@@ -1,8 +1,8 @@
 var ModalFW = Object.getPrototypeOf(app).ModalFW = new Component("modalFW");
 // ModalFW.debug = true;
 ModalFW.createdAt      = "1.0.0";
-ModalFW.lastUpdate     = "1.4.8";
-ModalFW.version        = "1.0.1";
+ModalFW.lastUpdate     = "1.4.14";
+ModalFW.version        = "1.0.2";
 // ModalFW.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 
@@ -127,6 +127,7 @@ ModalFW.prototype.setContent = function(){
           .done(function(result){resolve(result)})
           .fail(function(error) {reject()});
         }).then(function(result){
+          result = new DOMParser().parseFromString(result, 'text/html');
           if(modal.selector && $(result).find(modal.selector).length)
             result = $(result).find(modal.selector);
           modal.$content.html(result);

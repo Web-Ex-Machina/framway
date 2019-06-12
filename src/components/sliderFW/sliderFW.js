@@ -1,8 +1,8 @@
 var SliderFW = Object.getPrototypeOf(app).SliderFW = new Component("sliderFW");
 // SliderFW.debug = true;
 SliderFW.createdAt      = "1.0.0";
-SliderFW.lastUpdate     = "1.4.13";
-SliderFW.version        = "1.1.3";
+SliderFW.lastUpdate     = "1.4.14";
+SliderFW.version        = "1.1.4";
 // SliderFW.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 SliderFW.prototype.onCreate = function(){
@@ -33,6 +33,10 @@ SliderFW.prototype.onCreate = function(){
     var index = $(this).addClass('active').index();
     $(slider.content.items.removeClass('active').get(index)).addClass('active');
     slider.transitionStart();
+    if(slider.auto){
+      clearTimeout(slider.timerAuto);
+      slider.autoTrigger();
+    }
   });
 
 
@@ -146,7 +150,7 @@ SliderFW.prototype.onResize = function(){
 SliderFW.prototype.autoTrigger = function() {
   var slider = this;
   slider.timerAuto = setTimeout(function(){
-      slider.goToNext()
+    slider.goToNext()
   },5600);
 };
 
