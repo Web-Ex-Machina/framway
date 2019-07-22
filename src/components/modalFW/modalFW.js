@@ -2,7 +2,7 @@ var ModalFW = Object.getPrototypeOf(app).ModalFW = new Component("modalFW");
 // ModalFW.debug = true;
 ModalFW.createdAt      = "1.0.0";
 ModalFW.lastUpdate     = "1.4.15";
-ModalFW.version        = "1.1.0";
+ModalFW.version        = "1.1.1";
 // ModalFW.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 
@@ -18,7 +18,7 @@ ModalFW.prototype.onCreate = function(){
   modal.title          = (modal.title !== undefined)          ? modal.title          : modal.getData('title',false);
   modal.width          = (modal.width !== undefined)          ? modal.width          : modal.getData('width',false);
   modal.url            = (modal.url !== undefined)            ? modal.url            : modal.getData('url',false);
-  modal.selector       = (modal.selector !== undefined)       ? modal.selector       : modal.getData('selector',false);
+  modal.selector       = (modal.selector !== undefined)       ? modal.selector       : modal.getData('selector','body');
   modal.blnAutoload    = (modal.blnAutoload !== undefined)    ? modal.blnAutoload    : modal.getData('autoload',true);
   modal.blnAutodestroy = (modal.blnAutodestroy !== undefined) ? modal.blnAutodestroy : modal.getData('autodestroy',false);
   modal.blnOpen        = (modal.blnOpen !== undefined)        ? modal.blnOpen        : modal.getData('open',false);
@@ -136,10 +136,13 @@ ModalFW.prototype.setContent = function(){
           result = new DOMParser().parseFromString(result, 'text/html');
           if(modal.selector && $(result).find(modal.selector).length)
             result = $(result).find(modal.selector);
-          modal.$content.html(result);
+          if(modal.selector == "body")
+            result = result.children();
+          modal.$content.html('').append(result);
           modal.$el.addClass('ready');
         }).catch(function(error){
           modal.$content.html('<p class="error">An error occured while requesting '+modal.url+'</p>');
+          if(ModalFW.debug) app.log(error);
           modal.$el.addClass('ready');
         });
       }
