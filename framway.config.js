@@ -1,7 +1,6 @@
 module.exports = {
   themes:[
-    'smartgear',
-    'coffeedocs'
+    // 'themeName',
   ],
   components:[
     'modalFW',
