@@ -23,6 +23,7 @@ module.exports = {
     'ipsum',
     'input-number',
     'sidepanel',
+    'datepicker',
     'guideline',
     'konami',
   ],
