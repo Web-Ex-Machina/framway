@@ -138,7 +138,7 @@ ModalFW.prototype.setContent = function(){
             result = $(result).find(modal.selector);
           if(modal.selector == "body")
             result = result.children();
-          modal.$content.html('').append(result);
+          modal.$content.html(result);
           modal.$el.addClass('ready');
         }).catch(function(error){
           modal.$content.html('<p class="error">An error occured while requesting '+modal.url+'</p>');
