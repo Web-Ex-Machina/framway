@@ -133,11 +133,12 @@ ModalFW.prototype.setContent = function(){
           .done(function(result){resolve(result)})
           .fail(function(error) {reject()});
         }).then(function(result){
-          result = new DOMParser().parseFromString(result, 'text/html');
+          // result = new DOMParser().parseFromString(result, 'text/html');
+          result = $($.parseHTML(result,true));
           if(modal.selector && $(result).find(modal.selector).length)
             result = $(result).find(modal.selector);
-          if(modal.selector == "body")
-            result = result.children();
+          // if(modal.selector == "body")
+            // result = result.children();
           modal.$content.html(result);
           modal.$el.addClass('ready');
         }).catch(function(error){
