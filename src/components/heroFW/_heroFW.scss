@@ -72,7 +72,7 @@
   @for $index from 0 through 10 {
     .content__bg__opacity--#{$index} &:after{opacity: $index*.1;}
   }
-  & .heroFW__content__wrapper{
+  & .heroFW__content__wrapper{ max-width: 100%;
     & *:last-child{margin-bottom: 0;}
   }
 }

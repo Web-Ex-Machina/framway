@@ -11,7 +11,13 @@ Select2FW.prototype.onCreate = function(){
   select2FW.$el.select2({
     minimumResultsForSearch: 5,
     width: '100%',
-    dropdownParent: select2FW.$el.parent()
+    dropdownParent: select2FW.$el.parent(),
+    templateResult: function (data, container) {
+      if (data.element) {
+        $(container).addClass($(data.element).attr("class"));
+      }
+      return data.text;
+    }
   });
   if(Select2FW.debug) console.log('Select2FW has been created \n ',select2FW);
 }

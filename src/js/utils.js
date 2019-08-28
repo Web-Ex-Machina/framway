@@ -79,7 +79,7 @@ var Utils = function Utils(){
    * @return {Boolean}     [description]
    */
   utils.isImageUrl = function(url){
-    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+    return(url.match(/\.(jpeg|jpg|gif|png|JPG|JPEG|GIF|PNG)$/) != null);
   }
 
   /**
@@ -383,6 +383,17 @@ Utils.prototype.getDimensions = function(){
     width: window.innerWidth,
     height: window.innerHeight,
   }
+};
+
+/**
+ * return the viewport height without headers
+ * @return {int}
+ */
+Utils.prototype.getViewportHeight = function(){
+  var height = viewport.height - ($('#header').outerHeight() || 0);
+  if($('.topbar').length && !$('.topbar').closest('#header'))
+   height -= ($('.topbar').outerHeight() || 0);
+  return height;
 };
 
 /**
