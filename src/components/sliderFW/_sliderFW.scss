@@ -1,6 +1,6 @@
 .sliderFW{margin-bottom: $spacing;
   &.preset--testimonial{@extend .content--center,.content__text--center,.content--noblur;
-    & .sliderFW__item__content{background: none; width: fit-content; max-width: 800px; padding: $spacing 4rem; text-align: center;
+    & .sliderFW__item__content{background: none; width: 100%; max-width: 800px; padding: $spacing 4rem; text-align: center;
       & .author{@extend .quote;text-align: right; color: body(title-font-color); margin-right: -2rem;
         &:after,
         &:before{content:" - "; opacity: 0.8;}
