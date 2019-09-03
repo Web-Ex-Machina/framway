@@ -9,14 +9,26 @@
     .m-#{$side}-x2{margin-#{$side}: $spacing * 2 !important;
       @include media-max(xs){margin-#{$side}: $spacing !important;}
     }
+    .m-#{$side}-x3{margin-#{$side}: $spacing * 3 !important;
+      @include media-max(xs){margin-#{$side}: $spacing * 2 !important;}
+    }
+    .m-#{$side}-x4{margin-#{$side}: $spacing * 4 !important;
+      @include media-max(xs){margin-#{$side}: $spacing * 3 !important;}
+    }
 
     .p-#{$side}{padding-#{$side}: $spacing !important;
-        @include media-max(xs){padding-#{$side}: $spacing / 2 !important; }
+      @include media-max(xs){padding-#{$side}: $spacing / 2 !important; }
      }
     .p-#{$side}-0{padding-#{$side}: 0 !important;}
     .p-#{$side}-x2{padding-#{$side}: $spacing * 2 !important;
-        @include media-max(xs){padding-#{$side}: $spacing !important; }
-     }
+      @include media-max(xs){padding-#{$side}: $spacing !important; }
+    }
+    .p-#{$side}-x3{padding-#{$side}: $spacing * 3 !important;
+      @include media-max(xs){padding-#{$side}: $spacing * 2 !important; }
+    }
+    .p-#{$side}-x2{padding-#{$side}: $spacing * 4 !important;
+      @include media-max(xs){padding-#{$side}: $spacing * 3 !important; }
+    }
   }
   @else {
     .m-#{$side}{margin: $spacing !important;
@@ -26,6 +38,12 @@
     .m-#{$side}-x2{margin: $spacing * 2 !important;
       @include media-max(xs){margin: $spacing !important;}
     }
+    .m-#{$side}-x3{margin: $spacing * 3 !important;
+      @include media-max(xs){margin: $spacing * 2 !important;}
+    }
+    .m-#{$side}-x4{margin: $spacing * 4 !important;
+      @include media-max(xs){margin: $spacing * 3 !important;}
+    }
 
     .p-#{$side}{padding: $spacing !important;
         @include media-max(xs){padding: $spacing / 2 !important; }
@@ -33,24 +51,38 @@
     .p-#{$side}-0{padding: 0 !important;}
     .p-#{$side}-x2{padding: $spacing * 2 !important;
         @include media-max(xs){padding: $spacing !important; }
-     }
+    }
+    .p-#{$side}-x3{padding: $spacing * 3 !important;
+        @include media-max(xs){padding: $spacing * 2 !important; }
+    }
+    .p-#{$side}-x4{padding: $spacing * 4 !important;
+        @include media-max(xs){padding: $spacing * 3 !important; }
+    }
   }
 }
 .m-x{@extend .m-right,.m-left !optional;}
 .m-x-0{@extend .m-right-0,.m-left-0 !optional;}
 .m-x-x2{@extend .m-right-x2,.m-left-x2 !optional;}
+.m-x-x3{@extend .m-right-x3,.m-left-x3 !optional;}
+.m-x-x4{@extend .m-right-x4,.m-left-x4 !optional;}
 
 .m-y{@extend .m-top,.m-bottom !optional;}
 .m-y-0{@extend .m-top-0,.m-bottom-0 !optional;}
 .m-y-x2{@extend .m-top-x2,.m-bottom-x2 !optional;}
+.m-y-x3{@extend .m-top-x3,.m-bottom-x3 !optional;}
+.m-y-x4{@extend .m-top-x4,.m-bottom-x4 !optional;}
 
 .p-x{@extend .p-right,.p-left !optional;}
 .p-x-0{@extend .p-right-0,.p-left-0 !optional;}
 .p-x-x2{@extend .p-right-x2,.p-left-x2 !optional;}
+.p-x-x3{@extend .p-right-x3,.p-left-x3 !optional;}
+.p-x-x4{@extend .p-right-x4,.p-left-x4 !optional;}
 
 .p-y{@extend .p-top,.p-bottom !optional;}
 .p-y-0{@extend .p-top-0,.p-bottom-0 !optional;}
 .p-y-x2{@extend .p-top-x2,.p-bottom-x2 !optional;}
+.p-y-x3{@extend .p-top-x3,.p-bottom-x3 !optional;}
+.p-y-x4{@extend .p-top-x4,.p-bottom-x4 !optional;}
 
 @each $side in $sides {
   @if $side != 'all' {
