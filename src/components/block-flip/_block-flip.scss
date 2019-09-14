@@ -1,5 +1,5 @@
 .block-flip{@extend .block-list !optional;}
-.block-flip__wrapper{@extend .block-list__wrapper !optional;}
+.block-flip__wrapper{@extend .block-list__wrapper !optional; overflow: visible;}
 .block-flip__front{@extend .block-list__figure !optional;}
 .block-flip__back{@extend .block-list__content !optional;}
 
@@ -8,7 +8,7 @@
     .block-flip__wrapper{transform: rotateY(-180deg);}
   }
 }
-.block-flip__wrapper{transition: all 0.6s; position: relative; transform-style: preserve-3d; width: 100%; background: none; overflow: visible;
+.block-flip__wrapper{transition: all 0.6s; position: relative; transform-style: preserve-3d; width: 100%; background: none;
   &:after,&:before{backface-visibility: hidden;}
 }
 .block-flip__front,
