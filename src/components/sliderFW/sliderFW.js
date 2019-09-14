@@ -1,8 +1,8 @@
 var SliderFW = Object.getPrototypeOf(app).SliderFW = new Component("sliderFW");
 // SliderFW.debug = true;
 SliderFW.createdAt      = "1.0.0";
-SliderFW.lastUpdate     = "1.4.14";
-SliderFW.version        = "1.1.4";
+SliderFW.lastUpdate     = "1.4.15";
+SliderFW.version        = "1.1.5";
 // SliderFW.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 SliderFW.prototype.onCreate = function(){
@@ -217,7 +217,8 @@ SliderFW.prototype.setHeight = function() {
     slider.$el.find('.sliderFW__item__content').css('height','100%');
   }
   if(this.$el.data('height') == "viewport"){
-    heightBox = viewport.height - ($('#header').outerHeight() || 0) - ($('.topbar').outerHeight() || 0);
+    // heightBox = viewport.height - ($('#header').outerHeight() || 0) - ($('.topbar').outerHeight() || 0);
+    heightBox = utils.getViewportHeight();
   }
   slider.content.$el.height(heightBox);
   return this;

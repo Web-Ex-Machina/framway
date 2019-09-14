@@ -1,5 +1,10 @@
 // general looking
-.select2-container {margin-bottom: $spacing; margin-right: $spacing;}
+.select2-container {margin-bottom: $spacing; margin-right: $spacing;
+  @include media-max(xs){
+    margin-bottom: $spacing/2;
+    margin-right: $spacing/2;
+  }
+}
 .select2-container .select2-selection{@extend %input; height: auto; margin-bottom: 0px;}
 
 // selection text field

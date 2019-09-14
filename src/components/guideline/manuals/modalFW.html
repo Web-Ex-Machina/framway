@@ -82,7 +82,7 @@
 </p>
 
 <div class="table-responsive m-bottom">
-<table class="table table-bordered m-0 ft-0-8-em">
+<table class="table table-bordered m-0 ">
   <tr class="txt-center">
     <th rowspan="2">Param</th>
     <th rowspan="2">Value(s)</th>
@@ -163,16 +163,6 @@
     <td class="txt-center">Yes</td>
   </tr>
   <tr>
-    <th class="txt-center">blnAutodestroy</th>
-    <td>Bool<br> (default false)</td>
-    <td>
-      Shortcut to destroy the modal on closing event<br>
-    </td>
-    <td class="txt-center">Yes<br><span class="tag">data-autodestroy</span></td>
-    <td class="txt-center">Yes<br><span class="tag">data-autodestroy</span></td>
-    <td class="txt-center">Yes</td>
-  </tr>
-  <tr>
     <th class="txt-center">blnOpen</th>
     <td>Bool<br> (default false)</td>
     <td>Define if the modal automatically opens when created.</td>
@@ -192,18 +182,15 @@
     <th class="txt-center">buttons</th>
     <td>
       Object<br><br>
-      <button class="btn-sm" data-modal="sample_modal_buttons"><i class="fa fa-info-circle"></i></button>
-      <div class="modalFW" data-name="sample_modal_buttons">
-          <pre>{
-        buttonName : {
-            label   : 'buttonLabel',
-            classes : 'buttonClasses',
-            action  :  fnButton,
-            url     : 'urlButton'
-        },
-        ...
-      }</pre>
-      </div>
+      <pre>{
+      buttonName : {
+          label   : 'buttonLabel',
+          classes : 'buttonClasses',
+          action  :  fnButton,
+          url     : 'urlButton'
+      },
+      ...
+    }</pre>
     </td>
     <td>
       Add any number of buttons to the modal's footer.<br>

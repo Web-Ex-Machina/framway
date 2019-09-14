@@ -1,7 +1,7 @@
 var Goto = Object.getPrototypeOf(app).Goto = new Component("goto");
 Goto.debug = false;
 Goto.createdAt      = "1.0.0";
-Goto.lastUpdate     = "1.4.3";
+Goto.lastUpdate     = "1.4.15";
 Goto.version        = "1";
 // Goto.loadingMsg     = "This message will display in the console when component will be loaded.";
 
@@ -19,12 +19,12 @@ Goto.prototype.onCreate = function(){
       });
     }
     if ($('#' + target).length) {
-      var scrollValue = $('#' + target).offset().top - $('header').outerHeight();
+      var scrollValue = $('#' + target).offset().top - ($('#header').outerHeight() || 0);
       $('body,html').animate({
         scrollTop: scrollValue
       }, 600).promise().then(function(){
-        window.location.hash = '#' + target;
-        window.location.replace(window.location);
+        // window.location.hash = '#' + target;
+        // window.location.replace(window.location);
       });
     }
   });

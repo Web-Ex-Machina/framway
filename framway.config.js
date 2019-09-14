@@ -1,6 +1,6 @@
 module.exports = {
   themes:[
-    // 'themeName',
+    // 'themeName'
   ],
   components:[
     'modalFW',
@@ -23,7 +23,6 @@ module.exports = {
     'ipsum',
     'input-number',
     'sidepanel',
-    'datepicker',
     'guideline',
     'konami',
   ],

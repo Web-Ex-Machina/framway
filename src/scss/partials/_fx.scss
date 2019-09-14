@@ -33,6 +33,6 @@
 .quote{font-style: italic; font-size: 1.1rem; margin-bottom: 1rem;
   &:not(.ft-inherit){ color: rgba(body(font-color),0.8); }
   &>*{display: inline;}
-  &:before{content:"«\00a0";}
-  &:after{content:"\00a0»";}
+  &:before{content:"« ";}
+  &:after{content:" »";}
 }

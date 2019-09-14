@@ -1,8 +1,8 @@
 var ModalFW = Object.getPrototypeOf(app).ModalFW = new Component("modalFW");
 // ModalFW.debug = true;
 ModalFW.createdAt      = "1.0.0";
-ModalFW.lastUpdate     = "1.4.15";
-ModalFW.version        = "1.1.1";
+ModalFW.lastUpdate     = "1.4.14";
+ModalFW.version        = "1.0.2";
 // ModalFW.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 
@@ -14,21 +14,20 @@ ModalFW.prototype.onDestroy = function(){
 ModalFW.prototype.onCreate = function(){
   var modal = this;
   // attributes
-  modal.name           = (modal.name !== undefined)           ? modal.name           : modal.getData('name', 'modalFW-'+utils.uniqid());
-  modal.title          = (modal.title !== undefined)          ? modal.title          : modal.getData('title',false);
-  modal.width          = (modal.width !== undefined)          ? modal.width          : modal.getData('width',false);
-  modal.url            = (modal.url !== undefined)            ? modal.url            : modal.getData('url',false);
-  modal.selector       = (modal.selector !== undefined)       ? modal.selector       : modal.getData('selector','body');
-  modal.blnAutoload    = (modal.blnAutoload !== undefined)    ? modal.blnAutoload    : modal.getData('autoload',true);
-  modal.blnAutodestroy = (modal.blnAutodestroy !== undefined) ? modal.blnAutodestroy : modal.getData('autodestroy',false);
-  modal.blnOpen        = (modal.blnOpen !== undefined)        ? modal.blnOpen        : modal.getData('open',false);
-  modal.blnRefresh     = (modal.blnRefresh !== undefined)     ? modal.blnRefresh     : modal.getData('refresh',false);
-  modal.content        = (modal.content !== undefined)        ? modal.content        : modal.$el.html();
-  modal.buttons        = (modal.buttons !== undefined)        ? modal.buttons        : {};
-  modal.onOpen         = (modal.onOpen !== undefined)         ? modal.onOpen         : false;
-  modal.onClose        = (modal.onClose !== undefined)        ? modal.onClose        : false;
-  modal.onRefresh      = (modal.onRefresh !== undefined)      ? modal.onRefresh      : false;
-  modal.isOpen         = false;
+  modal.name        = (modal.name !== undefined)        ? modal.name        : modal.getData('name', 'modalFW-'+utils.uniqid());
+  modal.title       = (modal.title !== undefined)       ? modal.title       : modal.getData('title',false);
+  modal.width       = (modal.width !== undefined)       ? modal.width       : modal.getData('width',false);
+  modal.url         = (modal.url !== undefined)         ? modal.url         : modal.getData('url',false);
+  modal.selector    = (modal.selector !== undefined)    ? modal.selector    : modal.getData('selector',false);
+  modal.blnAutoload = (modal.blnAutoload !== undefined) ? modal.blnAutoload : modal.getData('autoload',true);
+  modal.blnOpen     = (modal.blnOpen !== undefined)     ? modal.blnOpen     : modal.getData('open',false);
+  modal.blnRefresh  = (modal.blnRefresh !== undefined)  ? modal.blnRefresh  : modal.getData('refresh',false);
+  modal.content     = (modal.content !== undefined)     ? modal.content     : modal.$el.html();
+  modal.buttons     = (modal.buttons !== undefined)     ? modal.buttons     : {};
+  modal.onOpen      = (modal.onOpen !== undefined)      ? modal.onOpen      : false;
+  modal.onClose     = (modal.onClose !== undefined)     ? modal.onClose     : false;
+  modal.onRefresh   = (modal.onRefresh !== undefined)   ? modal.onRefresh   : false;
+  modal.isOpen      = false;
 
   if(ModalFW.debug) console.log("Creating "+modal.name+" ... ");
   // abort if the modal already exist
@@ -70,11 +69,6 @@ ModalFW.prototype.onCreate = function(){
   modal.$el.appendTo($('body'));
 
   // actions according to parameters
-  if(modal.blnAutodestroy){
-    modal.onClose = function(){
-      modal.destroy();
-    }
-  }
   if(modal.blnAutoload)
     modal.setContent();
   if(modal.$trigger)
@@ -134,16 +128,12 @@ ModalFW.prototype.setContent = function(){
           .fail(function(error) {reject()});
         }).then(function(result){
           // result = new DOMParser().parseFromString(result, 'text/html');
-          result = $($.parseHTML(result,true));
           if(modal.selector && $(result).find(modal.selector).length)
             result = $(result).find(modal.selector);
-          // if(modal.selector == "body")
-            // result = result.children();
           modal.$content.html(result);
           modal.$el.addClass('ready');
         }).catch(function(error){
           modal.$content.html('<p class="error">An error occured while requesting '+modal.url+'</p>');
-          if(ModalFW.debug) app.log(error);
           modal.$el.addClass('ready');
         });
       }
@@ -204,7 +194,6 @@ var createModalFromTrigger = function($trigger){
       selector: $trigger.data('selector'),
       blnOpen : $trigger.data('open'),
       blnAutoload : $trigger.data('autoload'),
-      blnAutodestroy : $trigger.data('autodestroy'),
       blnRefresh : $trigger.data('refresh'),
       $trigger : $trigger
     };
@@ -232,8 +221,8 @@ $(function () {
       $('.modalFW[data-name="'+$(this).data('modal')+'"]').modalFW('get').open();
   });
   $('body').on('click','.modalFW',function(e){
-    // if(!$(e.target).attr('href'))
-      // e.preventDefault();
+    if(!$(e.target).attr('href'))
+      e.preventDefault();
     if ($(e.target).hasClass('modalFW')) {
       $(this).modalFW('get').close();
     } else if($(e.target).hasClass('modalFW__close')){
