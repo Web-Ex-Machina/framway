@@ -38,7 +38,7 @@
   }
   .headline--disable &{display: none;}
 }
-.block-list__footer{margin-top: -$spacing; flex-direction: row-reverse;
+.block-list__footer{margin-top: -$spacing; flex-direction: row-reverse; z-index: 1;
   .footer--disable &{display: none;}
 }
 
