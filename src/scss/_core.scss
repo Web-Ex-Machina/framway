@@ -1,3 +1,7 @@
+$colors : map-merge($colors, ("primary": $primary));
+$colors : map-merge($colors, ("secondary": $secondary));
+$colors : map-merge($colors, ("tertiary": $tertiary));
+
 /* RESET */
 html{overflow-x: hidden; font-size: body(font-size); }
 body {background: body(background);color:body(font-color);
