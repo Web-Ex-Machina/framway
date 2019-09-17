@@ -26,7 +26,7 @@
     .p-#{$side}-x3{padding-#{$side}: $spacing * 3 !important;
       @include media-max(xs){padding-#{$side}: $spacing * 2 !important; }
     }
-    .p-#{$side}-x2{padding-#{$side}: $spacing * 4 !important;
+    .p-#{$side}-x4{padding-#{$side}: $spacing * 4 !important;
       @include media-max(xs){padding-#{$side}: $spacing * 3 !important; }
     }
   }
