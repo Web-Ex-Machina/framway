@@ -84,3 +84,9 @@ hr{@extend .sep; border:0; }
 @for $index from 0 through 9{
   .opa-#{$index}{opacity: #{"."+$index} !important;}
 }
+
+/*-----------------------------------------------------------------------------------------------------------------------------*/
+// HIDDENS
+@each $key, $value in $breakpoints{
+  .hidden-#{$key}{@include media-max($key){display: none;}}
+}

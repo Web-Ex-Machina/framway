@@ -1,7 +1,7 @@
 @function isImportant($key) {
   @if($key == 'primary' or $key == 'secondary' or $key == 'tertiary'){
     @return #{!important};
-  } @else{@return ''; }
+  } @else{@return null; }
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------------*/

@@ -35,6 +35,29 @@
   &.center{display: block;}
 }
 
+.btn{
+  &[class*="icon-"]{display: flex;align-items: center; padding-left: 0.6em; padding-right: 0.6em;
+    & i[class*="fa"],
+    & svg{min-width: 1em;}
+    @each $key, $value in $breakpoints{
+      & .hidden-#{$key}{
+        @include media-max($key){
+          &+i[class*="fa"],
+          &+svg{ margin: 0;}
+        }
+      }
+    }
+  }
+  &.icon-first{
+    & i[class*="fa"],
+    & svg{margin: 0 0.6em 0 0 ; order: -1;}
+  }
+  &.icon-last {
+    & i[class*="fa"],
+    & svg{margin: 0 0 0 0.6em; order: 1;}
+  }
+}
+
 .btn-sm{font-size: .8em; padding: .4em 1.2em .5em;
   &>a{padding: .4em 1.2em .5em; margin: -.4em -1.2em -.5em;}
 }
