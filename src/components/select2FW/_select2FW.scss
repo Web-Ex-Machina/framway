@@ -6,6 +6,7 @@
   }
 }
 .select2-container .select2-selection{@extend %input; height: auto; margin-bottom: 0px;}
+.select2-wrapper{position: relative;}
 
 // selection text field
 .select2-container--default .select2-selection--single .select2-selection__rendered{line-height: inherit;}
