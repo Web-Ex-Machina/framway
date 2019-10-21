@@ -12,7 +12,7 @@ p{margin-bottom: 1rem;margin-top: 0;}
 // TITLES
 @for $index from 1 through 6{
   h#{$index},
-  .h#{$index}{color: body(title-font-color); line-height: inherit;
+  .h#{$index}{color: body(title-font-color); line-height: inherit; margin-bottom: 0.5em;
     &[class*="sep-bottom"]{margin-bottom: 0; &:after{margin-top: 1rem;}}
     &[class*="sep-top"]{margin-top: 0; &:before{margin-bottom: .4rem;}}
     &[class*="sep-right"],
