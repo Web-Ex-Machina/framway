@@ -1,0 +1,10 @@
+.text-editor{}
+.text-editor__wrapper{
+  textarea{margin: 0;padding: 0;height: 0;overflow: hidden; opacity: 0; display: block;min-height: 0;}
+}
+.text-editor__input{}
+.pell-actionbar{display: flex;flex-wrap: wrap;}
+.pell-button{ border-radius: 0; padding: 0.3em 0.5em; min-width: 40px; height: 40px; margin: 0.5px; flex-grow: 1; font-size: 16px;}
+.pell-content{ @extend %input; padding: .8em 1em; min-height: 130px;
+  *:last-child{margin-bottom: 0;}
+}
