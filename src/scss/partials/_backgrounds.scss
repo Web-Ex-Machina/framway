@@ -1,10 +1,16 @@
+@function isImportant($key) {
+  @if($key == 'primary' or $key == 'secondary' or $key == 'tertiary'){
+    @return #{!important};
+  } @else{@return null; }
+}
+
 /*-----------------------------------------------------------------------------------------------------------------------------*/
 // BACKGROUNDS
 @if $enable-bg{
   *[class*='bg-']:not([class*='bg--']):not([class*='btn-']){padding: $spacing;}
   *[class*='bg-']:not([class*='bg--']):not([class*='btn-'])>*:last-child{margin-bottom:0;}
   @each $key, $value in $colors{
-    .bg-#{$key}{background-color: $value; color: body(font-color); color: contrast(body(font-color), $value);}
+    .bg-#{$key}{background-color: $value isImportant($key); color: body(font-color); color: contrast(body(font-color), $value);}
     // *[class~="bg-#{$key}"],
     // *[class|="bg-#{$key}"]{color: body(font-color); color: contrast(body(font-color), $value);}
     @for $index from 1 through 10{
