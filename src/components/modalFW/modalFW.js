@@ -221,8 +221,8 @@ $(function () {
       $('.modalFW[data-name="'+$(this).data('modal')+'"]').modalFW('get').open();
   });
   $('body').on('click','.modalFW',function(e){
-    if(!$(e.target).attr('href'))
-      e.preventDefault();
+    // if(!$(e.target).attr('href'))
+      // e.preventDefault();
     if ($(e.target).hasClass('modalFW')) {
       $(this).modalFW('get').close();
     } else if($(e.target).hasClass('modalFW__close')){
