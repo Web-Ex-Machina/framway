@@ -2,7 +2,7 @@ var BtnLoad = Object.getPrototypeOf(app).BtnLoad = new Component("btn-load");
 // BtnLoad.debug = true;
 BtnLoad.createdAt      = "1.0.0";
 BtnLoad.lastUpdate     = "1.4.8";
-BtnLoad.version        = "1.0.1";
+BtnLoad.version        = "1.2.0";
 // BtnLoad.loadingMsg     = "This message will display in the console when component will be loaded.";
 //
 BtnLoad.iconSelector = '.fas.fa-spinner.fa-pulse';
@@ -10,14 +10,18 @@ BtnLoad.icon = '<i class="'+BtnLoad.iconSelector.replace(/\./g,' ').trim()+'"></
 
 BtnLoad.prototype.onCreate = function(){
   var btn = this;
+
+  btn.$clone = btn.$el.clone();
+  btn.$clone.find('i,svg').remove();
+
   btn.process = window[btn.getData('process')];
   btn.icon = btn.getData('icon',true);
   btn.result = btn.getData('result',true);
   btn.reset = btn.getData('reset',true);
-  btn.textIdle = btn.$el.text();
-  btn.textLoading = btn.getData('text', btn.$el.text());
+  btn.textIdle = btn.$el.html();
+  btn.textLoading = btn.getData('text', btn.$el.html());
   if(btn.icon)
-    btn.textLoading += BtnLoad.icon;
+    btn.textLoading = btn.$clone.html() + BtnLoad.icon;
 
   var btnClick = function btnClick(){
     if(typeof btn.process == "function"){
@@ -44,13 +48,13 @@ BtnLoad.prototype.toggleState = function(state){
   switch(state){
     case 'idle':
       if(btn.result)
-        btn.$el.html(btn.textIdle + '<i class="fas fa-check ft-green"></i>');
+        btn.$el.html(btn.$clone.html() + '<i class="fas fa-check ft-green"></i>');
       else
         btn.$el.html(btn.textIdle);
     break;
     case 'failed':
       if(btn.result)
-        btn.$el.html(btn.textIdle + '<i class="fas fa-exclamation-triangle ft-orange" title="An error occured. Please retry or reload the page."></i>');
+        btn.$el.html(btn.$clone.html() + '<i class="fas fa-exclamation-triangle ft-orange" title="An error occured. Please retry or reload the page."></i>');
       else
         btn.$el.html(btn.textIdle);
     break;
@@ -59,8 +63,4 @@ BtnLoad.prototype.toggleState = function(state){
       btn.$el.html(btn.textLoading);
     break;
   }
-  btn.$el.find('i').css({
-    'margin-left':  parseInt(btn.$el.css('padding-right')) / 2,
-    'margin-right': parseInt(btn.$el.css('padding-right')) / -2,
-  });
 };

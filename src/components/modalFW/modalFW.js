@@ -127,7 +127,7 @@ ModalFW.prototype.setContent = function(){
           .done(function(result){resolve(result)})
           .fail(function(error) {reject()});
         }).then(function(result){
-          result = new DOMParser().parseFromString(result, 'text/html');
+          // result = new DOMParser().parseFromString(result, 'text/html');
           if(modal.selector && $(result).find(modal.selector).length)
             result = $(result).find(modal.selector);
           modal.$content.html(result);

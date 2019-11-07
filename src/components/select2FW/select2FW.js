@@ -8,6 +8,7 @@ Select2FW.version        = "1.2";
 
 Select2FW.prototype.onCreate = function(){
   var select2FW = this;
+  select2FW.$el.wrap('<div class="select2-wrapper"></div>');
   select2FW.$el.select2({
     minimumResultsForSearch: 5,
     width: '100%',
