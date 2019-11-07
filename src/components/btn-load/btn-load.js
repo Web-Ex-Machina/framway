@@ -24,15 +24,18 @@ BtnLoad.prototype.onCreate = function(){
     btn.textLoading = btn.$clone.html() + BtnLoad.icon;
 
   var btnClick = function btnClick(){
+    btn.$el.addClass('no-events');
     if(typeof btn.process == "function"){
       btn.$el.off('click');
       btn.toggleState();
       btn.process(btn).then(function(data){
         btn.toggleState('idle');
+        btn.$el.removeClass('no-events');
         if(btn.reset)
           btn.$el.on('click', btnClick);
       }).catch(function(data){
         btn.toggleState('failed');
+        btn.$el.removeClass('no-events');
         if(btn.reset)
           btn.$el.on('click', btnClick);
       });
