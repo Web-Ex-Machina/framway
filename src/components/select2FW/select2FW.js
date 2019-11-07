@@ -9,7 +9,7 @@ Select2FW.version        = "1.2";
 Select2FW.prototype.onCreate = function(){
   var select2FW = this;
   select2FW.$el.wrap('<div class="select2-wrapper"></div>');
-  select2FW.$el.select2({
+  select2FW.select2 = select2FW.$el.select2({
     minimumResultsForSearch: 5,
     width: '100%',
     dropdownParent: select2FW.$el.parent(),
@@ -21,6 +21,8 @@ Select2FW.prototype.onCreate = function(){
     }
   });
   if(Select2FW.debug) console.log('Select2FW has been created \n ',select2FW);
+
+  return select2FW;
 }
 
 Select2FW.prototype.onDestroy = function(){
