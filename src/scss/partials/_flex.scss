@@ -24,3 +24,4 @@
   *[class*='flex-'][class*='-flexgrow']>*[class*="flexgrow--#{$index}"],
   *[class*='flex-'][class*='-flexgrow--#{$index}']>*{@include flex-grow($index);}
 }
+
