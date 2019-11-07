@@ -32,3 +32,15 @@
     }
   }
 }
+
+// GRID ORDERS
+@for $index from 0 through 12{
+  .cols-order-#{$index}{order: $index;}
+  @each $key, $value in $breakpoints{
+    .cols-order-#{$key}-#{$index}{
+      @include media-max(#{$key}){
+        order: $index;
+      }
+    }
+  }
+}

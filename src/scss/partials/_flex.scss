@@ -4,7 +4,9 @@
 
 *[class*='flex-']:not([class*="-grow"]){@extend .flex;}
 *[class*='flex-'][class*='-row']{@include flex-direction(row);}
+*[class*='flex-'][class*='-rowreverse']{@include flex-direction(row-reverse);}
 *[class*='flex-'][class*='-column']{@include flex-direction(column);}
+*[class*='flex-'][class*='-columnreverse']{@include flex-direction(column-reverse);}
 
 *[class*='flex-'][class*='-wrap']{@include flex-wrap();}
 *[class*='flex-'][class*='-nowrap']{@include flex-wrap(nowrap);}
