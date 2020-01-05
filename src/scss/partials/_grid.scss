@@ -1,7 +1,9 @@
 .d-grid{display: grid; gap: $spacing;
   @include media-max(xs){gap: $spacing/2; }
   @for $index from 0 through 6{
-    &.gap-#{$index}{gap: $spacing*$index;}
+    &.gap-#{$index}{gap: $spacing*$index;
+      @include media-max(xs){gap: ($spacing*$index)/2;}
+    }
     &.gap-#{$index}-em{gap: 1em*$index ;}
     &.gap-#{$index}-rem{gap: 1rem*$index ;}
   }
