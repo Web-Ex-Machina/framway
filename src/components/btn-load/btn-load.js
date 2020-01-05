@@ -21,7 +21,7 @@ BtnLoad.prototype.onCreate = function(){
   btn.textIdle = btn.$el.html();
   btn.textLoading = btn.getData('text', btn.$el.html());
   if(btn.icon)
-    btn.textLoading = btn.$clone.html() + BtnLoad.icon;
+    btn.textLoading = btn.textLoading + BtnLoad.icon;
 
   var btnClick = function btnClick(){
     btn.$el.addClass('no-events');
