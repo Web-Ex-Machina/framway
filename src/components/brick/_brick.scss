@@ -16,7 +16,7 @@ $sizeBorder : 3;
   & *{outline: 1px solid transparent; background-color: $colorBrick;}
   .debug & *,
   &.debug *{background-color: rgba($colorBrick,0.5);}
-  & .side{color: contrast(color(white), $colorBrick); }
+  & .side{color: contrastFW(color(white), $colorBrick); }
   // &[text-mode="vertical"] .side{ text-orientation: upright; writing-mode: vertical-lr; font-size: 0.6em;} // BUG IE EDGE
   &.animate .wrapper{animation: spin 1s ease 1;}
 }
@@ -27,7 +27,7 @@ $sizeBorder : 3;
     & *{background-color: $value;}
     .debug & *,
     &.debug *{background-color: rgba($value,0.5);}
-    & .side{color: contrast(color(white), $value); }
+    & .side{color: contrastFW(color(white), $value); }
   }
 }
 

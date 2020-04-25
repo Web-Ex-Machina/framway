@@ -57,13 +57,13 @@
   background: #{$strGradient};
 };
 
-@function brightness($color) {
+@function brightnessFW($color) {
   @return ((red($color) * .299) + (green($color) * .587) + (blue($color) * .114));
 }
 
 
-@function contrast($color1, $color2) {
-  $contrast : brightness($color1) - brightness($color2);
+@function contrastFW($color1, $color2) {
+  $contrast : brightnessFW($color1) - brightnessFW($color2);
   $target: 100;
   $adjustement : 10;
   @if ( $color1 == transparent and $color2 != transparent){
@@ -73,7 +73,7 @@
     // do this if contrast is not enough. if color2 is transparent, do nothing
     @if ( $contrast > 0 ){
       // color1 is slightly brighter than color2
-      @if brightness($color1) < $target - abs($contrast){
+      @if brightnessFW($color1) < $target - abs($contrast){
         // do this if we can lighten color1 enough to contrast with color2
         // adjust color1 to have a minimum contrast of $target with color 2
         @return scale-color($color1, $lightness: $target - abs($contrast));
@@ -81,12 +81,12 @@
       @else{
         // do this if we can't lighten color1 enough to contrast with color2
         // decrease color1's brightness, compare the new contrast and return
-        @return contrast(scale-color($color1,$lightness: -$adjustement), $color2);
+        @return contrastFW(scale-color($color1,$lightness: -$adjustement), $color2);
       }
     }
     @else if ( $contrast < 0 ){
       // color2 is slightly darker than color2
-      @if brightness($color1) > abs($contrast){
+      @if brightnessFW($color1) > abs($contrast){
         // do this if we can darken color1 enough to contrast with color2
         // adjust color1 to have a minimum contrast of -$target with color 2
         @return scale-color($color1, $lightness: -$target + abs($contrast))
@@ -94,20 +94,20 @@
       @else{
         // do this if we can't darken color1 enough to contrast with color2
         // increase color1's brightness, compare the new contrast and return
-        @return contrast(scale-color($color1,$lightness: $adjustement), $color2);
+        @return contrastFW(scale-color($color1,$lightness: $adjustement), $color2);
       }
     }
     @else{
       // do this if color1 and color2 are equally contrasted
-      @if(brightness($color1) <= 127) {
+      @if(brightnessFW($color1) <= 127) {
         // color1 is naturally dark, so we need to lighten it
         // increase color1's brightness, compare the new contrast and return
-        @return contrast(scale-color($color1,$lightness: $adjustement), $color2);
+        @return contrastFW(scale-color($color1,$lightness: $adjustement), $color2);
       }
       @else{
         // color1 is naturally light, so we need to darken it
         // decrease color1's brightness, compare the new contrast and return
-        @return contrast(scale-color($color1,$lightness: -$adjustement), $color2);
+        @return contrastFW(scale-color($color1,$lightness: -$adjustement), $color2);
       }
     }
   }
