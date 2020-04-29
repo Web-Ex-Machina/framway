@@ -3,7 +3,7 @@
 %input{
   @include transition(all 0.4s);
   background-color: input(background);
-  color: contrast(input(font-color),input(background));
+  color: contrastFW(input(font-color),input(background));
   border: 0;
   border: input(border-size) solid input(border-color);
   @if input(radius) == true{
@@ -26,18 +26,18 @@
   &:focus,&.focus,&.active{
     background-color: input-focus(background);
     border-color: input-focus(border-color);
-    color: contrast(input-focus(font-color),input-focus(background));
+    color: contrastFW(input-focus(font-color),input-focus(background));
   }
   &[required]{
     &:valid{
       background-color: input-valid(background);
       border-color: input-valid(border-color);
-      color: contrast(input-valid(font-color),input-valid(background));
+      color: contrastFW(input-valid(font-color),input-valid(background));
     }
     &:invalid{
       background-color: input-invalid(background);
       border-color: input-invalid(border-color);
-      color: contrast(input-invalid(font-color),input-invalid(background));
+      color: contrastFW(input-invalid(font-color),input-invalid(background));
     }
   }
 }
@@ -131,27 +131,27 @@ input.nofill{opacity: 0; padding: 0 !important; margin: 0 !important; width: 0 !
 input.checkbox,input[type="checkbox"]{@extend %checkbox;}
 input.radio,input[type="radio"]{@extend %radio;}
 
-input:placeholder-shown{color: contrast(input(placeholder-font-color),input(background));}
-input::-webkit-input-placeholder{color: contrast(input(placeholder-font-color),input(background));}
-input::-moz-placeholder{color: contrast(input(placeholder-font-color),input(background));}
-input:-ms-input-placeholder{color: contrast(input(placeholder-font-color),input(background));}
-input::placeholder{color: contrast(input(placeholder-font-color),input(background));}
+input:placeholder-shown{color: contrastFW(input(placeholder-font-color),input(background));}
+input::-webkit-input-placeholder{color: contrastFW(input(placeholder-font-color),input(background));}
+input::-moz-placeholder{color: contrastFW(input(placeholder-font-color),input(background));}
+input:-ms-input-placeholder{color: contrastFW(input(placeholder-font-color),input(background));}
+input::placeholder{color: contrastFW(input(placeholder-font-color),input(background));}
 
 input:focus:placeholder-shown,
 input.focus:placeholder-shown,
-input.active:placeholder-shown{color: contrast(input(placeholder-font-color),input-focus(background));}
+input.active:placeholder-shown{color: contrastFW(input(placeholder-font-color),input-focus(background));}
 input:focus::-webkit-input-placeholder,
 input.focus::-webkit-input-placeholder,
-input.active::-webkit-input-placeholder{color: contrast(input(placeholder-font-color),input-focus(background));}
+input.active::-webkit-input-placeholder{color: contrastFW(input(placeholder-font-color),input-focus(background));}
 input:focus::-moz-placeholder,
 input.focus::-moz-placeholder,
-input.active::-moz-placeholder{color: contrast(input(placeholder-font-color),input-focus(background));}
+input.active::-moz-placeholder{color: contrastFW(input(placeholder-font-color),input-focus(background));}
 input:focus:-ms-input-placeholder,
 input.focus:-ms-input-placeholder,
-input.active:-ms-input-placeholder{color: contrast(input(placeholder-font-color),input-focus(background));}
+input.active:-ms-input-placeholder{color: contrastFW(input(placeholder-font-color),input-focus(background));}
 input:focus::placeholder,
 input.focus::placeholder,
-input.active::placeholder{color: contrast(input(placeholder-font-color),input-focus(background));}
+input.active::placeholder{color: contrastFW(input(placeholder-font-color),input-focus(background));}
 
 .form-group{position: relative; margin-bottom: 0; }
 .form-group label{text-transform: uppercase; text-align: left;

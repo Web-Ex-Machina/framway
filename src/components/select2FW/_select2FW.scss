@@ -26,7 +26,7 @@
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove{margin-right: 5px; margin-top: -1px; display: block; float: left;}
 
 // dropdown
-.select2-dropdown{ background: body(background); color: contrast(input(font-color),body(background)); border: input(border-size) solid input(border-color);
+
   @if input(radius) == false{
     border-radius: $radius;
   }
