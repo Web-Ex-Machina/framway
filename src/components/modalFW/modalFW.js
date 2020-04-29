@@ -1,8 +1,8 @@
 var ModalFW = Object.getPrototypeOf(app).ModalFW = new Component("modalFW");
 // ModalFW.debug = true;
 ModalFW.createdAt      = "1.0.0";
-ModalFW.lastUpdate     = "1.4.15";
-ModalFW.version        = "1.0.3";
+ModalFW.lastUpdate     = "1.4.17";
+ModalFW.version        = "1.0.4";
 // ModalFW.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 

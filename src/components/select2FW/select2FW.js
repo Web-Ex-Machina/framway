@@ -2,8 +2,8 @@ require('select2');
 var Select2FW = Object.getPrototypeOf(app).Select2FW = new Component("select2FW");
 // Select2FW.debug = true;
 Select2FW.createdAt      = "1.0.0";
-Select2FW.lastUpdate     = "1.4.15";
-Select2FW.version        = "1.2";
+Select2FW.lastUpdate     = "1.4.17";
+Select2FW.version        = "1.2.1";
 // Select2FW.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 Select2FW.prototype.onCreate = function(){

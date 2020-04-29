@@ -3,8 +3,8 @@ var pell = require('pell');
 var TextEditor = Object.getPrototypeOf(app).TextEditor = new Component("text-editor");
 // TextEditor.debug = true;
 TextEditor.createdAt      = "1.4.14";
-TextEditor.lastUpdate     = "1.4.14";
-TextEditor.version        = "1";
+TextEditor.lastUpdate     = "1.4.17";
+TextEditor.version        = "1.0.1";
 // TextEditor.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 TextEditor.prototype.onCreate = function(){
