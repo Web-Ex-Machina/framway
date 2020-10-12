@@ -68,33 +68,33 @@
   .btn-bd-#{$key}{
     border-color: $value;
     @if $value != transparent{color: $value; }
-    @else{color: contrast(btn(font-color),$value); }
+    @else{color: contrastFW(btn(font-color),$value); }
     background-color: transparent;
     &:hover,&:active,&.active{
       background: $value;
       text-decoration: none;
-      color: contrast(btn(font-color),$value);
+      color: contrastFW(btn(font-color),$value);
     }
     &:focus{
       // color: $value;
       &:hover,&:active,&.active{
-        color: contrast(btn(font-color),$value);
+        color: contrastFW(btn(font-color),$value);
       }
     }
   }
   .btn-bg-#{$key}{
     border-color: $value;
     background-color: $value;
-    color: contrast(btn(font-color),$value);
+    color: contrastFW(btn(font-color),$value);
     &:hover,&:focus,&:active,&.active{
       text-decoration: none;
       @if lightness($value) > 60{
-        color: contrast(btn(font-color),scale-color($value,$lightness:-5));
+        color: contrastFW(btn(font-color),scale-color($value,$lightness:-5));
         background-color: scale-color($value,$lightness:-15);
         border-color: scale-color($value,$lightness:-15);
       }
       @else{
-        color: contrast(btn(font-color),scale-color($value,$lightness:5));
+        color: contrastFW(btn(font-color),scale-color($value,$lightness:5));
         background-color: scale-color($value,$lightness:15);
         border-color: scale-color($value,$lightness:15);
       }

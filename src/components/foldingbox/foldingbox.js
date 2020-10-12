@@ -1,8 +1,8 @@
 var Foldingbox = Object.getPrototypeOf(app).Foldingbox = new Component("foldingbox");
 // Foldingbox.debug = true;
 Foldingbox.createdAt      = "1.0.0";
-Foldingbox.lastUpdate     = "1.4.3";
-Foldingbox.version        = "1";
+Foldingbox.lastUpdate     = "1.4.17";
+Foldingbox.version        = "1.1";
 // Foldingbox.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 Foldingbox.prototype.onCreate = function(){
@@ -31,6 +31,9 @@ Foldingbox.prototype.setHeight = function() {
   var heightBox = 0;
   if(foldingbox.$el.data('height') && foldingbox.$el.data('height') != ""){
     heightBox = foldingbox.$el.data('height');
+    if(foldingbox.$el.data('height') == "viewport"){
+      heightBox = utils.getViewportHeight();
+    }
   }
   else{
     foldingbox.content.items.each(function(index,item){
@@ -44,5 +47,5 @@ Foldingbox.prototype.setHeight = function() {
       $clone.remove();
     });
   }
-  foldingbox.content.items.height(heightBox);
+  foldingbox.content.items.outerHeight(heightBox);
 };

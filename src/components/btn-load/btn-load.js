@@ -21,18 +21,21 @@ BtnLoad.prototype.onCreate = function(){
   btn.textIdle = btn.$el.html();
   btn.textLoading = btn.getData('text', btn.$el.html());
   if(btn.icon)
-    btn.textLoading = btn.$clone.html() + BtnLoad.icon;
+    btn.textLoading = btn.textLoading + BtnLoad.icon;
 
   var btnClick = function btnClick(){
+    btn.$el.addClass('no-events');
     if(typeof btn.process == "function"){
       btn.$el.off('click');
       btn.toggleState();
       btn.process(btn).then(function(data){
         btn.toggleState('idle');
+        btn.$el.removeClass('no-events');
         if(btn.reset)
           btn.$el.on('click', btnClick);
       }).catch(function(data){
         btn.toggleState('failed');
+        btn.$el.removeClass('no-events');
         if(btn.reset)
           btn.$el.on('click', btnClick);
       });

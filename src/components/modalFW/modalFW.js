@@ -1,8 +1,8 @@
 var ModalFW = Object.getPrototypeOf(app).ModalFW = new Component("modalFW");
 // ModalFW.debug = true;
 ModalFW.createdAt      = "1.0.0";
-ModalFW.lastUpdate     = "1.4.14";
-ModalFW.version        = "1.0.2";
+ModalFW.lastUpdate     = "1.4.17";
+ModalFW.version        = "1.0.4";
 // ModalFW.loadingMsg     = "This message will display in the console when component will be loaded.";
 
 
@@ -220,10 +220,12 @@ $(function () {
     if($('.modalFW[data-name="'+$(this).data('modal')+'"]').length)
       $('.modalFW[data-name="'+$(this).data('modal')+'"]').modalFW('get').open();
   });
+  var modalMouseDown;
+  var modalMouseUp;
+  $('body').on('mousedown','.modalFW',function(e){modalMouseDown = e.target;});
+  $('body').on('mouseup','.modalFW',function(e){modalMouseUp = e.target;});
   $('body').on('click','.modalFW',function(e){
-    if(!$(e.target).attr('href'))
-      e.preventDefault();
-    if ($(e.target).hasClass('modalFW')) {
+    if ($(e.target).hasClass('modalFW') && modalMouseDown == modalMouseUp) {
       $(this).modalFW('get').close();
     } else if($(e.target).hasClass('modalFW__close')){
       $(this).closest('.modalFW').modalFW('get').close();
