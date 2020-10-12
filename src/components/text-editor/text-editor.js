@@ -39,6 +39,16 @@ TextEditor.prototype.onCreate = function(){
       {
         name: 'link',
         icon: '<i class="fas fa-link"></i>',
+        result: () => {
+            var url = window.prompt('Indiquez l\'URL du lien');
+            var text = document.getSelection();
+            if (url) {
+                var target = window.confirm('Ouvrir le lien dans une autre fenêtre ?');
+                if (!url.match(/^http:\/\/|^https:\/\//))
+                  url = 'http://'+url;
+                target ? document.execCommand('insertHTML', false, '<a target="_blank" href="' + url + '">' + text + '</a>') : document.execCommand('createLink', false, url);
+            }
+        }
       },
     ],
   });
