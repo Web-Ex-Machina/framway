@@ -13,7 +13,13 @@ Select2FW.prototype.onCreate = function(){
   select2FW.select2 = select2FW.$el.select2({
     minimumResultsForSearch: 5,
     width: '100%',
-
+    dropdownParent: select2FW.$el.attr('data-container') == 'body' ? $(document.body) : select2FW.$el.parent(),
+    templateSelection: function(data,container) {
+      if (data.element) {
+        $(container).addClass($(data.element).attr("class"));
+      }
+      return data.text;
+    },
     templateResult: function (data, container) {
       if (data.element) {
         $(container).addClass($(data.element).attr("class"));
