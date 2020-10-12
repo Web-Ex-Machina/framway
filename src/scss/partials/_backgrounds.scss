@@ -44,7 +44,9 @@
       .h#{$index}.bg-#{$key},
       .bg-#{$key} h#{$index},
       .bg-#{$key} .h#{$index}{
-        color: contrast(body(title-font-color),$value);
+        &:not([class*="ft-"]){
+          color: contrast(body(title-font-color),$value);
+        }
       }
     }
 
