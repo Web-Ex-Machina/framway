@@ -11,6 +11,7 @@ Select2FW.prototype.onCreate = function(){
   select2FW.$el.wrap('<div class="select2-wrapper"></div>');
   select2FW.classes = select2FW.$el.attr('class');
   select2FW.select2 = select2FW.$el.select2({
+    placeholder: select2FW.$el.attr('placeholder'),
     minimumResultsForSearch: 5,
     width: '100%',
     dropdownParent: select2FW.$el.attr('data-container') == 'body' ? $(document.body) : select2FW.$el.parent(),
