@@ -36,7 +36,7 @@
 }
 
 .btn{
-  &[class*="icon-"]{display: inline-flex;align-items: center; padding-left: 0.6em; padding-right: 0.6em;
+  &[class*="icon-"]{display: flex;align-items: center; padding-left: 0.6em; padding-right: 0.6em;
     & i[class*="fa"],
     & svg{min-width: 1em;}
     @each $key, $value in $breakpoints{
