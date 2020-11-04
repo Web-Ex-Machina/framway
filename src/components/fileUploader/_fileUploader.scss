@@ -1,0 +1,30 @@
+$preview--spacing : 3px;
+$color--error: #F23635;
+
+.fileUploader{opacity: 0; height: 0; width: 0;margin: 0;padding: 0; border-width: 0;}
+.fileUploader__wrapper{ position: relative; }
+.fileUploader__preview{position: relative; margin: 0; @extend .d-grid,.cols-6,.cols-md-3,.cols-xs-2,.cols-xxs-1; gap: $preview--spacing;}
+.preview__item{position: relative;}
+.preview__img{@extend .img-container,.r_1-1; border: 1px solid $primary; display: flex; justify-content: center; align-items: center; font-size: 3rem;
+	svg{opacity: 0.5;}
+}
+.preview__label{position: absolute; bottom: 1px; right: 1px; left:1px; display: flex;align-items: center;justify-content: space-between;background: rgba(0,0,0,.6); color: white; line-height: 1; font-size: 0.8rem;}
+.preview__name,
+.preview__size{ padding: 5px; 
+	&:empty{display: none;}
+}
+.preview__name{@include ellipsis();}
+.preview__size{white-space: nowrap; margin-left: 3px;}
+.preview__zoomin,
+.preview__delete{opacity: 0.6; cursor: pointer; transition: opacity 0.4s; z-index: 1; width: 40px; height: 40px; line-height: 40px; text-align: center; font-size: 25px;position: absolute; top: 0; filter:drop-shadow(0px 1px 0px black);
+	&:hover{opacity: 1;}
+}
+.preview__delete{ right: 0; color: $color--error;}
+.preview__zoomin{ left: 0; }
+
+.fileUploader__error{
+	p.error{margin: 0.2em 0; padding: 0.1em 0.6em; background: $color--error; color: white;}
+}
+
+
+input[type=file]:not(.custom){@extend .fileUploader;}
