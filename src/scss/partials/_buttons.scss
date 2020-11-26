@@ -36,7 +36,7 @@
 }
 
 .btn{
-  &[class*="icon-"]{display: flex;align-items: center; padding-left: 0.6em; padding-right: 0.6em;
+  &[class*="icon-"]{display: inline-flex;align-items: center; padding-left: 0.6em; padding-right: 0.6em;
     & i[class*="fa"],
     & svg{min-width: 1em;}
     @each $key, $value in $breakpoints{
@@ -60,8 +60,17 @@
 
 .btn-sm{font-size: .8em; padding: .4em 1.2em .5em;
   &>a{padding: .4em 1.2em .5em; margin: -.4em -1.2em -.5em;}
+  border-radius: 0;
+  @if btn(radius) == true{
+    border-radius: $radius;
+  }
 }
-.btn-lg{font-size: 1.25em; }
+.btn-lg{font-size: 1.25em; 
+  border-radius: 0;
+  @if btn(radius) == true{
+    border-radius: $radius;
+  }
+}
 
 
 @each $key, $value in $colors{
@@ -116,9 +125,9 @@ input[type="submit"].btn-lg,
 input[type="button"].btn-lg,
 button.btn-lg{@extend .btn-lg;}
 
-@if btn(extend) != '' {
-  input[type="submit"]:not([class*="btn-bg"]):not([class*="btn-bd"]),
-  input[type="button"]:not([class*="btn-bg"]):not([class*="btn-bd"]),
-  button:not([class*="btn-bg"]):not([class*="btn-bd"]):not([class*="toast"]),
-  *[class*="btn"]:not([class*="btn-bg"]):not([class*="btn-bd"]){@extend #{btn(extend)} !optional;}
-}
+// @if btn(extend) != '' {
+//   input[type="submit"]:not([class*="btn-bg"]):not([class*="btn-bd"]),
+//   input[type="button"]:not([class*="btn-bg"]):not([class*="btn-bd"]),
+//   button:not([class*="btn-bg"]):not([class*="btn-bd"]):not([class*="toast"]),
+//   *[class*="btn"]:not([class*="btn-bg"]):not([class*="btn-bd"]){@extend #{btn(extend)} !optional;}
+// }
