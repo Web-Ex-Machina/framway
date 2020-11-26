@@ -22,6 +22,7 @@ Datepicker.prototype.onCreate = function(){
   datepicker.maxDate    = (datepicker.maxDate !== undefined)    ? datepicker.maxDate    : datepicker.getData('maxdate', false);
   datepicker.startDate  = (datepicker.startDate !== undefined)  ? datepicker.startDate  : datepicker.getData('startdate', false);
   datepicker.mask       = (datepicker.mask !== undefined)       ? datepicker.mask       : datepicker.getData('mask', false);
+  datepicker.reset      = (datepicker.reset !== undefined)      ? datepicker.reset      : datepicker.getData('reset', false);
 
   datepicker.formatDate = (datepicker.formatDate !== undefined) ? datepicker.formatDate : datepicker.getData('formatdate', Datepicker.dateFormat[lang]);
   if (datepicker.timepicker) {
@@ -31,15 +32,17 @@ Datepicker.prototype.onCreate = function(){
     datepicker.format = datepicker.formatDate;
   }
 
-  datepicker.$el.attr('readonly',true);
-  var $wrapper = $('<div class="input--group"></div>').insertAfter(datepicker.$el);
-  var $reset = $('<button class="btn-sm"><i class="fal fa-times"></i></button>');
-  $wrapper.append(datepicker.$el);
-  $wrapper.append($reset);
+  // datepicker.$el.attr('readonly',true);
+  if (datepicker.reset) {
+    var $wrapper = $('<div class="input--group"></div>').insertAfter(datepicker.$el);
+    var $reset = $('<button class="btn-sm"><i class="fal fa-times"></i></button>');
+    $wrapper.append(datepicker.$el);
+    $wrapper.append($reset);
 
-  $reset.on('click',function(){
-    datepicker.$el.val('').trigger('change');
-  });
+    $reset.on('click',function(){
+        datepicker.$el.val('').trigger('change');
+    });
+  }
 
   var updateTstamp = function(){
     if(datepicker.$el.datetimepicker('getValue') != null && datepicker.$el.val() != '')
