@@ -186,7 +186,7 @@ function getFileSize(number) {
 }
 
 $(function () {
-  $('input[type=file]').not('.custom').fileUploader();
+  $('input[type=file]').not('.custom').not('.ck-hidden').fileUploader();
   utils.addHtmlHook('input[type=file]:not(.custom)', function(item){
     item.fileUploader();
   });
