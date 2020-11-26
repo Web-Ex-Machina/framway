@@ -35,7 +35,7 @@ FileUploader.prototype.onCreate = function(){
 	fileUploader.$label = $('<label class="'+fileUploader.classLabel+'" for="'+fileUploader.id+'">'+(fileUploader.$el.attr('placeholder') || 'Fichier')+'</label>').appendTo(fileUploader.$wrapper)
   	fileUploader.$preview = $(` <div class="fileUploader__preview"></div>`).appendTo(fileUploader.$wrapper);
   	if (fileUploader.nbPreviewItems)
-  		fileUploader.$preview.addClass('d-grid cols-'+fileUploader.nbPreviewItems+' cols-md-3 cols-xs-2 cols-xxs-1');
+  		fileUploader.$preview.addClass('d-grid cols-'+fileUploader.nbPreviewItems+' cols-lg-'+Math.round(fileUploader.nbPreviewItems/1.5)+' cols-md-'+Math.round(fileUploader.nbPreviewItems/2)+' cols-sm-'+Math.round(fileUploader.nbPreviewItems/3)+' cols-xs-'+Math.round(fileUploader.nbPreviewItems/4)+' cols-xxs-1');
 	fileUploader.$previewItem = $(`
     <div class="preview__item">
       <div class="preview__img"></div>
