@@ -75,6 +75,10 @@ ModalFW.prototype.onCreate = function(){
     modal.$trigger.addClass('ready');
   if(modal.blnOpen)
     modal.open();
+  if (modal.blnRefresh)
+    modal.$refresh.on('click',function(){
+      modal.setContent();
+    });
 
   if(ModalFW.debug) console.log("Modal "+modal.name+" has been created \n ");
   return modal;
