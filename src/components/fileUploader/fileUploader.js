@@ -30,7 +30,7 @@ FileUploader.prototype.onCreate = function(){
 
 	fileUploader.$el.attr('id',fileUploader.id);
 	fileUploader.$el.attr('data-name',fileUploader.name);
-	fileUploader.$el.addClass('fileUploader').attr('id',fileUploader.id).wrap('<div class="fileUploader__wrapper '+fileUploader.classWrapper+'"></div>');
+	fileUploader.$el.addClass('fileUploader').wrap('<div class="fileUploader__wrapper '+fileUploader.classWrapper+'"></div>');
 	fileUploader.$wrapper = fileUploader.$el.parent('.fileUploader__wrapper');
 	fileUploader.$label = $('<label class="'+fileUploader.classLabel+'" for="'+fileUploader.id+'">'+(fileUploader.$el.attr('placeholder') || 'Fichier')+'</label>').appendTo(fileUploader.$wrapper)
   	fileUploader.$preview = $(` <div class="fileUploader__preview"></div>`).appendTo(fileUploader.$wrapper);
@@ -46,7 +46,7 @@ FileUploader.prototype.onCreate = function(){
       <div class="preview__delete"><i class="fa fa-times"></i></div>
     </div>
   `);
-  fileUploader.$error = $(` <div class="fileUploader__error"></div>`).appendTo(fileUploader.$wrapper);
+  fileUploader.$error = $(`<div class="fileUploader__error"></div>`).appendTo(fileUploader.$wrapper);
 
   if (app.components.includes('modalFW') && !fileUploader.$el.closest('.modalFW').length)
     fileUploader.$previewItem.append('<div class="preview__zoomin"><i class="fa fa-search"></i></div>');
@@ -56,7 +56,8 @@ FileUploader.prototype.onCreate = function(){
 	
   // load default file(s) in the preview
   for(var fileUrl of fileUploader.files){
-    fileUploader.addFileFromPath(fileUrl)
+    if (fileUrl != "") 
+      fileUploader.addFileFromPath(fileUrl)
   }
 
 	// on change event
@@ -100,15 +101,19 @@ FileUploader.prototype.displayError = function(msg,reset=false){
 }
 FileUploader.prototype.addBase64File = function(file){
   var fileUploader = this;
-  var reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onload = function(){
-    fileUploader.$wrapper.append('<input type="hidden" class="fileUploader__input" '+fileUploader.dataAttr+'="'+fileUploader.name+'" value="'+reader.result+'" />')
-  }
+  return new Promise(function(resolve,reject){
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function(){
+      var $input = $('<input type="hidden" class="fileUploader__input" '+fileUploader.dataAttr+'="'+fileUploader.name+'" value="'+reader.result+'" data-filename="'+file.name+'" />');
+      fileUploader.$wrapper.append($input);
+      resolve($input)
+    }
+  });
 }
 FileUploader.prototype.addFileFromPath = function(path){
   var fileUploader = this;
-  if (utils.isImageUrl(path.split('?v=')[0])){
+  // if (utils.isImageUrl(path.split('?v=')[0])){
     var request = async (url) => {
       await fetch(url).then(function(response) {
         return response.blob();
@@ -120,7 +125,7 @@ FileUploader.prototype.addFileFromPath = function(path){
       });
     };
     request(path);
-  }
+  // }
 }
 FileUploader.prototype.addPreviewImg = function(file,name=false){
   var fileUploader = this;
