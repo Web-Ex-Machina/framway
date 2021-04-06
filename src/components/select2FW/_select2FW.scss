@@ -34,3 +34,14 @@
     border-radius: 0;
   }
 }
+
+
+// required
+select[required]{
+  &:valid{
+    &+.select2-container .select2-selection{@extend %input[required]:valid;}
+  }
+  &:invalid{
+    &+.select2-container .select2-selection{@extend %input[required]:invalid;}
+  }
+}

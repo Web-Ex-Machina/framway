@@ -81,8 +81,8 @@ Sidepanel.prototype.open = function(){
 
 $(function(){
   $('body').on('click','.sidepanel',function(e){
-    if(!$(e.target).attr('href'))
-      e.preventDefault();
+    // if(!$(e.target).attr('href') && $(e.target).attr('type') != 'submit')
+      // e.preventDefault();
     if ($(e.target).hasClass('sidepanel__backdrop')) {
       $(this).sidepanel('get').close();
     } else if($(e.target).hasClass('sidepanel__close')){

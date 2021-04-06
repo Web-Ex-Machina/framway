@@ -6,8 +6,8 @@ require('./scss/framway.scss');
 require('./js/framway.js');
 
 app.debug = false;
-app.loadThemes(config.themes);
 app.loadComponents(config.components);
+app.loadThemes(config.themes);
 
 
 app.configCSS = require('./scss/_config.scss');
