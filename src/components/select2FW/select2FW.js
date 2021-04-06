@@ -13,6 +13,7 @@ Select2FW.prototype.onCreate = function(){
   select2FW.select2 = select2FW.$el.select2({
     minimumResultsForSearch: 5,
     width: '100%',
+    placeholder: select2FW.$el.attr('placeholder')!="" ? select2FW.$el.attr('placeholder') : '',
     dropdownParent: select2FW.$el.parent(),
     templateSelection: function(data,container) {
       if (data.element) {
