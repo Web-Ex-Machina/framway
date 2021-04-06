@@ -14,8 +14,14 @@ InputNumber.prototype.onCreate = function(){
   input.$buttonPlus= $('<div class="input-number__btn plus">+</div>').appendTo(input.$buttonsContainer);
   input.$buttonMinus = $('<div class="input-number__btn minus">-</div>').appendTo(input.$buttonsContainer);
 
-  input.$buttonPlus.on('click',function(){input.$el.get(0).stepUp();});
-  input.$buttonMinus.on('click',function(){input.$el.get(0).stepDown();});
+  input.$buttonPlus.on('click',function(){
+    input.$el.get(0).stepUp();
+    input.$el.trigger('change');
+  });
+  input.$buttonMinus.on('click',function(){
+    input.$el.get(0).stepDown();
+    input.$el.trigger('change');
+  });
 }
 
 
