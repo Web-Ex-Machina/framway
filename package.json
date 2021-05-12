@@ -35,7 +35,7 @@
     "img-loader": "^2.0.1",
     "mustache-loader": "^1.4.1",
     "node-sass": "^4.14.1",
-    "postcss": "^7.0.10",
+    "postcss": "^8.2.10",
     "postcss-focus": "^3.0.0",
     "postcss-load-config": "^1.2.0",
     "postcss-loader": "^3.0.0",
