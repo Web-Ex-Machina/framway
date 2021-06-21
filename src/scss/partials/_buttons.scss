@@ -1,6 +1,18 @@
 /*-----------------------------------------------------------------------------------------------------------------------------*/
 // BUTTONS
-.btn {
+$exclude : "";
+@if (btn(exclude)){
+  @each $part in btn(exclude){
+    // @warn $part;
+    $exclude : $exclude+':not('+$part+')';
+  }
+}
+// @warn "EXCLUDE = "+$exclude;
+
+$btn-p-y: 0.5em;
+$btn-p-x: 1.5em;
+
+.btn#{$exclude}{
   display: inline-block;
   text-align: center;
   max-width: 100%;
@@ -11,12 +23,20 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  padding: .4em 1.5em .5em;
+  padding: $btn-p-y $btn-p-x $btn-p-y+0.1em;
   font-size: 1em;
   line-height: 1.5em;
   border-radius: 0;
   @if btn(radius) == true{
     border-radius: $radius;
+  }
+  text-transform: none;
+  @if btn(uppercase) == true{
+    text-transform: uppercase;
+  }
+  font-weight: 400;
+  @if btn(font-weight){
+    font-weight: btn(font-weight);
   }
   outline: none;
   border: btn(border-size) solid btn(background);
@@ -25,18 +45,31 @@
   cursor: pointer;
   font-family: inherit;
   text-decoration: none;
-  margin-top: 3px;
-  margin-bottom: 3px;
-  @extend .ft-normal;
+  margin-top: 2.5px;
+  margin-bottom: 2.5px;
   @include transition(all .2s ease-in-out);
-  &:focus{color: btn(font-color); text-decoration: none; outline: none; @include box-shadow(none);}
-  &:hover{color: btn(font-color); text-decoration: none;}
-  &>a{padding: .4em 1.5em .5em; margin: -.4em -1.5em -.5em;}
+  &:focus{ outline: none; box-shadow: none;}
+  &:hover,&:focus,&:active,&.active{
+      text-decoration: none;
+      @if lightness(btn(background)) > 60{
+        color: contrastFW(btn(font-color),scale-color(btn(background),$lightness:-5));
+        background-color: scale-color(btn(background),$lightness:-15);
+        border-color: scale-color(btn(background),$lightness:-15);
+      }
+      @else{
+        color: contrastFW(btn(font-color),scale-color(btn(background),$lightness:5));
+        background-color: scale-color(btn(background),$lightness:15);
+        border-color: scale-color(btn(background),$lightness:15);
+      }
+    }
+  &>a{padding: $btn-p-y $btn-p-x $btn-p-y+0.1em; margin: -$btn-p-y -$btn-p-x -$btn-p-y+0.1em;}
   &.center{display: block;}
+  // [class*=flex]>&+.btn#{$exclude}{margin-left: 5px;} // 15K characters /!\
 }
 
-.btn{
-  &[class*="icon-"]{display: inline-flex;align-items: center; padding-left: 0.6em; padding-right: 0.6em;
+.btn#{$exclude}{
+  &[class*="icon-"]{display: inline-flex;align-items: center; 
+    padding-left: 1em; padding-right: 1em;
     & i[class*="fa"],
     & svg{min-width: 1em;}
     @each $key, $value in $breakpoints{
@@ -50,22 +83,32 @@
   }
   &.icon-first{
     & i[class*="fa"],
-    & svg{margin: 0 0.6em 0 0 ; order: -1;}
+    & svg{margin: 0 0.65em 0 -0.2em ; order: -1;}
   }
   &.icon-last {
     & i[class*="fa"],
-    & svg{margin: 0 0 0 0.6em; order: 1;}
+    & svg{margin: 0 -0.2em 0 0.65em; order: 1;}
   }
+  &.squared{padding: .6em .65em .65em; line-height: 1em; }
 }
 
-.btn-sm{font-size: .8em; padding: .4em 1.2em .5em;
-  &>a{padding: .4em 1.2em .5em; margin: -.4em -1.2em -.5em;}
+.btn-sm#{$exclude}{@extend .btn;
+  font-size: .8em; 
+  padding: ($btn-p-y - 0.1em) ($btn-p-x - 0.3em) $btn-p-y;
+  &>a{padding: ($btn-p-y - 0.1em) ($btn-p-x - 0.3em) $btn-p-y; margin: -($btn-p-y - 0.1em) -($btn-p-x - 0.3em) -$btn-p-y;}
+  // padding: .4em 1.2em .4em;
+  // &>a{padding: .4em 1.2em .4em; margin: -.4em -1.2em -.4em;}
   border-radius: 0;
   @if btn(radius) == true{
     border-radius: $radius;
   }
 }
-.btn-lg{font-size: 1.25em; 
+.btn-lg#{$exclude}{@extend .btn;
+  font-size: 1.25em; 
+  padding: ($btn-p-y + 0.1em) ($btn-p-x + 0.2em) ($btn-p-y + 0.15em);
+  &>a{padding: ($btn-p-y + 0.1em) ($btn-p-x + 0.2em) ($btn-p-y + 0.15em); margin: -($btn-p-y + 0.1em) -($btn-p-x + 0.2em) -($btn-p-y + 0.15em);}
+  // padding: .6em 1.7em .65em;
+  // &>a{padding: .6em 1.7em .65em; margin: -.6em -1.7em -.65em;}
   border-radius: 0;
   @if btn(radius) == true{
     border-radius: $radius;
@@ -74,12 +117,13 @@
 
 
 @each $key, $value in $colors{
-  .btn-bd-#{$key}{
+  .btn-bd-#{$key}#{$exclude}{
     border-color: $value;
     @if $value != transparent{color: $value; }
     @else{color: contrastFW(btn(font-color),$value); }
     background-color: transparent;
     &:hover,&:active,&.active{
+      border-color: $value;
       background: $value;
       text-decoration: none;
       color: contrastFW(btn(font-color),$value);
@@ -88,10 +132,20 @@
       // color: $value;
       &:hover,&:active,&.active{
         color: contrastFW(btn(font-color),$value);
+        @if lightness($value) > 60{
+          color: contrastFW(btn(font-color),scale-color($value,$lightness:-5));
+          background-color: scale-color($value,$lightness:-15);
+          border-color: scale-color($value,$lightness:-15);
+        }
+        @else{
+          color: contrastFW(btn(font-color),scale-color($value,$lightness:5));
+          background-color: scale-color($value,$lightness:15);
+          border-color: scale-color($value,$lightness:15);
+        }
       }
     }
   }
-  .btn-bg-#{$key}{
+  .btn-bg-#{$key}#{$exclude}{
     border-color: $value;
     background-color: $value;
     color: contrastFW(btn(font-color),$value);
@@ -112,10 +166,13 @@
 }
 
 // button:not([class*="btn-bg"]):not([class*="btn-bd"]):not([class*="toast"]),
+*[class*=btn-bd-],
+*[class*=btn-bg-],
 input[type="submit"],
 input[type="button"],
-button,
-*[class*="btn"]{@extend .btn;}
+button{@extend .btn;}
+// button,
+// *[class*="btn"]{@extend .btn;}
 
 input[type="submit"].btn-sm,
 input[type="button"].btn-sm,
