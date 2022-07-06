@@ -68,7 +68,7 @@
     "object-fit-images": "^3.2.4",
     "pell": "^1.0.6",
     "popper.js": "^1.14.4",
-    "select2": "^4.0.6-rc.1",
+    "select2": "^4.0.6",
     "tether": "^1.4.5",
     "toastr": "^2.1.4"
   },
